@@ -14,8 +14,8 @@ import {
   geoPolygonContainsPolygon,
   geoPolygonIntersectsPolygon
 } from './helper';
-import { osmLanes } from './lanes';
-import { areaKeysGetter } from './areakeys';
+import { osmLanes } from 'src/osm/lanes';
+import { areaKeysGetter } from 'src/osm/areakeys';
 export function osmEntity(attrs): void {
   // For prototypal inheritance.
   if (this instanceof osmEntity) return;
@@ -482,7 +482,10 @@ _.extend(osmWay.prototype, {
     if (this.tags.area === 'yes') return true;
     if (!this.isClosed() || this.tags.area === 'no') return false;
     for (var key in this.tags) {
-      if (key in areaKeys && !(this.tags[key] in areaKeys[key])) {
+      if (
+        key in areaKeysGetter() &&
+        !(this.tags[key] in areaKeysGetter()[key])
+      ) {
         return true;
       }
     }
