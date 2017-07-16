@@ -1,0 +1,38 @@
+{
+  "name": "idly",
+  "version": "0.0.1",
+  "description": "a modern age OSM editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --progress --color --watch --display-error-details",
+    "op": "webpack-dev-server --open"
+  },
+  "author": "Kushan Joshi 0o3ko0@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.2.1",
+    "css-loader": "^0.28.4",
+    "html-webpack-plugin": "^2.29.0",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.18.2",
+    "typescript": "^2.4.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.5.1"
+  },
+  "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^0.19.1",
+    "@mapbox/sphericalmercator": "^1.0.5",
+    "@types/jest": "^20.0.2",
+    "@types/mapbox-gl": "^0.39.2",
+    "@types/node": "^8.0.13",
+    "@types/ramda": "^0.24.4",
+    "@types/react": "^15.0.38",
+    "@types/react-dom": "^15.5.1",
+    "mapbox-gl": "^0.38.0",
+    "osmtogeojson": "^3.0.0-beta.2",
+    "ramda": "^0.24.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
