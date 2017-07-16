@@ -7,13 +7,16 @@ import MapboxDraw = require('@mapbox/mapbox-gl-draw');
 import { RootStateType } from 'src/store/';
 import { getOSMTiles } from 'src/store/osm_tiles/actions';
 import { fetchBbox } from '../store/osm';
-
+import { MapGL } from 'src/map/init';
 interface PropsType {}
 const datum: Map<string, object> = new Map();
 var layersACtive: any = {};
 
 class MapComp extends React.Component<PropsType, any> {
   componentDidMount() {
+    MapGL('map');
+  }
+  componentDidMount2() {
     mapboxgl.accessToken =
       'pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew';
     var map = new mapboxgl.Map({
