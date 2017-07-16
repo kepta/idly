@@ -11,9 +11,11 @@
   "author": "Kushan Joshi 0o3ko0@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/react-redux": "^4.4.46",
     "awesome-typescript-loader": "^3.2.1",
     "css-loader": "^0.28.4",
     "html-webpack-plugin": "^2.29.0",
+    "redux-devtools-extension": "^2.13.2",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
     "typescript": "^2.4.1",
@@ -29,10 +31,14 @@
     "@types/ramda": "^0.24.4",
     "@types/react": "^15.0.38",
     "@types/react-dom": "^15.5.1",
+    "immutable": "^3.8.1",
     "mapbox-gl": "^0.38.0",
     "osmtogeojson": "^3.0.0-beta.2",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.15.4"
   }
 }

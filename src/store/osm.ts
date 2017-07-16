@@ -4,19 +4,19 @@ var SphericalMercator = require('@mapbox/sphericalmercator');
 
 import { fetchTile } from '../network/osm';
 import { cancelablePromise } from '../network/helper';
-var merc = new SphericalMercator({
+var mercator = new SphericalMercator({
   size: 256
 });
-
 const memFetchTile: (
   x: number,
   y: number,
   zoom: number
 ) => Promise<object> = memoize(fetchTile);
+
 var prevProm: any = [];
 export function fetchBbox(ltlng: LngLatBounds, zoom: number = 16) {
   prevProm.forEach((p: any) => p.cancel());
-  const { minX, minY, maxX, maxY } = merc.xyz(
+  const { minX, minY, maxX, maxY } = mercator.xyz(
     [ltlng.getWest(), ltlng.getSouth(), ltlng.getEast(), ltlng.getNorth()],
     Math.floor(zoom)
   );
