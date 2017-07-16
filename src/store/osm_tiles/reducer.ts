@@ -1,24 +1,21 @@
-import { Record } from 'immutable';
+import { Record, Map } from 'immutable';
 import { Action } from 'src/store/actions';
-const SphericalMercator = require('@mapbox/sphericalmercator');
-
-var mercator = new SphericalMercator({
-  size: 256
-});
+import { OSM_TILES } from 'src/store/osm_tiles/actions';
 
 const initialState = {
-  oAuthToken: '',
-  oAuthTokenSecret: ''
+  tiles: Map()
 };
 
 export class OsmTilesState extends Record(initialState) {
-  oAuthToken: string;
-  oAuthTokenSecret: string;
+  tiles: Map<string, any>;
 }
 const osmTilesState = new OsmTilesState();
 
 export function osmReducer(state = osmTilesState, action: Action<any>) {
   switch (action.type) {
+    case OSM_TILES.saveTile: {
+      return state.setIn(['tiles', action.coords.join(',')], action.data);
+    }
     default:
       return state;
   }
