@@ -1,3 +1,5 @@
+import { LngLatBounds } from 'mapbox-gl';
+
 import { handleErrors } from './helper';
 
 var SphericalMercator = require('@mapbox/sphericalmercator');

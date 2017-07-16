@@ -4,7 +4,7 @@
   "description": "a modern age OSM editor",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack --progress --color --watch --display-error-details",
     "op": "webpack-dev-server --open"
   },
@@ -12,12 +12,17 @@
   "license": "ISC",
   "devDependencies": {
     "@types/react-redux": "^4.4.46",
+    "@types/turf": "^3.5.32",
     "awesome-typescript-loader": "^3.2.1",
     "css-loader": "^0.28.4",
     "html-webpack-plugin": "^2.29.0",
+    "jest": "^20.0.4",
+    "jsdom": "^11.1.0",
+    "mapbox-gl-js-mock": "^0.28.0",
     "redux-devtools-extension": "^2.13.2",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.18.2",
+    "ts-jest": "^20.0.7",
     "typescript": "^2.4.1",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
@@ -39,6 +44,20 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
-    "redux-saga": "^0.15.4"
+    "redux-saga": "^0.15.4",
+    "turf": "^3.0.14"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>"],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   }
 }
