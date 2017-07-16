@@ -147,7 +147,7 @@ describe('osmRelation', function() {
       expect(r.extent(graph).equals([[0, 0], [0, 0]])).toBeTruthy();
     });
 
-    it.skip('does not error on self-referencing relations', function() {
+    it('does not error on self-referencing relations', function() {
       var r = Relation();
       r = r.addMember({ id: r.id });
       expect(r.extent(Graph([r]))).toEqual(geoExtent());
