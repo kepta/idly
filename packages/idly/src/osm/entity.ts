@@ -15,7 +15,7 @@ import {
   geoPolygonIntersectsPolygon
 } from './helper';
 import { osmLanes } from './lanes';
-
+import { areaKeysGetter } from './areakeys';
 export function osmEntity(attrs): void {
   // For prototypal inheritance.
   if (this instanceof osmEntity) return;
@@ -342,7 +342,7 @@ _.extend(osmNode.prototype, {
 
 /*way*/
 
-var areaKeys = {};
+// var areaKeys = {};
 
 export function osmWay() {
   if (!(this instanceof osmWay)) {

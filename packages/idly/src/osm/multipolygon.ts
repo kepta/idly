@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import * as _ from 'lodash';
 import { actionReverse, osmIsInterestingTag } from './helper';
 
 // For fixing up rendering of multipolygons with tags on the outer member.
