@@ -3,8 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { LngLatBounds } from 'mapbox-gl';
 
-import MapboxDraw = require('@mapbox/mapbox-gl-draw');
-import { RootStateType } from 'src/store/';
+import { RootStateType } from 'src/store/index';
 import { OsmTilesState } from 'src/store/osm_tiles/reducer';
 
 import { getOSMTiles } from 'src/store/osm_tiles/actions';

@@ -1,14 +1,16 @@
 /// <reference types="geojson" />
 import * as React from 'react';
 import { connect } from 'react-redux';
-const mapboxgl = require('mapbox-gl');
+// import mapboxgl from 'mapbox-gl';
+import mapboxgl = require('mapbox-gl');
 import MapboxDraw = require('@mapbox/mapbox-gl-draw');
+// const MapboxDraw = require('@mapbox/mapbox-gl-draw');
 const SphericalMercator = require('@mapbox/sphericalmercator');
 
 var mercator = new SphericalMercator({
   size: 256
 });
-import { RootStateType } from 'src/store/';
+import { RootStateType } from 'src/store/index';
 import { getOSMTiles } from 'src/store/osm_tiles/actions';
 
 interface PropsType {}
@@ -17,7 +19,7 @@ export const ZOOM = 16;
 var layersACtive: any = {};
 mapboxgl.accessToken =
   'pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew';
-
+console.log(MapboxDraw);
 var genPoint = (source: string): mapboxgl.Layer => ({
   id: source + 'park-volcanoes',
   type: 'circle',
