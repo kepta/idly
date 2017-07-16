@@ -19,7 +19,6 @@ export const ZOOM = 16;
 var layersACtive: any = {};
 mapboxgl.accessToken =
   'pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew';
-console.log(MapboxDraw);
 var genPoint = (source: string): mapboxgl.Layer => ({
   id: source + 'park-volcanoes',
   type: 'circle',

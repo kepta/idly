@@ -10,8 +10,8 @@ import { store } from 'src/store/index';
 import * as osm from 'src/osm/entity';
 // import { osmNode } from 'src/osm/node';
 
-// require('mapbox-gl/dist/mapbox-gl.css');
-// require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
+require('mapbox-gl/dist/mapbox-gl.css');
+require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 const win: any = window;
 win.Im = Im;
 win.turf = turf;

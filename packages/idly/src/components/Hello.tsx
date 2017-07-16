@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { fetchTile } from '../network/osm';
 
 export interface HelloProps {
   compiler: string;
