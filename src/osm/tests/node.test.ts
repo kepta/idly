@@ -1,9 +1,4 @@
-import {
-  osmEntity as Entity,
-  osmWay as Way,
-  osmRelation as Relation,
-  osmNode as Node
-} from 'src/osm/entity';
+import { osmWay as Way, osmNode as Node } from 'src/osm/entity';
 import { coreGraph as Graph } from 'src/osm/graph';
 
 describe('osmNode', function() {
