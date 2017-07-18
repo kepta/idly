@@ -1,7 +1,7 @@
 import { LngLatBounds } from 'mapbox-gl';
 
 import { handleErrors } from './helper';
-import { parse } from 'src/osm/network/parser';
+// import { parse } from 'src/osm/network/parser';
 var SphericalMercator = require('@mapbox/sphericalmercator');
 var osmtogeojson = require('osmtogeojson');
 
@@ -20,7 +20,7 @@ export async function fetchTile(x: number, y: number, zoom: number) {
     let text = await response.text();
     const parser = new DOMParser();
     const xml = parser.parseFromString(text, 'text/xml');
-    return [osmtogeojson(xml), parse(xml)];
+    return osmtogeojson(xml);
   } catch (e) {
     console.error(e);
     throw e;

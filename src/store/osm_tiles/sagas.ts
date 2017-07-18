@@ -54,12 +54,11 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
     if (tiles) {
       return;
     }
-    const [dataAsJSON, dataLegacy] = yield call(fetchTile, x, y, zoom);
+    const dataAsJSON = yield call(fetchTile, x, y, zoom);
     yield put(
       action(OSM_TILES.saveTile, {
         coords: [x, y, zoom],
-        data: dataAsJSON,
-        legacy: dataLegacy
+        data: dataAsJSON
       })
     );
   } catch (e) {
