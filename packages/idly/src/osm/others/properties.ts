@@ -1,12 +1,5 @@
 import { Record } from 'immutable';
-// interface Prop {
-//   visible?: boolean;
-//   version?: number;
-//   timeStamp?: string;
-//   changeset?: string;
-//   uid?: string;
-//   username?: string;
-// }
+
 var base = Record({
   visible: true,
   version: 0,
