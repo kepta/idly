@@ -1,5 +1,4 @@
 import { Record, Map, List } from 'immutable';
-// import { Node } from 'src/osm/entities/node';
 import { ITags, tagsFactory } from 'src/osm/others/tags';
 
 import { Properties, propertiesGen } from 'src/osm/others/properties';

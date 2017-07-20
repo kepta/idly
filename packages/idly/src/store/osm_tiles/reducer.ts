@@ -20,10 +20,6 @@ export function osmReducer(state = osmTilesState, action: Action<any>) {
         ['tiles', action.coords.join(',')],
         action.data
       );
-      // newState = <OsmTilesState>newState.set(
-      //   'legacy',
-      //   uniqWith((a, b) => a.id === b.id, newState.legacy.concat(action.legacy))
-      // );
       return newState;
     }
     default:

@@ -11,18 +11,12 @@ import {
 } from 'src/osm/modifiers/graph.modifiers';
 
 describe('#set', function() {
-  // it('returns a new graph if self is frozen', function () {
-  //     var graph = graphFactory();
-  //     expect(graph.update()).not.toBe(graph);
-  // });
   var node = nodeFactory({ id: 'n1' });
   var way = wayFactory({ id: 'w-1', tags: Map({ foo: 'bar' }) });
   var relation = relationFactory({ id: 'r1' });
   var graph = graphFactory([node, way, relation]);
 
   it('returns self if empty', function() {
-    // var graph = graphFactory();
-
     expect(graphSetEntities(graph, [])).toBe(graph);
   });
   it('sets up a node', () => {

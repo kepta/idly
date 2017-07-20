@@ -5,7 +5,10 @@ Object {
   "node": Object {
     "n1": Object {
       "id": "n1",
-      "loc": Array [],
+      "loc": Object {
+        "lat": NaN,
+        "lon": NaN,
+      },
       "properties": Object {
         "changeset": undefined,
         "timeStamp": undefined,
@@ -78,7 +81,10 @@ Object {
   "node": Object {
     "n1": Object {
       "id": "n1",
-      "loc": Array [],
+      "loc": Object {
+        "lat": NaN,
+        "lon": NaN,
+      },
       "properties": Object {
         "changeset": undefined,
         "timeStamp": undefined,

@@ -21,7 +21,6 @@ import { OSM_TILES, GetOSMTilesType } from 'src/store/osm_tiles/actions';
 import { RootStateType } from 'src/store/';
 import { ZOOM } from 'src/map/init';
 const SphericalMercator = require('@mapbox/sphericalmercator');
-
 var mercator = new SphericalMercator({
   size: 256
 });
@@ -31,18 +30,12 @@ export function* watchOSMTiles(): SagaIterator {
   yield all([call(watchFetch)]);
 }
 function* watchFetch(): SagaIterator {
-  let forks = [];
+  let tasks = [];
   while (true) {
-    let { xy, zoom }: Action<GetOSMTilesType> = yield take(OSM_TILES.get);
+    let { xys, zoom }: Action<GetOSMTilesType> = yield take(OSM_TILES.get);
     if (zoom < ZOOM) continue;
-    for (let f = 0; f < forks.length; f++) {
-      yield cancel(forks[f]);
-    }
-
-    forks = [];
-    for (var i = 0; i < xy.length; i++) {
-      forks.push(yield fork(fetchTileSaga, xy[i][0], xy[i][1], zoom));
-    }
+    yield tasks.map(task => cancel(task));
+    tasks = yield xys.map(([x, y]) => fork(fetchTileSaga, x, y, zoom));
   }
 }
 

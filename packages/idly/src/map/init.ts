@@ -112,12 +112,6 @@ export class MapGL {
         }
       }
       this.cb(this.xy, zoom);
-      //   fetchBbox(this.map.getBounds(), 16).forEach((p, i) => {
-      // p.promise
-      //   .then((data: GeoJSON.FeatureCollection<GeoJSON.GeometryObject>) => {
-      //   })
-      //       .catch(console.error);
-      //   });
     }
   };
   onClick = (e: any) => {
