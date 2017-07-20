@@ -7,7 +7,7 @@ export const OSM_TILES = {
 };
 
 export type GetOSMTilesType = {
-  xy: number[][];
+  xys: number[][];
   zoom: number;
 };
 

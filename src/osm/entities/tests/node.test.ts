@@ -1,33 +1,41 @@
 import { nodeFactory } from 'src/osm/entities/node';
 import { propertiesGen } from 'src/osm/others/properties';
+import { genLngLat } from 'src/osm/geo_utils/lng_lat';
 
-import { Map } from 'immutable';
-describe('osmNode', function () {
-  it('returns a node', function () {
+import { Map, Record, List } from 'immutable';
+describe('osmNode', function() {
+  it('returns a node', function() {
     // expect(nodeFactory()).toBeInstanceOf(Node);
     expect(nodeFactory({ id: 'n-1' }).type).toEqual('node');
     expect(nodeFactory({ id: 'n-1' }).id).toEqual('n-1');
-    expect(nodeFactory({ id: 'n-1' }).loc).toEqual([]);
+    expect(nodeFactory({ id: 'n-1' }).loc).toEqual(LngLat());
     expect(nodeFactory({ id: 'n-1' }).properties).toEqual(propertiesGen());
   });
 
-  it('defaults tags to an empty object', function () {
+  it('defaults tags to an empty object', function() {
     expect(nodeFactory({ id: 'n-1' }).tags).toEqual(Map());
   });
 
-  it('sets tags as specified', function () {
+  it('sets tags as specified', function() {
     expect(nodeFactory({ id: 'n-1', tags: Map({ foo: 'bar' }) }).tags).toEqual(
       Map({ foo: 'bar' })
     );
   });
-
-  //   describe('#extent', function() {
-  //     it('returns a point extent', function() {
-  //       expect(
-  //         new Node({ loc: [5, 10] }).extent().equals([[5, 10], [5, 10]])
-  //       ).toBeTruthy();
-  //     });
-  //   });
+  it('sets loc correctly', function() {
+    expect(
+      nodeFactory({ id: 'n-1', loc: genLngLat({ lon: 5, lat: 10 }) }).loc
+    ).toEqual(genLngLat({ lon: 5, lat: 10 }));
+  });
+  describe('#extent', function() {
+    it('returns a point extent', function() {
+      expect(
+        nodeFactory({ id: 'n-1', loc: genLngLat({ lon: 5, lat: 10 }) }).equals([
+          [5, 10],
+          [5, 10]
+        ])
+      ).toBeTruthy();
+    });
+  });
 
   //   describe.skip('#intersects', function() {
   //     it('returns true for a node within the given extent', function() {
