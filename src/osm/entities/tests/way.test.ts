@@ -79,7 +79,7 @@ describe('osmWay', function() {
   //   });
   // });
   describe('#first', function() {
-    it('returns the first node', function() {
+    it('returns  the first node', function() {
       expect(
         wayFactory({ id: 'w-1', nodes: List(['a', 'b', 'c']) }).nodes.first()
       ).toBe('a');

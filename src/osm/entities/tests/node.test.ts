@@ -1,9 +1,9 @@
 import { nodeFactory } from 'src/osm/entities/node';
-import { propertiesGen } from 'src/osm/entities/properties';
+import { propertiesGen } from 'src/osm/others/properties';
 
 import { Map } from 'immutable';
-describe('osmNode', function() {
-  it('returns a node', function() {
+describe('osmNode', function () {
+  it('returns a node', function () {
     // expect(nodeFactory()).toBeInstanceOf(Node);
     expect(nodeFactory({ id: 'n-1' }).type).toEqual('node');
     expect(nodeFactory({ id: 'n-1' }).id).toEqual('n-1');
@@ -11,11 +11,11 @@ describe('osmNode', function() {
     expect(nodeFactory({ id: 'n-1' }).properties).toEqual(propertiesGen());
   });
 
-  it('defaults tags to an empty object', function() {
+  it('defaults tags to an empty object', function () {
     expect(nodeFactory({ id: 'n-1' }).tags).toEqual(Map());
   });
 
-  it('sets tags as specified', function() {
+  it('sets tags as specified', function () {
     expect(nodeFactory({ id: 'n-1', tags: Map({ foo: 'bar' }) }).tags).toEqual(
       Map({ foo: 'bar' })
     );

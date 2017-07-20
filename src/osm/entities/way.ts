@@ -1,13 +1,11 @@
 import { Record, Map, List } from 'immutable';
-// import { Node } from 'src/osm/entities/node';
-import { ITags, tagsFactory } from 'src/osm/entities/tags';
+import { ITags, tagsFactory } from 'src/osm/others/tags';
 
-import { Properties, propertiesGen } from 'src/osm/entities/properties';
+import { Properties, propertiesGen } from 'src/osm/others/properties';
 
 type Id = string;
 type Version = number;
 type Visible = boolean;
-type Entity = 'node' | 'relation' | 'way';
 // type Nodes = Map<string, Node>;
 
 var wayBaseRecord = Record({
@@ -20,7 +18,7 @@ var wayBaseRecord = Record({
 
 export class Way extends wayBaseRecord {
   id: Id;
-  type: Entity;
+  type: string;
   tags: ITags;
   properties: Properties;
   nodes: List<string>;
@@ -31,7 +29,6 @@ export class Way extends wayBaseRecord {
 
 export function wayFactory(obj: {
   id: Id;
-  type?: Entity;
   tags?: ITags;
   properties?: Properties;
   nodes?: List<string>;

@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Graph Factory adds multiple relations 1`] = `
+Object {
+  "node": Object {
+    "n1": Object {
+      "id": "n1",
+      "loc": Array [],
+      "properties": Object {
+        "changeset": undefined,
+        "timeStamp": undefined,
+        "uid": undefined,
+        "username": undefined,
+        "version": 0,
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+  },
+  "relation": Object {
+    "r1": Object {
+      "id": "r1",
+      "members": Array [],
+      "properties": Object {
+        "changeset": undefined,
+        "timeStamp": undefined,
+        "uid": undefined,
+        "username": undefined,
+        "version": 0,
+        "visible": true,
+      },
+      "tags": Object {
+        "foo": "foo",
+      },
+      "type": "relation",
+    },
+    "r2": Object {
+      "id": "r2",
+      "members": Array [],
+      "properties": Object {
+        "changeset": undefined,
+        "timeStamp": undefined,
+        "uid": undefined,
+        "username": undefined,
+        "version": 0,
+        "visible": true,
+      },
+      "tags": Object {
+        "foo": "foo",
+      },
+      "type": "relation",
+    },
+  },
+  "way": Object {
+    "w-1": Object {
+      "id": "w-1",
+      "nodes": Array [],
+      "properties": Object {
+        "changeset": undefined,
+        "timeStamp": undefined,
+        "uid": undefined,
+        "username": undefined,
+        "version": 0,
+        "visible": true,
+      },
+      "tags": Object {
+        "foo": "bar",
+      },
+      "type": "way",
+    },
+  },
+}
+`;
+
+exports[`Graph Factory returns self if empty 1`] = `
+Object {
+  "node": Object {
+    "n1": Object {
+      "id": "n1",
+      "loc": Array [],
+      "properties": Object {
+        "changeset": undefined,
+        "timeStamp": undefined,
+        "uid": undefined,
+        "username": undefined,
+        "version": 0,
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+  },
+  "relation": Object {},
+  "way": Object {
+    "w-1": Object {
+      "id": "w-1",
+      "nodes": Array [],
+      "properties": Object {
+        "changeset": undefined,
+        "timeStamp": undefined,
+        "uid": undefined,
+        "username": undefined,
+        "version": 0,
+        "visible": true,
+      },
+      "tags": Object {
+        "foo": "bar",
+      },
+      "type": "way",
+    },
+  },
+}
+`;

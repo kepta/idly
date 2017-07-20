@@ -1,13 +1,12 @@
 import { Record, Map, List } from 'immutable';
 // import { Node } from 'src/osm/entities/node';
-import { ITags, tagsFactory } from 'src/osm/entities/tags';
+import { ITags, tagsFactory } from 'src/osm/others/tags';
 
-import { Properties, propertiesGen } from 'src/osm/entities/properties';
+import { Properties, propertiesGen } from 'src/osm/others/properties';
 
 type Id = string;
 type Version = number;
 type Visible = boolean;
-type Entity = 'node' | 'way' | 'relation';
 
 var relationBaseRecord = Record({
   id: 'w-0',
@@ -19,10 +18,10 @@ var relationBaseRecord = Record({
 
 export class Relation extends relationBaseRecord {
   id: Id;
-  type: Entity;
+  type: string;
   tags: ITags;
   properties: Properties;
-  members: List<string>;
+  members: List<Map<string, any>>;
   set(k: string, v: any): Relation {
     return <Relation>super.set(k, v);
   }
@@ -30,10 +29,9 @@ export class Relation extends relationBaseRecord {
 
 export function relationFactory(obj: {
   id: Id;
-  type?: Entity;
   tags?: ITags;
   properties?: Properties;
-  members?: List<string>;
+  members?: List<Map<string, any>>;
 }) {
   return new Relation(obj);
 }
