@@ -1,4 +1,4 @@
-import { Record, Map, List } from 'immutable';
+import { List, Map, Record } from 'immutable';
 import { ITags, tagsFactory } from 'src/osm/others/tags';
 
 import { Properties, propertiesGen } from 'src/osm/others/properties';
@@ -7,22 +7,20 @@ type Id = string;
 type Version = number;
 type Visible = boolean;
 
-var relationBaseRecord = Record({
+export class Relation extends Record({
   id: 'w-0',
-  type: 'relation',
-  tags: tagsFactory(),
   properties: propertiesGen(),
+  tags: tagsFactory(),
+  type: 'relation',
   members: List()
-});
-
-export class Relation extends relationBaseRecord {
-  id: Id;
-  type: string;
-  tags: ITags;
-  properties: Properties;
-  members: List<Map<string, any>>;
-  set(k: string, v: any): Relation {
-    return <Relation>super.set(k, v);
+}) {
+  public id: Id;
+  public type: string;
+  public tags: ITags;
+  public properties: Properties;
+  public members: List<Map<string, any>>;
+  public set(k: string, v: any): Relation {
+    return super.set(k, v) as Relation;
   }
 }
 

@@ -1,5 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const fs = require('fs');
 const path = require('path');
+const srcpath = path.resolve(__dirname, 'src/');
+const dir = fs
+  .readdirSync(srcpath)
+  .filter(file => fs.lstatSync(path.join(srcpath, file)).isDirectory());
+const alias = {};
+
+for (var f of dir) {
+  alias[f] = path.resolve(__dirname, 'src/' + f + '/');
+}
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -13,9 +24,7 @@ module.exports = {
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: {
-      src: path.resolve(__dirname, 'src/')
-    }
+    alias
   },
   node: {
     fs: 'empty'

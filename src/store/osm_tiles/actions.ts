@@ -6,10 +6,10 @@ export const OSM_TILES = {
   saveTile: 'OSM_TILES.saveTile'
 };
 
-export type GetOSMTilesType = {
+export interface IGetOSMTilesType {
   xys: number[][];
   zoom: number;
-};
+}
 
 export const getOSMTiles = (xy: number[][], zoom: number = 16) =>
   action(OSM_TILES.get, { xy, zoom });

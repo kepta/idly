@@ -10,10 +10,8 @@ const SphericalMercator = require('@mapbox/sphericalmercator');
 var mercator = new SphericalMercator({
   size: 256
 });
-import { RootStateType } from 'src/store/index';
+import { IRootStateType } from 'src/store/index';
 import { getOSMTiles } from 'src/store/osm_tiles/actions';
-
-interface PropsType {}
 
 export const ZOOM = 16;
 var layersACtive: any = {};

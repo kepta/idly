@@ -1,12 +1,13 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { Map, List, fromJS } from 'immutable';
+import { fromJS, List, Map } from 'immutable';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+
+import { osmReducer, OsmTilesState } from 'src/store/osm_tiles/reducer';
 import { rootSaga } from 'src/store/run_sagas';
 // Reducers
-import { osmReducer, OsmTilesState } from 'src/store/osm_tiles/reducer';
 // Sagas
 
-export interface RootStateType {
+export interface IRootStateType {
   osmTiles: OsmTilesState;
 }
 
