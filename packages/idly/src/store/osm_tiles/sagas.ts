@@ -1,27 +1,28 @@
+import { LngLatBounds } from 'mapbox-gl';
+import { Effect, Pattern, SagaIterator } from 'redux-saga';
 import {
-  call,
   all,
-  takeLatest,
-  take,
-  select,
+  call,
+  cancel,
+  cancelled,
   fork,
   put,
-  cancel,
-  cancelled
+  select,
+  take,
+  takeLatest
 } from 'redux-saga/effects';
-import { SagaIterator, Effect, Pattern } from 'redux-saga';
-import { LngLatBounds } from 'mapbox-gl';
 import { bboxPolygon, featureCollection } from 'turf';
+
+import { ZOOM } from 'src/map/init';
 import { cancelablePromise } from 'src/network/helper';
 import { fetchTile } from 'src/network/osm';
-
+import { IRootStateType } from 'src/store/';
 import { action, Action } from 'src/store/actions';
+import { IGetOSMTilesType, OSM_TILES } from 'src/store/osm_tiles/actions';
 
-import { OSM_TILES, GetOSMTilesType } from 'src/store/osm_tiles/actions';
-import { RootStateType } from 'src/store/';
-import { ZOOM } from 'src/map/init';
 const SphericalMercator = require('@mapbox/sphericalmercator');
-var mercator = new SphericalMercator({
+
+const mercator = new SphericalMercator({
   size: 256
 });
 
@@ -32,7 +33,7 @@ export function* watchOSMTiles(): SagaIterator {
 function* watchFetch(): SagaIterator {
   let tasks = [];
   while (true) {
-    let { xys, zoom }: Action<GetOSMTilesType> = yield take(OSM_TILES.get);
+    const { xys, zoom }: Action<IGetOSMTilesType> = yield take(OSM_TILES.get);
     if (zoom < ZOOM) continue;
     yield tasks.map(task => cancel(task));
     tasks = yield xys.map(([x, y]) => fork(fetchTileSaga, x, y, zoom));
@@ -41,7 +42,7 @@ function* watchFetch(): SagaIterator {
 
 function* fetchTileSaga(x: number, y: number, zoom: number) {
   try {
-    const tiles = yield select((state: RootStateType) =>
+    const tiles = yield select((state: IRootStateType) =>
       state.osmTiles.getIn(['tiles', [x, y, zoom].join(',')])
     );
     if (tiles) {
@@ -55,6 +56,7 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
       })
     );
   } catch (e) {
+    console.error(e);
   } finally {
     if (yield cancelled()) {
       console.log('canceled');
