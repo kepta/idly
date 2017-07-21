@@ -2,11 +2,11 @@
 //   osmEntity as Entity,
 //   osmWay as Way,
 //   osmRelation as Relation
-// } from 'src/osm/entity';
-// import { coreGraph as Graph } from 'src/osm/graph';
-// import { osmNode as Node } from 'src/osm/node.new';
-import { wayFactory, Way } from 'src/osm/entities/way';
-import { Map, List, fromJS } from 'immutable';
+// } from 'osm/entity';
+// import { coreGraph as Graph } from 'osm/graph';
+// import { osmNode as Node } from 'osm/node.new';
+import { fromJS, List, Map } from 'immutable';
+import { Way, wayFactory } from 'osm/entities/way';
 describe('osmWay', function() {
   //   if (debug) {
   //     it('freezes nodes', function() {

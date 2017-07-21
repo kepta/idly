@@ -1,26 +1,28 @@
-import {
-  geoExtent,
-  GeoExtent,
-  center,
-  polygon,
-  rectangle,
-  area,
-  extend,
-  _extend,
-  contains,
-  intersects,
-  padByMeters
-} from 'src/osm/geo_utils/geo_extent';
-import { LngLat, genLngLat } from 'src/osm/geo_utils/lng_lat';
 import { List } from 'immutable';
+
+import {
+  _extend,
+  area,
+  center,
+  contains,
+  extend,
+  GeoExtent,
+  geoExtent,
+  intersects,
+  padByMeters,
+  polygon,
+  rectangle
+} from 'osm/geo_utils/geo_extent';
+import { genLngLat, LngLat } from 'osm/geo_utils/lng_lat';
+
 describe('geoExtent', function() {
-  var p0_0 = genLngLat({ lon: 0, lat: 0 });
-  var p5_10 = genLngLat({ lon: 5, lat: 10 });
-  var p1_1 = genLngLat([1, 1]);
-  var p2_2 = genLngLat([2, 2]);
-  var p5_5 = genLngLat([5, 5]);
-  var p6_6 = genLngLat([6, 6]);
-  var p7_7 = genLngLat([7, 7]);
+  const p0_0 = genLngLat({ lon: 0, lat: 0 });
+  const p5_10 = genLngLat({ lon: 5, lat: 10 });
+  const p1_1 = genLngLat([1, 1]);
+  const p2_2 = genLngLat([2, 2]);
+  const p5_5 = genLngLat([5, 5]);
+  const p6_6 = genLngLat([6, 6]);
+  const p7_7 = genLngLat([7, 7]);
   describe('constructor', function() {
     // it('defaults to infinitely empty extent', function() {
     //   expect(
@@ -55,11 +57,11 @@ describe('geoExtent', function() {
 
   describe('#equals', function() {
     it('tests extent equality', function() {
-      var p10_10 = genLngLat([10, 10]);
-      var p12_12 = genLngLat([12, 12]);
-      var e1 = geoExtent(p0_0, p10_10),
-        e2 = geoExtent(p0_0, p12_12),
-        e3 = geoExtent(p0_0, p12_12);
+      const p10_10 = genLngLat([10, 10]);
+      const p12_12 = genLngLat([12, 12]);
+      const e1 = geoExtent(p0_0, p10_10);
+      const e2 = geoExtent(p0_0, p12_12);
+      const e3 = geoExtent(p0_0, p12_12);
       expect(e1).toBeTruthy();
       expect(e1.equals(e3)).toBeFalsy();
     });
@@ -111,7 +113,7 @@ describe('geoExtent', function() {
 
   describe('#extend', function() {
     it('does not modify self', function() {
-      var extent = geoExtent(p0_0, p0_0);
+      const extent = geoExtent(p0_0, p0_0);
       extend(genLngLat(p1_1), extent);
       expect(extent).toEqual(extent);
     });
@@ -137,7 +139,7 @@ describe('geoExtent', function() {
 
   describe('#_extend', function() {
     it('extends self to the minimal extent containing self and the given extent', function() {
-      var e = geoExtent();
+      const e = geoExtent();
       // e._extend([p0_0, [5, 10]]);
       expect(
         _extend(geoExtent(p0_0, p5_10), e).equals(geoExtent(p0_0, p5_10))
@@ -235,69 +237,69 @@ describe('geoExtent', function() {
     });
   });
 
-  describe.skip('#intersection', function() {
-    it('returns an empty extent if self does not intersect with other', function() {
-      var a = geoExtent(p0_0, p5_5),
-        b = geoExtent(p6_6, p7_7);
-      expect(a.intersection(b)).toEqual(geoExtent());
-    });
+  // describe.skip('#intersection', function() {
+  //   it('returns an empty extent if self does not intersect with other', function() {
+  //     const a = geoExtent(p0_0, p5_5),
+  //       b = geoExtent(p6_6, p7_7);
+  //     expect(a.intersection(b)).toEqual(geoExtent());
+  //   });
 
-    it('returns the intersection of self with other (1)', function() {
-      var a = geoExtent(p0_0, p5_5),
-        b = geoExtent([3, 4], p7_7);
-      expect(a.intersection(b)).toEqual(geoExtent([3, 4], p5_5));
-      expect(b.intersection(a)).toEqual(geoExtent([3, 4], p5_5));
-    });
+  //   it('returns the intersection of self with other (1)', function() {
+  //     const a = geoExtent(p0_0, p5_5),
+  //       b = geoExtent([3, 4], p7_7);
+  //     expect(a.intersection(b)).toEqual(geoExtent([3, 4], p5_5));
+  //     expect(b.intersection(a)).toEqual(geoExtent([3, 4], p5_5));
+  //   });
 
-    it('returns the intersection of self with other (2)', function() {
-      var a = geoExtent(p0_0, p5_5),
-        b = geoExtent([3, -4], [7, 2]);
-      expect(a.intersection(b)).toEqual(geoExtent([3, 0], [5, 2]));
-      expect(b.intersection(a)).toEqual(geoExtent([3, 0], [5, 2]));
-    });
+  //   it('returns the intersection of self with other (2)', function() {
+  //     const a = geoExtent(p0_0, p5_5),
+  //       b = geoExtent([3, -4], [7, 2]);
+  //     expect(a.intersection(b)).toEqual(geoExtent([3, 0], [5, 2]));
+  //     expect(b.intersection(a)).toEqual(geoExtent([3, 0], [5, 2]));
+  //   });
 
-    it('returns the intersection of self with other (3)', function() {
-      var a = geoExtent(p0_0, p5_5),
-        b = geoExtent([3, 3], [4, 7]);
-      expect(a.intersection(b)).toEqual(geoExtent([3, 3], [4, 5]));
-      expect(b.intersection(a)).toEqual(geoExtent([3, 3], [4, 5]));
-    });
+  //   it('returns the intersection of self with other (3)', function() {
+  //     const a = geoExtent(p0_0, p5_5),
+  //       b = geoExtent([3, 3], [4, 7]);
+  //     expect(a.intersection(b)).toEqual(geoExtent([3, 3], [4, 5]));
+  //     expect(b.intersection(a)).toEqual(geoExtent([3, 3], [4, 5]));
+  //   });
 
-    it('returns the intersection of self with other (4)', function() {
-      var a = geoExtent(p0_0, p5_5),
-        b = geoExtent([3, -2], [4, 2]);
-      expect(a.intersection(b)).toEqual(geoExtent([3, 0], [4, 2]));
-      expect(b.intersection(a)).toEqual(geoExtent([3, 0], [4, 2]));
-    });
+  //   it('returns the intersection of self with other (4)', function() {
+  //     const a = geoExtent(p0_0, p5_5),
+  //       b = geoExtent([3, -2], [4, 2]);
+  //     expect(a.intersection(b)).toEqual(geoExtent([3, 0], [4, 2]));
+  //     expect(b.intersection(a)).toEqual(geoExtent([3, 0], [4, 2]));
+  //   });
 
-    it('returns the intersection of self with other (5)', function() {
-      var a = geoExtent(p0_0, p5_5),
-        b = geoExtent(p1_1, p2_2);
-      expect(a.intersection(b)).toEqual(geoExtent(p1_1, p2_2));
-      expect(b.intersection(a)).toEqual(geoExtent(p1_1, p2_2));
-    });
-  });
+  //   it('returns the intersection of self with other (5)', function() {
+  //     const a = geoExtent(p0_0, p5_5),
+  //       b = geoExtent(p1_1, p2_2);
+  //     expect(a.intersection(b)).toEqual(geoExtent(p1_1, p2_2));
+  //     expect(b.intersection(a)).toEqual(geoExtent(p1_1, p2_2));
+  //   });
+  // });
 
-  describe.skip('#percentContainedIn', function() {
-    it('returns a 0 if self does not intersect other', function() {
-      var a = geoExtent(p0_0, p1_1),
-        b = geoExtent([0, 3], [4, 1]);
-      expect(a.percentContainedIn(b)).toEqual(0);
-      expect(b.percentContainedIn(a)).toEqual(0);
-    });
+  // describe.skip('#percentContainedIn', function() {
+  //   it('returns a 0 if self does not intersect other', function() {
+  //     const a = geoExtent(p0_0, p1_1),
+  //       b = geoExtent([0, 3], [4, 1]);
+  //     expect(a.percentContainedIn(b)).toEqual(0);
+  //     expect(b.percentContainedIn(a)).toEqual(0);
+  //   });
 
-    it('returns the percent contained of self with other (1)', function() {
-      var a = geoExtent(p0_0, [2, 1]),
-        b = geoExtent([1, 0], [3, 1]);
-      expect(a.percentContainedIn(b)).toEqual(0.5);
-      expect(b.percentContainedIn(a)).toEqual(0.5);
-    });
+  //   it('returns the percent contained of self with other (1)', function() {
+  //     const a = geoExtent(p0_0, [2, 1]),
+  //       b = geoExtent([1, 0], [3, 1]);
+  //     expect(a.percentContainedIn(b)).toEqual(0.5);
+  //     expect(b.percentContainedIn(a)).toEqual(0.5);
+  //   });
 
-    it('returns the percent contained of self with other (2)', function() {
-      var a = geoExtent(p0_0, [4, 1]),
-        b = geoExtent([3, 0], [4, 2]);
-      expect(a.percentContainedIn(b)).toEqual(0.25);
-      expect(b.percentContainedIn(a)).toEqual(0.5);
-    });
-  });
+  //   it('returns the percent contained of self with other (2)', function() {
+  //     const a = geoExtent(p0_0, [4, 1]),
+  //       b = geoExtent([3, 0], [4, 2]);
+  //     expect(a.percentContainedIn(b)).toEqual(0.25);
+  //     expect(b.percentContainedIn(a)).toEqual(0.5);
+  //   });
+  // });
 });

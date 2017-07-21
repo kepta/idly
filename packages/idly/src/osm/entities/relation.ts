@@ -1,8 +1,7 @@
 import { List, Map, Record } from 'immutable';
-import { ITags, tagsFactory } from 'src/osm/others/tags';
+import { ITags, tagsFactory } from 'osm/others/tags';
 
-import { Properties, propertiesGen } from 'src/osm/others/properties';
-
+import { Properties, propertiesGen } from 'osm/others/properties';
 type Id = string;
 type Version = number;
 type Visible = boolean;
@@ -28,7 +27,7 @@ export function relationFactory(obj: {
   id: Id;
   tags?: ITags;
   properties?: Properties;
-  members?: List<Map<string, any>>;
+  members?: List<string>;
 }) {
   return new Relation(obj);
 }

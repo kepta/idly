@@ -1,7 +1,7 @@
 import { Map, Record } from 'immutable';
 import { uniqWith } from 'ramda';
-import { Action } from 'src/store/actions';
-import { OSM_TILES } from 'src/store/osm_tiles/actions';
+import { Action } from 'store/actions';
+import { OSM_TILES } from 'store/osm_tiles/actions';
 const initialState = {
   tiles: Map(),
   legacy: []

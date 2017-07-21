@@ -1,5 +1,5 @@
 import { LngLatBounds } from 'mapbox-gl';
-import { action, Action } from 'src/store/actions';
+import { action, Action } from 'store/actions';
 
 export const OSM_TILES = {
   get: 'OSM_TILES.get',
@@ -11,5 +11,5 @@ export interface IGetOSMTilesType {
   zoom: number;
 }
 
-export const getOSMTiles = (xy: number[][], zoom: number = 16) =>
-  action(OSM_TILES.get, { xy, zoom });
+export const getOSMTiles = (xys: number[][], zoom: number = 16) =>
+  action(OSM_TILES.get, { xys, zoom });

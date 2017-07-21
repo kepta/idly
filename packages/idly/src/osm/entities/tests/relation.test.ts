@@ -1,5 +1,5 @@
+import { List, Map, Record } from 'immutable';
 import * as _ from 'lodash';
-import { Record, Map, List } from 'immutable';
 
 // import {
 //   osmIsInterestingTag,
@@ -9,8 +9,8 @@ import { Record, Map, List } from 'immutable';
 //   geoPolygonContainsPolygon,
 //   geoPolygonIntersectsPolygon
 // } from '../helper';
-// import { coreGraph as Graph } from 'src/osm/graph';
-import { relationFactory, Relation } from 'src/osm/entities/relation';
+// import { coreGraph as Graph } from 'osm/graph';
+import { Relation, relationFactory } from 'osm/entities/relation';
 describe('osmRelation', function() {
   //   if (debug) {
   //     it('freezes nodes', function() {
@@ -478,7 +478,8 @@ describe('osmRelation', function() {
   //       g = Graph([a, b, c, d, w1, w2, r]);
   //     expect(r.multipolygon(g)).toEqual([[[d.loc, c.loc, b.loc, a.loc]]]);
   //   });
-  //   it('invalid geometry: unclosed ring consisting of multiple ways, one needing reversal, alternate order', function() {
+  //   it('invalid geometry: unclosed ring consisting of multiple ways,
+  // one needing reversal, alternate order', function() {
   //     var a = Node({ loc: [1, 1] }),
   //       b = Node({ loc: [2, 2] }),
   //       c = Node({ loc: [3, 3] }),

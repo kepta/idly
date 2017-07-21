@@ -3,13 +3,13 @@ export class LngLat extends Record({
   lat: NaN,
   lon: NaN
 }) {
-  lat: number;
-  lon: number;
+  public lat: number;
+  public lon: number;
 }
 
-export function genLngLat(lonlat: { lon: number; lat: number }): LngLat;
-export function genLngLat([lon, lat]: [number, number]): LngLat;
-export function genLngLat(obj): any {
+export function genLngLat(
+  obj: { lon: number; lat: number } | [number, number]
+): LngLat {
   if (Array.isArray(obj)) {
     return new LngLat({ lon: obj[0], lat: obj[1] });
   }

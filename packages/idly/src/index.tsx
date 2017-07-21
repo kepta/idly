@@ -1,24 +1,28 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Im = require('immutable');
-import * as turf from 'turf';
+import * as R from 'ramda';
 import { Provider } from 'react-redux';
+import * as turf from 'turf';
 
-import { Mapp } from 'src/components/map/index';
-import { osmReducer } from 'src/store/osm_tiles/reducer';
-import { store } from 'src/store/index';
-import * as osm from 'src/osm/index';
-// import { osmNode } from 'src/osm/node.new';
-// import { coreGraph } from 'src/osm/graph';
+import { Mapp } from 'components/map/index';
+import * as osm from 'osm/index';
+import { parseXML } from 'osm/parsers/parsers';
+import { store } from 'store/index';
+import { osmReducer } from 'store/osm_tiles/reducer';
+import { attachToWindow } from 'utils/attach_to_window';
+// import { osmNode } from 'osm/node.new';
+// import { coreGraph } from 'osm/graph';
 
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
-const win: any = window;
-win.Im = Im;
-win.turf = turf;
-win.osm = osm;
-// win.Entity = Entity;
-// win.osmNode = osmNode;
+
+attachToWindow('R', R);
+attachToWindow('Im', Im);
+attachToWindow('turf', turf);
+attachToWindow('osm', osm);
+attachToWindow('pp', parseXML);
+
 ReactDOM.render(
   <Provider store={store}>
     <Mapp />
