@@ -1,14 +1,15 @@
 import { List, Map } from 'immutable';
-import { wayFactory } from 'src/osm/entities/way';
-import { relationFactory } from 'src/osm/entities/relation';
-import { nodeFactory, Node } from 'src/osm/entities/node';
-import { graphFactory } from 'src/osm/history/graph';
+
+import { Node, nodeFactory } from 'osm/entities/node';
+import { relationFactory } from 'osm/entities/relation';
+import { wayFactory } from 'osm/entities/way';
+import { graphFactory } from 'osm/history/graph';
 import {
-  graphRemoveEntity,
   graphRemoveEntities,
+  graphRemoveEntity,
   graphSetEntities,
   graphSetEntity
-} from 'src/osm/modifiers/graph.modifiers';
+} from 'osm/modifiers/graph.modifiers';
 
 describe('Graph Factory', function() {
   // it('returns a new graph if self is frozen', function () {
@@ -18,38 +19,38 @@ describe('Graph Factory', function() {
   //   var graph = graphFactory({
 
   //   });
-  var node = nodeFactory({ id: 'n1' });
-  var way = wayFactory({ id: 'w-1', tags: Map({ foo: 'bar' }) });
-  var relation = relationFactory({ id: 'r1' });
+  const node = nodeFactory({ id: 'n1' });
+  const way = wayFactory({ id: 'w-1', tags: Map({ foo: 'bar' }) });
+  const relation = relationFactory({ id: 'r1' });
   it('returns self if empty', function() {
-    var graph = graphFactory([node, way]);
+    const graph = graphFactory([node, way]);
     expect(graph).toMatchSnapshot();
     expect(graph.node).toEqual(Map({ n1: node }));
     expect(graph.way).toEqual(Map({ 'w-1': way }));
   });
 
   it('ignore multiple same copies', function() {
-    var graph = graphFactory([node, way, node]);
+    const graph = graphFactory([node, way, node]);
     expect(graph.node.size).toEqual(1);
     expect(graph.way.size).toEqual(1);
   });
   it('ignore multiple same id', function() {
-    var n2 = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
-    var graph = graphFactory([node, way, n2]);
+    const n2 = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
+    const graph = graphFactory([node, way, n2]);
     expect(graph.node.size).toEqual(1);
     expect(graph.way.size).toEqual(1);
   });
   it('adds multiple nodes', function() {
-    var n2 = nodeFactory({ id: 'n2', tags: Map({ foo: 'foo' }) });
-    var graph = graphFactory([node, way, n2]);
+    const n2 = nodeFactory({ id: 'n2', tags: Map({ foo: 'foo' }) });
+    const graph = graphFactory([node, way, n2]);
     expect(graph.node.size).toEqual(2);
     expect(graph.way.size).toEqual(1);
   });
   it('adds multiple relations', function() {
-    var r1 = relationFactory({ id: 'r1', tags: Map({ foo: 'foo' }) });
-    var r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'foo' }) });
+    const r1 = relationFactory({ id: 'r1', tags: Map({ foo: 'foo' }) });
+    const r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'foo' }) });
 
-    var graph = graphFactory([node, r2, way, r1]);
+    const graph = graphFactory([node, r2, way, r1]);
 
     expect(graph.node.size).toEqual(1);
     expect(graph.way.size).toEqual(1);
@@ -57,10 +58,10 @@ describe('Graph Factory', function() {
   });
 
   it('adds multiple relations', function() {
-    var r1 = relationFactory({ id: 'r1', tags: Map({ foo: 'foo' }) });
-    var r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'foo' }) });
+    const r1 = relationFactory({ id: 'r1', tags: Map({ foo: 'foo' }) });
+    const r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'foo' }) });
 
-    var graph = graphFactory([relation, node, r2, way, r1]);
+    const graph = graphFactory([relation, node, r2, way, r1]);
 
     expect(graph).toMatchSnapshot();
   });

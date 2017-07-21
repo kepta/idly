@@ -24,24 +24,26 @@
     "style-loader": "^0.18.2",
     "ts-jest": "^20.0.7",
     "tslint": "^5.5.0",
-    "typescript": "^2.4.1",
+    "typescript": "^2.4.2",
     "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack-dev-server": "^2.5.1",
+    "xmldom": "^0.1.27"
   },
   "dependencies": {
-    "@mapbox/mapbox-gl-draw": "^0.19.1",
+    "@mapbox/mapbox-gl-draw": "^1.0.0",
     "@mapbox/sphericalmercator": "^1.0.5",
     "@types/d3": "^4.9.0",
     "@types/immutable": "^3.8.7",
-    "@types/jest": "^20.0.2",
+    "@types/jest": "^20.0.4",
     "@types/mapbox-gl": "^0.39.2",
-    "@types/node": "^8.0.13",
+    "@types/node": "^8.0.14",
     "@types/ramda": "^0.24.4",
     "@types/react": "^15.0.38",
     "@types/react-dom": "^15.5.1",
     "d3": "^4.10.0",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
+    "lodash.debounce": "^4.0.8",
     "mapbox-gl": "^0.38.0",
     "osmtogeojson": "^3.0.0-beta.2",
     "ramda": "^0.24.1",
@@ -60,7 +62,7 @@
     },
     "moduleDirectories": [
       "<rootDir>/node_modules",
-      "<rootDir>"
+      "<rootDir>/src"
     ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"

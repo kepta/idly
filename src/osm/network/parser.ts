@@ -1,4 +1,4 @@
-// import { osmNode, osmWay, osmRelation, osmEntity } from 'src/osm/entity';
+// import { osmNode, osmWay, osmRelation, osmEntity } from 'osm/entity';
 // function getLoc(attrs) {
 //   var lon = attrs.lon && attrs.lon.value,
 //     lat = attrs.lat && attrs.lat.value;

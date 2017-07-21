@@ -1,42 +1,43 @@
-import { Graph } from 'src/osm/history/graph';
-import { graphFactory } from 'src/osm/history/graph';
-
 import { List, Map } from 'immutable';
-import { Node } from 'src/osm/entities/node';
-import { Way } from 'src/osm/entities/way';
-import { Relation } from 'src/osm/entities/relation';
 import { groupBy } from 'ramda';
-// type EntitiesList = List<Node | Way | Relation>;
+
+import { Graph } from 'osm/history/graph';
+import { graphFactory } from 'osm/history/graph';
+
+import { Node } from 'osm/entities/node';
+import { Relation } from 'osm/entities/relation';
+import { Way } from 'osm/entities/way';
+
 type EntitiesMap = Map<string, Node | Way | Relation>;
 type Entity = Node | Way | Relation;
 
 export function graphSetEntity(graph: Graph, entity: Entity): Graph {
-  return <Graph>graph.setIn([entity.type, entity.id], entity);
+  return graph.setIn([entity.type, entity.id], entity) as Graph;
 }
 
 export function graphSetEntities(graph: Graph, entities: Entity[]): Graph {
   const patchGraph = graphFactory(entities);
-  const mergedGraph = <Graph>graph.mergeWith(
+  const mergedGraph = graph.mergeWith(
     (oldV, newV) => oldV.merge(newV),
     patchGraph
-  );
+  ) as Graph;
   return mergedGraph;
 }
 
 export function graphRemoveEntities(graph: Graph, entities: Entity[]): Graph {
-  return <Graph>graph.withMutations(g => {
+  return graph.withMutations(g => {
     entities.forEach(e => {
       g.removeIn([e.type, e.id]);
     });
-  });
+  }) as Graph;
 }
 
 export function graphRemoveEntity(graph: Graph, entity: Entity): Graph {
-  return <Graph>graph.removeIn([entity.type, entity.id]);
+  return graph.removeIn([entity.type, entity.id]) as Graph;
 }
 
 function _updateParentWays(graph: Graph): Graph {
-  var parentWays = Map();
+  const parentWays = Map();
   parentWays.withMutations(map => {
     graph.way.forEach(e => {
       if (e instanceof Way) {

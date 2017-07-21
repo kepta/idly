@@ -1,5 +1,5 @@
-export { nodeFactory } from 'src/osm/entities/node';
-export { propertiesGen } from 'src/osm/others/properties';
-export { wayFactory } from 'src/osm/entities/way';
-export { graphFactory } from 'src/osm/history/graph';
-
+// import { parse } from 'osm/network/parser';
+export { nodeFactory } from 'osm/entities/node';
+export { propertiesGen } from 'osm/others/properties';
+export { wayFactory } from 'osm/entities/way';
+export { graphFactory } from 'osm/history/graph';

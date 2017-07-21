@@ -1,30 +1,28 @@
 import { Record } from 'immutable';
 
-var base = Record({
+export class Properties extends Record({
   visible: true,
   version: 0,
-  timeStamp: undefined,
+  timestamp: undefined,
   changeset: undefined,
   uid: undefined,
-  username: undefined
-});
-
-export class Properties extends base {
-  visible?: boolean;
-  version?: number;
-  timeStamp?: string;
-  changeset?: string;
-  uid?: string;
-  username?: string;
+  user: undefined
+}) {
+  public visible?: boolean;
+  public version?: number;
+  public timestamp?: string;
+  public changeset?: string;
+  public uid?: string;
+  public user?: string;
 }
 
 export function propertiesGen(obj?: {
   visible?: boolean;
   version?: number;
-  timeStamp?: string;
+  timestamp?: string;
   changeset?: string;
   uid?: string;
-  username?: string;
+  user?: string;
 }) {
   return new Properties(obj);
 }

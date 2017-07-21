@@ -1,14 +1,15 @@
-import { nodeFactory } from 'src/osm/entities/node';
-import { propertiesGen } from 'src/osm/others/properties';
-import { genLngLat } from 'src/osm/geo_utils/lng_lat';
+import { nodeFactory } from 'osm/entities/node';
+import { geoExtent } from 'osm/geo_utils/geo_extent';
+import { genLngLat } from 'osm/geo_utils/lng_lat';
+import { propertiesGen } from 'osm/others/properties';
 
-import { Map, Record, List } from 'immutable';
+import { List, Map, Record } from 'immutable';
 describe('osmNode', function() {
   it('returns a node', function() {
     // expect(nodeFactory()).toBeInstanceOf(Node);
     expect(nodeFactory({ id: 'n-1' }).type).toEqual('node');
     expect(nodeFactory({ id: 'n-1' }).id).toEqual('n-1');
-    expect(nodeFactory({ id: 'n-1' }).loc).toEqual(LngLat());
+    expect(nodeFactory({ id: 'n-1' }).loc).toEqual(genLngLat([NaN, NaN]));
     expect(nodeFactory({ id: 'n-1' }).properties).toEqual(propertiesGen());
   });
 
@@ -29,10 +30,9 @@ describe('osmNode', function() {
   describe('#extent', function() {
     it('returns a point extent', function() {
       expect(
-        nodeFactory({ id: 'n-1', loc: genLngLat({ lon: 5, lat: 10 }) }).equals([
-          [5, 10],
-          [5, 10]
-        ])
+        geoExtent(
+          nodeFactory({ id: 'n-1', loc: genLngLat({ lon: 5, lat: 10 }) }).loc
+        ).equals(geoExtent(genLngLat([5, 10]), genLngLat([5, 10])))
       ).toBeTruthy();
     });
   });

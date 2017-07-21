@@ -1,14 +1,14 @@
-import { LngLat, genLngLat } from 'src/osm/geo_utils/lng_lat';
-import { geoMetersToLat, geoMetersToLon } from 'src/osm/geo_utils/misc';
+import { List, Record } from 'immutable';
 
-import { Record, List } from 'immutable';
+import { genLngLat, LngLat } from 'osm/geo_utils/lng_lat';
+import { geoMetersToLat, geoMetersToLon } from 'osm/geo_utils/misc';
 
 export class GeoExtent extends Record({
   lower: genLngLat([Infinity, Infinity]),
   upper: genLngLat([-Infinity, -Infinity])
 }) {
-  lower: LngLat;
-  upper: LngLat;
+  public lower: LngLat;
+  public upper: LngLat;
 }
 export function geoExtent(point1?: LngLat, point2?: LngLat): GeoExtent {
   const extent = {};
@@ -40,6 +40,7 @@ export function center(g: GeoExtent): LngLat {
 export function rectangle(g: GeoExtent): List<LngLat> {
   return List<LngLat>([g.lower, g.upper]);
 }
+
 export function polygon(g: GeoExtent): List<LngLat> {
   return List<LngLat>([
     genLngLat([g.lower.lon, g.lower.lat]),
@@ -54,16 +55,15 @@ export function area(g: GeoExtent): number {
 }
 
 export function padByMeters(meters: number, g: GeoExtent) {
-  var dLat = geoMetersToLat(meters),
-    dLon = geoMetersToLon(meters, center(g).lat);
+  const dLat = geoMetersToLat(meters);
+  const dLon = geoMetersToLon(meters, center(g).lat);
   return geoExtent(
     genLngLat([g.lower.lon - dLon, g.lower.lat - dLat]),
     genLngLat([g.upper.lon + dLon, g.upper.lat + dLat])
   );
 }
-export function extend(extendTo: GeoExtent, g: GeoExtent): GeoExtent;
-export function extend(extendTo: LngLat, g: GeoExtent): GeoExtent;
-export function extend(extendTo, g): GeoExtent {
+
+export function extend(extendTo: GeoExtent | LngLat, g: GeoExtent): GeoExtent {
   if (extendTo instanceof LngLat) return extend(geoExtent(extendTo), g);
   if (extendTo instanceof GeoExtent)
     return geoExtent(
@@ -90,9 +90,8 @@ export function _extend(extent: GeoExtent, g: GeoExtent) {
     ])
   );
 }
-export function contains(obj: LngLat, g: GeoExtent): boolean;
-export function contains(obj: GeoExtent, g: GeoExtent): boolean;
-export function contains(obj, g): boolean {
+
+export function contains(obj: GeoExtent | LngLat, g: GeoExtent): boolean {
   if (obj instanceof LngLat) obj = geoExtent(obj);
   if (obj instanceof GeoExtent)
     return (
@@ -102,9 +101,8 @@ export function contains(obj, g): boolean {
       obj.upper.lat <= g.upper.lat
     );
 }
-export function intersects(obj: LngLat, g: GeoExtent): boolean;
-export function intersects(obj: GeoExtent, g: GeoExtent): boolean;
-export function intersects(obj, g): boolean {
+
+export function intersects(obj: GeoExtent | LngLat, g: GeoExtent): boolean {
   if (obj instanceof LngLat) obj = geoExtent(obj);
   if (obj instanceof GeoExtent)
     return (
@@ -115,9 +113,7 @@ export function intersects(obj, g): boolean {
     );
 }
 
-export function intersection(obj: LngLat, g: GeoExtent): GeoExtent;
-export function intersection(obj: GeoExtent, g: GeoExtent): GeoExtent;
-export function intersection(obj, g): GeoExtent {
+export function intersection(obj: GeoExtent | LngLat, g: GeoExtent): GeoExtent {
   if (obj instanceof LngLat) obj = geoExtent(obj);
   if (obj instanceof GeoExtent)
     return geoExtent(

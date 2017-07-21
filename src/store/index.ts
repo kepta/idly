@@ -2,8 +2,10 @@ import { fromJS, List, Map } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import { osmReducer, OsmTilesState } from 'src/store/osm_tiles/reducer';
-import { rootSaga } from 'src/store/run_sagas';
+import { observeStore } from 'store/observe';
+import { osmReducer, OsmTilesState } from 'store/osm_tiles/reducer';
+import { rootSaga } from 'store/run_sagas';
+
 // Reducers
 // Sagas
 
@@ -34,4 +36,5 @@ const persistedState = {};
 const store = createStore(reducers, persistedState, appliedMiddlewares);
 
 sagaMiddleware.run(rootSaga);
+export const observe = observeStore(store);
 export { store };

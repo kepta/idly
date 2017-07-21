@@ -1,54 +1,55 @@
 import { List, Map } from 'immutable';
-import { wayFactory } from 'src/osm/entities/way';
-import { relationFactory } from 'src/osm/entities/relation';
-import { nodeFactory, Node } from 'src/osm/entities/node';
-import { graphFactory } from 'src/osm/history/graph';
+
+import { Node, nodeFactory } from 'osm/entities/node';
+import { relationFactory } from 'osm/entities/relation';
+import { wayFactory } from 'osm/entities/way';
+import { graphFactory } from 'osm/history/graph';
 import {
-  graphRemoveEntity,
   graphRemoveEntities,
+  graphRemoveEntity,
   graphSetEntities,
   graphSetEntity
-} from 'src/osm/modifiers/graph.modifiers';
+} from 'osm/modifiers/graph.modifiers';
 
 describe('#set', function() {
-  var node = nodeFactory({ id: 'n1' });
-  var way = wayFactory({ id: 'w-1', tags: Map({ foo: 'bar' }) });
-  var relation = relationFactory({ id: 'r1' });
-  var graph = graphFactory([node, way, relation]);
+  const node = nodeFactory({ id: 'n1' });
+  const way = wayFactory({ id: 'w-1', tags: Map({ foo: 'bar' }) });
+  const relation = relationFactory({ id: 'r1' });
+  const graph = graphFactory([node, way, relation]);
 
   it('returns self if empty', function() {
     expect(graphSetEntities(graph, [])).toBe(graph);
   });
   it('sets up a node', () => {
-    var n = nodeFactory({ id: 'n2' });
+    const n = nodeFactory({ id: 'n2' });
     expect(
       graphSetEntity(graph, n).equals(graphFactory([n, node, way, relation]))
     ).toEqual(true);
   });
 
   it('overwrite the node', () => {
-    var n2 = nodeFactory({ id: 'n2' });
-    var n2Mod = nodeFactory({ id: 'n2', tags: Map({ foo: 'bar' }) });
-    var graphMod = graphSetEntity(graphSetEntity(graph, n2), n2Mod);
+    const n2 = nodeFactory({ id: 'n2' });
+    const n2Mod = nodeFactory({ id: 'n2', tags: Map({ foo: 'bar' }) });
+    const graphMod = graphSetEntity(graphSetEntity(graph, n2), n2Mod);
     expect(graphMod.node.get('n2')).toBe(n2Mod);
   });
   it('overwrite the relations', () => {
-    var r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'bar' }) });
-    var r2Mod = relationFactory({ id: 'r2' });
-    var graphMod = graphSetEntity(graphSetEntity(graph, r2), r2Mod);
+    const r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'bar' }) });
+    const r2Mod = relationFactory({ id: 'r2' });
+    const graphMod = graphSetEntity(graphSetEntity(graph, r2), r2Mod);
     expect(graphMod.relation.get('r2')).toBe(r2Mod);
   });
 
   it('sets up multiple entities', () => {
-    var n = nodeFactory({ id: 'n2' });
+    const n = nodeFactory({ id: 'n2' });
     expect(graphSetEntities(graph, [node, way, n, relation])).toEqual(
       graphFactory([node, way, relation, n])
     );
   });
 
   it('overwrite multiple entities', () => {
-    var n = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
-    var w = wayFactory({ id: 'w-1' });
+    const n = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
+    const w = wayFactory({ id: 'w-1' });
     expect(graphSetEntities(graph, [w, n, relation])).toEqual(
       graphFactory([node, w, relation, n])
     );
@@ -60,8 +61,8 @@ describe('#remove', function() {
   const graph = graphFactory([node]);
 
   it('removes node', function() {
-    var node2 = nodeFactory({ id: 'n2' });
-    var graph1 = graphSetEntity(graph, node2);
+    const node2 = nodeFactory({ id: 'n2' });
+    const graph1 = graphSetEntity(graph, node2);
     expect(graphRemoveEntity(graph1, node2)).toEqual(graph);
   });
 
@@ -70,20 +71,20 @@ describe('#remove', function() {
   });
 
   it('removes non existing entity', function() {
-    var node2 = nodeFactory({ id: 'n2' });
+    const node2 = nodeFactory({ id: 'n2' });
     expect(graphRemoveEntity(graph, node2).node.get(node2.id)).toBeUndefined();
   });
 
   it('removes multiple', function() {
-    var n1 = nodeFactory({ id: 'n' });
-    var r1 = relationFactory({ id: 'w', members: List([Map({ id: 'n' })]) });
-    var g = graphFactory([n1, r1]);
+    const n1 = nodeFactory({ id: 'n' });
+    const r1 = relationFactory({ id: 'w', members: List(['n']) });
+    const g = graphFactory([n1, r1]);
     expect(graphRemoveEntities(g, [n1, r1])).toEqual(graphFactory());
   });
   it('removes multiple', function() {
-    var n1 = nodeFactory({ id: 'n' });
-    var r1 = relationFactory({ id: 'w', members: List([Map({ id: 'n' })]) });
-    var g = graphFactory([node, n1, r1]);
+    const n1 = nodeFactory({ id: 'n' });
+    const r1 = relationFactory({ id: 'w', members: List(['n']) });
+    const g = graphFactory([node, n1, r1]);
     expect(graphRemoveEntities(g, [node, r1])).toEqual(graphFactory([n1]));
   });
 });

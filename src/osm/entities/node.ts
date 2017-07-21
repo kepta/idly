@@ -1,29 +1,27 @@
-import { Record, List } from 'immutable';
+import { List, Record } from 'immutable';
 
-import { ITags, tagsFactory } from 'src/osm/others/tags';
-import { Properties, propertiesGen } from 'src/osm/others/properties';
-import { LngLat, genLngLat } from 'src/osm/geo_utils/lng_lat';
+import { genLngLat, LngLat } from 'osm/geo_utils/lng_lat';
+import { Properties, propertiesGen } from 'osm/others/properties';
+import { ITags, tagsFactory } from 'osm/others/tags';
 
 export type Id = string;
 export type Version = number;
 export type Visible = boolean;
 
-var nodeBaseRecord = Record({
+export class Node extends Record({
   id: 'n-0',
   loc: genLngLat([NaN, NaN]),
   tags: tagsFactory(),
   type: 'node',
   properties: propertiesGen()
-});
-
-export class Node extends nodeBaseRecord {
-  id: Id;
-  tags: ITags;
-  type: string;
-  loc: LngLat;
-  properties: Properties;
-  set(k: string, v: any): Node {
-    return <Node>super.set(k, v);
+}) {
+  public id: Id;
+  public tags: ITags;
+  public type: string;
+  public loc: LngLat;
+  public properties: Properties;
+  public set(k: string, v: any): Node {
+    return super.set(k, v) as Node;
   }
 }
 

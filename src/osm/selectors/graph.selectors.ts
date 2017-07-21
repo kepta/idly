@@ -1,8 +1,9 @@
 import { List, Map } from 'immutable';
-import { wayFactory, Way } from 'src/osm/entities/way';
-import { relationFactory } from 'src/osm/entities/relation';
-import { nodeFactory, Node } from 'src/osm/entities/node';
-import { graphFactory, Graph } from 'src/osm/history/graph';
+
+import { Node, nodeFactory } from 'osm/entities/node';
+import { relationFactory } from 'osm/entities/relation';
+import { Way, wayFactory } from 'osm/entities/way';
+import { Graph, graphFactory } from 'osm/history/graph';
 
 type ParentWays = Map<string, List<string>>;
 export function parentWaysSelector(graph: Graph) {

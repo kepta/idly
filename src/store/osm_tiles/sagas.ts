@@ -13,12 +13,12 @@ import {
 } from 'redux-saga/effects';
 import { bboxPolygon, featureCollection } from 'turf';
 
-import { ZOOM } from 'src/map/init';
-import { cancelablePromise } from 'src/network/helper';
-import { fetchTile } from 'src/network/osm';
-import { IRootStateType } from 'src/store/';
-import { action, Action } from 'src/store/actions';
-import { IGetOSMTilesType, OSM_TILES } from 'src/store/osm_tiles/actions';
+import { ZOOM } from 'map/map';
+import { cancelablePromise } from 'network/helper';
+import { fetchTile } from 'network/osm';
+import { IRootStateType } from 'store/';
+import { action, Action } from 'store/actions';
+import { IGetOSMTilesType, OSM_TILES } from 'store/osm_tiles/actions';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');
 
