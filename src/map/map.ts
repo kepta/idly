@@ -1,5 +1,6 @@
 import { Draw } from 'draw/draw';
 import { Set } from 'immutable';
+import * as deb from 'lodash.debounce';
 import { genMapGl } from 'map/mapboxgl_setup';
 import { nodeToFeat } from 'map/nodeToFeat';
 import { cache } from 'map/weak_map_cache';
@@ -10,7 +11,6 @@ import { observe, store } from 'store/index';
 import { getOSMTiles } from 'store/osm_tiles/actions';
 import * as turf from 'turf';
 import { lonlatToXYs, mercator } from 'utils/mecarator';
-
 export const ZOOM = 16;
 
 let unsubscribe;
@@ -24,13 +24,13 @@ export class Map {
   private loaded;
   constructor(divId: string) {
     this.map = genMapGl(divId);
-    this.map.on('moveend', this.dispatchTiles);
+    this.map.on('moveend', deb(this.dispatchTiles, 100));
     this.map.on('load', this.onLoad);
     this.features = [];
     this.prop = Set();
     unsubscribe = observe(
       state => state.osmTiles.get('graph'),
-      this.receiveProps
+      deb(this.receiveProps, 500)
     );
   }
   private receiveProps = (d: Set<Node | Way | Relation>) => {
@@ -38,16 +38,10 @@ export class Map {
     this.prop = d;
     const features = newProp.toArray().map(f => nodeToFeat(f)).filter(f => f);
     this.features = this.features.concat(features);
-    this.features.forEach((e1, i) => {
-      this.features.forEach((e2, j) => {
-        if (e1.properties.id === e2.properties.id && i !== j) {
-          console.log(e1, e2);
-        }
-      });
-    });
     const source = this.map.getSource('layer');
     if (!this.loaded) return;
     if (source) {
+      console.log('setting dat');
       source.setData(turf.featureCollection(this.features));
     } else {
       this.map.addSource('layer', {
