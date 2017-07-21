@@ -5,7 +5,7 @@ import * as R from 'ramda';
 import { Provider } from 'react-redux';
 import * as turf from 'turf';
 
-import { Mapp } from 'components/map/index';
+import { Mapp } from 'components/map';
 import * as osm from 'osm/index';
 import { parseXML } from 'osm/parsers/parsers';
 import { store } from 'store/index';

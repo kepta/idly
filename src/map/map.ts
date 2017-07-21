@@ -1,7 +1,14 @@
 import { Draw } from 'draw/draw';
+import { Set } from 'immutable';
 import { genMapGl } from 'map/mapboxgl_setup';
+import { nodeToFeat } from 'map/nodeToFeat';
+import { cache } from 'map/weak_map_cache';
+import { Relation } from 'osm/entities/relation';
+import { Way } from 'osm/entities/way';
+import * as R from 'ramda';
 import { observe, store } from 'store/index';
 import { getOSMTiles } from 'store/osm_tiles/actions';
+import * as turf from 'turf';
 import { lonlatToXYs, mercator } from 'utils/mecarator';
 
 export const ZOOM = 16;
@@ -12,17 +19,49 @@ export class Map {
   private map;
   private draw;
   private xy;
+  private features;
+  private prop;
+  private loaded;
   constructor(divId: string) {
     this.map = genMapGl(divId);
     this.map.on('moveend', this.dispatchTiles);
     this.map.on('load', this.onLoad);
-    unsubscribe = observe(state => state.osmTiles, this.receiveProps);
+    this.features = [];
+    this.prop = Set();
+    unsubscribe = observe(
+      state => state.osmTiles.get('graph'),
+      this.receiveProps
+    );
   }
-  private receiveProps = d => console.log(d);
+  private receiveProps = (d: Set<Node | Way | Relation>) => {
+    const newProp = d.subtract(this.prop);
+    this.prop = d;
+    const features = newProp.toArray().map(f => nodeToFeat(f)).filter(f => f);
+    this.features = this.features.concat(features);
+    this.features.forEach((e1, i) => {
+      this.features.forEach((e2, j) => {
+        if (e1.properties.id === e2.properties.id && i !== j) {
+          console.log(e1, e2);
+        }
+      });
+    });
+    const source = this.map.getSource('layer');
+    if (!this.loaded) return;
+    if (source) {
+      source.setData(turf.featureCollection(this.features));
+    } else {
+      this.map.addSource('layer', {
+        type: 'geojson',
+        data: someFC().data
+      });
+      this.map.addLayer(someLayer());
+    }
+  };
   private onLoad = () => {
     this.draw = new Draw(this.map);
-    this.map.addSource('layer', someFC());
-    this.map.addLayer(someLayer());
+    this.loaded = true;
+    // console.log(turf.featureCollection(this.features));
+    // this.map.addSource('layer', turf.featureCollection(this.features));
   };
   /**
    * Is called whenever map finishes move
@@ -39,14 +78,14 @@ export class Map {
 
 function someLayer() {
   return {
-    id: 'park-boundary',
-    type: 'fill',
+    id: 'park-volcanoes',
+    type: 'circle',
     source: 'layer',
     paint: {
-      'fill-color': '#888888',
-      'fill-opacity': 0.4
+      'circle-radius': 6,
+      'circle-color': '#B42222'
     },
-    filter: ['==', '$type', 'Polygon']
+    filter: ['==', '$type', 'Point']
   };
 }
 function someFC() {
