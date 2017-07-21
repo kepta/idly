@@ -25,7 +25,7 @@ export class Draw {
       [e.point.x + 5, e.point.y + 5]
     ];
     const features = this.map.queryRenderedFeatures(bbox, {
-      layers: ['park-boundary']
+      layers: ['park-volcanoes']
     });
     if (Array.isArray(features) && features[0]) this.draw.add(features[0]);
     console.log(features);
