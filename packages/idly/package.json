@@ -33,7 +33,6 @@
     "@mapbox/mapbox-gl-draw": "^1.0.0",
     "@mapbox/sphericalmercator": "^1.0.5",
     "@types/d3": "^4.9.0",
-    "@types/immutable": "^3.8.7",
     "@types/jest": "^20.0.4",
     "@types/mapbox-gl": "^0.39.2",
     "@types/node": "^8.0.14",
@@ -60,18 +59,11 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": [
-      "<rootDir>/node_modules",
-      "<rootDir>/src"
-    ],
+    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   }
 }
