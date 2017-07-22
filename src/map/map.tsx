@@ -1,26 +1,42 @@
-import { Draw } from 'draw/draw';
 import { Set } from 'immutable';
 import * as deb from 'lodash.debounce';
+import * as R from 'ramda';
+import * as turf from 'turf';
+import * as React from 'react';
+
+import { Node } from 'osm/entities/node';
+import { Relation } from 'osm/entities/relation';
+import { Way } from 'osm/entities/way';
+
+import { observe, store } from 'store/index';
+import { getOSMTiles } from 'store/osm_tiles/actions';
+import { lonlatToXYs, mercator } from 'utils/mecarator';
+
+import { Draw } from 'draw/draw';
+
 import { genMapGl } from 'map/mapboxgl_setup';
 import { nodeToFeat } from 'map/nodeToFeat';
 import { cache } from 'map/weak_map_cache';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
-import * as R from 'ramda';
-import { observe, store } from 'store/index';
-import { getOSMTiles } from 'store/osm_tiles/actions';
-import * as turf from 'turf';
-import { lonlatToXYs, mercator } from 'utils/mecarator';
 export const ZOOM = 16;
 
+interface PropsType {}
+type Entity = Node | Way | Relation;
 let unsubscribe;
-
+/**
+ * The job of map module is to handle
+ * the rendering of map. It also means 
+ * all the styling of layers would be done 
+ * here.
+ * The only argument it takes is G(the current snapshot
+ * of the graph) and computes the rest
+ * in its internal state.
+ */
 export class Map {
   private map;
   private draw;
   private xy;
   private features;
-  private prop;
+  private prop: Set<Entity>;
   private loaded;
   constructor(divId: string) {
     this.map = genMapGl(divId);
@@ -30,23 +46,25 @@ export class Map {
     this.prop = Set();
     unsubscribe = observe(
       state => state.osmTiles.get('graph'),
-      deb(this.receiveProps, 500)
+      deb(this.receiveProps, 300)
     );
   }
   private receiveProps = (d: Set<Node | Way | Relation>) => {
-    const newProp = d.subtract(this.prop);
-    this.prop = d;
-    const features = newProp.toArray().map(f => nodeToFeat(f)).filter(f => f);
-    this.features = this.features.concat(features);
+    const newProp = d; //d.subtract(this.prop);
+    // this.prop = d;
+    const features = newProp
+      .toArray()
+      .filter(f => f instanceof Node)
+      .map(nodeToFeat);
+    this.features = features; //this.features.concat(features);
     const source = this.map.getSource('layer');
     if (!this.loaded) return;
     if (source) {
-      console.log('setting dat');
       source.setData(turf.featureCollection(this.features));
     } else {
       this.map.addSource('layer', {
         type: 'geojson',
-        data: someFC().data
+        data: turf.featureCollection([]) //someFC().data
       });
       this.map.addLayer(someLayer());
     }
@@ -54,8 +72,7 @@ export class Map {
   private onLoad = () => {
     this.draw = new Draw(this.map);
     this.loaded = true;
-    // console.log(turf.featureCollection(this.features));
-    // this.map.addSource('layer', turf.featureCollection(this.features));
+    this.dispatchTiles();
   };
   /**
    * Is called whenever map finishes move
@@ -76,7 +93,7 @@ function someLayer() {
     type: 'circle',
     source: 'layer',
     paint: {
-      'circle-radius': 6,
+      'circle-radius': 4,
       'circle-color': '#B42222'
     },
     filter: ['==', '$type', 'Point']
