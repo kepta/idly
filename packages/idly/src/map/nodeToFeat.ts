@@ -3,6 +3,8 @@ import * as turf from 'turf';
 
 export function nodeToFeat(n: Node) {
   if (n instanceof Node) {
-    return turf.point([n.loc.lon, n.loc.lat], { id: n.id });
+    const feat = turf.point([n.loc.lon, n.loc.lat], { id: n.id });
+    feat.id = n.id;
+    return feat;
   }
 }

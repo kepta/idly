@@ -1,19 +1,28 @@
 import { Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
+import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
+
+import { Graph, graphFactory } from 'osm/history/graph';
+import { graphRemoveEntities, graphSetEntities } from 'osm/history/helpers';
+
 import { Action } from 'store/actions';
-import { OSM_TILES } from 'store/osm_tiles/actions';
+import {
+  GetOSMTilesAction,
+  OSM_TILES,
+  UpdateSourcesAction
+} from 'store/map/actions';
+
 const initialState = {
-  tiles: Map(),
-  graph: Set()
+  tiles: Map()
 };
+type MapActions = GetOSMTilesAction | UpdateSourcesAction;
 
 export class OsmTilesState extends Record(initialState) {
   public tiles: Map<string, any>;
-  public graph: Set<Node | Way | Relation>;
   public set(k: string, v: any): OsmTilesState {
     return super.set(k, v) as OsmTilesState;
   }
@@ -23,16 +32,10 @@ const osmTilesState = new OsmTilesState();
 export function osmReducer(state = osmTilesState, action: Action<any>) {
   switch (action.type) {
     case OSM_TILES.saveTile: {
-      let newState = state.setIn(
-        ['tiles', action.coords.join(',')],
-        action.data
-      );
-      newState = newState.update('graph', graph => graph.union(action.data));
-      return newState;
+      const { data } = action as UpdateSourcesAction;
+      return state.setIn(['tiles', action.coords.join(',')], action.data);
     }
     default:
       return state;
   }
 }
-const win: any = window;
-win.Record = Record;

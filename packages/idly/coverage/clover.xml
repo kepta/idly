@@ -67,7 +67,7 @@
       </package>
       <package name="modifiers">
         <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
-        <file name="graph.modifiers.ts" path="/Users/kepta/code/open/idly/src/osm/modifiers/graph.modifiers.ts">
+        <file name="graph.modifiers.ts" path="/Users/kepta/code/open/idly/src/osm/history/helpers.ts">
           <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
           <line num="1" count="1" type="stmt"/>
           <line num="2" count="1" type="stmt"/>

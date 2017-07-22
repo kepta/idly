@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable';
+import { List, Map, Set } from 'immutable';
 
 import { Node, nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
@@ -9,7 +9,7 @@ import {
   graphRemoveEntity,
   graphSetEntities,
   graphSetEntity
-} from 'osm/modifiers/graph.modifiers';
+} from 'osm/history/helpers';
 
 describe('Graph Factory', function() {
   // it('returns a new graph if self is frozen', function () {
@@ -51,7 +51,6 @@ describe('Graph Factory', function() {
     const r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'foo' }) });
 
     const graph = graphFactory([node, r2, way, r1]);
-
     expect(graph.node.size).toEqual(1);
     expect(graph.way.size).toEqual(1);
     expect(graph.relation.size).toEqual(2);
@@ -62,7 +61,6 @@ describe('Graph Factory', function() {
     const r2 = relationFactory({ id: 'r2', tags: Map({ foo: 'foo' }) });
 
     const graph = graphFactory([relation, node, r2, way, r1]);
-
     expect(graph).toMatchSnapshot();
   });
 });

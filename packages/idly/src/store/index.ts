@@ -2,8 +2,10 @@ import { fromJS, List, Map } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
+import { coreReducer, CoreState } from 'store/core/core.reducer';
+import { drawReducer, DrawState } from 'store/draw/draw.reducer';
+import { osmReducer, OsmTilesState } from 'store/map/reducer';
 import { observeStore } from 'store/observe';
-import { osmReducer, OsmTilesState } from 'store/osm_tiles/reducer';
 import { rootSaga } from 'store/run_sagas';
 
 // Reducers
@@ -11,17 +13,33 @@ import { rootSaga } from 'store/run_sagas';
 
 export interface IRootStateType {
   osmTiles: OsmTilesState;
+  core: CoreState;
+  draw: DrawState;
 }
 
 // Root reducer
 const reducers = combineReducers({
-  osmTiles: osmReducer
+  osmTiles: osmReducer,
+  core: coreReducer,
+  draw: drawReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
 
 // Middlewares
-const middlewares = [sagaMiddleware];
+const logger = store => next => action => {
+  console.groupCollapsed(action.type);
+  console.info('dispatching', action);
+  const result = next(action);
+  console.log('next state', store.getState());
+  console.groupEnd();
+  return result;
+};
+
+const middlewares = [
+  // logger,
+  sagaMiddleware
+];
 
 let appliedMiddlewares = applyMiddleware(...middlewares);
 if (process.env.NODE_ENV !== 'production') {

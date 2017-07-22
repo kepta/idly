@@ -16,7 +16,8 @@
     "no-unused-new": true,
     "no-unused-expression": [true],
     "max-line-length": [false],
-    "cyclomatic-complexity": [true]
+    "cyclomatic-complexity": [true],
+    "member-access": [false]
   },
   "rulesDirectory": []
 }

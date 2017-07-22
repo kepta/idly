@@ -5,11 +5,11 @@ import * as R from 'ramda';
 import { Provider } from 'react-redux';
 import * as turf from 'turf';
 
-import { Mapp } from 'components/map';
+import { Map } from 'map/map';
 import * as osm from 'osm/index';
 import { parseXML } from 'osm/parsers/parsers';
 import { store } from 'store/index';
-import { osmReducer } from 'store/osm_tiles/reducer';
+import { osmReducer } from 'store/map/reducer';
 import { attachToWindow } from 'utils/attach_to_window';
 // import { osmNode } from 'osm/node.new';
 // import { coreGraph } from 'osm/graph';
@@ -25,7 +25,7 @@ attachToWindow('pp', parseXML);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Mapp />
+    <Map />
   </Provider>,
   document.getElementById('root')
 );
