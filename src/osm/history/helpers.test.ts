@@ -9,7 +9,7 @@ import {
   graphRemoveEntity,
   graphSetEntities,
   graphSetEntity
-} from 'osm/modifiers/graph.modifiers';
+} from 'osm/history/helpers';
 
 describe('#set', function() {
   const node = nodeFactory({ id: 'n1' });
@@ -47,11 +47,11 @@ describe('#set', function() {
     );
   });
 
-  it('overwrite multiple entities', () => {
+  it('overwrite prev way with empty tags', () => {
     const n = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
-    const w = wayFactory({ id: 'w-1' });
-    expect(graphSetEntities(graph, [w, n, relation])).toEqual(
-      graphFactory([node, w, relation, n])
+    const wayWithoutTags = wayFactory({ id: 'w-1' });
+    expect(graphSetEntities(graph, [wayWithoutTags, n, relation])).toEqual(
+      graphFactory([node, wayWithoutTags, relation, n])
     );
   });
 });

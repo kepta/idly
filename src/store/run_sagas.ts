@@ -1,7 +1,8 @@
 import { all, call } from 'redux-saga/effects';
 
-import { watchOSMTiles } from 'store/osm_tiles/sagas';
+import { watchDraw } from 'store/draw/draw.sagas';
+import { watchOSMTiles } from 'store/map/sagas';
 
 export function* rootSaga() {
-  yield all([call(watchOSMTiles)]);
+  yield all([call(watchOSMTiles), call(watchDraw)]);
 }

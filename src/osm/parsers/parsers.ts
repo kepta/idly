@@ -70,7 +70,7 @@ const parsers = {
   node: function nodeData(obj) {
     const attrs = obj.attributes;
     return nodeFactory({
-      id: attrs.id.value,
+      id: 'n' + attrs.id.value,
       properties: propertiesGen({
         visible: getVisible(attrs),
         version: attrs.version.value,
@@ -87,7 +87,7 @@ const parsers = {
   way: function wayData(obj) {
     const attrs = obj.attributes;
     return wayFactory({
-      id: attrs.id.value,
+      id: 'w' + attrs.id.value,
       properties: propertiesGen({
         visible: getVisible(attrs),
         version: attrs.version.value,
@@ -104,7 +104,7 @@ const parsers = {
   relation: function relationData(obj) {
     const attrs = obj.attributes;
     return relationFactory({
-      id: attrs.id.value,
+      id: 'r' + attrs.id.value,
       properties: propertiesGen({
         visible: getVisible(attrs),
         version: attrs.version.value,

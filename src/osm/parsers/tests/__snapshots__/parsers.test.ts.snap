@@ -3,7 +3,7 @@
 exports[`parsers node matches a bigger example 1`] = `
 Array [
   Object {
-    "id": "4133782712",
+    "id": "n4133782712",
     "loc": Object {
       "lat": 34.5280866,
       "lon": 74.1795357,
@@ -20,7 +20,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782713",
+    "id": "n4133782713",
     "loc": Object {
       "lat": 34.528206,
       "lon": 74.1807924,
@@ -37,7 +37,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782714",
+    "id": "n4133782714",
     "loc": Object {
       "lat": 34.5283653,
       "lon": 74.1822907,
@@ -54,7 +54,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782715",
+    "id": "n4133782715",
     "loc": Object {
       "lat": 34.528425,
       "lon": 74.1815174,
@@ -71,7 +71,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782716",
+    "id": "n4133782716",
     "loc": Object {
       "lat": 34.5285445,
       "lon": 74.1788832,
@@ -88,7 +88,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782717",
+    "id": "n4133782717",
     "loc": Object {
       "lat": 34.5290024,
       "lon": 74.1788349,
@@ -105,7 +105,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782718",
+    "id": "n4133782718",
     "loc": Object {
       "lat": 34.5292015,
       "lon": 74.179584,
@@ -122,7 +122,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782719",
+    "id": "n4133782719",
     "loc": Object {
       "lat": 34.529301,
       "lon": 74.1824357,
@@ -139,7 +139,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782720",
+    "id": "n4133782720",
     "loc": Object {
       "lat": 34.5294603,
       "lon": 74.1794149,
@@ -156,7 +156,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782721",
+    "id": "n4133782721",
     "loc": Object {
       "lat": 34.5296992,
       "lon": 74.1823873,
@@ -173,7 +173,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782722",
+    "id": "n4133782722",
     "loc": Object {
       "lat": 34.5297191,
       "lon": 74.1788349,
@@ -190,7 +190,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782723",
+    "id": "n4133782723",
     "loc": Object {
       "lat": 34.5300377,
       "lon": 74.1821698,
@@ -207,7 +207,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782724",
+    "id": "n4133782724",
     "loc": Object {
       "lat": 34.5303562,
       "lon": 74.1783274,
@@ -224,7 +224,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782725",
+    "id": "n4133782725",
     "loc": Object {
       "lat": 34.530396,
       "lon": 74.1816382,
@@ -241,7 +241,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782726",
+    "id": "n4133782726",
     "loc": Object {
       "lat": 34.5305354,
       "lon": 74.1805024,
@@ -258,7 +258,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782727",
+    "id": "n4133782727",
     "loc": Object {
       "lat": 34.5309137,
       "lon": 74.1799224,
@@ -275,7 +275,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782728",
+    "id": "n4133782728",
     "loc": Object {
       "lat": 34.5311526,
       "lon": 74.1786899,
@@ -292,7 +292,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782729",
+    "id": "n4133782729",
     "loc": Object {
       "lat": 34.5314114,
       "lon": 74.1793182,
@@ -309,7 +309,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "411770875",
+    "id": "w411770875",
     "nodes": Array [
       "n4133782719",
       "n4133782714",
@@ -352,7 +352,7 @@ Array [
 exports[`parsers node matches snapshot 1`] = `
 Array [
   Object {
-    "id": "1",
+    "id": "n1",
     "loc": Object {
       "lat": 0,
       "lon": 0,
@@ -374,7 +374,7 @@ Array [
 exports[`parsers node matches snapshot 2`] = `
 Array [
   Object {
-    "id": "4133782712",
+    "id": "n4133782712",
     "loc": Object {
       "lat": 34.5280866,
       "lon": 74.1795357,
@@ -391,7 +391,7 @@ Array [
     "type": "node",
   },
   Object {
-    "id": "4133782713",
+    "id": "n4133782713",
     "loc": Object {
       "lat": 34.528206,
       "lon": 74.1807924,
@@ -413,7 +413,7 @@ Array [
 exports[`parsers way matches snapshot 1`] = `
 Array [
   Object {
-    "id": "411770875",
+    "id": "w411770875",
     "nodes": Array [
       "n4133782719",
       "n4133782714",

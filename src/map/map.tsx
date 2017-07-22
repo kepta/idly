@@ -1,15 +1,16 @@
 import { Set } from 'immutable';
 import * as deb from 'lodash.debounce';
 import * as R from 'ramda';
-import * as turf from 'turf';
 import * as React from 'react';
+import * as turf from 'turf';
 
+import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
-import { observe, store } from 'store/index';
-import { getOSMTiles } from 'store/osm_tiles/actions';
+import { IRootStateType, observe, store } from 'store/index';
+import { getOSMTiles, updateSources } from 'store/map/actions';
 import { lonlatToXYs, mercator } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
@@ -17,89 +18,165 @@ import { Draw } from 'draw/draw';
 import { genMapGl } from 'map/mapboxgl_setup';
 import { nodeToFeat } from 'map/nodeToFeat';
 import { cache } from 'map/weak_map_cache';
+import { connect } from 'react-redux';
 export const ZOOM = 16;
 
-interface PropsType {}
 type Entity = Node | Way | Relation;
-let unsubscribe;
+
 /**
  * The job of map module is to handle
- * the rendering of map. It also means 
- * all the styling of layers would be done 
+ * the rendering of map. It also means
+ * all the styling of layers would be done
  * here.
  * The only argument it takes is G(the current snapshot
  * of the graph) and computes the rest
  * in its internal state.
  */
-export class Map {
+
+interface IPropsType {
+  entities: Entities;
+  updateSources: (data: Entities, dirtyMapAccess: (map: any) => void) => void;
+}
+class MapComp extends React.PureComponent<IPropsType, {}> {
+  static defaultProps = {
+    entities: Set()
+  };
+  state = {
+    mapLoaded: false
+  };
   private map;
-  private draw;
-  private xy;
   private features;
-  private prop: Set<Entity>;
-  private loaded;
-  constructor(divId: string) {
-    this.map = genMapGl(divId);
-    this.map.on('moveend', deb(this.dispatchTiles, 100));
-    this.map.on('load', this.onLoad);
-    this.features = [];
-    this.prop = Set();
-    unsubscribe = observe(
-      state => state.osmTiles.get('graph'),
-      deb(this.receiveProps, 300)
-    );
+  constructor(props) {
+    super(props);
   }
-  private receiveProps = (d: Set<Node | Way | Relation>) => {
-    const newProp = d; //d.subtract(this.prop);
-    // this.prop = d;
-    const features = newProp
-      .toArray()
-      .filter(f => f instanceof Node)
-      .map(nodeToFeat);
-    this.features = features; //this.features.concat(features);
-    const source = this.map.getSource('layer');
-    if (!this.loaded) return;
-    if (source) {
-      source.setData(turf.featureCollection(this.features));
-    } else {
-      this.map.addSource('layer', {
-        type: 'geojson',
-        data: turf.featureCollection([]) //someFC().data
-      });
-      this.map.addLayer(someLayer());
-    }
+  componentDidMount() {
+    this.map = genMapGl('map-container');
+    this.map.on('load', () => this.setState({ mapLoaded: true }));
+    this.map.on('moveend', this.dispatchTiles);
+  }
+  drawSelectionChange = () => {
+    console.log('here');
   };
-  private onLoad = () => {
-    this.draw = new Draw(this.map);
-    this.loaded = true;
-    this.dispatchTiles();
-  };
-  /**
-   * Is called whenever map finishes move
-   * or the map got loaded.
-   * dispatches an action to get the osm tiles.
-   */
-  private dispatchTiles = () => {
+  componentWillReceiveProps(nextProps: IPropsType) {
+    if (!this.state.mapLoaded) return;
+
+    // console.log(entities);
+    const entities = nextProps.entities; // d.subtract(this.prop);
+    this.props.updateSources(entities, this.dirtyMapAccess);
+    // const features = entities
+    //   .toArray()
+    //   .filter(f => f instanceof Node)
+    //   .map(nodeToFeat);
+
+    // this.features = features; // this.features.concat(features);
+    // const source = this.map.getSource('layer');
+    // if (source) {
+    //   source.setData(turf.featureCollection(this.features));
+    // } else {
+    //   this.map.addSource('layer', {
+    //     type: 'geojson',
+    //     data: turf.featureCollection([]) // someFC().data
+    //   });
+    //   this.map.addLayer(someLayer());
+    // }
+  }
+  dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
     const ltlng = this.map.getBounds();
     const xys = lonlatToXYs(ltlng, ZOOM);
     store.dispatch(getOSMTiles(xys, ZOOM));
   };
+  dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
+  render() {
+    return (
+      <div>
+        <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
+        {this.state.mapLoaded &&
+          <div>
+            <Draw dirtyMapAccess={this.dirtyMapAccess} />
+          </div>}
+      </div>
+    );
+  }
 }
 
-function someLayer() {
+export const Map = connect<any, any, any>(
+  (state: IRootStateType, props) => ({
+    entities: state.core.entities
+  }),
+  { updateSources }
+)(MapComp);
+
+// export class Mapx {
+//   private map;
+//   private draw;
+//   private xy;
+//   private features;
+//   private prop: Set<Entity>;
+//   private loaded;
+//   constructor(divId: string) {
+//     this.map = genMapGl(divId);
+//     this.map.on('moveend', deb(this.dispatchTiles, 100));
+//     this.map.on('load', this.onLoad);
+//     this.features = [];
+//     this.prop = Set();
+//     unsubscribe = observe(
+//       state => state.core.get('entities'),
+//       deb(this.receiveProps, 300)
+//     );
+//   }
+//   private receiveProps = (d: Set<Node | Way | Relation>) => {
+//     const newProp = d; // d.subtract(this.prop);
+//     const features = newProp
+//       .toArray()
+//       .filter(f => f instanceof Node)
+//       .map(nodeToFeat);
+//     this.features = features; // this.features.concat(features);
+//     const source = this.map.getSource('layer');
+//     if (!this.loaded) return;
+//     if (source) {
+//       source.setData(turf.featureCollection(this.features));
+//     } else {
+//       this.map.addSource('layer', {
+//         type: 'geojson',
+//         data: turf.featureCollection([]) // someFC().data
+//       });
+//       this.map.addLayer(someLayer());
+//     }
+//   };
+//   private onLoad = () => {
+//     this.draw = new Draw(this.map);
+//     this.loaded = true;
+//     this.dispatchTiles();
+//   };
+//   /**
+//    * Is called whenever map finishes move
+//    * or the map got loaded.
+//    * dispatches an action to get the osm tiles.
+//    */
+//   private dispatchTiles = () => {
+//     if (this.map.getZoom() < ZOOM) return;
+//     const ltlng = this.map.getBounds();
+//     const xys = lonlatToXYs(ltlng, ZOOM);
+//     store.dispatch(getOSMTiles(xys, ZOOM));
+//   };
+// }
+
+function xsomeLayer() {
   return {
     id: 'park-volcanoes',
     type: 'circle',
     source: 'layer',
     paint: {
-      'circle-radius': 4,
-      'circle-color': '#B42222'
+      'circle-radius': 3,
+      'circle-color': '#E80C7A',
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#ffffff'
     },
     filter: ['==', '$type', 'Point']
   };
 }
-function someFC() {
+function xsomeFC() {
   return {
     type: 'geojson',
     data: {

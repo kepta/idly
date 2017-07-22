@@ -1,4 +1,4 @@
-import { List, Map, Record } from 'immutable';
+import { List, Map, Record, Set } from 'immutable';
 
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
@@ -12,10 +12,12 @@ export class Graph extends Record({
   way: Map(),
   relation: Map()
 }) {
+  // Map entries are for finding a particular
+  // entity which could be a heavy computation
   public node: Map<string, Node>;
   public way: Map<string, Way>;
   public relation: Map<string, Relation>;
-  public set(k: string, v: any): Graph {
+  public set(k: string, v: Node | Way | Relation): Graph {
     return super.set(k, v) as Graph;
   }
 }
@@ -31,6 +33,7 @@ export function graphFactory(entitiesList: EntityType[] = []) {
     });
   };
   const { node, way, relation } = groupBy(e => e.type, entitiesList);
+
   return new Graph({
     node: createMapFromArray(node),
     way: createMapFromArray(way),

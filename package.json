@@ -50,6 +50,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
+    "redux-immutable": "^4.0.0",
     "redux-saga": "^0.15.4",
     "turf": "^3.0.14"
   },
@@ -59,11 +60,18 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
