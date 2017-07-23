@@ -105,21 +105,13 @@ function* watchUpdateSources(): SagaIterator {
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   const nodes = data.toArray().filter(f => f instanceof Node).map(nodeToFeat);
-  const source = yield call(dirtyMapAccess, map =>
-    map.getSource(getSourceName(sourceId))
-  );
+  const source = yield call(dirtyMapAccess, map => map.getSource(sourceId));
 
   if (source) {
     console.log('updating source');
     yield call([source, 'setData'], turf.featureCollection(nodes));
   } else {
-    yield call(dirtyMapAccess, map => {
-      map.addSource(getSourceName(sourceId), {
-        type: 'geojson',
-        data: turf.featureCollection(nodes) // someFC().data
-      });
-      map.addLayer(someLayer(getSourceName(sourceId)));
-    });
+    console.log('soruce not foud');
   }
 }
 

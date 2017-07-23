@@ -1,5 +1,10 @@
 import MapboxDraw = require('@mapbox/mapbox-gl-draw');
+import { List } from 'immutable';
+
 import { setupDraw } from 'draw/draw_setup';
+import { Node } from 'osm/entities/node';
+import { Relation } from 'osm/entities/relation';
+import { Way } from 'osm/entities/way';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { selectFeatures } from 'store/draw/draw.actions';
@@ -8,9 +13,10 @@ import { attachToWindow } from 'utils/attach_to_window';
 
 interface IPropsType {
   map: any;
-  selectedFeatures: any;
+  selectedFeatures: List<any>;
   selectFeatures: (features) => void;
   dirtyMapAccess;
+  layers: string[];
 }
 class DrawComp extends React.PureComponent<IPropsType, {}> {
   private draw;
@@ -35,14 +41,16 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
     });
   }
   componentWillReceiveProps(nextProps: IPropsType) {
-    this.renderSelectedFeature(nextProps.selectedFeatures);
+    if (!this.props.selectedFeatures.equals(nextProps.selectedFeatures))
+      this.renderSelectedFeature(nextProps.selectedFeatures);
   }
   renderSelectedFeature = features => {
-    if (this.draw && Array.isArray(features) && features.length > 0) {
-      const f = features[0];
+    console.log(features);
+    if (this.draw && features.size > 0) {
+      const f = features.toArray()[0];
       f.id = 'x' + f.id;
       f.properties.id = f.id;
-      this.draw.add(f);
+      this.draw.set(f);
 
       this.draw.changeMode(`simple_select`, {
         featureIds: [f.id]
@@ -57,7 +65,7 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
         [e.point.x + 5, e.point.y + 5]
       ];
       const features = map.queryRenderedFeatures(bbox, {
-        layers: ['park-volcanoes']
+        layers: this.props.layers
       });
       if (Array.isArray(features) && features.length > 0) {
         const f = features[0];

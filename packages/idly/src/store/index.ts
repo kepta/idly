@@ -37,7 +37,8 @@ const logger = store => next => action => {
 };
 
 const middlewares = [
-  // logger,
+  //
+  logger,
   sagaMiddleware
 ];
 
@@ -53,6 +54,8 @@ const persistedState = {};
 // Store
 const store = createStore(reducers, persistedState, appliedMiddlewares);
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga).done.catch(e => {
+  console.error(e);
+});
 export const observe = observeStore(store);
 export { store };

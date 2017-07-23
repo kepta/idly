@@ -15,7 +15,7 @@ import { CORE } from 'store/core/core.actions';
 
 const initialState = {
   graph: graphFactory(),
-  modifedEntities: graphFactory(),
+  modifedEntities: Set(),
   entities: Set()
 };
 

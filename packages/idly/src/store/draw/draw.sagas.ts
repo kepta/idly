@@ -1,3 +1,5 @@
+import { List } from 'immutable';
+
 import { nodeToFeat } from 'map/nodeToFeat';
 import { getTypeFromID } from 'osm/misc';
 import { SagaIterator } from 'redux-saga';
@@ -19,9 +21,10 @@ export function* selectSaga({ type, features }: Action<IDrawSelect>) {
       features[0].properties.id
     ])
   );
+
   yield put(
     action(DRAW.updateSelection, {
-      selectedFeatures: [nodeToFeat(node)]
+      selectedFeatures: List([nodeToFeat(node)])
     })
   );
   yield put(removeEntitiesById(features.map(f => f.properties.id)));
