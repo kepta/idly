@@ -1,4 +1,4 @@
-import { Map, Record, Set } from 'immutable';
+import { List, Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
 import { Entities } from 'osm/entities/entities';
@@ -14,11 +14,11 @@ import { DRAW } from 'store/draw/draw.actions';
 import { OSM_TILES } from 'store/map/actions';
 
 const initialState = {
-  selectedFeatures: []
+  selectedFeatures: List()
 };
 
 export class DrawState extends Record(initialState) {
-  public selectedFeatures: any[];
+  public selectedFeatures: List<any>;
   public set(k: string, v: any): DrawState {
     return super.set(k, v) as DrawState;
   }

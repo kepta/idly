@@ -15,10 +15,13 @@ import { lonlatToXYs, mercator } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
+import { Layer } from 'map/layer';
 import { genMapGl } from 'map/mapboxgl_setup';
 import { nodeToFeat } from 'map/nodeToFeat';
+import { Source } from 'map/source';
 import { cache } from 'map/weak_map_cache';
 import { connect } from 'react-redux';
+import { attachToWindow } from 'utils/attach_to_window';
 export const ZOOM = 16;
 
 type Entity = Node | Way | Relation;
@@ -63,48 +66,58 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   }
   componentDidMount() {
     this.map = genMapGl('map-container');
-    this.map.on('load', () => this.setState({ mapLoaded: true }));
+    attachToWindow('map', this.map);
+    this.map.on('load', () => {
+      this.setState({ mapLoaded: true });
+    });
     this.map.on('moveend', this.dispatchTiles);
   }
   drawSelectionChange = () => {
     console.log('here');
   };
-  componentWillReceiveProps(nextProps: IPropsType) {
-    if (!this.state.mapLoaded || this.count === 4) return;
+  componentWillReceiveProps(nextProps: IPropsType, nextState) {
+    if (!this.state.mapLoaded) return;
     // this.count++;
     const entities = nextProps.entities;
-    this.updateSources(this.props, nextProps);
+    // this.updateSources(this.props, nextProps);
   }
   updateSources(prevProps: IPropsType, nextProps: IPropsType) {
-    if (!prevProps.entities.equals(nextProps.entities)) {
-      const diffPN = prevProps.entities.subtract(nextProps.entities);
-      const diffNP = nextProps.entities.subtract(prevProps.entities);
-
-      if (diffPN.size > 0 && diffNP.size === 0) {
-        console.log('hidding ismply');
-        this.hiddenEntites = this.hiddenEntites.union(diffPN);
-        this.props.hideEntities(
-          this.hiddenEntites,
-          this.dirtyMapAccess,
-          'entities'
-        );
-      } else {
-        console.log('updating all ');
-        this.props.updateSources(
-          nextProps.entities,
-          this.dirtyMapAccess,
-          'entities'
-        );
-      }
-    }
-    if (!prevProps.modifedEntities.equals(nextProps.modifedEntities)) {
-      this.props.updateSources(
-        nextProps.modifedEntities,
-        this.dirtyMapAccess,
-        'modifedEntities'
-      );
-    }
+    // if (!prevProps.entities.equals(nextProps.entities)) {
+    //   const diffPN = prevProps.entities.subtract(nextProps.entities);
+    //   const diffNP = nextProps.entities.subtract(prevProps.entities);
+    //   if (diffPN.size > 0 && diffNP.size === 0) {
+    //     console.log('hidding ismply');
+    //     this.hiddenEntites = this.hiddenEntites.union(diffPN);
+    //     this.props.hideEntities(
+    //       this.hiddenEntites,
+    //       this.dirtyMapAccess,
+    //       'entities'
+    //     );
+    //   } else {
+    //     console.log('updating all ');
+    //     this.props.updateSources(
+    //       nextProps.entities,
+    //       this.dirtyMapAccess,
+    //       'entities'
+    //     );
+    //   }
+    // }
+    // if (!prevProps.modifedEntities.equals(nextProps.modifedEntities)) {
+    //   this.props.updateSources(
+    //     nextProps.modifedEntities,
+    //     this.dirtyMapAccess,
+    //     'modifedEntities'
+    //   );
+    // }
   }
+  updateSource = (sourceName, layerName) => {
+    console.log('requesting for update', sourceName, layerName);
+    this.props.updateSources(
+      this.props.entities,
+      this.dirtyMapAccess,
+      sourceName
+    );
+  };
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
     const ltlng = this.map.getBounds();
@@ -118,7 +131,34 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
         {this.state.mapLoaded &&
           <div>
-            <Draw dirtyMapAccess={this.dirtyMapAccess} />
+            <Draw
+              dirtyMapAccess={this.dirtyMapAccess}
+              layers={['virgin-nodelayer', 'modified-nodelayer']}
+            />
+            <Source sourceName="virgin" dirtyMapAccess={this.dirtyMapAccess}>
+              <Layer
+                sourceName="virgin"
+                name="virgin-nodelayer"
+                dirtyMapAccess={this.dirtyMapAccess}
+                entities={
+                  this.props.entities.filter(f => f instanceof Node) as Entities
+                }
+                updateSource={this.updateSource}
+              />
+            </Source>
+            <Source sourceName="modified" dirtyMapAccess={this.dirtyMapAccess}>
+              <Layer
+                sourceName="modified"
+                name="modified-nodelayer"
+                dirtyMapAccess={this.dirtyMapAccess}
+                entities={
+                  this.props.modifedEntities.filter(
+                    f => f instanceof Node
+                  ) as Entities
+                }
+                updateSource={this.updateSource}
+              />
+            </Source>
           </div>}
       </div>
     );
