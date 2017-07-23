@@ -2,7 +2,8 @@ import { action } from 'store/actions';
 
 export const CORE = {
   newData: 'CORE.newData',
-  removeIds: 'Core.removeIds'
+  removeIds: 'CORE.removeIds',
+  modify: 'CORE.modify'
 };
 
 export interface IremoveEntitiesById {

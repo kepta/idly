@@ -60,18 +60,11 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": [
-      "<rootDir>/node_modules",
-      "<rootDir>/src"
-    ],
+    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   }
 }

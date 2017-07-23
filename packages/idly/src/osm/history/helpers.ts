@@ -36,16 +36,16 @@ export function graphRemoveEntity(graph: Graph, entity: Entity): Graph {
   return graph.removeIn([entity.type, entity.id]) as Graph;
 }
 
-function _updateParentWays(graph: Graph): Graph {
-  const parentWays = Map();
-  parentWays.withMutations(map => {
-    graph.way.forEach(e => {
-      if (e instanceof Way) {
-        e.nodes.forEach(n => {
-          map.setIn([n], e.id);
-        });
-      }
-    });
-  });
-  return graph.set('_parentWays', parentWays);
-}
+// function _updateParentWays(graph: Graph): Graph {
+//   let parentWays = Map();
+//   parentWays= parentWays.withMutations(map => {
+//     graph.way.forEach(e => {
+//       if (e instanceof Way) {
+//         e.nodes.forEach(n => {
+//           map.setIn([n], e.id);
+//         });
+//       }
+//     });
+//   });
+//   return graph.set('_parentWays', parentWays);
+// }

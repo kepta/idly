@@ -1,7 +1,8 @@
 import { Map } from 'immutable';
 import { LngLatBounds } from 'mapbox-gl';
-import { Effect, Pattern, SagaIterator } from 'redux-saga';
+import { buffers, delay, Effect, Pattern, SagaIterator } from 'redux-saga';
 import {
+  actionChannel,
   all,
   call,
   cancel,
@@ -10,6 +11,7 @@ import {
   put,
   select,
   take,
+  takeEvery,
   takeLatest
 } from 'redux-saga/effects';
 import { bboxPolygon, featureCollection } from 'turf';
@@ -38,15 +40,19 @@ const mercator = new SphericalMercator({
 
 export function* watchOSMTiles(): SagaIterator {
   // yield all([takeLatest<Action<GetOSMTilesType>>(OSM_TILES.get, fetchSaga)]);
-  yield all([call(watchFetch), call(watchUpdateSources)]);
+  yield all([
+    call(watchFetch),
+    call(watchUpdateSources),
+    takeLatest<UpdateSourcesAction>(MAP.hideEntities, hideEntitiesSaga)
+  ]);
 }
 function* watchFetch(): SagaIterator {
-  let tasks = [];
+  const takeChan = yield actionChannel(OSM_TILES.get, buffers.sliding(1));
+
   while (true) {
-    const { xys, zoom }: GetOSMTilesAction = yield take(OSM_TILES.get);
+    const { xys, zoom }: GetOSMTilesAction = yield take(takeChan);
     if (zoom < ZOOM) continue;
-    yield tasks.map(task => cancel(task));
-    tasks = yield xys.map(([x, y]) => fork(fetchTileSaga, x, y, zoom));
+    yield all(xys.map(([x, y]) => fork(fetchTileSaga, x, y, zoom)));
   }
 }
 
@@ -80,22 +86,20 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
 }
 
 function* watchUpdateSources(): SagaIterator {
-  const tasks = [];
-  const PARTITION = 2;
-  const partitions = Map();
+  // NOTE: fix sliding buffer if we move away from
+  // all update.
+  const requestChan = yield actionChannel(
+    MAP.updateSources,
+    buffers.sliding(1)
+  );
   while (true) {
-    const { data, dirtyMapAccess }: UpdateSourcesAction = yield take(
-      MAP.updateSources
+    // 2- take from the channel
+    const { data, dirtyMapAccess, sourceId }: UpdateSourcesAction = yield take(
+      requestChan
     );
-    yield tasks.map(task => cancel(task));
-    // const newPartitions = data.groupBy(
-    //   v => parseInt(v.get('id').slice(1), 10) % PARTITION
-    // );
-    // console.log(newPartitions.keySeq().toArray());
-    // // console.log('h', newPartitions.get(0).intersect(newPartitions.get(1)));
-    // for (let i = 0; i < PARTITION - 1; i++) {
-    tasks[0] = yield fork(updateSourceSaga, dirtyMapAccess, data, 0);
-    // }
+    // 3- Note that we're using a blocking call
+    yield call(updateSourceSaga, dirtyMapAccess, data, sourceId);
+    yield call(delay, 300);
   }
 }
 
@@ -106,6 +110,7 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   );
 
   if (source) {
+    console.log('updating source');
     yield call([source, 'setData'], turf.featureCollection(nodes));
   } else {
     yield call(dirtyMapAccess, map => {
@@ -118,6 +123,24 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   }
 }
 
+function* hideEntitiesSaga({
+  dirtyMapAccess,
+  data,
+  layerId
+}: {
+  dirtyMapAccess: (map: any) => void;
+  data: Entities;
+  layerId: string;
+}): SagaIterator {
+  yield call(dirtyMapAccess, map => {
+    map.setFilter('park-volcanoes', [
+      '!in',
+      'id',
+      ...data.map(f => f.id).toArray()
+    ]);
+  });
+}
+
 function getSourceName(sourceId) {
   return `source-${sourceId}`;
 }
@@ -128,7 +151,7 @@ function someLayer(sourceName) {
     type: 'circle',
     source: sourceName,
     paint: {
-      'circle-radius': 3,
+      'circle-radius': 4,
       'circle-color': '#E80C7A',
       'circle-stroke-width': 2,
       'circle-stroke-color': '#ffffff'
