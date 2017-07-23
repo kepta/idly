@@ -27,9 +27,7 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
       map.on('draw.selectionchange', this.drawSelectionChange);
     });
   }
-  drawSelectionChange = () => {
-    console.log('hiii');
-  };
+  drawSelectionChange = () => {};
   componentWillUnMount() {
     this.props.dirtyMapAccess(map => {
       if (!map) return;
@@ -40,7 +38,6 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
     this.renderSelectedFeature(nextProps.selectedFeatures);
   }
   renderSelectedFeature = features => {
-    console.log(features);
     if (this.draw && Array.isArray(features) && features.length > 0) {
       const f = features[0];
       f.id = 'x' + f.id;
@@ -62,13 +59,9 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
       const features = map.queryRenderedFeatures(bbox, {
         layers: ['park-volcanoes']
       });
-      console.log(features);
       if (Array.isArray(features) && features.length > 0) {
         const f = features[0];
-        // f.properties.id = f.properties.id.slice(1);
-        // console.log(f.properties.id);
         this.props.selectFeatures([f]);
-        // this.draw.add(features[0]);
       }
     });
   };
@@ -83,44 +76,3 @@ export const Draw = connect<any, any, any>(
   }),
   { selectFeatures }
 )(DrawComp);
-
-// export class Drawx {
-//   private draw;
-//   private unsubscribe;
-//   private map;
-//   private dispatch;
-//   constructor(map) {
-//     this.unsubscribe = observe(
-//       (state: IRootStateType) => state.draw.selectedFeatures,
-//       this.stateChange
-//     );
-//     this.map = map;
-//     this.draw = setupDraw();
-//     attachToWindow('draw', this.draw);
-//     map.addControl(this.draw);
-//     map.on('click', this.clickHandler);
-//   }
-//   private stateChange = features => {
-//     if (this.draw && Array.isArray(features) && features.length > 0) {
-//       this.draw.add(features[0]);
-
-//       this.draw.changeMode(`simple_select`, {
-//         featureIds: features.map(f => f.properties.id)
-//       });
-//     }
-//   };
-//   private clickHandler = (e: any) => {
-//     // set bbox as 5px reactangle area around clicked point
-//     const bbox = [
-//       [e.point.x - 5, e.point.y - 5],
-//       [e.point.x + 5, e.point.y + 5]
-//     ];
-//     const features = this.map.queryRenderedFeatures(bbox, {
-//       layers: ['park-volcanoes']
-//     });
-//     if (Array.isArray(features) && features.length > 0) {
-//       store.dispatch(selectFeatures(features));
-//       // this.draw.add(features[0]);
-//     }
-//   };
-// }

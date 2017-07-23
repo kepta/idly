@@ -10,7 +10,7 @@ import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
 import { IRootStateType, observe, store } from 'store/index';
-import { getOSMTiles, updateSources } from 'store/map/actions';
+import { getOSMTiles, hideEntities, updateSources } from 'store/map/actions';
 import { lonlatToXYs, mercator } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
@@ -35,7 +35,17 @@ type Entity = Node | Way | Relation;
 
 interface IPropsType {
   entities: Entities;
-  updateSources: (data: Entities, dirtyMapAccess: (map: any) => void) => void;
+  modifedEntities: Entities;
+  updateSources: (
+    data: Entities,
+    dirtyMapAccess: (map: any) => void,
+    sourceId: string
+  ) => void;
+  hideEntities: (
+    data: Entities,
+    dirtyMapAccess: (map: any) => void,
+    sourceId: string
+  ) => void;
 }
 class MapComp extends React.PureComponent<IPropsType, {}> {
   static defaultProps = {
@@ -46,6 +56,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   private map;
   private features;
+  private count = 0;
+  private hiddenEntites: Entities = Set();
   constructor(props) {
     super(props);
   }
@@ -58,27 +70,40 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     console.log('here');
   };
   componentWillReceiveProps(nextProps: IPropsType) {
-    if (!this.state.mapLoaded) return;
+    if (!this.state.mapLoaded || this.count === 4) return;
+    // this.count++;
+    const entities = nextProps.entities;
+    this.updateSources(this.props, nextProps);
+  }
+  updateSources(prevProps: IPropsType, nextProps: IPropsType) {
+    if (!prevProps.entities.equals(nextProps.entities)) {
+      const diffPN = prevProps.entities.subtract(nextProps.entities);
+      const diffNP = nextProps.entities.subtract(prevProps.entities);
 
-    // console.log(entities);
-    const entities = nextProps.entities; // d.subtract(this.prop);
-    this.props.updateSources(entities, this.dirtyMapAccess);
-    // const features = entities
-    //   .toArray()
-    //   .filter(f => f instanceof Node)
-    //   .map(nodeToFeat);
-
-    // this.features = features; // this.features.concat(features);
-    // const source = this.map.getSource('layer');
-    // if (source) {
-    //   source.setData(turf.featureCollection(this.features));
-    // } else {
-    //   this.map.addSource('layer', {
-    //     type: 'geojson',
-    //     data: turf.featureCollection([]) // someFC().data
-    //   });
-    //   this.map.addLayer(someLayer());
-    // }
+      if (diffPN.size > 0 && diffNP.size === 0) {
+        console.log('hidding ismply');
+        this.hiddenEntites = this.hiddenEntites.union(diffPN);
+        this.props.hideEntities(
+          this.hiddenEntites,
+          this.dirtyMapAccess,
+          'entities'
+        );
+      } else {
+        console.log('updating all ');
+        this.props.updateSources(
+          nextProps.entities,
+          this.dirtyMapAccess,
+          'entities'
+        );
+      }
+    }
+    if (!prevProps.modifedEntities.equals(nextProps.modifedEntities)) {
+      this.props.updateSources(
+        nextProps.modifedEntities,
+        this.dirtyMapAccess,
+        'modifedEntities'
+      );
+    }
   }
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
@@ -102,115 +127,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
 export const Map = connect<any, any, any>(
   (state: IRootStateType, props) => ({
-    entities: state.core.entities
+    entities: state.core.entities,
+    modifedEntities: state.core.modifedEntities
   }),
-  { updateSources }
+  { updateSources, hideEntities }
 )(MapComp);
-
-// export class Mapx {
-//   private map;
-//   private draw;
-//   private xy;
-//   private features;
-//   private prop: Set<Entity>;
-//   private loaded;
-//   constructor(divId: string) {
-//     this.map = genMapGl(divId);
-//     this.map.on('moveend', deb(this.dispatchTiles, 100));
-//     this.map.on('load', this.onLoad);
-//     this.features = [];
-//     this.prop = Set();
-//     unsubscribe = observe(
-//       state => state.core.get('entities'),
-//       deb(this.receiveProps, 300)
-//     );
-//   }
-//   private receiveProps = (d: Set<Node | Way | Relation>) => {
-//     const newProp = d; // d.subtract(this.prop);
-//     const features = newProp
-//       .toArray()
-//       .filter(f => f instanceof Node)
-//       .map(nodeToFeat);
-//     this.features = features; // this.features.concat(features);
-//     const source = this.map.getSource('layer');
-//     if (!this.loaded) return;
-//     if (source) {
-//       source.setData(turf.featureCollection(this.features));
-//     } else {
-//       this.map.addSource('layer', {
-//         type: 'geojson',
-//         data: turf.featureCollection([]) // someFC().data
-//       });
-//       this.map.addLayer(someLayer());
-//     }
-//   };
-//   private onLoad = () => {
-//     this.draw = new Draw(this.map);
-//     this.loaded = true;
-//     this.dispatchTiles();
-//   };
-//   /**
-//    * Is called whenever map finishes move
-//    * or the map got loaded.
-//    * dispatches an action to get the osm tiles.
-//    */
-//   private dispatchTiles = () => {
-//     if (this.map.getZoom() < ZOOM) return;
-//     const ltlng = this.map.getBounds();
-//     const xys = lonlatToXYs(ltlng, ZOOM);
-//     store.dispatch(getOSMTiles(xys, ZOOM));
-//   };
-// }
-
-function xsomeLayer() {
-  return {
-    id: 'park-volcanoes',
-    type: 'circle',
-    source: 'layer',
-    paint: {
-      'circle-radius': 3,
-      'circle-color': '#E80C7A',
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#ffffff'
-    },
-    filter: ['==', '$type', 'Point']
-  };
-}
-function xsomeFC() {
-  return {
-    type: 'geojson',
-    data: {
-      type: 'FeatureCollection',
-      features: [
-        {
-          type: 'Feature',
-          geometry: {
-            type: 'Polygon',
-            coordinates: [
-              [
-                [-121.353637, 40.584978],
-                [-121.284551, 40.584758],
-                [-121.275349, 40.541646],
-                [-121.246768, 40.541017],
-                [-121.251343, 40.423383],
-                [-121.32687, 40.423768],
-                [-121.360619, 40.43479],
-                [-121.363694, 40.409124],
-                [-121.439713, 40.409197],
-                [-121.439711, 40.423791],
-                [-121.572133, 40.423548],
-                [-121.577415, 40.550766],
-                [-121.539486, 40.558107],
-                [-121.520284, 40.572459],
-                [-121.487219, 40.550822],
-                [-121.446951, 40.56319],
-                [-121.370644, 40.563267],
-                [-121.353637, 40.584978]
-              ]
-            ]
-          }
-        }
-      ]
-    }
-  };
-}

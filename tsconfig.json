@@ -9,12 +9,10 @@
     "jsx": "react",
     "strict": true,
     "strictNullChecks": false,
-    // "experimentalDecorators": true,
+    "experimentalDecorators": false,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   "exclude": [
     "node_modules",
     "build",
