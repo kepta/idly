@@ -38,7 +38,7 @@ const logger = store => next => action => {
 
 const middlewares = [
   //
-  logger,
+  // logger,
   sagaMiddleware
 ];
 
