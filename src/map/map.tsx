@@ -112,7 +112,14 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   }
   updateSource = (sourceName, layerName) => {
     console.log('requesting for update', sourceName, layerName);
-    this.props.updateSources(
+    if (sourceName === 'modified') {
+      return this.props.updateSources(
+        this.props.modifedEntities,
+        this.dirtyMapAccess,
+        sourceName
+      );
+    }
+    return this.props.updateSources(
       this.props.entities,
       this.dirtyMapAccess,
       sourceName

@@ -39,22 +39,24 @@ export function coreReducer(state = coreState, action: Action<any>) {
           entities.union(action.data)
         );
     }
-    // case CORE.modify: {
-    //   return state
-    //   .update('modifedEntities', (graph: Graph) => graphSetEntities(graph, action.data))
-
-    // }
+    case CORE.addModified: {
+      return state.update('modifedEntities', (modifedEntities: Entities) => {
+        return modifedEntities.union(action.modifedEntities);
+      });
+    }
     case CORE.removeIds: {
       const selectedEntities: Array<
         Node | Way | Relation
       > = action.ids.map(id => state.graph.getIn([getTypeFromID(id), id]));
-      return state
-        .update('graph', (graph: Graph) =>
-          graphRemoveEntities(graph, selectedEntities)
-        )
-        .update('entities', (entities: Entities) =>
-          entities.subtract(selectedEntities)
-        );
+      return (
+        state
+          // .update('graph', (graph: Graph) =>
+          //   graphRemoveEntities(graph, selectedEntities)
+          // )
+          .update('entities', (entities: Entities) =>
+            entities.subtract(selectedEntities)
+          )
+      );
     }
     default:
       return state;

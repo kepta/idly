@@ -24,6 +24,7 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
     this.addLayer(this.layers);
   }
   componentWillReceiveProps(nextProps) {
+    console.log(this.props.name, nextProps.entities.size);
     // check for less new entities
     // so you can simply hide them.
     const diffPN = this.props.entities.subtract(nextProps.entities);
