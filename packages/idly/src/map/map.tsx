@@ -10,14 +10,13 @@ import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
 import { IRootStateType, observe, store } from 'store/index';
-import { getOSMTiles, hideEntities, updateSources } from 'store/map/actions';
+import { getOSMTiles, updateSources } from 'store/map/actions';
 import { lonlatToXYs, mercator } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
 import { Layer } from 'map/layer';
 import { genMapGl } from 'map/mapboxgl_setup';
-import { nodeToFeat } from 'map/nodeToFeat';
 import { Source } from 'map/source';
 import { cache } from 'map/weak_map_cache';
 import { connect } from 'react-redux';
@@ -38,7 +37,7 @@ type Entity = Node | Way | Relation;
 
 interface IPropsType {
   entities: Entities;
-  modifedEntities: Entities;
+  // modifedEntities: Entities;
   updateSources: (
     data: Entities,
     dirtyMapAccess: (map: any) => void,
@@ -49,6 +48,10 @@ interface IPropsType {
     dirtyMapAccess: (map: any) => void,
     sourceId: string
   ) => void;
+}
+interface IStatesType {
+  virginEntities: Entities;
+  modifiedEntities: Entities;
 }
 class MapComp extends React.PureComponent<IPropsType, {}> {
   static defaultProps = {
@@ -72,44 +75,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     });
     this.map.on('moveend', this.dispatchTiles);
   }
-  drawSelectionChange = () => {
-    console.log('here');
-  };
-  componentWillReceiveProps(nextProps: IPropsType, nextState) {
-    if (!this.state.mapLoaded) return;
-    // this.count++;
-    const entities = nextProps.entities;
-    // this.updateSources(this.props, nextProps);
-  }
-  updateSources(prevProps: IPropsType, nextProps: IPropsType) {
-    // if (!prevProps.entities.equals(nextProps.entities)) {
-    //   const diffPN = prevProps.entities.subtract(nextProps.entities);
-    //   const diffNP = nextProps.entities.subtract(prevProps.entities);
-    //   if (diffPN.size > 0 && diffNP.size === 0) {
-    //     console.log('hidding ismply');
-    //     this.hiddenEntites = this.hiddenEntites.union(diffPN);
-    //     this.props.hideEntities(
-    //       this.hiddenEntites,
-    //       this.dirtyMapAccess,
-    //       'entities'
-    //     );
-    //   } else {
-    //     console.log('updating all ');
-    //     this.props.updateSources(
-    //       nextProps.entities,
-    //       this.dirtyMapAccess,
-    //       'entities'
-    //     );
-    //   }
-    // }
-    // if (!prevProps.modifedEntities.equals(nextProps.modifedEntities)) {
-    //   this.props.updateSources(
-    //     nextProps.modifedEntities,
-    //     this.dirtyMapAccess,
-    //     'modifedEntities'
-    //   );
-    // }
-  }
+  componentWillReceiveProps(nextProps: IPropsType) {}
   updateSource = (sourceName, layerName) => {
     console.log('requesting for update', sourceName, layerName);
     if (sourceName === 'modified') {
@@ -133,6 +99,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
   render() {
+    console.log('map rerendering', this.props);
     return (
       <div>
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
@@ -174,8 +141,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
 export const Map = connect<any, any, any>(
   (state: IRootStateType, props) => ({
-    entities: state.core.entities,
-    modifedEntities: state.core.modifedEntities
+    entities: state.core.entities
+    // modifedEntities: state.core.modifedEntities
   }),
-  { updateSources, hideEntities }
+  { updateSources }
 )(MapComp);

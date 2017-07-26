@@ -18,7 +18,7 @@ const initialState = {
 };
 
 export class DrawState extends Record(initialState) {
-  public selectedFeatures: List<any>;
+  public selectedFeatures: List<Node>;
   public set(k: string, v: any): DrawState {
     return super.set(k, v) as DrawState;
   }

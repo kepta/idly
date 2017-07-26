@@ -1,4 +1,4 @@
-import { Map, Record, Set } from 'immutable';
+import { List, Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
 import { Entities } from 'osm/entities/entities';
@@ -40,22 +40,35 @@ export function coreReducer(state = coreState, action: Action<any>) {
         );
     }
     case CORE.addModified: {
-      return state.update('modifedEntities', (modifedEntities: Entities) => {
-        return modifedEntities.union(action.modifedEntities);
-      });
+      const selectedEntities: List<
+        Node
+      > = action.modifedEntities.map((n: Node) =>
+        state.graph.getIn(['node', n.id])
+      );
+      return state
+        .update('entities', (entities: Entities) =>
+          entities.subtract(selectedEntities)
+        )
+        .update('modifedEntities', (modifedEntities: Entities) => {
+          return modifedEntities.union(action.modifedEntities);
+        });
     }
     case CORE.removeIds: {
-      const selectedEntities: Array<
-        Node | Way | Relation
-      > = action.ids.map(id => state.graph.getIn([getTypeFromID(id), id]));
+      const selectedEntitiesVirgin: List<
+        Node
+      > = action.modifedEntitiesId.map(id =>
+        state.graph.getIn([getTypeFromID(id), id])
+      );
+
       return (
         state
           // .update('graph', (graph: Graph) =>
           //   graphRemoveEntities(graph, selectedEntities)
           // )
           .update('entities', (entities: Entities) =>
-            entities.subtract(selectedEntities)
+            entities.subtract(selectedEntitiesVirgin)
           )
+        // .update('modifedEntities', (entities: Entities) => entities.s)
       );
     }
     default:

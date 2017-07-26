@@ -1,5 +1,6 @@
 {
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
-  "tslint.autoFixOnSave": true
+  "tslint.autoFixOnSave": true,
+  "editor.minimap.enabled": false
 }

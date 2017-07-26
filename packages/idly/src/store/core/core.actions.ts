@@ -1,13 +1,12 @@
+import { List } from 'immutable/dist/immutable-nonambient';
 import { action } from 'store/actions';
 
 export const CORE = {
   newData: 'CORE.newData',
-  removeIds: 'CORE.removeIds',
-  addModified: 'CORE.addModified'
+  addModified: 'CORE.addModified',
+  removeIds: 'CORE.removeIds'
 };
 
 export interface IremoveEntitiesById {
-  ids: string[];
+  ids: List<string>;
 }
-export const removeEntitiesById = (ids: string[]) =>
-  action(CORE.removeIds, { ids });

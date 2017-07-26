@@ -40,11 +40,7 @@ const mercator = new SphericalMercator({
 
 export function* watchOSMTiles(): SagaIterator {
   // yield all([takeLatest<Action<GetOSMTilesType>>(OSM_TILES.get, fetchSaga)]);
-  yield all([
-    call(watchFetch),
-    call(watchUpdateSources),
-    takeLatest<UpdateSourcesAction>(MAP.hideEntities, hideEntitiesSaga)
-  ]);
+  yield all([call(watchFetch), call(watchUpdateSources)]);
 }
 function* watchFetch(): SagaIterator {
   const takeChan = yield actionChannel(OSM_TILES.get, buffers.sliding(1));
@@ -105,6 +101,7 @@ function* watchUpdateSources(): SagaIterator {
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   const nodes = data.toArray().filter(f => f instanceof Node).map(nodeToFeat);
+  console.log(nodes);
   const source = yield call(dirtyMapAccess, map => map.getSource(sourceId));
 
   if (source) {
@@ -113,41 +110,4 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   } else {
     console.log('soruce not foud');
   }
-}
-
-function* hideEntitiesSaga({
-  dirtyMapAccess,
-  data,
-  layerId
-}: {
-  dirtyMapAccess: (map: any) => void;
-  data: Entities;
-  layerId: string;
-}): SagaIterator {
-  yield call(dirtyMapAccess, map => {
-    map.setFilter('park-volcanoes', [
-      '!in',
-      'id',
-      ...data.map(f => f.id).toArray()
-    ]);
-  });
-}
-
-function getSourceName(sourceId) {
-  return `source-${sourceId}`;
-}
-
-function someLayer(sourceName) {
-  return {
-    id: 'park-volcanoes',
-    type: 'circle',
-    source: sourceName,
-    paint: {
-      'circle-radius': 4,
-      'circle-color': '#E80C7A',
-      'circle-stroke-width': 2,
-      'circle-stroke-color': '#ffffff'
-    },
-    filter: ['==', '$type', 'Point']
-  };
 }

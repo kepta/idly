@@ -1,5 +1,8 @@
 import { LngLatBounds } from 'mapbox-gl';
+
 import { Entities } from 'osm/entities/entities';
+import { Node } from 'osm/entities/node';
+
 import { action, Action } from 'store/actions';
 
 export const OSM_TILES = {
@@ -8,8 +11,7 @@ export const OSM_TILES = {
 };
 
 export const MAP = {
-  updateSources: 'Map.updateSources',
-  hideEntities: 'Map.hideEntities'
+  updateSources: 'Map.updateSources'
 };
 export type GetOSMTilesAction = Action<{
   xys: number[][];
@@ -33,10 +35,3 @@ export const updateSources = (
   sourceId: string
 ): UpdateSourcesAction =>
   action(MAP.updateSources, { data, dirtyMapAccess, sourceId });
-
-export const hideEntities = (
-  data: Entities,
-  dirtyMapAccess: (map: any) => void,
-  sourceId: string
-): UpdateSourcesAction =>
-  action(MAP.hideEntities, { data, dirtyMapAccess, sourceId });

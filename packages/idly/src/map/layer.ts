@@ -24,13 +24,17 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
     this.addLayer(this.layers);
   }
   componentWillReceiveProps(nextProps) {
-    console.log(this.props.name, nextProps.entities.size);
+    console.log(
+      'layer receive props',
+      this.props.name,
+      nextProps.entities.size
+    );
     // check for less new entities
     // so you can simply hide them.
     const diffPN = this.props.entities.subtract(nextProps.entities);
     const diffNP = nextProps.entities.subtract(this.props.entities);
     if (diffPN.size > 0 && diffNP.size === 0) {
-      console.log('hidding simply at', this.layerId);
+      console.log('hidding simply at', this.layerId, diffPN.toJS());
       this.hiddenEntites = this.hiddenEntites.union(diffPN);
       this.hideEntities(this.hiddenEntites);
     } else if (diffNP.size > 0) {

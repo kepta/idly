@@ -27,12 +27,14 @@
     "typescript": "^2.4.2",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1",
+    "why-did-you-update": "0.0.8",
     "xmldom": "^0.1.27"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.0.0",
     "@mapbox/sphericalmercator": "^1.0.5",
     "@types/d3": "^4.9.0",
+    "@types/geojson": "^1.0.2",
     "@types/jest": "^20.0.4",
     "@types/mapbox-gl": "^0.39.2",
     "@types/node": "^8.0.14",
@@ -60,11 +62,18 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
