@@ -4,7 +4,6 @@ import * as turf from 'turf';
 import { Entities } from 'osm/entities/entities';
 
 import { Layer } from 'map/layer';
-import { nodeToFeat } from 'map/nodeToFeat';
 
 interface IPropsType {
   sourceName: string;

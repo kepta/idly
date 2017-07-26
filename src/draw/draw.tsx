@@ -1,7 +1,10 @@
 import MapboxDraw = require('@mapbox/mapbox-gl-draw');
 import { List } from 'immutable';
 
+import { DrawFeatures } from 'draw/draw_features';
 import { setupDraw } from 'draw/draw_setup';
+import { featToNode } from 'map/featToNode';
+import { NodeFeature } from 'map/nodeToFeat';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
@@ -14,12 +17,18 @@ import { attachToWindow } from 'utils/attach_to_window';
 interface IPropsType {
   map: any;
   selectedFeatures: List<any>;
-  selectFeatures: (features) => void;
-  commitModified: (features: List<any>) => void;
+  selectFeatures: (features: List<NodeFeature>) => void;
+  commitModified: (features: List<NodeFeature>) => void;
   dirtyMapAccess;
   layers: string[];
 }
-class DrawComp extends React.PureComponent<IPropsType, {}> {
+interface IStatesType {
+  loaded: boolean;
+}
+class DrawComp extends React.PureComponent<IPropsType, IStatesType> {
+  state = {
+    loaded: false
+  };
   private draw;
   constructor(props: IPropsType) {
     super(props);
@@ -32,16 +41,18 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
       map.addControl(this.draw);
       map.on('click', this.handleClick);
       map.on('draw.selectionchange', this.drawSelectionChange);
+      this.setState({ loaded: true });
     });
   }
   drawSelectionChange = () => {
-    const selectIds = this.draw.getSelectedIds();
-    const selectedFeature = this.props.selectedFeatures.filter(
-      feature => selectIds.indexOf(feature.id) === -1
-    );
-    // console.log(selectedFeature);
-    this.props.commitModified(List(this.draw.getAll().features));
-    this.draw.delete(selectedFeature.map(f => f.id).toArray());
+    // const selectIds = this.draw.getSelectedIds();
+    // const selectedFeature = this.props.selectedFeatures.filter(
+    //   feature => selectIds.indexOf(feature.id) === -1
+    // );
+    // console.log('selection change', selectIds, this.draw.getAll());
+    // console.log('props.selectedFeatures', this.props.selectedFeatures.toJS());
+    // this.props.commitModified(List(this.draw.getAll().features));
+    // this.draw.delete(selectedFeature.map(f => f.id).toArray());
   };
   componentWillUnMount() {
     this.props.dirtyMapAccess(map => {
@@ -49,22 +60,10 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
       map.off('click', this.handleClick);
     });
   }
-  componentWillReceiveProps(nextProps: IPropsType) {
-    if (!this.props.selectedFeatures.equals(nextProps.selectedFeatures))
-      this.renderSelectedFeature(nextProps.selectedFeatures);
+  shouldComponentUpdate(nextProps: IPropsType) {
+    return !this.props.selectedFeatures.equals(nextProps.selectedFeatures);
   }
-  renderSelectedFeature = features => {
-    // console.log(features);
-    if (this.draw && features.size > 0) {
-      // const f = features.toArray()[0];
-      // f.id = 'x' + f.id;
-      // f.properties.id = f.id;
-      this.draw.set(turf.featureCollection(features.toArray()));
-      this.draw.changeMode(`simple_select`, {
-        featureIds: [features.toArray().map(f => f.properties.id)]
-      });
-    }
-  };
+  dirtyDrawAccess = func => func(this.draw);
   handleClick = (e: any) => {
     this.props.dirtyMapAccess(map => {
       // set bbox as 5px reactangle area around clicked point
@@ -72,17 +71,32 @@ class DrawComp extends React.PureComponent<IPropsType, {}> {
         [e.point.x - 5, e.point.y - 5],
         [e.point.x + 5, e.point.y + 5]
       ];
-      const features = map.queryRenderedFeatures(bbox, {
-        layers: this.props.layers
-      });
+      const features = map
+        .queryRenderedFeatures(bbox, {
+          layers: this.props.layers
+        })
+        .map(f => ({
+          ...f,
+          id: f.properties.id,
+          geometry: f.geometry
+        }));
+      if (this.draw.getAll().features.length > 0) {
+        this.props.commitModified(List(this.draw.getAll().features));
+      }
       if (Array.isArray(features) && features.length > 0) {
-        const f = features[0];
-        this.props.selectFeatures([f]);
+        this.props.selectFeatures(List([features[0]]));
       }
     });
   };
   render() {
-    return null;
+    if (!this.state.loaded) return null;
+    console.log('draw rendering', this.props);
+    return (
+      <DrawFeatures
+        dirtyDrawAccess={this.dirtyDrawAccess}
+        selectedFeatures={this.props.selectedFeatures}
+      />
+    );
   }
 }
 

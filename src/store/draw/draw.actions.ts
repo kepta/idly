@@ -2,7 +2,10 @@ import { List } from 'immutable';
 
 import { Feature, Point } from 'geojson';
 import { LngLatBounds } from 'mapbox-gl';
+import { Node } from 'osm/entities/node';
+
 import { action, Action } from 'store/actions';
+import { NodeFeature } from 'map/nodeToFeat';
 
 export const DRAW = {
   // initiates the removal of selected nodes
@@ -16,12 +19,18 @@ type PointFeature = Feature<Point>;
 export interface IDrawSelect {
   features: PointFeature[];
 }
-export interface ICommitModified {
-  features: List<any>;
-}
+export type CommitFeaturesAction = Action<{
+  features: List<NodeFeature>;
+}>;
 
-export const selectFeatures = features =>
-  action(DRAW.selectFeatures, { features });
+export type SelectFeaturesAction = Action<{
+  features: List<NodeFeature>;
+}>;
 
-export const commitModified = (features: List<any>): ICommitModified =>
-  action(DRAW.commit, { features });
+export const selectFeatures = (
+  features: List<NodeFeature>
+): SelectFeaturesAction => action(DRAW.selectFeatures, { features });
+
+export const commitModified = (
+  features: List<NodeFeature>
+): CommitFeaturesAction => action(DRAW.commit, { features });

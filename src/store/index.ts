@@ -27,11 +27,11 @@ const reducers = combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 
 // Middlewares
-const logger = store => next => action => {
+const logger = state => next => action => {
   console.groupCollapsed(action.type);
   console.info('dispatching', action);
   const result = next(action);
-  console.log('next state', store.getState());
+  console.log('next state', state.getState());
   console.groupEnd();
   return result;
 };
