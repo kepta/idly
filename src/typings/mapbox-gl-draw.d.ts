@@ -16,6 +16,7 @@ declare module '@mapbox/mapbox-gl-draw' {
     listens(type: string): boolean;
     draw(k: any): void;
     add(k: any): void;
+    static modes: any;
   }
   export = Draw;
 }

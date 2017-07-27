@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { Map, Set } from 'immutable';
 import { LngLatBounds } from 'mapbox-gl';
 import { buffers, delay, Effect, Pattern, SagaIterator } from 'redux-saga';
 import {
@@ -20,8 +20,10 @@ import { ZOOM } from 'map/map';
 import { nodeToFeat } from 'map/nodeToFeat';
 import { cancelablePromise } from 'network/helper';
 import { fetchTile } from 'network/osm';
+import { removeExisting } from 'new/tileOperations';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
+import { Graph } from 'osm/history/graph';
 import { IRootStateType } from 'store/';
 import { action, Action } from 'store/actions';
 import { CORE } from 'store/core/core.actions';
@@ -61,15 +63,22 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
       return;
     }
     const dataAsJSON = yield call(fetchTile, x, y, zoom);
+    const existingIds = yield select(
+      (state: IRootStateType) => state.osmTiles.existingIds
+    );
+
+    const newData = removeExisting(existingIds, dataAsJSON);
+
     yield put(
       action(OSM_TILES.saveTile, {
         coords: [x, y, zoom],
-        data: dataAsJSON.map(d => d.id)
+        newData
       })
     );
+
     yield put(
       action(CORE.newData, {
-        data: dataAsJSON
+        data: newData
       })
     );
   } catch (e) {
@@ -100,8 +109,14 @@ function* watchUpdateSources(): SagaIterator {
 }
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
-  const nodes = data.toArray().filter(f => f instanceof Node).map(nodeToFeat);
-  console.log(nodes);
+  // const graph: Graph = yield select(
+  //   (state: IRootStateType) => state.core.graph
+  // );
+  const nodes = data
+    .toArray()
+    .filter(f => f instanceof Node)
+    .map((n: Node) => nodeToFeat(n));
+
   const source = yield call(dirtyMapAccess, map => map.getSource(sourceId));
 
   if (source) {

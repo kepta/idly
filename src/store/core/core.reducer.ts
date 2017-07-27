@@ -1,7 +1,14 @@
 import { List, Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
-import { Entities } from 'osm/entities/entities';
+import {
+  addToModifiedEntities,
+  addToVirginEntities,
+  Entities,
+  EntitiesId,
+  removeEntities
+} from 'new/coreOperations';
+
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
@@ -33,43 +40,36 @@ const coreState = new CoreState();
 export function coreReducer(state = coreState, action: Action<any>) {
   switch (action.type) {
     case CORE.newData: {
+      const data: Node[] = action.data;
       return state
-        .update('graph', (graph: Graph) => graphSetEntities(graph, action.data))
+        .update('graph', (graph: Graph) => graphSetEntities(graph, data))
         .update('entities', (entities: Entities) =>
-          entities.union(action.data)
+          addToVirginEntities(entities, Set(data), state.modifedEntities, true)
         );
     }
     case CORE.addModified: {
-      const selectedEntities: List<
-        Node
-      > = action.modifedEntities.map((n: Node) =>
-        state.graph.getIn(['node', n.id])
-      );
-      return state
-        .update('entities', (entities: Entities) =>
-          entities.subtract(selectedEntities)
-        )
-        .update('modifedEntities', (modifedEntities: Entities) => {
-          return modifedEntities.union(action.modifedEntities);
-        });
-    }
-    case CORE.removeIds: {
-      const selectedEntitiesVirgin: List<
-        Node
-      > = action.modifedEntitiesId.map(id =>
-        state.graph.getIn([getTypeFromID(id), id])
-      );
-
+      const modifiedEntities: Entities = action.modifedEntities;
       return (
         state
-          // .update('graph', (graph: Graph) =>
-          //   graphRemoveEntities(graph, selectedEntities)
+          // .set('graph', graph)
+          // .update('entities', (entities: Entities) =>
+          //   removeEntities(entities, modifiedEntitiesId)
           // )
-          .update('entities', (entities: Entities) =>
-            entities.subtract(selectedEntitiesVirgin)
-          )
-        // .update('modifedEntities', (entities: Entities) => entities.s)
+          .update('modifedEntities', (modifedEntities: Entities) => {
+            return addToModifiedEntities(modifedEntities, modifiedEntities);
+          })
       );
+    }
+    case CORE.removeIds: {
+      const modifiedEntitiesId: Set<string> = action.modifedEntitiesId;
+      if (modifiedEntitiesId.size === 0) return state;
+      return state
+        .update('entities', (entities: Set<Node>) =>
+          removeEntities(entities, modifiedEntitiesId)
+        )
+        .update('modifedEntities', (entities: Set<Node>) =>
+          removeEntities(entities, modifiedEntitiesId)
+        );
     }
     default:
       return state;
