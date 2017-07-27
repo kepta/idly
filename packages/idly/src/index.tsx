@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import * as turf from 'turf';
 
 import { Map } from 'map/map';
-import * as osm from 'osm/index';
 import { parseXML } from 'osm/parsers/parsers';
 import { store } from 'store/index';
 import { osmReducer } from 'store/map/reducer';
@@ -20,8 +19,8 @@ require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 attachToWindow('R', R);
 attachToWindow('Im', Im);
 attachToWindow('turf', turf);
-attachToWindow('osm', osm);
 attachToWindow('pp', parseXML);
+attachToWindow('store', store);
 
 ReactDOM.render(
   <Provider store={store}>

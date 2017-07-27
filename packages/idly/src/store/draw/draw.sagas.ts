@@ -19,31 +19,46 @@ import {
 
 export function* watchDraw(): SagaIterator {
   yield all([
-    takeLatest<SelectFeaturesAction>(DRAW.selectFeatures, selectSaga),
-    takeLatest<CommitFeaturesAction>(DRAW.commit, commitSaga)
+    takeLatest<SelectFeaturesAction>(DRAW.selectFeatures, selectSaga)
+    // takeLatest<CommitFeaturesAction>(DRAW.commit, commitSaga)
   ]);
   //   yield all([call(watchFetch)]);
 }
 
-export function* selectSaga({ type, features }: SelectFeaturesAction) {
-  yield all([
-    put(
-      action(DRAW.updateSelection, {
-        selectedFeatures: features
+export function* selectSaga({
+  type,
+  featuresToSelect,
+  featuresThatWereSelected
+}: SelectFeaturesAction) {
+  if (featuresToSelect.size > 0)
+    yield all([
+      put(
+        action(DRAW.updateSelection, {
+          selectedFeatures: featuresToSelect
+        })
+      ),
+      put(
+        action(CORE.removeIds, {
+          modifedEntitiesId: Set(featuresToSelect.map(f => f.id))
+        })
+      )
+    ]);
+  if (featuresThatWereSelected.size > 0)
+    yield put(
+      action(CORE.addModified, {
+        modifedEntities: Set(
+          featuresThatWereSelected.map(feat => featToNode(feat))
+        )
+        // modifiedEntitiesId: Set(featuresThatWereSelected.map(feat => feat.id))
       })
-    ),
-    put(
-      action(CORE.removeIds, {
-        modifedEntitiesId: features.map(f => f.id)
-      })
-    )
-  ]);
+    );
 }
 
-export function* commitSaga({ features }: CommitFeaturesAction) {
-  yield put(
-    action(CORE.addModified, {
-      modifedEntities: List(features.map(feat => featToNode(feat)))
-    })
-  );
-}
+// export function* commitSaga({ features }: CommitFeaturesAction) {
+//   yield put(
+//     action(CORE.addModified, {
+//       modifedEntities: Set(features.map(feat => featToNode(feat))),
+//       modifiedEntitiesId: Set(features.map(feat => feat.id))
+//     })
+//   );
+// }

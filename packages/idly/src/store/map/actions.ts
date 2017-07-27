@@ -1,6 +1,7 @@
+import { Set } from 'immutable';
 import { LngLatBounds } from 'mapbox-gl';
 
-import { Entities } from 'osm/entities/entities';
+import { Entities } from 'new/coreOperations';
 import { Node } from 'osm/entities/node';
 
 import { action, Action } from 'store/actions';

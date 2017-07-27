@@ -4,8 +4,8 @@ import { Feature, Point } from 'geojson';
 import { LngLatBounds } from 'mapbox-gl';
 import { Node } from 'osm/entities/node';
 
-import { action, Action } from 'store/actions';
 import { NodeFeature } from 'map/nodeToFeat';
+import { action, Action } from 'store/actions';
 
 export const DRAW = {
   // initiates the removal of selected nodes
@@ -24,13 +24,16 @@ export type CommitFeaturesAction = Action<{
 }>;
 
 export type SelectFeaturesAction = Action<{
-  features: List<NodeFeature>;
+  featuresToSelect: List<NodeFeature>;
+  featuresThatWereSelected: List<NodeFeature>;
 }>;
 
 export const selectFeatures = (
-  features: List<NodeFeature>
-): SelectFeaturesAction => action(DRAW.selectFeatures, { features });
+  featuresToSelect: List<NodeFeature>,
+  featuresThatWereSelected: List<NodeFeature>
+): SelectFeaturesAction =>
+  action(DRAW.selectFeatures, { featuresToSelect, featuresThatWereSelected });
 
-export const commitModified = (
-  features: List<NodeFeature>
-): CommitFeaturesAction => action(DRAW.commit, { features });
+// export const commitModified = (
+//   features: List<NodeFeature>
+// ): CommitFeaturesAction => action(DRAW.commit, { features });
