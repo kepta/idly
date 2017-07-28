@@ -1,12 +1,16 @@
 import { List } from 'immutable';
 import { NodeFeature } from 'map/nodeToFeat';
 import * as R from 'ramda';
+
 import { store } from 'store';
 import { selectFeatures } from 'store/draw/draw.actions';
+
+import { sanitizeDrawFeatures } from 'draw/draw.utils';
+
 const NodeMangler: any = {};
 
 NodeMangler.onSetup = function(opts) {
-  console.log('setu[,', opts);
+  // console.log('setu[,', opts);
   const state = {};
 
   setTimeout(() => {
@@ -58,7 +62,11 @@ NodeMangler.onClick = function(state, e) {
         id: f.properties.id,
         geometry: f.geometry
       }))
+
+    // .map(sanitizeDrawFeatures)
   );
+  // debugger;
+  // console.log(featuresToSelect);
   if (featuresToSelect.size === 0) return;
   const points = featuresToSelect.map(f => this.newFeature(f));
   points.forEach(point => this.addFeature(point));
@@ -66,7 +74,7 @@ NodeMangler.onClick = function(state, e) {
     featureIds: featuresToSelect.toArray().map(f => f.properties.id)
   });
   store.dispatch(selectFeatures(featuresToSelect, List()));
-  console.log(points);
+  // console.log(points);
 };
 
 NodeMangler.onMouseUp = function(state, e) {

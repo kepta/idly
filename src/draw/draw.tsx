@@ -12,17 +12,12 @@ import { Way } from 'osm/entities/way';
 import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { selectFeatures } from 'store/draw/draw.actions';
 import { IRootStateType } from 'store/index';
 import { attachToWindow } from 'utils/attach_to_window';
 
 interface IPropsType {
   map: any;
   selectedFeatures: List<any>;
-  selectFeatures: (
-    featuresToSelect: List<NodeFeature>,
-    featuresThatWereSelected: List<NodeFeature>
-  ) => void;
   dirtyMapAccess;
   layers: string[];
 }
@@ -56,9 +51,6 @@ class DrawComp extends React.PureComponent<IPropsType, IStatesType> {
   }
 }
 
-export const Draw = connect<any, any, any>(
-  (state: IRootStateType, props) => ({
-    selectedFeatures: state.draw.selectedFeatures
-  }),
-  { selectFeatures }
-)(DrawComp);
+export const Draw = connect<any, any, any>((state: IRootStateType, props) => ({
+  selectedFeatures: state.draw.selectedFeatures
+}))(DrawComp);

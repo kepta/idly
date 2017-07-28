@@ -114,7 +114,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
   render() {
-    console.log('map rerendering', this.props);
+    console.log('map rerendering');
     return (
       <div>
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
