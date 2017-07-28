@@ -18,6 +18,7 @@ describe('node to feat', () => {
   const feat: Feature<Point, any> = {
     type: 'Feature',
     properties: {
+      id: 'n2125087175',
       node_properties: JSON.stringify({
         visible: true,
         version: '1',

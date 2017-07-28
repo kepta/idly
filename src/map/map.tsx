@@ -43,6 +43,7 @@ interface IPropsType {
     dirtyMapAccess: (map: any) => void,
     sourceId: string
   ) => void;
+  getOSMTiles: (xys: number[][], zoom: number) => void;
 }
 
 class MapComp extends React.PureComponent<IPropsType, {}> {
@@ -53,9 +54,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     mapLoaded: false
   };
   private map;
-  private features;
-  private count = 0;
-  private hiddenEntites: Entities = Set();
   constructor(props) {
     super(props);
   }
@@ -95,7 +93,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     this.map.on('moveend', this.dispatchTiles);
   }
   updateSource = (sourceName, layerName) => {
-    console.log('requesting for update', sourceName, layerName);
     if (sourceName === 'modified') {
       return this.props.updateSources(
         this.props.modifedEntities,
@@ -113,7 +110,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     if (this.map.getZoom() < ZOOM) return;
     const ltlng = this.map.getBounds();
     const xys = lonlatToXYs(ltlng, ZOOM);
-    store.dispatch(getOSMTiles(xys, ZOOM));
+    this.props.getOSMTiles(xys, ZOOM);
   };
   dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
   render() {
@@ -156,5 +153,5 @@ export const Map = connect<any, any, any>(
     entities: state.core.entities,
     modifedEntities: state.core.modifedEntities
   }),
-  { updateSources }
+  { updateSources, getOSMTiles }
 )(MapComp);
