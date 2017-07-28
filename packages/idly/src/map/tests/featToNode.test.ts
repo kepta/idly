@@ -15,7 +15,7 @@ describe('feat to node', () => {
 });
 
 describe('node to feat', () => {
-  const feat: Feature<Point, any> = {
+  const feat: Feature<Point> = {
     type: 'Feature',
     properties: {
       id: 'n2125087175',

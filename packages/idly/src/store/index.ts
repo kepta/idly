@@ -1,5 +1,6 @@
-import { fromJS, List, Map } from 'immutable';
+import { fromJS, List, Map, Set } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import { coreReducer, CoreState } from 'store/core/core.reducer';
@@ -44,8 +45,22 @@ const middlewares = [
 
 let appliedMiddlewares = applyMiddleware(...middlewares);
 if (process.env.NODE_ENV !== 'production') {
-  const { composeWithDevTools } = require('redux-devtools-extension');
-  appliedMiddlewares = composeWithDevTools(appliedMiddlewares);
+  // const { composeWithDevTools } = require('redux-devtools-extension');
+  const cc = composeWithDevTools as any;
+  const composeEnhancers = cc({
+    serialize: {
+      replacer: (key, value) => {
+        if (Set.isSet(value)) {
+          return {
+            data: value.size,
+            __serializedType__: 'Set'
+          };
+        }
+        return value;
+      }
+    }
+  });
+  appliedMiddlewares = composeEnhancers(appliedMiddlewares);
 }
 
 // Persisted state

@@ -10,18 +10,15 @@ interface INodeProperties {
   id: string;
 }
 
-export type NodeFeature = GeoJSON.Feature<Point, INodeProperties>;
+export type NodeFeature = GeoJSON.Feature<Point>;
 
-function _nodeToFeat(n: Node): GeoJSON.Feature<Point, INodeProperties> {
+function _nodeToFeat(n: Node): GeoJSON.Feature<Point> {
   if (n instanceof Node) {
-    const feat: GeoJSON.Feature<Point, INodeProperties> = turf.point(
-      [n.loc.lon, n.loc.lat],
-      {
-        node_properties: JSON.stringify(n.properties),
-        tags: JSON.stringify(n.tags),
-        id: n.id
-      }
-    );
+    const feat = turf.point([n.loc.lon, n.loc.lat], {
+      node_properties: JSON.stringify(n.properties),
+      tags: JSON.stringify(n.tags),
+      id: n.id
+    });
     feat.id = n.id;
     return feat;
   }
