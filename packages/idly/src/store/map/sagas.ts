@@ -68,14 +68,12 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
     );
 
     const newData = removeExisting(existingIds, dataAsJSON);
-
     yield put(
       action(OSM_TILES.saveTile, {
         coords: [x, y, zoom],
         newData
       })
     );
-
     yield put(
       action(CORE.newData, {
         data: newData
@@ -104,14 +102,11 @@ function* watchUpdateSources(): SagaIterator {
     );
     // 3- Note that we're using a blocking call
     yield call(updateSourceSaga, dirtyMapAccess, data, sourceId);
-    yield call(delay, 300);
+    yield call(delay, 200);
   }
 }
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
-  // const graph: Graph = yield select(
-  //   (state: IRootStateType) => state.core.graph
-  // );
   const nodes = data
     .toArray()
     .filter(f => f instanceof Node)
@@ -123,6 +118,6 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
     console.log('updating source');
     yield call([source, 'setData'], turf.featureCollection(nodes));
   } else {
-    console.log('soruce not foud');
+    console.log('source not foud');
   }
 }

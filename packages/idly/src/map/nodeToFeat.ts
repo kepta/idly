@@ -2,6 +2,7 @@ import { Point } from 'geojson';
 import { Node } from 'osm/entities/node';
 import { ITags } from 'osm/others/tags';
 import * as turf from 'turf';
+import { weakCache } from 'utils/weakCache';
 
 interface INodeProperties {
   node_properties: string;
@@ -10,21 +11,20 @@ interface INodeProperties {
 }
 
 export type NodeFeature = GeoJSON.Feature<Point, INodeProperties>;
-const Cache = new WeakMap();
 
-export function nodeToFeat(n: Node): GeoJSON.Feature<Point, INodeProperties> {
+function _nodeToFeat(n: Node): GeoJSON.Feature<Point, INodeProperties> {
   if (n instanceof Node) {
-    if (Cache.has(n)) return Cache.get(n);
     const feat: GeoJSON.Feature<Point, INodeProperties> = turf.point(
       [n.loc.lon, n.loc.lat],
       {
-        node_properties: n.properties.toObject(),
-        tags: n.tags.toObject(),
+        node_properties: JSON.stringify(n.properties),
+        tags: JSON.stringify(n.tags),
         id: n.id
       }
     );
     feat.id = n.id;
-    Cache.set(n, feat);
     return feat;
   }
 }
+
+export const nodeToFeat = weakCache(_nodeToFeat);

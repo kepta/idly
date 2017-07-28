@@ -8,20 +8,16 @@ import { NodeFeature } from 'map/nodeToFeat';
 import { action, Action } from 'store/actions';
 
 export const DRAW = {
-  // initiates the removal of selected nodes
-  // from the graph.
   selectFeatures: 'DRAW.selectFeatures',
   commit: 'DRAW.commit',
   updateSelection: 'DRAW.updateSelection'
 };
 
 type PointFeature = Feature<Point>;
+
 export interface IDrawSelect {
   features: PointFeature[];
 }
-export type CommitFeaturesAction = Action<{
-  features: List<NodeFeature>;
-}>;
 
 export type SelectFeaturesAction = Action<{
   featuresToSelect: List<NodeFeature>;
@@ -33,7 +29,3 @@ export const selectFeatures = (
   featuresThatWereSelected: List<NodeFeature>
 ): SelectFeaturesAction =>
   action(DRAW.selectFeatures, { featuresToSelect, featuresThatWereSelected });
-
-// export const commitModified = (
-//   features: List<NodeFeature>
-// ): CommitFeaturesAction => action(DRAW.commit, { features });

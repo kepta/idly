@@ -39,33 +39,33 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
     });
   }
   componentWillReceiveProps(nextProps) {
-    console.log(
-      'layer receive props',
-      this.props.name,
-      nextProps.entities.size
-    );
+    // console.log(
+    //   'layer receive props',
+    //   this.props.name,
+    //   nextProps.entities.size
+    // );
     // check for less new entities
     // so you can simply hide them.
     const removedEntities = this.props.entities.subtract(nextProps.entities);
     const addedEntites = nextProps.entities.subtract(this.props.entities);
     if (removedEntities.size > 0 && addedEntites.size === 0) {
-      console.log(
-        'hidding simply at',
-        this.layerId,
-        'removed entities',
-        removedEntities.toJS()
-      );
+      // console.log(
+      //   'hidding simply at',
+      //   this.layerId,
+      //   'removed entities',
+      //   removedEntities.toJS()
+      // );
       this.hiddenEntites = this.hiddenEntites.union(removedEntities);
       this.hideEntities(this.hiddenEntites);
     } else if (addedEntites.size > 0) {
-      console.log(
-        'doing full reload, addedEntites=',
-        addedEntites,
-        ' at',
-        this.layerId,
-        'removed=',
-        removedEntities
-      );
+      // console.log(
+      //   'doing full reload, addedEntites=',
+      //   addedEntites,
+      //   ' at',
+      //   this.layerId,
+      //   'removed=',
+      //   removedEntities
+      // );
       this.hiddenEntites = this.hiddenEntites.clear();
       this.clearFilter();
       // else update the entire source
@@ -81,12 +81,12 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
   };
   hideEntities = (entities: Entities) => {
     this.props.dirtyMapAccess(map => {
-      console.log(
-        'hiding these',
-        entities.map(e => e.id).toArray(),
-        'at',
-        this.layerId
-      );
+      // console.log(
+      //   'hiding these',
+      //   entities.map(e => e.id).toArray(),
+      //   'at',
+      //   this.layerId
+      // );
       map.setFilter(this.layerId, [
         '!in',
         'id',

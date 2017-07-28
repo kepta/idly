@@ -11,7 +11,6 @@ import { IRootStateType } from 'store';
 import { Action, action } from 'store/actions';
 import { CORE } from 'store/core/core.actions';
 import {
-  CommitFeaturesAction,
   DRAW,
   IDrawSelect,
   SelectFeaturesAction
