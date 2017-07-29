@@ -1,17 +1,16 @@
 import { List, Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
+import { Action } from 'common/actions';
+import { OSM_TILES } from 'map/store/map.actions';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
-
 import { Graph, graphFactory } from 'osm/history/graph';
 import { graphRemoveEntities, graphSetEntities } from 'osm/history/helpers';
 
-import { Action } from 'store/actions';
-import { DRAW } from 'store/draw/draw.actions';
-import { OSM_TILES } from 'store/map/actions';
+import { DRAW } from 'draw/store/draw.actions';
 
 const initialState = {
   selectedFeatures: List()

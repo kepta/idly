@@ -1,5 +1,6 @@
 {
   "defaultSeverity": "error",
+  // tslint-microsoft-contrib", 
   "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
@@ -18,7 +19,13 @@
     "no-unused-imports": true,
     "max-line-length": [false],
     "cyclomatic-complexity": [true],
-    "member-access": [false]
+    "member-access": [false],
+    "export-name": false,
+    "no-constant-condition": false,
+    // should enabe typedef in future
+    "typedef": [false],
+    "no-reserved-keywords": false,
+    "no-any": false
   },
   "rulesDirectory": []
 }

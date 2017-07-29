@@ -1,6 +1,6 @@
 import { Map, Set } from 'immutable';
 
-import { mergeIds, removeExisting } from 'new/tileOperations';
+import { mergeIds, removeExisting } from 'core/tileOperations';
 import { nodeFactory } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
 import { tagsFactory } from 'osm/others/tags';

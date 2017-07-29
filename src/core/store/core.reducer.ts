@@ -1,24 +1,23 @@
 import { List, Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
+import { Node } from 'osm/entities/node';
+import { Relation } from 'osm/entities/relation';
+import { Way } from 'osm/entities/way';
+import { Graph, graphFactory } from 'osm/history/graph';
+import { graphRemoveEntities, graphSetEntities } from 'osm/history/helpers';
+import { getTypeFromID } from 'osm/misc';
+
+import { Action } from 'common/actions';
+
 import {
   addToModifiedEntities,
   addToVirginEntities,
   Entities,
   EntitiesId,
   removeEntities
-} from 'new/coreOperations';
-
-import { Node } from 'osm/entities/node';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
-
-import { Graph, graphFactory } from 'osm/history/graph';
-import { graphRemoveEntities, graphSetEntities } from 'osm/history/helpers';
-
-import { getTypeFromID } from 'osm/misc';
-import { Action } from 'store/actions';
-import { CORE } from 'store/core/core.actions';
+} from 'core/coreOperations';
+import { CORE } from 'core/store/core.actions';
 
 const initialState = {
   graph: graphFactory(),
@@ -48,28 +47,43 @@ export function coreReducer(state = coreState, action: Action<any>) {
         );
     }
     case CORE.addModified: {
+      console.time(CORE.addModified);
       const modifiedEntities: Entities = action.modifedEntities;
-      return (
-        state
-          // .set('graph', graph)
-          // .update('entities', (entities: Entities) =>
-          //   removeEntities(entities, modifiedEntitiesId)
-          // )
-          .update('modifedEntities', (modifedEntities: Entities) => {
-            return addToModifiedEntities(modifedEntities, modifiedEntities);
-          })
-      );
+      const newState = state
+        // .set('graph', graph)
+        // .update('entities', (entities: Entities) =>
+        //   removeEntities(entities, modifiedEntitiesId)
+        // )
+        .update('modifedEntities', (modifedEntities: Entities) => {
+          return addToModifiedEntities(modifedEntities, modifiedEntities);
+        });
+      console.timeEnd(CORE.addModified);
+      return newState;
     }
     case CORE.removeIds: {
       const modifiedEntitiesId: Set<string> = action.modifedEntitiesId;
       if (modifiedEntitiesId.size === 0) return state;
-      return state
-        .update('entities', (entities: Set<Node>) =>
-          removeEntities(entities, modifiedEntitiesId)
+      console.time(CORE.removeIds);
+      /**
+       * @REVISIT not sure about
+       * entities.subtrsct using state.graph.getIn(['node'
+       * or the replacement removeEntities(entities, modifiedEntitiesId)
+       */
+      const newState = state
+        .update(
+          'entities',
+          (entities: Set<Node>) =>
+            entities.subtract(
+              modifiedEntitiesId.map(m => state.graph.getIn(['node', m]))
+            )
+          // removeEntities(entities, modifiedEntitiesId)
         )
         .update('modifedEntities', (entities: Set<Node>) =>
           removeEntities(entities, modifiedEntitiesId)
         );
+      console.timeEnd(CORE.removeIds);
+
+      return newState;
     }
     default:
       return state;

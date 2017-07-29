@@ -3,8 +3,8 @@ import { Map } from 'immutable';
 
 import { nodeFactory } from 'osm/entities/node';
 
-import { featToNode } from 'map/featToNode';
-import { nodeToFeat } from 'map/nodeToFeat';
+import { featToNode } from 'map/utils/featToNode';
+import { nodeToFeat } from 'map/utils/nodeToFeat';
 
 describe('feat to node', () => {
   const n2 = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });

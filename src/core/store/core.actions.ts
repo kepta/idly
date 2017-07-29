@@ -1,5 +1,6 @@
-import { List } from 'immutable/dist/immutable-nonambient';
-import { action } from 'store/actions';
+import { List } from 'immutable';
+
+import { action } from 'common/actions';
 
 export const CORE = {
   newData: 'CORE.newData',

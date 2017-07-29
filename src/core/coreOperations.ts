@@ -49,7 +49,7 @@ function toIdSet(entities: Entities) {
 }
 
 /**
- * @DESC: to be used when a entitiy is modified
+ * @DESC: to be used when an entitiy is modified
  *  and needs to be moved to modified entities.
  *
  * @NOTE: removing wont be heaving so wont worry

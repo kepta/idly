@@ -1,9 +1,9 @@
 import { Node, nodeFactory } from 'osm/entities/node';
+import { genLngLat } from 'osm/geo_utils/lng_lat';
 import { propertiesGen } from 'osm/others/properties';
 import { tagsFactory } from 'osm/others/tags';
 
-import { NodeFeature } from 'map/nodeToFeat';
-import { genLngLat } from 'osm/geo_utils/lng_lat';
+import { NodeFeature } from 'map/utils/nodeToFeat';
 
 export function featToNode(feat: NodeFeature): Node {
   return nodeFactory({
