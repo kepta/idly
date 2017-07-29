@@ -1,8 +1,8 @@
 import { LngLatBounds } from 'mapbox-gl';
 
-import { handleErrors } from 'network/helper';
-import { stubXML } from 'network/xmlstub';
 import { parseXML } from 'osm/parsers/parsers';
+import { stubXML } from 'osm/stubs/xmlstub';
+import { handleErrors } from 'utils/promise';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');
 const osmtogeojson = require('osmtogeojson');

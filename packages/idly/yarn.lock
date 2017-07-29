@@ -6292,6 +6292,10 @@ tslib@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 
+tslint-immutable@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/tslint-immutable/-/tslint-immutable-4.0.2.tgz#5fd432c83f54ca3b32abdcb3fa2f09ca8abe0016"
+
 tslint@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.5.0.tgz#10e8dab3e3061fa61e9442e8cee3982acf20a6aa"

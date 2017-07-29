@@ -1,14 +1,18 @@
 import { List } from 'immutable';
-import { NodeFeature } from 'map/nodeToFeat';
 import * as R from 'ramda';
 
-import { store } from 'store';
-import { selectFeatures } from 'store/draw/draw.actions';
+import { store } from 'common/store';
+import { NodeFeature } from 'map/utils/nodeToFeat';
 
 import { sanitizeDrawFeatures } from 'draw/draw.utils';
+import { selectFeatures } from 'draw/store/draw.actions';
+import { SOURCES } from 'map/map';
 
 const NodeMangler: any = {};
 
+// class NodeMangler {
+
+// }
 NodeMangler.onSetup = function(opts) {
   // console.log('setu[,', opts);
   const state = {};
@@ -55,7 +59,7 @@ NodeMangler.onClick = function(state, e) {
   const featuresToSelect: List<NodeFeature> = List(
     this.map
       .queryRenderedFeatures(bbox, {
-        layers: ['modified-nodelayer', 'virgin-nodelayer']
+        layers: SOURCES.map(s => s.layer)
       })
       .map(f => ({
         ...f,
@@ -85,7 +89,7 @@ NodeMangler.onMouseUp = function(state, e) {
   //   [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]],
   //   'click'
   // );
-  console.log('mouseu[p', this.featuresAt(e, null, 'click'));
+  console.log('mouseup');
 };
 
 NodeMangler.onDrag = function(state, e) {
@@ -96,21 +100,10 @@ NodeMangler.onDrag = function(state, e) {
 NodeMangler.onStop = function(state, e) {
   console.log('onStp[', state, e);
 };
-// Whenever a user clicks on a key while focused on the map, it will be sent here
-NodeMangler.onKeyUp = function(state, e) {
-  if (e.keyCode === 27) return this.changeMode('simple_select');
-};
 
 NodeMangler.toDisplayFeatures = function(state, geojson, display) {
   console.log('toDisplayFeatures', state, geojson);
   display(geojson);
 };
-// This is the only required function for a mode.
-// It decides which features currently in Draw's data store will be rendered on the map.
-// All features passed to `display` will be rendered, so you can pass multiple display features per internal feature.
-// See `styling-draw` in `API.md` for advice on making display features
-// NodeMangler.toDisplayFeatures = function(state, geojson, display) {
-//   display(geojson);
-// };
 
 export { NodeMangler };

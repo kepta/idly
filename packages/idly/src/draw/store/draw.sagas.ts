@@ -1,20 +1,21 @@
 import { List, Set } from 'immutable';
+import { SagaIterator } from 'redux-saga';
+import { all, put, select, takeLatest } from 'redux-saga/effects';
 
-import { featToNode } from 'map/featToNode';
-import { nodeToFeat } from 'map/nodeToFeat';
+import { Action, action } from 'common/actions';
+import { IRootStateType } from 'common/store';
+import { CORE } from 'core/store/core.actions';
+import { featToNode } from 'map/utils/featToNode';
+import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { Node } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
 import { getTypeFromID } from 'osm/misc';
-import { SagaIterator } from 'redux-saga';
-import { all, put, select, takeLatest } from 'redux-saga/effects';
-import { IRootStateType } from 'store';
-import { Action, action } from 'store/actions';
-import { CORE } from 'store/core/core.actions';
+
 import {
   DRAW,
   IDrawSelect,
   SelectFeaturesAction
-} from 'store/draw/draw.actions';
+} from 'draw/store/draw.actions';
 
 export function* watchDraw(): SagaIterator {
   yield all([
@@ -52,12 +53,3 @@ export function* selectSaga({
       })
     );
 }
-
-// export function* commitSaga({ features }: CommitFeaturesAction) {
-//   yield put(
-//     action(CORE.addModified, {
-//       modifedEntities: Set(features.map(feat => featToNode(feat))),
-//       modifiedEntitiesId: Set(features.map(feat => feat.id))
-//     })
-//   );
-// }

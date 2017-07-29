@@ -1,14 +1,15 @@
 import { Set } from 'immutable';
 import { LngLatBounds } from 'mapbox-gl';
 
-import { Entities } from 'new/coreOperations';
+import { action, Action } from 'common/actions';
+import { Entities } from 'core/coreOperations';
 import { Node } from 'osm/entities/node';
-
-import { action, Action } from 'store/actions';
 
 export const OSM_TILES = {
   get: 'OSM_TILES.get',
-  saveTile: 'OSM_TILES.saveTile'
+  saveTile: 'OSM_TILES.saveTile',
+  errorSaveTile: 'OSM_TILES.errorSaveTile',
+  mergeIds: 'OSM_TILES.mergeIds'
 };
 
 export const MAP = {
@@ -30,7 +31,7 @@ export const getOSMTiles = (
   zoom: number = 16
 ): GetOSMTilesAction => action(OSM_TILES.get, { xys, zoom });
 
-export const updateSources = (
+export const updateSource = (
   data: Entities,
   dirtyMapAccess: (map: any) => void,
   sourceId: string

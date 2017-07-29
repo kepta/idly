@@ -1,19 +1,19 @@
 import MapboxDraw = require('@mapbox/mapbox-gl-draw');
 import { List } from 'immutable';
-
-import { DrawFeatures } from 'draw/draw_features';
-import { setupDraw } from 'draw/draw_setup';
-import { featToNode } from 'map/featToNode';
-import { NodeFeature } from 'map/nodeToFeat';
-
-import { Node } from 'osm/entities/node';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
 import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IRootStateType } from 'store/index';
+
+import { IRootStateType } from 'common/store';
+import { featToNode } from 'map/utils/featToNode';
+import { NodeFeature } from 'map/utils/nodeToFeat';
+import { Node } from 'osm/entities/node';
+import { Relation } from 'osm/entities/relation';
+import { Way } from 'osm/entities/way';
 import { attachToWindow } from 'utils/attach_to_window';
+
+import { DrawFeatures } from 'draw/draw_features';
+import { setupDraw } from 'draw/draw_setup';
 
 interface IPropsType {
   map: any;
@@ -40,9 +40,6 @@ class DrawComp extends React.PureComponent<IPropsType, IStatesType> {
       map.addControl(this.draw);
       this.setState({ loaded: true });
     });
-  }
-  shouldComponentUpdate(nextProps: IPropsType) {
-    return !this.props.selectedFeatures.equals(nextProps.selectedFeatures);
   }
   dirtyDrawAccess = func => func(this.draw);
   render() {

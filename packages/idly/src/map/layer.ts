@@ -2,14 +2,18 @@ import { Set } from 'immutable';
 import * as R from 'ramda';
 import * as React from 'react';
 
-import { Entities } from 'new/coreOperations';
+import { Entities } from 'core/coreOperations';
 
 interface IPropsType {
   name: string;
   sourceName: string;
   dirtyMapAccess;
   entities: Entities;
-  updateSource: (sourceName: string, layerId: string) => void;
+  updateSource: (
+    data: Entities,
+    dirtyMapAccess: (map: any) => void,
+    sourceId: string
+  ) => void;
 }
 
 export class Layer extends React.PureComponent<IPropsType, {}> {
@@ -49,29 +53,33 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
     const removedEntities = this.props.entities.subtract(nextProps.entities);
     const addedEntites = nextProps.entities.subtract(this.props.entities);
     if (removedEntities.size > 0 && addedEntites.size === 0) {
-      // console.log(
-      //   'hidding simply at',
-      //   this.layerId,
-      //   'removed entities',
-      //   removedEntities.toJS()
-      // );
+      console.log(
+        'hidding simply at',
+        this.layerId,
+        'removed entities',
+        removedEntities.toJS()
+      );
       this.hiddenEntites = this.hiddenEntites.union(removedEntities);
       this.hideEntities(this.hiddenEntites);
     } else if (addedEntites.size > 0) {
-      // console.log(
-      //   'doing full reload, addedEntites=',
-      //   addedEntites,
-      //   ' at',
-      //   this.layerId,
-      //   'removed=',
-      //   removedEntities
-      // );
+      console.log(
+        'doing full reload, addedEntites=',
+        addedEntites,
+        ' at',
+        this.layerId,
+        'removed=',
+        removedEntities
+      );
       this.hiddenEntites = this.hiddenEntites.clear();
       this.clearFilter();
       // else update the entire source
       // it is expensive. Need to think of more ways to
       // avoid this.
-      this.props.updateSource(this.props.sourceName, this.layerId);
+      this.props.updateSource(
+        nextProps.entities,
+        this.props.dirtyMapAccess,
+        this.props.sourceName
+      );
     }
   }
   clearFilter = () => {
@@ -81,12 +89,12 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
   };
   hideEntities = (entities: Entities) => {
     this.props.dirtyMapAccess(map => {
-      // console.log(
-      //   'hiding these',
-      //   entities.map(e => e.id).toArray(),
-      //   'at',
-      //   this.layerId
-      // );
+      console.log(
+        'hiding these',
+        entities.map(e => e.id).toArray(),
+        'at',
+        this.layerId
+      );
       map.setFilter(this.layerId, [
         '!in',
         'id',
@@ -96,9 +104,6 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
   };
   addLayer = layer => {
     this.props.dirtyMapAccess(map => map.addLayer(layer));
-  };
-  getLayerId = id => {
-    return `layer-${id}`;
   };
   render() {
     return null;

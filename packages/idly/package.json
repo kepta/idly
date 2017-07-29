@@ -23,6 +23,7 @@
     "style-loader": "^0.18.2",
     "ts-jest": "^20.0.7",
     "tslint": "^5.5.0",
+    "tslint-immutable": "^4.0.2",
     "typedoc": "^0.8.0",
     "typescript": "^2.4.2",
     "webpack": "^3.4.1",
@@ -39,7 +40,7 @@
     "@types/mapbox-gl": "^0.39.2",
     "@types/node": "^8.0.17",
     "@types/ramda": "^0.24.5",
-    "@types/react": "next",
+    "@types/react": "^15.5.1",
     "@types/react-dom": "^15.5.1",
     "d3": "^4.10.0",
     "immutable": "^3.8.1",
@@ -54,6 +55,7 @@
     "redux": "^3.7.2",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.15.6",
+    "tslint-microsoft-contrib": "^5.0.1",
     "turf": "^3.0.14"
   },
   "jest": {

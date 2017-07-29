@@ -2,12 +2,14 @@ import { fromJS, List, Map, Set } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
+import { all, call } from 'redux-saga/effects';
 
-import { coreReducer, CoreState } from 'store/core/core.reducer';
-import { drawReducer, DrawState } from 'store/draw/draw.reducer';
-import { osmReducer, OsmTilesState } from 'store/map/reducer';
-import { observeStore } from 'store/observe';
-import { rootSaga } from 'store/run_sagas';
+import { observeStore } from 'common/observeStore';
+import { coreReducer, CoreState } from 'core/store/core.reducer';
+import { drawReducer, DrawState } from 'draw/store/draw.reducer';
+import { watchDraw } from 'draw/store/draw.sagas';
+import { osmReducer, OsmTilesState } from 'map/store/map.reducer';
+import { watchOSMTiles } from 'map/store/map.sagas';
 
 // Reducers
 // Sagas
@@ -68,6 +70,10 @@ const persistedState = {};
 
 // Store
 const store = createStore(reducers, persistedState, appliedMiddlewares);
+
+function* rootSaga() {
+  yield all([call(watchOSMTiles), call(watchDraw)]);
+}
 
 sagaMiddleware.run(rootSaga).done.catch(e => {
   console.error(e);
