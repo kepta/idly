@@ -335,7 +335,7 @@
   version "15.0.38"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.38.tgz#6afea31a9fe66304af474106ba372ddaba449995"
 
-"@types/react@next":
+"@types/react@^15.5.1":
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.0.tgz#3b3e92a60b65045e4df48fda324de84d83addbc4"
 
@@ -6296,6 +6296,12 @@ tslint-immutable@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/tslint-immutable/-/tslint-immutable-4.0.2.tgz#5fd432c83f54ca3b32abdcb3fa2f09ca8abe0016"
 
+tslint-microsoft-contrib@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.0.1.tgz#328ee9c28d07cdf793293204c96e2ffab9221994"
+  dependencies:
+    tsutils "^1.4.0"
+
 tslint@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.5.0.tgz#10e8dab3e3061fa61e9442e8cee3982acf20a6aa"
@@ -6310,6 +6316,10 @@ tslint@^5.5.0:
     semver "^5.3.0"
     tslib "^1.7.1"
     tsutils "^2.5.1"
+
+tsutils@^1.4.0:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.9.1.tgz#b9f9ab44e55af9681831d5f28d0aeeaf5c750cb0"
 
 tsutils@^2.5.1:
   version "2.7.1"
