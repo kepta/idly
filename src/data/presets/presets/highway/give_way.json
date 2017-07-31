@@ -1,0 +1,18 @@
+{
+    "icon": "poi-yield",
+    "fields": [
+        "parallel_direction"
+    ],
+    "geometry": [
+        "vertex"
+    ],
+    "tags": {
+        "highway": "give_way"
+    },
+    "terms": [
+        "give way",
+        "yield",
+        "sign"
+    ],
+    "name": "Yield Sign"
+}

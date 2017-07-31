@@ -1,0 +1,20 @@
+{
+    "icon": "music",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "guitar"
+    ],
+    "tags": {
+        "shop": "musical_instrument"
+    },
+    "name": "Musical Instrument Store"
+}

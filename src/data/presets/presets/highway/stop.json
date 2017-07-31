@@ -1,0 +1,19 @@
+{
+    "icon": "poi-stop",
+    "fields": [
+        "stop",
+        "parallel_direction"
+    ],
+    "geometry": [
+        "vertex"
+    ],
+    "tags": {
+        "highway": "stop"
+    },
+    "terms": [
+        "stop",
+        "halt",
+        "sign"
+    ],
+    "name": "Stop Sign"
+}

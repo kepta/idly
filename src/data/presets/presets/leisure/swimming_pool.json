@@ -1,0 +1,20 @@
+{
+    "icon": "swimming",
+    "fields": [
+        "access_simple",
+        "operator",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "dive",
+        "water"
+    ],
+    "tags": {
+        "leisure": "swimming_pool"
+    },
+    "name": "Swimming Pool"
+}

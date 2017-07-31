@@ -1,0 +1,16 @@
+{
+    "icon": "poi-storage-tank",
+    "fields": [
+        "man_made"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "line",
+        "area"
+    ],
+    "tags": {
+        "man_made": "*"
+    },
+    "name": "Man Made"
+}

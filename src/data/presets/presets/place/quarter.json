@@ -1,0 +1,19 @@
+{
+    "icon": "triangle-stroked",
+    "fields": [
+        "population"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "place": "quarter"
+    },
+    "terms": [
+        "boro",
+        "borough",
+        "quarter"
+    ],
+    "name": "Sub-Borough / Quarter"
+}

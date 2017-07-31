@@ -1,0 +1,11 @@
+{
+    "icon": "poi-binoculars",
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "tourism": "viewpoint"
+    },
+    "name": "Viewpoint"
+}

@@ -1,0 +1,15 @@
+{
+    "icon": "poi-warning",
+    "geometry": [
+        "vertex"
+    ],
+    "terms": [
+        "circle",
+        "roundabout",
+        "slow"
+    ],
+    "tags": {
+        "traffic_calming": "island"
+    },
+    "name": "Traffic Island"
+}

@@ -1,0 +1,14 @@
+{
+    "icon": "poi-foot",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "open space"
+    ],
+    "tags": {
+        "leisure": "common"
+    },
+    "name": "Common"
+}

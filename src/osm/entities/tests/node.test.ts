@@ -51,20 +51,20 @@ describe('osmNode', function() {
   //     });
   //   });
 
-  //   describe.skip('#geometry', function() {
-  //     it("returns 'vertex' if the node is a member of any way", function() {
-  //       var node = new Node(),
-  //         way = Way({ nodes: [node.id] }),
-  //         graph = Graph([node, way]);
-  //       expect(node.geometry(graph)).toBe('vertex');
-  //     });
+  describe.skip('#geometry', function() {
+    it("returns 'vertex' if the node is a member of any way", function() {
+      var node = new Node(),
+        way = Way({ nodes: [node.id] }),
+        graph = Graph([node, way]);
+      expect(node.geometry(graph)).toBe('vertex');
+    });
 
-  //     it("returns 'point' if the node is not a member of any way", function() {
-  //       var node = Node(),
-  //         graph = Graph([node]);
-  //       expect(node.geometry(graph)).toBe('point');
-  //     });
-  //   });
+    it("returns 'point' if the node is not a member of any way", function() {
+      var node = Node(),
+        graph = Graph([node]);
+      expect(node.geometry(graph)).toBe('point');
+    });
+  });
 
   //   describe.skip('#isEndpoint', function() {
   //     it('returns true for a node at an endpoint along a linear way', function() {

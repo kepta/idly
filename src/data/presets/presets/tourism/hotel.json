@@ -1,0 +1,22 @@
+{
+    "icon": "lodging",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "smoking",
+        "stars",
+        "rooms",
+        "internet_access",
+        "internet_access/fee",
+        "internet_access/ssid"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "tourism": "hotel"
+    },
+    "name": "Hotel"
+}

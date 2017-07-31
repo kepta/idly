@@ -1,0 +1,20 @@
+{
+    "fields": [
+        "aerialway"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "line"
+    ],
+    "tags": {
+        "aerialway": "*"
+    },
+    "terms": [
+        "ski lift",
+        "funifor",
+        "funitel"
+    ],
+    "searchable": false,
+    "name": "Aerialway"
+}

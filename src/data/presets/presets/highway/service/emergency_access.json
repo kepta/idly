@@ -1,0 +1,23 @@
+{
+    "icon": "highway-service",
+    "fields": [
+        "oneway",
+        "maxspeed",
+        "structure",
+        "access",
+        "surface",
+        "maxheight"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "service",
+        "service": "emergency_access"
+    },
+    "reference": {
+        "key": "service",
+        "value": "emergency_access"
+    },
+    "name": "Emergency Access"
+}

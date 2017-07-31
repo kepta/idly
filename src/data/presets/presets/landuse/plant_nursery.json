@@ -1,0 +1,20 @@
+{
+    "icon": "garden",
+    "fields": [
+        "operator",
+        "plant"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "plant_nursery"
+    },
+    "terms": [
+        "flower",
+        "garden",
+        "grow",
+        "vivero"
+    ],
+    "name": "Plant Nursery"
+}

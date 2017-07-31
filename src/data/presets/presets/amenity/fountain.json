@@ -1,0 +1,11 @@
+{
+    "icon": "poi-fountain",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "amenity": "fountain"
+    },
+    "name": "Fountain"
+}

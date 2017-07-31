@@ -1,0 +1,21 @@
+{
+    "icon": "poi-storage-tank",
+    "fields": [
+        "building_area",
+        "content"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "water",
+        "oil",
+        "gas",
+        "petrol"
+    ],
+    "tags": {
+        "man_made": "storage_tank"
+    },
+    "name": "Storage Tank"
+}
