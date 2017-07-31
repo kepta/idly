@@ -1,9 +1,8 @@
 import MapboxDraw = require('@mapbox/mapbox-gl-draw');
 
 import { DRAW_CLICK_BUFFER } from 'draw/config';
-import { NodeMangler } from 'draw/customMode';
+import { NodeMangler } from 'draw/modes/mainMode';
 
-// console.log(MapboxDraw.modes);
 MapboxDraw.modes.simple_select.clickAnywhere = function(state, e) {
   // Clear the re-render selection
   const wasSelected = this.getSelectedIds();
@@ -20,6 +19,7 @@ MapboxDraw.modes.simple_select.clickAnywhere = function(state, e) {
   });
   this.stopExtendedInteractions(state);
 };
+
 export function setupDraw() {
   return new MapboxDraw({
     displayControlsDefault: true,
