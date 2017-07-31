@@ -1,0 +1,22 @@
+{
+    "icon": "triangle",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "fields": [
+        "fee",
+        "access_simple"
+    ],
+    "tags": {
+        "natural": "cave_entrance"
+    },
+    "terms": [
+        "cavern",
+        "hollow",
+        "grotto",
+        "shelter",
+        "cavity"
+    ],
+    "name": "Cave Entrance"
+}

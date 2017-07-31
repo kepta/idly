@@ -1,0 +1,19 @@
+{
+    "icon": "farm",
+    "fields": [
+        "operator",
+        "crop"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "farmyard"
+    },
+    "terms": [
+        "crop",
+        "grow",
+        "plant"
+    ],
+    "name": "Farmyard"
+}

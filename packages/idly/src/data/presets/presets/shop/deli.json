@@ -1,0 +1,22 @@
+{
+    "icon": "restaurant",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "lunch",
+        "meat",
+        "sandwich"
+    ],
+    "tags": {
+        "shop": "deli"
+    },
+    "name": "Deli"
+}

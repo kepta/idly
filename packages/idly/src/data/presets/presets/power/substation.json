@@ -1,0 +1,16 @@
+{
+    "icon": "poi-power",
+    "fields": [
+        "substation",
+        "operator",
+        "building"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "power": "substation"
+    },
+    "name": "Substation"
+}

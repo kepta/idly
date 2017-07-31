@@ -1,0 +1,19 @@
+{
+    "icon": "school",
+    "fields": [
+        "operator",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "kindergarden",
+        "pre-school"
+    ],
+    "tags": {
+        "amenity": "kindergarten"
+    },
+    "name": "Preschool/Kindergarten Grounds"
+}

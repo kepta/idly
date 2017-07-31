@@ -36,16 +36,14 @@ export function graphRemoveEntity(graph: Graph, entity: Entity): Graph {
   return graph.removeIn([entity.type, entity.id]) as Graph;
 }
 
-// function _updateParentWays(graph: Graph): Graph {
+// export function calculateParentWays(graph: Graph): any {
 //   let parentWays = Map();
-//   parentWays= parentWays.withMutations(map => {
+//   parentWays = parentWays.withMutations(map => {
 //     graph.way.forEach(e => {
-//       if (e instanceof Way) {
-//         e.nodes.forEach(n => {
-//           map.setIn([n], e.id);
-//         });
-//       }
+//       e.nodes.forEach(n => {
+//         map.set(n, e.id);
+//       });
 //     });
 //   });
-//   return graph.set('_parentWays', parentWays);
+//   return parentWays;
 // }

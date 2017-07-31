@@ -1,0 +1,15 @@
+{
+    "icon": "place-of-worship",
+    "fields": [
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "chapel"
+    },
+    "matchScore": 0.5,
+    "name": "Chapel Building"
+}

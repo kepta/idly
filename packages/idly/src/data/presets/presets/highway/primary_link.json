@@ -1,0 +1,26 @@
+{
+    "icon": "highway-primary-link",
+    "fields": [
+        "oneway",
+        "maxspeed",
+        "lanes",
+        "surface",
+        "maxheight",
+        "ref",
+        "cycleway",
+        "structure",
+        "access"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "primary_link"
+    },
+    "terms": [
+        "ramp",
+        "on ramp",
+        "off ramp"
+    ],
+    "name": "Primary Link"
+}

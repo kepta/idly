@@ -1,0 +1,23 @@
+{
+    "icon": "highway-service",
+    "fields": [
+        "oneway",
+        "maxspeed",
+        "structure",
+        "access",
+        "surface",
+        "maxheight"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "service",
+        "service": "driveway"
+    },
+    "reference": {
+        "key": "service",
+        "value": "driveway"
+    },
+    "name": "Driveway"
+}

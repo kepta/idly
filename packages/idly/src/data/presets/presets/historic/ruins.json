@@ -1,0 +1,16 @@
+{
+    "icon": "poi-ruins",
+    "fields": [
+        "historic/civilization",
+        "inscription"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "historic": "ruins"
+    },
+    "name": "Ruins"
+}

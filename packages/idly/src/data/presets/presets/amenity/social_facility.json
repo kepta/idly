@@ -1,0 +1,21 @@
+{
+    "icon": "poi-social-facility",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "social_facility",
+        "social_facility_for",
+        "opening_hours",
+        "wheelchair"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [],
+    "tags": {
+        "amenity": "social_facility"
+    },
+    "name": "Social Facility"
+}

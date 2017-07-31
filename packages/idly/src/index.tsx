@@ -13,7 +13,11 @@ import { attachToWindow } from 'utils/attach_to_window';
 
 import { Map } from 'map/map';
 import { osmReducer } from 'map/store/map.reducer';
+import { presetsMatch } from 'osm/presets/presets';
 
+import { wayFactory } from 'osm/entities/way';
+import { graphFactory } from 'osm/history/graph';
+import { tagsFactory } from 'osm/others/tags';
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 
@@ -22,6 +26,10 @@ attachToWindow('Im', Im);
 attachToWindow('turf', turf);
 attachToWindow('pp', parseXML);
 attachToWindow('common/store', store);
+attachToWindow('presetsMatch', presetsMatch);
+attachToWindow('wayFactory', wayFactory);
+attachToWindow('graphFactory', graphFactory);
+attachToWindow('tagsFactory', tagsFactory);
 
 ReactDOM.render(
   <Provider store={store}>

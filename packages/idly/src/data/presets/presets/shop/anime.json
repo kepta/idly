@@ -1,0 +1,24 @@
+{
+    "icon": "shop",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "shop": "anime"
+    },
+    "terms": [
+        "manga",
+        "japan",
+        "cosplay",
+        "figurine",
+        "dakimakura"
+    ],
+    "name": "Anime Shop"
+}

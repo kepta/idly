@@ -1,0 +1,19 @@
+{
+    "icon": "poi-warning",
+    "fields": [
+        "parallel_direction"
+    ],
+    "geometry": [
+        "vertex",
+        "line"
+    ],
+    "terms": [
+        "driveway link",
+        "speed",
+        "slow"
+    ],
+    "tags": {
+        "traffic_calming": "chicane"
+    },
+    "name": "Traffic Chicane"
+}

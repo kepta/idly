@@ -1,0 +1,14 @@
+{
+    "fields": [
+        "construction",
+        "operator"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "construction"
+    },
+    "terms": [],
+    "name": "Construction"
+}

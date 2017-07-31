@@ -12,8 +12,10 @@ import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 import { attachToWindow } from 'utils/attach_to_window';
 
-import { setupDraw } from 'draw/draw_setup';
+import { initPresets } from 'osm/presets/presets';
 
+import { setupDraw } from 'draw/draw_setup';
+console.log(initPresets());
 interface IPropsType {
   map: any;
   selectedFeatures: List<any>;

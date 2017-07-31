@@ -1,0 +1,20 @@
+{
+    "icon": "poi-warning",
+    "fields": [
+        "surface",
+        "parallel_direction"
+    ],
+    "geometry": [
+        "vertex",
+        "line"
+    ],
+    "terms": [
+        "hump",
+        "speed",
+        "slow"
+    ],
+    "tags": {
+        "traffic_calming": "bump"
+    },
+    "name": "Speed Bump"
+}

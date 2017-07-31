@@ -1,0 +1,11 @@
+{
+    "icon": "poi-junction",
+    "geometry": [
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "junction": "yes"
+    },
+    "name": "Junction"
+}

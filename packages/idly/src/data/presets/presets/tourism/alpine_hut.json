@@ -1,0 +1,19 @@
+{
+    "icon": "lodging",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "internet_access",
+        "internet_access/fee",
+        "internet_access/ssid"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "tourism": "alpine_hut"
+    },
+    "name": "Alpine Hut"
+}

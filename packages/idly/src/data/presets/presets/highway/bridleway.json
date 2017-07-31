@@ -1,0 +1,21 @@
+{
+    "fields": [
+        "surface",
+        "width",
+        "structure",
+        "access"
+    ],
+    "icon": "highway-bridleway",
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "bridleway"
+    },
+    "terms": [
+        "bridleway",
+        "equestrian",
+        "horse"
+    ],
+    "name": "Bridle Path"
+}

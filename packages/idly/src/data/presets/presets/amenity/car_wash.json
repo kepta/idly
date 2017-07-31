@@ -1,0 +1,16 @@
+{
+    "icon": "car",
+    "fields": [
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "amenity": "car_wash"
+    },
+    "name": "Car Wash"
+}

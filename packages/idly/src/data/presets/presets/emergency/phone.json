@@ -1,0 +1,14 @@
+{
+    "icon": "emergency-phone",
+    "fields": [
+        "operator"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "emergency": "phone"
+    },
+    "name": "Emergency Phone"
+}

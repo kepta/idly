@@ -1,0 +1,15 @@
+{
+    "icon": "golf",
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "golf": "fairway",
+        "landuse": "grass"
+    },
+    "reference": {
+        "key": "golf",
+        "value": "fairway"
+    },
+    "name": "Fairway"
+}

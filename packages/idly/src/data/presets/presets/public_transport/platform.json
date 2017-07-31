@@ -1,0 +1,19 @@
+{
+    "icon": "bus",
+    "fields": [
+        "ref",
+        "network",
+        "operator",
+        "shelter"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "line",
+        "area"
+    ],
+    "tags": {
+        "public_transport": "platform"
+    },
+    "name": "Platform"
+}

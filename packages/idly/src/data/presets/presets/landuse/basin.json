@@ -1,0 +1,11 @@
+{
+    "icon": "water",
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "basin"
+    },
+    "terms": [],
+    "name": "Basin"
+}

@@ -1,0 +1,10 @@
+{
+    "icon": "shop",
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "retail"
+    },
+    "name": "Retail Area"
+}
