@@ -12,7 +12,6 @@ import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 import { attachToWindow } from 'utils/attach_to_window';
 
-import { DrawFeatures } from 'draw/draw_features';
 import { setupDraw } from 'draw/draw_setup';
 
 interface IPropsType {
