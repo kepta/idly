@@ -24,6 +24,9 @@ export function presetPreset(id, preset, fields?: any) {
   preset.originalScore = preset.matchScore || 1;
 
   preset.matchScore = function(entity: Entity): number {
+    /**
+     * @REVISIT: convert preset tags to Map
+     */
     const tags = preset.tags;
     let score = 0;
 

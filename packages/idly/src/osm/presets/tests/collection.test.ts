@@ -108,6 +108,9 @@ describe('presetCollection', function() {
       expect(col.indexOf(p.residential)).toEqual(0); // 1. 'Residential' (by name)
     });
 
+    /**
+     * @REVISIT: fix the commented expects
+     */
     it('returns alternate matches in correct order', function() {
       const col = c.search('gri', 'point').matchGeometry('point').collection;
       expect(col.indexOf(p.grill)).toEqual(0); // 1. 'Grill' (leading name)
