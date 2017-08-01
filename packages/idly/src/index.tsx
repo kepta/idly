@@ -23,6 +23,8 @@ require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 
 attachToWindow('R', R);
 attachToWindow('Im', Im);
+attachToWindow('store', store);
+
 attachToWindow('turf', turf);
 attachToWindow('pp', parseXML);
 attachToWindow('common/store', store);

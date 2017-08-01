@@ -4,7 +4,7 @@ mapboxgl.accessToken =
 export function mapboxglSetup(divId: string) {
   return new mapboxgl.Map({
     container: divId, // container id
-    style: 'mapbox://styles/mapbox/satellite-v9',
+    style: 'mapbox://styles/kushan2020/cj5tgoln94m2j2rqnyt5cyhuj',
     center: [-0.0143, 51.5122], // starting position
     zoom: 16,
     hash: true,

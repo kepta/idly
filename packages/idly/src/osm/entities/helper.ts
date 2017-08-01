@@ -1,3 +1,5 @@
+import { Map } from 'immutable';
+
 import { Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
@@ -34,8 +36,21 @@ function isPoi(entity: Node) {
   return true;
 }
 
-function isArea(entity: Way) {
-  return false;
+function isArea(
+  entity: Way,
+  areaKeys: Map<string, Map<string, boolean>> = Map()
+) {
+  if (entity.tags.get('area') === 'yes') return true;
+  if (!isClosed(entity) || entity.tags.get('area') === 'no') return false;
+  const keys = entity.tags.keySeq();
+  let found = false;
+  entity.tags.forEach((v, key) => {
+    if (areaKeys.has(key) && !areaKeys.get(key).has(v)) {
+      found = true;
+      return false;
+    }
+  });
+  return found;
 }
 
 function isMultipolygon(entity: Relation) {
@@ -54,4 +69,8 @@ export function isOnAddressLine(entity: Entity) {
   //       }).length > 0
   //     );
   //   });
+}
+
+function isClosed(entity: Entity) {
+  return false;
 }

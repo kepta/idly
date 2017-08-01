@@ -25,7 +25,10 @@
     // should enabe typedef in future
     "typedef": [false],
     "no-reserved-keywords": false,
-    "no-any": false
+    "no-any": false,
+    "object-literal-key-quotes": [
+      false
+    ]
   },
   "rulesDirectory": []
 }
