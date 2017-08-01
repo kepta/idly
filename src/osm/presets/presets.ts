@@ -125,6 +125,9 @@ export function initPresets(d: any = data.presets) {
     if (!Array.isArray(geometry)) continue;
     for (const ge of geometry) {
       const g = index.get(ge);
+      /**
+       * @REVISIT convert preset.tags to Map
+       */
       for (const k in preset.tags) {
         if (k) {
           g[k] = g[k] || [];
