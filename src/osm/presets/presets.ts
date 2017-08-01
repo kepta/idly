@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import * as _ from 'lodash';
 
 import { data } from 'data/index';
@@ -161,4 +162,44 @@ export function presetsMatch(entity: Entity) {
   });
 
   return match || all.item(geometry);
+}
+
+export function initAreaKeys(allCollection) {
+  let areaKeys: Map<string, Map<string, boolean>> = Map();
+  const ignore = ['barrier', 'highway', 'footway', 'railway', 'type']; // probably a line..
+  // all . collection neeeds to init
+  const presets = _.reject(allCollection, 'suggestion');
+
+  // whitelist
+  presets.forEach(function(d) {
+    let key;
+    for (key in d.tags) break;
+    if (!key) return;
+    if (ignore.indexOf(key) !== -1) return;
+
+    if (d.geometry.indexOf('area') !== -1) {
+      // probably an area..
+      areaKeys = areaKeys.set(key, areaKeys.get(key) || Map());
+    }
+  });
+
+  // blacklist
+  presets.forEach(function(d) {
+    let key;
+    for (key in d.tags) break;
+    if (!key) return;
+    if (ignore.indexOf(key) !== -1) return;
+
+    const value = d.tags[key];
+    if (
+      areaKeys.has(key) && // probably an area...
+      d.geometry.indexOf('line') !== -1 && // but sometimes a line
+      value !== '*'
+    ) {
+      // areaKeys.get(key)[value] = true;
+      areaKeys = areaKeys.setIn([key, value], true);
+    }
+  });
+
+  return areaKeys;
 }

@@ -1,9 +1,10 @@
+import { Map } from 'immutable';
 import * as _ from 'lodash';
 
 import { Entity } from 'osm/entities/entities';
 import { t } from 'osm/presets/t';
 
-const areaKeys = {};
+// const areaKeys = {};
 
 export function presetPreset(id, preset, fields?: any) {
   preset = _.clone(preset);
@@ -110,7 +111,11 @@ export function presetPreset(id, preset, fields?: any) {
   };
 
   const applyTags = preset.addTags || preset.tags;
-  preset.applyTags = function(tags, geometry) {
+  preset.applyTags = function(
+    tags,
+    geometry,
+    areaKeys: Map<string, Map<string, boolean>>
+  ) {
     let k;
 
     tags = _.clone(tags);
@@ -132,7 +137,7 @@ export function presetPreset(id, preset, fields?: any) {
       let needsAreaTag = true;
       if (preset.geometry.indexOf('line') === -1) {
         for (k in applyTags) {
-          if (k in areaKeys) {
+          if (areaKeys.has(k)) {
             needsAreaTag = false;
             break;
           }

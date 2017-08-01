@@ -18,13 +18,13 @@ import { fetchTile } from 'osm/network/fetchTile';
 import { cancelablePromise } from 'utils/promise';
 
 import { ZOOM } from 'map/map';
-import { nodeToFeat } from 'map/utils/nodeToFeat';
 import {
   GetOSMTilesAction,
   MAP,
   OSM_TILES,
   UpdateSourcesAction
 } from 'map/store/map.actions';
+import { nodeToFeat } from 'map/utils/nodeToFeat';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -102,7 +102,7 @@ function* watchUpdateSources(): SagaIterator {
     }: UpdateSourcesAction = yield S.take(requestChan);
     // 3- Note that we're using a blocking call
     yield S.call(updateSourceSaga, dirtyMapAccess, data, sourceId);
-    yield S.call(delay, 100);
+    yield S.call(delay, 200);
   }
 }
 

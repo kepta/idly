@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack --progress --color --watch --display-error-details",
-    "op": "webpack-dev-server --open"
+    "op": "webpack-dev-server --open --port 5000"
   },
   "author": "Kushan Joshi 0o3ko0@gmail.com",
   "license": "ISC",

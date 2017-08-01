@@ -1,22 +1,13 @@
 import { List } from 'immutable';
 
 import { nodeFactory } from 'osm/entities/node';
+import { relationFactory } from 'osm/entities/relation';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
 import { tagsFactory } from 'osm/others/tags';
-import { initPresets, presetsMatch } from 'osm/presets/presets';
+import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
 
-describe('iD.presetIndex', function() {
-  let savedPresets;
-
-  //   before(function() {
-  //     savedPresets = iD.data.presets;
-  //   });
-
-  //   after(function() {
-  //     iD.data.presets = savedPresets;
-  //   });
-
+describe('presetIndex', function() {
   describe('#match', function() {
     const testPresets = {
       presets: {
@@ -83,136 +74,141 @@ describe('iD.presetIndex', function() {
 
       expect(presetsMatch(point).id).toEqual('vertex');
     });
+    /**
+     * @REVISIT when isOnAddressLine is implemented.
+     */
+    it.skip(
+      'matches vertices on an addr:interpolation line as points',
+      function() {
+        const presets = initPresets(testPresets);
+
+        const point = nodeFactory({
+          id: 'n-1',
+          tags: tagsFactory({ leisure: 'park' })
+        });
+        const line = wayFactory({
+          nodes: List([point.id]),
+          id: 'w-1',
+          tags: tagsFactory({ 'addr:interpolation': 'even' })
+        });
+
+        expect(presetsMatch(point).id).toEqual('park');
+      }
+    );
   });
 
-  //     it('matches vertices on an addr:interpolation line as points', function() {
-  //       iD.data.presets = testPresets;
-  //       let presets = iD.Context().presets(),
-  //         point = iD.Node({ tags: { leisure: 'park' } }),
-  //         line = iD.Way({
-  //           nodes: [point.id],
-  //           tags: { 'addr:interpolation': 'even' }
-  //         }),
-  //         graph = iD.Graph([point, line]);
+  describe('#areaKeys', function() {
+    const testPresets = {
+      presets: {
+        'amenity/fuel/shell': {
+          tags: { amenity: 'fuel' },
+          geometry: ['point', 'area'],
+          suggestion: true
+        },
+        'highway/foo': {
+          tags: { highway: 'foo' },
+          geometry: ['area']
+        },
+        'leisure/track': {
+          tags: { leisure: 'track' },
+          geometry: ['line', 'area']
+        },
+        natural: {
+          tags: { natural: '*' },
+          geometry: ['point', 'vertex', 'area']
+        },
+        'natural/peak': {
+          tags: { natural: 'peak' },
+          geometry: ['point', 'vertex']
+        },
+        'natural/tree_row': {
+          tags: { natural: 'tree_row' },
+          geometry: ['line']
+        },
+        'natural/wood': {
+          tags: { natural: 'wood' },
+          geometry: ['point', 'area']
+        }
+      }
+    };
 
-  //       expect(presets.match(point, graph).id).toEqual('park');
-  //     });
-  //   });
+    it('whitelists keys for presets with area geometry', function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).has('natural')).toEqual(true);
+    });
 
-  //   describe('#areaKeys', function() {
-  //     let testPresets = {
-  //       presets: {
-  //         'amenity/fuel/shell': {
-  //           tags: { amenity: 'fuel' },
-  //           geometry: ['point', 'area'],
-  //           suggestion: true
-  //         },
-  //         'highway/foo': {
-  //           tags: { highway: 'foo' },
-  //           geometry: ['area']
-  //         },
-  //         'leisure/track': {
-  //           tags: { leisure: 'track' },
-  //           geometry: ['line', 'area']
-  //         },
-  //         natural: {
-  //           tags: { natural: '*' },
-  //           geometry: ['point', 'vertex', 'area']
-  //         },
-  //         'natural/peak': {
-  //           tags: { natural: 'peak' },
-  //           geometry: ['point', 'vertex']
-  //         },
-  //         'natural/tree_row': {
-  //           tags: { natural: 'tree_row' },
-  //           geometry: ['line']
-  //         },
-  //         'natural/wood': {
-  //           tags: { natural: 'wood' },
-  //           geometry: ['point', 'area']
-  //         }
-  //       }
-  //     };
+    it('blacklists key-values for presets with a line geometry', function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).has('natural')).toEqual(true);
+      expect(initAreaKeys(collection).getIn(['natural', 'tree_row'])).toEqual(
+        true
+      );
+    });
 
-  //     it('whitelists keys for presets with area geometry', function() {
-  //       iD.data.presets = testPresets;
-  //       const presets = iD.Context().presets();
-  //       expect(presets.areaKeys()).toEqual(expect.arrayContaining('natural'));
-  //     });
+    it('blacklists key-values for presets with both area and line geometry', function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).has('natural')).toEqual(true);
+      expect(initAreaKeys(collection).get('leisure').has('track')).toEqual(
+        true
+      );
+    });
 
-  //     it('blacklists key-values for presets with a line geometry', function() {
-  //       iD.data.presets = testPresets;
-  //       const presets = iD.Context().presets();
-  //       expect(presets.areaKeys().natural).toEqual(
-  //         expect.arrayContaining('tree_row')
-  //       );
-  //       expect(presets.areaKeys().natural.tree_row).toBe(true);
-  //     });
+    it('does not blacklist key-values for presets with neither area nor line geometry', function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).has('natural')).toEqual(true);
+      expect(initAreaKeys(collection).get('natural').has('peak')).toEqual(
+        false
+      );
+    });
 
-  //     it('blacklists key-values for presets with both area and line geometry', function() {
-  //       iD.data.presets = testPresets;
-  //       let presets = iD.Context().presets();
-  //       expect(presets.areaKeys().leisure).toEqual(
-  //         expect.arrayContaining('track')
-  //       );
-  //     });
+    it("does not blacklist generic '*' key-values", function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).get('natural').has('natural')).toEqual(
+        false
+      );
+    });
 
-  //     it('does not blacklist key-values for presets with neither area nor line geometry', function() {
-  //       iD.data.presets = testPresets;
-  //       const presets = iD.Context().presets();
-  //       expect(presets.areaKeys().natural).toEqual(
-  //         expect.arrayContaining('peak')
-  //       );
-  //     });
+    it("ignores keys like 'highway' that are assumed to be lines", function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).has('highway')).toEqual(false);
+    });
 
-  //     it("does not blacklist generic '*' key-values", function() {
-  //       iD.data.presets = testPresets;
-  //       const presets = iD.Context().presets();
-  //       expect(presets.areaKeys().natural).toEqual(
-  //         expect.arrayContaining('natural')
-  //       );
-  //     });
+    it('ignores suggestion presets', function() {
+      const { collection } = initPresets(testPresets);
+      expect(initAreaKeys(collection).has('amenity')).toEqual(false);
+    });
+  });
 
-  //     it("ignores keys like 'highway' that are assumed to be lines", function() {
-  //       iD.data.presets = testPresets;
-  //       const presets = iD.Context().presets();
-  //       expect(presets.areaKeys()).toEqual(expect.arrayContaining('highway'));
-  //     });
+  describe('expected matches', function() {
+    it('prefers building to multipolygon', function() {
+      const presets = initPresets();
+      const relation = relationFactory({
+        id: 'r-1',
+        tags: tagsFactory({ type: 'multipolygon', building: 'yes' })
+      });
+      expect(presetsMatch(relation).id).toEqual('building');
+    });
 
-  //     it('ignores suggestion presets', function() {
-  //       iD.data.presets = testPresets;
-  //       const presets = iD.Context().presets();
-  //       expect(presets.areaKeys()).toEqual(expect.arrayContaining('amenity'));
-  //     });
-  //   });
+    it('prefers building to address', function() {
+      const presets = initPresets();
+      const way = wayFactory({
+        id: 'w-1',
+        tags: tagsFactory({
+          area: 'yes',
+          building: 'yes',
+          'addr:housenumber': '1234'
+        })
+      });
+      expect(presetsMatch(way).id).toEqual('building');
+    });
 
-  //   describe('expected matches', function() {
-  //     it('prefers building to multipolygon', function() {
-  //       iD.data.presets = savedPresets;
-  //       const presets = iD.Context().presets(),
-  //         relation = iD.Relation({
-  //           tags: { type: 'multipolygon', building: 'yes' }
-  //         }),
-  //         graph = iD.Graph([relation]);
-  //       expect(presets.match(relation, graph).id).toEqual('building');
-  //     });
-
-  //     it('prefers building to address', function() {
-  //       iD.data.presets = savedPresets;
-  //       const presets = iD.Context().presets(),
-  //         way = iD.Way({
-  //           tags: { area: 'yes', building: 'yes', 'addr:housenumber': '1234' }
-  //         }),
-  //         graph = iD.Graph([way]);
-  //       expect(presets.match(way, graph).id).toEqual('building');
-  //     });
-
-  //     it('prefers pedestrian to area', function() {
-  //       iD.data.presets = savedPresets;
-  //       const presets = iD.Context().presets(),
-  //         way = iD.Way({ tags: { area: 'yes', highway: 'pedestrian' } }),
-  //         graph = iD.Graph([way]);
-  //       expect(presets.match(way, graph).id).toEqual('highway/pedestrian');
-  //     });
-  //   });
+    it('prefers pedestrian to area', function() {
+      const presets = initPresets();
+      const way = wayFactory({
+        id: 'w-1',
+        tags: tagsFactory({ area: 'yes', highway: 'pedestrian' })
+      });
+      expect(presetsMatch(way).id).toEqual('highway/pedestrian');
+    });
+  });
 });

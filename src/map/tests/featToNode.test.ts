@@ -27,6 +27,7 @@ describe('node to feat', () => {
         uid: '24119',
         user: 'Mauls'
       }),
+      icon: 'circle',
       tags: JSON.stringify({})
     },
     geometry: { type: 'Point', coordinates: [-0.0326419, 51.4996707] },

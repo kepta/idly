@@ -112,13 +112,11 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
 
 const styleFactory = (layerId, sourceId) => ({
   id: layerId,
-  type: 'circle',
+  type: 'symbol',
   source: sourceId,
-  paint: {
-    'circle-radius': 4,
-    'circle-color': '#E80C7A',
-    'circle-stroke-width': 2,
-    'circle-stroke-color': '#ffffff'
+  layout: {
+    'icon-image': '{icon}-11',
+    'icon-allow-overlap': true
   },
   filter: ['all']
 });
