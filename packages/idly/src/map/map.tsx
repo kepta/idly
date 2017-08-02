@@ -1,5 +1,7 @@
 import { Set } from 'immutable';
+import { debounce } from 'lodash';
 import * as MapboxInspect from 'mapbox-gl-inspect';
+import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -16,6 +18,9 @@ import { lonlatToXYs } from 'utils/mecarator';
 import { Draw } from 'draw/draw';
 
 import { Layer } from 'map/layers/points';
+import { PointsWithLabels } from 'map/layers/pointsWithLabels';
+import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
+import { addLayers } from 'map/layers/style';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
@@ -25,15 +30,18 @@ export const ZOOM = 16;
 export const SOURCES = [
   {
     source: 'virgin',
-    layer: 'virgin-nodelayer',
     data: 'entities'
   },
   {
     source: 'modified',
-    layer: 'modified-nodelayer',
     data: 'modifedEntities'
   }
 ];
+const _LAYERS = [PointsWithLabels.displayName, PointsWithoutLabels.displayName];
+export const LAYERS = _LAYERS
+  .map(l => SOURCES.map(s => s.source + l))
+  .reduce((prv, c) => prv.concat(c), []);
+
 type Entity = Node | Way | Relation;
 
 /**
@@ -63,6 +71,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   state = {
     mapLoaded: false
   };
+
   private map;
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
@@ -89,22 +98,35 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
         {this.state.mapLoaded &&
           <div>
-            <Draw
-              dirtyMapAccess={this.dirtyMapAccess}
-              layers={SOURCES.map(s => s.layer)}
-            />
+            <Draw dirtyMapAccess={this.dirtyMapAccess} layers={LAYERS} />
             {SOURCES.map((s, k) =>
               <Source
                 key={k}
                 sourceName={s.source}
                 dirtyMapAccess={this.dirtyMapAccess}
+                updateSource={this.props.updateSource}
+                entities={this.props[s.data]}
               >
-                <Layer
+                {/* <Layer
                   sourceName={s.source}
                   name={s.layer}
                   dirtyMapAccess={this.dirtyMapAccess}
                   entities={this.props[s.data]}
                   updateSource={this.props.updateSource}
+                /> */}
+                <PointsWithoutLabels
+                  sourceName={s.source}
+                  name={s.source + PointsWithoutLabels.displayName}
+                  dirtyMapAccess={this.dirtyMapAccess}
+                  entities={this.props[s.data]}
+                  updateSource={this.props.updateSource}
+                />
+                <PointsWithLabels
+                  sourceName={s.source}
+                  name={s.source + PointsWithLabels.displayName}
+                  updateSource={this.props.updateSource}
+                  dirtyMapAccess={this.dirtyMapAccess}
+                  entities={this.props[s.data]}
                 />
               </Source>
             )}
