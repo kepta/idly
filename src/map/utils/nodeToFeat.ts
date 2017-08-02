@@ -4,7 +4,7 @@ import * as turf from 'turf';
 import { Feature } from 'typings/geojson';
 
 import { Node } from 'osm/entities/node';
-import { presetsMatch } from 'osm/presets/presets';
+import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
 
 import { weakCache } from 'utils/weakCache';
 
@@ -20,10 +20,11 @@ interface INodeProperties {
  *  the typings dont support properties
  */
 export type NodeFeature = Feature<Point, INodeProperties>;
-
+const { collection } = initPresets();
+const areaKeys = initAreaKeys(collection);
 function _nodeToFeat(n: any): NodeFeature {
   if (n instanceof Node) {
-    const match = presetsMatch(n);
+    const match = presetsMatch(n, areaKeys);
     const properties: INodeProperties = {
       node_properties: JSON.stringify(n.properties),
       tags: JSON.stringify(n.tags),

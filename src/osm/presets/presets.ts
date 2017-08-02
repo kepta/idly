@@ -74,6 +74,10 @@ class Index {
 let index = new Index();
 const defaults = new Index(all);
 
+/**
+ * @REVISIT fix areakeys init for
+ */
+
 export function initPresets(d: any = data.presets) {
   all.collection = [];
   recent.collection = [];
@@ -144,8 +148,8 @@ export function initPresets(d: any = data.presets) {
   return all;
 }
 
-export function presetsMatch(entity: Entity) {
-  let geometry = getGeometry(entity);
+export function presetsMatch(entity: Entity, areaKeys: AreaKeys = Map()) {
+  let geometry = getGeometry(entity, areaKeys);
 
   // Treat entities on addr:interpolation lines as points, not vertices (#3241)
   if (geometry === Geometries.VERTEX && isOnAddressLine(entity)) {
@@ -171,8 +175,9 @@ export function presetsMatch(entity: Entity) {
   return match || all.item(geometry);
 }
 
-export function initAreaKeys(allCollection) {
-  let areaKeys: Map<string, Map<string, boolean>> = Map();
+export type AreaKeys = Map<string, Map<string, boolean>>;
+export function initAreaKeys(allCollection): AreaKeys {
+  let localAreaKeys: AreaKeys = Map();
   const ignore = ['barrier', 'highway', 'footway', 'railway', 'type']; // probably a line..
   // all . collection neeeds to init
   const presets = _.reject(allCollection, 'suggestion');
@@ -189,7 +194,7 @@ export function initAreaKeys(allCollection) {
 
     if (d.geometry.indexOf('area') !== -1) {
       // probably an area..
-      areaKeys = areaKeys.set(key, areaKeys.get(key) || Map());
+      localAreaKeys = localAreaKeys.set(key, localAreaKeys.get(key) || Map());
     }
   });
 
@@ -202,14 +207,14 @@ export function initAreaKeys(allCollection) {
 
     const value = d.tags[key];
     if (
-      areaKeys.has(key) && // probably an area...
+      localAreaKeys.has(key) && // probably an area...
       d.geometry.indexOf('line') !== -1 && // but sometimes a line
       value !== '*'
     ) {
       // areaKeys.get(key)[value] = true;
-      areaKeys = areaKeys.setIn([key, value], true);
+      localAreaKeys = localAreaKeys.setIn([key, value], true);
     }
   });
 
-  return areaKeys;
+  return localAreaKeys;
 }

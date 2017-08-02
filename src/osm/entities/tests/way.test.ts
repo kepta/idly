@@ -6,7 +6,10 @@
 // import { coreGraph as Graph } from 'osm/graph';
 // import { osmNode as Node } from 'osm/node.new';
 import { List, Map } from 'immutable';
+import { isArea } from 'osm/entities/helpers/misc';
+import { tagsFactory } from 'osm/entities/helpers/tags';
 import { Way, wayFactory } from 'osm/entities/way';
+import { initAreaKeys, initPresets } from 'osm/presets/presets';
 describe('osmWay', function() {
   //   if (debug) {
   //     it('freezes nodes', function() {
@@ -306,63 +309,75 @@ describe('osmWay', function() {
   //     ).toBe(false);
   //   });
   // });
-  // describe('#isArea', function() {
-  //   // before(function() {
-  //   //   Context();
-  //   // });
-  //   // beforeEach(() => {
-  //   //   jest.mock('src/osm/areakeys', () => {
-  //   //     var obj = {};
-  //   //     return {
-  //   //       areaKeysGetter: () => {
-  //   //         return {
-  //   //           building: {},
-  //   //           landuse: {},
-  //   //           natural: {}
-  //   //         };
-  //   //       }
-  //   //     };
-  //   //   });
-  //   // });
-  //   // afterEach(() => {
-  //   //   jest.clearAllMocks();
-  //   // });
-  //   it('returns false when the way has no tags', function() {
-  //     expect(Way().isArea()).toBe(false);
-  //   });
-  //   it('returns true if the way has tag area=yes', function() {
-  //     expect(wayFactory({ id: 'w-1',tags: { area: 'yes' } }).isArea()).toBe(true);
-  //   });
-  //   it('returns false if the way is closed and has no tags', function() {
-  //     expect(wayFactory({ id: 'w-1',nodes: ['n1', 'n1'] }).isArea()).toBe(false);
-  //   });
-  //   it.skip(
-  //     'returns true if the way is closed and has a key in areaKeys',
-  //     function() {
-  //       expect(
-  //         wayFactory({ id: 'w-1',nodes: ['n1', 'n1'], tags: { building: 'yes' } }).isArea()
-  //       ).toBe(true);
-  //     }
-  //   );
-  //   it('returns false if the way is closed and has no keys in areaKeys', function() {
-  //     expect(wayFactory({ id: 'w-1',nodes: ['n1', 'n1'], tags: { a: 'b' } }).isArea()).toBe(
-  //       false
-  //     );
-  //   });
-  //   it('returns false if the way is closed and has tag area=no', function() {
-  //     expect(
-  //       Way({
-  //         nodes: ['n1', 'n1'],
-  //         tags: { area: 'no', building: 'yes' }
-  //       }).isArea()
-  //     ).toBe(false);
-  //   });
-  //   it('returns false for coastline', function() {
-  //     expect(
-  //       wayFactory({ id: 'w-1',nodes: ['n1', 'n1'], tags: { natural: 'coastline' } }).isArea()
-  //     ).toBe(false);
-  //   });
-  // });
+  describe('#isArea', function() {
+    const { collection } = initPresets();
+    const areaKeys = initAreaKeys(collection);
+    const w1 = wayFactory({ id: 'w-1' });
+    it('returns false when the way has no tags', function() {
+      expect(isArea(wayFactory({ id: 'w-1' }), areaKeys)).toEqual(false);
+    });
+    it('returns true if the way has tag area=yes', function() {
+      expect(
+        isArea(
+          wayFactory({ id: 'w-1', tags: tagsFactory({ area: 'yes' }) }),
+          areaKeys
+        )
+      ).toEqual(true);
+    });
+    it('returns false if the way is closed and has no tags', function() {
+      expect(
+        isArea(wayFactory({ id: 'w-1', nodes: List(['n1', 'n1']) }), areaKeys)
+      ).toEqual(false);
+    });
+    it('returns true if the way is closed and has a key in areaKeys', function() {
+      expect(
+        isArea(
+          wayFactory({
+            id: 'w-1',
+            nodes: List(['n1', 'n1']),
+            tags: tagsFactory({ building: 'yes' })
+          }),
+          areaKeys
+        )
+      ).toEqual(true);
+    });
+    it('returns false if the way is closed and has no keys in areaKeys', function() {
+      expect(
+        isArea(
+          wayFactory({
+            id: 'w-1',
+            nodes: List(['n1', 'n1']),
+            tags: tagsFactory({ a: 'b' })
+          }),
+          areaKeys
+        )
+      ).toBe(false);
+    });
+    it('returns false if the way is closed and has tag area=no', function() {
+      expect(
+        isArea(
+          wayFactory({
+            id: 'w-1',
+            nodes: List(['n1', 'n1']),
+            tags: tagsFactory({ area: 'no', building: 'yes' })
+          }),
+          areaKeys
+        )
+      ).toBe(false);
+    });
+    it('returns false for coastline', function() {
+      expect(
+        isArea(
+          wayFactory({
+            id: 'w-1',
+            nodes: List(['n1', 'n1']),
+            tags: tagsFactory({ natural: 'coastline' })
+          }),
+          areaKeys
+        )
+      ).toBe(false);
+    });
+  });
   // describe('#isDegenerate', function() {
   //   it('returns true for a linear way with zero or one nodes', function() {
   //     expect(wayFactory({ id: 'w-1',nodes: [] }).isDegenerate()).toBe(true);
