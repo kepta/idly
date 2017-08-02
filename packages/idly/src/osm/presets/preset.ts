@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 import * as _ from 'lodash';
 
 import { Entity } from 'osm/entities/entities';
+import { AreaKeys } from 'osm/presets/presets';
 import { t } from 'osm/presets/t';
 
 // const areaKeys = {};
@@ -114,11 +115,7 @@ export function presetPreset(id, preset, fields?: any) {
   };
 
   const applyTags = preset.addTags || preset.tags;
-  preset.applyTags = function(
-    tags,
-    geometry,
-    areaKeys: Map<string, Map<string, boolean>>
-  ) {
+  preset.applyTags = function(tags, geometry, areaKeys: AreaKeys) {
     let k;
 
     tags = _.clone(tags);

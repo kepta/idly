@@ -4,6 +4,7 @@ import { Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
+import { AreaKeys } from 'osm/presets/presets';
 
 // export const POINT = 'point';
 // export const VERTEX = 'vertex';
@@ -20,11 +21,15 @@ export enum Geometries {
   RELATION = 'relation'
 }
 
-export function getGeometry(entity: Entity): Geometries {
+export function getGeometry(
+  entity: Entity,
+  areaKeys: AreaKeys,
+  parentWays: WeakMap<Node, string[]> = new WeakMap()
+): Geometries {
   if (entity instanceof Node) {
-    return isPoi(entity) ? Geometries.POINT : Geometries.VERTEX;
+    return isPoi(entity, parentWays) ? Geometries.POINT : Geometries.VERTEX;
   } else if (entity instanceof Way) {
-    return isArea(entity) ? Geometries.AREA : Geometries.LINE;
+    return isArea(entity, areaKeys) ? Geometries.AREA : Geometries.LINE;
   } else if (entity instanceof Relation) {
     return isMultipolygon(entity) ? Geometries.AREA : Geometries.RELATION;
   } else {
@@ -32,15 +37,13 @@ export function getGeometry(entity: Entity): Geometries {
   }
 }
 
-function isPoi(entity: Node) {
-  return true;
+function isPoi(entity: Node, parentWays: WeakMap<Node, string[]>) {
+  return !parentWays.get(entity) || parentWays.get(entity).length === 0;
 }
 
-function isArea(
-  entity: Way,
-  areaKeys: Map<string, Map<string, boolean>> = Map()
-) {
+export function isArea(entity: Way, areaKeys: AreaKeys) {
   if (entity.tags.get('area') === 'yes') return true;
+
   if (!isClosed(entity) || entity.tags.get('area') === 'no') return false;
   const keys = entity.tags.keySeq();
   let found = false;
@@ -71,6 +74,6 @@ export function isOnAddressLine(entity: Entity) {
   //   });
 }
 
-function isClosed(entity: Entity) {
-  return false;
+function isClosed(entity: Way) {
+  return entity.nodes.size > 1 && entity.nodes.first() === entity.nodes.last();
 }
