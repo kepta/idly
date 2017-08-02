@@ -1,10 +1,15 @@
 import mapboxgl = require('mapbox-gl');
+import { getStyle } from 'map/layers/style';
+import { attachToWindow } from 'utils/attach_to_window';
+
 mapboxgl.accessToken =
   'pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew';
+attachToWindow('mapboxgl', mapboxgl);
+
 export function mapboxglSetup(divId: string) {
   return new mapboxgl.Map({
     container: divId, // container id
-    style: 'mapbox://styles/kushan2020/cj5tgoln94m2j2rqnyt5cyhuj',
+    style: getStyle(),
     center: [-0.0143, 51.5122], // starting position
     zoom: 16,
     hash: true,

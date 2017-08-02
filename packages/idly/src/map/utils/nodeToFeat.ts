@@ -13,7 +13,7 @@ interface INodeProperties {
   tags: string;
   id: string;
   icon: string;
-  name: string | undefined;
+  name?: string;
 }
 /**
  * @TOFIX this whole Nodeproperties fuck up
