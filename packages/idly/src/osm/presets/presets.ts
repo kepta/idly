@@ -8,7 +8,11 @@ import { presetCollection } from 'osm/presets/collection';
 import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
 
-import { Geometries, getGeometry, isOnAddressLine } from 'osm/entities/helper';
+import {
+  Geometries,
+  getGeometry,
+  isOnAddressLine
+} from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
@@ -174,7 +178,10 @@ export function initAreaKeys(allCollection) {
   const presets = _.reject(allCollection, 'suggestion');
 
   // whitelist
-  presets.forEach(function(d) {
+  /**
+   * @TOFIX: type presets bro
+   */
+  presets.forEach(function(d: any) {
     let key;
     for (key in d.tags) break;
     if (!key) return;
@@ -187,7 +194,7 @@ export function initAreaKeys(allCollection) {
   });
 
   // blacklist
-  presets.forEach(function(d) {
+  presets.forEach(function(d: any) {
     let key;
     for (key in d.tags) break;
     if (!key) return;

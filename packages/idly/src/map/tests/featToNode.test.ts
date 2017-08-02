@@ -1,10 +1,11 @@
-import { Feature, Point } from 'geojson';
 import { Map } from 'immutable';
 
 import { nodeFactory } from 'osm/entities/node';
 
+import { Point } from 'geojson';
 import { featToNode } from 'map/utils/featToNode';
 import { nodeToFeat } from 'map/utils/nodeToFeat';
+import { Feature } from 'typings/geojson';
 
 describe('feat to node', () => {
   const n2 = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
@@ -13,9 +14,15 @@ describe('feat to node', () => {
     expect(featToNode(nodeToFeat(n2))).toEqual(n2);
   });
 });
+interface INodeProperties {
+  node_properties: string;
+  tags: string;
+  id: string;
+  icon: string;
+}
 
 describe('node to feat', () => {
-  const feat: Feature<Point> = {
+  const feat: Feature<Point, INodeProperties> = {
     type: 'Feature',
     properties: {
       id: 'n2125087175',

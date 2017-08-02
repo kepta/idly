@@ -5,8 +5,8 @@ import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
 import { wayFactory } from 'osm/entities/way';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { propertiesGen } from 'osm/others/properties';
-import { tagsFactory } from 'osm/others/tags';
+import { propertiesGen } from 'osm/entities/helpers/properties';
+import { tagsFactory } from 'osm/entities/helpers/tags';
 
 export function parseXML(xml: Document) {
   if (!xml || !xml.childNodes) return;
