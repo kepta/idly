@@ -1,17 +1,16 @@
-
-import { SOURCES } from 'map/map';
+import { LAYERS } from 'map/map';
 import { popup } from 'map/mapboxglSetup';
 
 export const dirtyPopup = map =>
-  SOURCES.map(s => {
-    map.on('mouseenter', s.layer, e => {
+  LAYERS.map(s => {
+    map.on('mouseenter', s, e => {
       // Change the cursor style as a UI indicator.
       map.getCanvas().style.cursor = 'pointer';
       const bbox = [
         [e.point.x - 5, e.point.y - 5],
         [e.point.x + 5, e.point.y + 5]
       ];
-      if (map.queryRenderedFeatures(bbox, { layers: [s.layer] }).length > 0) {
+      if (map.queryRenderedFeatures(bbox, { layers: [s] }).length > 0) {
         map.getCanvas().style.cursor = 'pointer';
       }
       popup
@@ -19,7 +18,7 @@ export const dirtyPopup = map =>
         .setHTML(e.features[0].properties.id)
         .addTo(map);
     });
-    map.on('mouseleave', s.layer, () => {
+    map.on('mouseleave', s, () => {
       map.getCanvas().style.cursor = '';
       popup.remove();
     });

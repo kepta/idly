@@ -9,7 +9,7 @@
     "jsx": "react",
     "strict": true,
     "strictNullChecks": false,
-    "experimentalDecorators": false,
+    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true
   },
   "include": ["./src/**/*"],

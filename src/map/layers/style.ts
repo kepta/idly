@@ -31,9 +31,10 @@ export function getStyle(): Style {
   return style;
 }
 
-export function addLayers(layer: Layer) {
+export function addLayers(layer: Layer): Style {
   style = {
     ...style,
     layers: [...style.layers, layer]
   };
+  return style;
 }
