@@ -1,8 +1,6 @@
 import * as React from 'react';
 import * as turf from 'turf';
 
-
-
 interface IPropsType {
   sourceName: string;
   dirtyMapAccess;

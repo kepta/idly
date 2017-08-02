@@ -1,6 +1,5 @@
 import { List, Map } from 'immutable';
 
-
 import { propertiesGen } from 'osm/entities/helpers/properties';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
