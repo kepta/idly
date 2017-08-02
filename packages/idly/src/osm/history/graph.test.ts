@@ -1,15 +1,9 @@
-import { List, Map, Set } from 'immutable';
+import { Map } from 'immutable';
 
-import { Node, nodeFactory } from 'osm/entities/node';
+import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
-import {
-  graphRemoveEntities,
-  graphRemoveEntity,
-  graphSetEntities,
-  graphSetEntity
-} from 'osm/history/helpers';
 
 describe('Graph Factory', function() {
   // it('returns a new graph if self is frozen', function () {

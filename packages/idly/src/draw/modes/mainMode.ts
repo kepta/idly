@@ -4,7 +4,6 @@ import * as R from 'ramda';
 import { store } from 'common/store';
 import { NodeFeature } from 'map/utils/nodeToFeat';
 
-import { sanitizeDrawFeatures } from 'draw/draw.utils';
 import { selectFeatures } from 'draw/store/draw.actions';
 import { SOURCES } from 'map/map';
 
@@ -16,6 +15,7 @@ NodeMangler.onSetup = function(opts) {
   setTimeout(() => {
     this.map.doubleClickZoom.disable();
   }, 0);
+
   if (opts.wasSelected) {
     console.log('nodemanger/opts.wasselected', opts);
     const featuresThatWereSelected: List<NodeFeature> = List(

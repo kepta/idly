@@ -1,19 +1,14 @@
-import { List, Set } from 'immutable';
+import { Set } from 'immutable';
 import { SagaIterator } from 'redux-saga';
-import { all, put, select, takeLatest } from 'redux-saga/effects';
+import { all, put, takeLatest } from 'redux-saga/effects';
 
-import { Action, action } from 'common/actions';
-import { IRootStateType } from 'common/store';
+import { action } from 'common/actions';
 import { CORE } from 'core/store/core.actions';
 import { featToNode } from 'map/utils/featToNode';
-import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { Node } from 'osm/entities/node';
-import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { getTypeFromID } from 'osm/misc';
 
 import {
   DRAW,
-  IDrawSelect,
   SelectFeaturesAction
 } from 'draw/store/draw.actions';
 

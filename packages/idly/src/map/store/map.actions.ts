@@ -1,9 +1,6 @@
-import { Set } from 'immutable';
-import { LngLatBounds } from 'mapbox-gl';
 
 import { action, Action } from 'common/actions';
 import { Entities } from 'core/coreOperations';
-import { Node } from 'osm/entities/node';
 
 export const OSM_TILES = {
   get: 'OSM_TILES.get',

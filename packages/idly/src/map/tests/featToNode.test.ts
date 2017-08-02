@@ -19,6 +19,7 @@ interface INodeProperties {
   tags: string;
   id: string;
   icon: string;
+  name: string;
 }
 
 describe('node to feat', () => {
@@ -35,6 +36,7 @@ describe('node to feat', () => {
         user: 'Mauls'
       }),
       icon: 'circle',
+      name: undefined,
       tags: JSON.stringify({})
     },
     geometry: { type: 'Point', coordinates: [-0.0326419, 51.4996707] },

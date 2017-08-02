@@ -1,13 +1,14 @@
-import { Map, Set } from 'immutable';
+import { Set } from 'immutable';
 
 import {
   addToModifiedEntities,
   addToVirginEntities,
   removeEntities
 } from 'core/coreOperations';
+
+import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { tagsFactory } from 'osm/entities/helpers/tags';
 
 const n1 = nodeFactory({ id: 'n-1' });
 const n11 = nodeFactory({

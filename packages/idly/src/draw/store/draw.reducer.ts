@@ -1,14 +1,7 @@
-import { List, Map, Record, Set } from 'immutable';
-import { uniqWith } from 'ramda';
+import { List, Record } from 'immutable';
 
 import { Action } from 'common/actions';
-import { OSM_TILES } from 'map/store/map.actions';
-import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
-import { Graph, graphFactory } from 'osm/history/graph';
-import { graphRemoveEntities, graphSetEntities } from 'osm/history/helpers';
 
 import { DRAW } from 'draw/store/draw.actions';
 

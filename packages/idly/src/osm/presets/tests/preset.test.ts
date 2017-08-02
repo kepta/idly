@@ -1,6 +1,6 @@
 /* globals context: true */
-import { wayFactory } from 'osm/entities/way';
 import { tagsFactory } from 'osm/entities/helpers/tags';
+import { wayFactory } from 'osm/entities/way';
 import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
 import { initAreaKeys, initPresets } from 'osm/presets/presets';

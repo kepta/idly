@@ -1,4 +1,3 @@
-import { attachToWindow } from 'utils/attach_to_window';
 
 import { SOURCES } from 'map/map';
 import { popup } from 'map/mapboxglSetup';

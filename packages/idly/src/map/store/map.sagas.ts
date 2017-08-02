@@ -1,21 +1,16 @@
 /**
  * @ABOUT: sagas
  */
-import { Map, Set } from 'immutable';
-import { LngLatBounds } from 'mapbox-gl';
 import { buffers, delay, SagaIterator } from 'redux-saga';
 import * as S from 'redux-saga/effects';
-import { bboxPolygon, featureCollection } from 'turf';
 
-import { action, Action } from 'common/actions';
+import { action } from 'common/actions';
 import { IRootStateType } from 'common/store';
 import { CORE } from 'core/store/core.actions';
 import { removeExisting } from 'core/tileOperations';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
-import { Graph } from 'osm/history/graph';
 import { fetchTile } from 'osm/network/fetchTile';
-import { cancelablePromise } from 'utils/promise';
 
 import { ZOOM } from 'map/map';
 import {

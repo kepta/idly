@@ -1,5 +1,4 @@
 import { Set } from 'immutable';
-import * as R from 'ramda';
 import * as React from 'react';
 
 import { Entities } from 'core/coreOperations';
@@ -109,14 +108,25 @@ export class Layer extends React.PureComponent<IPropsType, {}> {
     return null;
   }
 }
-
+/**
+ * @TOFIX add text-halo, seems to not work now
+ */
 const styleFactory = (layerId, sourceId) => ({
   id: layerId,
   type: 'symbol',
   source: sourceId,
   layout: {
     'icon-image': '{icon}-11',
-    'icon-allow-overlap': true
+    'icon-allow-overlap': true,
+    'text-field': '{name}',
+    'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+    'text-size': 9,
+    'text-transform': 'uppercase',
+    'text-letter-spacing': 0.05,
+    'text-offset': [0, 1.5],
+    'text-optional': true,
+    'text-anchor': 'top',
+    'text-allow-overlap': false
   },
   filter: ['all']
 });

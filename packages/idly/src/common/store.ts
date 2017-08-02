@@ -1,4 +1,4 @@
-import { fromJS, List, Map, Set } from 'immutable';
+import { Set } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';

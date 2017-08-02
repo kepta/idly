@@ -1,10 +1,11 @@
 import { Point } from 'geojson';
 import * as turf from 'turf';
 
-import { Node } from 'osm/entities/node';
-import { ITags } from 'osm/entities/helpers/tags';
-import { presetsMatch } from 'osm/presets/presets';
 import { Feature } from 'typings/geojson';
+
+import { Node } from 'osm/entities/node';
+import { presetsMatch } from 'osm/presets/presets';
+
 import { weakCache } from 'utils/weakCache';
 
 interface INodeProperties {
@@ -12,6 +13,7 @@ interface INodeProperties {
   tags: string;
   id: string;
   icon: string;
+  name: string | undefined;
 }
 /**
  * @TOFIX this whole Nodeproperties fuck up
@@ -26,7 +28,8 @@ function _nodeToFeat(n: any): NodeFeature {
       node_properties: JSON.stringify(n.properties),
       tags: JSON.stringify(n.tags),
       id: n.id,
-      icon: (match && match.icon) || 'circle'
+      icon: (match && match.icon) || 'circle',
+      name: n.tags.get('name')
     };
     const feat = turf.point([n.loc.lon, n.loc.lat], properties) as Feature<
       Point,

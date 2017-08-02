@@ -1,19 +1,16 @@
 import { Set } from 'immutable';
-import * as deb from 'lodash.debounce';
-import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as turf from 'turf';
 
 import { Entities } from 'core/coreOperations';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
-import { IRootStateType, observe, store } from 'common/store';
+import { IRootStateType } from 'common/store';
 
 import { attachToWindow } from 'utils/attach_to_window';
-import { lonlatToXYs, mercator } from 'utils/mecarator';
+import { lonlatToXYs } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
@@ -22,7 +19,6 @@ import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
 import { dirtyPopup } from 'map/utils/map.popup';
-import { cache } from 'utils/weakMapCache';
 
 export const ZOOM = 16;
 export const SOURCES = [

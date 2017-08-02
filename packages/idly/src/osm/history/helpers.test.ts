@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable';
 
-import { Node, nodeFactory } from 'osm/entities/node';
+import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
