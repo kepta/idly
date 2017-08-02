@@ -1,6 +1,5 @@
 import { List } from 'immutable';
 
-import { action } from 'common/actions';
 
 export const CORE = {
   newData: 'CORE.newData',

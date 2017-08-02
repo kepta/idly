@@ -1,5 +1,4 @@
-import { List, Map } from 'immutable';
-import { groupBy } from 'ramda';
+import { Map } from 'immutable';
 
 import { Graph } from 'osm/history/graph';
 import { graphFactory } from 'osm/history/graph';

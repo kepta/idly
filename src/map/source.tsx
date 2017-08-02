@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as turf from 'turf';
 
-import { Entities } from 'osm/entities/entities';
 
-import { Layer } from 'map/layer';
 
 interface IPropsType {
   sourceName: string;

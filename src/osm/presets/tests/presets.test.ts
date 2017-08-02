@@ -1,10 +1,10 @@
 import { List } from 'immutable';
 
+import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
-import { tagsFactory } from 'osm/entities/helpers/tags';
 import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
 
 describe('presetIndex', function() {

@@ -1,11 +1,12 @@
+import { List, Map } from 'immutable';
+
+import { propertiesGen } from 'osm/entities/helpers/properties';
 import { nodeFactory } from 'osm/entities/node';
+import { wayFactory } from 'osm/entities/way';
 import { geoExtent } from 'osm/geo_utils/geo_extent';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { propertiesGen } from 'osm/entities/helpers/properties';
-
-import { List, Map, Record } from 'immutable';
-import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
+
 describe('osmNode', function() {
   it('returns a node', function() {
     // expect(nodeFactory()).toBeInstanceOf(Node);

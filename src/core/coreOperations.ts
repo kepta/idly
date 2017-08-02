@@ -1,4 +1,4 @@
-import { Map, Set } from 'immutable';
+import { Set } from 'immutable';
 
 import { Node } from 'osm/entities/node';
 

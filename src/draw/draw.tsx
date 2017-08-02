@@ -1,15 +1,8 @@
-import MapboxDraw = require('@mapbox/mapbox-gl-draw');
 import { List } from 'immutable';
-import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { IRootStateType } from 'common/store';
-import { featToNode } from 'map/utils/featToNode';
-import { NodeFeature } from 'map/utils/nodeToFeat';
-import { Node } from 'osm/entities/node';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
 import { attachToWindow } from 'utils/attach_to_window';
 
 import { initPresets } from 'osm/presets/presets';

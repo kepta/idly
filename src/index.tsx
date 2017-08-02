@@ -12,12 +12,12 @@ import { parseXML } from 'osm/parsers/parsers';
 import { attachToWindow } from 'utils/attach_to_window';
 
 import { Map } from 'map/map';
-import { osmReducer } from 'map/store/map.reducer';
 import { presetsMatch } from 'osm/presets/presets';
 
+import { tagsFactory } from 'osm/entities/helpers/tags';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
-import { tagsFactory } from 'osm/entities/helpers/tags';
+
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 

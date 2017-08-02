@@ -5,7 +5,7 @@
 // } from 'osm/entity';
 // import { coreGraph as Graph } from 'osm/graph';
 // import { osmNode as Node } from 'osm/node.new';
-import { fromJS, List, Map } from 'immutable';
+import { List, Map } from 'immutable';
 import { Way, wayFactory } from 'osm/entities/way';
 describe('osmWay', function() {
   //   if (debug) {

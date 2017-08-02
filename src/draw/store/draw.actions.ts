@@ -1,10 +1,8 @@
 import { Feature, Point } from 'geojson';
 import { List } from 'immutable';
-import { LngLatBounds } from 'mapbox-gl';
 
 import { action, Action } from 'common/actions';
 import { NodeFeature } from 'map/utils/nodeToFeat';
-import { Node } from 'osm/entities/node';
 
 export const DRAW = {
   selectFeatures: 'DRAW.selectFeatures',

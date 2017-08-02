@@ -306,7 +306,7 @@
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-2.0.29.tgz#5002e14f75e2d71e564281df0431c8c1b4a2a36a"
 
-"@types/node@*", "@types/node@^8.0.17":
+"@types/node@*":
   version "8.0.17"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.17.tgz#677bc8c118cfb76013febb62ede1f31d2c7222a1"
 
@@ -314,9 +314,13 @@
   version "6.0.83"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.83.tgz#dd022db01ac2c01c1057775e88ccffce96d1d6fe"
 
-"@types/ramda@^0.24.5":
-  version "0.24.5"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.24.5.tgz#68923b7b98c555d85546548954b2bc95b9af7926"
+"@types/node@^8.0.19":
+  version "8.0.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.19.tgz#e46e2b0243de7d03f15b26b45c59ebb84f657a4e"
+
+"@types/ramda@^0.24.6":
+  version "0.24.6"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.24.6.tgz#b4a73b3d0468de5fbdffe8d372a83c3d728ca643"
 
 "@types/react-dom@^15.5.1":
   version "15.5.1"
@@ -335,9 +339,9 @@
   version "15.0.38"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.38.tgz#6afea31a9fe66304af474106ba372ddaba449995"
 
-"@types/react@^15.5.1":
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.0.tgz#3b3e92a60b65045e4df48fda324de84d83addbc4"
+"@types/react@^16.0.0":
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.0.tgz#fec7e6302e11c1cd307129d8ce1e6d5dca4a0283"
 
 "@types/shelljs@^0.7.0":
   version "0.7.2"
@@ -2964,9 +2968,9 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.0.x"
 
-html-webpack-plugin@^2.29.0:
-  version "2.29.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.29.0.tgz#e987f421853d3b6938c8c4c8171842e5fd17af23"
+html-webpack-plugin@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.30.1.tgz#7f9c421b7ea91ec460f56527d78df484ee7537d5"
   dependencies:
     bluebird "^3.4.7"
     html-minifier "^3.2.3"

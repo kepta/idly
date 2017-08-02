@@ -1,4 +1,4 @@
-import { List, Map, Record } from 'immutable';
+import { List, Record } from 'immutable';
 import { ITags, tagsFactory } from 'osm/entities/helpers/tags';
 
 import { Properties, propertiesGen } from 'osm/entities/helpers/properties';

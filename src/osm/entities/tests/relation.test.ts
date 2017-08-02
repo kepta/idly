@@ -1,5 +1,4 @@
-import { List, Map, Record } from 'immutable';
-import * as _ from 'lodash';
+import { List, Map } from 'immutable';
 
 // import {
 //   osmIsInterestingTag,

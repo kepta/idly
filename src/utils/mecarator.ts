@@ -1,5 +1,4 @@
 import { LngLatBounds } from 'mapbox-gl';
-import * as R from 'ramda';
 const SphericalMercator = require('@mapbox/sphericalmercator');
 
 export const mercator = new SphericalMercator({
