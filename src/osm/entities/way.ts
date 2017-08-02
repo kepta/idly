@@ -1,7 +1,7 @@
 import { List, Map, Record } from 'immutable';
-import { ITags, tagsFactory } from 'osm/others/tags';
+import { ITags, tagsFactory } from 'osm/entities/helpers/tags';
 
-import { Properties, propertiesGen } from 'osm/others/properties';
+import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
 
 type Id = string;
 type Version = number;

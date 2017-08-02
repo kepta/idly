@@ -1,7 +1,7 @@
 import { Node, nodeFactory } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { propertiesGen } from 'osm/others/properties';
-import { tagsFactory } from 'osm/others/tags';
+import { propertiesGen } from 'osm/entities/helpers/properties';
+import { tagsFactory } from 'osm/entities/helpers/tags';
 
 import { NodeFeature } from 'map/utils/nodeToFeat';
 

@@ -1,9 +1,11 @@
 import { nodeFactory } from 'osm/entities/node';
 import { geoExtent } from 'osm/geo_utils/geo_extent';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { propertiesGen } from 'osm/others/properties';
+import { propertiesGen } from 'osm/entities/helpers/properties';
 
 import { List, Map, Record } from 'immutable';
+import { wayFactory } from 'osm/entities/way';
+import { graphFactory } from 'osm/history/graph';
 describe('osmNode', function() {
   it('returns a node', function() {
     // expect(nodeFactory()).toBeInstanceOf(Node);
@@ -53,16 +55,16 @@ describe('osmNode', function() {
 
   describe.skip('#geometry', function() {
     it("returns 'vertex' if the node is a member of any way", function() {
-      var node = new Node(),
-        way = Way({ nodes: [node.id] }),
-        graph = Graph([node, way]);
-      expect(node.geometry(graph)).toBe('vertex');
+      const node = nodeFactory({ id: 'n-1' });
+      const way = wayFactory({ id: 'w-1', nodes: List([node.id]) });
+      const graph = graphFactory([node, way]);
+      // expect(node.geometry(graph)).toBe('vertex');
     });
 
     it("returns 'point' if the node is not a member of any way", function() {
-      var node = Node(),
-        graph = Graph([node]);
-      expect(node.geometry(graph)).toBe('point');
+      // const node = Node(),
+      //   graph = Graph([node]);
+      // expect(node.geometry(graph)).toBe('point');
     });
   });
 

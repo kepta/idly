@@ -52,7 +52,6 @@ NodeMangler.onClick = function(state, e) {
         geometry: f.geometry
       }))
   );
-  console.log('features to select', featuresToSelect);
   if (featuresToSelect.size === 0) return;
   const points = featuresToSelect.map(f => this.newFeature(f));
   points.forEach(point => this.addFeature(point));

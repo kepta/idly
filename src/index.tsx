@@ -17,7 +17,7 @@ import { presetsMatch } from 'osm/presets/presets';
 
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
-import { tagsFactory } from 'osm/others/tags';
+import { tagsFactory } from 'osm/entities/helpers/tags';
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 

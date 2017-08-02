@@ -1,4 +1,7 @@
-// const translations = Object.create(null);
+/**
+ * @REVISIT why does translations exist?
+ */
+const translations = Object.create(null);
 
 export let currentLocale = 'en';
 export let textDirection = 'ltr';
@@ -22,7 +25,7 @@ export function setLocale(_) {
  * @param {string} s string identifier
  * @returns {string?} locale string
  */
-export function t(s, o, loc, translations = Object.create(null)) {
+export function t(s, o?, loc?) {
   loc = loc || currentLocale;
 
   const path = s

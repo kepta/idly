@@ -1,8 +1,8 @@
 import { List, Record } from 'immutable';
 
+import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
 import { genLngLat, LngLat } from 'osm/geo_utils/lng_lat';
-import { Properties, propertiesGen } from 'osm/others/properties';
-import { ITags, tagsFactory } from 'osm/others/tags';
+import { ITags, tagsFactory } from 'osm/entities/helpers/tags';
 
 export type Id = string;
 export type Version = number;
