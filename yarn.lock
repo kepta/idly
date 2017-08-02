@@ -3900,7 +3900,7 @@ lodash.isequal@^3.0.4:
     lodash._baseisequal "^3.0.0"
     lodash._bindcallback "^3.0.0"
 
-lodash.isequal@^4.2.0:
+lodash.isequal@^4.2.0, lodash.isequal@^4.4.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
 
@@ -4004,6 +4004,13 @@ map-visit@^0.1.5:
   dependencies:
     lazy-cache "^2.0.1"
     object-visit "^0.3.4"
+
+mapbox-gl-inspect@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/mapbox-gl-inspect/-/mapbox-gl-inspect-1.2.3.tgz#abd818efc8b52cc8cb1d0bd597912c53cf523269"
+  dependencies:
+    lodash.isequal "^4.4.0"
+    randomcolor "^0.4.4"
 
 mapbox-gl-supported@^1.2.0:
   version "1.2.0"
@@ -5180,6 +5187,10 @@ randombytes@^2.0.0, randombytes@^2.0.1:
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.0.5.tgz#dc009a246b8d09a177b4b7a0ae77bc570f4b1b79"
   dependencies:
     safe-buffer "^5.1.0"
+
+randomcolor@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/randomcolor/-/randomcolor-0.4.4.tgz#5ff56862e97ba03beb0419ff0536ec7aff59eeeb"
 
 range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"

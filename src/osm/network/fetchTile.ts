@@ -1,4 +1,3 @@
-
 import { parseXML } from 'osm/parsers/parsers';
 import { stubXML } from 'osm/stubs/xmlstub';
 import { handleErrors } from 'utils/promise';
@@ -18,12 +17,16 @@ export async function fetchTile(x: number, y: number, zoom: number) {
   const xyz = [x, y, zoom].join(',');
   const bboxStr = merc.bbox(x, y, zoom).join(',');
   try {
+    if (window.debug) {
+      return parseXML(
+        new DOMParser().parseFromString(await fetchStub(), 'text/xml')
+      );
+    }
     let response = await fetch(
       `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`
     );
     response = handleErrors(response);
     const text = await response.text();
-    // const text = await fetchStub();
 
     const parser = new DOMParser();
     const xml = parser.parseFromString(text, 'text/xml');

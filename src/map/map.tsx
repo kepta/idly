@@ -1,4 +1,5 @@
 import { Set } from 'immutable';
+import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -14,7 +15,7 @@ import { lonlatToXYs } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
-import { Layer } from 'map/layer';
+import { Layer } from 'map/layers/points';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
@@ -66,7 +67,10 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
     attachToWindow('map', this.map);
+
     attachToWindow('popup', () => dirtyPopup(this.map));
+    attachToWindow('MapboxInspect', MapboxInspect);
+
     this.map.on('load', () => {
       this.setState({ mapLoaded: true });
     });
