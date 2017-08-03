@@ -3,6 +3,7 @@ import * as turf from 'turf';
 
 import { Feature } from 'typings/geojson';
 
+import { getGeometry } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
 

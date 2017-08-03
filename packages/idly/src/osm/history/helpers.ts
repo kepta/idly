@@ -35,14 +35,14 @@ export function graphRemoveEntity(graph: Graph, entity: Entity): Graph {
   return graph.removeIn([entity.type, entity.id]) as Graph;
 }
 
-// export function calculateParentWays(graph: Graph): any {
-//   let parentWays = Map();
-//   parentWays = parentWays.withMutations(map => {
-//     graph.way.forEach(e => {
-//       e.nodes.forEach(n => {
-//         map.set(n, e.id);
-//       });
-//     });
-//   });
-//   return parentWays;
-// }
+export function calculateParentWays(graph: Graph): any {
+  let parentWays = Map();
+  parentWays = parentWays.withMutations(map => {
+    graph.way.forEach(e => {
+      e.nodes.forEach(n => {
+        map.set(n, e.id);
+      });
+    });
+  });
+  return parentWays;
+}
