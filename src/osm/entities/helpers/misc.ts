@@ -24,7 +24,7 @@ export enum Geometries {
 export function getGeometry(
   entity: Entity,
   areaKeys: AreaKeys,
-  parentWays: WeakMap<Node, string[]> = new WeakMap()
+  parentWays: any = {}
 ): Geometries {
   if (entity instanceof Node) {
     return isPoi(entity, parentWays) ? Geometries.POINT : Geometries.VERTEX;
@@ -37,8 +37,8 @@ export function getGeometry(
   }
 }
 
-function isPoi(entity: Node, parentWays: WeakMap<Node, string[]>) {
-  return !parentWays.get(entity) || parentWays.get(entity).length === 0;
+function isPoi(entity: Node, parentWays: any) {
+  return !parentWays[entity.id] || parentWays[entity.id].length === 0;
 }
 
 export function isArea(entity: Way, areaKeys: AreaKeys) {

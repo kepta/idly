@@ -149,8 +149,8 @@ export function initPresets(d: any = data.presets) {
 }
 
 export function presetsMatch(entity: Entity, areaKeys: AreaKeys = Map()) {
-  let geometry = getGeometry(entity, areaKeys);
-
+  let geometry = entity.properties.geometry; //getGeometry(entity, areaKeys);
+  if (!geometry) throw new Error('no geometry found' + entity.id);
   // Treat entities on addr:interpolation lines as points, not vertices (#3241)
   if (geometry === Geometries.VERTEX && isOnAddressLine(entity)) {
     geometry = Geometries.POINT;

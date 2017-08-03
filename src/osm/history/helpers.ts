@@ -31,6 +31,19 @@ export function graphRemoveEntities(graph: Graph, entities: Entity[]): Graph {
   }) as Graph;
 }
 
+export function graphRemoveEntitiesWithId(
+  graph: Graph,
+  entities: string[]
+): Graph {
+  return graph.withMutations(g => {
+    entities.forEach(e => {
+      if (e[0] === 'n') g.removeIn(['node', e]);
+      else if (e[1] === 'w') g.removeIn(['way', e]);
+      else g.removeIn(['relation', e]);
+    });
+  }) as Graph;
+}
+
 export function graphRemoveEntity(graph: Graph, entity: Entity): Graph {
   return graph.removeIn([entity.type, entity.id]) as Graph;
 }

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "sourceMap": false,
+    "sourceMap": true,
     "baseUrl": "./src",
     "noImplicitAny": false,
     "module": "commonjs",

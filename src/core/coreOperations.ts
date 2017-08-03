@@ -1,6 +1,8 @@
 import { Set } from 'immutable';
 
+import { Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
+import { Way } from 'osm/entities/way';
 
 export type Entities = Set<Node>;
 export type EntitiesId = Set<string>;
@@ -81,4 +83,17 @@ export function addToModifiedEntities(
     entitiesIdtoAdd
   );
   return withoutStaleEntities.union(entitiestoAdd);
+}
+
+export function calculateParentWays(entities: Entity[]) {
+  const obj = {};
+  entities.forEach(e => {
+    if (e instanceof Way) {
+      e.nodes.forEach(n => {
+        if (!obj[n]) return (obj[n] = [e.id]);
+        obj[n].push(e.id);
+      });
+    }
+  });
+  return obj;
 }
