@@ -4,13 +4,12 @@ import * as React from 'react';
 import { Entities } from 'core/coreOperations';
 import { Node } from 'osm/entities/node';
 
-import { setSubtract } from 'map/utils/setSubtract';
+import { setSubtract, setSubtractNode } from 'map/utils/setSubtract';
 import { Layer } from 'mapbox-gl';
 
 /**
  * @REVISIT fix this
  */
-const ss = setSubtract<Node>();
 
 interface IPropsType {
   name: string;
@@ -35,24 +34,32 @@ export class PointsWithoutLabels extends React.PureComponent<
     toRemove: Set<Node>()
   };
   baseFilter = ['all', ['!has', 'name']];
-  addLayer = layer => {
+  addLayer = (layer: Layer) => {
     this.props.dirtyMapAccess(map => map.addLayer(layer));
   };
   componentDidMount() {
     this.addLayer({
       id: this.props.name,
-      type: 'symbol',
+      type: 'circle',
       source: this.props.sourceName,
-      layout: {
-        'icon-image': '{icon}-15',
-        'icon-allow-overlap': true
+      layout: {},
+      paint: {
+        'circle-radius': 3,
+        'circle-color': '#eeeeee',
+        'circle-stroke-width': 0.5
       },
       filter: this.baseFilter
     });
   }
   componentWillReceiveProps(nextProps: IPropsType) {
-    const removedEntities = ss(this.props.entities, nextProps.entities);
-    const addedEntites = ss(nextProps.entities, this.props.entities);
+    const removedEntities = setSubtractNode(
+      this.props.entities,
+      nextProps.entities
+    );
+    const addedEntites = setSubtractNode(
+      nextProps.entities,
+      this.props.entities
+    );
     if (removedEntities.size > 0 && addedEntites.size === 0) {
       this.setState({
         toRemove: this.state.toRemove.union(removedEntities) as Set<Node>

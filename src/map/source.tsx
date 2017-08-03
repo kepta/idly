@@ -18,13 +18,11 @@ export class Source extends React.PureComponent<IPropsType, {}> {
   state = {
     sourceLoaded: false
   };
-  componentWillReceiveProps(nextProps: IPropsType) {
-    // if (!nextProps.entities.equals(this.props.entities))
-    //   this.props.updateSource(
-    //     nextProps.entities,
-    //     this.props.dirtyMapAccess,
-    //     this.props.sourceName
-    //   );
+  shouldComponentUpdate(nextProps: IPropsType, nextState) {
+    return (
+      !nextProps.entities.equals(this.props.entities) ||
+      this.state.sourceLoaded !== nextState.sourceLoaded
+    );
   }
   componentDidMount() {
     this.props.dirtyMapAccess(map => {
