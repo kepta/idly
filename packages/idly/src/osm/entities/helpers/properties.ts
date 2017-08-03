@@ -1,4 +1,5 @@
 import { Record } from 'immutable';
+import { Geometries } from 'osm/entities/helpers/misc';
 
 export class Properties extends Record({
   visible: true,
@@ -6,7 +7,8 @@ export class Properties extends Record({
   timestamp: undefined,
   changeset: undefined,
   uid: undefined,
-  user: undefined
+  user: undefined,
+  geometry: undefined
 }) {
   public visible?: boolean;
   public version?: number;
@@ -14,6 +16,7 @@ export class Properties extends Record({
   public changeset?: string;
   public uid?: string;
   public user?: string;
+  public geometry?: Geometries;
 }
 
 export function propertiesGen(obj?: {
@@ -23,6 +26,7 @@ export function propertiesGen(obj?: {
   changeset?: string;
   uid?: string;
   user?: string;
+  geometry?: Geometries;
 }) {
   return new Properties(obj);
 }
