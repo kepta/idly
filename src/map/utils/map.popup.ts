@@ -13,9 +13,24 @@ export const dirtyPopup = map =>
       if (map.queryRenderedFeatures(bbox, { layers: [s] }).length > 0) {
         map.getCanvas().style.cursor = 'pointer';
       }
+      if (!Array.isArray(e.features) || !e.features[0]) return;
       popup
         .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML(e.features[0].properties.id)
+        .setHTML(
+          `<span style="width:200px"><pre>${JSON.stringify(
+            {
+              id: e.features[0].properties.id,
+              tags: JSON.parse(e.features[0].properties.tags),
+              node_properties: JSON.parse(
+                e.features[0].properties.node_properties
+              ),
+              icon: e.features[0].properties.icon
+            },
+            null,
+            2
+          )}</pre>
+          </span>`
+        )
         .addTo(map);
     });
     map.on('mouseleave', s, () => {

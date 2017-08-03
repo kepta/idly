@@ -15,6 +15,7 @@ interface INodeProperties {
   id: string;
   icon: string;
   name?: string;
+  geometry: string;
 }
 /**
  * @TOFIX this whole Nodeproperties fuck up
@@ -30,8 +31,9 @@ function _nodeToFeat(n: any): NodeFeature {
       node_properties: JSON.stringify(n.properties),
       tags: JSON.stringify(n.tags),
       id: n.id,
-      icon: (match && match.icon) || 'circle',
-      name: n.tags.get('name')
+      icon: match && match.icon,
+      name: n.tags.get('name'),
+      geometry: n.properties.geometry
     };
     const feat = turf.point([n.loc.lon, n.loc.lat], properties) as Feature<
       Point,

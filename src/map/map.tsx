@@ -17,6 +17,8 @@ import { lonlatToXYs } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
+import { FillLayer } from 'map/layers/area';
+import { LineLayer } from 'map/layers/line';
 import { Layer } from 'map/layers/points';
 import { PointsWithLabels } from 'map/layers/pointsWithLabels';
 import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
@@ -34,10 +36,15 @@ export const SOURCES = [
   },
   {
     source: 'modified',
-    data: 'modifedEntities'
+    data: 'modifiedEntities'
   }
 ];
-const _LAYERS = [PointsWithLabels.displayName, PointsWithoutLabels.displayName];
+const _LAYERS = [
+  PointsWithLabels.displayName,
+  PointsWithoutLabels.displayName,
+  LineLayer.displayName
+  // FillLayer.displayName
+];
 export const LAYERS = _LAYERS
   .map(l => SOURCES.map(s => s.source + l))
   .reduce((prv, c) => prv.concat(c), []);
@@ -55,7 +62,7 @@ type Entity = Node | Way | Relation;
  */
 interface IPropsType {
   entities: Entities;
-  modifedEntities: Entities;
+  modifiedEntities: Entities;
   updateSource: (
     data: Entities,
     dirtyMapAccess: (map: any) => void,
@@ -88,8 +95,14 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
     const ltlng = this.map.getBounds();
-    const xys = lonlatToXYs(ltlng, ZOOM);
-    this.props.getOSMTiles(xys, ZOOM);
+    if (window.smaller) {
+      const xys = lonlatToXYs(ltlng, 18);
+      console.log(xys);
+      this.props.getOSMTiles(xys, 18);
+    } else {
+      const xys = lonlatToXYs(ltlng, ZOOM);
+      this.props.getOSMTiles(xys, ZOOM);
+    }
   };
   dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
   render() {
@@ -128,6 +141,20 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
                   dirtyMapAccess={this.dirtyMapAccess}
                   entities={this.props[s.data]}
                 />
+                <LineLayer
+                  sourceName={s.source}
+                  name={s.source + LineLayer.displayName}
+                  updateSource={this.props.updateSource}
+                  dirtyMapAccess={this.dirtyMapAccess}
+                  entities={this.props[s.data]}
+                />
+                <FillLayer
+                  sourceName={s.source}
+                  name={s.source + FillLayer.displayName}
+                  updateSource={this.props.updateSource}
+                  dirtyMapAccess={this.dirtyMapAccess}
+                  entities={this.props[s.data]}
+                />
               </Source>
             )}
           </div>}
@@ -139,7 +166,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 export const Map = connect<any, any, any>(
   (state: IRootStateType, props) => ({
     entities: state.core.entities,
-    modifedEntities: state.core.modifedEntities
+    modifiedEntities: state.core.modifiedEntities
   }),
   { updateSource, getOSMTiles }
 )(MapComp);
