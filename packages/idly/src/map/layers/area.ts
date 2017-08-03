@@ -25,45 +25,23 @@ interface IPropsType {
 interface IStatesType {
   toRemove: Set<Node>;
 }
-export class PointsWithLabels extends React.PureComponent<
-  IPropsType,
-  IStatesType
-> {
-  static displayName = 'PointsWithLabels';
+export class FillLayer extends React.PureComponent<IPropsType, IStatesType> {
+  static displayName = 'FillLayer';
   state = {
     toRemove: Set<Node>()
   };
-  baseFilter = [
-    'all',
-    ['has', 'icon'],
-    ['==', '$type', 'Point'],
-    ['!=', 'geometry', 'vertex']
-  ];
+  baseFilter = ['all', ['==', '$type', 'Polygon']];
   addLayer = (layer: Layer) => {
     this.props.dirtyMapAccess(map => map.addLayer(layer));
   };
   componentDidMount() {
     this.addLayer({
       id: this.props.name,
-      type: 'symbol',
+      type: 'fill',
       source: this.props.sourceName,
-      layout: {
-        'icon-image': '{icon}-11',
-        'icon-allow-overlap': true,
-        'text-field': '{name}',
-        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-        'text-size': 9,
-        'text-transform': 'uppercase',
-        'text-letter-spacing': 0.05,
-        'text-offset': [0, 1.5],
-        'text-optional': true,
-        'text-anchor': 'top',
-        'text-allow-overlap': false
-      },
       paint: {
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 1.5,
-        'text-halo-blur': 0.5
+        'fill-opacity': 0.1,
+        'fill-color': '#06feff'
       },
       filter: this.baseFilter
     });

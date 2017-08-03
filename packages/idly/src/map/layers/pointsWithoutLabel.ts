@@ -33,7 +33,12 @@ export class PointsWithoutLabels extends React.PureComponent<
   state = {
     toRemove: Set<Node>()
   };
-  baseFilter = ['all', ['!has', 'name']];
+  baseFilter = [
+    'all',
+    ['!has', 'icon'],
+    ['==', '$type', 'Point'],
+    ['!=', 'geometry', 'vertex']
+  ];
   addLayer = (layer: Layer) => {
     this.props.dirtyMapAccess(map => map.addLayer(layer));
   };
@@ -44,7 +49,7 @@ export class PointsWithoutLabels extends React.PureComponent<
       source: this.props.sourceName,
       layout: {},
       paint: {
-        'circle-radius': 3,
+        'circle-radius': 6,
         'circle-color': '#eeeeee',
         'circle-stroke-width': 0.5
       },

@@ -24,8 +24,8 @@ import { initAreaKeys, initPresets } from 'osm/presets/presets';
 
 const initialState = {
   graph: graphFactory(),
-  modifedGraph: graphFactory(),
-  modifedEntities: Set(),
+  modifiedGraph: graphFactory(),
+  modifiedEntities: Set(),
   entities: Set()
   // parentWays: Map()
 };
@@ -33,8 +33,8 @@ const initialState = {
 export class CoreState extends Record(initialState) {
   public graph: Graph;
   public entities: Entities;
-  public modifedEntities: Entities;
-  public modifedGraph: Graph;
+  public modifiedEntities: Entities;
+  public modifiedGraph: Graph;
 
   // public parentWays: Map<string, Set<string>>;
   public set(k: string, v: any): CoreState {
@@ -60,26 +60,26 @@ export function coreReducer(state = coreState, action: Action<any>) {
       const newState = state
         .update('graph', (graph: Graph) => graphSetEntities(graph, data))
         .update('entities', (entities: Entities) =>
-          addToVirginEntities(entities, Set(data), state.modifedEntities, true)
+          addToVirginEntities(entities, Set(data), state.modifiedEntities, true)
         );
       console.timeEnd(CORE.newData);
       return newState;
     }
     case CORE.addModified: {
       console.time(CORE.addModified);
-      const modifiedEntities: Entities = action.modifedEntities;
+      const modifiedEntities: Entities = action.modifiedEntities;
       const newState = state
-        .update('modifedGraph', (modifedGraph: Graph) =>
-          graphSetEntities(modifedGraph, modifiedEntities.toArray())
+        .update('modifiedGraph', (modifiedGraph: Graph) =>
+          graphSetEntities(modifiedGraph, modifiedEntities.toArray())
         )
-        .update('modifedEntities', (modifedEntities: Entities) => {
-          return addToModifiedEntities(modifedEntities, modifiedEntities);
+        .update('modifiedEntities', (mEn: Entities) => {
+          return addToModifiedEntities(mEn, modifiedEntities);
         });
       console.timeEnd(CORE.addModified);
       return newState;
     }
     case CORE.removeIds: {
-      const modifiedEntitiesId: Set<string> = action.modifedEntitiesId;
+      const modifiedEntitiesId: Set<string> = action.modifiedEntitiesId;
       if (modifiedEntitiesId.size === 0) return state;
       /**
        * @REVISIT not sure about
@@ -102,7 +102,7 @@ export function coreReducer(state = coreState, action: Action<any>) {
             graphRemoveEntitiesWithId(graph, modifiedEntitiesId.toArray())
           // removeEntities(entities, modifiedEntitiesId)
         )
-        .update('modifedEntities', (entities: Set<Node>) =>
+        .update('modifiedEntities', (entities: Set<Node>) =>
           removeEntities(entities, modifiedEntitiesId)
         );
 

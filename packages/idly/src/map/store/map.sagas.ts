@@ -20,6 +20,8 @@ import {
   UpdateSourcesAction
 } from 'map/store/map.actions';
 import { nodeToFeat } from 'map/utils/nodeToFeat';
+import { wayToFeat } from 'map/utils/wayToFeat';
+import { Way } from 'osm/entities/way';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -33,6 +35,7 @@ function* watchFetch(): SagaIterator {
   while (true) {
     const { xys, zoom }: GetOSMTilesAction = yield S.take(takeChan);
     if (zoom < ZOOM) continue;
+    if (window.disableTile) continue;
     yield S.all(xys.map(([x, y]) => S.fork(fetchTileSaga, x, y, zoom)));
   }
 }
@@ -102,13 +105,27 @@ function* watchUpdateSources(): SagaIterator {
 }
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
-  const nodes = data.toArray().filter(f => f instanceof Node).map(nodeToFeat);
+  const { graph, modifiedGraph } = yield S.select(
+    (state: IRootStateType) => state.core
+  );
+  console.time('updateSourceSaga');
+  const entities = data
+    .toArray()
+    .map(e => {
+      if (e instanceof Node) {
+        return nodeToFeat(e);
+      } else if (e instanceof Way) {
+        return wayToFeat(e, graph);
+      }
+    })
+    .filter(f => f);
+  console.timeEnd('updateSourceSaga');
 
   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
 
   if (source) {
     console.log('UPDATING source!', sourceId);
-    yield S.call([source, 'setData'], turf.featureCollection(nodes));
+    yield S.call([source, 'setData'], turf.featureCollection(entities));
   } else {
     console.log('source not foud');
   }

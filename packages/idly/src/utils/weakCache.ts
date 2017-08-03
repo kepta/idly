@@ -34,12 +34,11 @@ export function weakCache2<T extends object, P extends object, K>(
       cacheWithinCache = new WeakMap();
       cache.set(arg1, cacheWithinCache);
     } else if (cacheWithinCache.has(arg2)) {
-      console.log('hurray cache hit', arg1.size, arg2.size);
+      // console.log('hurray cache hit');
       return cacheWithinCache.get(arg2);
     }
     const value = fn(arg1, arg2);
     cacheWithinCache.set(arg2, value);
-    console.log(':( cache miss', arg1.size, arg2.size);
     return value;
   };
 }

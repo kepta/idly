@@ -7,10 +7,7 @@ import { CORE } from 'core/store/core.actions';
 import { featToNode } from 'map/utils/featToNode';
 import { Node } from 'osm/entities/node';
 
-import {
-  DRAW,
-  SelectFeaturesAction
-} from 'draw/store/draw.actions';
+import { DRAW, SelectFeaturesAction } from 'draw/store/draw.actions';
 
 export function* watchDraw(): SagaIterator {
   yield all([
@@ -34,14 +31,14 @@ export function* selectSaga({
       ),
       put(
         action(CORE.removeIds, {
-          modifedEntitiesId: Set(featuresToSelect.map(f => f.id))
+          modifiedEntitiesId: Set(featuresToSelect.map(f => f.id))
         })
       )
     ]);
   if (featuresThatWereSelected.size > 0)
     yield put(
       action(CORE.addModified, {
-        modifedEntities: Set(
+        modifiedEntities: Set(
           featuresThatWereSelected.map(feat => featToNode(feat))
         )
         // modifiedEntitiesId: Set(featuresThatWereSelected.map(feat => feat.id))
