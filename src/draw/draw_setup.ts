@@ -1,4 +1,4 @@
-import MapboxDraw = require('@mapbox/mapbox-gl-draw');
+import MapboxDraw from '@mapbox/mapbox-gl-draw';
 
 import { DRAW_CLICK_BUFFER } from 'draw/config';
 import { NodeMangler } from 'draw/modes/mainMode';

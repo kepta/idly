@@ -4,7 +4,7 @@
     "sourceMap": true,
     "baseUrl": "./src",
     "noImplicitAny": false,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es2016",
     "jsx": "react",
     "strict": true,

@@ -1,5 +1,6 @@
 import { Record } from 'immutable';
 
+import { Geometries } from 'osm/entities/constants';
 import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
 import { ITags, tagsFactory } from 'osm/entities/helpers/tags';
 import { genLngLat, LngLat } from 'osm/geo_utils/lng_lat';
@@ -8,6 +9,11 @@ export type Id = string;
 export type Version = number;
 export type Visible = boolean;
 
+/**
+ * @BUG cant use enum Geometries
+ *  Need more investigation, for now
+ *  converted it to an object
+ */
 export class Node extends Record({
   id: 'n-0',
   loc: genLngLat([NaN, NaN]),
@@ -33,3 +39,5 @@ export function nodeFactory(obj: {
 }) {
   return new Node(obj);
 }
+
+console.log(Geometries);

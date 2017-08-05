@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { t } from 'osm/presets/presets';
+import { t } from 'osm/presets/t';
 
 export function presetField(id, field) {
   field = _.clone(field);

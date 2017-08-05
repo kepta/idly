@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+let CircularDependencyPlugin = require('circular-dependency-plugin');
+
 const fs = require('fs');
 const path = require('path');
 const srcpath = path.resolve(__dirname, 'src/');
@@ -39,6 +41,12 @@ module.exports = {
       hash: true,
       filename: 'index.html',
       template: 'public/index.html'
+    }),
+    new CircularDependencyPlugin({
+      // exclude detection of files based on a RegExp
+      exclude: /a\.js|node_modules/,
+      // add errors to webpack instead of warnings
+      failOnError: true
     })
   ],
   module: {

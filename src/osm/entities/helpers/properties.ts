@@ -1,5 +1,4 @@
 import { Record } from 'immutable';
-import { Geometries } from 'osm/entities/helpers/misc';
 
 export class Properties extends Record({
   visible: true,

@@ -1,7 +1,5 @@
 import { Set } from 'immutable';
-import { debounce } from 'lodash';
 import * as MapboxInspect from 'mapbox-gl-inspect';
-import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
@@ -17,37 +15,15 @@ import { lonlatToXYs } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
+import { LAYERS, ZOOM, SOURCES } from 'map/constants';
 import { FillLayer } from 'map/layers/area';
 import { LineLayer } from 'map/layers/line';
-import { Layer } from 'map/layers/points';
 import { PointsWithLabels } from 'map/layers/pointsWithLabels';
 import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
-import { addLayers } from 'map/layers/style';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
 import { dirtyPopup } from 'map/utils/map.popup';
-
-export const ZOOM = 16;
-export const SOURCES = [
-  {
-    source: 'virgin',
-    data: 'entities'
-  },
-  {
-    source: 'modified',
-    data: 'modifiedEntities'
-  }
-];
-const _LAYERS = [
-  PointsWithLabels.displayName,
-  PointsWithoutLabels.displayName,
-  LineLayer.displayName
-  // FillLayer.displayName
-];
-export const LAYERS = _LAYERS
-  .map(l => SOURCES.map(s => s.source + l))
-  .reduce((prv, c) => prv.concat(c), []);
 
 type Entity = Node | Way | Relation;
 

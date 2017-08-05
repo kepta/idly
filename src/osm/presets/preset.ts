@@ -1,4 +1,3 @@
-import { Map } from 'immutable';
 import * as _ from 'lodash';
 
 import { Entity } from 'osm/entities/entities';

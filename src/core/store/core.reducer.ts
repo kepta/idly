@@ -1,9 +1,8 @@
-import { Map, Record, Set } from 'immutable';
+import { Record, Set } from 'immutable';
 
 import { Node } from 'osm/entities/node';
 import { Graph, graphFactory } from 'osm/history/graph';
 import {
-  graphRemoveEntities,
   graphRemoveEntitiesWithId,
   graphSetEntities
 } from 'osm/history/helpers';
