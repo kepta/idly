@@ -5,7 +5,7 @@ import { store } from 'common/store';
 import { NodeFeature } from 'map/utils/nodeToFeat';
 
 import { selectFeatures } from 'draw/store/draw.actions';
-import { LAYERS } from 'map/map';
+import { LAYERS } from 'map/constants';
 
 const NodeMangler: any = {};
 

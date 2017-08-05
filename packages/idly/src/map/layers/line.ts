@@ -1,10 +1,10 @@
-import { List, Set } from 'immutable';
+import { Set } from 'immutable';
 import * as React from 'react';
 
 import { Entities } from 'core/coreOperations';
 import { Node } from 'osm/entities/node';
 
-import { setSubtract, setSubtractNode } from 'map/utils/setSubtract';
+import { setSubtractNode } from 'map/utils/setSubtract';
 import { Layer } from 'mapbox-gl';
 
 /**

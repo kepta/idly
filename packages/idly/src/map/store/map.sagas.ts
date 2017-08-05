@@ -10,9 +10,10 @@ import { CORE } from 'core/store/core.actions';
 import { removeExisting } from 'core/tileOperations';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
+import { Way } from 'osm/entities/way';
 import { fetchTile } from 'osm/network/fetchTile';
 
-import { ZOOM } from 'map/map';
+import { ZOOM } from 'map/constants';
 import {
   GetOSMTilesAction,
   MAP,
@@ -21,7 +22,6 @@ import {
 } from 'map/store/map.actions';
 import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { wayToFeat } from 'map/utils/wayToFeat';
-import { Way } from 'osm/entities/way';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {

@@ -1,7 +1,7 @@
+import * as Im from 'immutable';
+import * as R from 'ramda';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Im = require('immutable');
-import * as R from 'ramda';
 import { Provider } from 'react-redux';
 import * as turf from 'turf';
 

@@ -18,5 +18,5 @@ declare module '@mapbox/mapbox-gl-draw' {
     add(k: any): void;
     static modes: any;
   }
-  export = Draw;
+  export default Draw;
 }

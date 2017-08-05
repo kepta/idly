@@ -1,5 +1,5 @@
-import mapboxgl = require('mapbox-gl');
 import { getStyle } from 'map/layers/style';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { attachToWindow } from 'utils/attach_to_window';
 
 mapboxgl.accessToken =

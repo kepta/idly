@@ -1,31 +1,15 @@
-import { Map } from 'immutable';
-
+import { Geometries, Geometry } from 'osm/entities/constants';
 import { Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 import { AreaKeys } from 'osm/presets/presets';
 
-// export const POINT = 'point';
-// export const VERTEX = 'vertex';
-// export const AREA = 'area';
-// export const LINE = 'line';
-// export const RELATION = 'relation';
-
-// type POINT = 'point';
-export enum Geometries {
-  POINT = 'point',
-  VERTEX = 'vertex',
-  AREA = 'area',
-  LINE = 'line',
-  RELATION = 'relation'
-}
-
 export function getGeometry(
   entity: Entity,
   areaKeys: AreaKeys,
   parentWays: any = {}
-): Geometries {
+): Geometry {
   if (entity instanceof Node) {
     return isPoi(entity, parentWays) ? Geometries.POINT : Geometries.VERTEX;
   } else if (entity instanceof Way) {

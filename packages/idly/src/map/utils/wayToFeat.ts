@@ -3,10 +3,11 @@ import * as turf from 'turf';
 
 import { Feature } from 'typings/geojson';
 
-import { Geometries, getGeometry } from 'osm/entities/helpers/misc';
+import { getGeometry } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
 
+import { Geometries } from 'osm/entities/constants';
 import { Way } from 'osm/entities/way';
 import { Graph } from 'osm/history/graph';
 import { weakCache, weakCache2 } from 'utils/weakCache';

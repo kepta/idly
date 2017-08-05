@@ -1,4 +1,4 @@
-import { LAYERS } from 'map/map';
+import { LAYERS } from 'map/constants';
 import { popup } from 'map/mapboxglSetup';
 
 export const dirtyPopup = map =>

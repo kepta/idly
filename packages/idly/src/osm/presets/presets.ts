@@ -8,17 +8,13 @@ import { presetCollection } from 'osm/presets/collection';
 import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
 
-import {
-  Geometries,
-  getGeometry,
-  isOnAddressLine
-} from 'osm/entities/helpers/misc';
+import { Geometries, Geometry } from 'osm/entities/constants';
+import { isOnAddressLine } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
 type Entity = Node | Way | Relation;
-export const t = (...args) => args.join(',');
 
 const all = presetCollection([]);
 const recent = presetCollection([]);
@@ -39,7 +35,7 @@ class Index {
     this.area = o;
     this.relation = o;
   }
-  set(g: Geometries, value: any) {
+  set(g: Geometry, value: any) {
     if (g === Geometries.POINT) {
       this.point = value;
     } else if (g === Geometries.VERTEX) {
@@ -54,7 +50,7 @@ class Index {
       throw new Error('type not found');
     }
   }
-  get(g: Geometries) {
+  get(g: Geometry) {
     if (g === Geometries.POINT) {
       return this.point;
     } else if (g === Geometries.VERTEX) {
