@@ -1,11 +1,11 @@
 import { Set } from 'immutable';
 import * as React from 'react';
 
-import { Entities } from 'core/coreOperations';
+import { Entities, Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 
 import { setSubtractNode } from 'map/utils/setSubtract';
-import { Layer } from 'mapbox-gl';
+import { FillPaint, Layer } from 'mapbox-gl';
 
 /**
  * @REVISIT fix this
@@ -23,12 +23,13 @@ interface IPropsType {
   ) => void;
 }
 interface IStatesType {
-  toRemove: Set<Node>;
+  toRemove: Entities;
 }
 export class FillLayer extends React.PureComponent<IPropsType, IStatesType> {
   static displayName = 'FillLayer';
+  static selectable = false;
   state = {
-    toRemove: Set<Node>()
+    toRemove: Set<Entity>()
   };
   baseFilter = ['all', ['==', '$type', 'Polygon']];
   addLayer = (layer: Layer) => {
@@ -40,8 +41,9 @@ export class FillLayer extends React.PureComponent<IPropsType, IStatesType> {
       type: 'fill',
       source: this.props.sourceName,
       paint: {
-        'fill-opacity': 0.1,
-        'fill-color': '#06feff'
+        'fill-opacity': 0.05,
+        'fill-color': '#06feff',
+        'fill-outline-color': '#d6feff'
       },
       filter: this.baseFilter
     });
@@ -51,15 +53,15 @@ export class FillLayer extends React.PureComponent<IPropsType, IStatesType> {
       this.props.entities,
       nextProps.entities
     );
-    const addedEntites = setSubtractNode(
+    const addedEntities = setSubtractNode(
       nextProps.entities,
       this.props.entities
     );
-    if (removedEntities.size > 0 && addedEntites.size === 0) {
+    if (removedEntities.size > 0 && addedEntities.size === 0) {
       this.setState({
-        toRemove: this.state.toRemove.union(removedEntities) as Set<Node>
+        toRemove: this.state.toRemove.union(removedEntities) as Entities
       });
-    } else if (addedEntites.size > 0) {
+    } else if (addedEntities.size > 0) {
       this.props.updateSource(
         nextProps.entities,
         this.props.dirtyMapAccess,

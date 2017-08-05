@@ -1,0 +1,340 @@
+digraph "dependency-cruiser output"{
+    ordering=out
+    rankdir=LR
+    splines=true
+    overlap=false
+    nodesep=0.16
+    fontname="Helvetica-bold"
+    fontsize="9"
+    style="rounded,bold"
+    compound=true
+    node [shape=box style="rounded, filled" fillcolor="#ffffcc" height=0.2 fontname=Helvetica fontsize=9]
+    edge [color=black arrowhead=normal fontname="Helvetica" fontsize="9"]
+
+    subgraph "cluster_/common" {label="common" "common/actions" [label="actions" color="red" fontcolor="red"] }
+    subgraph "cluster_/common" {label="common" "common/observeStore" [label="observeStore" color="red" fontcolor="red"] }
+    subgraph "cluster_/common" {label="common" "common/store" [label="store" color="red" fontcolor="red"] }
+    subgraph "cluster_/core" {label="core" "core/coreOperations" [label="coreOperations" color="red" fontcolor="red"] }
+    subgraph "cluster_/core" {label="core" subgraph "cluster_/core/store" {label="store" "core/store/core.actions" [label="core.actions" color="red" fontcolor="red"] } }
+    subgraph "cluster_/core" {label="core" subgraph "cluster_/core/store" {label="store" "core/store/core.reducer" [label="core.reducer" color="red" fontcolor="red"] } }
+    subgraph "cluster_/core" {label="core" "core/tileOperations" [label="tileOperations" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/address-formats.json" [label="address-formats.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/deprecated.json" [label="deprecated.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/discarded.json" [label="discarded.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/drive-left.json" [label="drive-left.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/imagery.json" [label="imagery.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/imperial.json" [label="imperial.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/index" [label="index" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/locales.json" [label="locales.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" "data/phone-formats.json" [label="phone-formats.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/data" {label="data" subgraph "cluster_/data/presets" {label="presets" "data/presets/categories.json" [label="categories.json" color="red" fontcolor="red"] } }
+    subgraph "cluster_/data" {label="data" subgraph "cluster_/data/presets" {label="presets" "data/presets/defaults.json" [label="defaults.json" color="red" fontcolor="red"] } }
+    subgraph "cluster_/data" {label="data" subgraph "cluster_/data/presets" {label="presets" "data/presets/fields.json" [label="fields.json" color="red" fontcolor="red"] } }
+    subgraph "cluster_/data" {label="data" subgraph "cluster_/data/presets" {label="presets" "data/presets/presets.json" [label="presets.json" color="red" fontcolor="red"] } }
+    subgraph "cluster_/data" {label="data" "data/shortcuts.json" [label="shortcuts.json" color="red" fontcolor="red"] }
+    "diacritics" [color="red" fontcolor="red"]
+    subgraph "cluster_/draw" {label="draw" "draw/config" [label="config" color="red" fontcolor="red"] }
+    subgraph "cluster_/draw" {label="draw" subgraph "cluster_/draw/modes" {label="modes" "draw/modes/mainMode" [label="mainMode" color="red" fontcolor="red"] } }
+    subgraph "cluster_/draw" {label="draw" subgraph "cluster_/draw/store" {label="store" "draw/store/draw.actions" [label="draw.actions" color="red" fontcolor="red"] } }
+    subgraph "cluster_/draw" {label="draw" subgraph "cluster_/draw/store" {label="store" "draw/store/draw.reducer" [label="draw.reducer" color="red" fontcolor="red"] } }
+    subgraph "cluster_/draw" {label="draw" subgraph "cluster_/draw/store" {label="store" "draw/store/draw.sagas" [label="draw.sagas" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" "map/constants" [label="constants" color="red" fontcolor="red"] }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/layers" {label="layers" "map/layers/style" [label="style" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" "map/mapboxglSetup" [label="mapboxglSetup" color="red" fontcolor="red"] }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/store" {label="store" "map/store/map.actions" [label="map.actions" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/store" {label="store" "map/store/map.reducer" [label="map.reducer" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/store" {label="store" "map/store/map.sagas" [label="map.sagas" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/utils" {label="utils" "map/utils/featToNode" [label="featToNode" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/utils" {label="utils" "map/utils/nodeToFeat" [label="nodeToFeat" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/utils" {label="utils" "map/utils/setSubtract" [label="setSubtract" color="red" fontcolor="red"] } }
+    subgraph "cluster_/map" {label="map" subgraph "cluster_/map/utils" {label="utils" "map/utils/wayToFeat" [label="wayToFeat" color="red" fontcolor="red"] } }
+    subgraph "cluster_/name-suggestion-index" {label="name-suggestion-index" "name-suggestion-index/name-suggestions.json" [label="name-suggestions.json" color="red" fontcolor="red"] }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" "osm/entities/constants" [label="constants" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" subgraph "cluster_/osm/entities/helpers" {label="helpers" "osm/entities/helpers/misc" [label="misc" color="red" fontcolor="red"] } } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" subgraph "cluster_/osm/entities/helpers" {label="helpers" "osm/entities/helpers/properties" [label="properties" color="red" fontcolor="red"] } } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" subgraph "cluster_/osm/entities/helpers" {label="helpers" "osm/entities/helpers/tags" [label="tags" color="red" fontcolor="red"] } } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" "osm/entities/node" [label="node" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" "osm/entities/relation" [label="relation" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/entities" {label="entities" "osm/entities/way" [label="way" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/geo_utils" {label="geo_utils" "osm/geo_utils/geo_extent" [label="geo_extent" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/geo_utils" {label="geo_utils" "osm/geo_utils/lng_lat" [label="lng_lat" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/geo_utils" {label="geo_utils" "osm/geo_utils/misc" [label="misc" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/history" {label="history" "osm/history/graph" [label="graph" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/history" {label="history" "osm/history/helpers" [label="helpers" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/network" {label="network" "osm/network/fetchTile" [label="fetchTile" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/parsers" {label="parsers" "osm/parsers/parsers" [label="parsers" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/parsers" {label="parsers" subgraph "cluster_/osm/parsers/tests" {label="tests" "osm/parsers/tests/fixtures" [label="fixtures" color="red" fontcolor="red"] } } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/presets" {label="presets" "osm/presets/category" [label="category" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/presets" {label="presets" "osm/presets/collection" [label="collection" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/presets" {label="presets" "osm/presets/field" [label="field" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/presets" {label="presets" "osm/presets/preset" [label="preset" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/presets" {label="presets" "osm/presets/presets" [label="presets" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/presets" {label="presets" "osm/presets/t" [label="t" color="red" fontcolor="red"] } }
+    subgraph "cluster_/osm" {label="osm" subgraph "cluster_/osm/stubs" {label="stubs" "osm/stubs/xmlstub" [label="xmlstub" color="red" fontcolor="red"] } }
+    "react" [color="red" fontcolor="red"]
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/common" {label="common" "src/common/actions.ts" [label="actions.ts" URL="src/common/actions.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/common" {label="common" "src/common/observeStore.ts" [label="observeStore.ts" URL="src/common/observeStore.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/common" {label="common" "src/common/store.ts" [label="store.ts" URL="src/common/store.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/core" {label="core" "src/core/coreOperations.ts" [label="coreOperations.ts" URL="src/core/coreOperations.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/core" {label="core" subgraph "cluster_/src/core/store" {label="store" "src/core/store/core.actions.ts" [label="core.actions.ts" URL="src/core/store/core.actions.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/core" {label="core" subgraph "cluster_/src/core/store" {label="store" "src/core/store/core.reducer.ts" [label="core.reducer.ts" URL="src/core/store/core.reducer.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/core" {label="core" subgraph "cluster_/src/core/tests" {label="tests" "src/core/tests/coreOperations.test.ts" [label="coreOperations.test.ts" URL="src/core/tests/coreOperations.test.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/core" {label="core" subgraph "cluster_/src/core/tests" {label="tests" "src/core/tests/tileOperations.test.ts" [label="tileOperations.test.ts" URL="src/core/tests/tileOperations.test.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/core" {label="core" "src/core/tileOperations.ts" [label="tileOperations.ts" URL="src/core/tileOperations.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/data" {label="data" "src/data/index.ts" [label="index.ts" URL="src/data/index.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/data" {label="data" "src/data/update_imagery.js" [label="update_imagery.js" URL="src/data/update_imagery.js"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/data" {label="data" "src/data/update_locales.js" [label="update_locales.js" URL="src/data/update_locales.js"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" "src/draw/config.ts" [label="config.ts" URL="src/draw/config.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" subgraph "cluster_/src/draw/converters" {label="converters" "src/draw/converters/point.ts" [label="point.ts" URL="src/draw/converters/point.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" "src/draw/draw.utils.ts" [label="draw.utils.ts" URL="src/draw/draw.utils.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" "src/draw/draw_setup.ts" [label="draw_setup.ts" URL="src/draw/draw_setup.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" subgraph "cluster_/src/draw/modes" {label="modes" "src/draw/modes/mainMode.ts" [label="mainMode.ts" URL="src/draw/modes/mainMode.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" subgraph "cluster_/src/draw/store" {label="store" "src/draw/store/draw.actions.ts" [label="draw.actions.ts" URL="src/draw/store/draw.actions.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" subgraph "cluster_/src/draw/store" {label="store" "src/draw/store/draw.reducer.ts" [label="draw.reducer.ts" URL="src/draw/store/draw.reducer.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/draw" {label="draw" subgraph "cluster_/src/draw/store" {label="store" "src/draw/store/draw.sagas.ts" [label="draw.sagas.ts" URL="src/draw/store/draw.sagas.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" "src/map/constants.ts" [label="constants.ts" URL="src/map/constants.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/area.ts" [label="area.ts" URL="src/map/layers/area.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/baseLayer.ts" [label="baseLayer.ts" URL="src/map/layers/baseLayer.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/line.ts" [label="line.ts" URL="src/map/layers/line.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/points.ts" [label="points.ts" URL="src/map/layers/points.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/pointsWithLabels.ts" [label="pointsWithLabels.ts" URL="src/map/layers/pointsWithLabels.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/pointsWithoutLabel.ts" [label="pointsWithoutLabel.ts" URL="src/map/layers/pointsWithoutLabel.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/layers" {label="layers" "src/map/layers/style.ts" [label="style.ts" URL="src/map/layers/style.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" "src/map/mapboxglSetup.ts" [label="mapboxglSetup.ts" URL="src/map/mapboxglSetup.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/store" {label="store" "src/map/store/map.actions.ts" [label="map.actions.ts" URL="src/map/store/map.actions.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/store" {label="store" "src/map/store/map.reducer.ts" [label="map.reducer.ts" URL="src/map/store/map.reducer.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/store" {label="store" "src/map/store/map.sagas.ts" [label="map.sagas.ts" URL="src/map/store/map.sagas.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/tests" {label="tests" "src/map/tests/featToNode.test.ts" [label="featToNode.test.ts" URL="src/map/tests/featToNode.test.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/utils" {label="utils" "src/map/utils/featToNode.ts" [label="featToNode.ts" URL="src/map/utils/featToNode.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/utils" {label="utils" "src/map/utils/map.popup.ts" [label="map.popup.ts" URL="src/map/utils/map.popup.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/utils" {label="utils" "src/map/utils/nodeToFeat.ts" [label="nodeToFeat.ts" URL="src/map/utils/nodeToFeat.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/utils" {label="utils" "src/map/utils/setSubtract.ts" [label="setSubtract.ts" URL="src/map/utils/setSubtract.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/map" {label="map" subgraph "cluster_/src/map/utils" {label="utils" "src/map/utils/wayToFeat.ts" [label="wayToFeat.ts" URL="src/map/utils/wayToFeat.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" "src/osm/entities/constants.ts" [label="constants.ts" URL="src/osm/entities/constants.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" "src/osm/entities/entities.ts" [label="entities.ts" URL="src/osm/entities/entities.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" subgraph "cluster_/src/osm/entities/helpers" {label="helpers" "src/osm/entities/helpers/misc.ts" [label="misc.ts" URL="src/osm/entities/helpers/misc.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" subgraph "cluster_/src/osm/entities/helpers" {label="helpers" "src/osm/entities/helpers/properties.ts" [label="properties.ts" URL="src/osm/entities/helpers/properties.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" subgraph "cluster_/src/osm/entities/helpers" {label="helpers" "src/osm/entities/helpers/tags.ts" [label="tags.ts" URL="src/osm/entities/helpers/tags.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" "src/osm/entities/node.ts" [label="node.ts" URL="src/osm/entities/node.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" "src/osm/entities/relation.ts" [label="relation.ts" URL="src/osm/entities/relation.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" subgraph "cluster_/src/osm/entities/tests" {label="tests" "src/osm/entities/tests/node.test.ts" [label="node.test.ts" URL="src/osm/entities/tests/node.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" subgraph "cluster_/src/osm/entities/tests" {label="tests" "src/osm/entities/tests/relation.test.ts" [label="relation.test.ts" URL="src/osm/entities/tests/relation.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" subgraph "cluster_/src/osm/entities/tests" {label="tests" "src/osm/entities/tests/way.test.ts" [label="way.test.ts" URL="src/osm/entities/tests/way.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/entities" {label="entities" "src/osm/entities/way.ts" [label="way.ts" URL="src/osm/entities/way.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/geo_utils" {label="geo_utils" "src/osm/geo_utils/geo_extent.ts" [label="geo_extent.ts" URL="src/osm/geo_utils/geo_extent.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/geo_utils" {label="geo_utils" "src/osm/geo_utils/lng_lat.ts" [label="lng_lat.ts" URL="src/osm/geo_utils/lng_lat.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/geo_utils" {label="geo_utils" "src/osm/geo_utils/misc.ts" [label="misc.ts" URL="src/osm/geo_utils/misc.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/geo_utils" {label="geo_utils" subgraph "cluster_/src/osm/geo_utils/tests" {label="tests" "src/osm/geo_utils/tests/geoExtent.test.ts" [label="geoExtent.test.ts" URL="src/osm/geo_utils/tests/geoExtent.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/history" {label="history" "src/osm/history/graph.test.ts" [label="graph.test.ts" URL="src/osm/history/graph.test.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/history" {label="history" "src/osm/history/graph.ts" [label="graph.ts" URL="src/osm/history/graph.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/history" {label="history" "src/osm/history/helpers.test.ts" [label="helpers.test.ts" URL="src/osm/history/helpers.test.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/history" {label="history" "src/osm/history/helpers.ts" [label="helpers.ts" URL="src/osm/history/helpers.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" "src/osm/index.ts" [label="index.ts" URL="src/osm/index.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" "src/osm/misc.ts" [label="misc.ts" URL="src/osm/misc.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/network" {label="network" "src/osm/network/fetchTile.ts" [label="fetchTile.ts" URL="src/osm/network/fetchTile.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/parsers" {label="parsers" "src/osm/parsers/parsers.ts" [label="parsers.ts" URL="src/osm/parsers/parsers.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/parsers" {label="parsers" subgraph "cluster_/src/osm/parsers/tests" {label="tests" "src/osm/parsers/tests/fixtures.ts" [label="fixtures.ts" URL="src/osm/parsers/tests/fixtures.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/parsers" {label="parsers" subgraph "cluster_/src/osm/parsers/tests" {label="tests" "src/osm/parsers/tests/parsers.test.ts" [label="parsers.test.ts" URL="src/osm/parsers/tests/parsers.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" "src/osm/presets/category.ts" [label="category.ts" URL="src/osm/presets/category.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" "src/osm/presets/collection.ts" [label="collection.ts" URL="src/osm/presets/collection.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" "src/osm/presets/field.ts" [label="field.ts" URL="src/osm/presets/field.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" "src/osm/presets/preset.ts" [label="preset.ts" URL="src/osm/presets/preset.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" "src/osm/presets/presets.ts" [label="presets.ts" URL="src/osm/presets/presets.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" "src/osm/presets/t.ts" [label="t.ts" URL="src/osm/presets/t.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" subgraph "cluster_/src/osm/presets/tests" {label="tests" "src/osm/presets/tests/category.test.ts" [label="category.test.ts" URL="src/osm/presets/tests/category.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" subgraph "cluster_/src/osm/presets/tests" {label="tests" "src/osm/presets/tests/collection.test.ts" [label="collection.test.ts" URL="src/osm/presets/tests/collection.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" subgraph "cluster_/src/osm/presets/tests" {label="tests" "src/osm/presets/tests/preset.test.ts" [label="preset.test.ts" URL="src/osm/presets/tests/preset.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/presets" {label="presets" subgraph "cluster_/src/osm/presets/tests" {label="tests" "src/osm/presets/tests/presets.test.ts" [label="presets.test.ts" URL="src/osm/presets/tests/presets.test.ts"] } } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/osm" {label="osm" subgraph "cluster_/src/osm/stubs" {label="stubs" "src/osm/stubs/xmlstub.ts" [label="xmlstub.ts" URL="src/osm/stubs/xmlstub.ts"] } } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/typings" {label="typings" "src/typings/geojson.d.ts" [label="geojson.d.ts" URL="src/typings/geojson.d.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/typings" {label="typings" "src/typings/json.d.ts" [label="json.d.ts" URL="src/typings/json.d.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/typings" {label="typings" "src/typings/mapbox-gl-draw.d.ts" [label="mapbox-gl-draw.d.ts" URL="src/typings/mapbox-gl-draw.d.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/typings" {label="typings" "src/typings/osmtogeojson.d.ts" [label="osmtogeojson.d.ts" URL="src/typings/osmtogeojson.d.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/typings" {label="typings" "src/typings/sphericalmercator.d.ts" [label="sphericalmercator.d.ts" URL="src/typings/sphericalmercator.d.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/utils" {label="utils" "src/utils/attach_to_window.ts" [label="attach_to_window.ts" URL="src/utils/attach_to_window.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/utils" {label="utils" "src/utils/mecarator.ts" [label="mecarator.ts" URL="src/utils/mecarator.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/utils" {label="utils" "src/utils/promise.ts" [label="promise.ts" URL="src/utils/promise.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/utils" {label="utils" "src/utils/weakCache.ts" [label="weakCache.ts" URL="src/utils/weakCache.ts"] } }
+    subgraph "cluster_/src" {label="src" subgraph "cluster_/src/utils" {label="utils" "src/utils/weakMapCache.ts" [label="weakMapCache.ts" URL="src/utils/weakMapCache.ts"] } }
+    subgraph "cluster_/utils" {label="utils" "utils/attach_to_window" [label="attach_to_window" color="red" fontcolor="red"] }
+    subgraph "cluster_/utils" {label="utils" "utils/promise" [label="promise" color="red" fontcolor="red"] }
+    subgraph "cluster_/utils" {label="utils" "utils/weakCache" [label="weakCache" color="red" fontcolor="red"] }
+    "wmf-sitematrix" [color="red" fontcolor="red"]
+
+    "src/common/store.ts" -> "common/observeStore"
+    "src/common/store.ts" -> "core/store/core.reducer"
+    "src/common/store.ts" -> "draw/store/draw.reducer"
+    "src/common/store.ts" -> "draw/store/draw.sagas"
+    "src/common/store.ts" -> "map/store/map.reducer"
+    "src/common/store.ts" -> "map/store/map.sagas"
+    "src/core/coreOperations.ts" -> "osm/entities/way"
+    "src/core/store/core.reducer.ts" -> "core/coreOperations"
+    "src/core/store/core.reducer.ts" -> "core/store/core.actions"
+    "src/core/store/core.reducer.ts" -> "osm/entities/helpers/misc"
+    "src/core/store/core.reducer.ts" -> "osm/history/graph"
+    "src/core/store/core.reducer.ts" -> "osm/history/helpers"
+    "src/core/store/core.reducer.ts" -> "osm/presets/presets"
+    "src/core/tests/coreOperations.test.ts" -> "core/coreOperations"
+    "src/core/tests/coreOperations.test.ts" -> "osm/entities/helpers/tags"
+    "src/core/tests/coreOperations.test.ts" -> "osm/entities/node"
+    "src/core/tests/coreOperations.test.ts" -> "osm/geo_utils/lng_lat"
+    "src/core/tests/tileOperations.test.ts" -> "core/tileOperations"
+    "src/core/tests/tileOperations.test.ts" -> "osm/entities/helpers/tags"
+    "src/core/tests/tileOperations.test.ts" -> "osm/entities/node"
+    "src/core/tests/tileOperations.test.ts" -> "osm/geo_utils/lng_lat"
+    "src/data/index.ts" -> "data/address-formats.json"
+    "src/data/index.ts" -> "data/deprecated.json"
+    "src/data/index.ts" -> "data/discarded.json"
+    "src/data/index.ts" -> "data/drive-left.json"
+    "src/data/index.ts" -> "data/imagery.json"
+    "src/data/index.ts" -> "data/imperial.json"
+    "src/data/index.ts" -> "data/locales.json"
+    "src/data/index.ts" -> "data/phone-formats.json"
+    "src/data/index.ts" -> "data/presets/categories.json"
+    "src/data/index.ts" -> "data/presets/defaults.json"
+    "src/data/index.ts" -> "data/presets/fields.json"
+    "src/data/index.ts" -> "data/presets/presets.json"
+    "src/data/index.ts" -> "data/shortcuts.json"
+    "src/data/index.ts" -> "name-suggestion-index/name-suggestions.json"
+    "src/data/index.ts" -> "wmf-sitematrix"
+    "src/draw/converters/point.ts" -> "osm/entities/helpers/properties"
+    "src/draw/converters/point.ts" -> "osm/entities/helpers/tags"
+    "src/draw/converters/point.ts" -> "osm/entities/node"
+    "src/draw/converters/point.ts" -> "osm/geo_utils/lng_lat"
+    "src/draw/draw_setup.ts" -> "draw/config"
+    "src/draw/draw_setup.ts" -> "draw/modes/mainMode"
+    "src/draw/modes/mainMode.ts" -> "common/store"
+    "src/draw/modes/mainMode.ts" -> "draw/store/draw.actions"
+    "src/draw/modes/mainMode.ts" -> "map/constants"
+    "src/draw/store/draw.actions.ts" -> "common/actions"
+    "src/draw/store/draw.reducer.ts" -> "draw/store/draw.actions"
+    "src/draw/store/draw.sagas.ts" -> "common/actions"
+    "src/draw/store/draw.sagas.ts" -> "core/store/core.actions"
+    "src/draw/store/draw.sagas.ts" -> "draw/store/draw.actions"
+    "src/draw/store/draw.sagas.ts" -> "map/utils/featToNode"
+    "src/map/layers/area.ts" -> "map/utils/setSubtract"
+    "src/map/layers/area.ts" -> "react"
+    "src/map/layers/baseLayer.ts" -> "react"
+    "src/map/layers/line.ts" -> "map/utils/setSubtract"
+    "src/map/layers/line.ts" -> "react"
+    "src/map/layers/points.ts" -> "react"
+    "src/map/layers/pointsWithLabels.ts" -> "map/utils/setSubtract"
+    "src/map/layers/pointsWithLabels.ts" -> "react"
+    "src/map/layers/pointsWithoutLabel.ts" -> "map/utils/setSubtract"
+    "src/map/layers/pointsWithoutLabel.ts" -> "react"
+    "src/map/mapboxglSetup.ts" -> "map/layers/style"
+    "src/map/mapboxglSetup.ts" -> "utils/attach_to_window"
+    "src/map/store/map.actions.ts" -> "common/actions"
+    "src/map/store/map.reducer.ts" -> "core/tileOperations"
+    "src/map/store/map.reducer.ts" -> "map/store/map.actions"
+    "src/map/store/map.sagas.ts" -> "common/actions"
+    "src/map/store/map.sagas.ts" -> "core/store/core.actions"
+    "src/map/store/map.sagas.ts" -> "core/tileOperations"
+    "src/map/store/map.sagas.ts" -> "map/constants"
+    "src/map/store/map.sagas.ts" -> "map/store/map.actions"
+    "src/map/store/map.sagas.ts" -> "map/utils/nodeToFeat"
+    "src/map/store/map.sagas.ts" -> "map/utils/wayToFeat"
+    "src/map/store/map.sagas.ts" -> "osm/entities/node"
+    "src/map/store/map.sagas.ts" -> "osm/entities/way"
+    "src/map/store/map.sagas.ts" -> "osm/network/fetchTile"
+    "src/map/store/map.sagas.ts" -> "utils/attach_to_window"
+    "src/map/tests/featToNode.test.ts" -> "map/utils/featToNode"
+    "src/map/tests/featToNode.test.ts" -> "map/utils/nodeToFeat"
+    "src/map/tests/featToNode.test.ts" -> "osm/entities/constants"
+    "src/map/tests/featToNode.test.ts" -> "osm/entities/node"
+    "src/map/utils/featToNode.ts" -> "osm/entities/helpers/properties"
+    "src/map/utils/featToNode.ts" -> "osm/entities/helpers/tags"
+    "src/map/utils/featToNode.ts" -> "osm/entities/node"
+    "src/map/utils/featToNode.ts" -> "osm/geo_utils/lng_lat"
+    "src/map/utils/map.popup.ts" -> "map/constants"
+    "src/map/utils/map.popup.ts" -> "map/mapboxglSetup"
+    "src/map/utils/nodeToFeat.ts" -> "osm/entities/node"
+    "src/map/utils/nodeToFeat.ts" -> "osm/presets/presets"
+    "src/map/utils/nodeToFeat.ts" -> "utils/weakCache"
+    "src/map/utils/setSubtract.ts" -> "utils/weakCache"
+    "src/map/utils/wayToFeat.ts" -> "osm/entities/constants"
+    "src/map/utils/wayToFeat.ts" -> "osm/entities/way"
+    "src/map/utils/wayToFeat.ts" -> "osm/presets/presets"
+    "src/map/utils/wayToFeat.ts" -> "utils/weakCache"
+    "src/osm/entities/helpers/misc.ts" -> "osm/entities/constants"
+    "src/osm/entities/helpers/misc.ts" -> "osm/entities/node"
+    "src/osm/entities/helpers/misc.ts" -> "osm/entities/relation"
+    "src/osm/entities/helpers/misc.ts" -> "osm/entities/way"
+    "src/osm/entities/node.ts" -> "osm/entities/constants"
+    "src/osm/entities/node.ts" -> "osm/entities/helpers/properties"
+    "src/osm/entities/node.ts" -> "osm/entities/helpers/tags"
+    "src/osm/entities/node.ts" -> "osm/geo_utils/lng_lat"
+    "src/osm/entities/relation.ts" -> "osm/entities/constants"
+    "src/osm/entities/relation.ts" -> "osm/entities/helpers/properties"
+    "src/osm/entities/relation.ts" -> "osm/entities/helpers/tags"
+    "src/osm/entities/tests/node.test.ts" -> "osm/entities/helpers/properties"
+    "src/osm/entities/tests/node.test.ts" -> "osm/entities/node"
+    "src/osm/entities/tests/node.test.ts" -> "osm/entities/way"
+    "src/osm/entities/tests/node.test.ts" -> "osm/geo_utils/geo_extent"
+    "src/osm/entities/tests/node.test.ts" -> "osm/geo_utils/lng_lat"
+    "src/osm/entities/tests/node.test.ts" -> "osm/history/graph"
+    "src/osm/entities/tests/relation.test.ts" -> "osm/entities/relation"
+    "src/osm/entities/tests/way.test.ts" -> "osm/entities/helpers/misc"
+    "src/osm/entities/tests/way.test.ts" -> "osm/entities/helpers/tags"
+    "src/osm/entities/tests/way.test.ts" -> "osm/entities/way"
+    "src/osm/entities/tests/way.test.ts" -> "osm/presets/presets"
+    "src/osm/entities/way.ts" -> "osm/entities/constants"
+    "src/osm/entities/way.ts" -> "osm/entities/helpers/properties"
+    "src/osm/entities/way.ts" -> "osm/entities/helpers/tags"
+    "src/osm/geo_utils/geo_extent.ts" -> "osm/geo_utils/lng_lat"
+    "src/osm/geo_utils/geo_extent.ts" -> "osm/geo_utils/misc"
+    "src/osm/geo_utils/misc.ts" -> "diacritics"
+    "src/osm/geo_utils/tests/geoExtent.test.ts" -> "osm/geo_utils/geo_extent"
+    "src/osm/geo_utils/tests/geoExtent.test.ts" -> "osm/geo_utils/lng_lat"
+    "src/osm/history/graph.test.ts" -> "osm/entities/node"
+    "src/osm/history/graph.test.ts" -> "osm/entities/relation"
+    "src/osm/history/graph.test.ts" -> "osm/entities/way"
+    "src/osm/history/graph.test.ts" -> "osm/history/graph"
+    "src/osm/history/helpers.test.ts" -> "osm/entities/node"
+    "src/osm/history/helpers.test.ts" -> "osm/entities/relation"
+    "src/osm/history/helpers.test.ts" -> "osm/entities/way"
+    "src/osm/history/helpers.test.ts" -> "osm/history/graph"
+    "src/osm/history/helpers.test.ts" -> "osm/history/helpers"
+    "src/osm/history/helpers.ts" -> "osm/history/graph"
+    "src/osm/network/fetchTile.ts" -> "osm/parsers/parsers"
+    "src/osm/network/fetchTile.ts" -> "osm/stubs/xmlstub"
+    "src/osm/network/fetchTile.ts" -> "utils/attach_to_window"
+    "src/osm/network/fetchTile.ts" -> "utils/promise"
+    "src/osm/parsers/parsers.ts" -> "osm/entities/helpers/properties"
+    "src/osm/parsers/parsers.ts" -> "osm/entities/helpers/tags"
+    "src/osm/parsers/parsers.ts" -> "osm/entities/node"
+    "src/osm/parsers/parsers.ts" -> "osm/entities/relation"
+    "src/osm/parsers/parsers.ts" -> "osm/entities/way"
+    "src/osm/parsers/parsers.ts" -> "osm/geo_utils/lng_lat"
+    "src/osm/parsers/tests/parsers.test.ts" -> "osm/parsers/parsers"
+    "src/osm/parsers/tests/parsers.test.ts" -> "osm/parsers/tests/fixtures"
+    "src/osm/presets/category.ts" -> "osm/presets/collection"
+    "src/osm/presets/category.ts" -> "osm/presets/t"
+    "src/osm/presets/collection.ts" -> "osm/geo_utils/misc"
+    "src/osm/presets/field.ts" -> "osm/presets/t"
+    "src/osm/presets/preset.ts" -> "osm/presets/t"
+    "src/osm/presets/presets.ts" -> "data/index"
+    "src/osm/presets/presets.ts" -> "osm/entities/constants"
+    "src/osm/presets/presets.ts" -> "osm/entities/helpers/misc"
+    "src/osm/presets/presets.ts" -> "osm/presets/category"
+    "src/osm/presets/presets.ts" -> "osm/presets/collection"
+    "src/osm/presets/presets.ts" -> "osm/presets/field"
+    "src/osm/presets/presets.ts" -> "osm/presets/preset"
+    "src/osm/presets/tests/category.test.ts" -> "osm/presets/category"
+    "src/osm/presets/tests/category.test.ts" -> "osm/presets/collection"
+    "src/osm/presets/tests/category.test.ts" -> "osm/presets/preset"
+    "src/osm/presets/tests/collection.test.ts" -> "osm/presets/collection"
+    "src/osm/presets/tests/collection.test.ts" -> "osm/presets/preset"
+    "src/osm/presets/tests/preset.test.ts" -> "osm/entities/helpers/tags"
+    "src/osm/presets/tests/preset.test.ts" -> "osm/entities/way"
+    "src/osm/presets/tests/preset.test.ts" -> "osm/presets/field"
+    "src/osm/presets/tests/preset.test.ts" -> "osm/presets/preset"
+    "src/osm/presets/tests/preset.test.ts" -> "osm/presets/presets"
+    "src/osm/presets/tests/presets.test.ts" -> "osm/entities/helpers/tags"
+    "src/osm/presets/tests/presets.test.ts" -> "osm/entities/node"
+    "src/osm/presets/tests/presets.test.ts" -> "osm/entities/relation"
+    "src/osm/presets/tests/presets.test.ts" -> "osm/entities/way"
+    "src/osm/presets/tests/presets.test.ts" -> "osm/history/graph"
+    "src/osm/presets/tests/presets.test.ts" -> "osm/presets/presets"
+    "src/utils/weakCache.ts" -> "utils/attach_to_window"
+}

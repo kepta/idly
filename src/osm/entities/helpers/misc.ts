@@ -1,4 +1,4 @@
-import { Geometries, Geometry } from 'osm/entities/constants';
+import { Geometries } from 'osm/entities/constants';
 import { Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
@@ -9,7 +9,7 @@ export function getGeometry(
   entity: Entity,
   areaKeys: AreaKeys,
   parentWays: any = {}
-): Geometry {
+): Geometries {
   if (entity instanceof Node) {
     return isPoi(entity, parentWays) ? Geometries.POINT : Geometries.VERTEX;
   } else if (entity instanceof Way) {

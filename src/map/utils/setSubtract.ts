@@ -1,5 +1,8 @@
 import { Set } from 'immutable';
+
+import { Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
+
 import { weakCache2 } from 'utils/weakCache';
 
 export const setSubtract = <P>() =>
@@ -7,4 +10,4 @@ export const setSubtract = <P>() =>
     return a.subtract(b);
   });
 
-export const setSubtractNode = setSubtract<Node>();
+export const setSubtractNode = setSubtract<Entity>();

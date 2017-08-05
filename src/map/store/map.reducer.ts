@@ -5,9 +5,8 @@ import { Map, Record, Set } from 'immutable';
 import { uniqWith } from 'ramda';
 
 import { Action } from 'common/actions';
-import { EntitiesId } from 'core/coreOperations';
 import { mergeIds } from 'core/tileOperations';
-import { Entities } from 'osm/entities/entities';
+import { Entities, EntitiesId } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';

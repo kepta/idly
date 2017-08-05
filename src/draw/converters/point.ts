@@ -16,18 +16,18 @@ export function newPointToNode(point: Feature<Point>) {
       point.geometry.coordinates[0],
       point.geometry.coordinates[1]
     ]),
-    properties: propertiesGen({ geometry: Geometries.POINT })
+    properties: propertiesGen()
   });
 }
 
-export function pointToNode(point: Feature<Point>) {
-  return nodeFactory({
-    id: point.properties.id,
-    tags: tagsFactory(JSON.parse(point.properties.tags)),
-    loc: genLngLat([
-      point.geometry.coordinates[0],
-      point.geometry.coordinates[1]
-    ]),
-    properties: propertiesGen(JSON.parse(point.properties.node_properties))
-  });
-}
+// export function pointToNode(point: Feature<Point>) {
+//   return nodeFactory({
+//     id: point.properties.id,
+//     tags: tagsFactory(JSON.parse(point.properties.tags)),
+//     loc: genLngLat([
+//       point.geometry.coordinates[0],
+//       point.geometry.coordinates[1]
+//     ]),
+//     properties: propertiesGen(JSON.parse(point.properties.node_properties))
+//   });
+// }

@@ -1,6 +1,7 @@
 import { List, Record } from 'immutable';
 import { ITags, tagsFactory } from 'osm/entities/helpers/tags';
 
+import { Geometries } from 'osm/entities/constants';
 import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
 
 type Id = string;
@@ -12,15 +13,17 @@ const wayBaseRecord = Record({
   type: 'way',
   tags: tagsFactory(),
   properties: propertiesGen(),
-  nodes: List()
+  nodes: List(),
+  geometry: Geometries.LINE
 });
 
 export class Way extends wayBaseRecord {
-  public id: Id;
-  public type: string;
-  public tags: ITags;
-  public properties: Properties;
-  public nodes: List<string>;
+  readonly id: Id;
+  readonly type: string;
+  readonly tags: ITags;
+  readonly properties: Properties;
+  readonly nodes: List<string>;
+  readonly geometry: Geometries.LINE | Geometries.AREA;
   public set(k: string, v: any): Way {
     return super.set(k, v) as Way;
   }
@@ -31,6 +34,7 @@ export function wayFactory(obj: {
   tags?: ITags;
   properties?: Properties;
   nodes?: List<string>;
+  geometry?: Geometries.LINE | Geometries.AREA;
 }) {
   return new Way(obj);
 }

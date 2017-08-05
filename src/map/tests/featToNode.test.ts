@@ -4,8 +4,10 @@ import { nodeFactory } from 'osm/entities/node';
 
 import { Point } from 'geojson';
 import { featToNode } from 'map/utils/featToNode';
-import { nodeToFeat } from 'map/utils/nodeToFeat';
+import { NodeFeature, nodeToFeat } from 'map/utils/nodeToFeat';
 import { Feature } from 'typings/geojson';
+
+import { Geometries } from 'osm/entities/constants';
 
 describe('feat to node', () => {
   const n2 = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
@@ -14,16 +16,9 @@ describe('feat to node', () => {
     expect(featToNode(nodeToFeat(n2))).toEqual(n2);
   });
 });
-interface INodeProperties {
-  node_properties: string;
-  tags: string;
-  id: string;
-  icon: string;
-  name: string;
-}
 
 describe('node to feat', () => {
-  const feat: Feature<Point, INodeProperties> = {
+  const feat: NodeFeature = {
     type: 'Feature',
     properties: {
       id: 'n2125087175',
@@ -35,6 +30,7 @@ describe('node to feat', () => {
         uid: '24119',
         user: 'Mauls'
       }),
+      geometry: Geometries.POINT,
       icon: 'circle',
       name: undefined,
       tags: JSON.stringify({})
@@ -42,7 +38,8 @@ describe('node to feat', () => {
     geometry: { type: 'Point', coordinates: [-0.0326419, 51.4996707] },
     id: 'n2125087175'
   };
-  it('converts feat to node to feat', () => {
+  it.only('converts feat to node to feat', () => {
+    console.log(nodeToFeat(featToNode(feat)));
     expect(nodeToFeat(featToNode(feat))).toEqual(feat);
   });
 });

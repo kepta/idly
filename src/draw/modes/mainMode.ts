@@ -5,7 +5,7 @@ import { store } from 'common/store';
 import { NodeFeature } from 'map/utils/nodeToFeat';
 
 import { selectFeatures } from 'draw/store/draw.actions';
-import { LAYERS } from 'map/constants';
+import { SELECTABLE_LAYERS } from 'map/constants';
 
 const NodeMangler: any = {};
 
@@ -44,7 +44,7 @@ NodeMangler.onClick = function(state, e) {
   const featuresToSelect: List<NodeFeature> = List(
     this.map
       .queryRenderedFeatures(bbox, {
-        layers: LAYERS
+        layers: SELECTABLE_LAYERS
       })
       .map(f => ({
         ...f,

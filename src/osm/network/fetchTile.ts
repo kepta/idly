@@ -1,5 +1,6 @@
 import { parseXML } from 'osm/parsers/parsers';
 import { stubXML } from 'osm/stubs/xmlstub';
+import { getFromWindow } from 'utils/attach_to_window';
 import { handleErrors } from 'utils/promise';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');
@@ -17,7 +18,7 @@ export async function fetchTile(x: number, y: number, zoom: number) {
   const xyz = [x, y, zoom].join(',');
   const bboxStr = merc.bbox(x, y, zoom).join(',');
   try {
-    if (window.debug) {
+    if (getFromWindow('debug')) {
       return parseXML(
         new DOMParser().parseFromString(await fetchStub(), 'text/xml')
       );

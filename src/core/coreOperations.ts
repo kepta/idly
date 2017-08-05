@@ -1,11 +1,10 @@
 import { Set } from 'immutable';
 
-import { Entity } from 'osm/entities/entities';
+import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Way } from 'osm/entities/way';
 
-export type Entities = Set<Node>;
-export type EntitiesId = Set<string>;
+// export type EntitiesId = Set<string>;
 
 function getIdIntersection(en1: Entities, en2: Entities) {
   return toIdSet(en2).intersect(toIdSet(en1));
@@ -51,7 +50,7 @@ function toIdSet(entities: Entities) {
 }
 
 /**
- * @DESC: to be used when an entitiy is modified
+ * @DESC: to be used when an entity is modified
  *  and needs to be moved to modified entities.
  *
  * @NOTE: removing wont be heaving so wont worry
@@ -61,7 +60,7 @@ function toIdSet(entities: Entities) {
  * @REVISIT: filter always creates new instance of the set
  *  might want to fix it.
  *
- * @REVISIT: Can revist in for future perf optimizations.
+ * @REVISIT: Can revisit in for future perf optimizations.
  */
 export function removeEntities(
   virginEntities: Entities,

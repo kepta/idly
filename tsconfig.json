@@ -5,6 +5,7 @@
     "baseUrl": "./src",
     "noImplicitAny": false,
     "module": "esnext",
+    "moduleResolution": "node",
     "target": "es2016",
     "jsx": "react",
     "strict": true,
