@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
-export type ITags = Map<string, any>;
+export type Tags = Map<string, string>;
 
-export function tagsFactory(obj?: object): Map<string, any> {
+export function tagsFactory(obj?: object): Tags {
   return Map(obj);
 }

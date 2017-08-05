@@ -1,12 +1,29 @@
 import * as _ from 'lodash';
 
-import { Entity } from 'osm/entities/entities';
-import { AreaKeys } from 'osm/presets/presets';
+import { Tags } from 'osm/entities/helpers/tags';
+
+import { Geometry } from 'osm/entities/constants';
+import { AreaKeys } from 'osm/presets/areaKeys';
 import { t } from 'osm/presets/t';
 
-// const areaKeys = {};
-
-export function presetPreset(id, preset, fields?: any) {
+export function presetPreset(
+  id,
+  preset,
+  fields?: any
+): {
+  /**
+   * @NOTE: These are manually typed
+   *  might need to cross check with implementation
+   */
+  matchScore: (tags: Tags) => number;
+  matchGeometry: (geometry: Geometry) => boolean;
+  t: (scope, options) => string;
+  name: () => string;
+  applyTags: (tags, geometry: Geometry, areaKeys: AreaKeys) => object;
+  isFallback: () => boolean;
+  removeTags: (tags, geometry: Geometry) => object;
+  fields: any;
+} {
   preset = _.clone(preset);
 
   preset.id = id;
@@ -23,17 +40,17 @@ export function presetPreset(id, preset, fields?: any) {
 
   preset.originalScore = preset.matchScore || 1;
 
-  preset.matchScore = function(entity: Entity): number {
+  preset.matchScore = function(tags: Tags): number {
     /**
      * @REVISIT: convert preset tags to Map
      */
-    const tags = preset.tags;
+    const presetTags = preset.tags;
     let score = 0;
 
-    for (const tt in tags) {
-      if (entity.tags.get(tt) === tags[tt]) {
+    for (const tt in presetTags) {
+      if (tags.get(tt) === presetTags[tt]) {
         score += preset.originalScore;
-      } else if (tags[tt] === '*' && entity.tags.has(tt)) {
+      } else if (presetTags[tt] === '*' && tags.has(tt)) {
         score += preset.originalScore / 2;
       } else {
         return -1;
@@ -114,6 +131,9 @@ export function presetPreset(id, preset, fields?: any) {
   };
 
   const applyTags = preset.addTags || preset.tags;
+  /**
+   * @REVISIT figure out this tags param
+   */
   preset.applyTags = function(tags, geometry, areaKeys: AreaKeys) {
     let k;
 

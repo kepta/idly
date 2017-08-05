@@ -9,6 +9,11 @@ import {
 
 import { Action } from 'common/actions';
 
+import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
+import { getGeometry } from 'osm/entities/helpers/misc';
+import { initAreaKeys } from 'osm/presets/areaKeys';
+import { initPresets } from 'osm/presets/presets';
+
 import {
   addToModifiedEntities,
   addToVirginEntities,
@@ -16,9 +21,6 @@ import {
   removeEntities
 } from 'core/coreOperations';
 import { CORE } from 'core/store/core.actions';
-import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
-import { getGeometry } from 'osm/entities/helpers/misc';
-import { initAreaKeys, initPresets } from 'osm/presets/presets';
 
 const initialState = {
   graph: graphFactory(),
@@ -41,8 +43,9 @@ export class CoreState extends Record(initialState) {
 }
 
 const coreState = new CoreState();
-const { collection } = initPresets();
-const areaKeys = initAreaKeys(collection);
+const { all, defaults, index, recent } = initPresets();
+const areaKeys = initAreaKeys(all);
+
 export function coreReducer(state = coreState, action: Action<any>) {
   switch (action.type) {
     case CORE.newData: {
@@ -81,7 +84,7 @@ export function coreReducer(state = coreState, action: Action<any>) {
       if (modifiedEntitiesId.size === 0) return state;
       /**
        * @REVISIT not sure about
-       * entities.subtrsct using state.graph.getIn(['node'
+       * entities.subtract using state.graph.getIn(['node'
        * or the replacement removeEntities(entities, modifiedEntitiesId)
        */
       console.time(CORE.removeIds);

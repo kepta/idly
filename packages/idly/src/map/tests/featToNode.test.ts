@@ -7,7 +7,7 @@ import { featToNode } from 'map/utils/featToNode';
 import { NodeFeature, nodeToFeat } from 'map/utils/nodeToFeat';
 import { Feature } from 'typings/geojson';
 
-import { Geometries } from 'osm/entities/constants';
+import { Geometry } from 'osm/entities/constants';
 
 describe('feat to node', () => {
   const n2 = nodeFactory({ id: 'n1', tags: Map({ foo: 'foo' }) });
@@ -30,7 +30,7 @@ describe('node to feat', () => {
         uid: '24119',
         user: 'Mauls'
       }),
-      geometry: Geometries.POINT,
+      geometry: Geometry.POINT,
       icon: 'circle',
       name: undefined,
       tags: JSON.stringify({})
