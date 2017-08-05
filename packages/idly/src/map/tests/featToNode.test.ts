@@ -38,8 +38,7 @@ describe('node to feat', () => {
     geometry: { type: 'Point', coordinates: [-0.0326419, 51.4996707] },
     id: 'n2125087175'
   };
-  it.only('converts feat to node to feat', () => {
-    console.log(nodeToFeat(featToNode(feat)));
+  it('converts feat to node to feat', () => {
     expect(nodeToFeat(featToNode(feat))).toEqual(feat);
   });
 });
