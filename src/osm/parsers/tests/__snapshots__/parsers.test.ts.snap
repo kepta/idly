@@ -3,6 +3,7 @@
 exports[`parsers node matches a bigger example 1`] = `
 Array [
   Object {
+    "geometry": "point",
     "id": "n4133782712",
     "loc": Object {
       "lat": 34.5280866,
@@ -20,6 +21,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782713",
     "loc": Object {
       "lat": 34.528206,
@@ -37,6 +39,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782714",
     "loc": Object {
       "lat": 34.5283653,
@@ -54,6 +57,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782715",
     "loc": Object {
       "lat": 34.528425,
@@ -71,6 +75,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782716",
     "loc": Object {
       "lat": 34.5285445,
@@ -88,6 +93,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782717",
     "loc": Object {
       "lat": 34.5290024,
@@ -105,6 +111,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782718",
     "loc": Object {
       "lat": 34.5292015,
@@ -122,6 +129,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782719",
     "loc": Object {
       "lat": 34.529301,
@@ -139,6 +147,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782720",
     "loc": Object {
       "lat": 34.5294603,
@@ -156,6 +165,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782721",
     "loc": Object {
       "lat": 34.5296992,
@@ -173,6 +183,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782722",
     "loc": Object {
       "lat": 34.5297191,
@@ -190,6 +201,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782723",
     "loc": Object {
       "lat": 34.5300377,
@@ -207,6 +219,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782724",
     "loc": Object {
       "lat": 34.5303562,
@@ -224,6 +237,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782725",
     "loc": Object {
       "lat": 34.530396,
@@ -241,6 +255,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782726",
     "loc": Object {
       "lat": 34.5305354,
@@ -258,6 +273,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782727",
     "loc": Object {
       "lat": 34.5309137,
@@ -275,6 +291,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782728",
     "loc": Object {
       "lat": 34.5311526,
@@ -292,6 +309,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782729",
     "loc": Object {
       "lat": 34.5314114,
@@ -309,6 +327,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "line",
     "id": "w411770875",
     "nodes": Array [
       "n4133782719",
@@ -352,6 +371,7 @@ Array [
 exports[`parsers node matches snapshot 1`] = `
 Array [
   Object {
+    "geometry": "point",
     "id": "n1",
     "loc": Object {
       "lat": 0,
@@ -374,6 +394,7 @@ Array [
 exports[`parsers node matches snapshot 2`] = `
 Array [
   Object {
+    "geometry": "point",
     "id": "n4133782712",
     "loc": Object {
       "lat": 34.5280866,
@@ -391,6 +412,7 @@ Array [
     "type": "node",
   },
   Object {
+    "geometry": "point",
     "id": "n4133782713",
     "loc": Object {
       "lat": 34.528206,
@@ -413,6 +435,7 @@ Array [
 exports[`parsers way matches snapshot 1`] = `
 Array [
   Object {
+    "geometry": "line",
     "id": "w411770875",
     "nodes": Array [
       "n4133782719",

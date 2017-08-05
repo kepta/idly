@@ -171,6 +171,7 @@ export function presetsMatch(entity: Entity, areaKeys: AreaKeys = Map()) {
 }
 
 export type AreaKeys = Map<string, Map<string, boolean>>;
+
 export function initAreaKeys(allCollection): AreaKeys {
   let localAreaKeys: AreaKeys = Map();
   const ignore = ['barrier', 'highway', 'footway', 'railway', 'type']; // probably a line..

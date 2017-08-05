@@ -31,7 +31,7 @@ function _nodeToFeat(n: any): NodeFeature {
       node_properties: JSON.stringify(n.properties),
       tags: JSON.stringify(n.tags),
       id: n.id,
-      icon: match && match.icon,
+      icon: (match && match.icon) || 'circle',
       name: n.tags.get('name'),
       geometry: n.geometry
     };
