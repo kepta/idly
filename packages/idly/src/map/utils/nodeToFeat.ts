@@ -3,6 +3,7 @@ import * as turf from 'turf';
 
 import { Feature } from 'typings/geojson';
 
+import { Geometries } from 'osm/entities/constants';
 import { Node } from 'osm/entities/node';
 import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
 
@@ -14,7 +15,7 @@ interface INodeProperties {
   id: string;
   icon: string;
   name?: string;
-  geometry: string;
+  geometry: Geometries.POINT | Geometries.VERTEX;
 }
 /**
  * @TOFIX this whole Nodeproperties fuck up
@@ -32,7 +33,7 @@ function _nodeToFeat(n: any): NodeFeature {
       id: n.id,
       icon: match && match.icon,
       name: n.tags.get('name'),
-      geometry: n.properties.geometry
+      geometry: n.geometry
     };
     const feat = turf.point([n.loc.lon, n.loc.lat], properties) as Feature<
       Point,

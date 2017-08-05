@@ -30,7 +30,7 @@ const areaKeys = initAreaKeys(collection);
  *
  * @REVISIT this func also needs to handle modifiedGraph
  *  for now i removed it so i can test caching and anyway
- *  not yet implemeted modified ways
+ *  not yet implemented modified ways
  */
 function _wayToFeat(w: Way, graph: Graph): WayFeature {
   if (w instanceof Way) {
@@ -39,19 +39,19 @@ function _wayToFeat(w: Way, graph: Graph): WayFeature {
       node_properties: JSON.stringify(w.properties),
       tags: JSON.stringify(w.tags),
       id: w.id,
-      geometry: w.properties.geometry
+      geometry: w.geometry
     };
     const nodes = w.nodes.map(id => {
       return graph.node.get(id); // || graphMod.node.get(id);
     });
     let feat;
-    if (w.properties.geometry === Geometries.LINE) {
+    if (w.geometry === Geometries.LINE) {
       feat = turf.lineString(
         nodes.map(n => [n.loc.lon, n.loc.lat]).toArray(),
         properties
       ) as Feature<LineString, INodeProperties>;
       feat.id = w.id;
-    } else if (w.properties.geometry === Geometries.AREA) {
+    } else if (w.geometry === Geometries.AREA) {
       const geos = nodes.map(n => [n.loc.lon, n.loc.lat]).toArray();
       geos.push(geos[0]);
       feat = turf.polygon([geos], properties) as Feature<

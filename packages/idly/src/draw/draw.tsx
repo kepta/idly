@@ -14,7 +14,6 @@ interface IPropsType {
   map: any;
   selectedFeatures: List<any>;
   dirtyMapAccess;
-  layers: string[];
 }
 interface IStatesType {
   loaded: boolean;

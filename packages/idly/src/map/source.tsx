@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as turf from 'turf';
 
-import { Entities } from 'core/coreOperations';
+import { Entities } from 'osm/entities/entities';
 
 interface IPropsType {
   sourceName: string;

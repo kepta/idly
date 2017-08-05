@@ -22,6 +22,7 @@ import {
 } from 'map/store/map.actions';
 import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { wayToFeat } from 'map/utils/wayToFeat';
+import { getFromWindow } from 'utils/attach_to_window';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -35,7 +36,7 @@ function* watchFetch(): SagaIterator {
   while (true) {
     const { xys, zoom }: GetOSMTilesAction = yield S.take(takeChan);
     if (zoom < ZOOM) continue;
-    if (window.disableTile) continue;
+    if (getFromWindow('disableTile')) continue;
     yield S.all(xys.map(([x, y]) => S.fork(fetchTileSaga, x, y, zoom)));
   }
 }
@@ -127,6 +128,6 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
     console.log('UPDATING source!', sourceId);
     yield S.call([source, 'setData'], turf.featureCollection(entities));
   } else {
-    console.log('source not foud');
+    console.log('source not found');
   }
 }

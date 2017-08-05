@@ -6,6 +6,19 @@ import { genLngLat } from 'osm/geo_utils/lng_lat';
 import { NodeFeature } from 'map/utils/nodeToFeat';
 
 export function featToNode(feat: NodeFeature): Node {
+  console.log(
+    feat.properties.geometry,
+    nodeFactory({
+      id: feat.properties.id,
+      tags: tagsFactory(JSON.parse(feat.properties.tags)),
+      loc: genLngLat([
+        feat.geometry.coordinates[0],
+        feat.geometry.coordinates[1]
+      ]),
+      properties: propertiesGen(JSON.parse(feat.properties.node_properties)),
+      geometry: feat.properties.geometry
+    }).toJS()
+  );
   return nodeFactory({
     id: feat.properties.id,
     tags: tagsFactory(JSON.parse(feat.properties.tags)),
@@ -13,6 +26,7 @@ export function featToNode(feat: NodeFeature): Node {
       feat.geometry.coordinates[0],
       feat.geometry.coordinates[1]
     ]),
-    properties: propertiesGen(JSON.parse(feat.properties.node_properties))
+    properties: propertiesGen(JSON.parse(feat.properties.node_properties)),
+    geometry: feat.properties.geometry
   });
 }

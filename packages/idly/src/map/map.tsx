@@ -3,19 +3,19 @@ import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Entities } from 'core/coreOperations';
+import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
 import { IRootStateType } from 'common/store';
 
-import { attachToWindow } from 'utils/attach_to_window';
+import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
 import { lonlatToXYs } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
-import { LAYERS, ZOOM, SOURCES } from 'map/constants';
+import { SELECTABLE_LAYERS, SOURCES, ZOOM } from 'map/constants';
 import { FillLayer } from 'map/layers/area';
 import { LineLayer } from 'map/layers/line';
 import { PointsWithLabels } from 'map/layers/pointsWithLabels';
@@ -71,7 +71,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
     const ltlng = this.map.getBounds();
-    if (window.smaller) {
+    if (getFromWindow('smaller')) {
       const xys = lonlatToXYs(ltlng, 18);
       console.log(xys);
       this.props.getOSMTiles(xys, 18);
@@ -87,7 +87,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
         {this.state.mapLoaded &&
           <div>
-            <Draw dirtyMapAccess={this.dirtyMapAccess} layers={LAYERS} />
+            <Draw dirtyMapAccess={this.dirtyMapAccess} />
             {SOURCES.map((s, k) =>
               <Source
                 key={k}

@@ -1,6 +1,5 @@
-
 import { action, Action } from 'common/actions';
-import { Entities } from 'core/coreOperations';
+import { Entities } from 'osm/entities/entities';
 
 export const OSM_TILES = {
   get: 'OSM_TILES.get',

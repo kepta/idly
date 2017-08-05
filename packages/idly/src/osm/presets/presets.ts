@@ -8,7 +8,7 @@ import { presetCollection } from 'osm/presets/collection';
 import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
 
-import { Geometries, Geometry } from 'osm/entities/constants';
+import { Geometries } from 'osm/entities/constants';
 import { isOnAddressLine } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
@@ -35,7 +35,7 @@ class Index {
     this.area = o;
     this.relation = o;
   }
-  set(g: Geometry, value: any) {
+  set(g: Geometries, value: any) {
     if (g === Geometries.POINT) {
       this.point = value;
     } else if (g === Geometries.VERTEX) {
@@ -50,7 +50,7 @@ class Index {
       throw new Error('type not found');
     }
   }
-  get(g: Geometry) {
+  get(g: Geometries) {
     if (g === Geometries.POINT) {
       return this.point;
     } else if (g === Geometries.VERTEX) {
@@ -71,7 +71,7 @@ let index = new Index();
 const defaults = new Index(all);
 
 /**
- * @REVISIT fix areakeys init for
+ * @REVISIT fix areaKeys init for
  */
 
 export function initPresets(d: any = data.presets) {
@@ -145,7 +145,7 @@ export function initPresets(d: any = data.presets) {
 }
 
 export function presetsMatch(entity: Entity, areaKeys: AreaKeys = Map()) {
-  let geometry = entity.properties.geometry; // getGeometry(entity, areaKeys);
+  let geometry = entity.geometry; // getGeometry(entity, areaKeys);
   if (!geometry) throw new Error('no geometry found' + entity.id);
   // Treat entities on addr:interpolation lines as points, not vertices (#3241)
   if (geometry === Geometries.VERTEX && isOnAddressLine(entity)) {
@@ -167,7 +167,6 @@ export function presetsMatch(entity: Entity, areaKeys: AreaKeys = Map()) {
       }
     }
   });
-
   return match || all.item(geometry);
 }
 

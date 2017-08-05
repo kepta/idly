@@ -6,16 +6,14 @@ export class Properties extends Record({
   timestamp: undefined,
   changeset: undefined,
   uid: undefined,
-  user: undefined,
-  geometry: undefined
+  user: undefined
 }) {
-  public visible?: boolean;
-  public version?: number;
-  public timestamp?: string;
-  public changeset?: string;
-  public uid?: string;
-  public user?: string;
-  public geometry?: Geometries;
+  readonly visible?: boolean;
+  readonly version?: number;
+  readonly timestamp?: string;
+  readonly changeset?: string;
+  readonly uid?: string;
+  readonly user?: string;
 }
 
 export function propertiesGen(obj?: {
@@ -25,7 +23,6 @@ export function propertiesGen(obj?: {
   changeset?: string;
   uid?: string;
   user?: string;
-  geometry?: Geometries;
 }) {
   return new Properties(obj);
 }

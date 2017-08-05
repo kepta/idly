@@ -1,7 +1,7 @@
 import { Set } from 'immutable';
 import * as React from 'react';
 
-import { Entities } from 'core/coreOperations';
+import { Entities, Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 
 import { setSubtractNode } from 'map/utils/setSubtract';
@@ -23,15 +23,17 @@ interface IPropsType {
   ) => void;
 }
 interface IStatesType {
-  toRemove: Set<Node>;
+  toRemove: Entities;
 }
 export class PointsWithoutLabels extends React.PureComponent<
   IPropsType,
   IStatesType
 > {
   static displayName = 'PointsWithoutLabels';
+  static selectable = true;
+
   state = {
-    toRemove: Set<Node>()
+    toRemove: Set<Entity>()
   };
   baseFilter = [
     'all',
@@ -67,7 +69,7 @@ export class PointsWithoutLabels extends React.PureComponent<
     );
     if (removedEntities.size > 0 && addedEntites.size === 0) {
       this.setState({
-        toRemove: this.state.toRemove.union(removedEntities) as Set<Node>
+        toRemove: this.state.toRemove.union(removedEntities) as Entities
       });
     } else if (addedEntites.size > 0) {
       this.props.updateSource(

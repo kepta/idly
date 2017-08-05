@@ -13,11 +13,10 @@ import {
   addToModifiedEntities,
   addToVirginEntities,
   calculateParentWays,
-  Entities,
   removeEntities
 } from 'core/coreOperations';
 import { CORE } from 'core/store/core.actions';
-import { Entity } from 'osm/entities/entities';
+import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
 import { getGeometry } from 'osm/entities/helpers/misc';
 import { initAreaKeys, initPresets } from 'osm/presets/presets';
 
@@ -51,8 +50,8 @@ export function coreReducer(state = coreState, action: Action<any>) {
       let data: Entity[] = action.data;
       const parentWays = calculateParentWays(data);
       data = data.map(e => {
-        return e.setIn(
-          ['properties', 'geometry'],
+        return e.set(
+          'geometry',
           getGeometry(e, areaKeys, parentWays)
         ) as Entity;
       });
@@ -78,7 +77,7 @@ export function coreReducer(state = coreState, action: Action<any>) {
       return newState;
     }
     case CORE.removeIds: {
-      const modifiedEntitiesId: Set<string> = action.modifiedEntitiesId;
+      const modifiedEntitiesId: EntitiesId = action.modifiedEntitiesId;
       if (modifiedEntitiesId.size === 0) return state;
       /**
        * @REVISIT not sure about
@@ -89,7 +88,7 @@ export function coreReducer(state = coreState, action: Action<any>) {
       const newState = state
         .update(
           'entities',
-          (entities: Set<Node>) =>
+          (entities: Entities) =>
             entities.subtract(
               modifiedEntitiesId.map(m => state.graph.getIn(['node', m]))
             )
@@ -101,7 +100,7 @@ export function coreReducer(state = coreState, action: Action<any>) {
             graphRemoveEntitiesWithId(graph, modifiedEntitiesId.toArray())
           // removeEntities(entities, modifiedEntitiesId)
         )
-        .update('modifiedEntities', (entities: Set<Node>) =>
+        .update('modifiedEntities', (entities: Entities) =>
           removeEntities(entities, modifiedEntitiesId)
         );
 
