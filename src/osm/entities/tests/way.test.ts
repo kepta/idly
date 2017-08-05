@@ -1,15 +1,13 @@
-// import {
-//   osmEntity as Entity,
-//   osmWay as Way,
-//   osmRelation as Relation
-// } from 'osm/entity';
-// import { coreGraph as Graph } from 'osm/graph';
-// import { osmNode as Node } from 'osm/node.new';
 import { List, Map } from 'immutable';
+
 import { isArea } from 'osm/entities/helpers/misc';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { Way, wayFactory } from 'osm/entities/way';
-import { initAreaKeys, initPresets } from 'osm/presets/presets';
+import { initPresets } from 'osm/presets/presets';
+
+import { initAreaKeys } from 'osm/presets/areaKeys';
+import { presetsMatch } from 'osm/presets/match';
+import * as R from 'ramda';
 describe('osmWay', function() {
   //   if (debug) {
   //     it('freezes nodes', function() {
@@ -310,8 +308,9 @@ describe('osmWay', function() {
   //   });
   // });
   describe('#isArea', function() {
-    const { collection } = initPresets();
-    const areaKeys = initAreaKeys(collection);
+    const { all, defaults, index, recent } = initPresets();
+    const areaKeys = initAreaKeys(all);
+
     const w1 = wayFactory({ id: 'w-1' });
     it('returns false when the way has no tags', function() {
       expect(isArea(wayFactory({ id: 'w-1' }), areaKeys)).toEqual(false);

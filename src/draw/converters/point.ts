@@ -1,6 +1,6 @@
 import { Feature, Point } from 'geojson';
 
-import { Geometries } from 'osm/entities/constants';
+import { Geometry } from 'osm/entities/constants';
 import { propertiesGen } from 'osm/entities/helpers/properties';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';

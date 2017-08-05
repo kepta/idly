@@ -1,7 +1,7 @@
 import { List, Map, Record } from 'immutable';
-import { ITags, tagsFactory } from 'osm/entities/helpers/tags';
+import { Tags, tagsFactory } from 'osm/entities/helpers/tags';
 
-import { Geometries } from 'osm/entities/constants';
+import { Geometry } from 'osm/entities/constants';
 import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
 
 type Id = string;
@@ -14,14 +14,14 @@ export class Relation extends Record({
   tags: tagsFactory(),
   type: 'relation',
   members: List(),
-  geometry: Geometries.RELATION
+  geometry: Geometry.RELATION
 }) {
   readonly id: Id;
   readonly type: string;
-  readonly tags: ITags;
+  readonly tags: Tags;
   readonly properties: Properties;
   readonly members: List<Map<string, any>>;
-  readonly geometry: Geometries.RELATION | Geometries.AREA;
+  readonly geometry: Geometry.RELATION | Geometry.AREA;
   public set(k: string, v: any): Relation {
     return super.set(k, v) as Relation;
   }
@@ -29,10 +29,10 @@ export class Relation extends Record({
 
 export function relationFactory(obj: {
   id: Id;
-  tags?: ITags;
+  tags?: Tags;
   properties?: Properties;
   members?: List<string>;
-  geometry?: Geometries.RELATION | Geometries.AREA;
+  geometry?: Geometry.RELATION | Geometry.AREA;
 }) {
   return new Relation(obj);
 }

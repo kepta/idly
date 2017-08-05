@@ -1,4 +1,4 @@
-export enum Geometries {
+export enum Geometry {
   POINT = 'point',
   VERTEX = 'vertex',
   AREA = 'area',

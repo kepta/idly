@@ -17,7 +17,7 @@ NodeMangler.onSetup = function(opts) {
   }, 0);
 
   if (opts.wasSelected) {
-    console.log('nodemanger/opts.wasselected', opts);
+    console.log('nodemangler/opts.wasselected', opts);
     const featuresThatWereSelected: List<NodeFeature> = List(
       R.uniqBy((a: any) => a.id, opts.wasSelectedFeatures).map(f => ({
         type: f.type,

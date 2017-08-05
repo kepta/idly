@@ -1,11 +1,14 @@
 import { Point } from 'geojson';
+import * as R from 'ramda';
 import * as turf from 'turf';
 
 import { Feature } from 'typings/geojson';
 
-import { Geometries } from 'osm/entities/constants';
+import { Geometry } from 'osm/entities/constants';
 import { Node } from 'osm/entities/node';
-import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
+import { initAreaKeys } from 'osm/presets/areaKeys';
+import { presetsMatch } from 'osm/presets/match';
+import { initPresets } from 'osm/presets/presets';
 
 import { weakCache } from 'utils/weakCache';
 
@@ -15,18 +18,21 @@ interface INodeProperties {
   id: string;
   icon: string;
   name?: string;
-  geometry: Geometries.POINT | Geometries.VERTEX;
+  geometry: Geometry.POINT | Geometry.VERTEX;
 }
 /**
- * @TOFIX this whole Nodeproperties fuck up
+ * @TOFIX this whole NodeProperties fuck up
  *  the typings dont support properties
  */
 export type NodeFeature = Feature<Point, INodeProperties>;
-const { collection } = initPresets();
-const areaKeys = initAreaKeys(collection);
+
+const { all, defaults, index, recent } = initPresets();
+const areaKeys = initAreaKeys(all);
+const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
+
 function _nodeToFeat(n: any): NodeFeature {
   if (n instanceof Node) {
-    const match = presetsMatch(n, areaKeys);
+    const match = curriedPresetsMatch(n.tags, n.geometry);
     const properties: INodeProperties = {
       node_properties: JSON.stringify(n.properties),
       tags: JSON.stringify(n.tags),

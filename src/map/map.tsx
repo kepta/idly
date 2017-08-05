@@ -70,13 +70,13 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   }
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
-    const ltlng = this.map.getBounds();
+    const lonLat = this.map.getBounds();
     if (getFromWindow('smaller')) {
-      const xys = lonlatToXYs(ltlng, 18);
+      const xys = lonlatToXYs(lonLat, 18);
       console.log(xys);
       this.props.getOSMTiles(xys, 18);
     } else {
-      const xys = lonlatToXYs(ltlng, ZOOM);
+      const xys = lonlatToXYs(lonLat, ZOOM);
       this.props.getOSMTiles(xys, ZOOM);
     }
   };

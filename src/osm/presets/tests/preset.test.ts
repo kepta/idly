@@ -1,9 +1,11 @@
 /* globals context: true */
+import { Geometry } from 'osm/entities/constants';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { wayFactory } from 'osm/entities/way';
+import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
-import { initAreaKeys, initPresets } from 'osm/presets/presets';
+import { initPresets } from 'osm/presets/presets';
 
 describe('presetPreset', function() {
   it('has optional fields', function() {
@@ -13,13 +15,15 @@ describe('presetPreset', function() {
 
   describe('#matchGeometry', function() {
     it("returns false if it doesn't match", function() {
-      const preset = presetPreset('test', { geometry: ['line'] });
-      expect(preset.matchGeometry('point')).toBe(false);
+      const preset = presetPreset('test', { geometry: [Geometry.LINE] });
+      expect(preset.matchGeometry(Geometry.POINT)).toBe(false);
     });
 
     it('returns true if it does match', function() {
-      const preset = presetPreset('test', { geometry: ['point', 'line'] });
-      expect(preset.matchGeometry('point')).toBe(true);
+      const preset = presetPreset('test', {
+        geometry: [Geometry.POINT, Geometry.LINE]
+      });
+      expect(preset.matchGeometry(Geometry.POINT)).toBe(true);
     });
   });
 
@@ -30,7 +34,7 @@ describe('presetPreset', function() {
     });
     it('returns -1 if preset does not match tags', function() {
       const preset = presetPreset('test', { tags: { foo: 'bar' } });
-      expect(preset.matchScore(way1)).toBe(-1);
+      expect(preset.matchScore(way1.tags)).toBe(-1);
     });
 
     it('returns the value of the matchScore property when matched', function() {
@@ -39,7 +43,7 @@ describe('presetPreset', function() {
         matchScore: 0.2
       });
       const entity = wayFactory(way1);
-      expect(preset.matchScore(entity)).toBe(0.2);
+      expect(preset.matchScore(entity.tags)).toBe(0.2);
     });
 
     it('defaults to the number of matched tags', function() {
@@ -50,7 +54,7 @@ describe('presetPreset', function() {
         id: 'w-2',
         tags: tagsFactory({ highway: 'residential' })
       });
-      expect(preset.matchScore(entity)).toBe(1);
+      expect(preset.matchScore(entity.tags)).toBe(1);
 
       preset = presetPreset('test', {
         tags: { highway: 'service', service: 'alley' }
@@ -59,7 +63,7 @@ describe('presetPreset', function() {
         id: 'w-3',
         tags: tagsFactory({ highway: 'service', service: 'alley' })
       });
-      expect(preset.matchScore(entity)).toBe(2);
+      expect(preset.matchScore(entity.tags)).toBe(2);
     });
 
     it('counts * as a match for any value with score 0.5', function() {
@@ -68,22 +72,22 @@ describe('presetPreset', function() {
         id: 'w-3',
         tags: tagsFactory({ building: 'yep' })
       });
-      expect(preset.matchScore(entity)).toBe(0.5);
+      expect(preset.matchScore(entity.tags)).toBe(0.5);
     });
   });
 
   describe('isFallback', function() {
     it('returns true if preset has no tags', function() {
-      const preset = presetPreset('point', { tags: {} });
+      const preset = presetPreset(Geometry.POINT, { tags: {} });
       expect(preset.isFallback()).toBe(true);
     });
 
-    it("returns true if preset has a single 'area' tag", function() {
-      const preset = presetPreset('area', { tags: { area: 'yes' } });
+    it('returns true if preset has a single AREA tag', function() {
+      const preset = presetPreset(Geometry.AREA, { tags: { area: 'yes' } });
       expect(preset.isFallback()).toBe(true);
     });
 
-    it("returns false if preset has a single non-'area' tag", function() {
+    it('returns false if preset has a single AREA tag', function() {
       const preset = presetPreset('building', { tags: { building: 'yes' } });
       expect(preset.isFallback()).toBe(false);
     });
@@ -97,20 +101,22 @@ describe('presetPreset', function() {
   });
 
   describe('#applyTags', function() {
-    const { collection } = initPresets();
-    const areaKeys = initAreaKeys(collection);
+    const { all, defaults, index, recent } = initPresets();
+    const areaKeys = initAreaKeys(all);
+    // const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
+
     it('adds match tags', function() {
       const preset = presetPreset('test', {
         tags: { highway: 'residential' }
       });
-      expect(preset.applyTags({}, 'line', areaKeys)).toEqual({
+      expect(preset.applyTags({}, Geometry.LINE, areaKeys)).toEqual({
         highway: 'residential'
       });
     });
 
     it("adds wildcard tags with value 'yes'", function() {
       const preset = presetPreset('test', { tags: { building: '*' } });
-      expect(preset.applyTags({}, 'area', areaKeys)).toEqual({
+      expect(preset.applyTags({}, Geometry.AREA, areaKeys)).toEqual({
         building: 'yes'
       });
     });
@@ -120,7 +126,7 @@ describe('presetPreset', function() {
         tags: { building: '*' },
         addTags: { building: 'ok' }
       });
-      expect(preset.applyTags({}, 'area', areaKeys)).toEqual({
+      expect(preset.applyTags({}, Geometry.AREA, areaKeys)).toEqual({
         building: 'ok'
       });
     });
@@ -128,11 +134,11 @@ describe('presetPreset', function() {
     it('adds default tags of fields with matching geometry', function() {
       const field = presetField('field', {
         key: 'building',
-        geometry: 'area',
+        geometry: Geometry.AREA,
         default: 'yes'
       });
       const preset = presetPreset('test', { fields: ['field'] }, { field });
-      expect(preset.applyTags({}, 'area', areaKeys)).toEqual({
+      expect(preset.applyTags({}, Geometry.AREA, areaKeys)).toEqual({
         area: 'yes',
         building: 'yes'
       });
@@ -141,29 +147,29 @@ describe('presetPreset', function() {
     it('adds no default tags of fields with non-matching geometry', function() {
       const field = presetField('field', {
         key: 'building',
-        geometry: 'area',
+        geometry: Geometry.AREA,
         default: 'yes'
       });
       const preset = presetPreset('test', { fields: ['field'] }, { field });
-      expect(preset.applyTags({}, 'point', areaKeys)).toEqual({});
+      expect(preset.applyTags({}, Geometry.POINT, areaKeys)).toEqual({});
     });
 
     describe('for a preset with no tag in areaKeys', function() {
       const preset = presetPreset('test', {
-        geometry: ['line', 'area'],
-        tags: { name: 'testname', highway: 'pedestrian' }
+        geometry: [Geometry.LINE, Geometry.AREA],
+        tags: { name: 'testName', highway: 'pedestrian' }
       });
 
       it("doesn't add area=yes to non-areas", function() {
-        expect(preset.applyTags({}, 'line', areaKeys)).toEqual({
-          name: 'testname',
+        expect(preset.applyTags({}, Geometry.LINE, areaKeys)).toEqual({
+          name: 'testName',
           highway: 'pedestrian'
         });
       });
 
       it('adds area=yes to areas', function() {
-        expect(preset.applyTags({}, 'area', areaKeys)).toEqual({
-          name: 'testname',
+        expect(preset.applyTags({}, Geometry.AREA, areaKeys)).toEqual({
+          name: 'testName',
           highway: 'pedestrian',
           area: 'yes'
         });
@@ -172,12 +178,12 @@ describe('presetPreset', function() {
 
     describe('for a preset with a tag in areaKeys', function() {
       const preset = presetPreset('test', {
-        geometry: ['area'],
-        tags: { name: 'testname', natural: 'water' }
+        geometry: [Geometry.AREA],
+        tags: { name: 'testName', natural: 'water' }
       });
       it("doesn't add area=yes", function() {
-        expect(preset.applyTags({}, 'area', areaKeys)).toEqual({
-          name: 'testname',
+        expect(preset.applyTags({}, Geometry.AREA, areaKeys)).toEqual({
+          name: 'testName',
           natural: 'water'
         });
       });
@@ -189,34 +195,36 @@ describe('presetPreset', function() {
       const preset = presetPreset('test', {
         tags: { highway: 'residential' }
       });
-      expect(preset.removeTags({ highway: 'residential' }, 'area')).toEqual({});
+      expect(
+        preset.removeTags({ highway: 'residential' }, Geometry.AREA)
+      ).toEqual({});
     });
 
     it('removes tags that match field default tags', function() {
       const field = presetField('field', {
         key: 'building',
-        geometry: 'area',
+        geometry: Geometry.AREA,
         default: 'yes'
       });
       const preset = presetPreset('test', { fields: ['field'] }, { field });
-      expect(preset.removeTags({ building: 'yes' }, 'area')).toEqual({});
+      expect(preset.removeTags({ building: 'yes' }, Geometry.AREA)).toEqual({});
     });
 
     it('removes area=yes', function() {
       const preset = presetPreset('test', { tags: { highway: 'pedestrian' } });
       expect(
-        preset.removeTags({ highway: 'pedestrian', area: 'yes' }, 'area')
+        preset.removeTags({ highway: 'pedestrian', area: 'yes' }, Geometry.AREA)
       ).toEqual({});
     });
 
     it('preserves tags that do not match field default tags', function() {
       const field = presetField('field', {
         key: 'building',
-        geometry: 'area',
+        geometry: Geometry.AREA,
         default: 'yes'
       });
       const preset = presetPreset('test', { fields: ['field'] }, { field });
-      expect(preset.removeTags({ building: 'yep' }, 'area')).toEqual({
+      expect(preset.removeTags({ building: 'yep' }, Geometry.AREA)).toEqual({
         building: 'yep'
       });
     });
@@ -226,7 +234,7 @@ describe('presetPreset', function() {
         tags: { a: 'b' },
         removeTags: {}
       });
-      expect(preset.removeTags({ a: 'b' }, 'area')).toEqual({ a: 'b' });
+      expect(preset.removeTags({ a: 'b' }, Geometry.AREA)).toEqual({ a: 'b' });
     });
   });
 });

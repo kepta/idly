@@ -1,11 +1,14 @@
 import { List } from 'immutable';
+import * as R from 'ramda';
 
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
-import { initAreaKeys, initPresets, presetsMatch } from 'osm/presets/presets';
+import { initAreaKeys } from 'osm/presets/areaKeys';
+import { presetsMatch } from 'osm/presets/match';
+import { initPresets } from 'osm/presets/presets';
 
 describe('presetIndex', function() {
   describe('#match', function() {
@@ -34,6 +37,9 @@ describe('presetIndex', function() {
       }
     };
 
+    const { all, defaults, index, recent } = initPresets(testPresets);
+    const areaKeys = initAreaKeys(all);
+    const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
     it('returns a collection containing presets matching a geometry and tags', function() {
       const presets = initPresets(testPresets);
       const way = wayFactory({
@@ -43,11 +49,11 @@ describe('presetIndex', function() {
 
       const graph = graphFactory([way]);
 
-      expect(presetsMatch(way).id).toEqual('residential');
+      expect(curriedPresetsMatch(way.tags, way.geometry).id).toEqual(
+        'residential'
+      );
     });
     it('returns the appropriate fallback preset when no tags match', function() {
-      const presets = initPresets(testPresets);
-
       const point = nodeFactory({ id: 'n1' });
       const line = wayFactory({
         id: 'w-1',
@@ -55,24 +61,26 @@ describe('presetIndex', function() {
       });
       const graph = graphFactory([point, line]);
 
-      expect(presetsMatch(point).id).toEqual('point');
-      expect(presetsMatch(line).id).toEqual('line');
+      expect(curriedPresetsMatch(point.tags, point.geometry).id).toEqual(
+        'point'
+      );
+      expect(curriedPresetsMatch(line.tags, line.geometry).id).toEqual('line');
     });
 
     it.skip('matches vertices on a line as vertices', function() {
-      const presets = initPresets(testPresets);
       const point = nodeFactory({
         id: 'n1',
         tags: tagsFactory({ leisure: 'park' })
       });
-
       const way = wayFactory({
         id: 'w-1',
         nodes: List(['n1']),
         tags: tagsFactory({ highway: 'residential' })
       });
 
-      expect(presetsMatch(point).id).toEqual('vertex');
+      expect(curriedPresetsMatch(point.tags, point.geometry).id).toEqual(
+        'vertex'
+      );
     });
     /**
      * @REVISIT when isOnAddressLine is implemented.
@@ -92,7 +100,9 @@ describe('presetIndex', function() {
           tags: tagsFactory({ 'addr:interpolation': 'even' })
         });
 
-        expect(presetsMatch(point).id).toEqual('park');
+        expect(curriedPresetsMatch(point.tags, point.geometry).id).toEqual(
+          'park'
+        );
       }
     );
   });
@@ -133,64 +143,59 @@ describe('presetIndex', function() {
     };
 
     it('whitelists keys for presets with area geometry', function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).has('natural')).toEqual(true);
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).has('natural')).toEqual(true);
     });
 
     it('blacklists key-values for presets with a line geometry', function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).has('natural')).toEqual(true);
-      expect(initAreaKeys(collection).getIn(['natural', 'tree_row'])).toEqual(
-        true
-      );
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).has('natural')).toEqual(true);
+      expect(initAreaKeys(all).getIn(['natural', 'tree_row'])).toEqual(true);
     });
 
     it('blacklists key-values for presets with both area and line geometry', function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).has('natural')).toEqual(true);
-      expect(initAreaKeys(collection).get('leisure').has('track')).toEqual(
-        true
-      );
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).has('natural')).toEqual(true);
+      expect(initAreaKeys(all).get('leisure').has('track')).toEqual(true);
     });
 
     it('does not blacklist key-values for presets with neither area nor line geometry', function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).has('natural')).toEqual(true);
-      expect(initAreaKeys(collection).get('natural').has('peak')).toEqual(
-        false
-      );
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).has('natural')).toEqual(true);
+      expect(initAreaKeys(all).get('natural').has('peak')).toEqual(false);
     });
 
     it("does not blacklist generic '*' key-values", function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).get('natural').has('natural')).toEqual(
-        false
-      );
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).get('natural').has('natural')).toEqual(false);
     });
 
     it("ignores keys like 'highway' that are assumed to be lines", function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).has('highway')).toEqual(false);
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).has('highway')).toEqual(false);
     });
 
     it('ignores suggestion presets', function() {
-      const { collection } = initPresets(testPresets);
-      expect(initAreaKeys(collection).has('amenity')).toEqual(false);
+      const { all } = initPresets(testPresets);
+      expect(initAreaKeys(all).has('amenity')).toEqual(false);
     });
   });
 
   describe('expected matches', function() {
+    const { all, defaults, index, recent } = initPresets();
+    const areaKeys = initAreaKeys(all);
+    const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
     it('prefers building to multipolygon', function() {
-      const presets = initPresets();
       const relation = relationFactory({
         id: 'r-1',
         tags: tagsFactory({ type: 'multipolygon', building: 'yes' })
       });
-      expect(presetsMatch(relation).id).toEqual('building');
+      expect(curriedPresetsMatch(relation.tags, relation.geometry).id).toEqual(
+        'building'
+      );
     });
 
     it('prefers building to address', function() {
-      const presets = initPresets();
       const way = wayFactory({
         id: 'w-1',
         tags: tagsFactory({
@@ -199,16 +204,19 @@ describe('presetIndex', function() {
           'addr:housenumber': '1234'
         })
       });
-      expect(presetsMatch(way).id).toEqual('building');
+      expect(curriedPresetsMatch(way.tags, way.geometry).id).toEqual(
+        'building'
+      );
     });
 
     it('prefers pedestrian to area', function() {
-      const presets = initPresets();
       const way = wayFactory({
         id: 'w-1',
         tags: tagsFactory({ area: 'yes', highway: 'pedestrian' })
       });
-      expect(presetsMatch(way).id).toEqual('highway/pedestrian');
+      expect(curriedPresetsMatch(way.tags, way.geometry).id).toEqual(
+        'highway/pedestrian'
+      );
     });
   });
 });
