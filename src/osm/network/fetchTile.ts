@@ -1,6 +1,5 @@
-import { parseXML } from 'osm/parsers/parsers';
 import { stubXML } from 'osm/stubs/xmlstub';
-import { getFromWindow } from 'utils/attach_to_window';
+import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
 import { handleErrors } from 'utils/promise';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');
@@ -13,15 +12,13 @@ const merc = new SphericalMercator({
 const fetchStub = () => {
   return Promise.resolve(stubXML);
 };
-
+attachToWindow('debug', true);
 export async function fetchTile(x: number, y: number, zoom: number) {
   const xyz = [x, y, zoom].join(',');
   const bboxStr = merc.bbox(x, y, zoom).join(',');
   try {
     if (getFromWindow('debug')) {
-      return parseXML(
-        new DOMParser().parseFromString(await fetchStub(), 'text/xml')
-      );
+      return new DOMParser().parseFromString(await fetchStub(), 'text/xml');
     }
     let response = await fetch(
       `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`
@@ -31,7 +28,7 @@ export async function fetchTile(x: number, y: number, zoom: number) {
 
     const parser = new DOMParser();
     const xml = parser.parseFromString(text, 'text/xml');
-    return parseXML(xml);
+    return xml;
   } catch (e) {
     console.error(e);
     throw e;

@@ -38,12 +38,17 @@ export class FillLayer extends React.PureComponent<IPropsType, IStatesType> {
   componentDidMount() {
     this.addLayer({
       id: this.props.name,
-      type: 'fill',
+      type: 'line',
       source: this.props.sourceName,
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
       paint: {
-        'fill-opacity': 0.05,
-        'fill-color': '#06feff',
-        'fill-outline-color': '#d6feff'
+        'line-color': '#551A8B',
+        'line-width': 5,
+        'line-opacity': 0.7,
+        'line-dasharray': [1, 2, 1, 3, 1, 2, 1]
       },
       filter: this.baseFilter
     });

@@ -49,7 +49,7 @@ describe('presetIndex', function() {
 
       const graph = graphFactory([way]);
 
-      expect(curriedPresetsMatch(way.tags, way.geometry).id).toEqual(
+      expect(curriedPresetsMatch(way.geometry, way.tags).id).toEqual(
         'residential'
       );
     });
@@ -61,10 +61,10 @@ describe('presetIndex', function() {
       });
       const graph = graphFactory([point, line]);
 
-      expect(curriedPresetsMatch(point.tags, point.geometry).id).toEqual(
+      expect(curriedPresetsMatch(point.geometry, point.tags).id).toEqual(
         'point'
       );
-      expect(curriedPresetsMatch(line.tags, line.geometry).id).toEqual('line');
+      expect(curriedPresetsMatch(line.geometry, line.tags).id).toEqual('line');
     });
 
     it.skip('matches vertices on a line as vertices', function() {
@@ -78,7 +78,7 @@ describe('presetIndex', function() {
         tags: tagsFactory({ highway: 'residential' })
       });
 
-      expect(curriedPresetsMatch(point.tags, point.geometry).id).toEqual(
+      expect(curriedPresetsMatch(point.geometry, point.tags).id).toEqual(
         'vertex'
       );
     });
@@ -100,7 +100,7 @@ describe('presetIndex', function() {
           tags: tagsFactory({ 'addr:interpolation': 'even' })
         });
 
-        expect(curriedPresetsMatch(point.tags, point.geometry).id).toEqual(
+        expect(curriedPresetsMatch(point.geometry, point.tags).id).toEqual(
           'park'
         );
       }
@@ -190,7 +190,7 @@ describe('presetIndex', function() {
         id: 'r-1',
         tags: tagsFactory({ type: 'multipolygon', building: 'yes' })
       });
-      expect(curriedPresetsMatch(relation.tags, relation.geometry).id).toEqual(
+      expect(curriedPresetsMatch(relation.geometry, relation.tags).id).toEqual(
         'building'
       );
     });
@@ -204,7 +204,7 @@ describe('presetIndex', function() {
           'addr:housenumber': '1234'
         })
       });
-      expect(curriedPresetsMatch(way.tags, way.geometry).id).toEqual(
+      expect(curriedPresetsMatch(way.geometry, way.tags).id).toEqual(
         'building'
       );
     });
@@ -214,7 +214,7 @@ describe('presetIndex', function() {
         id: 'w-1',
         tags: tagsFactory({ area: 'yes', highway: 'pedestrian' })
       });
-      expect(curriedPresetsMatch(way.tags, way.geometry).id).toEqual(
+      expect(curriedPresetsMatch(way.geometry, way.tags).id).toEqual(
         'highway/pedestrian'
       );
     });

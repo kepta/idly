@@ -6,6 +6,7 @@ import { Node } from 'osm/entities/node';
 
 import { setSubtractNode } from 'map/utils/setSubtract';
 import { Layer } from 'mapbox-gl';
+import { Geometry } from 'osm/entities/constants';
 
 /**
  * @REVISIT fix this
@@ -39,7 +40,7 @@ export class PointsWithoutLabels extends React.PureComponent<
     'all',
     ['!has', 'icon'],
     ['==', '$type', 'Point'],
-    ['!=', 'geometry', 'vertex']
+    ['!=', 'geometry', Geometry.VERTEX]
   ];
   addLayer = (layer: Layer) => {
     this.props.dirtyMapAccess(map => map.addLayer(layer));

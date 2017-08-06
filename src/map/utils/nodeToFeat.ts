@@ -10,7 +10,7 @@ import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetsMatch } from 'osm/presets/match';
 import { initPresets } from 'osm/presets/presets';
 
-import { weakCache } from 'utils/weakCache';
+import { weakCache, weakCache2 } from 'utils/weakCache';
 
 interface INodeProperties {
   node_properties: string;
@@ -28,11 +28,20 @@ export type NodeFeature = Feature<Point, INodeProperties>;
 
 const { all, defaults, index, recent } = initPresets();
 const areaKeys = initAreaKeys(all);
-const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
+const curriedPresetsMatch = R.compose(
+  R.curry(presetsMatch)(all, index, areaKeys)
+);
+
+const presetMatchPoint = weakCache(curriedPresetsMatch(Geometry.POINT));
+const presetMatchVertex = weakCache(curriedPresetsMatch(Geometry.VERTEX));
 
 function _nodeToFeat(n: any): NodeFeature {
   if (n instanceof Node) {
-    const match = curriedPresetsMatch(n.tags, n.geometry);
+    const match =
+      n.geometry === Geometry.POINT
+        ? presetMatchPoint(n.tags)
+        : presetMatchVertex(n.tags);
+
     const properties: INodeProperties = {
       node_properties: JSON.stringify(n.properties),
       tags: JSON.stringify(n.tags),

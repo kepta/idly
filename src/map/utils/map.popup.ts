@@ -19,6 +19,7 @@ export const dirtyPopup = map =>
         .setHTML(
           `<span style="width:200px"><pre>${JSON.stringify(
             {
+              geom: e.features[0].properties.geometry,
               id: e.features[0].properties.id,
               tags: JSON.parse(e.features[0].properties.tags),
               node_properties: JSON.parse(

@@ -38,7 +38,7 @@ export function graphRemoveEntitiesWithId(
   return graph.withMutations(g => {
     entities.forEach(e => {
       if (e[0] === 'n') g.removeIn(['node', e]);
-      else if (e[1] === 'w') g.removeIn(['way', e]);
+      else if (e[0] === 'w') g.removeIn(['way', e]);
       else g.removeIn(['relation', e]);
     });
   }) as Graph;

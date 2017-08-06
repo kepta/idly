@@ -1,4 +1,4 @@
-import { Record, Set } from 'immutable';
+import { List, Record, Set } from 'immutable';
 
 import { Node } from 'osm/entities/node';
 import { Graph, graphFactory } from 'osm/history/graph';
@@ -11,7 +11,7 @@ import { Action } from 'common/actions';
 
 import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
 import { getGeometry } from 'osm/entities/helpers/misc';
-import { initAreaKeys } from 'osm/presets/areaKeys';
+import { AreaKeys, initAreaKeys } from 'osm/presets/areaKeys';
 import { initPresets } from 'osm/presets/presets';
 
 import {
@@ -21,48 +21,64 @@ import {
   removeEntities
 } from 'core/coreOperations';
 import { CORE } from 'core/store/core.actions';
+import { ParentWays } from 'osm/parsers/parsers';
 
 const initialState = {
   graph: graphFactory(),
   modifiedGraph: graphFactory(),
   modifiedEntities: Set(),
-  entities: Set()
-  // parentWays: Map()
+  entities: Set(),
+  presets: initPresets(),
+  parentWays: new Map(),
+  queueToEvict: List(),
+  areaKeys: null
 };
+initialState.areaKeys = initAreaKeys(initialState.presets.all);
 
 export class CoreState extends Record(initialState) {
   public graph: Graph;
   public entities: Entities;
   public modifiedEntities: Entities;
   public modifiedGraph: Graph;
-
-  // public parentWays: Map<string, Set<string>>;
+  public areaKeys: AreaKeys;
+  public parentWays: ParentWays;
+  public queueToEvict: List<Entity[]>;
   public set(k: string, v: any): CoreState {
     return super.set(k, v) as CoreState;
   }
 }
 
 const coreState = new CoreState();
-const { all, defaults, index, recent } = initPresets();
-const areaKeys = initAreaKeys(all);
-
+const LIMIT = 8;
 export function coreReducer(state = coreState, action: Action<any>) {
   switch (action.type) {
     case CORE.newData: {
       console.time(CORE.newData);
-      let data: Entity[] = action.data;
-      const parentWays = calculateParentWays(data);
-      data = data.map(e => {
-        return e.set(
-          'geometry',
-          getGeometry(e, areaKeys, parentWays)
-        ) as Entity;
-      });
+      const data: Entity[] = action.data;
+      let queueToEvict = state.queueToEvict;
+
+      const entities = state.entities;
+      if (queueToEvict.size > LIMIT) {
+        console.log('evicting');
+        // entities = entities
+        //   .clear()
+        //   .union(queueToEvict.last())
+        //   .union(queueToEvict.get(-2));
+        queueToEvict = queueToEvict.clear();
+      }
+      queueToEvict = queueToEvict.push(data);
       const newState = state
         .update('graph', (graph: Graph) => graphSetEntities(graph, data))
-        .update('entities', (entities: Entities) =>
-          addToVirginEntities(entities, Set(data), state.modifiedEntities, true)
-        );
+        .set(
+          'entities',
+          addToVirginEntities(
+            entities,
+            Set(data),
+            state.modifiedEntities,
+            false
+          )
+        )
+        .set('queueToEvict', queueToEvict);
       console.timeEnd(CORE.newData);
       return newState;
     }
@@ -93,7 +109,15 @@ export function coreReducer(state = coreState, action: Action<any>) {
           'entities',
           (entities: Entities) =>
             entities.subtract(
-              modifiedEntitiesId.map(m => state.graph.getIn(['node', m]))
+              modifiedEntitiesId.map(m => {
+                /**
+                 * @REVISIT this is so hacky man
+                 *  you check this shit :(
+                 */
+                if (m[0] === 'n') return state.graph.getIn(['node', m]);
+                if (m[0] === 'w') return state.graph.getIn(['way', m]);
+                if (m[0] === 'r') return state.graph.getIn(['relation', m]);
+              })
             )
           // removeEntities(entities, modifiedEntitiesId)
         )

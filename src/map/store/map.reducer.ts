@@ -21,6 +21,7 @@ import {
 
 const initialState = {
   tiles: Map(),
+  loadedTiles: Set(),
   existingIds: Set()
 };
 
@@ -29,6 +30,7 @@ type MapActions = GetOSMTilesAction | UpdateSourcesAction;
 export class OsmTilesState extends Record(initialState) {
   public tiles: Map<string, {}>;
   public existingIds: EntitiesId;
+  public loadedTiles: Set<string>;
   public set(k: string, v: {}): OsmTilesState {
     return super.set(k, v) as OsmTilesState;
   }
@@ -39,7 +41,6 @@ export function osmReducer(state = osmTilesState, action: any) {
   switch (action.type) {
     case OSM_TILES.mergeIds: {
       const { newData } = action;
-
       return state.update('existingIds', existingIds =>
         mergeIds(existingIds, newData)
       );
@@ -47,8 +48,9 @@ export function osmReducer(state = osmTilesState, action: any) {
     case OSM_TILES.errorSaveTile:
     case OSM_TILES.saveTile: {
       const { coords } = action;
-
-      return state.setIn(['tiles', coords.join(',')], action.loaded);
+      return state.update('loadedTiles', loadedTiles =>
+        loadedTiles.add(coords.join(','))
+      );
     }
     default:
       return state;
