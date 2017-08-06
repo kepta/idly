@@ -38,6 +38,14 @@ NodeMangler.onSetup = function(opts) {
 };
 
 // Whenever a user clicks on the map, Draw will call `onClick`
+/**
+ * @TOFIX due to a bug in mapboxgl (I Guess)
+ *  what happens is, when you click on the map
+ *  http://localhost:5000/#17.22/51.51006/-0.01412
+ *  at `w24232130` if you click on the right side mouse([[478,250],[488,260]])
+ *  you get a way geometry of length 4 (wrong behaviour) and when you click [[283,306],[293,316]]
+ *  you get a way with geometry of length 5, (correct behavior).
+ */
 NodeMangler.onClick = function(state, e) {
   console.log(e);
   const bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];

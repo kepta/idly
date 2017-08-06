@@ -31,18 +31,21 @@ export class Node extends Record({
   readonly type: string;
   readonly loc: LngLat;
   readonly properties: Properties;
-  readonly geometry: Geometry.POINT | Geometry.VERTEX;
+  readonly geometry: Geometry.POINT | Geometry.VERTEX | Geometry.VERTEX_SHARED;
   public set(k: string, v: any): Node {
     return super.set(k, v) as Node;
   }
 }
 
-export function nodeFactory(obj: {
-  id: Id;
-  tags?: Tags;
-  loc?: LngLat;
-  properties?: Properties;
-  geometry?: Geometry.POINT | Geometry.VERTEX;
-}) {
+export function nodeFactory(
+  obj: {
+    id: Id;
+    tags?: Tags;
+    loc?: LngLat;
+    properties?: Properties;
+    geometry?: Geometry.POINT | Geometry.VERTEX | Geometry.VERTEX_SHARED;
+  },
+  parentWays?
+) {
   return new Node(obj);
 }

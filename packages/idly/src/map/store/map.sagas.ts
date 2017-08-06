@@ -22,6 +22,7 @@ import {
 } from 'map/store/map.actions';
 import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { wayToFeat } from 'map/utils/wayToFeat';
+import { parseXML } from 'osm/parsers/parsers';
 import { getFromWindow } from 'utils/attach_to_window';
 
 // tslint:disable-next-line:
@@ -43,10 +44,10 @@ function* watchFetch(): SagaIterator {
 
 function* fetchTileSaga(x: number, y: number, zoom: number) {
   try {
-    const tiles = yield S.select((state: IRootStateType) =>
-      state.osmTiles.getIn(['tiles', [x, y, zoom].join(',')])
+    const hasTiles = yield S.select((state: IRootStateType) =>
+      state.osmTiles.get('loadedTiles').has([x, y, zoom].join(','))
     );
-    if (tiles) {
+    if (hasTiles) {
       return;
     }
     yield S.put(
@@ -55,11 +56,19 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
         loaded: true
       })
     );
-    const dataAsJSON = yield S.call(fetchTile, x, y, zoom);
+    const xml = yield S.call(fetchTile, x, y, zoom);
+    const { areaKeys, parentWays } = yield S.select(
+      (state: IRootStateType) => state.core
+    );
+    const { entities, parentWays: newParentWays } = parseXML(
+      xml,
+      areaKeys,
+      parentWays
+    );
     const existingIds = yield S.select(
       (state: IRootStateType) => state.osmTiles.existingIds
     );
-    const newData = removeExisting(existingIds, dataAsJSON);
+    const newData = removeExisting(existingIds, entities);
     yield S.put(
       action(OSM_TILES.mergeIds, {
         newData
@@ -67,7 +76,8 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
     );
     yield S.put(
       action(CORE.newData, {
-        data: newData
+        data: newData,
+        parentWays: newParentWays
       })
     );
   } catch (e) {

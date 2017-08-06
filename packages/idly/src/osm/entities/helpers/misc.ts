@@ -21,10 +21,6 @@ export function getGeometry(
   }
 }
 
-function isPoi(entity: Node, parentWays: any) {
-  return !parentWays[entity.id] || parentWays[entity.id].length === 0;
-}
-
 export function isArea(entity: Way, areaKeys: AreaKeys) {
   if (entity.tags.get('area') === 'yes') return true;
 

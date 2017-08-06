@@ -3,6 +3,7 @@ import {
   miniWayXML1,
   miniXML1,
   miniXML2,
+  miniXML3,
   nodeXML1
 } from 'osm/parsers/tests/fixtures';
 // const nodeXML =
@@ -35,6 +36,13 @@ describe.only('parsers', () => {
     it('matches snapshot', () => {
       const parser = new DOMParser();
       const xml = parser.parseFromString(miniWayXML1, 'text/xml');
+      expect(parseXML(xml)).toMatchSnapshot();
+    });
+  });
+  describe('it makes good parentways', () => {
+    it('matches snapshot', () => {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(miniXML3, 'text/xml');
       expect(parseXML(xml)).toMatchSnapshot();
     });
   });

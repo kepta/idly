@@ -15,21 +15,28 @@ import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetsMatch } from 'osm/presets/match';
 import { weakCache, weakCache2 } from 'utils/weakCache';
 
-interface INodeProperties {
-  node_properties: string;
+interface IWayProperties {
+  way_properties: string;
   tags: string;
   id: string;
   name?: string;
-  geometry: string;
+  geometry: Geometry.LINE | Geometry.AREA;
+  nodes: string;
 }
 /**
- * @TOFIX this whole Nodeproperties fuck up
- *  the typings dont support properties
+ * @TOFIX use areaKeys from the core.
  */
-export type WayFeature = Feature<LineString | Polygon, INodeProperties>;
+export type WayFeature = Feature<LineString | Polygon, IWayProperties>;
 const { all, defaults, index, recent } = initPresets();
 const areaKeys = initAreaKeys(all);
-const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
+
+const matchLine = weakCache(
+  R.curry(presetsMatch)(all, index, areaKeys, Geometry.LINE)
+);
+
+const matchArea = weakCache(
+  R.curry(presetsMatch)(all, index, areaKeys, Geometry.AREA)
+);
 
 /**
  *
@@ -39,29 +46,39 @@ const curriedPresetsMatch = R.curry(presetsMatch)(all, index, areaKeys);
  */
 function _wayToFeat(w: Way, graph: Graph): WayFeature {
   if (w instanceof Way) {
-    const match = curriedPresetsMatch(w.tags, w.geometry);
-    const properties: INodeProperties = {
-      node_properties: JSON.stringify(w.properties),
+    const match =
+      w.geometry === Geometry.LINE ? matchLine(w.tags) : matchArea(w.tags);
+    const properties: IWayProperties = {
+      way_properties: JSON.stringify(w.properties),
+      nodes: JSON.stringify(w.nodes),
       tags: JSON.stringify(w.tags),
       id: w.id,
       geometry: w.geometry
     };
     const nodes = w.nodes.map(id => {
-      return graph.node.get(id); // || graphMod.node.get(id);
+      /**
+       * @TOFIX this returns undefined sometimes
+       * eg n589100232, way w170294692 not found at
+       * #17.99/40.73491/-73.97542
+       */
+      const node = graph.node.get(id);
+      if (!node) throw new Error(`$node not found ${id}, way ${w.id}`);
+      return node; // || graphMod.node.get(id);
     });
     let feat;
     if (w.geometry === Geometry.LINE) {
+      // if (!n.loc) throw new Error('doesnt have loc');
       feat = turf.lineString(
         nodes.map(n => [n.loc.lon, n.loc.lat]).toArray(),
         properties
-      ) as Feature<LineString, INodeProperties>;
+      ) as Feature<LineString, IWayProperties>;
       feat.id = w.id;
     } else if (w.geometry === Geometry.AREA) {
       const geoCoordinates = nodes.map(n => [n.loc.lon, n.loc.lat]).toArray();
       geoCoordinates.push(geoCoordinates[0]);
       feat = turf.polygon([geoCoordinates], properties) as Feature<
         Polygon,
-        INodeProperties
+        IWayProperties
       >;
     }
     feat.id = w.id;

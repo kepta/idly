@@ -9,8 +9,8 @@ export function presetsMatch(
   all,
   index: any,
   areaKeys: AreaKeys,
-  tags: Tags,
-  geometry: Geometry
+  geometry: Geometry,
+  tags: Tags
 ) {
   if (!geometry) throw new Error('no geometry found');
   // Treat entities on addr:interpolation lines as points, not vertices (#3241)
@@ -24,7 +24,7 @@ export function presetsMatch(
   // const geometryMatches = index.get(geometry);
   let best = -1;
   let match;
-  const geometryMatches = index[geometry];
+  const geometryMatches = index.get(geometry);
 
   tags.forEach((v, k) => {
     const keyMatches = geometryMatches[k];
