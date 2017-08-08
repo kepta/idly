@@ -1,13 +1,14 @@
 import { IRootStateType } from 'common/store';
-
+import { is } from 'immutable';
 export const observeStore = (store: any) => (
   selector: (s: IRootStateType) => any,
-  onChange
+  onChange,
+  shouldUpdate
 ) => {
   let currentState;
   function handleChange() {
     const nextState = selector(store.getState());
-    if (nextState !== currentState) {
+    if (shouldUpdate(nextState, currentState)) {
       currentState = nextState;
       onChange(currentState, store.dispatch);
     }

@@ -1,6 +1,7 @@
 import { List, Map as ImmutableMap } from 'immutable';
 
 import { Geometry } from 'osm/entities/constants';
+import { Entity } from 'osm/entities/entities';
 import { propertiesGen } from 'osm/entities/helpers/properties';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
@@ -34,12 +35,15 @@ export function parseXML(
   xml: Document,
   areaKeys: AreaKeys = ImmutableMap(),
   parentWays: ParentWays = new Map()
-) {
+): {
+  entities: Entity[];
+  parentWays: ParentWays;
+} {
   if (!xml || !xml.childNodes) return;
 
   const root = xml.childNodes[0];
   const children = root.childNodes;
-  const entities = [];
+  const entities: Entity[] = [];
   const nodesXML = [];
   const waysXML = [];
   const relationsXML = [];
