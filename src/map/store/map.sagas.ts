@@ -6,7 +6,7 @@ import * as S from 'redux-saga/effects';
 
 import { action } from 'common/actions';
 import { IRootStateType } from 'common/store';
-import { CORE } from 'core/store/core.actions';
+import { coreVirginAdd } from 'core/store/core.actions';
 import { removeExisting } from 'core/tileOperations';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
@@ -24,6 +24,7 @@ import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { wayToFeat } from 'map/utils/wayToFeat';
 import { parseXML } from 'osm/parsers/parsers';
 import { getFromWindow } from 'utils/attach_to_window';
+import { Graph } from 'osm/history/graph';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -69,17 +70,18 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
       (state: IRootStateType) => state.osmTiles.existingIds
     );
     const newData = removeExisting(existingIds, entities);
+    yield S.put(coreVirginAdd(newData, parentWays));
     yield S.put(
       action(OSM_TILES.mergeIds, {
         newData
       })
     );
-    yield S.put(
-      action(CORE.newData, {
-        data: newData,
-        parentWays: newParentWays
-      })
-    );
+    // yield S.put(
+    //   action(CORE.newData, {
+    //     data: newData,
+    //     parentWays: newParentWays
+    //   })
+    // );
   } catch (e) {
     console.error(e);
     yield S.put(
@@ -116,10 +118,9 @@ function* watchUpdateSources(): SagaIterator {
 }
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
-  const { graph, modifiedGraph } = yield S.select(
-    (state: IRootStateType) => state.core
+  const graph: Graph = yield S.select(
+    (state: IRootStateType) => state.core.graph
   );
-  console.time('updateSourceSaga');
   const entities = data
     .toArray()
     .map(e => {
@@ -130,6 +131,7 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
       }
     })
     .filter(f => f);
+
   console.timeEnd('updateSourceSaga');
 
   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));

@@ -72,16 +72,16 @@ export function removeEntities(
 
 export function addToModifiedEntities(
   modifiedEntities: Entities,
-  entitiestoAdd: Entities
+  entitiesToAdd: Entities
 ) {
-  const entitiesIdtoAdd = toIdSet(entitiestoAdd);
+  const entitiesIdtoAdd = toIdSet(entitiesToAdd);
   // remove any id which might already exist in
   // modifiedEntities, so that union overwrites.
   const withoutStaleEntities = removeEntities(
     modifiedEntities,
     entitiesIdtoAdd
   );
-  return withoutStaleEntities.union(entitiestoAdd);
+  return withoutStaleEntities.union(entitiesToAdd);
 }
 
 export function calculateParentWays(entities: Entity[]) {

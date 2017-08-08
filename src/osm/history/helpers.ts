@@ -6,6 +6,7 @@ import { graphFactory } from 'osm/history/graph';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
+import { EntitiesId } from 'osm/entities/entities';
 
 type EntitiesMap = Map<string, Node | Way | Relation>;
 type Entity = Node | Way | Relation;
@@ -33,7 +34,7 @@ export function graphRemoveEntities(graph: Graph, entities: Entity[]): Graph {
 
 export function graphRemoveEntitiesWithId(
   graph: Graph,
-  entities: string[]
+  entities: EntitiesId
 ): Graph {
   return graph.withMutations(g => {
     entities.forEach(e => {
