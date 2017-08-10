@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { Entities } from 'osm/entities/entities';
 
+import { LineLayer } from 'map/layers/line';
 import { hideEntities } from 'map/utils/hideEntities';
 import { ILayerSpec, LayerSpec } from 'map/utils/layerFactory';
 
@@ -21,29 +22,33 @@ interface IStatesType {
   layerSpec: ILayerSpec;
 }
 
-export class FillLayer extends React.PureComponent<IPropsType, IStatesType> {
-  static displayName = 'FillLayer';
-  static selectable = false;
+export class LineLabelLayer extends React.PureComponent<
+  IPropsType,
+  IStatesType
+> {
+  static displayName = 'LineLabelLayer';
+  static selectable = true;
   state = {
     layerSpec: LayerSpec({
       id: this.props.name,
-      type: 'line',
+      type: 'symbol',
       source: this.props.sourceName,
       layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
+        'symbol-placement': 'line',
+        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-field': '{name}', // part 2 of this is how to do it
+        'text-size': 9,
+        'text-transform': 'uppercase',
+        'text-letter-spacing': 0.05,
+        'text-optional': true,
+        'text-allow-overlap': false
       },
       paint: {
-        'line-color': '#551A8B',
-        'line-width': 5,
-        'line-opacity': 0.7,
-        'line-dasharray': [1, 2, 1, 3, 1, 2, 1]
+        'text-halo-color': '#ffffff',
+        'text-halo-width': 1.5,
+        'text-halo-blur': 0.5
       },
-      filter: fromJS([
-        'all',
-        ['==', '$type', 'Polygon'],
-        ['!=', '$type', 'LineString']
-      ])
+      filter: fromJS(['all', ['==', '$type', 'LineString']])
     })
   };
   shouldComponentUpdate(nextProps, nextState: IStatesType) {
