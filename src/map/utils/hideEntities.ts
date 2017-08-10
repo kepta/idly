@@ -1,6 +1,6 @@
-import { List, Set } from 'immutable';
+import { List } from 'immutable';
 
-import { ILayerSpec } from 'map/layers/layerFactory';
+import { ILayerSpec } from 'map/utils/layerFactory';
 import { setSubtractEntities } from 'map/utils/setSubtract';
 import { Entities } from 'osm/entities/entities';
 

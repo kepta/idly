@@ -10,7 +10,7 @@ import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetsMatch } from 'osm/presets/match';
 import { initPresets } from 'osm/presets/presets';
 
-import { weakCache, weakCache2 } from 'utils/weakCache';
+import { weakCache } from 'utils/weakCache';
 
 interface INodeProperties {
   node_properties: string;

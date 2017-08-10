@@ -22,9 +22,10 @@ import {
 } from 'map/store/map.actions';
 import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { wayToFeat } from 'map/utils/wayToFeat';
+
+import { Graph } from 'osm/history/graph';
 import { parseXML } from 'osm/parsers/parsers';
 import { getFromWindow } from 'utils/attach_to_window';
-import { Graph } from 'osm/history/graph';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {

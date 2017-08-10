@@ -1,4 +1,4 @@
-import { getStyle } from 'map/layers/style';
+import { getStyle } from 'map/style';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 import { attachToWindow } from 'utils/attach_to_window';
 

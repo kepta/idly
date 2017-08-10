@@ -1,4 +1,3 @@
-import { Map } from 'immutable';
 import * as _ from 'lodash';
 
 import { data } from 'data/index';
@@ -9,7 +8,6 @@ import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
 
 import { Geometry } from 'osm/entities/constants';
-import { isOnAddressLine } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';

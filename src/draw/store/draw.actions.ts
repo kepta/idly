@@ -1,11 +1,7 @@
-import { Feature, Point } from 'geojson';
-import { List } from 'immutable';
 
-import { action, Action, actionBuilderFactory } from 'common/actions';
+import { actionBuilderFactory } from 'common/actions';
 
 import { EntitiesId } from 'osm/entities/entities';
-
-import { NodeFeature } from 'map/utils/nodeToFeat';
 
 export enum DrawActions {
   SELECT = 'Draw.SELECT',

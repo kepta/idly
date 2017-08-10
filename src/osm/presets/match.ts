@@ -1,5 +1,4 @@
 import { Geometry } from 'osm/entities/constants';
-import { Entity } from 'osm/entities/entities';
 
 import { isOnAddressLine } from 'osm/entities/helpers/misc';
 import { Tags } from 'osm/entities/helpers/tags';

@@ -1,4 +1,4 @@
-import { fromJS, Iterable, List, Map, Record, Set } from 'immutable';
+import { Record } from 'immutable';
 
 type Updater<T> = (value: T) => T;
 /**

@@ -1,7 +1,6 @@
 import { Record, Set } from 'immutable';
 
 import { Action } from 'common/actions';
-import { Node } from 'osm/entities/node';
 
 import { DrawActions } from 'draw/store/draw.actions';
 import { Entities } from 'osm/entities/entities';

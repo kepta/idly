@@ -1,10 +1,6 @@
 import { List, Set } from 'immutable';
 import * as React from 'react';
 
-import { BaseFilter } from 'map/layers/baseFilter';
-import { setSubtractEntities } from 'map/utils/setSubtract';
-import { Layer } from 'mapbox-gl';
-import { Entities, Entity } from 'osm/entities/entities';
 import { getComponentName } from 'utils/getComponentName';
 
 export type LayerFilter = Set<string | List<string>>;

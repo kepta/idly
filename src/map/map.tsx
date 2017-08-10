@@ -1,6 +1,5 @@
 import { Set } from 'immutable';
 import * as MapboxInspect from 'mapbox-gl-inspect';
-import * as R from 'ramda';
 import * as React from 'react';
 
 import { connect } from 'react-redux';
@@ -17,16 +16,16 @@ import { lonlatToXYs } from 'utils/mecarator';
 
 import { Draw } from 'draw/draw';
 
-import { SELECTABLE_LAYERS, SOURCES, ZOOM } from 'map/constants';
+import { SOURCES, ZOOM } from 'map/constants';
 import { FillLayer } from 'map/layers/area';
-import { ILayerSpec } from 'map/layers/layerFactory';
 import { LineLayer } from 'map/layers/line';
 import { PointsWithLabels } from 'map/layers/pointsWithLabels';
 import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
-import { updateLayer as updateLayerX } from 'map/layers/style';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
+import { updateLayer as updateLayerX } from 'map/style';
+import { ILayerSpec } from 'map/utils/layerFactory';
 import { dirtyPopup } from 'map/utils/map.popup';
 
 type Entity = Node | Way | Relation;

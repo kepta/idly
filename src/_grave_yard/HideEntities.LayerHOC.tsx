@@ -1,10 +1,9 @@
-import { List, Set } from 'immutable';
+import { Set } from 'immutable';
 import * as React from 'react';
 
-import { ILayerSpec, LayerFilters } from 'map/layers/layerFactory';
+import { ILayerSpec } from 'map/utils/layerFactory';
 import { setSubtractEntities } from 'map/utils/setSubtract';
-import { Layer } from 'mapbox-gl';
-import { Entities, Entity } from 'osm/entities/entities';
+import { Entities } from 'osm/entities/entities';
 import { getComponentName } from 'utils/getComponentName';
 
 // ref to template.hoc.tsx for understanding hoc and typings
