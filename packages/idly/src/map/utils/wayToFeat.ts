@@ -53,6 +53,7 @@ function _wayToFeat(w: Way, graph: Graph): WayFeature {
       nodes: JSON.stringify(w.nodes),
       tags: JSON.stringify(w.tags),
       id: w.id,
+      name: w.tags.get('name'),
       geometry: w.geometry
     };
     const nodes = w.nodes.map(id => {

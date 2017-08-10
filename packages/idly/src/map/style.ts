@@ -64,7 +64,7 @@ export function updateLayer(layer: ILayerSpec) {
   updateStyle(newStyle);
 }
 
-const parseLayers = (l: Map<string, any>, styleObj: Style) => {
+const parseLayers = (l: OrderedMap<string, any>, styleObj: Style) => {
   const layers = l
     .map(v => {
       let layer = v.toJS();

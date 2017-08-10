@@ -19,6 +19,7 @@ import { Draw } from 'draw/draw';
 import { SOURCES, ZOOM } from 'map/constants';
 import { FillLayer } from 'map/layers/area';
 import { LineLayer } from 'map/layers/line';
+import { LineLabelLayer } from 'map/layers/lineLabel';
 import { PointsWithLabels } from 'map/layers/pointsWithLabels';
 import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
 import { mapboxglSetup } from 'map/mapboxglSetup';
@@ -122,12 +123,18 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
                   entities={this.props[s.data]}
                   updateLayer={this.updateLayer}
                 />
-                <FillLayer
+                <LineLabelLayer
                   sourceName={s.source}
                   name={s.source + FillLayer.displayName}
                   entities={this.props[s.data]}
                   updateLayer={this.updateLayer}
                 />
+                {/* <FillLayer
+                  sourceName={s.source}
+                  name={s.source + FillLayer.displayName}
+                  entities={this.props[s.data]}
+                  updateLayer={this.updateLayer}
+                /> */}
               </Source>
             )}
           </div>}
