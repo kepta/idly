@@ -16,7 +16,7 @@ import { Node } from 'osm/entities/node';
 import { Way } from 'osm/entities/way';
 
 const NodeMangler: any = {};
-
+let prev = null;
 NodeMangler.onSetup = function(opts) {
   const state = {
     observe: observe(
@@ -51,6 +51,8 @@ NodeMangler.onSetup = function(opts) {
 };
 
 NodeMangler._render = function(x: Entities) {
+  console.log(x, prev, x.equals(prev));
+  prev = x;
   if (x.size === 0) return;
   const feat = entityToFeat(x);
   console.log(feat);

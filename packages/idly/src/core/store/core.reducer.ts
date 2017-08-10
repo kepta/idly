@@ -33,6 +33,7 @@ const initialState = {
   selectedEntities: Set(),
   areaKeys: null
 };
+
 initialState.areaKeys = initAreaKeys(initialState.presets.all);
 
 export class CoreState extends Record(initialState) {

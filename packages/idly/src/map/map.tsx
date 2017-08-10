@@ -1,6 +1,8 @@
 import { Set } from 'immutable';
 import * as MapboxInspect from 'mapbox-gl-inspect';
+import * as R from 'ramda';
 import * as React from 'react';
+
 import { connect } from 'react-redux';
 
 import { Entities } from 'osm/entities/entities';
@@ -17,16 +19,18 @@ import { Draw } from 'draw/draw';
 
 import { SELECTABLE_LAYERS, SOURCES, ZOOM } from 'map/constants';
 import { FillLayer } from 'map/layers/area';
+import { ILayerSpec } from 'map/layers/layerFactory';
 import { LineLayer } from 'map/layers/line';
 import { PointsWithLabels } from 'map/layers/pointsWithLabels';
 import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
+import { updateLayer as updateLayerX } from 'map/layers/style';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
 import { dirtyPopup } from 'map/utils/map.popup';
 
 type Entity = Node | Way | Relation;
-
+export type DirtyMapAccessType = (map: any) => void;
 /**
  * The job of map module is to handle
  * the rendering of map. It also means
@@ -68,6 +72,12 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     });
     this.map.on('moveend', this.dispatchTiles);
   }
+  updateLayer = (layerSpec: ILayerSpec) => {
+    updateLayerX(layerSpec);
+    // let newLayer = layerSpec.toJS();
+    // newLayer = R.reject(R.isNil, newLayer);
+    // this.map.addLayer(newLayer);
+  };
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
     const lonLat = this.map.getBounds();
@@ -94,42 +104,30 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
                 sourceName={s.source}
                 dirtyMapAccess={this.dirtyMapAccess}
                 updateSource={this.props.updateSource}
-                entities={this.props[s.data]}
-              >
-                {/* <Layer
-                  sourceName={s.source}
-                  name={s.layer}
-                  dirtyMapAccess={this.dirtyMapAccess}
-                  entities={this.props[s.data]}
-                  updateSource={this.props.updateSource}
-                /> */}
+                entities={this.props[s.data]}>
                 <PointsWithoutLabels
                   sourceName={s.source}
                   name={s.source + PointsWithoutLabels.displayName}
-                  dirtyMapAccess={this.dirtyMapAccess}
                   entities={this.props[s.data]}
-                  updateSource={this.props.updateSource}
+                  updateLayer={this.updateLayer}
                 />
                 <PointsWithLabels
                   sourceName={s.source}
                   name={s.source + PointsWithLabels.displayName}
-                  updateSource={this.props.updateSource}
-                  dirtyMapAccess={this.dirtyMapAccess}
                   entities={this.props[s.data]}
+                  updateLayer={this.updateLayer}
                 />
                 <LineLayer
                   sourceName={s.source}
                   name={s.source + LineLayer.displayName}
-                  updateSource={this.props.updateSource}
-                  dirtyMapAccess={this.dirtyMapAccess}
                   entities={this.props[s.data]}
+                  updateLayer={this.updateLayer}
                 />
                 <FillLayer
                   sourceName={s.source}
                   name={s.source + FillLayer.displayName}
-                  updateSource={this.props.updateSource}
-                  dirtyMapAccess={this.dirtyMapAccess}
                   entities={this.props[s.data]}
+                  updateLayer={this.updateLayer}
                 />
               </Source>
             )}

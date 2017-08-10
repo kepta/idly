@@ -1,6 +1,12 @@
+import { fromJS, OrderedMap, Set } from 'immutable';
+import { ILayerSpec } from 'map/layers/layerFactory';
 import { Layer, Style } from 'mapbox-gl';
+import * as diff from 'mapbox-gl/src/style-spec/diff';
 
-let style: Style = {
+import * as R from 'ramda';
+import { getFromWindow } from 'utils/attach_to_window';
+
+let globalStyle: Style = {
   version: 8,
   name: 'Satellite',
   metadata: { 'mapbox:autocomposite': true, 'mapbox:type': 'default' },
@@ -27,14 +33,46 @@ let style: Style = {
   ]
 };
 
+const satLayer = fromJS({
+  id: 'satellite',
+  type: 'raster',
+  source: 'mapbox',
+  'source-layer': 'mapbox_satellite_full'
+});
+
+let Layers: OrderedMap<string, any> = OrderedMap({}).set('satellite', satLayer);
+
 export function getStyle(): Style {
-  return style;
+  return globalStyle;
+}
+export function updateStyle(s): Style {
+  globalStyle = s;
+  return globalStyle;
 }
 
-export function addLayers(layer: Layer): Style {
-  style = {
-    ...style,
-    layers: [...style.layers, layer]
-  };
-  return style;
+export function updateLayer(layer: ILayerSpec) {
+  // const layer = layerSpec.toJS();
+  Layers = Layers.set(layer.get('id'), layer);
+
+  const newStyle = parseLayers(Layers, getStyle());
+  const invokes = diff(getStyle(), newStyle);
+  invokes.forEach(op => {
+    getFromWindow('map')[op.command](...op.args);
+  });
+  // console.log(newStyle, getStyle(), Layers.toJS());
+
+  updateStyle(newStyle);
 }
+
+const parseLayers = (l: Map<string, any>, styleObj: Style) => {
+  const layers = l
+    .map(v => {
+      let layer = v.toJS();
+      layer = R.reject(R.isNil, layer);
+      return layer;
+    })
+    .toArray();
+  const gStyle = R.clone(styleObj);
+  gStyle.layers = layers;
+  return gStyle;
+};
