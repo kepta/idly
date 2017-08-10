@@ -1,7 +1,6 @@
 import { Set } from 'immutable';
 
 import { Entity } from 'osm/entities/entities';
-import { Node } from 'osm/entities/node';
 
 import { weakCache2 } from 'utils/weakCache';
 

@@ -2,10 +2,8 @@ import { Map } from 'immutable';
 
 import { nodeFactory } from 'osm/entities/node';
 
-import { Point } from 'geojson';
 import { featToNode } from 'map/utils/featToNode';
 import { NodeFeature, nodeToFeat } from 'map/utils/nodeToFeat';
-import { Feature } from 'typings/geojson';
 
 import { Geometry } from 'osm/entities/constants';
 

@@ -11,6 +11,5 @@ ref http://busypeoples.github.io/post/react-component-lifecycle/
   - State Changes -> Changes -> ShouldComponentUpdate -> ComponentWillUpdate -> Render -> 
 
 
-
 ## HOC
 ref https://dev.to/danhomola/react-higher-order-components-in-typescript-made-simple

@@ -6,8 +6,6 @@ import { Way, wayFactory } from 'osm/entities/way';
 import { initPresets } from 'osm/presets/presets';
 
 import { initAreaKeys } from 'osm/presets/areaKeys';
-import { presetsMatch } from 'osm/presets/match';
-import * as R from 'ramda';
 describe('osmWay', function() {
   //   if (debug) {
   //     it('freezes nodes', function() {

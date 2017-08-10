@@ -1,7 +1,5 @@
-import { Set } from 'immutable';
 
 import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
-import { Node } from 'osm/entities/node';
 import { Way } from 'osm/entities/way';
 
 // export type EntitiesId = Set<string>;

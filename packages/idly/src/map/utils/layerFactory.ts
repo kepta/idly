@@ -1,4 +1,4 @@
-import { fromJS, Iterable, List, Map, Record, Set } from 'immutable';
+import { List } from 'immutable';
 import { IRecord, recordFactory } from 'map/utils/recordFactory';
 
 export type LayerFilters = List<string | List<any>>;

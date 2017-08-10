@@ -1,8 +1,7 @@
-import { List } from 'immutable';
 
 import { actionBuilderFactory } from 'common/actions';
 
-import { Entities, EntitiesId, Entity, EntityId } from 'osm/entities/entities';
+import { EntitiesId, Entity } from 'osm/entities/entities';
 import { ParentWays } from 'osm/parsers/parsers';
 
 export enum CoreActions {

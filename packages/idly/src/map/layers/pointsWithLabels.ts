@@ -1,13 +1,11 @@
-import { fromJS, Set } from 'immutable';
+import { fromJS } from 'immutable';
 import * as React from 'react';
 
-import { Entities, Entity } from 'osm/entities/entities';
-import { Node } from 'osm/entities/node';
+import { Entities } from 'osm/entities/entities';
 
-import { hideEntities } from 'map/layers/helper/hideEntities';
-import { ILayerSpec, LayerFilters, LayerSpec } from 'map/layers/layerFactory';
-import { setSubtractEntities } from 'map/utils/setSubtract';
-import { Layer, SymbolLayout, SymbolPaint } from 'mapbox-gl';
+import { hideEntities } from 'map/utils/hideEntities';
+import { ILayerSpec, LayerSpec } from 'map/utils/layerFactory';
+import { SymbolLayout, SymbolPaint } from 'mapbox-gl';
 import { Geometry } from 'osm/entities/constants';
 
 interface IPropsType {

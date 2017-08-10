@@ -1,5 +1,4 @@
 import { IRootStateType } from 'common/store';
-import { is } from 'immutable';
 export const observeStore = (store: any) => (
   selector: (s: IRootStateType) => any,
   onChange,

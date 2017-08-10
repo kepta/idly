@@ -3,10 +3,10 @@ import { Map } from 'immutable';
 import { Graph } from 'osm/history/graph';
 import { graphFactory } from 'osm/history/graph';
 
+import { EntitiesId } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
-import { EntitiesId } from 'osm/entities/entities';
 
 type EntitiesMap = Map<string, Node | Way | Relation>;
 type Entity = Node | Way | Relation;
