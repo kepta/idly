@@ -10,4 +10,4 @@ export const setSubtract = <P>() =>
     return a.subtract(b);
   });
 
-export const setSubtractNode = setSubtract<Entity>();
+export const setSubtractEntities = setSubtract<Entity>();

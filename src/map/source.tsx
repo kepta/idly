@@ -3,6 +3,8 @@ import * as turf from 'turf';
 
 import { Entities } from 'osm/entities/entities';
 
+import { setSubtractEntities } from 'map/utils/setSubtract';
+
 interface IPropsType {
   sourceName: string;
   dirtyMapAccess;
@@ -18,6 +20,19 @@ export class Source extends React.PureComponent<IPropsType, {}> {
   state = {
     sourceLoaded: false
   };
+  componentWillReceiveProps(nextProps: IPropsType) {
+    const addedEntities = setSubtractEntities(
+      nextProps.entities,
+      this.props.entities
+    );
+    if (addedEntities.size > 0) {
+      this.props.updateSource(
+        nextProps.entities,
+        this.props.dirtyMapAccess,
+        this.props.sourceName
+      );
+    }
+  }
   shouldComponentUpdate(nextProps: IPropsType, nextState) {
     return (
       !nextProps.entities.equals(this.props.entities) ||

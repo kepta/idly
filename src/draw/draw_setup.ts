@@ -24,6 +24,21 @@ MapboxDraw.modes.simple_select.clickAnywhere = function(state, e) {
   this.stopExtendedInteractions(state);
 };
 
+MapboxDraw.modes.simple_select.clickOnVertex = function(state, e) {
+  // Enter direct select modeconst wasSelected = this.getSelectedIds();
+  const wasSelected = this.getSelectedIds();
+
+  const wasSelectedFeatures = wasSelected.map(id => this.getFeature(id));
+
+  console.log(wasSelectedFeatures);
+  this.changeMode('direct_select', {
+    featureId: e.featureTarget.properties.parent,
+    coordPath: e.featureTarget.properties.coord_path,
+    startPos: e.lngLat
+  });
+  // this.updateUIClasses({ mouse: Constants.cursors.MOVE });
+};
+
 MapboxDraw.modes.direct_select.clickNoTarget = function() {
   const wasSelected = this.getSelectedIds();
   const wasSelectedFeatures = wasSelected.map(id => this.getFeature(id));

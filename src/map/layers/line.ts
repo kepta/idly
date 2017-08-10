@@ -1,11 +1,13 @@
-import { Set } from 'immutable';
+import { fromJS, Set } from 'immutable';
+import { Layer } from 'mapbox-gl';
 import * as React from 'react';
 
 import { Entities, Entity } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 
-import { setSubtractNode } from 'map/utils/setSubtract';
-import { Layer } from 'mapbox-gl';
+import { hideEntities } from 'map/layers/helper/hideEntities';
+import { ILayerSpec, LayerSpec } from 'map/layers/layerFactory';
+import { setSubtractEntities } from 'map/utils/setSubtract';
 
 /**
  * @REVISIT fix this
@@ -14,30 +16,19 @@ import { Layer } from 'mapbox-gl';
 interface IPropsType {
   name: string;
   sourceName: string;
-  dirtyMapAccess;
   entities: Entities;
-  updateSource: (
-    data: Entities,
-    dirtyMapAccess: (map: any) => void,
-    sourceId: string
-  ) => void;
+  updateLayer: (layerSpec: ILayerSpec) => void;
 }
+
 interface IStatesType {
-  toRemove: Entities;
+  layerSpec: ILayerSpec;
 }
+
 export class LineLayer extends React.PureComponent<IPropsType, IStatesType> {
   static displayName = 'LineLayer';
   static selectable = true;
-
   state = {
-    toRemove: Set<Entity>()
-  };
-  baseFilter = ['all', ['==', '$type', 'LineString']];
-  addLayer = (layer: Layer) => {
-    this.props.dirtyMapAccess(map => map.addLayer(layer));
-  };
-  componentDidMount() {
-    this.addLayer({
+    layerSpec: LayerSpec({
       id: this.props.name,
       type: 'line',
       source: this.props.sourceName,
@@ -49,49 +40,24 @@ export class LineLayer extends React.PureComponent<IPropsType, IStatesType> {
         'line-color': '#eee',
         'line-width': 2
       },
-      filter: this.baseFilter
-    });
+      filter: fromJS(['all', ['==', '$type', 'LineString']])
+    })
+  };
+  shouldComponentUpdate(nextProps, nextState: IStatesType) {
+    return !this.state.layerSpec.equals(nextState.layerSpec);
   }
   componentWillReceiveProps(nextProps: IPropsType) {
-    const removedEntities = setSubtractNode(
+    const layerSpec = hideEntities(
+      this.state.layerSpec,
       this.props.entities,
       nextProps.entities
     );
-    const addedEntities = setSubtractNode(
-      nextProps.entities,
-      this.props.entities
-    );
-    if (removedEntities.size > 0 && addedEntities.size === 0) {
-      this.setState({
-        toRemove: this.state.toRemove.union(removedEntities) as Entities
-      });
-    } else if (addedEntities.size > 0) {
-      this.props.updateSource(
-        nextProps.entities,
-        this.props.dirtyMapAccess,
-        this.props.sourceName
-      );
-      this.setState({
-        toRemove: this.state.toRemove.clear()
-      });
-    }
-  }
-  componentWillUpdate(nextProps, nextState: IStatesType) {
-    if (!nextState.toRemove.equals(this.state.toRemove)) {
-      this.props.dirtyMapAccess(map => {
-        console.log(
-          `hiding these ${this.props.name} at ${nextState.toRemove
-            .map(e => e.id)
-            .toArray()}`
-        );
-        map.setFilter(this.props.name, [
-          ...this.baseFilter,
-          ['!in', 'id', ...nextState.toRemove.map(e => e.id).toArray()]
-        ]);
-      });
-    }
+    this.setState({
+      layerSpec
+    });
   }
   render() {
+    this.props.updateLayer(this.state.layerSpec);
     return null;
   }
 }

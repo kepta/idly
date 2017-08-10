@@ -118,6 +118,8 @@ function* watchUpdateSources(): SagaIterator {
 }
 
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
+  console.time('updateSourceSaga');
+
   const graph: Graph = yield S.select(
     (state: IRootStateType) => state.core.graph
   );

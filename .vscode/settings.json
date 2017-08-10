@@ -3,5 +3,6 @@
   "editor.formatOnSave": true,
   "tslint.autoFixOnSave": true,
   "editor.minimap.enabled": false,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "prettier.jsxBracketSameLine": true
 }
