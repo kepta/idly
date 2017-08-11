@@ -31,5 +31,5 @@ export function recordFactory<T>(defaultState: T, recordName?: string) {
     (input: TInput): IRecord<T>;
     new (input: TInput): IRecord<T>;
   }
-  return (RecordClass as any) as IConstructor<Partial<T>>;
+  return (RecordClass as any) as IConstructor<T>;
 }

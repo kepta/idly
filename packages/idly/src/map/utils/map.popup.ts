@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { LAYERS } from 'map/constants';
+import { LAYERS } from 'map/layers/layers';
 import { popup } from 'map/mapboxglSetup';
 import * as turf from 'turf';
 const SIZE = 10;

@@ -75,8 +75,12 @@ function _wayToFeat(w: Way, graph: Graph): WayFeature {
       ) as Feature<LineString, IWayProperties>;
       feat.id = w.id;
     } else if (w.geometry === Geometry.AREA) {
+      // if (nodes[0])
+      if (!nodes.first().equals(nodes.last()))
+        throw new Error('area first last not same');
       const geoCoordinates = nodes.map(n => [n.loc.lon, n.loc.lat]).toArray();
-      geoCoordinates.push(geoCoordinates[0]);
+      // if (R.equals())
+      // geoCoordinates.push(geoCoordinates[0]);
       feat = turf.polygon([geoCoordinates], properties) as Feature<
         Polygon,
         IWayProperties

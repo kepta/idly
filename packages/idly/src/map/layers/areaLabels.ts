@@ -19,9 +19,9 @@ interface IStatesType {
   layerSpec: ILayerSpec;
 }
 
-const displayName = (sourceName: string) => sourceName + 'LineLabelLayer';
+const displayName = (sourceName: string) => sourceName + 'AreaLabelsLayer';
 
-export const LineLabelLayer = (sourceName: string) =>
+export const AreaLabelsLayer = (sourceName: string) =>
   simpleLayerHOC({
     displayName: displayName(sourceName),
     selectable: false,
@@ -31,7 +31,7 @@ export const LineLabelLayer = (sourceName: string) =>
       type: 'symbol',
       source: sourceName,
       layout: {
-        'symbol-placement': 'line',
+        'symbol-placement': 'point',
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
         'text-field': '{name}', // part 2 of this is how to do it
         'text-size': 9,
@@ -45,6 +45,6 @@ export const LineLabelLayer = (sourceName: string) =>
         'text-halo-width': 1.5,
         'text-halo-blur': 0.5
       },
-      filter: fromJS(['all', ['==', '$type', 'LineString']])
+      filter: fromJS(['all', ['==', '$type', 'Polygon']])
     })
   });
