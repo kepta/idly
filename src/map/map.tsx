@@ -17,15 +17,14 @@ import { lonlatToXYs } from 'utils/mecarator';
 import { Draw } from 'draw/draw';
 
 import { SOURCES, ZOOM } from 'map/constants';
-import { FillLayer } from 'map/layers/area';
-import { LineLayer } from 'map/layers/line';
-import { LineLabelLayer } from 'map/layers/lineLabel';
-import { PointsWithLabels } from 'map/layers/pointsWithLabels';
-import { PointsWithoutLabels } from 'map/layers/pointsWithoutLabel';
+import { SourceLayered } from 'map/layers/layers';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
-import { updateLayer as updateLayerX } from 'map/style';
+import {
+  removeLayer as removeLayerX,
+  updateLayer as updateLayerX
+} from 'map/style';
 import { ILayerSpec } from 'map/utils/layerFactory';
 import { dirtyPopup } from 'map/utils/map.popup';
 
@@ -56,7 +55,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     entities: Set()
   };
   state = {
-    mapLoaded: false
+    mapLoaded: false,
+    sourceLayered: SourceLayered
   };
 
   private map;
@@ -66,7 +66,25 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
     attachToWindow('popup', () => dirtyPopup(this.map));
     attachToWindow('MapboxInspect', MapboxInspect);
-
+    attachToWindow('hideLayer', name => {
+      window.ggg = this.state.sourceLayered[0].filter(
+        f => f.displayName === name
+      );
+      this.setState({
+        sourceLayered: [
+          this.state.sourceLayered[0].filter(f => f.displayName !== name),
+          this.state.sourceLayered[1].filter(f => f.displayName !== name)
+        ]
+      });
+    });
+    attachToWindow('appendLayer', name => {
+      this.setState({
+        sourceLayered: [
+          this.state.sourceLayered[0].concat(window.ggg),
+          this.state.sourceLayered[1].filter(f => f.displayName !== name)
+        ]
+      });
+    });
     this.map.on('load', () => {
       this.setState({ mapLoaded: true });
     });
@@ -77,6 +95,9 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     // let newLayer = layerSpec.toJS();
     // newLayer = R.reject(R.isNil, newLayer);
     // this.map.addLayer(newLayer);
+  };
+  removeLayer = (layerId: string) => {
+    removeLayerX(layerId);
   };
   dispatchTiles = () => {
     if (this.map.getZoom() < ZOOM) return;
@@ -105,36 +126,13 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
                 dirtyMapAccess={this.dirtyMapAccess}
                 updateSource={this.props.updateSource}
                 entities={this.props[s.data]}>
-                <PointsWithoutLabels
-                  sourceName={s.source}
-                  name={s.source + PointsWithoutLabels.displayName}
-                  entities={this.props[s.data]}
-                  updateLayer={this.updateLayer}
-                />
-                <PointsWithLabels
-                  sourceName={s.source}
-                  name={s.source + PointsWithLabels.displayName}
-                  entities={this.props[s.data]}
-                  updateLayer={this.updateLayer}
-                />
-                <LineLayer
-                  sourceName={s.source}
-                  name={s.source + LineLayer.displayName}
-                  entities={this.props[s.data]}
-                  updateLayer={this.updateLayer}
-                />
-                <LineLabelLayer
-                  sourceName={s.source}
-                  name={s.source + FillLayer.displayName}
-                  entities={this.props[s.data]}
-                  updateLayer={this.updateLayer}
-                />
-                {/* <FillLayer
-                  sourceName={s.source}
-                  name={s.source + FillLayer.displayName}
-                  entities={this.props[s.data]}
-                  updateLayer={this.updateLayer}
-                /> */}
+                {this.state.sourceLayered[k].map(L =>
+                  <L
+                    entities={this.props[s.data]}
+                    updateLayer={this.updateLayer}
+                    removeLayer={this.removeLayer}
+                  />
+                )}
               </Source>
             )}
           </div>}

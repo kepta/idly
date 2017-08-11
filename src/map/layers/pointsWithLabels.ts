@@ -1,35 +1,22 @@
 import { fromJS } from 'immutable';
-import * as React from 'react';
 
-import { Entities } from 'osm/entities/entities';
 
-import { hideEntities } from 'map/utils/hideEntities';
-import { ILayerSpec, LayerSpec } from 'map/utils/layerFactory';
+import { LayerSpec } from 'map/utils/layerFactory';
+import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 import { SymbolLayout, SymbolPaint } from 'mapbox-gl';
 import { Geometry } from 'osm/entities/constants';
 
-interface IPropsType {
-  name: string;
-  sourceName: string;
-  entities: Entities;
-  updateLayer: (layerSpec: ILayerSpec) => void;
-}
+const displayName = (sourceName: string) =>
+  sourceName + 'PointsWithLabelsLayer';
 
-interface IStatesType {
-  layerSpec: ILayerSpec;
-}
-
-export class PointsWithLabels extends React.PureComponent<
-  IPropsType,
-  IStatesType
-> {
-  static displayName = 'PointsWithLabels';
-  static selectable = true;
-  state = {
-    layerSpec: LayerSpec({
-      id: this.props.name,
+export const PointsWithLabelsLayer = (sourceName: string) =>
+  simpleLayerHOC({
+    displayName: displayName(sourceName),
+    selectable: true,
+    layer: LayerSpec({
+      id: displayName(sourceName),
       type: 'symbol',
-      source: this.props.sourceName,
+      source: sourceName,
       layout: {
         'icon-image': '{icon}-11',
         'icon-allow-overlap': true,
@@ -55,22 +42,4 @@ export class PointsWithLabels extends React.PureComponent<
         ['!=', 'geometry', Geometry.VERTEX]
       ])
     })
-  };
-  shouldComponentUpdate(nextProps, nextState: IStatesType) {
-    return !this.state.layerSpec.equals(nextState.layerSpec);
-  }
-  componentWillReceiveProps(nextProps: IPropsType) {
-    const layerSpec = hideEntities(
-      this.state.layerSpec,
-      this.props.entities,
-      nextProps.entities
-    );
-    this.setState({
-      layerSpec
-    });
-  }
-  render() {
-    this.props.updateLayer(this.state.layerSpec);
-    return null;
-  }
-}
+  });

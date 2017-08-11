@@ -4,7 +4,7 @@ import { Style } from 'mapbox-gl';
 import * as diff from 'mapbox-gl/src/style-spec/diff';
 
 import * as R from 'ramda';
-import { getFromWindow } from 'utils/attach_to_window';
+import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
 
 let globalStyle: Style = {
   version: 8,
@@ -45,6 +45,7 @@ let Layers: OrderedMap<string, any> = OrderedMap({}).set('satellite', satLayer);
 export function getStyle(): Style {
   return globalStyle;
 }
+attachToWindow('getStyle', getStyle);
 export function updateStyle(s): Style {
   globalStyle = s;
   return globalStyle;
@@ -52,7 +53,22 @@ export function updateStyle(s): Style {
 
 export function updateLayer(layer: ILayerSpec) {
   // const layer = layerSpec.toJS();
+  console.log('updating', layer.get('id'));
   Layers = Layers.set(layer.get('id'), layer);
+
+  const newStyle = parseLayers(Layers, getStyle());
+  const invokes = diff(getStyle(), newStyle);
+  invokes.forEach(op => {
+    getFromWindow('map')[op.command](...op.args);
+  });
+  // console.log(newStyle, getStyle(), Layers.toJS());
+
+  updateStyle(newStyle);
+}
+export function removeLayer(layerId: string) {
+  console.log('removing', layerId);
+
+  Layers = Layers.remove(layerId);
 
   const newStyle = parseLayers(Layers, getStyle());
   const invokes = diff(getStyle(), newStyle);
@@ -71,7 +87,9 @@ const parseLayers = (l: OrderedMap<string, any>, styleObj: Style) => {
       layer = R.reject(R.isNil, layer);
       return layer;
     })
+    .sort((a, b) => a.priority - b.priority)
     .toArray();
+  console.log(layers);
   const gStyle = R.clone(styleObj);
   gStyle.layers = layers;
   return gStyle;

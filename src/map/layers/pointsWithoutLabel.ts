@@ -1,34 +1,21 @@
 import { fromJS } from 'immutable';
-import * as React from 'react';
 
-import { Entities } from 'osm/entities/entities';
 
-import { hideEntities } from 'map/utils/hideEntities';
-import { ILayerSpec, LayerSpec } from 'map/utils/layerFactory';
+import { LayerSpec } from 'map/utils/layerFactory';
+import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 import { Geometry } from 'osm/entities/constants';
 
-interface IPropsType {
-  name: string;
-  sourceName: string;
-  entities: Entities;
-  updateLayer: (layerSpec: ILayerSpec) => void;
-}
+const displayName = (sourceName: string) =>
+  sourceName + 'PointsWithoutLabelsLayer';
 
-interface IStatesType {
-  layerSpec: ILayerSpec;
-}
-
-export class PointsWithoutLabels extends React.PureComponent<
-  IPropsType,
-  IStatesType
-> {
-  static displayName = 'PointsWithoutLabels';
-  static selectable = true;
-  state = {
-    layerSpec: LayerSpec({
-      id: this.props.name,
+export const PointsWithoutLabelsLayer = (sourceName: string) =>
+  simpleLayerHOC({
+    displayName: displayName(sourceName),
+    selectable: true,
+    layer: LayerSpec({
+      id: displayName(sourceName),
+      source: sourceName,
       type: 'circle',
-      source: this.props.sourceName,
       layout: {},
       paint: {
         'circle-radius': 6,
@@ -42,22 +29,4 @@ export class PointsWithoutLabels extends React.PureComponent<
         ['!=', 'geometry', Geometry.VERTEX]
       ])
     })
-  };
-  shouldComponentUpdate(nextProps, nextState: IStatesType) {
-    return !this.state.layerSpec.equals(nextState.layerSpec);
-  }
-  componentWillReceiveProps(nextProps: IPropsType) {
-    const layerSpec = hideEntities(
-      this.state.layerSpec,
-      this.props.entities,
-      nextProps.entities
-    );
-    this.setState({
-      layerSpec
-    });
-  }
-  render() {
-    this.props.updateLayer(this.state.layerSpec);
-    return null;
-  }
-}
+  });
