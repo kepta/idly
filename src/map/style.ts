@@ -53,7 +53,7 @@ export function updateStyle(s): Style {
 
 export function updateLayer(layer: ILayerSpec) {
   // const layer = layerSpec.toJS();
-  console.log('updating', layer.get('id'));
+  // console.log('updating', layer.get('id'));
   Layers = Layers.set(layer.get('id'), layer);
 
   const newStyle = parseLayers(Layers, getStyle());
@@ -66,7 +66,7 @@ export function updateLayer(layer: ILayerSpec) {
   updateStyle(newStyle);
 }
 export function removeLayer(layerId: string) {
-  console.log('removing', layerId);
+  // console.log('removing', layerId);
 
   Layers = Layers.remove(layerId);
 
@@ -89,7 +89,7 @@ const parseLayers = (l: OrderedMap<string, any>, styleObj: Style) => {
     })
     .sort((a, b) => a.priority - b.priority)
     .toArray();
-  console.log(layers);
+  // console.log(layers);
   const gStyle = R.clone(styleObj);
   gStyle.layers = layers;
   return gStyle;

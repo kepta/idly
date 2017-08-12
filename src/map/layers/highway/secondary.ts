@@ -20,7 +20,7 @@ export const highwaySecondary = (sourceName: string) =>
       },
       paint: {
         'line-color': '#F3F312',
-        'line-opacity': 0.85,
+        'line-opacity': 1,
         'line-width': 5
       },
       filter: fromJS([
