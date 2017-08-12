@@ -12,6 +12,7 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
     displayName: displayName(sourceName),
     selectable: true,
     layer: LayerSpec({
+      minzoom: 17,
       priority: 3,
       id: displayName(sourceName),
       source: sourceName,
@@ -26,7 +27,10 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
         'all',
         ['!has', 'icon'],
         ['==', '$type', 'Point'],
-        ['!=', 'geometry', Geometry.VERTEX]
+        /**
+         * @REVISIT this vertex problem
+         */
+        ['!in', 'geometry', Geometry.VERTEX, Geometry.VERTEX_SHARED]
       ])
     })
   });

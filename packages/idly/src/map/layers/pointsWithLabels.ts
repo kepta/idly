@@ -13,6 +13,7 @@ export const PointsWithLabelsLayer = (sourceName: string) =>
     displayName: displayName(sourceName),
     selectable: true,
     layer: LayerSpec({
+      minzoom: 17,
       priority: 3,
       id: displayName(sourceName),
       type: 'symbol',
@@ -39,7 +40,7 @@ export const PointsWithLabelsLayer = (sourceName: string) =>
         'all',
         ['has', 'icon'],
         ['==', '$type', 'Point'],
-        ['!=', 'geometry', Geometry.VERTEX]
+        ['!in', 'geometry', Geometry.VERTEX, Geometry.VERTEX_SHARED]
       ])
     })
   });
