@@ -13,6 +13,7 @@ import { Way } from 'osm/entities/way';
 import { Graph } from 'osm/history/graph';
 import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetsMatch } from 'osm/presets/match';
+import { tagClassesPrimary } from 'osm/styling/tagClasses';
 import { weakCache, weakCache2 } from 'utils/weakCache';
 
 interface IWayProperties {
@@ -22,6 +23,8 @@ interface IWayProperties {
   name?: string;
   geometry: Geometry.LINE | Geometry.AREA;
   nodes: string;
+  tagsClass: string;
+  tagsClassType: string;
 }
 /**
  * @TOFIX use areaKeys from the core.
@@ -29,6 +32,8 @@ interface IWayProperties {
 export type WayFeature = Feature<LineString | Polygon, IWayProperties>;
 const { all, defaults, index, recent } = initPresets();
 const areaKeys = initAreaKeys(all);
+
+const tagClassesPrimaryCache = weakCache(tagClassesPrimary);
 
 const matchLine = weakCache(
   R.curry(presetsMatch)(all, index, areaKeys, Geometry.LINE)
@@ -48,13 +53,17 @@ function _wayToFeat(w: Way, graph: Graph): WayFeature {
   if (w instanceof Way) {
     const match =
       w.geometry === Geometry.LINE ? matchLine(w.tags) : matchArea(w.tags);
+
+    const [tagsClass, tagsClassType] = tagClassesPrimaryCache(w.tags);
     const properties: IWayProperties = {
       way_properties: JSON.stringify(w.properties),
       nodes: JSON.stringify(w.nodes),
       tags: JSON.stringify(w.tags),
       id: w.id,
       name: w.tags.get('name'),
-      geometry: w.geometry
+      geometry: w.geometry,
+      tagsClass,
+      tagsClassType
     };
     const nodes = w.nodes.map(id => {
       /**

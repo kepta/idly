@@ -47,13 +47,17 @@ const defaultState: ILayerGL = {
 };
 
 export const LayerSpec = recordFactory<ILayerGL>(defaultState, 'layerRecord');
-
-export const LayerSpecCurriedSource = R.curry(
-  (d: Partial<ILayerGL>, source: string) =>
-    recordFactory<Partial<ILayerGL>>(
-      Object.assign({}, d, { source }),
-      'layerRecord'
-    )
+export const partialLayerSpec = recordFactory<Partial<ILayerGL>>(
+  defaultState,
+  'layerRecord'
 );
+
+// export const LayerSpecCurriedSource = R.curry(
+//   (d: Partial<ILayerGL>, source: string) =>
+//     recordFactory<Partial<ILayerGL>>(
+//       Object.assign({}, d, { source }),
+//       'layerRecord'
+//     )
+// );
 
 export type ILayerSpec = IRecord<ILayerGL>;

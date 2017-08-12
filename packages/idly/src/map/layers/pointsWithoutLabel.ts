@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
 
-
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 import { Geometry } from 'osm/entities/constants';
@@ -13,6 +12,7 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
     displayName: displayName(sourceName),
     selectable: true,
     layer: LayerSpec({
+      priority: 3,
       id: displayName(sourceName),
       source: sourceName,
       type: 'circle',
