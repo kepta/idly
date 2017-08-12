@@ -18,7 +18,7 @@
     "no-unused-expression": [true],
     "no-unused-imports": true,
     "max-line-length": [false],
-    "cyclomatic-complexity": [true],
+    "cyclomatic-complexity": [false],
     "member-access": [false],
     "export-name": false,
     "no-constant-condition": false,

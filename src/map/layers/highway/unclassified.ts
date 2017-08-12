@@ -3,14 +3,14 @@ import { fromJS } from 'immutable';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
-const displayName = (sourceName: string) => sourceName + 'AreaLayer';
+const displayName = (sourceName: string) => sourceName + 'highwayUnclassified';
 
-export const AreaLayer = (sourceName: string) =>
+export const highwayUnclassified = (sourceName: string) =>
   simpleLayerHOC({
     displayName: displayName(sourceName),
-    selectable: false,
+    selectable: true,
     layer: LayerSpec({
-      priority: 1,
+      priority: 2,
       id: displayName(sourceName),
       type: 'line',
       source: sourceName,
@@ -19,13 +19,13 @@ export const AreaLayer = (sourceName: string) =>
         'line-cap': 'round'
       },
       paint: {
-        'line-color': '#551A8B',
-        'line-width': 15,
-        'line-opacity': 0.2,
-        'line-offset': 8,
-        'line-blur': 5
-        // 'line-dasharray': [1, 2, 1]
+        'line-color': '#dcd9b9',
+        'line-opacity': 0.85,
+        'line-width': 4
       },
-      filter: fromJS(['all', ['==', '$type', 'Polygon']])
+      filter: fromJS([
+        'all',
+        ['in', 'tagsClassType', 'tag-highway-unclassified']
+      ])
     })
   });

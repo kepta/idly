@@ -12,6 +12,7 @@ export type LayerFilter = Set<string | List<string>>;
  */
 interface IState {
   layerSpec: ILayerSpec;
+  refLayerSpec?: any;
 }
 
 /**
@@ -21,6 +22,7 @@ interface IOptions {
   displayName: string;
   layer: ILayerSpec;
   selectable: boolean;
+  refLayer?: any;
 }
 
 /**
@@ -50,14 +52,16 @@ interface IExternalProps {
 export const simpleLayerHOC = ({
   displayName,
   layer,
-  selectable
+  selectable,
+  refLayer
 }: IOptions) => {
   type ResultProps = Readonly<IExternalProps>;
   return class SimpleLayer extends React.PureComponent<ResultProps, IState> {
     static displayName = displayName;
     static selectable = selectable;
     state = {
-      layerSpec: layer
+      layerSpec: layer,
+      refLayerSpec: refLayer
     };
     /**
      * @TOFIX lifecycle methods dont really work
@@ -69,6 +73,9 @@ export const simpleLayerHOC = ({
     }
     componentDidMount() {
       this.props.updateLayer(this.state.layerSpec);
+      if (this.state.refLayerSpec) {
+        setTimeout(() => this.props.updateLayer(this.state.refLayerSpec), 2000);
+      }
     }
     componentWillReceiveProps(nextProps: ResultProps) {
       const layerSpec = hideEntities(
@@ -82,10 +89,14 @@ export const simpleLayerHOC = ({
     }
     componentWillUnmount() {
       this.props.removeLayer(this.state.layerSpec.get('id'));
+      if (this.state.refLayerSpec) {
+        this.props.removeLayer(this.state.refLayerSpec.get('id'));
+      }
     }
 
     render() {
       this.props.updateLayer(this.state.layerSpec);
+
       return null;
     }
   };

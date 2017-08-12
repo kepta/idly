@@ -1,5 +1,9 @@
 import { stubXML } from 'osm/stubs/xmlstub';
-import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
+import {
+  attachToWindow,
+  getFromUrlSearch,
+  getFromWindow
+} from 'utils/attach_to_window';
 import { handleErrors } from 'utils/promise';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');
@@ -12,12 +16,11 @@ const merc = new SphericalMercator({
 const fetchStub = () => {
   return Promise.resolve(stubXML);
 };
-attachToWindow('debug', true);
 export async function fetchTile(x: number, y: number, zoom: number) {
   const xyz = [x, y, zoom].join(',');
   const bboxStr = merc.bbox(x, y, zoom).join(',');
   try {
-    if (getFromWindow('debug')) {
+    if (getFromUrlSearch('debug')) {
       return new DOMParser().parseFromString(await fetchStub(), 'text/xml');
     }
     let response = await fetch(
