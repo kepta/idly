@@ -1,10 +1,6 @@
-import { Geometry } from 'osm/entities/constants';
-import { Entity } from 'osm/entities/entities';
 import { Tags } from 'osm/entities/helpers/tags';
-import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
-import { AreaKeys } from 'osm/presets/areaKeys';
 import { areaKeys } from 'osm/presets/presets';
 import { weakCache } from 'utils/weakCache';
 

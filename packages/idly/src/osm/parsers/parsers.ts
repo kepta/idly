@@ -1,6 +1,5 @@
 import { List, Map as ImmutableMap, Set } from 'immutable';
 
-import { Geometry } from 'osm/entities/constants';
 import { Entity } from 'osm/entities/entities';
 import { isClosed } from 'osm/entities/helpers/misc';
 import { propertiesGen } from 'osm/entities/helpers/properties';

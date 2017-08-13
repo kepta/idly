@@ -3,15 +3,12 @@ import * as turf from 'turf';
 
 import { Feature } from 'typings/geojson';
 
-import { getGeometry } from 'osm/entities/helpers/misc';
-import { Node } from 'osm/entities/node';
 import { presetsMatcher } from 'osm/presets/presets';
 import * as R from 'ramda';
 
 import { Geometry } from 'osm/entities/constants';
 import { Way } from 'osm/entities/way';
 import { Graph } from 'osm/history/graph';
-import { presetsMatch } from 'osm/presets/match';
 import { tagClassesPrimary } from 'osm/styling/tagClasses';
 import { weakCache, weakCache2 } from 'utils/weakCache';
 

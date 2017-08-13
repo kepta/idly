@@ -1,23 +1,13 @@
-import { List, Map, Record, Set } from 'immutable';
+import { Map, Record, Set } from 'immutable';
 
-import { Node } from 'osm/entities/node';
 import { Graph, graphFactory } from 'osm/history/graph';
-import {
-  graphRemoveEntitiesWithId,
-  graphSetEntities,
-  graphSetEntitiesSet
-} from 'osm/history/helpers';
+import { graphSetEntities, graphSetEntitiesSet } from 'osm/history/helpers';
 
-import { Action } from 'common/actions';
-
-import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
-import { getGeometry } from 'osm/entities/helpers/misc';
-import { AreaKeys, initAreaKeys } from 'osm/presets/areaKeys';
+import { Entities, Entity } from 'osm/entities/entities';
 
 import {
   addToModifiedEntities,
   addToVirginEntities,
-  calculateParentWays,
   removeEntities
 } from 'core/coreOperations';
 import { CoreActions, CoreActionTypes } from 'core/store/core.actions';
@@ -61,18 +51,23 @@ export function coreReducer(state = coreState, action: CoreActionTypes) {
      *  which are in the modifiedEntities.
      */
     case CoreActions.VIRGIN_ADD: {
-      const { data, parentWays, type } = action;
+      const { toAdd, parentWays, type, toRemove } = action;
       console.time(type);
       const entities = state.entities;
       const newState = state
-        .update('graph', (graph: Graph) => graphSetEntitiesSet(graph, data))
+        .update('graph', (graph: Graph) => graphSetEntitiesSet(graph, toAdd))
         /**
          * @TOFIX the Map and Im.Map are damn confusing.
          */
         .set('parentWays', parentWays)
         .set(
           'entities',
-          addToVirginEntities(entities, data, state.modifiedEntities, true)
+          addToVirginEntities(
+            entities.subtract(toRemove),
+            toAdd,
+            state.modifiedEntities,
+            true
+          )
         );
       console.timeEnd(type);
       return newState;

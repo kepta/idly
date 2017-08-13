@@ -1,4 +1,3 @@
-import { Entity } from 'osm/entities/entities';
 import { osmPavedTags, Tags } from 'osm/entities/helpers/tags';
 
 const primaries = [

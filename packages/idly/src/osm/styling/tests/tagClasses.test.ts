@@ -1,9 +1,7 @@
 import * as R from 'ramda';
 
 import { tagsFactory } from 'osm/entities/helpers/tags';
-import { nodeFactory } from 'osm/entities/node';
-import { wayFactory } from 'osm/entities/way';
-import { tagClasses, tagClassesPrimary } from 'osm/styling/tagClasses';
+import { tagClasses } from 'osm/styling/tagClasses';
 
 const generate = tags => tagsFactory(tags);
 

@@ -1,8 +1,6 @@
 import { stubXML } from 'osm/stubs/xmlstub';
 import {
-  attachToWindow,
-  getFromUrlSearch,
-  getFromWindow
+  getFromUrlSearch
 } from 'utils/attach_to_window';
 import { handleErrors } from 'utils/promise';
 

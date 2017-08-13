@@ -13,7 +13,7 @@ import {
   polygon,
   rectangle
 } from 'osm/geo_utils/geo_extent';
-import { genLngLat, LngLat } from 'osm/geo_utils/lng_lat';
+import { genLngLat } from 'osm/geo_utils/lng_lat';
 
 describe('geoExtent', function() {
   const p0_0 = genLngLat({ lon: 0, lat: 0 });

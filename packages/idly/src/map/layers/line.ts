@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
 
-
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 

@@ -1,14 +1,13 @@
 /**
  * @ABOUT: sagas
  */
-import { Set } from 'immutable';
+import { OrderedMap, Set } from 'immutable';
 import { buffers, delay, SagaIterator } from 'redux-saga';
 import * as S from 'redux-saga/effects';
 
 import { action } from 'common/actions';
 import { IRootStateType } from 'common/store';
-import { coreVirginAdd } from 'core/store/core.actions';
-import { removeExisting } from 'core/tileOperations';
+import { coreVirginModify } from 'core/store/core.actions';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Way } from 'osm/entities/way';
@@ -21,15 +20,15 @@ import {
   OSM_TILES,
   UpdateSourcesAction
 } from 'map/store/map.actions';
-import { nodeToFeat } from 'map/utils/nodeToFeat';
-import { wayToFeat } from 'map/utils/wayToFeat';
 
-import { convertNodes, nodeCombiner } from 'map/highPerf/node';
+import { nodeCombiner } from 'map/highPerf/node';
+import { wayCombiner } from 'map/highPerf/way';
 import { Graph } from 'osm/history/graph';
 import { ParentWays, parseXML } from 'osm/parsers/parsers';
-import { presetsMatcher } from 'osm/presets/presets';
 import { getFromWindow } from 'utils/attach_to_window';
-import { wayCombiner } from 'map/highPerf/way';
+import { weakCache } from 'utils/weakCache';
+
+const TILE_STORAGE = 15000;
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -49,42 +48,56 @@ function* watchFetch(): SagaIterator {
 }
 
 function* fetchTileSaga(x: number, y: number, zoom: number) {
+  const tileId = [x, y, zoom].join(',');
   try {
     const hasTiles = yield S.select((state: IRootStateType) =>
-      state.osmTiles.get('loadedTiles').has([x, y, zoom].join(','))
+      state.osmTiles.get('loadedTiles').has(tileId)
     );
     if (hasTiles) {
       return;
     }
     yield S.put(
       action(OSM_TILES.saveTile, {
-        coords: [x, y, zoom],
+        tileId,
         loaded: true
       })
     );
     const xml = yield S.call(fetchTile, x, y, zoom);
-    const oldParentWays = yield S.select(
-      (state: IRootStateType) => state.core.parentWays
-    );
-    console.time('parser' + [x, y, zoom].join(','));
+    const [oldParentWays, tileData]: [
+      ParentWays,
+      OrderedMap<string, Entities>
+    ] = yield S.select((state: IRootStateType) => [
+      state.core.parentWays,
+      state.osmTiles.tileData
+    ]);
+    let toEvict: Entities = Set();
+    let toEvictId: string;
+
     const { entities, parentWays } = parseXML(xml, oldParentWays);
     const setEntities = Set(entities);
     const existingEntities: Entities = yield S.select(
       (state: IRootStateType) => state.osmTiles.existingEntities
     );
+    if (existingEntities.size > TILE_STORAGE) {
+      toEvict = tileData.first();
+      toEvictId = tileData.keySeq().first();
+    }
     const newData = setEntities.subtract(existingEntities);
-    console.timeEnd('parser' + [x, y, zoom].join(','));
-    yield S.put(coreVirginAdd(newData, parentWays));
+    console.timeEnd('parser' + tileId);
+    yield S.put(coreVirginModify(newData, toEvict, parentWays));
     yield S.put(
       action(OSM_TILES.mergeIds, {
-        newData
+        tileId,
+        setEntities,
+        toEvict,
+        toEvictId
       })
     );
   } catch (e) {
     console.error(e);
     yield S.put(
       action(OSM_TILES.errorSaveTile, {
-        coords: [x, y, zoom],
+        tileId,
         loaded: false
       })
     );
@@ -115,6 +128,7 @@ function* watchUpdateSources(): SagaIterator {
   }
 }
 
+const stringifiers = weakCache(x => JSON.stringify(x));
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   console.time('updateSourceSaga');
 
@@ -125,22 +139,13 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
     state.core.graph,
     state.core.parentWays
   ]);
+  // console.time('toJSON');
+  // stringifiers(data);
+  // stringifiers(Graph);
+  // console.timeEnd('toJSON');
 
-  // console.time('oldStyle');
-  // let entities = data
-  //   .toArray()
-  //   .map(e => {
-  //     if (e instanceof Node) {
-  //       return nodeToFeat(e);
-  //     } else if (e instanceof Way) {
-  //       return wayToFeat(e, graph);
-  //     }
-  //   })
-  //   .filter(f => f);
-  // console.timeEnd('oldStyle');
-  console.time('newStyle');
-  // nodeCombiner
-  let entities = data
+  console.time('updateSourceSaga');
+  const entities = data
     .toArray()
     .map(e => {
       if (e instanceof Node) {
@@ -151,11 +156,8 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
       }
     })
     .filter(f => f);
-  console.timeEnd('newStyle');
   console.timeEnd('updateSourceSaga');
-
   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
-
   if (source) {
     console.log('UPDATING source!', sourceId);
     yield S.call([source, 'setData'], turf.featureCollection(entities));
