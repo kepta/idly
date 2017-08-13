@@ -44,7 +44,7 @@ Object {
   },
   "properties": Object {
     "geometry": "line",
-    "icon": undefined,
+    "icon": "highway-residential",
     "id": "w1",
     "name": undefined,
     "tagsClass": "tag-highway",
@@ -71,7 +71,7 @@ Object {
   },
   "properties": Object {
     "geometry": "line",
-    "icon": undefined,
+    "icon": "highway-residential",
     "id": "w1",
     "name": undefined,
     "tagsClass": "tag-highway",
