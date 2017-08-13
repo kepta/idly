@@ -1,6 +1,7 @@
 /**
  * @ABOUT: sagas
  */
+import { Set } from 'immutable';
 import { buffers, delay, SagaIterator } from 'redux-saga';
 import * as S from 'redux-saga/effects';
 
@@ -67,22 +68,17 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
       areaKeys,
       parentWays
     );
-    const existingIds = yield S.select(
-      (state: IRootStateType) => state.osmTiles.existingIds
+    const setEntities = Set(entities);
+    const existingEntities: Entities = yield S.select(
+      (state: IRootStateType) => state.osmTiles.existingEntities
     );
-    const newData = removeExisting(existingIds, entities);
+    const newData = setEntities.subtract(existingEntities);
     yield S.put(coreVirginAdd(newData, parentWays));
     yield S.put(
       action(OSM_TILES.mergeIds, {
         newData
       })
     );
-    // yield S.put(
-    //   action(CORE.newData, {
-    //     data: newData,
-    //     parentWays: newParentWays
-    //   })
-    // );
   } catch (e) {
     console.error(e);
     yield S.put(

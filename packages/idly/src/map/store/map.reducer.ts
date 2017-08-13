@@ -1,7 +1,7 @@
 /**
  * @ABOUT: reducer
  */
-import { Map, Record, Set } from 'immutable';
+import { Map, Record, Set, List } from 'immutable';
 import { uniqWith } from 'ramda';
 
 import { Action } from 'common/actions';
@@ -20,17 +20,17 @@ import {
 } from 'map/store/map.actions';
 
 const initialState = {
-  tiles: Map(),
   loadedTiles: Set(),
-  existingIds: Set()
+  existingEntities: Set(),
+  queue: List()
 };
 
 type MapActions = GetOSMTilesAction | UpdateSourcesAction;
 
 export class OsmTilesState extends Record(initialState) {
-  public tiles: Map<string, {}>;
-  public existingIds: EntitiesId;
+  public existingEntities: Entities;
   public loadedTiles: Set<string>;
+  public queue: List<string>;
   public set(k: string, v: {}): OsmTilesState {
     return super.set(k, v) as OsmTilesState;
   }
@@ -41,8 +41,8 @@ export function osmReducer(state = osmTilesState, action: any) {
   switch (action.type) {
     case OSM_TILES.mergeIds: {
       const { newData } = action;
-      return state.update('existingIds', existingIds =>
-        mergeIds(existingIds, newData)
+      return state.update('existingEntities', (existingEntities: Entities) =>
+        existingEntities.merge(newData)
       );
     }
     case OSM_TILES.errorSaveTile:

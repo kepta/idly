@@ -1,7 +1,6 @@
-
 import { actionBuilderFactory } from 'common/actions';
 
-import { EntitiesId, Entity } from 'osm/entities/entities';
+import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
 import { ParentWays } from 'osm/parsers/parsers';
 
 export enum CoreActions {
@@ -25,13 +24,13 @@ const actionBuilder = actionBuilderFactory<CoreActionTypes>();
 
 interface ICoreVirginAddAction {
   type: CoreActions.VIRGIN_ADD;
-  data: Entity[];
+  data: Entities;
   parentWays: ParentWays;
 }
 
 interface ICoreVirginRemoveAction {
   type: CoreActions.VIRGIN_REMOVE;
-  data: Entity[];
+  data: Entities;
 }
 
 interface ICoreUpdateAction {
