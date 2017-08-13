@@ -1,6 +1,7 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 import * as R from 'ramda';
 
+import { getNodeGeometry, getWayGeometry } from 'osm/entities/helpers/misc';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
@@ -49,7 +50,7 @@ describe('presetIndex', function() {
 
       const graph = graphFactory([way]);
 
-      expect(curriedPresetsMatch(way.geometry, way.tags).id).toEqual(
+      expect(curriedPresetsMatch(getWayGeometry(way), way.tags).id).toEqual(
         'residential'
       );
     });
@@ -61,10 +62,12 @@ describe('presetIndex', function() {
       });
       const graph = graphFactory([point, line]);
 
-      expect(curriedPresetsMatch(point.geometry, point.tags).id).toEqual(
-        'point'
+      expect(
+        curriedPresetsMatch(getNodeGeometry(point, Map()), point.tags).id
+      ).toEqual('point');
+      expect(curriedPresetsMatch(getWayGeometry(line), line.tags).id).toEqual(
+        'line'
       );
-      expect(curriedPresetsMatch(line.geometry, line.tags).id).toEqual('line');
     });
 
     it.skip('matches vertices on a line as vertices', function() {
@@ -78,9 +81,9 @@ describe('presetIndex', function() {
         tags: tagsFactory({ highway: 'residential' })
       });
 
-      expect(curriedPresetsMatch(point.geometry, point.tags).id).toEqual(
-        'vertex'
-      );
+      expect(
+        curriedPresetsMatch(getNodeGeometry(point, Map()), point.tags).id
+      ).toEqual('vertex');
     });
     /**
      * @REVISIT when isOnAddressLine is implemented.
@@ -100,9 +103,9 @@ describe('presetIndex', function() {
           tags: tagsFactory({ 'addr:interpolation': 'even' })
         });
 
-        expect(curriedPresetsMatch(point.geometry, point.tags).id).toEqual(
-          'park'
-        );
+        expect(
+          curriedPresetsMatch(getNodeGeometry(point, Map()), point.tags).id
+        ).toEqual('park');
       }
     );
   });
@@ -204,7 +207,7 @@ describe('presetIndex', function() {
           'addr:housenumber': '1234'
         })
       });
-      expect(curriedPresetsMatch(way.geometry, way.tags).id).toEqual(
+      expect(curriedPresetsMatch(getWayGeometry(way), way.tags).id).toEqual(
         'building'
       );
     });
@@ -214,7 +217,7 @@ describe('presetIndex', function() {
         id: 'w-1',
         tags: tagsFactory({ area: 'yes', highway: 'pedestrian' })
       });
-      expect(curriedPresetsMatch(way.geometry, way.tags).id).toEqual(
+      expect(curriedPresetsMatch(getWayGeometry(way), way.tags).id).toEqual(
         'highway/pedestrian'
       );
     });

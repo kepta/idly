@@ -85,7 +85,6 @@ NodeMangler.onClick = function(state, e) {
    *  you get a way geometry of length 4 (wrong behaviour) and when you click [[283,306],[293,316]]
    *  you get a way with geometry of length 5, (correct behavior).
    */
-
   const select: Set<string> = R.compose(
     Set,
     R.take(1),

@@ -1,9 +1,18 @@
+import * as PromiseWorker from 'promise-worker';
 import * as MyWorker from 'worker-loader!worker/worker';
-const worker: Worker = new MyWorker();
-worker.postMessage({ a: 1 });
-worker.onmessage = function(event) {
-  console.log(arguments);
-};
-worker.addEventListener('message', function(event) {
-  console.log(arguments);
-});
+
+const worker: any = new PromiseWorker(new MyWorker());
+
+worker
+  .postMessage({
+    type: 'en',
+    d: { k: 1 },
+    b: JSON.stringify({ c: 3, b: 4 })
+  })
+  .then(function(response) {
+    // handle response
+    console.log(response);
+  })
+  .catch(function(error) {
+    // handle error
+  });
