@@ -1,4 +1,6 @@
-import { parseXML } from 'osm/parsers/parsers';
+import { List, Map, Set } from 'immutable';
+import { wayFactory } from 'osm/entities/way';
+import { calculateParentWays, ParentWays, parseXML } from 'osm/parsers/parsers';
 import {
   miniWayXML1,
   miniXML1,
@@ -39,8 +41,42 @@ describe.only('parsers', () => {
       expect(parseXML(xml)).toMatchSnapshot();
     });
   });
+  describe('calculateParentWays ', () => {
+    const parentWays: ParentWays = Map({
+      n3780767744: Set<string>(['w40542208']),
+      n4558992269: Set<string>(['w40542208']),
+      n253179996: Set<string>([
+        'w40882200',
+        'w237684574',
+        'w173431854',
+        'w450548831'
+      ]),
+      n1485636774: Set<string>(['w40882200', 'w135262258'])
+    });
+    it('works', () => {
+      expect(calculateParentWays(Map(), [])).toEqual(Map());
+    });
+    it('takes existing parentways and returns them', () => {
+      expect(calculateParentWays(parentWays, [])).toEqual(parentWays);
+    });
+    it('takes existing parentways and adds a way', () => {
+      const w1 = wayFactory({ id: 'w', nodes: List(['n']) });
+      const newParentWay = parentWays.set('n', Set([w1.id]));
+      expect(calculateParentWays(parentWays, [w1])).toEqual(newParentWay);
+    });
+    it('takes existing parentways and appends a way', () => {
+      const w1 = wayFactory({ id: 'w', nodes: List(['n253179996']) });
+      const newParentWay = parentWays.update('n253179996', n => n.add(w1.id));
+      expect(calculateParentWays(parentWays, [w1])).toEqual(newParentWay);
+    });
+  });
   describe('it makes good parentways', () => {
     it('matches snapshot', () => {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(miniXML3, 'text/xml');
+      expect(parseXML(xml)).toMatchSnapshot();
+    });
+    it('reuses parent Ways and adds stuff to it', () => {
       const parser = new DOMParser();
       const xml = parser.parseFromString(miniXML3, 'text/xml');
       expect(parseXML(xml)).toMatchSnapshot();

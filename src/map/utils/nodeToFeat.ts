@@ -6,9 +6,7 @@ import { Feature } from 'typings/geojson';
 
 import { Geometry } from 'osm/entities/constants';
 import { Node } from 'osm/entities/node';
-import { initAreaKeys } from 'osm/presets/areaKeys';
-import { presetsMatch } from 'osm/presets/match';
-import { initPresets } from 'osm/presets/presets';
+import { presetsMatcher } from 'osm/presets/presets';
 
 import { weakCache } from 'utils/weakCache';
 
@@ -26,11 +24,7 @@ interface INodeProperties {
  */
 export type NodeFeature = Feature<Point, INodeProperties>;
 
-const { all, defaults, index, recent } = initPresets();
-const areaKeys = initAreaKeys(all);
-const curriedPresetsMatch = R.compose(
-  R.curry(presetsMatch)(all, index, areaKeys)
-);
+const curriedPresetsMatch = R.curry(presetsMatcher);
 
 const presetMatchPoint = weakCache(curriedPresetsMatch(Geometry.POINT));
 const presetMatchVertex = weakCache(curriedPresetsMatch(Geometry.VERTEX));

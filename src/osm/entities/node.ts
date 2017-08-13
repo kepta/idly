@@ -24,6 +24,9 @@ export class Node extends Record({
   tags: tagsFactory(),
   type: 'node',
   properties: propertiesGen(),
+  /**
+   * @TOFIX urgent remove this asap
+   */
   geometry: Geometry.POINT
 }) {
   readonly id: Id;
@@ -31,7 +34,6 @@ export class Node extends Record({
   readonly type: string;
   readonly loc: LngLat;
   readonly properties: Properties;
-  readonly geometry: Geometry.POINT | Geometry.VERTEX | Geometry.VERTEX_SHARED;
   public set(k: string, v: any): Node {
     return super.set(k, v) as Node;
   }
@@ -43,7 +45,6 @@ export function nodeFactory(
     tags?: Tags;
     loc?: LngLat;
     properties?: Properties;
-    geometry?: Geometry.POINT | Geometry.VERTEX | Geometry.VERTEX_SHARED;
   },
   parentWays?
 ) {

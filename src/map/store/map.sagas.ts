@@ -60,19 +60,17 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
       })
     );
     const xml = yield S.call(fetchTile, x, y, zoom);
-    const { areaKeys, parentWays } = yield S.select(
-      (state: IRootStateType) => state.core
+    const oldParentWays = yield S.select(
+      (state: IRootStateType) => state.core.parentWays
     );
-    const { entities, parentWays: newParentWays } = parseXML(
-      xml,
-      areaKeys,
-      parentWays
-    );
+    console.time('parser' + [x, y, zoom].join(','));
+    const { entities, parentWays } = parseXML(xml, oldParentWays);
     const setEntities = Set(entities);
     const existingEntities: Entities = yield S.select(
       (state: IRootStateType) => state.osmTiles.existingEntities
     );
     const newData = setEntities.subtract(existingEntities);
+    console.timeEnd('parser' + [x, y, zoom].join(','));
     yield S.put(coreVirginAdd(newData, parentWays));
     yield S.put(
       action(OSM_TILES.mergeIds, {

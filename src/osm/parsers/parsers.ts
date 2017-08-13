@@ -1,4 +1,4 @@
-import { List, Map as ImmutableMap } from 'immutable';
+import { List, Map as ImmutableMap, Set } from 'immutable';
 
 import { Geometry } from 'osm/entities/constants';
 import { Entity } from 'osm/entities/entities';
@@ -8,10 +8,8 @@ import { nodeFactory } from 'osm/entities/node';
 import { relationFactory } from 'osm/entities/relation';
 import { Way, wayFactory } from 'osm/entities/way';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { AreaKeys } from 'osm/presets/areaKeys';
-// import { calculateParentWays } from 'core/coreOperations';
 
-export type ParentWays = Map<string, Set<string>>;
+export type ParentWays = ImmutableMap<string, Set<string>>;
 /**
  * @REVISIT to differentiate between edge vertex and middle vertex
  *  visit here, I guess one should be able to calculate it from this point.
@@ -19,22 +17,36 @@ export type ParentWays = Map<string, Set<string>>;
  *  if a node is shared between two ways.
  *  this does not guarantee that the geometry is shared
  */
+// export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
+//   ways.forEach(w => {
+//     const closed = isClosed(w);
+//     w.nodes.forEach((n, i) => {
+//       if (!parentWays.has(n)) parentWays.set(n, Set([w.id]));
+//       else {
+//         parentWays.get(n).add(w.id);
+//       }
+//     });
+//   });
+//   return parentWays;
+// }
 export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
-  ways.forEach(w => {
-    const closed = isClosed(w);
-    w.nodes.forEach((n, i) => {
-      if (!parentWays.has(n)) parentWays.set(n, new Set([w.id]));
-      else {
-        parentWays.get(n).add(w.id);
-      }
+  console.time('calculateParentWays');
+  const x = parentWays.withMutations(p => {
+    ways.forEach(w => {
+      const closed = isClosed(w);
+      w.nodes.forEach((n, i) => {
+        p.update(n, (s = Set()) => (s = s.add(w.id)));
+      });
     });
   });
-  return parentWays;
+  console.timeEnd('calculateParentWays');
+
+  return x;
 }
+
 export function parseXML(
   xml: Document,
-  areaKeys: AreaKeys = ImmutableMap(),
-  parentWays: ParentWays = new Map()
+  parentWays: ParentWays = ImmutableMap()
 ): {
   entities: Entity[];
   parentWays: ParentWays;
@@ -59,7 +71,7 @@ export function parseXML(
   }
 
   group.relation = group.relation.map(parsers.relation);
-  group.way = group.way.map(w => parsers.way(w, areaKeys));
+  group.way = group.way.map(w => parsers.way(w));
 
   parentWays = calculateParentWays(parentWays, group.way);
 
@@ -129,14 +141,14 @@ const parsers = {
         user: attrs.user && attrs.user.value
       }),
       loc: getLoc(attrs),
-      tags: getTags(obj),
-      geometry: getNodeGeometry(id, parentWays)
+      tags: getTags(obj)
+      // geometry: getNodeGeometry(id, parentWays)
     });
   },
 
-  way: function wayData(obj, areaKeys?) {
+  way: function wayData(obj) {
     const attrs = obj.attributes;
-    const way = wayFactory({
+    return wayFactory({
       id: 'w' + attrs.id.value,
       properties: propertiesGen({
         visible: getVisible(attrs),
@@ -149,7 +161,7 @@ const parsers = {
       tags: getTags(obj),
       nodes: getNodes(obj)
     });
-    return way.update('geometry', () => getWayGeometry(way, areaKeys));
+    // return way.update('geometry', () => getWayGeometry(way, areaKeys));
   },
 
   relation: function relationData(obj) {
@@ -169,26 +181,6 @@ const parsers = {
     });
   }
 };
-
-/**
- *  @REVISIT
- *   I am not sure about this,
- *   // mosty holds// 1st if <way><n id=X></way> I should have node X in the same request.
- *   // proved wrong// 2nd if node id=Y I should have all the ways having Y in the same request.
- *
- * @REVISIT
- *  need to test / figure out how to handle 2nd point above ^^.
- *  so this guy at sagas would simply filter away this new node information
- *  wrapped in way coming in any subsequent request. hence our node would
- *  not get the new status or VERTEX_SHARED
- */
-export function getNodeGeometry(id, parentWays?: ParentWays) {
-  if (parentWays && parentWays.get(id))
-    return parentWays.get(id).size > 1
-      ? Geometry.VERTEX_SHARED
-      : Geometry.VERTEX;
-  return Geometry.POINT;
-}
 
 export function getWayGeometry(way: Way, areaKeys: AreaKeys = ImmutableMap()) {
   if (way.tags.get('area') === 'yes') return Geometry.AREA;

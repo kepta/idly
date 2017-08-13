@@ -14,6 +14,9 @@ const wayBaseRecord = Record({
   tags: tagsFactory(),
   properties: propertiesGen(),
   nodes: List(),
+  /**
+   * @TOFIX urgent remove this asap
+   */
   geometry: Geometry.LINE
 });
 
@@ -23,7 +26,6 @@ export class Way extends wayBaseRecord {
   readonly tags: Tags;
   readonly properties: Properties;
   readonly nodes: List<string>;
-  readonly geometry: Geometry.LINE | Geometry.AREA;
   public set(k: string, v: any): Way {
     return super.set(k, v) as Way;
   }
@@ -34,7 +36,6 @@ export function wayFactory(obj: {
   tags?: Tags;
   properties?: Properties;
   nodes?: List<string>;
-  geometry?: Geometry.LINE | Geometry.AREA;
 }) {
   return new Way(obj);
 }

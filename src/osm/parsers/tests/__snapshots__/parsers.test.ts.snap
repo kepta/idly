@@ -4,7 +4,7 @@ exports[`parsers it makes good parentways matches snapshot 1`] = `
 Object {
   "entities": Array [
     Object {
-      "geometry": "vertex_shared",
+      "geometry": "point",
       "id": "n1",
       "loc": Object {
         "lat": 34.530396,
@@ -22,7 +22,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n2",
       "loc": Object {
         "lat": 34.530396,
@@ -40,7 +40,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n3",
       "loc": Object {
         "lat": 34.530396,
@@ -94,18 +94,127 @@ Object {
       "type": "way",
     },
   ],
-  "parentWays": Map {
-    "n1" => Set {
-      "w1",
-      "w2",
+  "parentWays": Immutable.Map {
+    n1: Immutable.Set [
+        "w1",
+        "w2",
+    ],
+    n2: Immutable.Set [
+        "w1",
+    ],
+    n3: Immutable.Set [
+        "w2",
+    ],
+},
+}
+`;
+
+exports[`parsers it makes good parentways reuses parent Ways and adds stuff to it 1`] = `
+Object {
+  "entities": Array [
+    Object {
+      "geometry": "point",
+      "id": "n1",
+      "loc": Object {
+        "lat": 34.530396,
+        "lon": 74.1816382,
+      },
+      "properties": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:40Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "node",
     },
-    "n2" => Set {
-      "w1",
+    Object {
+      "geometry": "point",
+      "id": "n2",
+      "loc": Object {
+        "lat": 34.530396,
+        "lon": 74.1816382,
+      },
+      "properties": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:40Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "node",
     },
-    "n3" => Set {
-      "w2",
+    Object {
+      "geometry": "point",
+      "id": "n3",
+      "loc": Object {
+        "lat": 34.530396,
+        "lon": 74.1816382,
+      },
+      "properties": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:40Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "node",
     },
-  },
+    Object {
+      "geometry": "line",
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "properties": Object {
+        "changeset": "50089927",
+        "timestamp": "2017-07-06T17:19:04Z",
+        "uid": "2815653",
+        "user": "Srihari Thalla",
+        "version": "2",
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "way",
+    },
+    Object {
+      "geometry": "line",
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "properties": Object {
+        "changeset": "50089927",
+        "timestamp": "2017-07-06T17:19:04Z",
+        "uid": "2815653",
+        "user": "Srihari Thalla",
+        "version": "2",
+        "visible": true,
+      },
+      "tags": Object {},
+      "type": "way",
+    },
+  ],
+  "parentWays": Immutable.Map {
+    n1: Immutable.Set [
+        "w1",
+        "w2",
+    ],
+    n2: Immutable.Set [
+        "w1",
+    ],
+    n3: Immutable.Set [
+        "w2",
+    ],
+},
 }
 `;
 
@@ -131,7 +240,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782712",
       "loc": Object {
         "lat": 34.5280866,
@@ -149,7 +258,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782713",
       "loc": Object {
         "lat": 34.528206,
@@ -167,7 +276,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782714",
       "loc": Object {
         "lat": 34.5283653,
@@ -185,7 +294,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782715",
       "loc": Object {
         "lat": 34.528425,
@@ -203,7 +312,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782716",
       "loc": Object {
         "lat": 34.5285445,
@@ -221,7 +330,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782717",
       "loc": Object {
         "lat": 34.5290024,
@@ -239,7 +348,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782718",
       "loc": Object {
         "lat": 34.5292015,
@@ -257,7 +366,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782719",
       "loc": Object {
         "lat": 34.529301,
@@ -275,7 +384,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782720",
       "loc": Object {
         "lat": 34.5294603,
@@ -293,7 +402,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782721",
       "loc": Object {
         "lat": 34.5296992,
@@ -311,7 +420,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782722",
       "loc": Object {
         "lat": 34.5297191,
@@ -329,7 +438,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782723",
       "loc": Object {
         "lat": 34.5300377,
@@ -347,7 +456,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782724",
       "loc": Object {
         "lat": 34.5303562,
@@ -365,7 +474,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782725",
       "loc": Object {
         "lat": 34.530396,
@@ -383,7 +492,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782726",
       "loc": Object {
         "lat": 34.5305354,
@@ -401,7 +510,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782727",
       "loc": Object {
         "lat": 34.5309137,
@@ -419,7 +528,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782728",
       "loc": Object {
         "lat": 34.5311526,
@@ -437,7 +546,7 @@ Object {
       "type": "node",
     },
     Object {
-      "geometry": "vertex",
+      "geometry": "point",
       "id": "n4133782729",
       "loc": Object {
         "lat": 34.5314114,
@@ -494,62 +603,62 @@ Object {
       "type": "way",
     },
   ],
-  "parentWays": Map {
-    "n4133782719" => Set {
-      "w411770875",
-    },
-    "n4133782714" => Set {
-      "w411770875",
-    },
-    "n4133782715" => Set {
-      "w411770875",
-    },
-    "n4133782713" => Set {
-      "w411770875",
-    },
-    "n4133782712" => Set {
-      "w411770875",
-    },
-    "n4133782716" => Set {
-      "w411770875",
-    },
-    "n4133782717" => Set {
-      "w411770875",
-    },
-    "n4133782718" => Set {
-      "w411770875",
-    },
-    "n4133782720" => Set {
-      "w411770875",
-    },
-    "n4133782722" => Set {
-      "w411770875",
-    },
-    "n4133782724" => Set {
-      "w411770875",
-    },
-    "n4133782728" => Set {
-      "w411770875",
-    },
-    "n4133782729" => Set {
-      "w411770875",
-    },
-    "n4133782727" => Set {
-      "w411770875",
-    },
-    "n4133782726" => Set {
-      "w411770875",
-    },
-    "n4133782725" => Set {
-      "w411770875",
-    },
-    "n4133782723" => Set {
-      "w411770875",
-    },
-    "n4133782721" => Set {
-      "w411770875",
-    },
-  },
+  "parentWays": Immutable.Map {
+    n4133782720: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782721: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782722: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782712: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782723: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782713: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782724: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782714: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782725: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782715: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782726: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782716: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782727: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782717: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782728: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782718: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782729: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782719: Immutable.Set [
+        "w411770875",
+    ],
+},
 }
 `;
 
@@ -575,7 +684,8 @@ Object {
       "type": "node",
     },
   ],
-  "parentWays": Map {},
+  "parentWays": Immutable.Map {
+},
 }
 `;
 
@@ -619,7 +729,8 @@ Object {
       "type": "node",
     },
   ],
-  "parentWays": Map {},
+  "parentWays": Immutable.Map {
+},
 }
 `;
 
@@ -666,61 +777,61 @@ Object {
       "type": "way",
     },
   ],
-  "parentWays": Map {
-    "n4133782719" => Set {
-      "w411770875",
-    },
-    "n4133782714" => Set {
-      "w411770875",
-    },
-    "n4133782715" => Set {
-      "w411770875",
-    },
-    "n4133782713" => Set {
-      "w411770875",
-    },
-    "n4133782712" => Set {
-      "w411770875",
-    },
-    "n4133782716" => Set {
-      "w411770875",
-    },
-    "n4133782717" => Set {
-      "w411770875",
-    },
-    "n4133782718" => Set {
-      "w411770875",
-    },
-    "n4133782720" => Set {
-      "w411770875",
-    },
-    "n4133782722" => Set {
-      "w411770875",
-    },
-    "n4133782724" => Set {
-      "w411770875",
-    },
-    "n4133782728" => Set {
-      "w411770875",
-    },
-    "n4133782729" => Set {
-      "w411770875",
-    },
-    "n4133782727" => Set {
-      "w411770875",
-    },
-    "n4133782726" => Set {
-      "w411770875",
-    },
-    "n4133782725" => Set {
-      "w411770875",
-    },
-    "n4133782723" => Set {
-      "w411770875",
-    },
-    "n4133782721" => Set {
-      "w411770875",
-    },
-  },
+  "parentWays": Immutable.Map {
+    n4133782720: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782721: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782722: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782712: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782723: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782713: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782724: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782714: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782725: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782715: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782726: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782716: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782727: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782717: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782728: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782718: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782729: Immutable.Set [
+        "w411770875",
+    ],
+    n4133782719: Immutable.Set [
+        "w411770875",
+    ],
+},
 }
 `;

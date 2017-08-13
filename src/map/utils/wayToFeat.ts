@@ -5,13 +5,12 @@ import { Feature } from 'typings/geojson';
 
 import { getGeometry } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
-import { initPresets } from 'osm/presets/presets';
+import { presetsMatcher } from 'osm/presets/presets';
 import * as R from 'ramda';
 
 import { Geometry } from 'osm/entities/constants';
 import { Way } from 'osm/entities/way';
 import { Graph } from 'osm/history/graph';
-import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetsMatch } from 'osm/presets/match';
 import { tagClassesPrimary } from 'osm/styling/tagClasses';
 import { weakCache, weakCache2 } from 'utils/weakCache';
@@ -30,18 +29,12 @@ interface IWayProperties {
  * @TOFIX use areaKeys from the core.
  */
 export type WayFeature = Feature<LineString | Polygon, IWayProperties>;
-const { all, defaults, index, recent } = initPresets();
-const areaKeys = initAreaKeys(all);
 
 const tagClassesPrimaryCache = weakCache(tagClassesPrimary);
 
-const matchLine = weakCache(
-  R.curry(presetsMatch)(all, index, areaKeys, Geometry.LINE)
-);
+const matchLine = weakCache(R.curry(presetsMatcher)(Geometry.LINE));
 
-const matchArea = weakCache(
-  R.curry(presetsMatch)(all, index, areaKeys, Geometry.AREA)
-);
+const matchArea = weakCache(R.curry(presetsMatcher)(Geometry.AREA));
 
 /**
  *
