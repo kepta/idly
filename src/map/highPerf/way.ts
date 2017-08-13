@@ -1,26 +1,20 @@
 import { LineString, Polygon } from 'geojson';
 import * as turf from 'turf';
 
-import { List, Map, Set } from 'immutable';
+import { List, Map } from 'immutable';
 import { Feature } from 'typings/geojson';
 
 import { isArea } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
 import {
-  areaKeys,
-  presetsMatcher,
   presetsMatcherCached
 } from 'osm/presets/presets';
-import * as R from 'ramda';
 
 import { Geometry } from 'osm/entities/constants';
-import { Tags } from 'osm/entities/helpers/tags';
 import { Way } from 'osm/entities/way';
 import { Graph } from 'osm/history/graph';
-import { isClosed } from 'osm/parsers/parsers';
-import { presetsMatch } from 'osm/presets/match';
 import { tagClassesPrimary } from 'osm/styling/tagClasses';
-import { weakCache, weakCache2 } from 'utils/weakCache';
+import { weakCache } from 'utils/weakCache';
 
 interface IWayProperties {
   id: string;

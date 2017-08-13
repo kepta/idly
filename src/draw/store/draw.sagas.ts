@@ -5,7 +5,6 @@ import { all, put, select, takeLatest } from 'redux-saga/effects';
 import { action } from 'common/actions';
 import { CORE, coreHideAction } from 'core/store/core.actions';
 import { featToNode } from 'map/utils/featToNode';
-import { Node } from 'osm/entities/node';
 import { Graph } from 'osm/history/graph';
 
 import { IRootStateType } from 'common/store';

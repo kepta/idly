@@ -1,6 +1,6 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
 
-import { LayerSpec, partialLayerSpec } from 'map/utils/layerFactory';
+import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
 const displayName = (sourceName: string) => sourceName + 'highwayMotorway';
@@ -37,39 +37,3 @@ export const highwayMotorway = (sourceName: string) =>
       ])
     })
   });
-
-// const displayNameC = (sourceName: string) =>
-//   sourceName + 'highwayMotorwayCasing';
-
-// export const highwayMotorwayCasing = (sourceName: string) =>
-//   simpleLayerHOC({
-//     displayName: displayNameC(sourceName),
-//     selectable: false,
-//     layer: LayerSpec({
-//       priority: -2,
-//       id: displayNameC(sourceName),
-//       type: 'line',
-//       source: sourceName,
-//       layout: {
-//         'line-join': 'round',
-//         'line-cap': 'round'
-//       },
-//       paint: {
-//         'line-color': '#70372f',
-//         'line-opacity': 1,
-//         'line-width': {
-//           base: 2.2,
-//           stops: [[5, 0.4], [6, 0.7], [7, 1.75], [20, 22]]
-//         }
-//       },
-//       filter: fromJS([
-//         'all',
-//         [
-//           'in',
-//           'tagsClassType',
-//           'tag-highway-motorway',
-//           'tag-highway-motorway_link'
-//         ]
-//       ])
-//     })
-//   });

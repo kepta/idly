@@ -1,4 +1,4 @@
-import { fromJS, Map, Set } from 'immutable';
+import { Map, Set } from 'immutable';
 
 import {
   applyNodeMarkup,
@@ -7,7 +7,6 @@ import {
   nodeCombiner,
   nodeToPoint
 } from 'map/highPerf/node';
-import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { Geometry } from 'osm/entities/constants';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';

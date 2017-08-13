@@ -1,6 +1,5 @@
 import { List } from 'immutable';
 import { IRecord, recordFactory } from 'map/utils/recordFactory';
-import * as R from 'ramda';
 
 export type LayerFilters = List<string | List<any>>;
 

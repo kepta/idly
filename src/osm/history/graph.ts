@@ -1,8 +1,6 @@
-import { List, Map, Record, Set } from 'immutable';
+import { Map, Record, Set } from 'immutable';
 
 import { Entities, Entity, EntityId } from 'osm/entities/entities';
-import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
-import { Tags, tagsFactory } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';

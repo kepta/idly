@@ -27,8 +27,7 @@ import { highwayPrimary } from 'map/layers/highway/primary';
 import { highwayResidential } from 'map/layers/highway/residential';
 import { highwaySecondary } from 'map/layers/highway/secondary';
 import {
-  highwayTertiary,
-  highwayTertiaryCasing
+  highwayTertiary
 } from 'map/layers/highway/tertiary';
 import { highwayTrunk } from 'map/layers/highway/trunk';
 import { highwayUnclassified } from 'map/layers/highway/unclassified';

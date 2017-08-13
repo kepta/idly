@@ -13,7 +13,7 @@ export enum CoreActions {
 }
 
 export type CoreActionTypes =
-  | ICoreVirginAddAction
+  | ICoreVirginModifyAction
   | ICoreVirginRemoveAction
   | ICoreUpdateAction
   | ICoreRemoveAction
@@ -22,9 +22,10 @@ export type CoreActionTypes =
 
 const actionBuilder = actionBuilderFactory<CoreActionTypes>();
 
-interface ICoreVirginAddAction {
+interface ICoreVirginModifyAction {
   type: CoreActions.VIRGIN_ADD;
-  data: Entities;
+  toAdd: Entities;
+  toRemove: Entities;
   parentWays: ParentWays;
 }
 
@@ -52,9 +53,9 @@ interface IOtherAction {
   type: CoreActions.OTHER_ACTION;
 }
 
-export const coreVirginAdd = actionBuilder<ICoreVirginAddAction>(
+export const coreVirginModify = actionBuilder<ICoreVirginModifyAction>(
   CoreActions.VIRGIN_ADD
-)('data', 'parentWays');
+)('toAdd', 'toRemove', 'parentWays');
 
 export const coreVirginRemove = actionBuilder<ICoreVirginRemoveAction>(
   CoreActions.VIRGIN_REMOVE

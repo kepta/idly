@@ -12,8 +12,6 @@ import {
 } from 'map/highPerf/way';
 import { Geometry } from 'osm/entities/constants';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { getWayGeometry } from 'osm/parsers/parsers';
-import { wayToFeat } from 'map/utils/wayToFeat';
 
 const way = wayFactory({
   id: 'w1',

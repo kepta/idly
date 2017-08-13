@@ -1,17 +1,9 @@
 /**
  * @ABOUT: reducer
  */
-import { Map, Record, Set, List } from 'immutable';
-import { uniqWith } from 'ramda';
+import { List, Map, OrderedMap, Record, Set } from 'immutable';
 
-import { Action } from 'common/actions';
-import { mergeIds } from 'core/tileOperations';
-import { Entities, EntitiesId } from 'osm/entities/entities';
-import { Node } from 'osm/entities/node';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
-import { Graph, graphFactory } from 'osm/history/graph';
-import { graphRemoveEntities, graphSetEntities } from 'osm/history/helpers';
+import { Entities } from 'osm/entities/entities';
 
 import {
   GetOSMTilesAction,
@@ -22,17 +14,22 @@ import {
 const initialState = {
   loadedTiles: Set(),
   existingEntities: Set(),
-  queue: List()
+  tileData: OrderedMap()
 };
 
 type MapActions = GetOSMTilesAction | UpdateSourcesAction;
 
-export class OsmTilesState extends Record(initialState) {
+export class OsmTilesState extends (Record(initialState) as any) {
+  // all the entities
   public existingEntities: Entities;
+  // tileID vise entities
+  public tileData: OrderedMap<string, Entities>;
   public loadedTiles: Set<string>;
-  public queue: List<string>;
   public set(k: string, v: {}): OsmTilesState {
     return super.set(k, v) as OsmTilesState;
+  }
+  public update(k: string, v: any): OsmTilesState {
+    return super.update(k, v) as OsmTilesState;
   }
 }
 const osmTilesState = new OsmTilesState();
@@ -40,17 +37,57 @@ const osmTilesState = new OsmTilesState();
 export function osmReducer(state = osmTilesState, action: any) {
   switch (action.type) {
     case OSM_TILES.mergeIds: {
-      const { newData } = action;
-      return state.update('existingEntities', (existingEntities: Entities) =>
-        existingEntities.merge(newData)
+      const { setEntities, tileId, toEvictId, toEvict } = action;
+      let newState = state;
+
+      if (toEvictId) {
+        newState = newState.update('loadedTiles', loadedTiles =>
+          loadedTiles.remove(toEvictId)
+        );
+      }
+
+      const existingEntities = newState.get('existingEntities');
+
+      /**
+       * @NOTE so when we evict a bbox, all the stuff is deleted
+       *  inside it, and also includes things outside it.
+       *  so the solution is to remove the duplicates from
+       *  the `setEntities` variable so that in future it doesn't
+       *  remove anything which might be shared by other tiles.
+       *  to put it other way tileData only contains a Map of
+       *  entities unique to that tile and not shared by any other tile.
+      */
+      newState = newState.update(
+        'tileData',
+        (tileData: OrderedMap<string, Entities>) => {
+          let n = tileData.set(tileId, setEntities.subtract(existingEntities));
+          if (toEvictId) {
+            n = n.remove(toEvictId);
+          }
+          return n;
+        }
       );
+
+      return newState.update('existingEntities', (existing: Entities) => {
+        let n = existing;
+        if (toEvictId) {
+          n = n.subtract(toEvict);
+        }
+        return n.merge(setEntities);
+      });
     }
     case OSM_TILES.errorSaveTile:
     case OSM_TILES.saveTile: {
-      const { coords } = action;
-      return state.update('loadedTiles', loadedTiles =>
-        loadedTiles.add(coords.join(','))
-      );
+      const { tileId, loaded } = action;
+      if (loaded)
+        return state.update('loadedTiles', loadedTiles =>
+          loadedTiles.add(tileId)
+        );
+      else {
+        return state.update('loadedTiles', loadedTiles =>
+          loadedTiles.remove(tileId)
+        );
+      }
     }
     default:
       return state;

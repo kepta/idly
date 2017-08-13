@@ -1,12 +1,9 @@
 import { Feature, Point } from 'geojson';
-import { Set } from 'immutable';
 import { Geometry } from 'osm/entities/constants';
 import { Tags } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
 import { ParentWays } from 'osm/parsers/parsers';
-import { presetsMatcher, presetsMatcherCached } from 'osm/presets/presets';
-import * as R from 'ramda';
-import { weakCache, weakCache2 } from 'utils/weakCache';
+import { presetsMatcherCached } from 'osm/presets/presets';
 type NodeFeat = Feature<Point>;
 type NodeGeometry = Geometry.POINT | Geometry.VERTEX | Geometry.VERTEX_SHARED;
 

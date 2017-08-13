@@ -3,9 +3,7 @@ import { List, Map } from 'immutable';
 import { isArea } from 'osm/entities/helpers/misc';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { Way, wayFactory } from 'osm/entities/way';
-import { initPresets } from 'osm/presets/presets';
 
-import { initAreaKeys } from 'osm/presets/areaKeys';
 describe('osmWay', function() {
   //   if (debug) {
   //     it('freezes nodes', function() {
