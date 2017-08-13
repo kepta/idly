@@ -51,7 +51,7 @@ export function wayCombiner(way: Way, graph: Graph) {
   const nodes = getCoordsFromGraph(graph.node, way.nodes);
   const properties: IWayProperties = {
     id: way.id,
-    name: way.tags.get('name'),
+    name: way.tags.get('name') || way.tags.get('ref'),
     icon: match && match.icon,
     geometry,
     tagsClass,

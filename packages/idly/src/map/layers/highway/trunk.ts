@@ -21,7 +21,7 @@ export const highwayTrunk = (sourceName: string) =>
       paint: {
         'line-color': '#DD2F22',
         'line-opacity': 0.85,
-        'line-width': 6
+        'line-width': 5
       },
       filter: fromJS([
         'all',
