@@ -144,31 +144,31 @@ export const areaKeys = initAreaKeys(presets.all);
 export const presetsMatcher = (geometry: Geometry, tags: Tags) =>
   presetsMatch(presets.all, presets.index, areaKeys, geometry, tags);
 
-export const presetsMatcherPoint = weakCache((tags: Tags) => {
-  presetsMatch(presets.all, presets.index, areaKeys, Geometry.POINT, tags);
-});
+export const presetsMatcherPoint = weakCache((tags: Tags) =>
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.POINT, tags)
+);
 
-export const presetsMatcherVertex = weakCache((tags: Tags) => {
-  presetsMatch(presets.all, presets.index, areaKeys, Geometry.VERTEX, tags);
-});
+export const presetsMatcherVertex = weakCache((tags: Tags) =>
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.VERTEX, tags)
+);
 
-export const presetsMatcherLine = weakCache((tags: Tags) => {
-  presetsMatch(presets.all, presets.index, areaKeys, Geometry.LINE, tags);
-});
+export const presetsMatcherLine = weakCache((tags: Tags) =>
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.LINE, tags)
+);
 
-export const presetsMatcherAREA = weakCache((tags: Tags) => {
-  presetsMatch(presets.all, presets.index, areaKeys, Geometry.AREA, tags);
-});
+export const presetsMatcherAREA = weakCache((tags: Tags) =>
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.AREA, tags)
+);
 
-export const presetsMatcherVertexShared = weakCache((tags: Tags) => {
+export const presetsMatcherVertexShared = weakCache((tags: Tags) =>
   presetsMatch(
     presets.all,
     presets.index,
     areaKeys,
     Geometry.VERTEX_SHARED,
     tags
-  );
-});
+  )
+);
 
 export const presetsMatcherCached = (geometry: Geometry) => {
   if (geometry === Geometry.POINT) {
