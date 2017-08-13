@@ -21,10 +21,7 @@ export const highwayMotorway = (sourceName: string) =>
       paint: {
         'line-color': '#CF2081',
         'line-opacity': 1,
-        'line-width': {
-          base: 1.2,
-          stops: [[5, 0.4], [6, 0.7], [7, 1.75], [20, 22]]
-        }
+        'line-width': 6
       },
       filter: fromJS([
         'all',
