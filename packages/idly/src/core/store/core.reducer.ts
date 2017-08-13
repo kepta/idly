@@ -1,4 +1,4 @@
-import { List, Record, Set } from 'immutable';
+import { List, Map, Record, Set } from 'immutable';
 
 import { Node } from 'osm/entities/node';
 import { Graph, graphFactory } from 'osm/history/graph';
@@ -13,7 +13,6 @@ import { Action } from 'common/actions';
 import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
 import { getGeometry } from 'osm/entities/helpers/misc';
 import { AreaKeys, initAreaKeys } from 'osm/presets/areaKeys';
-import { initPresets } from 'osm/presets/presets';
 
 import {
   addToModifiedEntities,
@@ -33,7 +32,7 @@ const initialState = {
   graph: graphFactory(),
   entities: Set(),
   modifiedEntities: Set(),
-  parentWays: new Map()
+  parentWays: Map()
 };
 
 // initialState.areaKeys = initAreaKeys(initialState.presets.all);
@@ -73,12 +72,7 @@ export function coreReducer(state = coreState, action: CoreActionTypes) {
         .set('parentWays', parentWays)
         .set(
           'entities',
-          addToVirginEntities(
-            entities,
-            Set(data),
-            state.modifiedEntities,
-            false
-          )
+          addToVirginEntities(entities, data, state.modifiedEntities, true)
         );
       console.timeEnd(type);
       return newState;

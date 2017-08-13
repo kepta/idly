@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts node to feat nodeToPoint should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      NaN,
+      NaN,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {},
+  "type": "Feature",
+}
+`;
+
+exports[`converts node to feat nodeToPoint should behave... 2`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      15,
+      10,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {},
+  "type": "Feature",
+}
+`;

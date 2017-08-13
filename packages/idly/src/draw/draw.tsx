@@ -6,10 +6,7 @@ import { connect } from 'react-redux';
 import { IRootStateType } from 'common/store';
 import { attachToWindow } from 'utils/attach_to_window';
 
-import { initPresets } from 'osm/presets/presets';
-
 import { setupDraw } from 'draw/draw_setup';
-console.log(initPresets());
 interface IPropsType {
   map: any;
   selectedFeatures: List<any>;

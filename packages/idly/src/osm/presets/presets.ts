@@ -8,9 +8,12 @@ import { presetField } from 'osm/presets/field';
 import { presetPreset } from 'osm/presets/preset';
 
 import { Geometry } from 'osm/entities/constants';
+import { Tags } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
+import { initAreaKeys } from 'osm/presets/areaKeys';
+import { presetsMatch } from 'osm/presets/match';
 
 type Entity = Node | Way | Relation;
 
@@ -127,3 +130,10 @@ export function initPresets(d: any = data.presets) {
 
   return { all, recent, index, defaults };
 }
+
+export const presets: { all; defaults; index; recent } = initPresets();
+
+export const areaKeys = initAreaKeys(presets.all);
+
+export const presetsMatcher = (geometry: Geometry, tags: Tags) =>
+  presetsMatch(presets.all, presets.index, areaKeys, geometry, tags);

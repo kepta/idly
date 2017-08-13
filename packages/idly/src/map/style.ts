@@ -5,6 +5,7 @@ import * as diff from 'mapbox-gl/src/style-spec/diff';
 
 import * as R from 'ramda';
 import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
+import { weakCache } from 'utils/weakCache';
 
 let globalStyle: Style = {
   version: 8,
@@ -80,17 +81,19 @@ export function removeLayer(layerId: string) {
   updateStyle(newStyle);
 }
 
+const layerMap = weakCache((v: ILayerSpec) => {
+  let layer = v.toJS();
+  layer = R.reject(R.isNil, layer);
+  return layer;
+});
+const layerToArray = weakCache((l: OrderedMap<string, any>) => {
+  return l.map(layerMap).sort((a, b) => a.priority - b.priority).toArray();
+});
+
 const parseLayers = (l: OrderedMap<string, any>, styleObj: Style) => {
-  const layers = l
-    .map(v => {
-      let layer = v.toJS();
-      layer = R.reject(R.isNil, layer);
-      return layer;
-    })
-    .sort((a, b) => a.priority - b.priority)
-    .toArray();
-  // console.log(layers);
-  const gStyle = R.clone(styleObj);
-  gStyle.layers = layers;
-  return gStyle;
+  const layers = layerToArray(l);
+  return {
+    ...styleObj,
+    layers
+  };
 };
