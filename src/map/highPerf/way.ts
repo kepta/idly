@@ -6,9 +6,7 @@ import { Feature } from 'typings/geojson';
 
 import { isArea } from 'osm/entities/helpers/misc';
 import { Node } from 'osm/entities/node';
-import {
-  presetsMatcherCached
-} from 'osm/presets/presets';
+import { presetsMatcherCached } from 'osm/presets/presets';
 
 import { Geometry } from 'osm/entities/constants';
 import { Way } from 'osm/entities/way';
@@ -52,6 +50,7 @@ export function wayCombiner(way: Way, graph: Graph) {
     tagsClassType
   };
   return {
+    id: way.id,
     ...wayToLineString(geometry, nodes),
     properties
   };

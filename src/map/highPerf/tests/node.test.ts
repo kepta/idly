@@ -3,11 +3,11 @@ import { Map, Set } from 'immutable';
 import {
   applyNodeMarkup,
   DEFAULT_NODE_ICON,
-  getNodeGeometry,
   nodeCombiner,
   nodeToPoint
 } from 'map/highPerf/node';
 import { Geometry } from 'osm/entities/constants';
+import { getNodeGeometry } from 'osm/entities/helpers/misc';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';

@@ -5,6 +5,8 @@ import { Entity } from 'osm/entities/entities';
 import * as R from 'ramda';
 
 export function featToEntities(feats: any[]) {
+  const graph = store.getState().core.graph;
+
   const entities: Entity[] = R.flatten(
     feats
       .map(f => ({
@@ -18,9 +20,8 @@ export function featToEntities(feats: any[]) {
       .map(f => {
         const id = f.properties.id;
         if (id[0] === 'n') {
-          return featToNode(f);
+          return featToNode(f, graph);
         } else if (id[0] === 'w') {
-          const graph = store.getState().core.graph;
           return featToWay(f, graph);
         } else if (id[0] === 'r') {
         }

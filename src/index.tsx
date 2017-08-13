@@ -18,6 +18,8 @@ import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
 import { presetsMatch } from 'osm/presets/match';
 
+import 'worker/setup';
+
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
 require('mapbox-gl-inspect/dist/mapbox-gl-inspect.css');

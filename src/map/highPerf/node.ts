@@ -1,5 +1,6 @@
 import { Feature, Point } from 'geojson';
 import { Geometry } from 'osm/entities/constants';
+import { getNodeGeometry } from 'osm/entities/helpers/misc';
 import { Tags } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
 import { ParentWays } from 'osm/parsers/parsers';
@@ -48,18 +49,3 @@ export const applyNodeMarkup = (geometry: NodeGeometry, tags: Tags) => {
     geometry
   };
 };
-
-/**
- * @NOTE
- *  The way osm works is that it will give you everything inside the bbox
- *   but only a secondary level outside the bbox. So if the a node is
- *   currently a vertex, it could become a vertex_shared in future.
- *   thats why parentWays is updated on every network request.
- */
-export function getNodeGeometry(id, parentWays: ParentWays) {
-  if (parentWays.has(id))
-    return parentWays.get(id).size > 1
-      ? Geometry.VERTEX_SHARED
-      : Geometry.VERTEX;
-  return Geometry.POINT;
-}
