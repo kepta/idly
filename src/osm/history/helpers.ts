@@ -1,9 +1,9 @@
 import { Map } from 'immutable';
 
 import { Graph } from 'osm/history/graph';
-import { graphFactory } from 'osm/history/graph';
+import { graphFactory, graphFactoryFromSet } from 'osm/history/graph';
 
-import { EntitiesId } from 'osm/entities/entities';
+import { Entities, EntitiesId } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
@@ -13,6 +13,15 @@ type Entity = Node | Way | Relation;
 
 export function graphSetEntity(graph: Graph, entity: Entity): Graph {
   return graph.setIn([entity.type, entity.id], entity) as Graph;
+}
+
+export function graphSetEntitiesSet(graph: Graph, entities: Entities): Graph {
+  const patchGraph = graphFactoryFromSet(entities);
+  const mergedGraph = graph.mergeWith(
+    (oldV, newV) => oldV.merge(newV),
+    patchGraph
+  ) as Graph;
+  return mergedGraph;
 }
 
 export function graphSetEntities(graph: Graph, entities: Entity[]): Graph {

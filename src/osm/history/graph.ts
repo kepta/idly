@@ -1,6 +1,6 @@
 import { List, Map, Record, Set } from 'immutable';
 
-import { Entity, EntityId } from 'osm/entities/entities';
+import { Entities, Entity, EntityId } from 'osm/entities/entities';
 import { Properties, propertiesGen } from 'osm/entities/helpers/properties';
 import { Tags, tagsFactory } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
@@ -45,5 +45,23 @@ export function graphFactory(entitiesList: EntityType[] = []) {
     node: createMapFromArray(node),
     way: createMapFromArray(way),
     relation: createMapFromArray(relation)
+  });
+}
+
+export function graphFactoryFromSet(entitiesSet: Entities = Set()) {
+  const createDeepMap = (set: any = Set()) => {
+    const map = Map();
+    return map.withMutations(m => {
+      set.forEach(a => {
+        m.set(a.id, a);
+      });
+    });
+  };
+  const { node, way, relation } = entitiesSet.groupBy(e => e.type).toObject();
+  // : { node: Node; way: Way; relation: Relation }
+  return new Graph({
+    node: createDeepMap(node),
+    way: createDeepMap(way),
+    relation: createDeepMap(relation)
   });
 }
