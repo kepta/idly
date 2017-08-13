@@ -1,8 +1,27 @@
 import { Geometry } from 'osm/entities/constants';
 
-import { isOnAddressLine } from 'osm/entities/helpers/misc';
+import { Entity } from 'osm/entities/entities';
 import { Tags } from 'osm/entities/helpers/tags';
 import { AreaKeys } from 'osm/presets/areaKeys';
+
+/**
+ *
+ * @REVISIT
+ * @TOFIX
+ */
+export function isOnAddressLine(entity?: Entity) {
+  return false;
+  //   return resolver.transient(this, 'isOnAddressLine', function() {
+  //     return (
+  //       resolver.parentWays(this).filter(function(parent) {
+  //         return (
+  //           parent.tags.hasOwnProperty('addr:interpolation') &&
+  //           parent.geometry(resolver) === 'line'
+  //         );
+  //       }).length > 0
+  //     );
+  //   });
+}
 
 export function presetsMatch(
   all,

@@ -1,11 +1,12 @@
 import { Feature, Point } from 'geojson';
+import { Set } from 'immutable';
 import { Geometry } from 'osm/entities/constants';
 import { Tags } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
 import { ParentWays } from 'osm/parsers/parsers';
+import { presetsMatcher, presetsMatcherCached } from 'osm/presets/presets';
 import * as R from 'ramda';
-import { weakCache } from 'utils/weakCache';
-
+import { weakCache, weakCache2 } from 'utils/weakCache';
 type NodeFeat = Feature<Point>;
 type NodeGeometry = Geometry.POINT | Geometry.VERTEX | Geometry.VERTEX_SHARED;
 
@@ -14,25 +15,23 @@ interface INodeMarkup {
   name?: string;
   geometry: NodeGeometry;
 }
+export const DEFAULT_NODE_ICON = 'circle';
 
-export function nodeCombiner(
-  node: Node,
-  parentWays: ParentWays,
-  presetsMatcher: (n: NodeGeometry, t: Tags) => any
-) {
+export function nodeCombiner(node: Node, parentWays: ParentWays) {
   return {
     ...nodeToPoint(node),
     properties: {
       ...applyNodeMarkup(
-        presetsMatcher,
+        // presetsMatcher,
         getNodeGeometry(node.id, parentWays),
         node.tags
-      )
+      ),
+      id: node.id
     }
   };
 }
 
-export function nodeToPoint(node: Node): Feature<Point> {
+export const nodeToPoint = (node: Node): Feature<Point> => {
   return {
     id: node.id,
     type: 'Feature',
@@ -42,35 +41,26 @@ export function nodeToPoint(node: Node): Feature<Point> {
     },
     properties: {}
   };
-}
+};
 
-export function applyNodeMarkup(
-  presetsMatcher: (n: NodeGeometry, t: Tags) => any,
-  geometry: NodeGeometry,
-  tags: Tags
-) {
-  const match = presetsMatcher(geometry, tags);
+export const applyNodeMarkup = (geometry: NodeGeometry, tags: Tags) => {
+  const match = presetsMatcherCached(geometry)(tags);
   return {
-    icon: (match && match.icon) || 'circle',
+    icon: (match && match.icon) || DEFAULT_NODE_ICON,
     name: tags.get('name'),
     geometry
   };
-}
+};
 
 /**
- *  @REVISIT
- *   I am not sure about this,
- *   // mosty holds// 1st if <way><n id=X></way> I should have node X in the same request.
- *   // proved wrong// 2nd if node id=Y I should have all the ways having Y in the same request.
- *
- * @REVISIT
- *  need to test / figure out how to handle 2nd point above ^^.
- *  so this guy at sagas would simply filter away this new node information
- *  wrapped in way coming in any subsequent request. hence our node would
- *  not get the new status or VERTEX_SHARED
+ * @NOTE
+ *  The way osm works is that it will give you everything inside the bbox
+ *   but only a secondary level outside the bbox. So if the a node is
+ *   currently a vertex, it could become a vertex_shared in future.
+ *   thats why parentWays is updated on every network request.
  */
 export function getNodeGeometry(id, parentWays: ParentWays) {
-  if (parentWays.get(id))
+  if (parentWays.has(id))
     return parentWays.get(id).size > 1
       ? Geometry.VERTEX_SHARED
       : Geometry.VERTEX;

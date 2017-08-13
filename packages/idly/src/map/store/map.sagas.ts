@@ -24,9 +24,12 @@ import {
 import { nodeToFeat } from 'map/utils/nodeToFeat';
 import { wayToFeat } from 'map/utils/wayToFeat';
 
+import { convertNodes, nodeCombiner } from 'map/highPerf/node';
 import { Graph } from 'osm/history/graph';
-import { parseXML } from 'osm/parsers/parsers';
+import { ParentWays, parseXML } from 'osm/parsers/parsers';
+import { presetsMatcher } from 'osm/presets/presets';
 import { getFromWindow } from 'utils/attach_to_window';
+import { wayCombiner } from 'map/highPerf/way';
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -115,20 +118,40 @@ function* watchUpdateSources(): SagaIterator {
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   console.time('updateSourceSaga');
 
-  const graph: Graph = yield S.select(
-    (state: IRootStateType) => state.core.graph
-  );
-  const entities = data
+  const [graph, parentWays]: [
+    Graph,
+    ParentWays
+  ] = yield S.select((state: IRootStateType) => [
+    state.core.graph,
+    state.core.parentWays
+  ]);
+
+  // console.time('oldStyle');
+  // let entities = data
+  //   .toArray()
+  //   .map(e => {
+  //     if (e instanceof Node) {
+  //       return nodeToFeat(e);
+  //     } else if (e instanceof Way) {
+  //       return wayToFeat(e, graph);
+  //     }
+  //   })
+  //   .filter(f => f);
+  // console.timeEnd('oldStyle');
+  console.time('newStyle');
+  // nodeCombiner
+  let entities = data
     .toArray()
     .map(e => {
       if (e instanceof Node) {
-        return nodeToFeat(e);
+        // return nodeCombiner(e, parentWays, presetsMatcher);
+        return nodeCombiner(e, parentWays);
       } else if (e instanceof Way) {
-        return wayToFeat(e, graph);
+        return wayCombiner(e, graph);
       }
     })
     .filter(f => f);
-
+  console.timeEnd('newStyle');
   console.timeEnd('updateSourceSaga');
 
   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));

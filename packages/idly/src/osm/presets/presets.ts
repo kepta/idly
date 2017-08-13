@@ -14,6 +14,7 @@ import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 import { initAreaKeys } from 'osm/presets/areaKeys';
 import { presetsMatch } from 'osm/presets/match';
+import { weakCache } from 'utils/weakCache';
 
 type Entity = Node | Way | Relation;
 
@@ -33,7 +34,12 @@ class Index {
   set(g: Geometry, value: any) {
     if (g === Geometry.POINT) {
       this.point = value;
-    } else if (g === Geometry.VERTEX) {
+    } else if (g === Geometry.VERTEX || g === Geometry.VERTEX_SHARED) {
+      /**
+       * @NOTE vertex_shared doesn't exist in iD.
+       *  maybe this work or not?
+       * @REVISIT ?
+       */
       this.vertex = value;
     } else if (g === Geometry.LINE) {
       this.line = value;
@@ -42,13 +48,13 @@ class Index {
     } else if (g === Geometry.RELATION) {
       this.relation = value;
     } else {
-      throw new Error('type not found');
+      throw new Error('geometry type not found');
     }
   }
   get(g: Geometry) {
     if (g === Geometry.POINT) {
       return this.point;
-    } else if (g === Geometry.VERTEX) {
+    } else if (g === Geometry.VERTEX || g === Geometry.VERTEX_SHARED) {
       return this.vertex;
     } else if (g === Geometry.LINE) {
       return this.line;
@@ -137,3 +143,47 @@ export const areaKeys = initAreaKeys(presets.all);
 
 export const presetsMatcher = (geometry: Geometry, tags: Tags) =>
   presetsMatch(presets.all, presets.index, areaKeys, geometry, tags);
+
+export const presetsMatcherPoint = weakCache((tags: Tags) => {
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.POINT, tags);
+});
+
+export const presetsMatcherVertex = weakCache((tags: Tags) => {
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.VERTEX, tags);
+});
+
+export const presetsMatcherLine = weakCache((tags: Tags) => {
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.LINE, tags);
+});
+
+export const presetsMatcherAREA = weakCache((tags: Tags) => {
+  presetsMatch(presets.all, presets.index, areaKeys, Geometry.AREA, tags);
+});
+
+export const presetsMatcherVertexShared = weakCache((tags: Tags) => {
+  presetsMatch(
+    presets.all,
+    presets.index,
+    areaKeys,
+    Geometry.VERTEX_SHARED,
+    tags
+  );
+});
+
+export const presetsMatcherCached = (geometry: Geometry) => {
+  if (geometry === Geometry.POINT) {
+    return presetsMatcherPoint;
+  }
+  if (geometry === Geometry.VERTEX) {
+    return presetsMatcherVertex;
+  }
+  if (geometry === Geometry.VERTEX_SHARED) {
+    return presetsMatcherVertexShared;
+  }
+  if (geometry === Geometry.LINE) {
+    return presetsMatcherLine;
+  }
+  if (geometry === Geometry.AREA) {
+    return presetsMatcherAREA;
+  }
+};
