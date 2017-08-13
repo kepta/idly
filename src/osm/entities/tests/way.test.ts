@@ -306,24 +306,21 @@ describe('osmWay', function() {
   //   });
   // });
   describe('#isArea', function() {
-    const { all, defaults, index, recent } = initPresets();
-    const areaKeys = initAreaKeys(all);
+    // const { all, defaults, index, recent } = initPresets();
+    // const areaKeys = initAreaKeys(all);
 
     const w1 = wayFactory({ id: 'w-1' });
     it('returns false when the way has no tags', function() {
-      expect(isArea(wayFactory({ id: 'w-1' }), areaKeys)).toEqual(false);
+      expect(isArea(wayFactory({ id: 'w-1' }))).toEqual(false);
     });
     it('returns true if the way has tag area=yes', function() {
       expect(
-        isArea(
-          wayFactory({ id: 'w-1', tags: tagsFactory({ area: 'yes' }) }),
-          areaKeys
-        )
+        isArea(wayFactory({ id: 'w-1', tags: tagsFactory({ area: 'yes' }) }))
       ).toEqual(true);
     });
     it('returns false if the way is closed and has no tags', function() {
       expect(
-        isArea(wayFactory({ id: 'w-1', nodes: List(['n1', 'n1']) }), areaKeys)
+        isArea(wayFactory({ id: 'w-1', nodes: List(['n1', 'n1']) }))
       ).toEqual(false);
     });
     it('returns true if the way is closed and has a key in areaKeys', function() {
@@ -333,8 +330,7 @@ describe('osmWay', function() {
             id: 'w-1',
             nodes: List(['n1', 'n1']),
             tags: tagsFactory({ building: 'yes' })
-          }),
-          areaKeys
+          })
         )
       ).toEqual(true);
     });
@@ -345,8 +341,7 @@ describe('osmWay', function() {
             id: 'w-1',
             nodes: List(['n1', 'n1']),
             tags: tagsFactory({ a: 'b' })
-          }),
-          areaKeys
+          })
         )
       ).toBe(false);
     });
@@ -357,8 +352,7 @@ describe('osmWay', function() {
             id: 'w-1',
             nodes: List(['n1', 'n1']),
             tags: tagsFactory({ area: 'no', building: 'yes' })
-          }),
-          areaKeys
+          })
         )
       ).toBe(false);
     });
@@ -369,8 +363,7 @@ describe('osmWay', function() {
             id: 'w-1',
             nodes: List(['n1', 'n1']),
             tags: tagsFactory({ natural: 'coastline' })
-          }),
-          areaKeys
+          })
         )
       ).toBe(false);
     });

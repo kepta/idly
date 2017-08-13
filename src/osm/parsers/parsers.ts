@@ -2,6 +2,7 @@ import { List, Map as ImmutableMap, Set } from 'immutable';
 
 import { Geometry } from 'osm/entities/constants';
 import { Entity } from 'osm/entities/entities';
+import { isClosed } from 'osm/entities/helpers/misc';
 import { propertiesGen } from 'osm/entities/helpers/properties';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';
@@ -10,25 +11,7 @@ import { Way, wayFactory } from 'osm/entities/way';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
 
 export type ParentWays = ImmutableMap<string, Set<string>>;
-/**
- * @REVISIT to differentiate between edge vertex and middle vertex
- *  visit here, I guess one should be able to calculate it from this point.
- *  Though I still dont know what would be the best way to figure out
- *  if a node is shared between two ways.
- *  this does not guarantee that the geometry is shared
- */
-// export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
-//   ways.forEach(w => {
-//     const closed = isClosed(w);
-//     w.nodes.forEach((n, i) => {
-//       if (!parentWays.has(n)) parentWays.set(n, Set([w.id]));
-//       else {
-//         parentWays.get(n).add(w.id);
-//       }
-//     });
-//   });
-//   return parentWays;
-// }
+
 export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
   console.time('calculateParentWays');
   const x = parentWays.withMutations(p => {
@@ -40,7 +23,6 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
     });
   });
   console.timeEnd('calculateParentWays');
-
   return x;
 }
 
@@ -181,22 +163,3 @@ const parsers = {
     });
   }
 };
-
-export function getWayGeometry(way: Way, areaKeys: AreaKeys = ImmutableMap()) {
-  if (way.tags.get('area') === 'yes') return Geometry.AREA;
-
-  if (!isClosed(way) || way.tags.get('area') === 'no') return Geometry.LINE;
-  const keys = way.tags.keySeq();
-  let found = false;
-  way.tags.forEach((v, key) => {
-    if (areaKeys.has(key) && !areaKeys.get(key).has(v)) {
-      found = true;
-      return false;
-    }
-  });
-  return found ? Geometry.AREA : Geometry.LINE;
-}
-
-export function isClosed(way: Way) {
-  return way.nodes.size > 1 && way.nodes.first() === way.nodes.last();
-}
