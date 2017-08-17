@@ -45,7 +45,6 @@ function insertInBush(x, y, z) {
 }
 self.addEventListener('message', function(event) {
   const xyz = event.data;
-  // processedXYZ.push(xyz);
   const [x, y, z] = event.data.split(',').map(x => parseInt(x, 10));
   bbox = mercator.bbox(x, y, z);
   if (processedXYZ.has(xyz)) return sendData();
