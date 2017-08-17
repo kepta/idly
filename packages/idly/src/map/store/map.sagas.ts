@@ -39,7 +39,7 @@ export function* watchOSMTiles(): SagaIterator {
   yield S.all([S.call(watchFetch), S.call(watchUpdateSources)]);
 }
 
-function* watchFetch(): SagaIterator {
+function* watchFetch() {
   const takeChan = yield S.actionChannel(OSM_TILES.get, buffers.sliding(1));
 
   while (true) {
@@ -47,6 +47,7 @@ function* watchFetch(): SagaIterator {
     if (zoom < ZOOM) continue;
     if (getFromWindow('disableTile')) continue;
     yield S.all(xys.map(([x, y]) => S.fork(fetchTileSaga, x, y, zoom)));
+    yield delay(150);
   }
 }
 
@@ -54,67 +55,68 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
   // x = 32764;
   // y = 21791;
   // zoom = 16;
-  const tileId = [x, y, zoom].join(',');
-  try {
-    const hasTiles = yield S.select((state: IRootStateType) =>
-      state.osmTiles.get('loadedTiles').has(tileId)
-    );
-    if (hasTiles) {
-      return;
-    }
+  // const tileId = [x, y, zoom].join(',');
+  worker.postMessage([x, y, zoom].join(','));
+  // try {
+  //   const hasTiles = yield S.select((state: IRootStateType) =>
+  //     state.osmTiles.get('loadedTiles').has(tileId)
+  //   );
+  //   if (hasTiles) {
+  //     return;
+  //   }
 
-    yield S.put(
-      action(OSM_TILES.saveTile, {
-        tileId,
-        loaded: true
-      })
-    );
-    worker.postMessage([x, y, zoom].join(','));
-    // const xml = yield S.call(fetchTile, x, y, zoom);
-    // const [oldParentWays, tileData]: [
-    //   ParentWays,
-    //   OrderedMap<string, Entities>
-    // ] = yield S.select((state: IRootStateType) => [
-    //   state.core.parentWays,
-    //   state.osmTiles.tileData
-    // ]);
-    // let toEvict: Entities = Set();
-    // let toEvictId: string;
-    // console.time('parser' + tileId);
-    // const { entities, parentWays } = parseXML(xml, oldParentWays);
-    // console.timeEnd('parser' + tileId);
-    // const setEntities = Set(entities);
-    // const existingEntities: Entities = yield S.select(
-    //   (state: IRootStateType) => state.osmTiles.existingEntities
-    // );
-    // if (existingEntities.size > TILE_STORAGE) {
-    //   toEvict = tileData.first();
-    //   toEvictId = tileData.keySeq().first();
-    // }
-    // const newData = setEntities.subtract(existingEntities);
+  //   yield S.put(
+  //     action(OSM_TILES.saveTile, {
+  //       tileId,
+  //       loaded: true
+  //     })
+  //   );
+  //   console.log('sending', x, y, zoom);
+  // const xml = yield S.call(fetchTile, x, y, zoom);
+  // const [oldParentWays, tileData]: [
+  //   ParentWays,
+  //   OrderedMap<string, Entities>
+  // ] = yield S.select((state: IRootStateType) => [
+  //   state.core.parentWays,
+  //   state.osmTiles.tileData
+  // ]);
+  // let toEvict: Entities = Set();
+  // let toEvictId: string;
+  // console.time('parser' + tileId);
+  // const { entities, parentWays } = parseXML(xml, oldParentWays);
+  // console.timeEnd('parser' + tileId);
+  // const setEntities = Set(entities);
+  // const existingEntities: Entities = yield S.select(
+  //   (state: IRootStateType) => state.osmTiles.existingEntities
+  // );
+  // if (existingEntities.size > TILE_STORAGE) {
+  //   toEvict = tileData.first();
+  //   toEvictId = tileData.keySeq().first();
+  // }
+  // const newData = setEntities.subtract(existingEntities);
 
-    // yield S.put(coreVirginModify(newData, toEvict, parentWays));
-    // yield S.put(
-    //   action(OSM_TILES.mergeIds, {
-    //     tileId,
-    //     setEntities,
-    //     toEvict,
-    //     toEvictId
-    //   })
-    // );
-  } catch (e) {
-    console.error(e);
-    yield S.put(
-      action(OSM_TILES.errorSaveTile, {
-        tileId,
-        loaded: false
-      })
-    );
-  } finally {
-    if (yield S.cancelled()) {
-      console.log('canceled');
-    }
-  }
+  // yield S.put(coreVirginModify(newData, toEvict, parentWays));
+  // yield S.put(
+  //   action(OSM_TILES.mergeIds, {
+  //     tileId,
+  //     setEntities,
+  //     toEvict,
+  //     toEvictId
+  //   })
+  // );
+  // } catch (e) {
+  //   console.error(e);
+  //   yield S.put(
+  //     action(OSM_TILES.errorSaveTile, {
+  //       tileId,
+  //       loaded: false
+  //     })
+  //   );
+  // } finally {
+  //   if (yield S.cancelled()) {
+  //     console.log('canceled');
+  //   }
+  // }
 }
 
 function* watchUpdateSources(): SagaIterator {

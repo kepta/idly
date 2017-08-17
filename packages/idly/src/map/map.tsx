@@ -1,7 +1,7 @@
 import { Set } from 'immutable';
+import * as debounce from 'lodash.debounce';
 import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
-
 import { connect } from 'react-redux';
 
 import { Entities } from 'osm/entities/entities';
@@ -64,7 +64,20 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
   private map;
   private jsonqueue: string;
-  private task: any;
+  private mapRenderTask: any;
+  private fetchTileTask: any;
+  dispatchTiles = () => {
+    if (this.map.getZoom() < ZOOM + 0.1) return;
+    const lonLat = this.map.getBounds();
+    if (getFromWindow('smaller')) {
+      const xys = lonlatToXYs(lonLat, 18);
+      console.log(xys);
+      this.props.getOSMTiles(xys, 18);
+    } else {
+      const xys = lonlatToXYs(lonLat, ZOOM);
+      this.props.getOSMTiles(xys, ZOOM);
+    }
+  };
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
     attachToWindow('map', this.map);
@@ -93,16 +106,28 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     this.map.on('load', () => {
       this.setState({ mapLoaded: true });
     });
-    this.map.on('moveend', this.dispatchTiles);
+    this.map.on('moveend', () => {
+      this.fetchTileTask = win.requestIdleCallback(this.dispatchTiles, {
+        timeout: 2500
+      });
+    });
+    this.map.on('movestart', () => {
+      if (this.fetchTileTask) {
+        win.cancelIdleCallback(this.fetchTileTask);
+        this.fetchTileTask = null;
+      }
+    });
+
     worker.addEventListener('message', event => {
       console.time('parse1');
       this.jsonqueue = event.data;
       // this.map.getSource('virgin').setData(turf.featureCollection(parsed));
-      if (this.task) {
+      if (this.mapRenderTask) {
         console.log('canceled');
-        win.cancelIdleCallback(this.task);
+        win.cancelIdleCallback(this.mapRenderTask);
+        this.mapRenderTask = null;
       }
-      this.task = win.requestIdleCallback(this.parsePending);
+      this.mapRenderTask = win.requestIdleCallback(this.parsePending);
       console.timeEnd('parse1');
       // console.timeEnd('magic');
     });
@@ -123,18 +148,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   removeLayer = (layerId: string) => {
     removeLayerX(layerId);
   };
-  dispatchTiles = () => {
-    if (this.map.getZoom() < ZOOM) return;
-    const lonLat = this.map.getBounds();
-    if (getFromWindow('smaller')) {
-      const xys = lonlatToXYs(lonLat, 18);
-      console.log(xys);
-      this.props.getOSMTiles(xys, 18);
-    } else {
-      const xys = lonlatToXYs(lonLat, ZOOM);
-      this.props.getOSMTiles(xys, ZOOM);
-    }
-  };
+
   dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
   render() {
     return (
