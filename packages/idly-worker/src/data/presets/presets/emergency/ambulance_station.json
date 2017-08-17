@@ -1,0 +1,21 @@
+{
+    "icon": "hospital",
+    "fields": [
+        "operator",
+        "building_area",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "EMS",
+        "EMT",
+        "rescue"
+    ],
+    "tags": {
+        "emergency": "ambulance_station"
+    },
+    "name": "Ambulance Station"
+}

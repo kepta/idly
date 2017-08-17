@@ -1,0 +1,11 @@
+{
+    "icon": "entrance-alt1",
+    "geometry": [
+        "vertex"
+    ],
+    "tags": {
+        "building": "entrance"
+    },
+    "name": "Entrance/Exit",
+    "searchable": false
+}

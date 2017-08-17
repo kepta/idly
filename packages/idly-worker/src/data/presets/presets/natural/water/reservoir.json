@@ -1,0 +1,15 @@
+{
+    "icon": "water",
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "natural": "water",
+        "water": "reservoir"
+    },
+    "reference": {
+        "key": "natural",
+        "value": "water"
+    },
+    "name": "Reservoir"
+}

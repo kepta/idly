@@ -1,0 +1,15 @@
+{
+    "fields": [
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "bunker"
+    },
+    "matchScore": 0.5,
+    "name": "Bunker",
+    "searchable": false
+}

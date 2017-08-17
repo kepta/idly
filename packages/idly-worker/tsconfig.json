@@ -3,16 +3,13 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "baseUrl": "./src",
-    "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "node",
     "target": "es2016",
     "jsx": "react",
-    "strict": true,
-    "strictNullChecks": false,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "pretty": true
+    "strict": false,
+    "pretty": true,
+    "typeRoots": ["./types"]
   },
   "include": ["./src/**/*"],
   "exclude": [
@@ -22,7 +19,6 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "src/setupTests.ts",
-    "worker"
+    "src/setupTests.ts"
   ]
 }

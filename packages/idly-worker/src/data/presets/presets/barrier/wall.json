@@ -1,0 +1,16 @@
+{
+    "icon": "barrier",
+    "fields": [
+        "wall",
+        "height"
+    ],
+    "geometry": [
+        "line",
+        "area"
+    ],
+    "tags": {
+        "barrier": "wall"
+    },
+    "name": "Wall",
+    "matchScore": 0.25
+}

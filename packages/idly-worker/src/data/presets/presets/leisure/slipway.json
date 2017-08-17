@@ -1,0 +1,15 @@
+{
+    "icon": "poi-beach",
+    "geometry": [
+        "point",
+        "line"
+    ],
+    "terms": [
+        "boat launch",
+        "boat ramp"
+    ],
+    "tags": {
+        "leisure": "slipway"
+    },
+    "name": "Slipway"
+}

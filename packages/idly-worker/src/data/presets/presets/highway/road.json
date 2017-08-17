@@ -1,0 +1,20 @@
+{
+    "icon": "highway-road",
+    "fields": [
+        "oneway",
+        "maxspeed",
+        "lanes",
+        "surface",
+        "structure",
+        "maxheight",
+        "access"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "road"
+    },
+    "terms": [],
+    "name": "Unknown Road"
+}

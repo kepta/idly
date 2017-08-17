@@ -1,0 +1,10 @@
+{
+    "icon": "embassy",
+    "geometry": [
+        "point"
+    ],
+    "tags": {
+        "man_made": "flagpole"
+    },
+    "name": "Flagpole"
+}

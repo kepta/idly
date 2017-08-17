@@ -1,0 +1,12 @@
+{
+    "icon": "water",
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "natural": "spring"
+    },
+    "terms": [],
+    "name": "Spring"
+}

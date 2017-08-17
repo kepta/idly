@@ -1,0 +1,14 @@
+{
+    "icon": "warehouse",
+    "fields": [
+        "capacity"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "garages"
+    },
+    "matchScore": 0.5,
+    "name": "Garages"
+}

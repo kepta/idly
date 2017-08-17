@@ -1,0 +1,15 @@
+{
+    "icon": "entrance",
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "railway": "subway_entrance"
+    },
+    "terms": [
+        "metro",
+        "transit"
+    ],
+    "name": "Subway Entrance"
+}

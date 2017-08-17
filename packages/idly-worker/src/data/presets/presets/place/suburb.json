@@ -1,0 +1,19 @@
+{
+    "icon": "triangle-stroked",
+    "fields": [
+        "population"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "place": "suburb"
+    },
+    "terms": [
+        "boro",
+        "borough",
+        "quarter"
+    ],
+    "name": "Borough / Suburb"
+}

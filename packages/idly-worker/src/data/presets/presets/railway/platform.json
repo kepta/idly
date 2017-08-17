@@ -1,0 +1,13 @@
+{
+    "icon": "rail",
+    "geometry": [
+        "point",
+        "vertex",
+        "line",
+        "area"
+    ],
+    "tags": {
+        "railway": "platform"
+    },
+    "name": "Railway Platform"
+}

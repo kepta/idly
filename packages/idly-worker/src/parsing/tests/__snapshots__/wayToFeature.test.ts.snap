@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`way.test getNodesFromGraph should get nodes correctly 1`] = `
+Array [
+  Array [
+    1,
+    2,
+  ],
+]
+`;
+
+exports[`way.test getNodesFromGraph should work when multiple nodes are there ingraph 1`] = `
+Array [
+  Array [
+    3,
+    4,
+  ],
+]
+`;
+
+exports[`way.test getNodesFromGraph should work when multiple nodes are there ingraph 2`] = `
+Array [
+  Array [
+    1,
+    2,
+  ],
+  Array [
+    3,
+    4,
+  ],
+]
+`;
+
+exports[`way.test wayCombiner should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      Array [
+        1,
+        2,
+      ],
+    ],
+    "type": "LineString",
+  },
+  "id": "w1",
+  "properties": Object {
+    "geometry": "line",
+    "icon": "highway-residential",
+    "id": "w1",
+    "name": undefined,
+    "tagsClass": "tag-highway",
+    "tagsClassType": "tag-highway-residential",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`way.test wayToLineString should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      Array [
+        Array [
+          1,
+          2,
+        ],
+        Array [
+          2,
+          3,
+        ],
+        Array [
+          3,
+          0,
+        ],
+        Array [
+          1,
+          2,
+        ],
+      ],
+    ],
+    "type": "Polygon",
+  },
+  "properties": Object {},
+  "type": "Feature",
+}
+`;

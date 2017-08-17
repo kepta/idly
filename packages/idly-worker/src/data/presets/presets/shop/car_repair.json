@@ -1,0 +1,23 @@
+{
+    "icon": "car",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours",
+        "service/vehicle"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "auto",
+        "garage",
+        "service"
+    ],
+    "tags": {
+        "shop": "car_repair"
+    },
+    "name": "Car Repair Shop"
+}

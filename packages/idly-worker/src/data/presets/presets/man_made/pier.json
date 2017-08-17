@@ -1,0 +1,13 @@
+{
+    "geometry": [
+        "line",
+        "area"
+    ],
+    "terms": [
+        "dock"
+    ],
+    "tags": {
+        "man_made": "pier"
+    },
+    "name": "Pier"
+}

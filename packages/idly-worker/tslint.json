@@ -1,8 +1,9 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended"],
+  "extends": ["tslint:recommended", "tslint-immutable"],
   "jsRules": {},
   "rules": {
+    "interface-name": [false],
     "quotemark": ["single"],
     "trailing-comma": [false],
     "object-literal-sort-keys": [false],
@@ -17,17 +18,14 @@
     "no-unused-expression": [true],
     "no-unused-imports": true,
     "max-line-length": [false],
-    "cyclomatic-complexity": [true],
+    "cyclomatic-complexity": [false],
     "member-access": [false],
     "export-name": false,
     "no-constant-condition": false,
-    // should enabe typedef in future
     "typedef": [false],
     "no-reserved-keywords": false,
-    "no-any": false,
-    "object-literal-key-quotes": [
-      false
-    ]
+    "no-any": true,
+    "object-literal-key-quotes": [false]
   },
   "rulesDirectory": []
 }
