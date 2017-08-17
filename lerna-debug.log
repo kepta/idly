@@ -1,0 +1,41 @@
+0 silly input [ '../idly/' ]
+1 silly flags { _: [ 'import' ], pathToRepo: '../idly/' }
+2 verbose rootPath /Users/kushanjoshi/code/open/idly-mono
+3 info version 2.0.0
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync /Users/kushanjoshi/code/open/idly-mono/VERSION
+7 silly initialize attempt
+8 silly statSync /Users/kushanjoshi/code/open/idly
+9 silly existsSync /Users/kushanjoshi/code/open/idly-mono/packages/idly
+10 silly getCurrentSHA
+11 error initialize Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+11 error initialize Use '--' to separate paths from revisions, like this:
+11 error initialize 'git <command> [<revision>...] -- [<file>...]'
+11 error initialize
+11 error initialize     at Function.module.exports.sync (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/execa/index.js:277:26)
+11 error initialize     at Function.execSync (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+11 error initialize     at Function.getCurrentSHA (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/GitUtilities.js:193:49)
+11 error initialize     at ImportCommand.initialize (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/commands/ImportCommand.js:136:51)
+11 error initialize     at ImportCommand._attempt (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:289:21)
+11 error initialize     at ImportCommand.runCommand (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:275:12)
+11 error initialize     at ImportCommand.run (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:160:12)
+11 error initialize     at Object.handler (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/commands/ImportCommand.js:53:53)
+11 error initialize     at Object.self.runCommand (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/yargs/lib/command.js:233:22)
+11 error initialize     at Object.Yargs.self._parseArgs (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/yargs/yargs.js:990:30)
+11 error initialize  caught error
+11 error initialize  { Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+11 error initialize Use '--' to separate paths from revisions, like this:
+11 error initialize 'git <command> [<revision>...] -- [<file>...]'
+11 error initialize
+11 error initialize     at Function.module.exports.sync (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/execa/index.js:277:26)
+11 error initialize     at Function.execSync (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+11 error initialize     at Function.getCurrentSHA (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/GitUtilities.js:193:49)
+11 error initialize     at ImportCommand.initialize (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/commands/ImportCommand.js:136:51)
+11 error initialize     at ImportCommand._attempt (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:289:21)
+11 error initialize     at ImportCommand.runCommand (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:275:12)
+11 error initialize     at ImportCommand.run (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:160:12)
+11 error initialize     at Object.handler (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/commands/ImportCommand.js:53:53)
+11 error initialize     at Object.self.runCommand (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/yargs/lib/command.js:233:22)
+11 error initialize     at Object.Yargs.self._parseArgs (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/yargs/yargs.js:990:30)
+11 error initialize   stack: 'Error: fatal: ambiguous argument \'HEAD\': unknown revision or path not in the working tree.\nUse \'--\' to separate paths from revisions, like this:\n\'git <command> [<revision>...] -- [<file>...]\'\n\n    at Function.module.exports.sync (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/execa/index.js:277:26)\n    at Function.execSync (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)\n    at Function.getCurrentSHA (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/GitUtilities.js:193:49)\n    at ImportCommand.initialize (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/commands/ImportCommand.js:136:51)\n    at ImportCommand._attempt (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:289:21)\n    at ImportCommand.runCommand (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:275:12)\n    at ImportCommand.run (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/Command.js:160:12)\n    at Object.handler (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/lib/commands/ImportCommand.js:53:53)\n    at Object.self.runCommand (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/yargs/lib/command.js:233:22)\n    at Object.Yargs.self._parseArgs (/Users/kushanjoshi/.nvm/versions/node/v7.10.0/lib/node_modules/lerna/node_modules/yargs/yargs.js:990:30)' }
