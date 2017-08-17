@@ -8,10 +8,13 @@ import * as S from 'redux-saga/effects';
 import { action } from 'common/actions';
 import { IRootStateType } from 'common/store';
 import { coreVirginModify } from 'core/store/core.actions';
+import { worker as W } from 'idly-worker/dist/libpack';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Way } from 'osm/entities/way';
 import { fetchTile } from 'osm/network/fetchTile';
+console.log('this;,', W);
+export const worker = new W();
 
 import { ZOOM } from 'map/constants';
 import {
@@ -28,7 +31,7 @@ import { ParentWays, parseXML } from 'osm/parsers/parsers';
 import { getFromWindow } from 'utils/attach_to_window';
 import { weakCache } from 'utils/weakCache';
 
-const TILE_STORAGE = 15000;
+const TILE_STORAGE = 105000;
 
 // tslint:disable-next-line:
 export function* watchOSMTiles(): SagaIterator {
@@ -48,6 +51,9 @@ function* watchFetch(): SagaIterator {
 }
 
 function* fetchTileSaga(x: number, y: number, zoom: number) {
+  // x = 32764;
+  // y = 21791;
+  // zoom = 16;
   const tileId = [x, y, zoom].join(',');
   try {
     const hasTiles = yield S.select((state: IRootStateType) =>
@@ -56,43 +62,46 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
     if (hasTiles) {
       return;
     }
+
     yield S.put(
       action(OSM_TILES.saveTile, {
         tileId,
         loaded: true
       })
     );
-    const xml = yield S.call(fetchTile, x, y, zoom);
-    const [oldParentWays, tileData]: [
-      ParentWays,
-      OrderedMap<string, Entities>
-    ] = yield S.select((state: IRootStateType) => [
-      state.core.parentWays,
-      state.osmTiles.tileData
-    ]);
-    let toEvict: Entities = Set();
-    let toEvictId: string;
+    worker.postMessage([x, y, zoom].join(','));
+    // const xml = yield S.call(fetchTile, x, y, zoom);
+    // const [oldParentWays, tileData]: [
+    //   ParentWays,
+    //   OrderedMap<string, Entities>
+    // ] = yield S.select((state: IRootStateType) => [
+    //   state.core.parentWays,
+    //   state.osmTiles.tileData
+    // ]);
+    // let toEvict: Entities = Set();
+    // let toEvictId: string;
+    // console.time('parser' + tileId);
+    // const { entities, parentWays } = parseXML(xml, oldParentWays);
+    // console.timeEnd('parser' + tileId);
+    // const setEntities = Set(entities);
+    // const existingEntities: Entities = yield S.select(
+    //   (state: IRootStateType) => state.osmTiles.existingEntities
+    // );
+    // if (existingEntities.size > TILE_STORAGE) {
+    //   toEvict = tileData.first();
+    //   toEvictId = tileData.keySeq().first();
+    // }
+    // const newData = setEntities.subtract(existingEntities);
 
-    const { entities, parentWays } = parseXML(xml, oldParentWays);
-    const setEntities = Set(entities);
-    const existingEntities: Entities = yield S.select(
-      (state: IRootStateType) => state.osmTiles.existingEntities
-    );
-    if (existingEntities.size > TILE_STORAGE) {
-      toEvict = tileData.first();
-      toEvictId = tileData.keySeq().first();
-    }
-    const newData = setEntities.subtract(existingEntities);
-    console.timeEnd('parser' + tileId);
-    yield S.put(coreVirginModify(newData, toEvict, parentWays));
-    yield S.put(
-      action(OSM_TILES.mergeIds, {
-        tileId,
-        setEntities,
-        toEvict,
-        toEvictId
-      })
-    );
+    // yield S.put(coreVirginModify(newData, toEvict, parentWays));
+    // yield S.put(
+    //   action(OSM_TILES.mergeIds, {
+    //     tileId,
+    //     setEntities,
+    //     toEvict,
+    //     toEvictId
+    //   })
+    // );
   } catch (e) {
     console.error(e);
     yield S.put(
@@ -156,7 +165,9 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
       }
     })
     .filter(f => f);
+
   console.timeEnd('updateSourceSaga');
+  window.mainEntities = entities;
   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
   if (source) {
     console.log('UPDATING source!', sourceId);

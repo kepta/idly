@@ -84,6 +84,7 @@ describe('way.test', () => {
     const g = graphFactory([n1, n2, n3]);
     it('should behave...', () => {
       const result = wayCombiner(way, graph);
+      console.log(result.geometry);
       expect(result).toMatchSnapshot();
       const result2 = wayCombiner(w1, g);
       expect(result2).toMatchSnapshot();

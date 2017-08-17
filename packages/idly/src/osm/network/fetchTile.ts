@@ -1,7 +1,5 @@
 import { stubXML } from 'osm/stubs/xmlstub';
-import {
-  getFromUrlSearch
-} from 'utils/attach_to_window';
+import { getFromUrlSearch } from 'utils/attach_to_window';
 import { handleErrors } from 'utils/promise';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');
@@ -18,9 +16,9 @@ export async function fetchTile(x: number, y: number, zoom: number) {
   const xyz = [x, y, zoom].join(',');
   const bboxStr = merc.bbox(x, y, zoom).join(',');
   try {
-    if (getFromUrlSearch('debug')) {
-      return new DOMParser().parseFromString(await fetchStub(), 'text/xml');
-    }
+    // if (getFromUrlSearch('debug')) {
+    //   return new DOMParser().parseFromString(await fetchStub(), 'text/xml');
+    // }
     let response = await fetch(
       `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`
     );

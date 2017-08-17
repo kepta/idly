@@ -21,6 +21,7 @@ import { SourceLayered } from 'map/layers/layers';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
+import { worker } from 'map/store/map.sagas';
 import {
   removeLayer as removeLayerX,
   updateLayer as updateLayerX
@@ -50,6 +51,8 @@ interface IPropsType {
   getOSMTiles: (xys: number[][], zoom: number) => void;
 }
 
+const win: any = window;
+
 class MapComp extends React.PureComponent<IPropsType, {}> {
   static defaultProps = {
     entities: Set()
@@ -60,6 +63,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
 
   private map;
+  private jsonqueue: string;
+  private task: any;
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
     attachToWindow('map', this.map);
@@ -89,7 +94,26 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
       this.setState({ mapLoaded: true });
     });
     this.map.on('moveend', this.dispatchTiles);
+    worker.addEventListener('message', event => {
+      console.time('parse1');
+      this.jsonqueue = event.data;
+      // this.map.getSource('virgin').setData(turf.featureCollection(parsed));
+      if (this.task) {
+        console.log('canceled');
+        win.cancelIdleCallback(this.task);
+      }
+      this.task = win.requestIdleCallback(this.parsePending);
+      console.timeEnd('parse1');
+      // console.timeEnd('magic');
+    });
   }
+  parsePending = () => {
+    if (this.jsonqueue) {
+      this.map
+        .getSource('virgin')
+        .setData(turf.featureCollection(JSON.parse(this.jsonqueue)));
+    }
+  };
   updateLayer = (layerSpec: ILayerSpec) => {
     updateLayerX(layerSpec);
     // let newLayer = layerSpec.toJS();

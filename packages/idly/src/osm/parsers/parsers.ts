@@ -15,7 +15,6 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
   console.time('calculateParentWays');
   const x = parentWays.withMutations(p => {
     ways.forEach(w => {
-      const closed = isClosed(w);
       w.nodes.forEach((n, i) => {
         p.update(n, (s = Set()) => (s = s.add(w.id)));
       });

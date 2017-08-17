@@ -1,6 +1,5 @@
 {
   "defaultSeverity": "error",
-  // tslint-microsoft-contrib", 
   "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
@@ -18,7 +17,7 @@
     "no-unused-expression": [true],
     "no-unused-imports": true,
     "max-line-length": [false],
-    "cyclomatic-complexity": [false],
+    "cyclomatic-complexity": [true],
     "member-access": [false],
     "export-name": false,
     "no-constant-condition": false,
