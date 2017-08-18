@@ -21,13 +21,13 @@ import { SourceLayered } from 'map/layers/layers';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
 import { getOSMTiles, updateSource } from 'map/store/map.actions';
-import { worker } from 'map/store/map.sagas';
 import {
   removeLayer as removeLayerX,
   updateLayer as updateLayerX
 } from 'map/style';
 import { ILayerSpec } from 'map/utils/layerFactory';
 import { dirtyPopup } from 'map/utils/map.popup';
+import { worker } from 'worker/main';
 
 type Entity = Node | Way | Relation;
 export type DirtyMapAccessType = (map: any) => void;
@@ -40,6 +40,7 @@ export type DirtyMapAccessType = (map: any) => void;
  * of the graph) and computes the rest
  * in its internal state.
  */
+
 interface IPropsType {
   entities: Entities;
   modifiedEntities: Entities;
@@ -127,16 +128,16 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         win.cancelIdleCallback(this.mapRenderTask);
         this.mapRenderTask = null;
       }
-      this.mapRenderTask = win.requestIdleCallback(this.parsePending);
-      console.timeEnd('parse1');
+      this.mapRenderTask = win.requestIdleCallback(this.parsePending, {
+        timeout: 500
+      });
       // console.timeEnd('magic');
     });
   }
   parsePending = () => {
     if (this.jsonqueue) {
-      this.map
-        .getSource('virgin')
-        .setData(turf.featureCollection(JSON.parse(this.jsonqueue)));
+      this.map.getSource('virgin').setData(this.jsonqueue);
+      console.timeEnd('parse1');
     }
   };
   updateLayer = (layerSpec: ILayerSpec) => {
@@ -156,7 +157,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
         {this.state.mapLoaded &&
           <div>
-            <Draw dirtyMapAccess={this.dirtyMapAccess} />
+            {/* <Draw dirtyMapAccess={this.dirtyMapAccess} /> */}
             {SOURCES.map((s, k) =>
               <Source
                 key={k}

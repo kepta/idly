@@ -1,4 +1,4 @@
-import { LngLatBounds } from 'mapbox-gl';
+import { LngLatBounds } from 'mapbox-gl/dist/mapbox-gl-dev';
 const SphericalMercator = require('@mapbox/sphericalmercator');
 import * as transformScale from '@turf/transform-scale';
 
@@ -39,16 +39,15 @@ export function lonlatToXYs(lonlat: LngLatBounds, zoom: number): number[][] {
       xys.push([x, y]);
     }
   }
-  console.log(
-    JSON.stringify(
-      turf.featureCollection(
-        xys
-          .map(i => turf.bboxPolygon(mercator.bbox(i[0], i[1], zoom)))
-          .concat([turf.bboxPolygon(bbox)])
-      )
-    )
-  );
-  // console.log(JSON.stringify());
+  // console.log(
+  //   JSON.stringify(
+  //     turf.featureCollection(
+  //       xys
+  //         .map(i => turf.bboxPolygon(mercator.bbox(i[0], i[1], zoom)))
+  //         .concat([turf.bboxPolygon(bbox)])
+  //     )
+  //   )
+  // );
   return xys;
 }
 

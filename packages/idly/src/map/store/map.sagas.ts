@@ -8,13 +8,10 @@ import * as S from 'redux-saga/effects';
 import { action } from 'common/actions';
 import { IRootStateType } from 'common/store';
 import { coreVirginModify } from 'core/store/core.actions';
-import { worker as W } from 'idly-worker/dist/libpack';
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
 import { Way } from 'osm/entities/way';
 import { fetchTile } from 'osm/network/fetchTile';
-console.log('this;,', W);
-export const worker = new W();
 
 import { ZOOM } from 'map/constants';
 import {
@@ -30,6 +27,7 @@ import { Graph } from 'osm/history/graph';
 import { ParentWays, parseXML } from 'osm/parsers/parsers';
 import { getFromWindow } from 'utils/attach_to_window';
 import { weakCache } from 'utils/weakCache';
+import { worker } from 'worker/main';
 
 const TILE_STORAGE = 105000;
 
@@ -55,7 +53,6 @@ function* fetchTileSaga(x: number, y: number, zoom: number) {
   // x = 32764;
   // y = 21791;
   // zoom = 16;
-  // const tileId = [x, y, zoom].join(',');
   worker.postMessage([x, y, zoom].join(','));
   // try {
   //   const hasTiles = yield S.select((state: IRootStateType) =>
@@ -139,42 +136,38 @@ function* watchUpdateSources(): SagaIterator {
   }
 }
 
-const stringifiers = weakCache(x => JSON.stringify(x));
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
-  console.time('updateSourceSaga');
-
-  const [graph, parentWays]: [
-    Graph,
-    ParentWays
-  ] = yield S.select((state: IRootStateType) => [
-    state.core.graph,
-    state.core.parentWays
-  ]);
-  // console.time('toJSON');
-  // stringifiers(data);
-  // stringifiers(Graph);
-  // console.timeEnd('toJSON');
-
-  console.time('updateSourceSaga');
-  const entities = data
-    .toArray()
-    .map(e => {
-      if (e instanceof Node) {
-        // return nodeCombiner(e, parentWays, presetsMatcher);
-        return nodeCombiner(e, parentWays);
-      } else if (e instanceof Way) {
-        return wayCombiner(e, graph);
-      }
-    })
-    .filter(f => f);
-
-  console.timeEnd('updateSourceSaga');
-  window.mainEntities = entities;
-  const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
-  if (source) {
-    console.log('UPDATING source!', sourceId);
-    yield S.call([source, 'setData'], turf.featureCollection(entities));
-  } else {
-    console.log('source not found');
-  }
+  //   console.time('updateSourceSaga');
+  //   const [graph, parentWays]: [
+  //     Graph,
+  //     ParentWays
+  //   ] = yield S.select((state: IRootStateType) => [
+  //     state.core.graph,
+  //     state.core.parentWays
+  //   ]);
+  //   // console.time('toJSON');
+  //   // stringifiers(data);
+  //   // stringifiers(Graph);
+  //   // console.timeEnd('toJSON');
+  //   console.time('updateSourceSaga');
+  //   // const entities = data
+  //   //   .toArray()
+  //   //   .map(e => {
+  //   //     if (instanceOfClass(e, 'Node')) {
+  //   //       // return nodeCombiner(e, parentWays, presetsMatcher);
+  //   //       return nodeCombiner(e, parentWays);
+  //   //     } else if (instanceOfClass(e, 'Way')) {
+  //   //       return wayCombiner(e, graph);
+  //   //     }
+  //   //   })
+  //   //   .filter(f => f);
+  //   console.timeEnd('updateSourceSaga');
+  //   // window.mainEntities = entities;
+  //   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
+  //   if (source) {
+  //     console.log('UPDATING source!', sourceId);
+  //     yield S.call([source, 'setData'], turf.featureCollection(entities));
+  //   } else {
+  //     console.log('source not found');
+  //   }
 }

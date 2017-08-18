@@ -59,6 +59,12 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.0.0.tgz#c1de4293081424da3ac30c23afa850af1019bb54"
 
+"@turf/bbox-polygon@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@turf/bbox-polygon/-/bbox-polygon-4.6.0.tgz#6ec2178aa0920daa61e981ec82b58e5849a3fb59"
+  dependencies:
+    "@turf/helpers" "^4.6.0"
+
 "@turf/bbox@^4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@turf/bbox/-/bbox-4.6.0.tgz#8c7f68cdd2bee9178de4d9f9bfbcee4235db5fc3"
@@ -389,6 +395,16 @@
 "@types/react@^15.6.1":
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.1.tgz#497f7228762da4432e335957cb34fe9b40f150ae"
+
+"@types/redux-saga@^0.10.5":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@types/redux-saga/-/redux-saga-0.10.5.tgz#80bf21078379ebc97387dbe56e44467b5677fa85"
+  dependencies:
+    redux-saga "*"
+
+"@types/redux@^3.6.0":
+  version "3.6.31"
+  resolved "https://registry.yarnpkg.com/@types/redux/-/redux-3.6.31.tgz#40eafa7575db36b912ce0059b85de98c205b0708"
 
 "@types/shelljs@^0.7.0":
   version "0.7.2"
@@ -3564,6 +3580,33 @@ icss-utils@^2.1.0:
   dependencies:
     postcss "^6.0.1"
 
+"idly-worker@file:///Users/kushanjoshi/code/open/idly-mono/packages/idly-worker":
+  version "1.0.0"
+  dependencies:
+    "@mapbox/sphericalmercator" "^1.0.5"
+    "@turf/bbox" "^4.6.0"
+    "@turf/bbox-polygon" "^4.6.0"
+    "@turf/transform-scale" "^4.6.1"
+    "@types/mapbox-gl" "^0.39.4"
+    "@types/redux" "^3.6.0"
+    "@types/redux-saga" "^0.10.5"
+    diacritics "^1.3.0"
+    immutable "^3.8.1"
+    lodash.debounce "^4.0.8"
+    mapbox-gl "^0.39.1"
+    name-suggestion-index "^0.1.1"
+    promise-worker "^1.1.1"
+    ramda "^0.24.1"
+    rbush "^2.0.1"
+    redux "^3.7.2"
+    redux-saga "^0.15.6"
+    topojson "^3.0.0"
+    turf-bbox "^3.0.12"
+    turf-linestring "^1.0.2"
+    turf-polygon "^1.0.3"
+    wmf-sitematrix "^0.1.4"
+    xmldom "^0.1.27"
+
 ieee754@^1.1.4, ieee754@^1.1.6:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
@@ -4747,7 +4790,7 @@ mapbox-gl-supported@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mapbox-gl-supported/-/mapbox-gl-supported-1.2.0.tgz#cbd34df894206cadda9a33c8d9a4609f26bb1989"
 
-mapbox-gl@^0.36.1:
+mapbox-gl@^0.36.1, mapbox-gl@^0.39.1:
   version "0.39.1"
   resolved "https://registry.yarnpkg.com/mapbox-gl/-/mapbox-gl-0.39.1.tgz#2197e1e9dc5d37371b85c73157cf1c1f977c5812"
   dependencies:
@@ -6254,6 +6297,12 @@ range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
+rbush@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rbush/-/rbush-2.0.1.tgz#4cfaca28c3064bc0ee75431a1b79990e875eefa9"
+  dependencies:
+    quickselect "^1.0.0"
+
 rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.1.tgz#2e03e8e42ee450b8cb3dce65be1bf8974e1dfd95"
@@ -6484,7 +6533,7 @@ redux-immutable@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
 
-redux-saga@^0.15.6:
+redux-saga@*, redux-saga@^0.15.6:
   version "0.15.6"
   resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.15.6.tgz#8638dc522de6c6c0a496fe8b2b5466287ac2dc4d"
 
@@ -7542,6 +7591,33 @@ to-utf8@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/to-utf8/-/to-utf8-0.0.1.tgz#d17aea72ff2fba39b9e43601be7b3ff72e089852"
 
+topojson-client@3, topojson-client@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/topojson-client/-/topojson-client-3.0.0.tgz#1f99293a77ef42a448d032a81aa982b73f360d2f"
+  dependencies:
+    commander "2"
+
+topojson-server@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/topojson-server/-/topojson-server-3.0.0.tgz#378e78e87c3972a7b5be2c5d604369b6bae69c5e"
+  dependencies:
+    commander "2"
+
+topojson-simplify@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/topojson-simplify/-/topojson-simplify-3.0.0.tgz#58527d26ca85bd8589b5800f6c10e93885245ae5"
+  dependencies:
+    commander "2"
+    topojson-client "3"
+
+topojson@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/topojson/-/topojson-3.0.0.tgz#c2aca1b76435e801dce3f229586bbd5767115ce3"
+  dependencies:
+    topojson-client "3.0.0"
+    topojson-server "3.0.0"
+    topojson-simplify "3.0.0"
+
 toposort@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-1.0.3.tgz#f02cd8a74bd8be2fc0e98611c3bacb95a171869c"
@@ -7898,6 +7974,10 @@ turf-line-slice@^3.0.12:
     turf-helpers "^3.0.12"
     turf-point-on-line "^3.0.12"
 
+turf-linestring@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/turf-linestring/-/turf-linestring-1.0.2.tgz#604a63a7c54c9346ab9f39f273bbb7ece05a3096"
+
 turf-meta@^3.0.12:
   version "3.0.12"
   resolved "https://registry.yarnpkg.com/turf-meta/-/turf-meta-3.0.12.tgz#0aa9a1caf82b2a5a08d54e0830b5b5a3fa0e8a38"
@@ -7952,6 +8032,10 @@ turf-point@^2.0.0:
   resolved "https://registry.yarnpkg.com/turf-point/-/turf-point-2.0.1.tgz#a2dcc30a2d20f44cf5c6271df7bae2c0e2146069"
   dependencies:
     minimist "^1.1.0"
+
+turf-polygon@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/turf-polygon/-/turf-polygon-1.0.3.tgz#671dd34849864509281af18e236f67a7448c6363"
 
 turf-random@^3.0.12:
   version "3.0.12"

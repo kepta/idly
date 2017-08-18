@@ -1,6 +1,6 @@
 import { fromJS, OrderedMap } from 'immutable';
 import { ILayerSpec } from 'map/utils/layerFactory';
-import { Style } from 'mapbox-gl';
+import { Style } from 'mapbox-gl/dist/mapbox-gl-dev';
 import * as diff from 'mapbox-gl/src/style-spec/diff';
 
 import * as R from 'ramda';

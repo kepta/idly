@@ -3,13 +3,15 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "baseUrl": "./src",
-    "module": "esnext",
+    "module": "es2015",
     "moduleResolution": "node",
-    "target": "es2016",
+    "target": "es2015",
     "jsx": "react",
     "strict": false,
     "pretty": true,
-    "typeRoots": ["./types"]
+    "typeRoots": ["./types"],
+    "declaration": true,
+    "isolatedModules": false
   },
   "include": ["./src/**/*"],
   "exclude": [

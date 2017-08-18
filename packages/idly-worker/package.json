@@ -2,10 +2,11 @@
   "name": "idly-worker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/worker.js",
+  "types": "dist/worker.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --progress --color --watch --display-error-details",
+    "start": "rm -rf dist/* & webpack --progress --color --watch --display-error-details",
     "op": "webpack-dev-server --open --port 5000"
   },
   "keywords": [],
@@ -35,6 +36,7 @@
     "@mapbox/sphericalmercator": "^1.0.5",
     "@turf/bbox": "^4.6.0",
     "@turf/bbox-polygon": "^4.6.0",
+    "@turf/helpers": "^4.6.0",
     "@turf/transform-scale": "^4.6.1",
     "@types/mapbox-gl": "^0.39.4",
     "@types/redux": "^3.6.0",

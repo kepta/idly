@@ -25,7 +25,7 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
 }
 
 export function parseXML(
-  xml: Document,
+  xml: XMLDocument,
   parentWays: ParentWays = ImmutableMap()
 ): {
   entities: Entity[];

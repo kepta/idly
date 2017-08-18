@@ -1,5 +1,5 @@
 import { getStyle } from 'map/style';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-dev';
 import { attachToWindow } from 'utils/attach_to_window';
 
 mapboxgl.accessToken =
@@ -10,8 +10,8 @@ export function mapboxglSetup(divId: string) {
   return new mapboxgl.Map({
     container: divId, // container id
     style: getStyle(),
-    center: [-0.0143, 51.5122], // starting position
-    zoom: 16,
+    center: [-73.97694, 40.76109], // starting position
+    zoom: 17,
     hash: true,
     doubleClickZoom: false
   });

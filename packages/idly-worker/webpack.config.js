@@ -14,11 +14,11 @@ for (var f of dir) {
 }
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/worker.ts',
   output: {
-    filename: 'libpack.js',
+    filename: 'worker.js',
     path: __dirname + '/dist',
-    library: 'libpack',
+    library: 'IdlyWorker',
     libraryTarget: 'umd'
   },
 
@@ -38,29 +38,14 @@ module.exports = {
   devServer: {
     contentBase: './dist'
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Development',
-      hash: true,
-      filename: 'index.html',
-      template: 'public/index.html'
-    }),
-    new CircularDependencyPlugin({
-      // exclude detection of files based on a RegExp
-      exclude: /a\.js|node_modules/,
-      // add errors to webpack instead of warnings
-      failOnError: true
-    })
-  ],
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        enforce: 'pre',
-        use: ['remove-flow-types-loader'],
-        include: path.join(__dirname, 'node_modules/mapbox-gl')
-      },
+      // {
+      //   test: /\.jsx?$/,
+      //   enforce: 'pre',
+      //   use: ['remove-flow-types-loader'],
+      //   include: path.join(__dirname, 'node_modules/mapbox-gl')
+      // },
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
 

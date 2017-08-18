@@ -1,0 +1,1 @@
+{"version":3,"file":"osmPavedTags.js","sourceRoot":"","sources":["../../src/helpers/osmPavedTags.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,YAAY,GAAG;IAC1B,OAAO,EAAE;QACP,KAAK,EAAE,IAAI;QACX,OAAO,EAAE,IAAI;QACb,QAAQ,EAAE,IAAI;KACf;IACD,SAAS,EAAE;QACT,MAAM,EAAE,IAAI;KACb;CACF,CAAC"}

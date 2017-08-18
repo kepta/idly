@@ -21,13 +21,10 @@
     "member-access": [false],
     "export-name": false,
     "no-constant-condition": false,
-    // should enabe typedef in future
     "typedef": [false],
     "no-reserved-keywords": false,
     "no-any": false,
-    "object-literal-key-quotes": [
-      false
-    ]
+    "object-literal-key-quotes": [false]
   },
   "rulesDirectory": []
 }
