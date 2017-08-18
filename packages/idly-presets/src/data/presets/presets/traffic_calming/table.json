@@ -1,0 +1,21 @@
+{
+    "icon": "poi-warning",
+    "fields": [
+        "surface"
+    ],
+    "geometry": [
+        "vertex",
+        "line"
+    ],
+    "terms": [
+        "flat top",
+        "hump",
+        "speed",
+        "slow"
+    ],
+    "tags": {
+        "highway":"crossing",
+        "traffic_calming": "table"
+    },
+    "name": "Raised Pedestrian Crossing"
+}

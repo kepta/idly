@@ -1,0 +1,15 @@
+{
+    "icon": "railway-disused",
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "railway": "disused"
+    },
+    "fields": [
+        "structure",
+        "service_rail"
+    ],
+    "terms": [],
+    "name": "Disused Railway"
+}

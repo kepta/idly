@@ -1,0 +1,15 @@
+{
+    "icon": "pitch",
+    "fields": [
+        "sport",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "leisure": "stadium"
+    },
+    "name": "Stadium"
+}

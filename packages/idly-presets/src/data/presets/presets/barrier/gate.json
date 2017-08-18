@@ -1,0 +1,15 @@
+{
+    "icon": "barrier",
+    "fields": [
+        "access"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "line"
+    ],
+    "tags": {
+        "barrier": "gate"
+    },
+    "name": "Gate"
+}

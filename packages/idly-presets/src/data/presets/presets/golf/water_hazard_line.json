@@ -1,0 +1,10 @@
+{
+    "icon": "golf",
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "golf": "water_hazard"
+    },
+    "name": "Water Hazard"
+}

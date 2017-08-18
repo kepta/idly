@@ -1,0 +1,15 @@
+{
+    "icon": "pitch",
+    "fields": [
+        "leisure"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "leisure": "*"
+    },
+    "name": "Leisure"
+}

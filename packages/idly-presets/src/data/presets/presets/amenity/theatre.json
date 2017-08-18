@@ -1,0 +1,22 @@
+{
+    "icon": "theatre",
+    "fields": [
+        "operator",
+        "address",
+        "building_area"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "theatre",
+        "performance",
+        "play",
+        "musical"
+    ],
+    "tags": {
+        "amenity": "theatre"
+    },
+    "name": "Theater"
+}

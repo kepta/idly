@@ -1,0 +1,11 @@
+{
+    "icon": "poi-foot",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "place": "square"
+    },
+    "name": "Square"
+}

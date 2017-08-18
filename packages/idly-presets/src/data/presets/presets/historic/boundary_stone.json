@@ -1,0 +1,14 @@
+{
+    "icon": "monument",
+    "fields": [
+        "inscription"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "historic": "boundary_stone"
+    },
+    "name": "Boundary Stone"
+}

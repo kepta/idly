@@ -1,0 +1,28 @@
+{
+    "icon": "police",
+    "fields": [
+        "operator",
+        "address",
+        "building_area"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "badge",
+        "constable",
+        "constabulary",
+        "cop",
+        "detective",
+        "fed",
+        "law",
+        "enforcement",
+        "officer",
+        "patrol"
+    ],
+    "tags": {
+        "amenity": "police"
+    },
+    "name": "Police"
+}

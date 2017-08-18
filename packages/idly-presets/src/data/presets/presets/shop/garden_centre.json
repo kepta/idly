@@ -1,0 +1,23 @@
+{
+    "icon": "garden-center",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "landscape",
+        "mulch",
+        "shrub",
+        "tree"
+    ],
+    "tags": {
+        "shop": "garden_centre"
+    },
+    "name": "Garden Center"
+}

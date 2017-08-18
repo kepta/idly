@@ -1,0 +1,17 @@
+{
+    "icon": "airport",
+    "fields": [
+        "aeroway"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "line",
+        "area"
+    ],
+    "tags": {
+        "aeroway": "*"
+    },
+    "searchable": false,
+    "name": "Aeroway"
+}

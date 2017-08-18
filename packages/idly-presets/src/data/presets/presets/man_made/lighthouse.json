@@ -1,0 +1,14 @@
+{
+    "icon": "lighthouse",
+    "fields": [
+        "building_area"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "man_made": "lighthouse"
+    },
+    "name": "Lighthouse"
+}

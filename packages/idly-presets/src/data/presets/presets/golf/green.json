@@ -1,0 +1,17 @@
+{
+    "icon": "golf",
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "golf": "green",
+        "landuse": "grass",
+        "leisure": "pitch",
+        "sport": "golf"
+    },
+    "reference": {
+        "key": "golf",
+        "value": "green"
+    },
+    "name": "Putting Green"
+}

@@ -1,0 +1,19 @@
+{
+    "icon": "pitch",
+    "fields": [
+        "sport",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "leisure": "sports_centre"
+    },
+    "terms": [
+    ],
+    "name": "Sports Center / Complex"
+}

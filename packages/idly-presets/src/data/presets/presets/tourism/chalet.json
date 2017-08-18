@@ -1,0 +1,20 @@
+{
+    "icon": "lodging",
+    "fields": [
+        "operator",
+        "address",
+        "building_area",
+        "smoking",
+        "internet_access",
+        "internet_access/fee",
+        "internet_access/ssid"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "tourism": "chalet"
+    },
+    "name": "Chalet"
+}

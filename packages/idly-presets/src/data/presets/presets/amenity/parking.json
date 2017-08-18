@@ -1,0 +1,25 @@
+{
+    "icon": "parking",
+    "fields": [
+        "operator",
+        "parking",
+        "capacity",
+        "fee",
+        "access_simple",
+        "supervised",
+        "park_ride",
+        "surface",
+        "maxstay",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "amenity": "parking"
+    },
+    "terms": [],
+    "name": "Car Parking"
+}

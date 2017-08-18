@@ -1,0 +1,19 @@
+{
+    "icon": "golf",
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "golf": "bunker",
+        "natural": "sand"
+    },
+    "terms": [
+        "hazard",
+        "bunker"
+    ],
+    "reference": {
+        "key": "golf",
+        "value": "bunker"
+    },
+    "name": "Sand Trap"
+}

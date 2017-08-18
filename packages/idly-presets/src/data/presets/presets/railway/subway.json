@@ -1,0 +1,20 @@
+{
+    "icon": "railway-subway",
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "railway": "subway"
+    },
+    "fields": [
+        "structure",
+        "gauge",
+        "electrified",
+        "service_rail"
+    ],
+    "terms": [
+        "metro",
+        "transit"
+    ],
+    "name": "Subway"
+}

@@ -1,0 +1,24 @@
+{
+    "icon": "highway-footway",
+    "fields": [
+        "surface",
+        "lit",
+        "width",
+        "structure",
+        "access"
+    ],
+    "geometry": [
+        "line", "area"
+    ],
+    "terms": [
+        "hike",
+        "hiking",
+        "trackway",
+        "trail",
+        "walk"
+    ],
+    "tags": {
+        "highway": "footway"
+    },
+    "name": "Foot Path"
+}

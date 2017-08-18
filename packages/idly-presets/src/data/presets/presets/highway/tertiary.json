@@ -1,0 +1,22 @@
+{
+    "icon": "highway-tertiary",
+    "fields": [
+        "oneway",
+        "maxspeed",
+        "lanes",
+        "surface",
+        "structure",
+        "maxheight",
+        "ref",
+        "cycleway",
+        "access"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "tertiary"
+    },
+    "terms": [],
+    "name": "Tertiary Road"
+}

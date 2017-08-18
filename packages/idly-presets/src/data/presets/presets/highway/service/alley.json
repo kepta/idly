@@ -1,0 +1,23 @@
+{
+    "icon": "highway-service",
+    "fields": [
+        "oneway",
+        "maxspeed",
+        "structure",
+        "access",
+        "surface",
+        "maxheight"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "service",
+        "service": "alley"
+    },
+    "reference": {
+        "key": "service",
+        "value": "alley"
+    },
+    "name": "Alley"
+}

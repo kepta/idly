@@ -1,0 +1,15 @@
+{
+    "icon": "fire-station",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "leisure": "firepit"
+    },
+    "terms": [
+        "fireplace",
+        "campfire"
+    ],
+    "name": "Firepit"
+}

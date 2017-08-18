@@ -1,0 +1,20 @@
+{
+    "icon": "poi-fire-hydrant",
+    "fields": [
+        "fire_hydrant/type",
+        "fire_hydrant/position",
+        "ref",
+        "operator"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "terms": [
+        "fire plug"
+    ],
+    "tags": {
+        "emergency": "fire_hydrant"
+    },
+    "name": "Fire Hydrant"
+}
