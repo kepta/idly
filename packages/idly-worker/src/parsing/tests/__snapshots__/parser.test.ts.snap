@@ -29,12 +29,24 @@ exports[`parsers it makes good parentways matches snapshot 1`] = `
 Object {
   "entities": Array [
     Object {
+      "attributes": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:40Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
       "id": "n1",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -42,16 +54,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n2",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -59,33 +71,33 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n3",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
       "tags": Map {},
       "type": "node",
     },
     Object {
+      "attributes": Object {
+        "changeset": "50089927",
+        "timestamp": "2017-07-06T17:19:04Z",
+        "uid": "2815653",
+        "user": "Srihari Thalla",
+        "version": "2",
+        "visible": true,
+      },
       "id": "w1",
       "nodes": Array [
         "n1",
         "n2",
       ],
-      "properties": Object {
+      "tags": Map {},
+      "type": "way",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "50089927",
         "timestamp": "2017-07-06T17:19:04Z",
         "uid": "2815653",
@@ -93,23 +105,11 @@ Object {
         "version": "2",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "way",
-    },
-    Object {
       "id": "w2",
       "nodes": Array [
         "n1",
         "n3",
       ],
-      "properties": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
       "tags": Map {},
       "type": "way",
     },
@@ -133,12 +133,24 @@ exports[`parsers it makes good parentways reuses parent Ways and adds stuff to i
 Object {
   "entities": Array [
     Object {
+      "attributes": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:40Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
       "id": "n1",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -146,16 +158,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n2",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -163,33 +175,33 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n3",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
       "tags": Map {},
       "type": "node",
     },
     Object {
+      "attributes": Object {
+        "changeset": "50089927",
+        "timestamp": "2017-07-06T17:19:04Z",
+        "uid": "2815653",
+        "user": "Srihari Thalla",
+        "version": "2",
+        "visible": true,
+      },
       "id": "w1",
       "nodes": Array [
         "n1",
         "n2",
       ],
-      "properties": Object {
+      "tags": Map {},
+      "type": "way",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "50089927",
         "timestamp": "2017-07-06T17:19:04Z",
         "uid": "2815653",
@@ -197,23 +209,11 @@ Object {
         "version": "2",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "way",
-    },
-    Object {
       "id": "w2",
       "nodes": Array [
         "n1",
         "n3",
       ],
-      "properties": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
       "tags": Map {},
       "type": "way",
     },
@@ -237,12 +237,7 @@ exports[`parsers node matches a bigger example 1`] = `
 Object {
   "entities": Array [
     Object {
-      "id": "n12",
-      "loc": Object {
-        "lat": 34.5280866,
-        "lon": 74.1795357,
-      },
-      "properties": Object {
+      "attributes": Object {
         "changeset": "138701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -250,16 +245,33 @@ Object {
         "version": "1",
         "visible": true,
       },
+      "id": "n12",
+      "loc": Object {
+        "lat": 34.5280866,
+        "lon": 74.1795357,
+      },
       "tags": Map {},
       "type": "node",
     },
     Object {
+      "attributes": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:39Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
       "id": "n4133782712",
       "loc": Object {
         "lat": 34.5280866,
         "lon": 74.1795357,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -267,16 +279,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782713",
       "loc": Object {
         "lat": 34.528206,
         "lon": 74.1807924,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -284,16 +296,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782714",
       "loc": Object {
         "lat": 34.5283653,
         "lon": 74.1822907,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -301,16 +313,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782715",
       "loc": Object {
         "lat": 34.528425,
         "lon": 74.1815174,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -318,16 +330,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782716",
       "loc": Object {
         "lat": 34.5285445,
         "lon": 74.1788832,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -335,16 +347,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782717",
       "loc": Object {
         "lat": 34.5290024,
         "lon": 74.1788349,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -352,16 +364,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782718",
       "loc": Object {
         "lat": 34.5292015,
         "lon": 74.179584,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
@@ -369,33 +381,33 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782719",
       "loc": Object {
         "lat": 34.529301,
         "lon": 74.1824357,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
+        "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
         "user": "Dombo",
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782720",
       "loc": Object {
         "lat": 34.5294603,
         "lon": 74.1794149,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -403,16 +415,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782721",
       "loc": Object {
         "lat": 34.5296992,
         "lon": 74.1823873,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -420,16 +432,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782722",
       "loc": Object {
         "lat": 34.5297191,
         "lon": 74.1788349,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -437,16 +449,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782723",
       "loc": Object {
         "lat": 34.5300377,
         "lon": 74.1821698,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -454,16 +466,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782724",
       "loc": Object {
         "lat": 34.5303562,
         "lon": 74.1783274,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -471,16 +483,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782725",
       "loc": Object {
         "lat": 34.530396,
         "lon": 74.1816382,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -488,16 +500,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782726",
       "loc": Object {
         "lat": 34.5305354,
         "lon": 74.1805024,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -505,16 +517,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782727",
       "loc": Object {
         "lat": 34.5309137,
         "lon": 74.1799224,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -522,16 +534,16 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782728",
       "loc": Object {
         "lat": 34.5311526,
         "lon": 74.1786899,
       },
-      "properties": Object {
+      "tags": Map {},
+      "type": "node",
+    },
+    Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:40Z",
         "uid": "592097",
@@ -539,27 +551,23 @@ Object {
         "version": "1",
         "visible": true,
       },
-      "tags": Map {},
-      "type": "node",
-    },
-    Object {
       "id": "n4133782729",
       "loc": Object {
         "lat": 34.5314114,
         "lon": 74.1793182,
       },
-      "properties": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
       "tags": Map {},
       "type": "node",
     },
     Object {
+      "attributes": Object {
+        "changeset": "50089927",
+        "timestamp": "2017-07-06T17:19:04Z",
+        "uid": "2815653",
+        "user": "Srihari Thalla",
+        "version": "2",
+        "visible": true,
+      },
       "id": "w411770875",
       "nodes": Array [
         "n4133782719",
@@ -582,14 +590,6 @@ Object {
         "n4133782721",
         "n4133782719",
       ],
-      "properties": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
       "tags": Map {
         "landuse" => "residential",
         "place" => "village",
@@ -661,18 +661,18 @@ exports[`parsers node matches snapshot 1`] = `
 Object {
   "entities": Array [
     Object {
-      "id": "n1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "properties": Object {
+      "attributes": Object {
         "changeset": "1",
         "timestamp": "2009-03-07T03:26:33Z",
         "uid": null,
         "user": null,
         "version": "1",
         "visible": true,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
       },
       "tags": Map {},
       "type": "node",
@@ -686,35 +686,35 @@ exports[`parsers node matches snapshot 2`] = `
 Object {
   "entities": Array [
     Object {
+      "attributes": Object {
+        "changeset": "38701677",
+        "timestamp": "2016-04-19T17:58:39Z",
+        "uid": "592097",
+        "user": "Dombo",
+        "version": "1",
+        "visible": true,
+      },
       "id": "n4133782712",
       "loc": Object {
         "lat": 34.5280866,
         "lon": 74.1795357,
       },
-      "properties": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
       "tags": Map {},
       "type": "node",
     },
     Object {
-      "id": "n4133782713",
-      "loc": Object {
-        "lat": 34.528206,
-        "lon": 74.1807924,
-      },
-      "properties": Object {
+      "attributes": Object {
         "changeset": "38701677",
         "timestamp": "2016-04-19T17:58:39Z",
         "uid": "592097",
         "user": "Dombo",
         "version": "1",
         "visible": true,
+      },
+      "id": "n4133782713",
+      "loc": Object {
+        "lat": 34.528206,
+        "lon": 74.1807924,
       },
       "tags": Map {},
       "type": "node",
@@ -728,6 +728,14 @@ exports[`parsers way matches snapshot 1`] = `
 Object {
   "entities": Array [
     Object {
+      "attributes": Object {
+        "changeset": "50089927",
+        "timestamp": "2017-07-06T17:19:04Z",
+        "uid": "2815653",
+        "user": "Srihari Thalla",
+        "version": "2",
+        "visible": true,
+      },
       "id": "w411770875",
       "nodes": Array [
         "n4133782719",
@@ -750,14 +758,6 @@ Object {
         "n4133782721",
         "n4133782719",
       ],
-      "properties": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
       "tags": Map {
         "landuse" => "residential",
         "place" => "village",
