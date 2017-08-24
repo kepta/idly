@@ -1,12 +1,16 @@
-import { Entity, EntityId } from 'structs';
-import { genLngLat } from 'structs/lngLat';
-import { memberGen } from 'structs/members';
-import { nodeFactory } from 'structs/node';
-import { propertiesGen } from 'structs/properties';
-import { relationFactory } from 'structs/relation';
-import { Way, wayFactory } from 'structs/way';
-
-export type ParentWays = Map<EntityId, Set<EntityId>>;
+import {
+  attributesGen,
+  Entity,
+  genLngLat,
+  Node,
+  nodeFactory,
+  ParentWays,
+  Relation,
+  relationFactory,
+  relationMemberGen,
+  Way,
+  wayFactory
+} from 'idly-common/lib';
 
 /**
  * @param parentWays mutates in place
@@ -21,20 +25,22 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
       parentWays.set(nodeId, new Set([w.id]));
     })
   );
-  // const x = parentWays.forEach((way, nodeId) => {
-  //   ways.forEach(w => {
-  //     w.nodes.forEach((n, i) => {
-  //       if (p.has(n)) return p.get(n).add(w.id);
-  //       p.set(n, new Set());
-  //     })
-  //   })
-  // })
 
   console.timeEnd('calculateParentWays');
   return parentWays;
 }
 
 const xmlIndex = process.env.NODE_ENV === 'test' ? 0 : 2;
+/**
+ * @NOTE parseXML doesnt care if there are duplicates
+ *  as this helps in removing a particular tile
+ *  and still maintaining the duplicated entity in other
+ *  tile. If in case we started screening duplicates
+ *  this might remove an entity which might span across
+ *  multiple tiles.
+ * @param xml
+ * @param parentWays
+ */
 export function parseXML(
   xml: Document,
   parentWays: ParentWays = new Map()
@@ -64,7 +70,12 @@ export function parseXML(
   group.relation = group.relation.map(parsers.relation);
   group.way = group.way.map(w => parsers.way(w));
 
-  calculateParentWays(parentWays, group.way);
+  // calculateParentWays right at this point allows us
+  // to pass the parsed group.way which is needed to
+  // calculate parentWays.
+  // @NOTE calculateParentWays directly mutates
+  //  I want to change this behaviour
+  parentWays = calculateParentWays(parentWays, group.way);
 
   group.node = group.node.map(n => parsers.node(n));
 
@@ -86,7 +97,7 @@ function getMembers(obj) {
   const members = new Array(elems.length);
   for (let i = 0, l = elems.length; i < l; i++) {
     const attrs = elems[i].attributes;
-    members[i] = memberGen({
+    members[i] = relationMemberGen({
       id: attrs.getNamedItem('type').value[0] + attrs.getNamedItem('ref').value,
       type: attrs.getNamedItem('type').value,
       role: attrs.getNamedItem('role').value
@@ -126,7 +137,7 @@ const parsers = {
     const id = 'n' + attrs.getNamedItem('id').value;
     return nodeFactory({
       id,
-      properties: propertiesGen({
+      attributes: attributesGen({
         visible: getVisible(attrs),
         version: attrs.getNamedItem('version').value,
         timestamp:
@@ -147,7 +158,7 @@ const parsers = {
     const attrs = obj.attributes;
     return wayFactory({
       id: 'w' + attrs.getNamedItem('id').value,
-      properties: propertiesGen({
+      attributes: attributesGen({
         visible: getVisible(attrs),
         version: attrs.getNamedItem('version').value,
         changeset:
@@ -168,7 +179,7 @@ const parsers = {
     const attrs = obj.attributes;
     return relationFactory({
       id: 'r' + attrs.getNamedItem('id').value,
-      properties: propertiesGen({
+      attributes: attributesGen({
         visible: getVisible(attrs),
         version: attrs.getNamedItem('version').value,
         changeset:

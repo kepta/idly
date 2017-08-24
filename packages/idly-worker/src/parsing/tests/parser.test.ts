@@ -1,12 +1,12 @@
+import { ParentWays, wayFactory } from 'idly-common/lib';
 import {
   miniWayXML1,
   miniXML1,
   miniXML2,
   miniXML3,
   nodeXML1
-} from 'parsing/fixtures';
-import { calculateParentWays, ParentWays, parseXML } from 'parsing/parser';
-import { wayFactory } from 'structs/way';
+} from '../../parsing/fixtures';
+import { calculateParentWays, parseXML } from '../../parsing/parser';
 
 const wayXML =
   '<?xml version="1.0" encoding="UTF-8"?><osm>' +

@@ -4,8 +4,8 @@ import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
 import { ParentWays } from 'osm/parsers/parsers';
 
 export enum CoreActions {
-  VIRGIN_ADD = 'CORE.virgin_add',
-  VIRGIN_REMOVE = 'CORE.virgin_remove',
+  SELECTION_FETCH = 'SELECTION_FETCH',
+  SELECTION_GET = '',
   UPDATE = 'CORE.update',
   REMOVE = 'CORE.remove',
   HIDE = 'CORE.hide',
@@ -13,8 +13,7 @@ export enum CoreActions {
 }
 
 export type CoreActionTypes =
-  | ICoreVirginModifyAction
-  | ICoreVirginRemoveAction
+  | ICoreSelectAction
   | ICoreUpdateAction
   | ICoreRemoveAction
   | ICoreHideAction
@@ -22,17 +21,7 @@ export type CoreActionTypes =
 
 const actionBuilder = actionBuilderFactory<CoreActionTypes>();
 
-interface ICoreVirginModifyAction {
-  type: CoreActions.VIRGIN_ADD;
-  toAdd: Entities;
-  toRemove: Entities;
-  parentWays: ParentWays;
-}
-
-interface ICoreVirginRemoveAction {
-  type: CoreActions.VIRGIN_REMOVE;
-  data: Entities;
-}
+interface ICoreSelectAction {}
 
 interface ICoreUpdateAction {
   type: CoreActions.UPDATE;

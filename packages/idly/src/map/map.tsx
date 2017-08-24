@@ -68,16 +68,28 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   private mapRenderTask: any;
   private fetchTileTask: any;
   dispatchTiles = () => {
-    if (this.map.getZoom() < ZOOM + 0.1) return;
+    const zoom = this.map.getZoom();
+    if (zoom < ZOOM) return;
     const lonLat = this.map.getBounds();
-    if (getFromWindow('smaller')) {
-      const xys = lonlatToXYs(lonLat, 18);
-      console.log(xys);
-      this.props.getOSMTiles(xys, 18);
-    } else {
-      const xys = lonlatToXYs(lonLat, ZOOM);
-      this.props.getOSMTiles(xys, ZOOM);
-    }
+    // if (getFromWindow('smaller')) {
+    //   const xys = lonlatToXYs(lonLat, 18);
+    //   console.log(xys);
+    //   this.props.getOSMTiles(xys, 18);
+    // } else {
+    //   const xys = lonlatToXYs(lonLat, ZOOM);
+    //   this.props.getOSMTiles(xys, ZOOM);
+    // }
+    worker.postMessage(
+      JSON.stringify({
+        bbox: [
+          lonLat.getWest(),
+          lonLat.getSouth(),
+          lonLat.getEast(),
+          lonLat.getNorth()
+        ],
+        zoom
+      })
+    );
   };
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
@@ -121,6 +133,10 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
     worker.addEventListener('message', event => {
       console.time('parse1');
+      if (event.data === this.jsonqueue) {
+        console.log('repeat string');
+        return;
+      }
       this.jsonqueue = event.data;
       // this.map.getSource('virgin').setData(turf.featureCollection(parsed));
       if (this.mapRenderTask) {
@@ -129,7 +145,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         this.mapRenderTask = null;
       }
       this.mapRenderTask = win.requestIdleCallback(this.parsePending, {
-        timeout: 500
+        timeout: 300
       });
       // console.timeEnd('magic');
     });

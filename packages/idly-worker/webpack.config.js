@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+// .BundleAnalyzerPlugin;
 
 const fs = require('fs');
 const path = require('path');
@@ -38,6 +40,7 @@ module.exports = {
   devServer: {
     contentBase: './dist'
   },
+  // plugins: [new BundleAnalyzerPlugin()],
   module: {
     rules: [
       // {

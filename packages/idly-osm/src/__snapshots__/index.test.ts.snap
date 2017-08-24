@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test IdlyOSM onParseEntities should behave... 1`] = `
+Map {
+  "n1" => Object {
+    "geometry": "vertex_shared",
+    "icon": "circle",
+    "name": undefined,
+  },
+  "n2" => Object {
+    "geometry": "vertex",
+    "icon": "circle",
+    "name": undefined,
+  },
+  "n3" => Object {
+    "geometry": "vertex",
+    "icon": "circle",
+    "name": undefined,
+  },
+  "n4" => Object {
+    "geometry": "vertex",
+    "icon": "circle",
+    "name": undefined,
+  },
+  "w1" => Object {
+    "geometry": "line",
+    "icon": "highway-residential",
+    "name": undefined,
+    "tagsClass": "tag-highway",
+    "tagsClassType": "tag-highway-residential",
+  },
+  "w2" => Object {
+    "geometry": "line",
+    "icon": "highway-residential",
+    "name": undefined,
+    "tagsClass": "tag-highway",
+    "tagsClassType": "tag-highway-residential",
+  },
+}
+`;

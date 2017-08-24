@@ -1,0 +1,19 @@
+{
+  "name": "idly-common",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "clean": "rm -r lib/*"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@mapbox/sphericalmercator": "^1.0.5",
+    "@turf/bbox": "^4.6.0",
+    "@turf/bbox-polygon": "^4.6.0",
+    "@turf/helpers": "^4.6.0",
+    "@turf/transform-scale": "^4.6.1",
+    "@types/geojson": "^1.0.3",
+    "tslint": "^5.6.0"
+  }
+}

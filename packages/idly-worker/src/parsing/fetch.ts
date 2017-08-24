@@ -1,7 +1,8 @@
 import * as SphericalMercator from '@mapbox/sphericalmercator';
-import { handleErrors } from 'helpers/promise';
-import { stubXML } from 'parsing/fixtures';
-const DOMParser = require('xmldom').DOMParser;
+import { handleErrors } from 'idly-common/lib/network';
+import { DOMParser } from 'xmldom';
+
+import { stubXML } from '../parsing/fixtures';
 
 const merc = new SphericalMercator({
   size: 256
@@ -10,6 +11,7 @@ const merc = new SphericalMercator({
 const fetchStub = () => {
   return Promise.resolve(stubXML);
 };
+
 const debug = false;
 
 export async function fetchTile(x: number, y: number, zoom: number) {

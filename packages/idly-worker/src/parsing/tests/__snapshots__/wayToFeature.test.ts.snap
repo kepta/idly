@@ -45,11 +45,7 @@ Object {
   "id": "w1",
   "properties": Object {
     "geometry": "line",
-    "icon": "highway-residential",
     "id": "w1",
-    "name": undefined,
-    "tagsClass": "tag-highway",
-    "tagsClassType": "tag-highway-residential",
   },
   "type": "Feature",
 }

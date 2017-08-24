@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "sourceMap": true,
-    "baseUrl": "./src",
+    "outDir": "lib",
     "module": "es2015",
     "moduleResolution": "node",
-    "target": "es2015",
-    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
     "strict": false,
     "pretty": true,
-    "typeRoots": ["./types"],
     "declaration": true,
     "isolatedModules": false
   },
   "include": ["./src/**/*"],
   "exclude": [
+    "./xsrc/**/*.test.ts",
     "node_modules",
     "build",
     "scripts",

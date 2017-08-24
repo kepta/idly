@@ -1,5 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 let CircularDependencyPlugin = require('circular-dependency-plugin');
+var DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
+
+// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+// .BundleAnalyzerPlugin;
 
 const fs = require('fs');
 const path = require('path');
@@ -37,6 +41,12 @@ module.exports = {
     contentBase: './dist'
   },
   plugins: [
+    new DuplicatePackageCheckerPlugin({
+      // Also show module that is requiring each duplicate package
+      verbose: true,
+      // Emit errors instead of warnings
+      emitError: false
+    }),
     new HtmlWebpackPlugin({
       title: 'Development',
       hash: true,
@@ -49,6 +59,7 @@ module.exports = {
       // add errors to webpack instead of warnings
       failOnError: true
     })
+    // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [

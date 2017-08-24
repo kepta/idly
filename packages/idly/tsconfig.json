@@ -6,14 +6,13 @@
     "noImplicitAny": false,
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2016",
+    "target": "es6",
     "jsx": "react",
     "strict": true,
     "strictNullChecks": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "pretty": true,
-    "lib": ["es2015", "dom", "webworker"]
+    "pretty": true
   },
   "include": ["./src/**/*"],
   "exclude": [

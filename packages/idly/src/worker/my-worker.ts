@@ -1,3 +1,3 @@
-import { workerFunc } from 'idly-worker';
-
-workerFunc(self);
+import { workerFunction } from 'idly-worker/lib/worker';
+const s = self as any;
+workerFunction(s);

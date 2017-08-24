@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "lib",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "target": "es2015",
+    "strict": false,
+    "pretty": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "isolatedModules": false
+  },
+  "compileOnSave": true,
+  "include": ["./src/**/*"],
+  "exclude": [
+    "./lib/**/*",
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ]
+}

@@ -24,12 +24,12 @@ export function bboxToXY(
 }
 
 export function lonlatToXYs(lonlat: LngLatBounds, zoom: number): number[][] {
-  const bbox = increaseSize([
+  const bbox = [
     lonlat.getWest(),
     lonlat.getSouth(),
     lonlat.getEast(),
     lonlat.getNorth()
-  ]);
+  ];
   const xys = [];
 
   const { minX, minY, maxX, maxY } = bboxToXY(bbox, zoom);
@@ -39,15 +39,6 @@ export function lonlatToXYs(lonlat: LngLatBounds, zoom: number): number[][] {
       xys.push([x, y]);
     }
   }
-  // console.log(
-  //   JSON.stringify(
-  //     turf.featureCollection(
-  //       xys
-  //         .map(i => turf.bboxPolygon(mercator.bbox(i[0], i[1], zoom)))
-  //         .concat([turf.bboxPolygon(bbox)])
-  //     )
-  //   )
-  // );
   return xys;
 }
 

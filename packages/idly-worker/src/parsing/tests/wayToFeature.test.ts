@@ -1,35 +1,18 @@
-// import { List } from 'immutable';
-
-// import { tagsFactory } from 'osm/entities/helpers/tags';
-// import { nodeFactory } from 'osm/entities/node';
-// import { wayFactory } from 'osm/entities/way';
-// import { graphFactory } from 'osm/history/graph';
-
-// import {
-//   getCoordsFromGraph,
-//   wayCombiner,
-//   wayToLineString
-// } from 'map/highPerf/way';
-// import { Geometry } from 'osm/entities/constants';
-// import { genLngLat } from 'osm/geo_utils/lng_lat';
-import { tagsFactory } from 'helpers/tagsFactory';
+import { geometry } from '@turf/helpers';
 import {
-  applyNodeMarkup,
-  DEFAULT_NODE_ICON,
-  nodeCombiner,
-  nodeToPoint
-} from 'parsing/nodeToFeature';
-import { ParentWays } from 'parsing/parser';
+  entityTableGen,
+  genLngLat,
+  nodeFactory,
+  OsmGeometry,
+  tagsFactory,
+  wayFactory
+} from 'idly-common/lib';
+
 import {
   getCoordsFromTable,
   wayCombiner,
   wayToLineString
-} from 'parsing/wayToFeature';
-import { Geometry } from 'structs/geometry';
-import { genLngLat } from 'structs/lngLat';
-import { nodeFactory } from 'structs/node';
-import { addEntitiesTable } from 'structs/table';
-import { wayFactory } from 'structs/way';
+} from '../../parsing/wayToFeature';
 
 const way = wayFactory({
   id: 'w1',
@@ -43,24 +26,26 @@ describe('way.test', () => {
   describe('wayToLineString', () => {
     it('should throw error when no geometry provided', () => {
       expect(() => wayToLineString(null, [[1, 2]])).toThrow();
-      expect(() => wayToLineString(Geometry.POINT, [[1, 2]])).toThrow();
+      expect(() => wayToLineString(OsmGeometry.POINT, [[1, 2]])).toThrow();
     });
     it('should not work when correct coords provided with wrong geometry', () => {
       expect(() =>
-        wayToLineString(Geometry.POINT, [[1, 2], [2, 3], [3, 0], [1, 2]])
+        wayToLineString(OsmGeometry.POINT, [[1, 2], [2, 3], [3, 0], [1, 2]])
       ).toThrow();
     });
     it('should throw error when wrong coords provided', () => {
-      expect(() => wayToLineString(Geometry.AREA, [[1, 2], [2, 1]])).toThrow();
+      expect(() =>
+        wayToLineString(OsmGeometry.AREA, [[1, 2], [2, 1]])
+      ).toThrow();
     });
     it('should work when correct coords provided', () => {
       expect(() =>
-        wayToLineString(Geometry.AREA, [[1, 2], [2, 3], [3, 0], [1, 2]])
+        wayToLineString(OsmGeometry.AREA, [[1, 2], [2, 3], [3, 0], [1, 2]])
       ).not.toThrow();
     });
     it('should behave...', () => {
       expect(
-        wayToLineString(Geometry.AREA, [[1, 2], [2, 3], [3, 0], [1, 2]])
+        wayToLineString(OsmGeometry.AREA, [[1, 2], [2, 3], [3, 0], [1, 2]])
       ).toMatchSnapshot();
     });
   });
@@ -82,7 +67,7 @@ describe('way.test', () => {
     it('should work when multiple nodes are there ingraph', () => {
       const n1 = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
       const n2 = nodeFactory({ id: 'n2', loc: genLngLat([3, 4]) });
-      const g = addEntitiesTable(new Map(), [n1, n2]);
+      const g = entityTableGen(new Map(), [n1, n2]);
       expect(getCoordsFromTable(g, ['n2'])).toMatchSnapshot();
       expect(getCoordsFromTable(g, ['n1', 'n2'])).toMatchSnapshot();
     });
@@ -99,21 +84,25 @@ describe('way.test', () => {
       tags: tagsFactory({ highway: 'residential' })
     });
 
-    const g = addEntitiesTable(new Map(), [n1, n2, n3]);
+    const g = entityTableGen(new Map(), [n1, n2, n3]);
     it('should behave...', () => {
       const result = wayCombiner(way, g);
       expect(result).toMatchSnapshot();
     });
 
-    it('should take name', () => {
-      const w2 = wayFactory({
-        id: 'w1',
-        nodes: ['n1'],
-        tags: tagsFactory({ highway: 'residential', name: 'great highway' })
+    it('sets up existing props', () => {
+      const result = wayCombiner(way, g, {
+        geometry: OsmGeometry.LINE,
+        k: 'k'
       });
-      const gg = addEntitiesTable(new Map(), [node, w2]);
-      const result = wayCombiner(w2, gg);
-      expect(result.properties.name).toEqual('great highway');
+      expect(result.properties).toMatchObject({
+        geometry: 'line',
+        id: 'w1',
+        k: 'k'
+      });
+    });
+    it('throws error if no geometry is provided', () => {
+      expect(() => wayCombiner(way, g, { s: 'k' })).toThrow();
     });
   });
 });

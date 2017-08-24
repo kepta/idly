@@ -3,6 +3,7 @@
   "extends": ["tslint:recommended", "tslint-immutable"],
   "jsRules": {},
   "rules": {
+    "no-reference": false,
     "interface-name": [false],
     "quotemark": ["single"],
     "trailing-comma": [false],
