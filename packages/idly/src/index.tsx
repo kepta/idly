@@ -20,7 +20,7 @@ import { presetsMatch } from 'osm/presets/match';
 
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
-require('mapbox-gl-inspect/dist/mapbox-gl-inspect.css');
+// require('mapbox-gl-inspect/dist/mapbox-gl-inspect.css');
 
 attachToWindow('R', R);
 attachToWindow('Im', Im);

@@ -1,8 +1,11 @@
+import { observe, store } from 'common/store';
 import { Set } from 'immutable';
 import * as debounce from 'lodash.debounce';
 import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { LngLat } from '../osm/geo_utils/lng_lat';
+import { workerFetchMap } from '../worker/main';
 
 import { Entities } from 'osm/entities/entities';
 import { Node } from 'osm/entities/node';
@@ -29,7 +32,11 @@ import { ILayerSpec } from 'map/utils/layerFactory';
 import { dirtyPopup } from 'map/utils/map.popup';
 import { worker } from 'worker/main';
 
+import { BBox } from 'idly-common/lib/geo/bbox';
+import { LngLatBounds } from 'mapbox-gl';
+
 type Entity = Node | Way | Relation;
+
 export type DirtyMapAccessType = (map: any) => void;
 /**
  * The job of map module is to handle
@@ -71,24 +78,14 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     const zoom = this.map.getZoom();
     if (zoom < ZOOM) return;
     const lonLat = this.map.getBounds();
-    // if (getFromWindow('smaller')) {
-    //   const xys = lonlatToXYs(lonLat, 18);
-    //   console.log(xys);
-    //   this.props.getOSMTiles(xys, 18);
-    // } else {
-    //   const xys = lonlatToXYs(lonLat, ZOOM);
-    //   this.props.getOSMTiles(xys, ZOOM);
-    // }
-    worker.postMessage(
-      JSON.stringify({
-        bbox: [
-          lonLat.getWest(),
-          lonLat.getSouth(),
-          lonLat.getEast(),
-          lonLat.getNorth()
-        ],
-        zoom
-      })
+    const bbox: BBox = [
+      lonLat.getWest(),
+      lonLat.getSouth(),
+      lonLat.getEast(),
+      lonLat.getNorth()
+    ];
+    workerFetchMap({ bbox, zoom }).then(r =>
+      this.onWorkerDone(r.featureCollection)
     );
   };
   componentDidMount() {
@@ -130,28 +127,34 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         this.fetchTileTask = null;
       }
     });
-
-    worker.addEventListener('message', event => {
-      console.time('parse1');
-      if (event.data === this.jsonqueue) {
-        console.log('repeat string');
-        return;
-      }
-      this.jsonqueue = event.data;
-      // this.map.getSource('virgin').setData(turf.featureCollection(parsed));
-      if (this.mapRenderTask) {
-        console.log('canceled');
-        win.cancelIdleCallback(this.mapRenderTask);
-        this.mapRenderTask = null;
-      }
-      this.mapRenderTask = win.requestIdleCallback(this.parsePending, {
-        timeout: 300
-      });
-      // console.timeEnd('magic');
-    });
   }
+  onWorkerDone = data => {
+    console.time('parse1');
+    if (!data.startsWith('{"type":"FeatureCollection","features":')) {
+      return;
+    }
+    if (data === this.jsonqueue) {
+      console.log('repeat string');
+      return;
+    }
+    this.jsonqueue = data;
+    // this.map.getSource('virgin').setData(turf.featureCollection(parsed));
+    if (this.mapRenderTask) {
+      console.log('canceled');
+      win.cancelIdleCallback(this.mapRenderTask);
+      this.mapRenderTask = null;
+    }
+    this.mapRenderTask = win.requestIdleCallback(this.parsePending, {
+      timeout: 300
+    });
+    // console.timeEnd('magic');
+  };
   parsePending = () => {
     if (this.jsonqueue) {
+      console.time('acparse');
+      // var parse = JSON.stringify(JSON.parse(this.jsonqueue));
+      console.timeEnd('acparse');
+
       this.map.getSource('virgin').setData(this.jsonqueue);
       console.timeEnd('parse1');
     }
@@ -173,7 +176,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
         {this.state.mapLoaded &&
           <div>
-            {/* <Draw dirtyMapAccess={this.dirtyMapAccess} /> */}
+            <Draw dirtyMapAccess={this.dirtyMapAccess} />
             {SOURCES.map((s, k) =>
               <Source
                 key={k}

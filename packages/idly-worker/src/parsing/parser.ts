@@ -17,7 +17,6 @@ import {
  * @param ways
  */
 export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
-  console.time('calculateParentWays');
   ways.forEach(w =>
     w.nodes.forEach(nodeId => {
       const waySet = parentWays.get(nodeId);
@@ -26,7 +25,6 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
     })
   );
 
-  console.timeEnd('calculateParentWays');
   return parentWays;
 }
 

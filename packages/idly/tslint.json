@@ -1,30 +1,64 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended"],
+  "extends": [
+    "tslint:recommended"
+  ],
   "jsRules": {},
   "rules": {
-    "quotemark": ["single"],
-    "trailing-comma": [false],
-    "object-literal-sort-keys": [false],
-    "no-console": [false],
+    "interface-name": [
+      "never-prefix"
+    ],
+    "quotemark": [
+      "single"
+    ],
+    "trailing-comma": [
+      false
+    ],
+    "object-literal-sort-keys": [
+      false
+    ],
+    "no-console": [
+      false
+    ],
     "arrow-parens": false,
     "curly": false,
-    "no-unused-variable": [true, { "ignore-pattern": "^_" }],
-    "only-arrow-functions": [false],
+    "no-unused-variable": [
+      true,
+      {
+        "ignore-pattern": "^_"
+      }
+    ],
+    "only-arrow-functions": [
+      false
+    ],
     "no-var-requires": false,
-    "semicolon": [false],
+    "semicolon": [
+      false
+    ],
     "no-unused-new": true,
-    "no-unused-expression": [true],
+    "no-unused-expression": [
+      true
+    ],
     "no-unused-imports": true,
-    "max-line-length": [false],
-    "cyclomatic-complexity": [true],
-    "member-access": [false],
+    "max-line-length": [
+      false
+    ],
+    "cyclomatic-complexity": [
+      true
+    ],
+    "member-access": [
+      false
+    ],
     "export-name": false,
     "no-constant-condition": false,
-    "typedef": [false],
+    "typedef": [
+      false
+    ],
     "no-reserved-keywords": false,
     "no-any": false,
-    "object-literal-key-quotes": [false]
+    "object-literal-key-quotes": [
+      false
+    ]
   },
   "rulesDirectory": []
 }

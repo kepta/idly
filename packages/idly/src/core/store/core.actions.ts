@@ -1,63 +1,43 @@
 import { actionBuilderFactory } from 'common/actions';
 
-import { Entities, EntitiesId, Entity } from 'osm/entities/entities';
+import { Entities, Entity, EntityId } from 'idly-common/lib/osm';
 import { ParentWays } from 'osm/parsers/parsers';
 
 export enum CoreActions {
+  // initiate a selection call
+  // let a saga handle where to get the
+  // data from (virgin entities from worker)
+  // or if selected from main thread.
   SELECTION_FETCH = 'SELECTION_FETCH',
-  SELECTION_GET = '',
+  SELECTION_COMMIT = 'SELECTION_COMMIT',
   UPDATE = 'CORE.update',
   REMOVE = 'CORE.remove',
   HIDE = 'CORE.hide',
   OTHER_ACTION = '__any_other_action_type_core__'
 }
 
-export type CoreActionTypes =
-  | ICoreSelectAction
-  | ICoreUpdateAction
-  | ICoreRemoveAction
-  | ICoreHideAction
-  | IOtherAction;
-
-const actionBuilder = actionBuilderFactory<CoreActionTypes>();
-
-interface ICoreSelectAction {}
-
-interface ICoreUpdateAction {
-  type: CoreActions.UPDATE;
-  data: Entity[];
+export enum SelectActions {
+  SELECT_ENTITIES = 'Selection.SELECT_ENTITIES',
+  COMMIT = 'Selection.COMMIT'
 }
 
-interface ICoreRemoveAction {
-  type: CoreActions.REMOVE;
-  ids: EntitiesId;
+const selectActionBuilder = actionBuilderFactory<SelectActionType>();
+export type SelectActionType = SelectEntitiesAction | SelectCommitAction;
+
+export interface SelectEntitiesAction {
+  type: SelectActions.SELECT_ENTITIES;
+  entitiesId: EntityId[];
 }
 
-interface ICoreHideAction {
-  type: CoreActions.HIDE;
-  ids: EntitiesId;
+export const selectEntitiesAction = selectActionBuilder<SelectEntitiesAction>(
+  SelectActions.SELECT_ENTITIES
+)('entitiesId');
+
+export interface SelectCommitAction {
+  type: SelectActions.COMMIT;
+  features: any[];
 }
 
-interface IOtherAction {
-  type: CoreActions.OTHER_ACTION;
-}
-
-export const coreVirginModify = actionBuilder<ICoreVirginModifyAction>(
-  CoreActions.VIRGIN_ADD
-)('toAdd', 'toRemove', 'parentWays');
-
-export const coreVirginRemove = actionBuilder<ICoreVirginRemoveAction>(
-  CoreActions.VIRGIN_REMOVE
-)('data');
-
-export const coreModifyAction = actionBuilder<ICoreUpdateAction>(
-  CoreActions.UPDATE
-)('data');
-
-export const coreRemoveAction = actionBuilder<ICoreRemoveAction>(
-  CoreActions.REMOVE
-)('ids');
-
-export const coreHideAction = actionBuilder<ICoreHideAction>(CoreActions.HIDE)(
-  'ids'
-);
+export const selectCommitAction = selectActionBuilder<SelectCommitAction>(
+  SelectActions.COMMIT
+)('features');

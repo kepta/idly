@@ -9,9 +9,12 @@
     "strict": false,
     "pretty": true,
     "declaration": true,
-    "isolatedModules": false
+    "isolatedModules": false,
+    "noImplicitAny": true
   },
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
     "./xsrc/**/*.test.ts",
     "node_modules",

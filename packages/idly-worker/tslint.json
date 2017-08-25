@@ -1,32 +1,66 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint:recommended", "tslint-immutable"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-immutable"
+  ],
   "jsRules": {},
   "rules": {
     "no-reference": false,
-    "interface-name": [false],
-    "quotemark": ["single"],
-    "trailing-comma": [false],
-    "object-literal-sort-keys": [false],
-    "no-console": [false],
+    "interface-name": [
+      false
+    ],
+    "quotemark": [
+      "single"
+    ],
+    "trailing-comma": [
+      false
+    ],
+    "object-literal-sort-keys": [
+      false
+    ],
+    "no-console": [
+      false
+    ],
     "arrow-parens": false,
     "curly": false,
-    "no-unused-variable": [true, { "ignore-pattern": "^_" }],
-    "only-arrow-functions": [false],
+    "no-unused-variable": [
+      true,
+      {
+        "ignore-pattern": "^_"
+      }
+    ],
+    "only-arrow-functions": [
+      false
+    ],
     "no-var-requires": false,
-    "semicolon": [false],
+    "semicolon": [
+      false
+    ],
     "no-unused-new": true,
-    "no-unused-expression": [true],
+    "no-unused-expression": [
+      true
+    ],
     "no-unused-imports": true,
-    "max-line-length": [false],
-    "cyclomatic-complexity": [false],
-    "member-access": [false],
+    "max-line-length": [
+      false
+    ],
+    "cyclomatic-complexity": [
+      false
+    ],
+    "member-access": [
+      false
+    ],
     "export-name": false,
     "no-constant-condition": false,
-    "typedef": [false],
+    "typedef": [
+      false
+    ],
     "no-reserved-keywords": false,
-    "no-any": true,
-    "object-literal-key-quotes": [false]
+    "no-false": true,
+    "object-literal-key-quotes": [
+      false
+    ]
   },
   "rulesDirectory": []
 }

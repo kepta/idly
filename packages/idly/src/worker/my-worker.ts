@@ -1,3 +1,4 @@
-import { workerFunction } from 'idly-worker/lib/worker';
-const s = self as any;
-workerFunction(s);
+import { main } from 'idly-worker/lib/worker';
+import registerPromiseWorker from 'promise-worker/register';
+
+registerPromiseWorker(main);

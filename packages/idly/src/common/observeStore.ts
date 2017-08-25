@@ -9,6 +9,7 @@ export const observeStore = (store: any) => (
     const nextState = selector(store.getState());
     if (shouldUpdate(nextState, currentState)) {
       currentState = nextState;
+      console.log('sending', currentState);
       onChange(currentState, store.dispatch);
     }
   }

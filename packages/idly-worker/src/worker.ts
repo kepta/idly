@@ -1,20 +1,47 @@
 import * as turfHelpers from '@turf/helpers';
+import { WorkerActions, WorkerActionsType } from './actions';
 import { Manager } from './store/manager';
 
 const manager = new Manager();
 
-type cb = (event: { data: string }) => void;
-
-export interface WebWorker {
-  addEventListener: (s: string, cb) => void;
-  postMessage: (s: string) => void;
-}
-
-export function workerFunction(self: WebWorker) {
-  self.addEventListener('message', function(event: { data: string }) {
-    const { bbox, zoom } = JSON.parse(event.data);
-    manager.receive(bbox, zoom).then(features => {
-      self.postMessage(JSON.stringify(turfHelpers.featureCollection(features)));
-    });
-  });
+export function main(
+  message: WorkerActionsType
+): WorkerActionsType | Promise<WorkerActionsType> {
+  switch (message.type) {
+    case WorkerActions.FETCH_MAP: {
+      const { bbox, zoom } = message.request;
+      return manager.receive(bbox, zoom).then(features => ({
+        ...message,
+        response: {
+          featureCollection: JSON.stringify(
+            turfHelpers.featureCollection(features)
+          )
+        }
+      }));
+    }
+    case WorkerActions.GET_VIRGIN_ENTITIES: {
+      const { entitiesId } = message.request;
+      const entities = manager.entitiyLookup(entitiesId);
+      return {
+        ...message,
+        response: {
+          entities
+        }
+      };
+    }
+    case WorkerActions.GET_VIRGIN_FEATURES: {
+      const { entitiesId } = message.request;
+      const features = manager.featureLookup(entitiesId);
+      return {
+        ...message,
+        response: {
+          features
+        }
+      };
+    }
+    default: {
+      console.log(message.request);
+      return;
+    }
+  }
 }

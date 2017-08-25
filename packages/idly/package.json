@@ -42,6 +42,7 @@
   "dependencies": {
     "@mapbox/mapbox-gl-draw": "^1.0.0",
     "@mapbox/sphericalmercator": "^1.0.5",
+    "@turf/helpers": "^4.6.0",
     "@turf/transform-scale": "^4.6.1",
     "@types/d3": "^4.10.0",
     "@types/geojson": "^1.0.2",

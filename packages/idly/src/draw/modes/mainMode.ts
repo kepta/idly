@@ -1,14 +1,14 @@
+import { observe, store } from 'common/store';
 import { Set } from 'immutable';
 import * as R from 'ramda';
-
-import { observe, store } from 'common/store';
 
 import { drawClearAction, drawSelectAction } from 'draw/store/draw.actions';
 import { SELECTABLE_LAYERS } from 'map/layers/layers';
 
-import { coreModifyAction } from 'core/store/core.actions';
-import { entityToFeat } from 'draw/converters/entityToFeat';
-import { featToEntities } from 'draw/converters/featToEntities';
+// import { coreModifyAction } from 'core/store/core.actions';
+import { selectEntitiesAction } from 'core/store/core.actions';
+// import { entityToFeat } from 'draw/converters/entityToFeat';
+// import { featToEntities } from 'draw/converters/featToEntities';
 import { Entities } from 'osm/entities/entities';
 
 const NodeMangler: any = {};
@@ -19,17 +19,18 @@ NodeMangler.onSetup = function(opts) {
       s => s.draw.selected,
       NodeMangler._render.bind(this),
       (p, n) => {
-        return !p.equals(n);
+        return true;
       }
     )
   };
   setTimeout(() => {
     this.map.doubleClickZoom.disable();
   }, 0);
+  console.log('settingup');
 
   if (opts.wasSelected) {
     if (opts.wasSelected.length > 0) {
-      this.clearSelectedFeatures();
+      // this.clearSelectedFeatures();
       this.deleteFeature(opts.wasSelected);
     }
     this._onCommit(opts.wasSelectedFeatures);
@@ -49,24 +50,27 @@ NodeMangler.onSetup = function(opts) {
  * @TOFIX rending is buggy, it causes artifcats
  *  and is unreliable, FIX IT !
  */
-NodeMangler._render = function(x: Entities) {
+NodeMangler._render = function(x: Set<any>) {
   // console.log(x, prev, x.equals(prev));
   prev = x;
-  if (x.size === 0) return;
-  const feat = entityToFeat(x);
-  // console.log(feat);
+  if (x.size === 0) {
+    this.clearSelectedFeatures();
+    // this.changeMode('NodeMangler', {});
+    return;
+  }
+  const feat = x.toArray();
   const points = feat.map(f => this.newFeature(f));
   points.forEach(point => this.addFeature(point));
-
+  console.log('changing mode', feat);
   this.changeMode('simple_select', {
     featureIds: points.map(f => f.properties.id)
   });
 };
 
 NodeMangler._onCommit = function(feats) {
-  const entities = featToEntities(feats);
+  // const entities = featToEntities(feats);
   store.dispatch(drawClearAction());
-  store.dispatch(coreModifyAction(entities));
+  // store.dispatch(coreModifyAction(entities));
 };
 
 NodeMangler.onStop = function(state, e) {
@@ -85,18 +89,14 @@ NodeMangler.onClick = function(state, e) {
    *  you get a way geometry of length 4 (wrong behaviour) and when you click [[283,306],[293,316]]
    *  you get a way with geometry of length 5, (correct behavior).
    */
-  const select: Set<string> = R.compose(
-    Set,
+  const select: string[] = R.compose(
     R.take(1),
     R.reject(R.isNil),
     R.map(R.path(['properties', 'id']))
-  )(
-    this.map.queryRenderedFeatures(bbox, {
-      layers: SELECTABLE_LAYERS
-    })
-  );
+  )(this.map.queryRenderedFeatures(bbox));
 
-  store.dispatch(drawSelectAction(select));
+  // console.log('here', select);
+  store.dispatch(selectEntitiesAction(select));
 };
 
 NodeMangler.onMouseUp = function(state, e) {

@@ -136,6 +136,12 @@ function* watchUpdateSources(): SagaIterator {
   }
 }
 
+function* setViriginMapData(dirtyMapAccess, data: string) {
+  const source = yield S.call(dirtyMapAccess, map => map.getSource('virgin'));
+  console.log('UPDATING virgin!');
+  yield S.call([source, 'setData'], data);
+}
+
 function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   //   console.time('updateSourceSaga');
   //   const [graph, parentWays]: [
@@ -163,11 +169,11 @@ function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
   //   //   .filter(f => f);
   //   console.timeEnd('updateSourceSaga');
   //   // window.mainEntities = entities;
-  //   const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
-  //   if (source) {
-  //     console.log('UPDATING source!', sourceId);
-  //     yield S.call([source, 'setData'], turf.featureCollection(entities));
-  //   } else {
-  //     console.log('source not found');
-  //   }
+  // const source = yield S.call(dirtyMapAccess, map => map.getSource(sourceId));
+  // if (source) {
+  //   console.log('UPDATING source!', sourceId);
+  //   yield S.call([source, 'setData'], turf.featureCollection(entities));
+  // } else {
+  //   console.log('source not found');
+  // }
 }

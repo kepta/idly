@@ -105,6 +105,10 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.2.tgz#b02d10ab028e2928ac592a051aaa4981a1941d03"
 
+"@types/geojson@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.3.tgz#fbcf7fa5eb6dd108d51385cc6987ec1f24214523"
+
 "@types/jest@^20.0.7":
   version "20.0.7"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.7.tgz#39cd215db8bda03928dceb933a1e63eb2cbd210e"
@@ -2836,6 +2840,12 @@ icss-utils@^2.1.0:
   version "1.0.0"
   dependencies:
     "@mapbox/sphericalmercator" "^1.0.5"
+    "@turf/bbox" "^4.6.0"
+    "@turf/bbox-polygon" "^4.6.0"
+    "@turf/helpers" "^4.6.0"
+    "@turf/transform-scale" "^4.6.1"
+    "@types/geojson" "^1.0.3"
+    tslint "^5.6.0"
 
 "idly-data@file:../idly-data":
   version "1.0.0"
