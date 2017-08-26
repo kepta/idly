@@ -1,4 +1,4 @@
-import { Way } from 'idly-common/lib';
+import { Way } from 'idly-common/lib/osm/structures';
 
 export function isClosed(entity: Way) {
   return (

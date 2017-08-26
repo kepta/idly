@@ -1,4 +1,4 @@
-import { OsmGeometry, ParentWays } from 'idly-common/lib';
+import { OsmGeometry, ParentWays } from 'idly-common/lib/osm/structures';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 
 function genParentWays() {

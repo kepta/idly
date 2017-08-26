@@ -1,4 +1,4 @@
-import { OsmGeometry } from 'idly-common/lib';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { Map as ImmutableMap } from 'immutable';
 export declare class Index {
     private point;

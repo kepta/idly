@@ -1,4 +1,10 @@
-import { EntityTable, OsmGeometry, Way, weakCache } from 'idly-common/lib';
+import { weakCache } from 'idly-common/lib/misc/weakCache';
+import {
+  EntityTable,
+  OsmGeometry,
+  Way,
+  EntityType
+} from 'idly-common/lib/osm/structures';
 
 import { isArea } from '../helpers/isArea';
 import { tagClassesPrimary } from '../tagClasses/tagClasses';

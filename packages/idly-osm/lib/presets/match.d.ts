@@ -1,4 +1,4 @@
-import { OsmGeometry, Tags } from 'idly-common/lib';
+import { OsmGeometry, Tags } from 'idly-common/lib/osm/structures';
 /**
  *
  * @REVISIT

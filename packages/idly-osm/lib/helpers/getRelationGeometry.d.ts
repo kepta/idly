@@ -1,2 +1,2 @@
-import { OsmGeometry } from 'idly-common/lib';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 export declare function getRelationGeometry(): OsmGeometry;

@@ -1,10 +1,10 @@
 import {
   Node,
   NodeGeometry,
-  OsmGeometry,
   ParentWays,
-  Tags
-} from 'idly-common/lib';
+  Tags,
+  OsmGeometry
+} from 'idly-common/lib/osm/structures';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 
 import { presetsMatcherCached } from '../presets/presets';

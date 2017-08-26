@@ -3,7 +3,7 @@ import {
   EntityType,
   FeaturePropsTable,
   ParentWays
-} from 'idly-common/lib';
+} from 'idly-common/lib/osm/structures';
 import { nodePropertiesGen } from './parsers/node';
 import { wayPropertiesGen } from './parsers/way';
 

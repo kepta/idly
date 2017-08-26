@@ -1,5 +1,5 @@
+import { OsmGeometry, Tags } from 'idly-common/lib/osm/structures';
 import * as _ from 'lodash';
-import { OsmGeometry, Tags } from 'idly-common/lib';
 
 import { areaKeys } from '../presets/presets';
 

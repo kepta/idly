@@ -1,4 +1,4 @@
-import { ParentWays } from 'idly-common/lib';
+import { ParentWays } from 'idly-common/lib/osm/structures';
 
 export function dummyParentWaysGen(obj: any) {
   const parentWays: ParentWays = new Map();

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const lib_1 = require("idly-common/lib");
+const structures_1 = require("idly-common/lib/osm/structures");
 const isAddressOnLine_1 = require("../helpers/isAddressOnLine");
 function presetsMatch(all, index, areaKeys, geometry, tags) {
     if (!geometry)
@@ -10,8 +10,8 @@ function presetsMatch(all, index, areaKeys, geometry, tags) {
      * @REVISIT isOnAddressLine was omitted to remove dep on entity.
      *    code: `if (geometry === Geometries.VERTEX && isOnAddressLine(entity)`
      */
-    if (geometry === lib_1.OsmGeometry.VERTEX && isAddressOnLine_1.isOnAddressLine()) {
-        geometry = lib_1.OsmGeometry.POINT;
+    if (geometry === structures_1.OsmGeometry.VERTEX && isAddressOnLine_1.isOnAddressLine()) {
+        geometry = structures_1.OsmGeometry.POINT;
     }
     // const geometryMatches = index.get(geometry);
     let best = -1;

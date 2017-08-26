@@ -1,4 +1,5 @@
-import { Tags, Way, weakCache } from 'idly-common/lib';
+import { weakCache } from 'idly-common/lib/misc/weakCache';
+import { Tags, Way, EntityType } from 'idly-common/lib/osm/structures';
 
 import { findInAreaKeys } from '../helpers/findInAreaKeys';
 import { areaKeys } from '../presets/presets';

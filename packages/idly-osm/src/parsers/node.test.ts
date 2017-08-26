@@ -1,10 +1,7 @@
-import {
-  genLngLat,
-  nodeFactory,
-  OsmGeometry,
-  tagsFactory
-} from 'idly-common/lib';
-
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { dummyParentWaysGen } from '../helpers/dummyParentWaysGen';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 

@@ -1,4 +1,5 @@
-import { Tags } from 'idly-common/lib';
+import { Tags } from 'idly-common/lib/osm/structures';
+
 import { osmPavedTags } from 'idly-data/lib';
 
 const primaries = [

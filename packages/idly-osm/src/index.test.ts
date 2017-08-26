@@ -1,13 +1,10 @@
-import {
-  entityTableGen,
-  genLngLat,
-  nodeFactory,
-  tagsFactory,
-  wayFactory
-} from 'idly-common/lib';
 import { dummyParentWaysGen } from './helpers/dummyParentWaysGen';
-
-import { IdlyOSM } from './index';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { onParseEntities } from './worker';
+import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 describe('test IdlyOSM', () => {
   describe('onParseEntities', () => {
@@ -51,8 +48,7 @@ describe('test IdlyOSM', () => {
       n4: new Set(['w1'])
     });
     it('should behave...', () => {
-      var mainClass = new IdlyOSM();
-      var propsAdded = mainClass.onParseEntities(table, parentWays);
+      var propsAdded = onParseEntities(table, parentWays);
       expect(propsAdded).toMatchSnapshot();
     });
   });

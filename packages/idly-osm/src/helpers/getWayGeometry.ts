@@ -1,4 +1,4 @@
-import { OsmGeometry, Way } from 'idly-common/lib';
+import { OsmGeometry, Way, EntityType } from 'idly-common/lib/osm/structures';
 
 import { isArea } from '../helpers/isArea';
 

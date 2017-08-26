@@ -1,4 +1,4 @@
-import { Tags } from 'idly-common/lib';
+import { Tags } from 'idly-common/lib/osm/structures';
 
 import { areaKeys } from '../presets/presets';
 

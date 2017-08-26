@@ -1,10 +1,8 @@
-import {
-  entityTableGen,
-  genLngLat,
-  nodeFactory,
-  tagsFactory,
-  wayFactory
-} from 'idly-common/lib';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { wayPropertiesGen } from '../parsers/way';
 

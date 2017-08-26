@@ -3,7 +3,7 @@ import {
   NodeGeometry,
   OsmGeometry,
   ParentWays
-} from 'idly-common/lib';
+} from 'idly-common/lib/osm/structures';
 
 export function getNodeGeometry(
   id: EntityId,

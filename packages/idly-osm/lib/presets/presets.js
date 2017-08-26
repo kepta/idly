@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const lib_1 = require("idly-common/lib");
-const lib_2 = require("idly-data/lib");
+const structures_1 = require("idly-common/lib/osm/structures");
+const weakCache_1 = require("idly-common/lib/misc/weakCache");
+const lib_1 = require("idly-data/lib");
 const _ = require("lodash");
 const category_1 = require("../presets/category");
 const collection_1 = require("../presets/collection");
@@ -18,10 +19,10 @@ class Index {
         this.relation = o;
     }
     set(g, value) {
-        if (g === lib_1.OsmGeometry.POINT) {
+        if (g === structures_1.OsmGeometry.POINT) {
             this.point = value;
         }
-        else if (g === lib_1.OsmGeometry.VERTEX || g === lib_1.OsmGeometry.VERTEX_SHARED) {
+        else if (g === structures_1.OsmGeometry.VERTEX || g === structures_1.OsmGeometry.VERTEX_SHARED) {
             /**
              * @NOTE vertex_shared doesn't exist in iD.
              *  maybe this work or not?
@@ -29,13 +30,13 @@ class Index {
              */
             this.vertex = value;
         }
-        else if (g === lib_1.OsmGeometry.LINE) {
+        else if (g === structures_1.OsmGeometry.LINE) {
             this.line = value;
         }
-        else if (g === lib_1.OsmGeometry.AREA) {
+        else if (g === structures_1.OsmGeometry.AREA) {
             this.area = value;
         }
-        else if (g === lib_1.OsmGeometry.RELATION) {
+        else if (g === structures_1.OsmGeometry.RELATION) {
             this.relation = value;
         }
         else {
@@ -43,19 +44,19 @@ class Index {
         }
     }
     get(g) {
-        if (g === lib_1.OsmGeometry.POINT) {
+        if (g === structures_1.OsmGeometry.POINT) {
             return this.point;
         }
-        else if (g === lib_1.OsmGeometry.VERTEX || g === lib_1.OsmGeometry.VERTEX_SHARED) {
+        else if (g === structures_1.OsmGeometry.VERTEX || g === structures_1.OsmGeometry.VERTEX_SHARED) {
             return this.vertex;
         }
-        else if (g === lib_1.OsmGeometry.LINE) {
+        else if (g === structures_1.OsmGeometry.LINE) {
             return this.line;
         }
-        else if (g === lib_1.OsmGeometry.AREA) {
+        else if (g === structures_1.OsmGeometry.AREA) {
             return this.area;
         }
-        else if (g === lib_1.OsmGeometry.RELATION) {
+        else if (g === structures_1.OsmGeometry.RELATION) {
             return this.relation;
         }
         else {
@@ -64,7 +65,7 @@ class Index {
     }
 }
 exports.Index = Index;
-function initPresets(d = lib_2.presetsData.presets) {
+function initPresets(d = lib_1.presetsData.presets) {
     const all = collection_1.presetCollection([]);
     const recent = collection_1.presetCollection([]);
     all.collection = [];
@@ -92,11 +93,11 @@ function initPresets(d = lib_2.presetsData.presets) {
     }
     if (d.defaults) {
         const getItem = _.bind(all.item, all);
-        defaults.set(lib_1.OsmGeometry.AREA, collection_1.presetCollection(d.defaults.area.map(getItem)));
-        defaults.set(lib_1.OsmGeometry.LINE, collection_1.presetCollection(d.defaults.line.map(getItem)));
-        defaults.set(lib_1.OsmGeometry.POINT, collection_1.presetCollection(d.defaults.point.map(getItem)));
-        defaults.set(lib_1.OsmGeometry.VERTEX, collection_1.presetCollection(d.defaults.vertex.map(getItem)));
-        defaults.set(lib_1.OsmGeometry.RELATION, collection_1.presetCollection(d.defaults.relation.map(getItem)));
+        defaults.set(structures_1.OsmGeometry.AREA, collection_1.presetCollection(d.defaults.area.map(getItem)));
+        defaults.set(structures_1.OsmGeometry.LINE, collection_1.presetCollection(d.defaults.line.map(getItem)));
+        defaults.set(structures_1.OsmGeometry.POINT, collection_1.presetCollection(d.defaults.point.map(getItem)));
+        defaults.set(structures_1.OsmGeometry.VERTEX, collection_1.presetCollection(d.defaults.vertex.map(getItem)));
+        defaults.set(structures_1.OsmGeometry.RELATION, collection_1.presetCollection(d.defaults.relation.map(getItem)));
     }
     for (const preset of all.collection) {
         const geometry = preset.geometry;
@@ -121,25 +122,25 @@ exports.initPresets = initPresets;
 exports.presets = initPresets();
 exports.areaKeys = areaKeys_1.initAreaKeys(exports.presets.all);
 exports.presetsMatcher = (geometry, tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, geometry, tags);
-exports.presetsMatcherPoint = lib_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, lib_1.OsmGeometry.POINT, tags));
-exports.presetsMatcherVertex = lib_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, lib_1.OsmGeometry.VERTEX, tags));
-exports.presetsMatcherLine = lib_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, lib_1.OsmGeometry.LINE, tags));
-exports.presetsMatcherAREA = lib_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, lib_1.OsmGeometry.AREA, tags));
-exports.presetsMatcherVertexShared = lib_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, lib_1.OsmGeometry.VERTEX_SHARED, tags));
+exports.presetsMatcherPoint = weakCache_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, structures_1.OsmGeometry.POINT, tags));
+exports.presetsMatcherVertex = weakCache_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, structures_1.OsmGeometry.VERTEX, tags));
+exports.presetsMatcherLine = weakCache_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, structures_1.OsmGeometry.LINE, tags));
+exports.presetsMatcherAREA = weakCache_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, structures_1.OsmGeometry.AREA, tags));
+exports.presetsMatcherVertexShared = weakCache_1.weakCache((tags) => match_1.presetsMatch(exports.presets.all, exports.presets.index, exports.areaKeys, structures_1.OsmGeometry.VERTEX_SHARED, tags));
 exports.presetsMatcherCached = (geometry) => {
-    if (geometry === lib_1.OsmGeometry.POINT) {
+    if (geometry === structures_1.OsmGeometry.POINT) {
         return exports.presetsMatcherPoint;
     }
-    if (geometry === lib_1.OsmGeometry.VERTEX) {
+    if (geometry === structures_1.OsmGeometry.VERTEX) {
         return exports.presetsMatcherVertex;
     }
-    if (geometry === lib_1.OsmGeometry.VERTEX_SHARED) {
+    if (geometry === structures_1.OsmGeometry.VERTEX_SHARED) {
         return exports.presetsMatcherVertexShared;
     }
-    if (geometry === lib_1.OsmGeometry.LINE) {
+    if (geometry === structures_1.OsmGeometry.LINE) {
         return exports.presetsMatcherLine;
     }
-    if (geometry === lib_1.OsmGeometry.AREA) {
+    if (geometry === structures_1.OsmGeometry.AREA) {
         return exports.presetsMatcherAREA;
     }
 };

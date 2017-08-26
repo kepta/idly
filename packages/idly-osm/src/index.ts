@@ -1,13 +1,5 @@
-import { OsmUi } from './ui';
-// import {
-//   EntityTable,
-//   EntityType,
-//   FeatureProps,
-//   ParentWays,
-//   FeaturePropsTable
-// } from 'idly-common/lib';
+// import { OsmUi } from './ui';
 
-// import { wayPropertiesGen } from './parsers/way';
-// import { nodePropertiesGen } from './parsers/node';
+// const PLUGIN_NAME = 'IDLY_OSM';
 
-export { OsmUi } from './ui';
+// export { OsmUi } from './ui';

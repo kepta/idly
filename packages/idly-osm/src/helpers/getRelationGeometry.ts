@@ -1,4 +1,4 @@
-import { OsmGeometry } from 'idly-common/lib';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 
 // @TOFIX this stub
 export function getRelationGeometry() {

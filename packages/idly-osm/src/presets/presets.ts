@@ -1,4 +1,6 @@
-import { OsmGeometry, Tags, weakCache } from 'idly-common/lib';
+import { OsmGeometry, Tags } from 'idly-common/lib/osm/structures';
+
+import { weakCache } from 'idly-common/lib/misc/weakCache';
 import { presetsData } from 'idly-data/lib';
 import { Map as ImmutableMap } from 'immutable';
 import * as _ from 'lodash';

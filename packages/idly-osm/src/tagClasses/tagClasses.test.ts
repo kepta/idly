@@ -1,5 +1,6 @@
 import * as R from 'ramda';
-import { tagsFactory } from 'idly-common/lib';
+
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 
 import { tagClasses } from '../tagClasses/tagClasses';
 

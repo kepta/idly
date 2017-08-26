@@ -1,4 +1,4 @@
-import { Entity, OsmGeometry, Tags } from 'idly-common/lib';
+import { OsmGeometry, Tags } from 'idly-common/lib/osm/structures';
 
 import { isOnAddressLine } from '../helpers/isAddressOnLine';
 /**

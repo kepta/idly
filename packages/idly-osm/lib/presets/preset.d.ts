@@ -1,4 +1,4 @@
-import { OsmGeometry, Tags } from 'idly-common/lib';
+import { OsmGeometry, Tags } from 'idly-common/lib/osm/structures';
 import { AreaKeys } from '../presets/areaKeys';
 export declare function presetPreset(id: any, preset: any, fields?: {}): {
     /**

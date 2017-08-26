@@ -1,10 +1,8 @@
-import {
-  Node,
-  nodeFactory,
-  relationFactory,
-  tagsFactory,
-  wayFactory
-} from 'idly-common/lib';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { relationFactory } from 'idly-common/lib/osm/relationFactory';
+
 import * as R from 'ramda';
 
 import { getRelationGeometry } from '../../helpers/getRelationGeometry';

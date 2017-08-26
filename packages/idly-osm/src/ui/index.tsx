@@ -12,6 +12,3 @@ class _OsmUi extends React.PureComponent {
     );
   }
 }
-export const OsmUi = connect<any, any, any>((state, props) => ({
-  select: state.select
-}))(_OsmUi);

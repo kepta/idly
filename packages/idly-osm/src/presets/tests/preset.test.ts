@@ -1,4 +1,6 @@
-import { OsmGeometry, tagsFactory, wayFactory } from 'idly-common/lib';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 
 import { initAreaKeys } from '../../presets/areaKeys';
 import { presetField } from '../../presets/field';

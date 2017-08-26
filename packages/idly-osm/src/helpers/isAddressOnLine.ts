@@ -1,4 +1,4 @@
-import { Entity } from 'idly-common/lib';
+import { Entity } from 'idly-common/lib/osm/structures';
 // @TOFIX
 export function isOnAddressLine(entity?: Entity) {
   return false;
