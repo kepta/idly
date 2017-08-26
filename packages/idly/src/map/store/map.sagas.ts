@@ -1,17 +1,10 @@
 /**
  * @ABOUT: sagas
  */
-import { OrderedMap, Set } from 'immutable';
 import { buffers, delay, SagaIterator } from 'redux-saga';
 import * as S from 'redux-saga/effects';
 
-import { action } from 'common/actions';
-import { IRootStateType } from 'common/store';
-import { coreVirginModify } from 'core/store/core.actions';
 import { Entities } from 'osm/entities/entities';
-import { Node } from 'osm/entities/node';
-import { Way } from 'osm/entities/way';
-import { fetchTile } from 'osm/network/fetchTile';
 
 import { ZOOM } from 'map/constants';
 import {
@@ -21,12 +14,7 @@ import {
   UpdateSourcesAction
 } from 'map/store/map.actions';
 
-import { nodeCombiner } from 'map/highPerf/node';
-import { wayCombiner } from 'map/highPerf/way';
-import { Graph } from 'osm/history/graph';
-import { ParentWays, parseXML } from 'osm/parsers/parsers';
 import { getFromWindow } from 'utils/attach_to_window';
-import { weakCache } from 'utils/weakCache';
 import { worker } from 'worker/main';
 
 const TILE_STORAGE = 105000;

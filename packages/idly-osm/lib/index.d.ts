@@ -1,2 +1,1 @@
-export declare class IdlyOSM {
-}
+export { OsmUi } from './ui';

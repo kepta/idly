@@ -1,6 +1,5 @@
 import { LngLatBounds } from 'mapbox-gl/dist/mapbox-gl-dev';
 const SphericalMercator = require('@mapbox/sphericalmercator');
-import * as transformScale from '@turf/transform-scale';
 
 export const mercator = new SphericalMercator({
   size: 256

@@ -1,5 +1,4 @@
 import { stubXML } from 'osm/stubs/xmlstub';
-import { getFromUrlSearch } from 'utils/attach_to_window';
 import { handleErrors } from 'utils/promise';
 
 const SphericalMercator = require('@mapbox/sphericalmercator');

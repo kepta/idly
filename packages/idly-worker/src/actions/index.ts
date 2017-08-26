@@ -1,5 +1,6 @@
 import { Entity, EntityId } from 'idly-common/lib';
 import { BBox } from 'idly-common/lib/geo/bbox';
+import { Feature } from 'idly-common/lib/osm/feature';
 import { actionBuilderFactory } from 'idly-common/lib/store';
 
 export enum WorkerActions {
@@ -46,7 +47,7 @@ export interface WorkerGetFeatures {
     entitiesId: EntityId[];
   };
   response?: {
-    features: any[];
+    features: Array<Feature<any, any>>;
   };
 }
 

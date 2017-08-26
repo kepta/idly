@@ -2,14 +2,12 @@ import { observe, store } from 'common/store';
 import { Set } from 'immutable';
 import * as R from 'ramda';
 
-import { drawClearAction, drawSelectAction } from 'draw/store/draw.actions';
-import { SELECTABLE_LAYERS } from 'map/layers/layers';
+import { drawClearAction } from 'draw/store/draw.actions';
 
 // import { coreModifyAction } from 'core/store/core.actions';
 import { selectEntitiesAction } from 'core/store/core.actions';
 // import { entityToFeat } from 'draw/converters/entityToFeat';
 // import { featToEntities } from 'draw/converters/featToEntities';
-import { Entities } from 'osm/entities/entities';
 
 const NodeMangler: any = {};
 let prev = null;
@@ -95,7 +93,7 @@ NodeMangler.onClick = function(state, e) {
     R.map(R.path(['properties', 'id']))
   )(this.map.queryRenderedFeatures(bbox));
 
-  // console.log('here', select);
+  console.log('here', select);
   store.dispatch(selectEntitiesAction(select));
 };
 

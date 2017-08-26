@@ -4,7 +4,7 @@ import * as bboxPolygon from '@turf/bbox-polygon';
 import { BBox } from '@turf/helpers';
 import * as transformScale from '@turf/transform-scale';
 
-import { Entity, Node, Relation, Way } from 'idly-common/lib';
+import { Entity, EntityType, Node, Relation, Way } from 'idly-common/lib';
 import { Tile } from 'idly-common/lib/geo/tile';
 
 import { RbushCache } from './rbush';

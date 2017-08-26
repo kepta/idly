@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as turf from 'turf';
+import { App } from './app';
 
 import { store } from 'common/store';
 
@@ -17,6 +18,7 @@ import { tagsFactory } from 'osm/entities/helpers/tags';
 import { wayFactory } from 'osm/entities/way';
 import { graphFactory } from 'osm/history/graph';
 import { presetsMatch } from 'osm/presets/match';
+
 
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
@@ -36,7 +38,7 @@ attachToWindow('tagsFactory', tagsFactory);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Map />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

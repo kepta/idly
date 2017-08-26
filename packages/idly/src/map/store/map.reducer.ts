@@ -1,7 +1,7 @@
 /**
  * @ABOUT: reducer
  */
-import { List, Map, OrderedMap, Record, Set } from 'immutable';
+import { OrderedMap, Record, Set } from 'immutable';
 
 import { Entities } from 'osm/entities/entities';
 

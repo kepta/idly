@@ -1,4 +1,3 @@
-import { worker } from 'worker/main';
 
 // export const workerMiddleware = store => next => action => {
 //   if (action.type.indexOf('WorkerActions') > -1) {

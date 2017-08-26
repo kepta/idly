@@ -1,7 +1,6 @@
 import { List, Map as ImmutableMap, Set } from 'immutable';
 
 import { Entity } from 'osm/entities/entities';
-import { isClosed } from 'osm/entities/helpers/misc';
 import { propertiesGen } from 'osm/entities/helpers/properties';
 import { tagsFactory } from 'osm/entities/helpers/tags';
 import { nodeFactory } from 'osm/entities/node';

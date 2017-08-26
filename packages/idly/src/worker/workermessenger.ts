@@ -4,8 +4,7 @@ import { worker } from 'worker/main';
 
 import {
   WorkerActions,
-  WorkerActionsType,
-  WorkerGetEntities
+  WorkerActionsType
 } from 'idly-common/lib/actions/worker';
 
 export function workerDirectSend(action: WorkerActionsType) {

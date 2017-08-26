@@ -1,4 +1,4 @@
-export function deepFreeze(obj) {
+export function deepFreeze<T extends {}>(obj): Readonly<T> {
   // Retrieve the property names defined on obj
   const propNames = Object.getOwnPropertyNames(obj);
 

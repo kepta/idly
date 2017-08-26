@@ -14,6 +14,9 @@
     "@turf/helpers": "^4.6.0",
     "@turf/transform-scale": "^4.6.1",
     "@types/geojson": "^1.0.3",
-    "tslint": "^5.6.0"
+    "geojson": "^0.5.0",
+    "immutable": "^3.8.1",
+    "tslint": "^5.6.0",
+    "typed-immutable-record": "0.0.6"
   }
 }

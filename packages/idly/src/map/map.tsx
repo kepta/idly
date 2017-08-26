@@ -1,10 +1,8 @@
-import { observe, store } from 'common/store';
 import { Set } from 'immutable';
-import * as debounce from 'lodash.debounce';
 import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { LngLat } from '../osm/geo_utils/lng_lat';
+import { selectEntitiesAction } from '../select/store/select.actions';
 import { workerFetchMap } from '../worker/main';
 
 import { Entities } from 'osm/entities/entities';
@@ -12,10 +10,9 @@ import { Node } from 'osm/entities/node';
 import { Relation } from 'osm/entities/relation';
 import { Way } from 'osm/entities/way';
 
-import { IRootStateType } from 'common/store';
+import { IRootStateType, observe, store } from 'common/store';
 
-import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
-import { lonlatToXYs } from 'utils/mecarator';
+import { attachToWindow } from 'utils/attach_to_window';
 
 import { Draw } from 'draw/draw';
 
@@ -30,10 +27,9 @@ import {
 } from 'map/style';
 import { ILayerSpec } from 'map/utils/layerFactory';
 import { dirtyPopup } from 'map/utils/map.popup';
-import { worker } from 'worker/main';
 
 import { BBox } from 'idly-common/lib/geo/bbox';
-import { LngLatBounds } from 'mapbox-gl';
+import * as R from 'ramda';
 
 type Entity = Node | Way | Relation;
 
@@ -113,6 +109,19 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         ]
       });
     });
+
+    this.map.on('click', e => {
+      const bbox = [
+        [e.point.x - 4, e.point.y - 4],
+        [e.point.x + 4, e.point.y + 4]
+      ];
+      const select: string[] = R.compose(
+        R.take(1),
+        R.reject(R.isNil),
+        R.map(R.path(['properties', 'id']))
+      )(this.map.queryRenderedFeatures(bbox));
+      store.dispatch(selectEntitiesAction(select));
+    });
     this.map.on('load', () => {
       this.setState({ mapLoaded: true });
     });
@@ -173,10 +182,10 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   render() {
     return (
       <div>
-        <div id="map-container" style={{ height: '100vh', width: '100vw' }} />
+        <div id="map-container" style={{ height: '50vh', width: '50vw' }} />
         {this.state.mapLoaded &&
           <div>
-            <Draw dirtyMapAccess={this.dirtyMapAccess} />
+            {/* <Draw dirtyMapAccess={this.dirtyMapAccess} /> */}
             {SOURCES.map((s, k) =>
               <Source
                 key={k}
@@ -201,8 +210,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
 export const Map = connect<any, any, any>(
   (state: IRootStateType, props) => ({
-    entities: state.core.entities,
-    modifiedEntities: state.core.modifiedEntities
+    entities: Set(),
+    modifiedEntities: Set()
   }),
   { updateSource, getOSMTiles }
 )(MapComp);

@@ -1,16 +1,12 @@
-import { Set } from 'immutable';
 import { SagaIterator } from 'redux-saga';
 import { all, put, select, takeLatest } from 'redux-saga/effects';
 
 import { action } from 'common/actions';
 import { coreHideAction } from 'core/store/core.actions';
-import { featToNode } from 'map/utils/featToNode';
 import { Graph } from 'osm/history/graph';
 
 import { IRootStateType } from 'common/store';
 import { DrawActions, IDrawSelect } from 'draw/store/draw.actions';
-import { featToWay } from 'map/utils/featToWay';
-import * as R from 'ramda';
 
 export function* watchDraw(): SagaIterator {
   yield all([takeLatest<IDrawSelect>(DrawActions.SELECT, selectSaga)]);

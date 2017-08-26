@@ -2,30 +2,34 @@ import { Set } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import { watchCore } from '../core/store/core.sagas';
+// import { watchCore } from '../core/store/core.sagas';
+import { selectReducer, SelectState } from '../select/store/select.reducer';
 
-import { coreReducer, CoreState } from 'core/store/core.reducer';
-import { drawReducer, DrawState } from 'draw/store/draw.reducer';
-import { watchDraw } from 'draw/store/draw.sagas';
+// import { coreReducer, CoreState } from 'core/store/core.reducer';
+// import { drawReducer, DrawState } from 'draw/store/draw.reducer';
+// import { watchDraw } from 'draw/store/draw.sagas';
 import { osmReducer, OsmTilesState } from 'map/store/map.reducer';
 import { watchOSMTiles } from 'map/store/map.sagas';
-
+import { observeStore } from 'common/observeStore';
+import { all, call } from 'redux-saga/effects';
+import { watchSelect } from '../select/store/select.saga';
 // Reducers
 // Sagas
 
 export interface IRootStateType {
   osmTiles: OsmTilesState;
-  core: CoreState;
-  draw: DrawState;
+  select: SelectState;
+
+  // core: CoreState;
+  // draw: DrawState;
 }
-import { observeStore } from 'common/observeStore';
-import { all, call } from 'redux-saga/effects';
 
 // Root reducer
 const reducers = combineReducers({
   osmTiles: osmReducer,
-  core: coreReducer,
-  draw: drawReducer
+  // core: coreReducer,
+  // draw: drawReducer,
+  select: selectReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -72,7 +76,12 @@ const persistedState = {};
 const store = createStore(reducers, persistedState, appliedMiddlewares);
 
 function* rootSaga() {
-  yield all([call(watchOSMTiles), call(watchDraw), call(watchCore)]);
+  yield all([
+    call(watchOSMTiles),
+    // call(watchDraw),
+    // call(watchCore),
+    call(watchSelect)
+  ]);
 }
 
 sagaMiddleware.run(rootSaga).done.catch(e => {

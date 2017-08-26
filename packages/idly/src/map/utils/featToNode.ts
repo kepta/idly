@@ -1,6 +1,4 @@
-import { propertiesGen } from 'osm/entities/helpers/properties';
-import { tagsFactory } from 'osm/entities/helpers/tags';
-import { Node, nodeFactory } from 'osm/entities/node';
+import { Node } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
 import { Graph } from 'osm/history/graph';
 

@@ -1,7 +1,4 @@
-import { List } from 'immutable';
 
-import { propertiesGen } from 'osm/entities/helpers/properties';
-import { tagsFactory } from 'osm/entities/helpers/tags';
 import { Node } from 'osm/entities/node';
 import { genLngLat } from 'osm/geo_utils/lng_lat';
 

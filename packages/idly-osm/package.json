@@ -17,7 +17,10 @@
     "idly-data": "file:../idly-data",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
-    "ramda": "^0.24.1"
+    "ramda": "^0.24.1",
+    "react": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "@types/jest": "^20.0.7",

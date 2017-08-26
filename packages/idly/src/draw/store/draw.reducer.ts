@@ -5,7 +5,6 @@ import { Action } from 'common/actions';
 
 import { DrawActions } from 'draw/store/draw.actions';
 import { Entity } from 'idly-common/lib';
-import { Entities } from 'osm/entities/entities';
 
 const initialState = {
   selected: Set()

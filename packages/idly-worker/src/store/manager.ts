@@ -37,14 +37,14 @@ export class Manager {
     console.log(bbox, zoom, xyzs);
     return this.fetchAndParse(xyzs).then(() => this.toFeatures(bbox, zoom));
   }
-  lookup(entityIds: EntityId[]): Entity[] {
+  entitiyLookup(entityIds: EntityId[]): Entity[] {
     const result = [];
     return entityIds
       .map(id => recursiveLookup(id, this.masterTable))
       .reduce((prev, curr) => prev.concat(curr), []);
   }
   featureLookup(entityIds: EntityId[]): any[] {
-    const entities = this.lookup(entityIds);
+    const entities = this.entitiyLookup(entityIds);
     const entityTable: EntityTable = entityTableGen(new Map(), entities);
     const cmptProps = computePropsTable(entityTable, this.parentWays);
     const feats = entityToGeoJSON(entityTable, cmptProps);
