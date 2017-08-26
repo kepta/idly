@@ -3,7 +3,7 @@
  */
 import { OrderedMap, Record, Set } from 'immutable';
 
-import { Entities } from 'osm/entities/entities';
+import { Set as $Set } from 'immutable';
 
 import {
   GetOSMTilesAction,
@@ -20,10 +20,10 @@ const initialState = {
 type MapActions = GetOSMTilesAction | UpdateSourcesAction;
 
 export class OsmTilesState extends (Record(initialState) as any) {
-  // all the entities
-  public existingEntities: Entities;
-  // tileID vise entities
-  public tileData: OrderedMap<string, Entities>;
+  // all the$Set<any>
+  public existingEntities: $Set<any>;
+  // tileID vise$Set<any>
+  public tileData: OrderedMap<string, $Set<any>>;
   public loadedTiles: Set<string>;
   public set(k: string, v: {}): OsmTilesState {
     return super.set(k, v) as OsmTilesState;
@@ -55,11 +55,11 @@ export function osmReducer(state = osmTilesState, action: any) {
        *  the `setEntities` variable so that in future it doesn't
        *  remove anything which might be shared by other tiles.
        *  to put it other way tileData only contains a Map of
-       *  entities unique to that tile and not shared by any other tile.
+       * $Set<any> unique to that tile and not shared by any other tile.
       */
       newState = newState.update(
         'tileData',
-        (tileData: OrderedMap<string, Entities>) => {
+        (tileData: OrderedMap<string, $Set<any>>) => {
           let n = tileData.set(tileId, setEntities.subtract(existingEntities));
           if (toEvictId) {
             n = n.remove(toEvictId);
@@ -68,7 +68,7 @@ export function osmReducer(state = osmTilesState, action: any) {
         }
       );
 
-      return newState.update('existingEntities', (existing: Entities) => {
+      return newState.update('existingEntities', (existing: $Set<any>) => {
         let n = existing;
         if (toEvictId) {
           n = n.subtract(toEvict);

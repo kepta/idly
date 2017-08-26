@@ -1,9 +1,10 @@
 import { fromJS } from 'immutable';
 
+import { OsmGeometry } from 'idly-common/lib';
+
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 import { SymbolLayout, SymbolPaint } from 'mapbox-gl';
-import { Geometry } from 'osm/entities/constants';
 
 const displayName = (sourceName: string) =>
   sourceName + 'PointsWithLabelsLayer';
@@ -40,7 +41,7 @@ export const PointsWithLabelsLayer = (sourceName: string) =>
         'all',
         ['has', 'icon'],
         ['==', '$type', 'Point'],
-        ['!in', 'geometry', Geometry.VERTEX, Geometry.VERTEX_SHARED]
+        ['!in', 'geometry', OsmGeometry.VERTEX, OsmGeometry.VERTEX_SHARED]
       ])
     })
   });

@@ -1,8 +1,8 @@
-import { List } from 'immutable';
+import { List, Set as $Set } from 'immutable';
 
 import { ILayerSpec } from 'map/utils/layerFactory';
 import { setSubtractEntities } from 'map/utils/setSubtract';
-import { Entities } from 'osm/entities/entities';
+// import { Entities } from 'osm/entities/entities';
 
 export function isList(x: string | List<any>): x is List<any> {
   return List.isList(x);
@@ -19,8 +19,9 @@ const findNotInId = n => isList(n) && n.get(0) === '!in' && n.get(1) === 'id';
  */
 export function hideEntities(
   layer: ILayerSpec,
-  oldEntities: Entities,
-  newEntities: Entities
+  // @TOFIX
+  oldEntities: $Set<any>,
+  newEntities: $Set<any>
 ) {
   return layer.update('filter', filter => {
     const addedEntities = setSubtractEntities(newEntities, oldEntities);

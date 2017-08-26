@@ -1,6 +1,4 @@
-import { fromJS } from 'immutable';
-
-import { Entities } from 'osm/entities/entities';
+import { fromJS, Set as $Set } from 'immutable';
 
 import { ILayerSpec, LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
@@ -11,7 +9,7 @@ import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
 interface IPropsType {
   sourceName: string;
-  entities: Entities;
+  entities: $Set<any>;
   updateLayer: (layerSpec: ILayerSpec) => void;
 }
 

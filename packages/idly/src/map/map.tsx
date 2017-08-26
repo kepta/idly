@@ -1,14 +1,9 @@
-import { Set } from 'immutable';
+import { Set as $Set } from 'immutable';
 import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { selectEntitiesAction } from '../select/store/select.actions';
 import { workerFetchMap } from '../worker/main';
-
-import { Entities } from 'osm/entities/entities';
-import { Node } from 'osm/entities/node';
-import { Relation } from 'osm/entities/relation';
-import { Way } from 'osm/entities/way';
 
 import { IRootStateType, observe, store } from 'common/store';
 
@@ -31,8 +26,6 @@ import { dirtyPopup } from 'map/utils/map.popup';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as R from 'ramda';
 
-type Entity = Node | Way | Relation;
-
 export type DirtyMapAccessType = (map: any) => void;
 /**
  * The job of map module is to handle
@@ -45,10 +38,10 @@ export type DirtyMapAccessType = (map: any) => void;
  */
 
 interface IPropsType {
-  entities: Entities;
-  modifiedEntities: Entities;
+  entities: $Set<any>;
+  modifiedEntities: $Set<any>;
   updateSource: (
-    data: Entities,
+    data: $Set<any>,
     dirtyMapAccess: (map: any) => void,
     sourceId: string
   ) => void;
@@ -59,7 +52,7 @@ const win: any = window;
 
 class MapComp extends React.PureComponent<IPropsType, {}> {
   static defaultProps = {
-    entities: Set()
+    entities: $Set()
   };
   state = {
     mapLoaded: false,
@@ -210,8 +203,8 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
 export const Map = connect<any, any, any>(
   (state: IRootStateType, props) => ({
-    entities: Set(),
-    modifiedEntities: Set()
+    entities: $Set(),
+    modifiedEntities: $Set()
   }),
   { updateSource, getOSMTiles }
 )(MapComp);

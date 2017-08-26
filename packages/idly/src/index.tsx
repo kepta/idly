@@ -4,21 +4,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as turf from 'turf';
-import { App } from './app';
+import { App } from './app/App';
 
 import { store } from 'common/store';
-
-import { parseXML } from 'osm/parsers/parsers';
 
 import { attachToWindow } from 'utils/attach_to_window';
 
 import { Map } from 'map/map';
-
-import { tagsFactory } from 'osm/entities/helpers/tags';
-import { wayFactory } from 'osm/entities/way';
-import { graphFactory } from 'osm/history/graph';
-import { presetsMatch } from 'osm/presets/match';
-
 
 require('mapbox-gl/dist/mapbox-gl.css');
 require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
@@ -29,12 +21,8 @@ attachToWindow('Im', Im);
 attachToWindow('store', store);
 
 attachToWindow('turf', turf);
-attachToWindow('pp', parseXML);
+// attachToWindow('pp', parseXML);
 attachToWindow('common/store', store);
-attachToWindow('presetsMatch', presetsMatch);
-attachToWindow('wayFactory', wayFactory);
-attachToWindow('graphFactory', graphFactory);
-attachToWindow('tagsFactory', tagsFactory);
 
 ReactDOM.render(
   <Provider store={store}>

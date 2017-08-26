@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { hideEntities } from 'map/utils/hideEntities';
 import { ILayerSpec } from 'map/utils/layerFactory';
-import { Entities } from 'osm/entities/entities';
+// import { Entities } from 'osm/entities/entities';
 
 export type LayerFilter = Set<string | List<string>>;
 
@@ -31,7 +31,7 @@ interface IOptions {
  * Optional
  */
 interface IExternalProps {
-  entities: Entities;
+  entities: any;
   updateLayer: (layerSpec: ILayerSpec) => void;
   removeLayer: (layerId: string) => void;
 }

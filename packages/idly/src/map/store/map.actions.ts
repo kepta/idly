@@ -1,5 +1,5 @@
 import { action, Action } from 'common/actions';
-import { Entities } from 'osm/entities/entities';
+import { Set as $Set } from 'immutable';
 
 export const OSM_TILES = {
   get: 'OSM_TILES.get',
@@ -18,7 +18,7 @@ export type GetOSMTilesAction = Action<{
 
 export type UpdateSourcesAction = Action<{
   dirtyMapAccess: (map: any) => void;
-  data: Entities;
+  data: $Set<any>;
   sourceId: string;
 }>;
 

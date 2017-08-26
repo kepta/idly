@@ -14,8 +14,11 @@
     "allowSyntheticDefaultImports": true,
     "pretty": true
   },
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
+    "./_grave_yard",
     "node_modules",
     "build",
     "scripts",

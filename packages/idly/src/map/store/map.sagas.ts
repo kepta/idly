@@ -4,7 +4,7 @@
 import { buffers, delay, SagaIterator } from 'redux-saga';
 import * as S from 'redux-saga/effects';
 
-import { Entities } from 'osm/entities/entities';
+import { Set as $Set } from 'immutable';
 
 import { ZOOM } from 'map/constants';
 import {
@@ -130,7 +130,7 @@ function* setViriginMapData(dirtyMapAccess, data: string) {
   yield S.call([source, 'setData'], data);
 }
 
-function* updateSourceSaga(dirtyMapAccess, data: Entities, sourceId) {
+function* updateSourceSaga(dirtyMapAccess, data: $Set<any>, sourceId) {
   //   console.time('updateSourceSaga');
   //   const [graph, parentWays]: [
   //     Graph,

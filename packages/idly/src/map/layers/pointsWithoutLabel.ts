@@ -1,8 +1,8 @@
 import { fromJS } from 'immutable';
 
+import { OsmGeometry } from 'idly-common/lib';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
-import { Geometry } from 'osm/entities/constants';
 
 const displayName = (sourceName: string) =>
   sourceName + 'PointsWithoutLabelsLayer';
@@ -30,7 +30,7 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
         /**
          * @REVISIT this vertex problem
          */
-        ['!in', 'geometry', Geometry.VERTEX, Geometry.VERTEX_SHARED]
+        ['!in', 'geometry', OsmGeometry.VERTEX, OsmGeometry.VERTEX_SHARED]
       ])
     })
   });

@@ -1,7 +1,8 @@
+import { Set as $Set } from 'immutable';
 import * as React from 'react';
 import * as turf from 'turf';
 
-import { Entities } from 'osm/entities/entities';
+// import { Entities } from 'osm/entities/entities';
 
 import { setSubtractEntities } from 'map/utils/setSubtract';
 
@@ -9,11 +10,11 @@ interface IPropsType {
   sourceName: string;
   dirtyMapAccess;
   updateSource: (
-    data: Entities,
+    data: $Set<any>,
     dirtyMapAccess: (map: any) => void,
     sourceId: string
   ) => void;
-  entities: Entities;
+  entities: $Set<any>;
 }
 
 export class Source extends React.PureComponent<IPropsType, {}> {
@@ -35,10 +36,10 @@ export class Source extends React.PureComponent<IPropsType, {}> {
   }
   shouldComponentUpdate(nextProps: IPropsType, nextState) {
     return true;
-    return (
-      !nextProps.entities.equals(this.props.entities) ||
-      this.state.sourceLoaded !== nextState.sourceLoaded
-    );
+    // return (
+    //   !nextProps.entities.equals(this.props.entities) ||
+    //   this.state.sourceLoaded !== nextState.sourceLoaded
+    // );
   }
   componentDidMount() {
     this.props.dirtyMapAccess(map => {
