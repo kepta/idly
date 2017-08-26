@@ -11,7 +11,7 @@ import {
   Relation,
   RelationMember,
   Tags
-} from '../osm';
+} from '../osm/structures';
 import { recordify } from 'typed-immutable-record';
 
 export function $relationFactory(r: Relation): $Relation {

@@ -8,4 +8,4 @@ export { entityTableGen } from './osm/entityTableGen';
 export { attributesGen } from './osm/attributesGen';
 export { weakCache, weakCache2 } from './misc/weakCache';
 
-export * from './osm';
+export * from './osm/structures';

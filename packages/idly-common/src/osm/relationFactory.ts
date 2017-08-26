@@ -6,7 +6,7 @@ import {
   Relation,
   RelationMember,
   Tags
-} from '../osm';
+} from '../osm/structures';
 
 export function relationFactory({
   id,

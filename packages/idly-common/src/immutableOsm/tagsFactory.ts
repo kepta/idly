@@ -1,4 +1,4 @@
-import { Tags } from '../osm';
+import { Tags } from '../osm/structures';
 import { $Tags } from '../immutableOsm';
 import { Map as $Map } from 'immutable';
 

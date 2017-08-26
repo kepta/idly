@@ -1,4 +1,4 @@
-import { Attributes, EntityId, EntityType, Tags, Way } from '../osm';
+import { Attributes, EntityId, EntityType, Tags, Way } from '../osm/structures';
 import { attributesGen } from '../osm/attributesGen';
 
 export function wayFactory({

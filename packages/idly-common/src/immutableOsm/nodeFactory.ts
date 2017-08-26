@@ -4,7 +4,14 @@ import { $tagsFactory } from './tagsFactory';
 import { $Node, $__Node } from '../immutableOsm';
 import { genLngLat } from '../osm/genLngLat';
 import { attributesGen } from '../osm/attributesGen';
-import { Attributes, EntityId, EntityType, LngLat, Node, Tags } from '../osm';
+import {
+  Attributes,
+  EntityId,
+  EntityType,
+  LngLat,
+  Node,
+  Tags
+} from '../osm/structures';
 import { recordify } from 'typed-immutable-record';
 
 export function nodeFactory(n: Node): $Node {

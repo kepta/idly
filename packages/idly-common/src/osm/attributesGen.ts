@@ -1,4 +1,4 @@
-import { Attributes } from '../osm';
+import { Attributes } from '../osm/structures';
 
 export function attributesGen({
   visible,
