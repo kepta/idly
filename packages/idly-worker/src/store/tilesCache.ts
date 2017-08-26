@@ -1,10 +1,11 @@
 import * as turfbbox from '@turf/bbox';
 import * as bboxPolygon from '@turf/bbox-polygon';
 // minX, minY, maxX, maxY
-import { BBox } from '@turf/helpers';
 import * as transformScale from '@turf/transform-scale';
 
-import { Entity, EntityType, Node, Relation, Way } from 'idly-common/lib';
+import { BBox } from 'idly-common/lib/geo/bbox';
+import { Entity, EntityType } from 'idly-common/lib/osm/structures';
+
 import { Tile } from 'idly-common/lib/geo/tile';
 
 import { RbushCache } from './rbush';

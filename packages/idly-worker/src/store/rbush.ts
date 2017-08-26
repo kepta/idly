@@ -1,5 +1,6 @@
 import { BBox } from '@turf/helpers';
-import { mercator } from 'idly-common/lib/geo';
+
+import { mercator } from 'idly-common/lib/geo/sphericalMercator';
 import { Tile } from 'idly-common/lib/geo/tile';
 
 import * as rbush from 'rbush';

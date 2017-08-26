@@ -1,4 +1,8 @@
-import { EntityTable, EntityType, ParentWays } from 'idly-common/lib';
+import {
+  EntityTable,
+  EntityType,
+  ParentWays
+} from 'idly-common/lib/osm/structures';
 import { nodeCombiner } from '../parsing/nodeToFeature';
 import { wayCombiner } from '../parsing/wayToFeature';
 

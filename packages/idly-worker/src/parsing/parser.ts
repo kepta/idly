@@ -1,16 +1,16 @@
+import { attributesGen } from 'idly-common/lib/osm/attributesGen';
+import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { relationFactory } from 'idly-common/lib/osm/relationFactory';
+import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
 import {
-  attributesGen,
   Entity,
-  genLngLat,
   Node,
-  nodeFactory,
   ParentWays,
   Relation,
-  relationFactory,
-  relationMemberGen,
-  Way,
-  wayFactory
-} from 'idly-common/lib';
+  Way
+} from 'idly-common/lib/osm/structures';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 /**
  * @param parentWays mutates in place

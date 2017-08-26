@@ -1,4 +1,4 @@
-import { Node } from 'idly-common/lib';
+import { Node } from 'idly-common/lib/osm/structures';
 
 export function nodeCombiner(node: Node, existingProps: {}) {
   return {

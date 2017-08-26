@@ -1,4 +1,6 @@
-import { ParentWays, wayFactory } from 'idly-common/lib';
+import { ParentWays } from 'idly-common/lib/osm/structures';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+
 import {
   miniWayXML1,
   miniXML1,

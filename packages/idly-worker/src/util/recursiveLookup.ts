@@ -1,4 +1,9 @@
-import { Entity, EntityId, EntityTable, EntityType } from 'idly-common/lib';
+import {
+  Entity,
+  EntityId,
+  EntityTable,
+  EntityType
+} from 'idly-common/lib/osm/structures';
 
 export function recursiveLookup(id: EntityId, table: EntityTable): Entity[] {
   const entity = table.get(id);

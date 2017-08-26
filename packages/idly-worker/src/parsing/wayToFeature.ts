@@ -1,7 +1,13 @@
+import { geometry } from '@turf/helpers';
 import * as turfLineString from 'turf-linestring';
 import * as turfPolygon from 'turf-polygon';
 
-import { EntityTable, Node, OsmGeometry, Way } from 'idly-common/lib';
+import {
+  EntityTable,
+  Node,
+  OsmGeometry,
+  Way
+} from 'idly-common/lib/osm/structures';
 
 import { LineString, Polygon } from 'geojson';
 
@@ -19,14 +25,14 @@ export function wayCombiner(
   }
 ) {
   // @TOFIX code duplication
-  const geometry = existingProps.geometry;
-  if (!geometry) {
+  const existingGeometry = existingProps.geometry;
+  if (!existingGeometry) {
     throw new Error('geometry not found in existing props');
   }
   const nodes = getCoordsFromTable(table, way.nodes);
   return {
     id: way.id,
-    ...wayToLineString(geometry, nodes),
+    ...wayToLineString(existingGeometry, nodes),
     properties: {
       ...existingProps,
       id: way.id
@@ -36,7 +42,7 @@ export function wayCombiner(
 
 export function getCoordsFromTable(
   table: EntityTable,
-  nodes: string[]
+  nodes: Way['nodes']
 ): number[][] {
   return nodes.map(n => {
     if (!table.has(n)) throw new Error('node not found ' + n);

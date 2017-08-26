@@ -1,7 +1,6 @@
-import { Entity, EntityId } from 'idly-common/lib';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { Feature } from 'idly-common/lib/osm/feature';
-import { actionBuilderFactory } from 'idly-common/lib/store';
+import { Entity, EntityId } from 'idly-common/lib/osm/structures';
 
 export enum WorkerActions {
   GET_VIRGIN_ENTITIES = 'WorkerActions.GET_VIRGIN_ENTITIES',

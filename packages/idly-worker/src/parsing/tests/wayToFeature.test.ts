@@ -1,12 +1,11 @@
 import { geometry } from '@turf/helpers';
-import {
-  entityTableGen,
-  genLngLat,
-  nodeFactory,
-  OsmGeometry,
-  tagsFactory,
-  wayFactory
-} from 'idly-common/lib';
+
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
+import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 import {
   getCoordsFromTable,

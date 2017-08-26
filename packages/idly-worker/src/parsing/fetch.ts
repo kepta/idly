@@ -1,12 +1,12 @@
-import * as SphericalMercator from '@mapbox/sphericalmercator';
-import { handleErrors } from 'idly-common/lib/network';
+import { mercator } from 'idly-common/lib/geo/sphericalMercator';
+import { handleErrors } from 'idly-common/lib/network/promise';
 import { DOMParser } from 'xmldom';
 
 import { stubXML } from '../parsing/fixtures';
 
-const merc = new SphericalMercator({
-  size: 256
-});
+// const merc = new SphericalMercator({
+//   size: 256
+// });
 
 const fetchStub = () => {
   return Promise.resolve(stubXML);
@@ -16,7 +16,7 @@ const debug = false;
 
 export async function fetchTile(x: number, y: number, zoom: number) {
   const xyz = [x, y, zoom].join(',');
-  const bboxStr = merc.bbox(x, y, zoom).join(',');
+  const bboxStr = mercator.bbox(x, y, zoom).join(',');
   try {
     if (debug) {
       return new DOMParser().parseFromString(await fetchStub(), 'text/xml');

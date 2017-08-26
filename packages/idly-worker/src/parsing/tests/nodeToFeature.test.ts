@@ -1,5 +1,6 @@
-import { genLngLat, nodeFactory, tagsFactory } from 'idly-common/lib';
-
+import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { nodeCombiner } from '../../parsing/nodeToFeature';
 
 const n1 = nodeFactory({ id: 'n-1' });

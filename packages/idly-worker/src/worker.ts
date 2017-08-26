@@ -21,7 +21,7 @@ export function main(
     }
     case WorkerActions.GET_VIRGIN_ENTITIES: {
       const { entitiesId } = message.request;
-      const entities = manager.entitiyLookup(entitiesId);
+      const entities = manager.entityLookup(entitiesId);
       return {
         ...message,
         response: {

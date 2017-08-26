@@ -1,18 +1,14 @@
-import { BBox } from '@turf/helpers';
-import { parseXML } from '../parsing/parser';
-
+import { BBox } from 'idly-common/lib/geo/bbox';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import {
-  Entities,
   Entity,
   EntityId,
   EntityTable,
-  entityTableGen,
-  EntityType,
-  Node,
-  ParentWays,
-  Relation,
-  Way
-} from 'idly-common/lib';
+  ParentWays
+} from 'idly-common/lib/osm/structures';
+
+import { parseXML } from '../parsing/parser';
+
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
 import { Tile } from 'idly-common/lib/geo/tile';
 import { onParseEntities } from 'idly-osm/lib/worker';
@@ -37,14 +33,14 @@ export class Manager {
     console.log(bbox, zoom, xyzs);
     return this.fetchAndParse(xyzs).then(() => this.toFeatures(bbox, zoom));
   }
-  entitiyLookup(entityIds: EntityId[]): Entity[] {
+  entityLookup(entityIds: EntityId[]): Entity[] {
     const result = [];
     return entityIds
       .map(id => recursiveLookup(id, this.masterTable))
       .reduce((prev, curr) => prev.concat(curr), []);
   }
   featureLookup(entityIds: EntityId[]): any[] {
-    const entities = this.entitiyLookup(entityIds);
+    const entities = this.entityLookup(entityIds);
     const entityTable: EntityTable = entityTableGen(new Map(), entities);
     const cmptProps = computePropsTable(entityTable, this.parentWays);
     const feats = entityToGeoJSON(entityTable, cmptProps);
