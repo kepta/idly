@@ -1,6 +1,6 @@
 import { $attributesGen } from './attributesGen';
 import { $tagsFactory } from './tagsFactory';
-import { $Way, $__Way } from '../immutableOsm';
+import { $Way, $__Way } from '../immutableOsm/immutableOsm';
 import { Attributes, EntityId, EntityType, Tags, Way } from '../osm/structures';
 import { attributesGen } from '../osm/attributesGen';
 import { recordify } from 'typed-immutable-record';

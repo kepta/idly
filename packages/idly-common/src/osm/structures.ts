@@ -67,9 +67,9 @@ export type Attributes = Readonly<{
 }>;
 
 export type RelationMember = Readonly<{
-  readonly id: string;
-  readonly type: string;
-  readonly role: string;
+  readonly id?: string;
+  readonly type?: string;
+  readonly role?: string;
 }>;
 
 export type LngLat = Readonly<{

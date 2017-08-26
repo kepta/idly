@@ -7,7 +7,7 @@ import {
   WayId,
   EntityType,
   Node
-} from './osm/structures';
+} from '../osm/structures';
 import { Set as $Set, Map as $Map, List as $List } from 'immutable';
 import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
 

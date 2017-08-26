@@ -6,14 +6,16 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "target": "es2015",
-    "strict": false,
+    "strict": true,
     "pretty": true,
     "declaration": true,
-    "noImplicitAny": true,
-    "isolatedModules": false
+    "isolatedModules": false,
+    "noEmitOnError": true
   },
   "compileOnSave": true,
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
     "./lib/**/*",
     "node_modules",

@@ -1,4 +1,4 @@
-import { $LngLat } from '../immutableOsm';
+import { $LngLat } from '../immutableOsm/immutableOsm';
 import { LngLat } from '../osm/structures';
 import { recordify } from 'typed-immutable-record';
 

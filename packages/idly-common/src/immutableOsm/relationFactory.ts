@@ -2,7 +2,7 @@ import { List as $List } from 'immutable';
 import { $relationMemberGen } from './relationMemberGen';
 import { $attributesGen } from './attributesGen';
 import { $tagsFactory } from './tagsFactory';
-import { $Relation, $__Relation } from '../immutableOsm';
+import { $Relation, $__Relation } from '../immutableOsm/immutableOsm';
 import { attributesGen } from '../osm/attributesGen';
 import {
   Attributes,

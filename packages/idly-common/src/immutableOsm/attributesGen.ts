@@ -1,4 +1,4 @@
-import { $Attributes } from '../immutableOsm';
+import { $Attributes } from '../immutableOsm/immutableOsm';
 import { Attributes } from '../osm/structures';
 import { recordify } from 'typed-immutable-record';
 

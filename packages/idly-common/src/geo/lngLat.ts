@@ -1,4 +1,4 @@
-import { LngLatBounds } from './lngLatBounds';
+import { LngLatBounds } from '../geo/lngLatBounds';
 
 export interface LngLat {
   lng: number;

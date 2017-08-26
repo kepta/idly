@@ -1,7 +1,7 @@
 import { $attributesGen } from './attributesGen';
 import { $genLngLat } from './genLngLat';
 import { $tagsFactory } from './tagsFactory';
-import { $Node, $__Node } from '../immutableOsm';
+import { $Node, $__Node } from '../immutableOsm/immutableOsm';
 import { genLngLat } from '../osm/genLngLat';
 import { attributesGen } from '../osm/attributesGen';
 import {
