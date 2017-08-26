@@ -1,20 +1,19 @@
-import { $attributesGen } from './attributesGen';
-import { $tagsFactory } from './tagsFactory';
-import { $Way, $__Way } from '../immutableOsm/immutableOsm';
-import { Attributes, EntityId, EntityType, Tags, Way } from '../osm/structures';
-import { attributesGen } from '../osm/attributesGen';
-import { recordify } from 'typed-immutable-record';
-import { List as $List } from 'immutable';
+import { List as $List } from "immutable";
+import { recordify } from "typed-immutable-record";
+import { $__Way, $Way } from "../immutableOsm/immutableOsm";
+import { EntityType, Way } from "../osm/structures";
+import { $attributesGen } from "./attributesGen";
+import { $tagsFactory } from "./tagsFactory";
 
 export function $wayFactory(way: Way): $Way {
-  var $tags = $tagsFactory(way.tags);
-  var $attr = $attributesGen(way.attributes);
-  var $nodes = $List(way.nodes.map(r => r));
+  const $tags = $tagsFactory(way.tags);
+  const $attr = $attributesGen(way.attributes);
+  const $nodes = $List(way.nodes.map((r) => r));
   return recordify<$__Way, $Way>({
     id: way.id,
     type: EntityType.WAY,
     tags: $tags,
     attributes: $attr,
-    nodes: $nodes
+    nodes: $nodes,
   });
 }

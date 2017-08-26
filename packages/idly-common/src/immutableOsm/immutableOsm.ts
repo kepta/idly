@@ -1,15 +1,14 @@
+import { List as $List, Map as $Map, Set as $Set } from "immutable";
+import { TypedRecord } from "typed-immutable-record";
 import {
   Attributes,
   EntityId,
+  EntityType,
   LngLat,
   NodeId,
   RelationMember,
   WayId,
-  EntityType,
-  Node
-} from '../osm/structures';
-import { Set as $Set, Map as $Map, List as $List } from 'immutable';
-import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
+} from "../osm/structures";
 
 export type $Entity = $Node | $Way | $Relation;
 export type $Entities = $Set<$Node | $Way | $Relation>;

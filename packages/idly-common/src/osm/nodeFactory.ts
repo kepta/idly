@@ -1,19 +1,19 @@
-import { genLngLat } from '../osm/genLngLat';
-import { attributesGen } from '../osm/attributesGen';
+import { attributesGen } from "../osm/attributesGen";
+import { genLngLat } from "../osm/genLngLat";
 import {
   Attributes,
   EntityId,
   EntityType,
   LngLat,
   Node,
-  Tags
-} from '../osm/structures';
+  Tags,
+} from "../osm/structures";
 
 export function nodeFactory({
   id,
   tags = new Map(),
   loc = genLngLat([0, 0]),
-  attributes = attributesGen({})
+  attributes = attributesGen({}),
 }: {
   id: EntityId;
   tags?: Tags;
@@ -25,6 +25,6 @@ export function nodeFactory({
     tags,
     type: EntityType.NODE,
     loc,
-    attributes
+    attributes,
   };
 }

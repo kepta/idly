@@ -10,7 +10,13 @@
     "pretty": true,
     "declaration": true,
     "isolatedModules": false,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true
   },
   "compileOnSave": true,
   "include": [

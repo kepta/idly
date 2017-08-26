@@ -1,8 +1,8 @@
-import { RelationMember } from '../osm/structures';
+import { RelationMember } from "../osm/structures";
 export function relationMemberGen({
   id,
   type,
-  role
+  role,
 }: {
   id?: string;
   type?: string;
@@ -11,6 +11,6 @@ export function relationMemberGen({
   return {
     id,
     type,
-    role
+    role,
   };
 }

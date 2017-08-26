@@ -1,10 +1,10 @@
-import { Point, GeometryObject } from 'geojson';
+import { GeometryObject } from "geojson";
 
 export interface Feature<
   T extends GeometryObject,
   K extends { [index: string]: boolean | string | number | null | undefined }
 > {
-  type: 'Feature';
+  type: "Feature";
   id?: string;
   geometry: T;
   properties: K;

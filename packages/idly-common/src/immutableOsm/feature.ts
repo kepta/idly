@@ -1,4 +1,3 @@
-import { Point, GeometryObject } from 'geojson';
 
 // export interface Feature<
 //   T extends GeometryObject,

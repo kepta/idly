@@ -1,18 +1,18 @@
-import { attributesGen } from '../osm/attributesGen';
+import { attributesGen } from "../osm/attributesGen";
 import {
   Attributes,
   EntityId,
   EntityType,
   Relation,
   RelationMember,
-  Tags
-} from '../osm/structures';
+  Tags,
+} from "../osm/structures";
 
 export function relationFactory({
   id,
   tags = new Map(),
   attributes = attributesGen({}),
-  members = []
+  members = [],
 }: {
   id: EntityId;
   tags?: Tags;
@@ -24,6 +24,6 @@ export function relationFactory({
     type: EntityType.RELATION,
     tags,
     attributes,
-    members
+    members,
   };
 }

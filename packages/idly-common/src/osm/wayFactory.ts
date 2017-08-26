@@ -1,11 +1,11 @@
-import { Attributes, EntityId, EntityType, Tags, Way } from '../osm/structures';
-import { attributesGen } from '../osm/attributesGen';
+import { attributesGen } from "../osm/attributesGen";
+import { Attributes, EntityId, EntityType, Tags, Way } from "../osm/structures";
 
 export function wayFactory({
   id,
   tags = new Map(),
   attributes = attributesGen({}),
-  nodes = []
+  nodes = [],
 }: {
   id: EntityId;
   tags?: Tags;
@@ -17,6 +17,6 @@ export function wayFactory({
     type: EntityType.WAY,
     tags,
     attributes,
-    nodes
+    nodes,
   };
 }

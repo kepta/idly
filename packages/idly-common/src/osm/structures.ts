@@ -11,7 +11,7 @@ export type EntityTable = Map<EntityId, Entity>;
 export type Tags = Map<string, string>;
 
 export type FeaturePropsTable = Map<EntityId, FeatureProps>;
-export type FeatureProps = { [key: string]: string };
+export interface FeatureProps { [key: string]: string; }
 
 export type NodeGeometry =
   | OsmGeometry.POINT
@@ -19,18 +19,18 @@ export type NodeGeometry =
   | OsmGeometry.VERTEX_SHARED;
 
 export enum OsmGeometry {
-  POINT = 'point',
-  VERTEX = 'vertex',
-  VERTEX_SHARED = 'vertex_shared', // the one shared among multiple ways
-  AREA = 'area',
-  LINE = 'line',
-  RELATION = 'relation'
+  POINT = "point",
+  VERTEX = "vertex",
+  VERTEX_SHARED = "vertex_shared", // the one shared among multiple ways
+  AREA = "area",
+  LINE = "line",
+  RELATION = "relation",
 }
 
 export enum EntityType {
-  NODE = 'node',
-  WAY = 'way',
-  RELATION = 'relation'
+  NODE = "node",
+  WAY = "way",
+  RELATION = "relation",
 }
 
 export type Node = Readonly<{

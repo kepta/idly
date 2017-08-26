@@ -11,16 +11,16 @@ export function cancelablePromise<T>(promise: Promise<T>) {
   const wrappedPromise: Promise<T> = new Promise((resolve, reject) =>
     promise
       .then(
-        (val: T) => (hasCanceled ? reject({ isCanceled: true }) : resolve(val))
+        (val: T) => (hasCanceled ? reject({ isCanceled: true }) : resolve(val)),
       )
       .catch(
-        error => (hasCanceled ? reject({ isCanceled: true }) : reject(error))
-      )
+        (error) => (hasCanceled ? reject({ isCanceled: true }) : reject(error)),
+      ),
   );
   return {
     promise: wrappedPromise,
     cancel() {
       hasCanceled = true;
-    }
+    },
   };
 }
