@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
+import { PLUGIN_NAME } from 'map/style';
 
 const displayName = (sourceName: string) => sourceName + 'highwayResidential';
 
@@ -27,7 +28,7 @@ export const highwayResidential = (sourceName: string) =>
         'all',
         [
           'in',
-          'tagsClassType',
+          `${PLUGIN_NAME}.tagsClassType`,
           'tag-highway-residential',
           'tag-highway-residential_link',
           'tag-highway-service'

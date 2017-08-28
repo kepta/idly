@@ -8,9 +8,9 @@ import { selectReducer, SelectState } from '../select/store/select.reducer';
 // import { coreReducer, CoreState } from 'core/store/core.reducer';
 // import { drawReducer, DrawState } from 'draw/store/draw.reducer';
 // import { watchDraw } from 'draw/store/draw.sagas';
+import { observeStore } from 'common/observeStore';
 import { osmReducer, OsmTilesState } from 'map/store/map.reducer';
 import { watchOSMTiles } from 'map/store/map.sagas';
-import { observeStore } from 'common/observeStore';
 import { all, call } from 'redux-saga/effects';
 import { watchSelect } from '../select/store/select.saga';
 // Reducers
@@ -19,9 +19,6 @@ import { watchSelect } from '../select/store/select.saga';
 export interface IRootStateType {
   osmTiles: OsmTilesState;
   select: SelectState;
-
-  // core: CoreState;
-  // draw: DrawState;
 }
 
 // Root reducer

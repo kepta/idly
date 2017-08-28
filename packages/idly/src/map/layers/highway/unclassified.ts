@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -25,7 +26,7 @@ export const highwayUnclassified = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['in', 'tagsClassType', 'tag-highway-unclassified']
+        ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-highway-unclassified']
       ])
     })
   });

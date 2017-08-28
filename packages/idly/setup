@@ -1,0 +1,6 @@
+npm i -S ../idly-common && \
+npm i -S ../idly-worker && \
+npm i -S ../idly-osm && \
+npm link idly-common && \
+npm link idly-worker && \
+npm link idly-osm

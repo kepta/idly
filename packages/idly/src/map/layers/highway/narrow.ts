@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -23,7 +24,7 @@ export const highwayTrack = (sourceName: string) =>
         'line-opacity': 1,
         'line-width': 4
       },
-      filter: fromJS(['all', ['in', 'tagsClassType', 'tag-highway-track']])
+      filter: fromJS(['all', ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-highway-track']])
     })
   });
 
@@ -51,7 +52,7 @@ export const highwayNarrow = (sourceName: string) =>
         'all',
         [
           'in',
-          'tagsClassType',
+          `${PLUGIN_NAME}.tagsClassType`,
           'tag-highway-path',
           'tag-highway-footway',
           'tag-highway-bridleway',
@@ -89,12 +90,15 @@ export const highwayNarrowCasing = (sourceName: string) =>
         'all',
         [
           'in',
-          'tagsClassType',
+          `${PLUGIN_NAME}.tagsClassType`,
           'tag-highway-path',
           'tag-highway-footway',
           'tag-highway-bridleway',
           'tag-highway-cycleway'
         ]
+      ])
+    })
+  });
       ])
     })
   });

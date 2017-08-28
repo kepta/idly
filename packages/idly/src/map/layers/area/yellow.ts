@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 import { areaPaintStyle } from 'map/layers/area';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
+import { PLUGIN_NAME } from 'map/style';
 
 const displayName = (sourceName: string) => sourceName + 'areaYellowLayer';
 
@@ -13,7 +14,7 @@ const filter = fromJS([
   ['==', '$type', 'Polygon'],
   [
     'in',
-    'tagsClassType',
+    `${PLUGIN_NAME}.tagsClassType`,
     'tag-sport-beachvolleyball',
     'tag-natural-beach',
     'tag-natural-sand',

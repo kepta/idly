@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -52,7 +53,7 @@ export const AreaLayer = (sourceName: string) =>
          * @REVISIT buildings or any small really look ugly with that gl offset artifact
          *  going for a fill layer for now.
          */
-        ['!=', 'tagsClass', 'tag-building']
+        ['!=', `${PLUGIN_NAME}.tagsClass`, 'tag-building']
       ])
     })
   });
@@ -76,7 +77,7 @@ export const AreaLayerCasing = (sourceName: string) =>
       filter: fromJS([
         'all',
         ['==', '$type', 'Polygon'],
-        ['!=', 'tagsClass', 'tag-building']
+        ['!=', `${PLUGIN_NAME}.tagsClass`, 'tag-building']
       ])
     })
   });

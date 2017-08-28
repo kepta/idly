@@ -1,5 +1,6 @@
 import { fromJS, Set as $Set } from 'immutable';
 
+import { PLUGIN_NAME } from 'map/style';
 import { ILayerSpec, LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -31,7 +32,7 @@ export const LineLabelLayer = (sourceName: string) =>
       layout: {
         'symbol-placement': 'line',
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-        'text-field': '{name}', // part 2 of this is how to do it
+        'text-field': `{${PLUGIN_NAME}.name}`, // part 2 of this is how to do it
         'text-size': 9,
         'text-transform': 'uppercase',
         'text-letter-spacing': 0.05,

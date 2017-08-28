@@ -3,6 +3,7 @@
 import { fromJS } from 'immutable';
 
 import { areaPaintStyle } from 'map/layers/area';
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -13,7 +14,7 @@ const areaColor = '#f5dcba';
 const filter = fromJS([
   'all',
   ['==', '$type', 'Polygon'],
-  ['in', 'tagsClassType', 'tag-landuse-farmyard']
+  ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-landuse-farmyard']
 ]);
 
 export const areaTanLayer = (sourceName: string) =>

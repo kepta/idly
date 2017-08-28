@@ -1,7 +1,7 @@
 import { actionBuilderFactory } from 'common/actions';
 
-import { Entity, EntityId } from 'idly-common/lib/osm';
 import { Feature } from 'idly-common/lib/osm/feature';
+import { Entity, EntityId } from 'idly-common/lib/osm/structures';
 
 export enum SelectActions {
   SELECT_ENTITIES = 'Selection.SELECT_ENTITIES',

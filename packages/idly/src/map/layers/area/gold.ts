@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 import { areaPaintStyle } from 'map/layers/area';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
+import { PLUGIN_NAME } from 'map/style';
 
 const displayName = (sourceName: string) => sourceName + 'areaGoldLayer';
 
@@ -12,10 +13,10 @@ const filter = fromJS([
   'all',
   ['==', '$type', 'Polygon'],
   /**
-   * @TOFIX need to figure out for `tagsClass` and let the `tagsClassType` override
+   * @TOFIX need to figure out for `tagsClass` and let the ``${PLUGIN_NAME}.tagsClassType`` override
    *  based on priority.
    */
-  ['in', 'tagsClassType', 'tag-landuse-residential', 'tag-landuse-construction']
+  ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-landuse-residential', 'tag-landuse-construction']
 ]);
 
 export const areaGoldLayer = (sourceName: string) =>
@@ -57,5 +58,10 @@ export const areaGoldLayerCasing = (sourceName: string) =>
       },
       paint: { ...areaPaintStyle, 'line-color': areaColor },
       filter
+    })
+  });
+      },
+paint: { ...areaPaintStyle, 'line-color': areaColor },
+filter
     })
   });

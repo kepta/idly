@@ -1,4 +1,4 @@
-import { Entities, Entity } from 'idly-common';
+import { Entities, Entity } from 'idly-common/lib/osm/structures';
 
 interface CoreState {
   readonly selected: ReadonlyArray<Entity>;

@@ -7,6 +7,8 @@ import * as R from 'ramda';
 import { attachToWindow, getFromWindow } from 'utils/attach_to_window';
 import { weakCache } from 'utils/weakCache';
 
+export const PLUGIN_NAME = 'osm_basic';
+
 let globalStyle: Style = {
   version: 8,
   name: 'Satellite',

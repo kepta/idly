@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 
 import { areaPaintStyle } from 'map/layers/area';
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -16,10 +17,10 @@ const filter = fromJS([
     /**
      * @TOFIX doesnt work for a way, I guess a !area, with tag natural=coastline
      */
-    ['in', 'tagsClass', 'tag-natural', 'tag-landuse'],
+    ['in', `${PLUGIN_NAME}.tagsClass`, 'tag-natural', 'tag-landuse'],
     [
       'in',
-      'tagsClassType',
+      `${PLUGIN_NAME}.tagsClassType`,
       'tag-leisure-nature_reserve',
       'tag-leisure-pitch',
       'tag-leisure-park',

@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 
 import { areaPaintStyle } from 'map/layers/area';
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -11,7 +12,12 @@ const areaColor = '#e4a4f5';
 const filter = fromJS([
   'all',
   ['==', '$type', 'Polygon'],
-  ['in', 'tagsClassType', 'tag-landuse-industrial', 'tag-power-plant']
+  [
+    'in',
+    `${PLUGIN_NAME}.tagsClassType`,
+    'tag-landuse-industrial',
+    'tag-power-plant'
+  ]
 ]);
 
 export const areaPinkLayer = (sourceName: string) =>

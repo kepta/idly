@@ -1,3 +1,5 @@
+import { Feature } from 'idly-common/lib/osm/feature';
+import { EntityType } from 'idly-common/lib/osm/structures';
 import {
   WorkerActions,
   WorkerActionsType,

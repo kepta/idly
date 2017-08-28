@@ -1,6 +1,6 @@
 import { Map as $Map, Set as $Set } from 'immutable';
 
-import { Entities, Entity, EntityId } from 'idly-common/lib/osm';
+import { Entities, Entity, EntityId } from 'idly-common/lib/osm/structures';
 
 import { Feature } from 'idly-common/lib/osm/feature';
 

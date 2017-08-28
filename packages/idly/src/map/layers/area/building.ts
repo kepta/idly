@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -12,8 +13,8 @@ const filter = fromJS([
   ['==', '$type', 'Polygon'],
   [
     'any',
-    ['==', 'tagsClassType', 'tag-amenity-shelter'],
-    ['==', 'tagsClass', 'tag-building']
+    ['==', `${PLUGIN_NAME}.tagsClassType`, 'tag-amenity-shelter'],
+    ['==', `${PLUGIN_NAME}.tagsClass`, 'tag-building']
   ]
 ]);
 

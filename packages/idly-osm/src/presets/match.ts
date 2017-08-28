@@ -43,3 +43,7 @@ export function presetsMatch(
   });
   return match || all.item(geometry);
 }
+
+// "idly": "file:../idly",
+// "idly-common": "file:../idly-common",
+// "idly-data": "file:../idly-data",

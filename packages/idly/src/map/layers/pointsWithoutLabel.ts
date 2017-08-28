@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 
-import { OsmGeometry } from 'idly-common/lib';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -25,12 +26,17 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['!has', 'icon'],
+        ['!has', `${PLUGIN_NAME}.icon`],
         ['==', '$type', 'Point'],
         /**
          * @REVISIT this vertex problem
          */
-        ['!in', 'geometry', OsmGeometry.VERTEX, OsmGeometry.VERTEX_SHARED]
+        [
+          '!in',
+          `${PLUGIN_NAME}.geometry`,
+          OsmGeometry.VERTEX,
+          OsmGeometry.VERTEX_SHARED
+        ]
       ])
     })
   });

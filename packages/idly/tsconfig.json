@@ -12,13 +12,14 @@
     "strictNullChecks": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "pretty": true
+    "pretty": true,
+    "declaration": true
   },
   "include": [
     "./src/**/*"
   ],
   "exclude": [
-    "./_grave_yard",
+    "./src/_grave_yard/**/*",
     "node_modules",
     "build",
     "scripts",

@@ -1,6 +1,6 @@
 import { actionBuilderFactory } from 'common/actions';
 
-import { EntityId } from 'idly-common/lib/osm';
+import { EntityId } from 'idly-common/lib/osm/structures';
 
 export enum CoreActions {
   // initiate a selection call

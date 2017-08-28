@@ -12,7 +12,9 @@
     "declaration": true,
     "isolatedModules": false
   },
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
     "./lib/**/*",
     "./src/**/*.test.*",

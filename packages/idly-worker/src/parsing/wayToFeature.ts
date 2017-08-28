@@ -20,12 +20,11 @@ import { LineString, Polygon } from 'geojson';
 export function wayCombiner(
   way: Way,
   table: EntityTable,
-  existingProps: { geometry: OsmGeometry; [key: string]: string } = {
-    geometry: OsmGeometry.LINE
-  }
+  existingProps: { 'osm_basic.geometry': OsmGeometry; [key: string]: string }
 ) {
   // @TOFIX code duplication
-  const existingGeometry = existingProps.geometry;
+  // @REVISIT this osm_basic injection, sems hacks
+  const existingGeometry = existingProps['osm_basic.geometry'];
   if (!existingGeometry) {
     throw new Error('geometry not found in existing props');
   }

@@ -1,0 +1,4 @@
+npm i -S ../idly-common && \
+npm i -S ../idly-data && \
+npm link idly-common && \
+npm link idly-data

@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 
 import { areaPaintStyle } from 'map/layers/area';
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -13,7 +14,7 @@ const filter = fromJS([
   ['==', '$type', 'Polygon'],
   [
     'in',
-    'tagsClassType',
+    `${PLUGIN_NAME}.tagsClassType`,
     'tag-landuse-cemetery',
     'tag-landuse-orchard',
     'tag-landuse-meadow',

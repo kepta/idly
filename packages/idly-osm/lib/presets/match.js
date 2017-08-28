@@ -32,4 +32,7 @@ function presetsMatch(all, index, areaKeys, geometry, tags) {
     return match || all.item(geometry);
 }
 exports.presetsMatch = presetsMatch;
+// "idly": "file:../idly",
+// "idly-common": "file:../idly-common",
+// "idly-data": "file:../idly-data",
 //# sourceMappingURL=match.js.map

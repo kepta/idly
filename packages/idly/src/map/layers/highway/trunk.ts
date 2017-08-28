@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
 
@@ -25,7 +26,12 @@ export const highwayTrunk = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['in', 'tagsClassType', 'tag-highway-trunk', 'tag-highway-trunk_link']
+        [
+          'in',
+          `${PLUGIN_NAME}.tagsClassType`,
+          'tag-highway-trunk',
+          'tag-highway-trunk_link'
+        ]
       ])
     })
   });

@@ -9,7 +9,7 @@ import { IRootStateType, observe, store } from 'common/store';
 
 import { attachToWindow } from 'utils/attach_to_window';
 
-import { Draw } from 'draw/draw';
+// import { Draw } from 'draw/draw';
 
 import { SOURCES, ZOOM } from 'map/constants';
 import { SourceLayered } from 'map/layers/layers';
@@ -157,7 +157,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
       // var parse = JSON.stringify(JSON.parse(this.jsonqueue));
       console.timeEnd('acparse');
 
-      this.map.getSource('virgin').setData(this.jsonqueue);
+      this.map.getSource('virgin').setData(JSON.parse(this.jsonqueue));
       console.timeEnd('parse1');
     }
   };
