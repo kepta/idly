@@ -1,1 +1,0 @@
-{"version":3,"file":"dummyParentWaysGen.js","sourceRoot":"","sources":["../../src/helpers/dummyParentWaysGen.ts"],"names":[],"mappings":";;AAEA,4BAAmC,GAAQ;IACzC,MAAM,UAAU,GAAe,IAAI,GAAG,EAAE,CAAC;IACzC,MAAM,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC,OAAO,CAAC,CAAC,IAAI,UAAU,CAAC,GAAG,CAAC,CAAC,EAAE,GAAG,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;IACzD,MAAM,CAAC,UAAU,CAAC;AACpB,CAAC;AAJD,gDAIC"}

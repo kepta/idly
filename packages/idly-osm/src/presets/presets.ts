@@ -135,10 +135,13 @@ export function initPresets(d: {} = presetsData.presets) {
     }
   }
 
-  return { all, recent, index, defaults };
+  var field = function(id) {
+    return fields[id];
+  };
+  return { all, recent, index, defaults, field };
 }
 
-export const presets: { all; defaults; index; recent } = initPresets();
+export const presets: { all; defaults; index; recent; field } = initPresets();
 
 export const areaKeys = initAreaKeys(presets.all);
 

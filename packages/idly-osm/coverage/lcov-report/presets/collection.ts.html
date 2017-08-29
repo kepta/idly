@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for presets/collection.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">presets</a> collection.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60.34% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>35/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">40% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.22% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60.34% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>35/58</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">923x</span>
+<span class="cline-any cline-yes">515385x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">226x</span>
+<span class="cline-any cline-yes">226x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">162x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as _ from 'lodash';
+&nbsp;
+import { utilEditDistance } from '../helpers/editDistance';
+&nbsp;
+export function presetCollection(collection) {
+  const maxSearchResults = 50;
+  const maxSuggestionResults = 10;
+&nbsp;
+  const presets = {
+    collection,
+&nbsp;
+    item(id) {
+      return _.find(this.collection, function(d: {}) {
+        return d.id === id;
+      });
+    },
+&nbsp;
+    matchGeometry(geometry) {
+      return<span class="missing-if-branch" title="if path not taken" >I</span> presetCollection(
+        this.col<span class="cstat-no" title="statement not covered" >lection.filte</span>r(function(d) {
+          return d.matchGeometry(geometry);
+        })
+      );
+    },
+<span class="fstat-no" title="function not covered" ></span>
+    search(value, geometry) {<span class="cstat-no" title="statement not covered" ></span>
+      if (!value<span class="cstat-no" title="statement not covered" >) return this;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+      function leading(a) {
+        const in<span class="cstat-no" title="statement not covered" >dex = a.indexOf(value);</span>
+        return index === 0 || a[index - 1] === ' ';
+      }
+&nbsp;
+      function suggestionName(name) {
+        const nameArray = name.split(' - ');
+        if (nameArray.length &gt; 1) {
+          name = nameArray.slice(0, nameArray.length - 1).join(' - ');
+        }
+        return name.toLowerCase();
+      }
+&nbsp;
+      value = value.<span class="fstat-no" title="function not covered" >to</span>LowerCase();
+&nbsp;
+      const sear<span class="cstat-no" title="statement not covered" >chable = _.filter(this.collection, func</span>tion(a: {}) {
+        return a<span class="cstat-no" title="statement not covered" >.searchable !== false &amp;&amp; a.suggestion !== true;</span>
+      });<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+      const suggestions = _.filter(this.collection, function(a: {}) {
+        return a.suggestion === true;
+      });<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+      // matches<span class="cstat-no" title="statement not covered" > value to preset.name</span>
+      const leadingName = _.filter(searchable, function(a) {
+        return leading(a.name().toLowerCase());
+      }).sort(function(a, b) {
+        let i;<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+        i = b.originalScore - a.originalScore;
+        if (i !== 0) return i;
+&nbsp;
+        i =<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+          a.name().toLowerCase().indexOf(value) -
+          b.name().toLowerCase().indexOf(value);
+        if (i !== 0) return i;
+&nbsp;
+        return a.name().length - b.name().length;
+      });
+&nbsp;
+      // matches value to preset.terms values
+      const leadingTerms = _.filter(searchable, function(a) {
+        return _.some(a.terms() || [], leading);
+      });
+&nbsp;
+      // matches value to preset.tags values
+      const leadingTagValues = _.filter(searchable, function(a) {
+        return _.some(_.without(_.values(a.tags || {}), '*'), leading);
+      });
+&nbsp;
+      // finds close matches to value in preset.name
+      const similarName = searchable
+        .map(function(a) {
+          return {<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+            preset: a,
+            dist: utilEditDistance(value, a.name())
+          };
+        })
+        .filter(function(a) {<span class="fstat-no" title="function not covered" ></span>
+          return<span class="cstat-no" title="statement not covered" > (</span>
+            a.dist +<span class="fstat-no" title="function not covered" > M</span>ath.min(value.length - a.preset.name().length, 0) &lt; 3
+          );<span class="cstat-no" title="statement not covered" ></span>
+        })<span class="cstat-no" title="statement not covered" ></span>
+        .sort(function(a, <span class="cstat-no" title="statement not covered" >b) {</span>
+          return<span class="cstat-no" title="statement not covered" > a.dist - b.dist;</span>
+        })<span class="cstat-no" title="statement not covered" ></span>
+        .map(function(a) {
+          return a.p<span class="cstat-no" title="statement not covered" >reset;</span>
+        });
+&nbsp;
+      // finds close <span class="fstat-no" title="function not covered" >ma</span>tches to value in preset.terms
+      const simi<span class="cstat-no" title="statement not covered" >larTerms = _.filter(searchable, function(a) {</span>
+        return _.some(a.terms() || [], function(b: {}) {
+          return (
+            utilEditDistance(value, b) + Math.min(value.length - b.length, 0) &lt;
+            3
+          );<span class="fstat-no" title="function not covered" ></span>
+        });<span class="cstat-no" title="statement not covered" ></span>
+      });
+&nbsp;
+      const leadingSuggestions = _.filter(suggestions, function(a) {
+        return leading<span class="fstat-no" title="function not covered" >(s</span>uggestionName(a.name()));
+      }).sort(fu<span class="cstat-no" title="statement not covered" >nction(a, b) {</span>
+        a = suggestionName(a.name());
+        b = suggestio<span class="fstat-no" title="function not covered" >nN</span>ame(b.name());
+        const i <span class="cstat-no" title="statement not covered" >= a.indexOf(value</span>) - b.indexOf(value);
+        if (i === 0) return a.length - b.length;
+        else return i;
+      });
+&nbsp;
+      const similarSuggestions = suggestions
+        .map(function(a) {
+          return {
+            preset: a,
+            dist: utilEditDistance(value, suggestionName(a.name()))
+          };
+        })
+        .filter(function(a) {
+          return (
+            a.dist +
+              Math.min(
+                value.length - suggestionName(a.preset.name()).length,
+                0
+              ) &lt;
+            1
+          );
+        })
+        .sort(function(a, b) {
+          return a.dist - b.dist;
+        })
+        .map(function(a) {
+          return a.preset;
+        });
+&nbsp;
+      const other = presets.item(geometry);
+&nbsp;
+      const results = leadingName
+        .concat(
+          leadingTerms,
+          leadingTagValues,
+          leadingSuggestions.slice(0, maxSuggestionResults + 5),
+          similarName,
+          similarTerms,
+          similarSuggestions.slice(0, maxSuggestionResults)
+        )
+        .slice(0, maxSearchResults - 1);
+&nbsp;
+      return presetCollection(_.uniq(results.concat(other)));
+    }
+  };
+&nbsp;
+  return presets;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Aug 29 2017 19:59:11 GMT+0530 (IST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

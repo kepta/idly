@@ -1,18 +1,60 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import Card from 'antd/lib/card';
 
-export class TestOsm extends React.PureComponent {
+import { FeatureTable } from 'idly-common/lib/osm/feature';
+import {
+  EntityId,
+  EntityTable,
+  EntityType,
+  OsmGeometry
+} from 'idly-common/lib/osm/structures';
+
+import { PLUGIN_NAME } from '../config/config';
+import { getNodeGeometry } from '../helpers/getNodeGeometry';
+import { presets, presetsMatcher } from '../presets/presets';
+import { nameField, NameField } from './fields/Name';
+
+export interface SelectState {
+  readonly selectedIds: EntityId[];
+  readonly entityTable: EntityTable;
+  readonly featureTable: FeatureTable<any, any>;
+}
+
+export interface PropsType {
+  idlyState: {
+    select: SelectState;
+  };
+}
+
+const gridStyle = {
+  width: '25%',
+  textAlign: 'center'
+};
+
+export class TestOsm extends React.Component<PropsType, {}> {
   render() {
     if (!this.props.idlyState) {
       throw new Error('no idly state');
     }
-    const id =
-      this.props.idlyState.select.entities &&
-      this.props.idlyState.select.entities.toJS();
-    return (
-      <div>
-        {JSON.stringify(id, null, 2)}
-      </div>
-    );
+    const selectedIds = this.props.idlyState.select.selectedIds;
+    // console.log(nameField);
+    if (selectedIds.length === 1) {
+      const entity = this.props.idlyState.select.entityTable.get(
+        selectedIds[0]
+      );
+      console.log();
+      let geometry = this.props.idlyState.select.featureTable.get(
+        selectedIds[0]
+      ).properties[`${PLUGIN_NAME}.geometry`];
+
+      console.log(presetsMatcher(geometry, entity.tags));
+      return (
+        <div style={{ margin: 4 }}>
+          <NameField tags={entity.tags} />
+        </div>
+      );
+    }
+    return null;
   }
 }

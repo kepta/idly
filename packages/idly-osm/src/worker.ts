@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from './';
+import { PLUGIN_NAME } from './config/config';
 import {
   EntityTable,
   EntityType,
