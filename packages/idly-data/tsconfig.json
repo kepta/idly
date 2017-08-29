@@ -2,17 +2,17 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "lib",
-    "module": "es2015",
+    "module": "umd",
     "moduleResolution": "node",
     "target": "es2015",
-    "jsx": "react",
-    "strict": false,
+    "strict": true,
     "pretty": true,
-    "typeRoots": ["./types"],
     "declaration": true,
     "isolatedModules": false
   },
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
     "./src/**/*.test.ts",
     "node_modules",
