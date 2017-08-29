@@ -38,9 +38,12 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "skipBabel": true
+        "skipBabel": false
       }
     },
+    "testPathIgnorePatterns": [
+      "<rootDir>/lib"
+    ],
     "moduleDirectories": [
       "<rootDir>/node_modules",
       "<rootDir>/src"

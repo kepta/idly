@@ -13,7 +13,7 @@ import {
 import { PLUGIN_NAME } from '../config/config';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 import { presets, presetsMatcher } from '../presets/presets';
-import { nameField, NameField } from './fields/Name';
+import { NameField } from './fields/Name';
 
 export interface SelectState {
   readonly selectedIds: EntityId[];
@@ -32,7 +32,7 @@ const gridStyle = {
   textAlign: 'center'
 };
 
-export class TestOsm extends React.Component<PropsType, {}> {
+export class Fields extends React.Component<PropsType, {}> {
   render() {
     if (!this.props.idlyState) {
       throw new Error('no idly state');
@@ -43,7 +43,6 @@ export class TestOsm extends React.Component<PropsType, {}> {
       const entity = this.props.idlyState.select.entityTable.get(
         selectedIds[0]
       );
-      console.log();
       let geometry = this.props.idlyState.select.featureTable.get(
         selectedIds[0]
       ).properties[`${PLUGIN_NAME}.geometry`];
