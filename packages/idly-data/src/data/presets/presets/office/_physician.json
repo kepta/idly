@@ -1,6 +1,7 @@
 {
     "icon": "commercial",
     "fields": [
+        "name",
         "address",
         "building_area",
         "opening_hours"
@@ -13,6 +14,6 @@
     "tags": {
         "office": "physician"
     },
-    "terms": [],
+    "searchable": false,
     "name": "Physician"
 }
