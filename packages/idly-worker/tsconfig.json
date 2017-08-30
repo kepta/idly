@@ -16,7 +16,6 @@
     "./src/**/*"
   ],
   "exclude": [
-    "./xsrc/**/*.test.ts",
     "node_modules",
     "build",
     "scripts",

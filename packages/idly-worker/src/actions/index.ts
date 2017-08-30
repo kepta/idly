@@ -1,6 +1,7 @@
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { Feature } from 'idly-common/lib/osm/feature';
-import { Entity, EntityId } from 'idly-common/lib/osm/structures';
+import { JSONFriendlyEntities } from 'idly-common/lib/osm/makeJSONFriendlyEntities';
+import { Entity, EntityId, Node } from 'idly-common/lib/osm/structures';
 
 export enum WorkerActions {
   GET_VIRGIN_ENTITIES = 'WorkerActions.GET_VIRGIN_ENTITIES',
@@ -33,17 +34,17 @@ export interface WorkerFetchMap {
 export interface WorkerGetEntities {
   type: WorkerActions.GET_VIRGIN_ENTITIES;
   request: {
-    entitiesId: EntityId[];
+    entityIds: EntityId[];
   };
   response?: {
-    entities: Entity[];
+    entities: JSONFriendlyEntities;
   };
 }
 
 export interface WorkerGetFeatures {
   type: WorkerActions.GET_VIRGIN_FEATURES;
   request: {
-    entitiesId: EntityId[];
+    entityIds: EntityId[];
   };
   response?: {
     features: Array<Feature<any, any>>;

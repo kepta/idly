@@ -44,8 +44,8 @@ Object {
   },
   "id": "w1",
   "properties": Object {
-    "geometry": "line",
     "id": "w1",
+    "osm_basic.geometry": "line",
   },
   "type": "Feature",
 }

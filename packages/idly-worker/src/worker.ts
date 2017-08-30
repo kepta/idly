@@ -9,6 +9,8 @@ import {
 } from './actions';
 import { Manager } from './store/manager';
 
+import { makeJSONFriendlyEntities } from 'idly-common/lib/osm/makeJSONFriendlyEntities';
+
 export function main(plugins) {
   const manager = new Manager(plugins);
   return function messageParsing(
@@ -27,18 +29,18 @@ export function main(plugins) {
         }));
       }
       case WorkerActions.GET_VIRGIN_ENTITIES: {
-        const { entitiesId } = message.request;
-        const entities = manager.entityLookup(entitiesId);
+        const { entityIds } = message.request;
+        const entities = manager.entityLookup(entityIds);
         return {
           ...message,
           response: {
-            entities
+            entities: makeJSONFriendlyEntities(entities)
           }
         };
       }
       case WorkerActions.GET_VIRGIN_FEATURES: {
-        const { entitiesId } = message.request;
-        return manager.featureLookup(entitiesId).then(features => ({
+        const { entityIds } = message.request;
+        return manager.featureLookup(entityIds).then(features => ({
           ...message,
           response: {
             features

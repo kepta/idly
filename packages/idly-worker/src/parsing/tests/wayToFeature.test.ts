@@ -85,17 +85,19 @@ describe('way.test', () => {
 
     const g = entityTableGen(new Map(), [n1, n2, n3]);
     it('should behave...', () => {
-      const result = wayCombiner(way, g);
+      const result = wayCombiner(way, g, {
+        'osm_basic.geometry': OsmGeometry.LINE
+      });
       expect(result).toMatchSnapshot();
     });
 
     it('sets up existing props', () => {
       const result = wayCombiner(way, g, {
-        geometry: OsmGeometry.LINE,
+        'osm_basic.geometry': OsmGeometry.LINE,
         k: 'k'
       });
       expect(result.properties).toMatchObject({
-        geometry: 'line',
+        'osm_basic.geometry': 'line',
         id: 'w1',
         k: 'k'
       });

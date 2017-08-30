@@ -75,6 +75,10 @@
       "<rootDir>/node_modules",
       "<rootDir>/src"
     ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib"
+    ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
