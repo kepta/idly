@@ -2,7 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "lib",
-    "module": "umd",
+    "module": "commonjs",
     "moduleResolution": "node",
     "target": "es2015",
     "strict": true,
