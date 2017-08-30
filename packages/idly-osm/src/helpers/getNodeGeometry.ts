@@ -7,11 +7,9 @@ import {
 
 export function getNodeGeometry(
   id: EntityId,
-  parentWays: ParentWays
+  parentWay: Set<string>
 ): NodeGeometry {
-  if (parentWays.has(id))
-    return parentWays.get(id).size > 1
-      ? OsmGeometry.VERTEX_SHARED
-      : OsmGeometry.VERTEX;
-  return OsmGeometry.POINT;
+  if (parentWay.size === 0) return OsmGeometry.POINT;
+
+  return parentWay.size === 1 ? OsmGeometry.VERTEX : OsmGeometry.VERTEX_SHARED;
 }

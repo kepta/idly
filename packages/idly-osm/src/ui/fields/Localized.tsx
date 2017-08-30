@@ -7,7 +7,7 @@ import { presets } from '../../presets/presets';
 export interface PropsType {
   tags: Tags;
 }
-export class NameField extends React.PureComponent<PropsType, any> {
+export class Localized extends React.PureComponent<PropsType, any> {
   field: any;
   constructor(props) {
     super(props);

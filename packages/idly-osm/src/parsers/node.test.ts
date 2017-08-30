@@ -18,23 +18,17 @@ const n11 = nodeFactory({
   tags: tagsFactory({ k: 'k' })
 });
 
+const dummyParentWays = dummyParentWaysGen({
+  n3780767744: new Set(['w40542208']),
+  n4558992269: new Set(['w40542208']),
+  n253179996: new Set(['w40882200', 'w237684574', 'w173431854', 'w450548831']),
+  n1485636774: new Set(['w40882200', 'w135262258'])
+});
 describe('node property generator', () => {
   it('should work', () => {
+    // @TOFIX change to immutable once finsished rolling out
     expect(
-      nodePropertiesGen(
-        n1,
-        dummyParentWaysGen({
-          n3780767744: new Set(['w40542208']),
-          n4558992269: new Set(['w40542208']),
-          n253179996: new Set([
-            'w40882200',
-            'w237684574',
-            'w173431854',
-            'w450548831'
-          ]),
-          n1485636774: new Set(['w40882200', 'w135262258'])
-        })
-      )
+      nodePropertiesGen(n1, dummyParentWays.get(n1.id) || new Set())
     ).toMatchSnapshot();
   });
 

@@ -1,5 +1,7 @@
+import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import {
   Node,
+  EntityType,
   NodeGeometry,
   ParentWays,
   Tags,
@@ -11,9 +13,11 @@ import { presetsMatcherCached } from '../presets/presets';
 
 export const DEFAULT_NODE_ICON = 'circle';
 
-export function nodePropertiesGen(node: Node, parentWays: ParentWays) {
-  return applyNodeMarkup(getNodeGeometry(node.id, parentWays), node.tags);
-}
+export const nodePropertiesGen = weakCache2(
+  (node: Node, parentWay: Set<string>) => {
+    return applyNodeMarkup(getNodeGeometry(node.id, parentWay), node.tags);
+  }
+);
 
 export const applyNodeMarkup = (geometry: NodeGeometry, tags: Tags) => {
   const match = presetsMatcherCached(geometry)(tags);

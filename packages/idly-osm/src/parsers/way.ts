@@ -12,7 +12,7 @@ import { presetsMatcherCached } from '../presets/presets';
 
 const tagClassesPrimaryCache = weakCache(tagClassesPrimary);
 
-export function wayPropertiesGen(way: Way, table: EntityTable) {
+export const wayPropertiesGen = weakCache((way: Way) => {
   const geometry = isArea(way) ? OsmGeometry.AREA : OsmGeometry.LINE;
   const [tagsClass, tagsClassType] = tagClassesPrimaryCache(way.tags);
   const match = presetsMatcherCached(geometry)(way.tags);
@@ -23,4 +23,4 @@ export function wayPropertiesGen(way: Way, table: EntityTable) {
     tagsClass,
     tagsClassType
   };
-}
+});
