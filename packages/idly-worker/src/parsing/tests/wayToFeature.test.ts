@@ -1,9 +1,14 @@
 import { geometry } from '@turf/helpers';
 
+import { ImMap } from 'idly-common/lib/misc/immutable';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
-import { OsmGeometry } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  EntityTable,
+  OsmGeometry
+} from 'idly-common/lib/osm/structures';
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
@@ -16,7 +21,7 @@ import {
 const way = wayFactory({
   id: 'w1',
   nodes: ['n1'],
-  tags: tagsFactory({ highway: 'residential' })
+  tags: tagsFactory([['highway', 'residential']])
 });
 
 const node = nodeFactory({ id: 'n1' });
@@ -24,7 +29,8 @@ const node = nodeFactory({ id: 'n1' });
 describe('way.test', () => {
   describe('wayToLineString', () => {
     it('should throw error when no geometry provided', () => {
-      expect(() => wayToLineString(null, [[1, 2]])).toThrow();
+      // @ts-ignore
+      expect(() => wayToLineString(undefined, [[1, 2]])).toThrow();
       expect(() => wayToLineString(OsmGeometry.POINT, [[1, 2]])).toThrow();
     });
     it('should not work when correct coords provided with wrong geometry', () => {
@@ -51,22 +57,22 @@ describe('way.test', () => {
 
   describe('getNodesFromGraph', () => {
     it('should get nodes correctly', () => {
-      const n1 = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
-      const g = new Map();
-      g.set(n1.id, n1);
+      const n1: Entity = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
+      let g: EntityTable = ImMap();
+      g = g.set(n1.id, n1);
       expect(getCoordsFromTable(g, ['n1'])).toMatchSnapshot();
     });
     it('should throw error if nodes not found', () => {
       const n1 = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
-      const g = new Map();
-      g.set(n1.id, n1);
+      let g: EntityTable = ImMap();
+      g = g.set(n1.id, n1);
       expect(() => getCoordsFromTable(g, ['n2'])).toThrow();
     });
 
     it('should work when multiple nodes are there ingraph', () => {
       const n1 = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
       const n2 = nodeFactory({ id: 'n2', loc: genLngLat([3, 4]) });
-      const g = entityTableGen(new Map(), [n1, n2]);
+      const g = entityTableGen([n1, n2]);
       expect(getCoordsFromTable(g, ['n2'])).toMatchSnapshot();
       expect(getCoordsFromTable(g, ['n1', 'n2'])).toMatchSnapshot();
     });
@@ -80,10 +86,10 @@ describe('way.test', () => {
     const w1 = wayFactory({
       id: 'w1',
       nodes: ['n1', 'n3'],
-      tags: tagsFactory({ highway: 'residential' })
+      tags: tagsFactory([['highway', 'residential']])
     });
 
-    const g = entityTableGen(new Map(), [n1, n2, n3]);
+    const g = entityTableGen([n1, n2, n3]);
     it('should behave...', () => {
       const result = wayCombiner(way, g, {
         'osm_basic.geometry': OsmGeometry.LINE

@@ -9,8 +9,6 @@ import {
 } from './actions';
 import { Manager } from './store/manager';
 
-import { makeJSONFriendlyEntities } from 'idly-common/lib/osm/makeJSONFriendlyEntities';
-
 export function main(plugins) {
   const manager = new Manager(plugins);
   return function messageParsing(
@@ -34,7 +32,7 @@ export function main(plugins) {
         return {
           ...message,
           response: {
-            entities: makeJSONFriendlyEntities(entities)
+            entities
           }
         };
       }
@@ -48,8 +46,8 @@ export function main(plugins) {
         }));
       }
       default: {
-        console.log(message.request);
-        return;
+        console.log(message);
+        return message;
       }
     }
   };

@@ -1,3 +1,5 @@
+import { deepFreeze } from 'idly-common/lib/misc/deepFreeze';
+import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { attributesGen } from 'idly-common/lib/osm/attributesGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
@@ -5,27 +7,28 @@ import { relationFactory } from 'idly-common/lib/osm/relationFactory';
 import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
 import {
   Entity,
+  EntityId,
+  EntityTable,
   Node,
   ParentWays,
   Relation,
+  Tags,
   Way
 } from 'idly-common/lib/osm/structures';
+import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
-/**
- * @param parentWays mutates in place
- * @param ways
- */
 export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
-  ways.forEach(w =>
-    w.nodes.forEach(nodeId => {
-      const waySet = parentWays.get(nodeId);
-      if (waySet) return waySet.add(w.id);
-      parentWays.set(nodeId, new Set([w.id]));
-    })
-  );
-
-  return parentWays;
+  console.time('Imm: calculateParentWays');
+  const x = parentWays.withMutations(p => {
+    ways.forEach(w => {
+      w.nodes.forEach(nodeId => {
+        p.update(nodeId, (s = ImSet()) => s.add(w.id));
+      });
+    });
+  });
+  console.timeEnd('Imm: calculateParentWays');
+  return x;
 }
 
 const xmlIndex = process.env.NODE_ENV === 'test' ? 0 : 2;
@@ -40,21 +43,27 @@ const xmlIndex = process.env.NODE_ENV === 'test' ? 0 : 2;
  * @param parentWays
  */
 export function parseXML(
-  xml: Document,
-  parentWays: ParentWays = new Map()
-): {
-  entities: Entity[];
-  parentWays: ParentWays;
-} {
+  xml: Document | undefined,
+  parentWays: ParentWays = ImMap()
+):
+  | undefined
+  | {
+      entities: Entity[];
+      parentWays: ParentWays;
+    } {
   if (!xml || !xml.childNodes) return;
   const root = xml.childNodes[xmlIndex];
 
   const children = root.childNodes;
   const entities: Entity[] = [];
-  const nodesXML = [];
-  const waysXML = [];
-  const relationsXML = [];
-  const group = {
+  const nodesXML: any = [];
+  const waysXML: any = [];
+  const relationsXML: any = [];
+  const group: {
+    node: Node[];
+    way: Way[];
+    relation: Relation[];
+  } = {
     node: [],
     way: [],
     relation: []
@@ -73,6 +82,8 @@ export function parseXML(
   // calculate parentWays.
   // @NOTE calculateParentWays directly mutates
   //  I want to change this behaviour
+  // parentWays = calculateParentWays(parentWays, group.way);
+
   parentWays = calculateParentWays(parentWays, group.way);
 
   group.node = group.node.map(n => parsers.node(n));
@@ -113,14 +124,14 @@ function getNodes(obj) {
   return nodes;
 }
 
-function getTags(obj) {
+function getTags(obj): Tags {
   const elems = obj.getElementsByTagName('tag');
-  const tags = new Map();
+  const t: Array<[string, string]> = [];
   for (let i = 0, l = elems.length; i < l; i++) {
     const attrs = elems[i].attributes;
-    tags.set(attrs.getNamedItem('k').value, attrs.getNamedItem('v').value);
+    t.push([attrs.getNamedItem('k').value, attrs.getNamedItem('v').value]);
   }
-  return tags;
+  return tagsFactory(t);
 }
 
 function getLoc(attrs) {

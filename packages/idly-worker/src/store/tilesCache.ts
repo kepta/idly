@@ -4,7 +4,7 @@ import * as bboxPolygon from '@turf/bbox-polygon';
 import * as transformScale from '@turf/transform-scale';
 
 import { BBox } from 'idly-common/lib/geo/bbox';
-import { Entity, EntityType } from 'idly-common/lib/osm/structures';
+import { Entity, EntityType, Tags } from 'idly-common/lib/osm/structures';
 
 import { Tile } from 'idly-common/lib/geo/tile';
 
@@ -29,16 +29,16 @@ export class TilesCache {
     this.rbushCache.insert(tile);
     this.cache.set(xyz, entities);
   }
-  get(tile: Tile) {
+  getTile(tile: Tile): Entity[] {
     const xyz = TilesCache.stringify(tile);
-    return this.cache.get(xyz);
+    return this.cache.get(xyz) || [];
   }
   search(bbox: BBox, zoom: number, scale: number) {
     const scaledBbox = scale === 1 ? bbox : TilesCache.scaleBbox(bbox, scale);
     const resultTiles = this.rbushCache.search(scaledBbox);
     const tiledEntities = resultTiles.filter(t => t.xyz.z === zoom).map(t => {
       const tile = t.xyz;
-      return this.get(tile);
+      return this.getTile(tile);
     });
     console.log(zoom, tiledEntities.length);
     return tiledEntities.reduce((prev, cur) => prev.concat(cur), []);

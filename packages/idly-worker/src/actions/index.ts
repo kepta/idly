@@ -1,6 +1,5 @@
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { Feature } from 'idly-common/lib/osm/feature';
-import { JSONFriendlyEntities } from 'idly-common/lib/osm/makeJSONFriendlyEntities';
 import { Entity, EntityId, Node } from 'idly-common/lib/osm/structures';
 
 export enum WorkerActions {
@@ -37,7 +36,7 @@ export interface WorkerGetEntities {
     entityIds: EntityId[];
   };
   response?: {
-    entities: JSONFriendlyEntities;
+    entities: Entity[];
   };
 }
 

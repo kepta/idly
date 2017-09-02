@@ -7,6 +7,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es6",
     "strict": false,
+    "noStrictGenericChecks": true,
     "pretty": true,
     "declaration": true,
     "isolatedModules": false,

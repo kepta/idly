@@ -55,10 +55,10 @@ export function getCoordsFromTable(
  *  planning to use it for memoization.
  *  every ms counts. hehehe.
  */
-export function wayToLineString(geometry: OsmGeometry, nodeCoords: number[][]) {
-  if (geometry === OsmGeometry.LINE) {
+export function wayToLineString(geom: OsmGeometry, nodeCoords: number[][]) {
+  if (geom === OsmGeometry.LINE) {
     return turfLineString(nodeCoords, {});
-  } else if (geometry === OsmGeometry.AREA) {
+  } else if (geom === OsmGeometry.AREA) {
     return turfPolygon([nodeCoords], {});
   } else {
     throw new Error('not a matching geometry provided for way');

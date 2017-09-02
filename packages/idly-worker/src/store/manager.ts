@@ -1,4 +1,10 @@
+import { Feature } from 'idly-common/lib/osm/feature';
+import { List as ImList, Map as ImMap, Set as ImSet } from 'immutable';
+
 import { BBox } from 'idly-common/lib/geo/bbox';
+import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
+import { Tile } from 'idly-common/lib/geo/tile';
+import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import {
   Entity,
@@ -7,24 +13,18 @@ import {
   ParentWays
 } from 'idly-common/lib/osm/structures';
 
-import { parseXML } from '../parsing/parser';
-
-import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
-import { Tile } from 'idly-common/lib/geo/tile';
-// import { onParseEntities } from 'idly-osm/lib/worker';
-
 import { entityToGeoJSON } from '../geojson/entityToGeoJSON';
 import { fetchTile } from '../parsing/fetch';
+import { parseXML } from '../parsing/parser';
 import { TilesCache } from '../store/tilesCache';
 import { recursiveLookup } from '../util/recursiveLookup';
 
 export class Manager {
   private tilesCache = new TilesCache();
-  private parentWays: ParentWays = new Map();
-  private masterTable: EntityTable = new Map();
+  private parentWays: ParentWays = ImMap();
+  private masterTable: EntityTable = ImMap();
   private pluginsWorker: Promise<any[]>;
   constructor(pluginPromise: Promise<any>) {
-    console.log(pluginPromise);
     this.pluginsWorker = pluginPromise.then(x => {
       if (!x) {
         console.error('empty plugin promise');
@@ -32,14 +32,18 @@ export class Manager {
       }
       return x.workers.map(w => {
         if (!w || !w.worker || !w.pluginName) throw new Error('empty worker');
-        return w;
+        return {
+          ...w,
+          worker: weakCache2(w.worker)
+        };
       });
     });
   }
   receive(bbox: BBox, zoom: number) {
+    zoom = 18;
     zoom = Math.floor(zoom);
     const xyzs = bboxToTiles(bbox, zoom);
-    console.log(bbox, zoom, xyzs);
+    console.log('count', bbox, zoom, xyzs.length);
     return this.fetchAndParse(xyzs).then(() => this.toFeatures(bbox, zoom));
   }
   entityLookup(entityIds: EntityId[]): Entity[] {
@@ -50,7 +54,7 @@ export class Manager {
   }
   async featureLookup(entityIds: EntityId[]): Promise<any[]> {
     const entities = this.entityLookup(entityIds);
-    const entityTable: EntityTable = entityTableGen(new Map(), entities);
+    const entityTable: EntityTable = entityTableGen(entities);
     const cmptProps = await this.computePropsTable(
       entityTable,
       this.parentWays
@@ -59,14 +63,15 @@ export class Manager {
     return feats;
   }
   private async computePropsTable(
-    t: EntityTable,
-    p: ParentWays
+    entityTable: EntityTable,
+    parentWays: ParentWays
   ): Promise<Map<EntityId, { [index: string]: string }>> {
     console.time('computePropsTable');
     const props = new Map();
     const workerPlugins = await this.pluginsWorker;
     for (const { worker } of workerPlugins) {
-      const computedProps = worker(t, p);
+      console.log('worker', entityTable.size, parentWays.size);
+      const computedProps = worker(entityTable, parentWays);
       for (const [entityId, val] of computedProps) {
         if (props.has(entityId)) {
           props.get(entityId).push(val);
@@ -82,7 +87,6 @@ export class Manager {
     return props;
   }
   private fetchAndParse(xyzs: Tile[]) {
-    // @TOFIX parseXML directly mutates parentWays not good
     return Promise.all(
       xyzs.filter(t => !this.tilesCache.has(t)).map(t => this.fetchProcess(t))
     );
@@ -94,19 +98,17 @@ export class Manager {
         return parseXML(xml, this.parentWays);
       })
       .then(e => {
-        // even though parentWays is the same, because it
-        // is a damn map, which is mutated directly is directly mutated.
+        if (!e) return;
         this.parentWays = e.parentWays;
-        this.masterTable = entityTableGen(this.masterTable, e.entities);
+        this.masterTable = entityTableGen(e.entities, this.masterTable);
         this.tilesCache.set(t, e.entities);
         console.timeEnd(`workerParsing=${t.x},${t.y},${t.z}`);
       });
   }
   private async toFeatures(bbox: BBox, zoom: number) {
     console.time(`worker.toFeatures`);
-
     const entities = this.tilesCache.search(bbox, zoom, 1);
-    const entityTable: EntityTable = entityTableGen(new Map(), entities);
+    const entityTable: EntityTable = entityTableGen(entities);
     const cmptProps = await this.computePropsTable(
       entityTable,
       this.parentWays
