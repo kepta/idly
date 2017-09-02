@@ -16,7 +16,37 @@
     "@types/geojson": "^1.0.3",
     "geojson": "^0.5.0",
     "immutable": "^3.8.1",
-    "tslint": "^5.6.0",
     "typed-immutable-record": "0.0.6"
+  },
+  "devDependencies": {
+    "@types/jest": "^20.0.8",
+    "jest": "^20.0.4",
+    "ts-jest": "^20.0.14",
+    "tslint": "^5.6.0",
+    "typescript": "^2.5.2"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }

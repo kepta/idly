@@ -1,29 +1,32 @@
-import { attributesGen } from "../osm/attributesGen";
+import { deepFreeze } from '../misc/deepFreeze';
+import { attributesGen } from '../osm/attributesGen';
 import {
   Attributes,
+  Entity,
   EntityId,
   EntityType,
   Relation,
   RelationMember,
-  Tags,
-} from "../osm/structures";
+  Tags
+} from '../osm/structures';
+import { tagsFactory } from './tagsFactory';
 
 export function relationFactory({
   id,
-  tags = new Map(),
+  tags = tagsFactory([]),
   attributes = attributesGen({}),
-  members = [],
+  members = []
 }: {
   id: EntityId;
   tags?: Tags;
   attributes?: Attributes;
   members?: RelationMember[];
 }): Relation {
-  return {
+  return deepFreeze<Relation>({
     id,
     type: EntityType.RELATION,
     tags,
     attributes,
-    members,
-  };
+    members
+  });
 }

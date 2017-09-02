@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags should create instance via tagsFactory 1`] = `"\\"[[\\\\\\"1\\\\\\",\\\\\\"2\\\\\\"],[\\\\\\"3\\\\\\",\\\\\\"3\\\\\\"]]\\""`;
+
+exports[`Tags should stringify 1`] = `"\\"[[\\\\\\"1\\\\\\",\\\\\\"2\\\\\\"],[\\\\\\"3\\\\\\",\\\\\\"3\\\\\\"]]\\""`;

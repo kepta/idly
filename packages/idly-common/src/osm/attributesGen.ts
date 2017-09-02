@@ -1,4 +1,4 @@
-import { Attributes } from "../osm/structures";
+import { Attributes } from '../osm/structures';
 
 export function attributesGen({
   visible,
@@ -6,7 +6,7 @@ export function attributesGen({
   timestamp,
   changeset,
   uid,
-  user,
+  user
 }: {
   visible?: boolean;
   version?: number;
@@ -16,11 +16,11 @@ export function attributesGen({
   user?: string;
 }): Attributes {
   return {
-    visible,
-    version,
-    timestamp,
     changeset,
+    timestamp,
     uid,
     user,
+    version,
+    visible
   };
 }

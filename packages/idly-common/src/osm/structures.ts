@@ -1,17 +1,22 @@
+import { Tags } from './Tags';
+export { Tags } from './Tags';
+import { ImMap, ImSet } from '../misc/immutable';
+
 export type Entity = Node | Way | Relation;
 export type Entities = Set<Node | Way | Relation>;
 export type EntityId = string;
 export type NodeId = string;
 export type WayId = string;
 
-export type ParentWays = Map<NodeId, Set<WayId>>;
+export type ParentWays = ImMap<NodeId, ImSet<WayId>>;
 // Table used to map id -> entity
-export type EntityTable = Map<EntityId, Entity>;
-
-export type Tags = Map<string, string>;
+export type EntityTable = ImMap<EntityId, Entity>;
+// export type Tags = Tags<string, string>;
 
 export type FeaturePropsTable = Map<EntityId, FeatureProps>;
-export interface FeatureProps { [key: string]: string; }
+export interface FeatureProps {
+  [key: string]: string;
+}
 
 export type NodeGeometry =
   | OsmGeometry.POINT
@@ -19,18 +24,18 @@ export type NodeGeometry =
   | OsmGeometry.VERTEX_SHARED;
 
 export enum OsmGeometry {
-  POINT = "point",
-  VERTEX = "vertex",
-  VERTEX_SHARED = "vertex_shared", // the one shared among multiple ways
-  AREA = "area",
-  LINE = "line",
-  RELATION = "relation",
+  POINT = 'point',
+  VERTEX = 'vertex',
+  VERTEX_SHARED = 'vertex_shared', // the one shared among multiple ways
+  AREA = 'area',
+  LINE = 'line',
+  RELATION = 'relation'
 }
 
 export enum EntityType {
-  NODE = "node",
-  WAY = "way",
-  RELATION = "relation",
+  NODE = 'node',
+  WAY = 'way',
+  RELATION = 'relation'
 }
 
 export type Node = Readonly<{
