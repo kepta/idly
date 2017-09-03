@@ -46,7 +46,7 @@ export function main(plugins) {
         }));
       }
       default: {
-        console.log(message);
+        console.log('default message', message);
         return message;
       }
     }

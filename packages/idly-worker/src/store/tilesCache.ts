@@ -40,7 +40,7 @@ export class TilesCache {
       const tile = t.xyz;
       return this.getTile(tile);
     });
-    console.log(zoom, tiledEntities.length);
+    console.log('total tiles', tiledEntities.length);
     return tiledEntities.reduce((prev, cur) => prev.concat(cur), []);
   }
 }

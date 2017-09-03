@@ -1,5 +1,4 @@
 import { Feature } from 'idly-common/lib/osm/feature';
-import { List as ImList, Map as ImMap, Set as ImSet } from 'immutable';
 
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
@@ -13,6 +12,7 @@ import {
   ParentWays
 } from 'idly-common/lib/osm/structures';
 
+import { ImMap } from 'idly-common/lib/misc/immutable';
 import { entityToGeoJSON } from '../geojson/entityToGeoJSON';
 import { fetchTile } from '../parsing/fetch';
 import { parseXML } from '../parsing/parser';
@@ -43,7 +43,6 @@ export class Manager {
     zoom = 18;
     zoom = Math.floor(zoom);
     const xyzs = bboxToTiles(bbox, zoom);
-    console.log('count', bbox, zoom, xyzs.length);
     return this.fetchAndParse(xyzs).then(() => this.toFeatures(bbox, zoom));
   }
   entityLookup(entityIds: EntityId[]): Entity[] {
@@ -70,7 +69,6 @@ export class Manager {
     const props = new Map();
     const workerPlugins = await this.pluginsWorker;
     for (const { worker } of workerPlugins) {
-      console.log('worker', entityTable.size, parentWays.size);
       const computedProps = worker(entityTable, parentWays);
       for (const [entityId, val] of computedProps) {
         if (props.has(entityId)) {
@@ -94,7 +92,7 @@ export class Manager {
   private fetchProcess(t: Tile) {
     return fetchTile(t.x, t.y, t.z)
       .then(xml => {
-        console.time(`workerParsing=${t.x},${t.y},${t.z}`);
+        console.time(`parsingTile=${t.x},${t.y},${t.z}`);
         return parseXML(xml, this.parentWays);
       })
       .then(e => {
@@ -102,7 +100,7 @@ export class Manager {
         this.parentWays = e.parentWays;
         this.masterTable = entityTableGen(e.entities, this.masterTable);
         this.tilesCache.set(t, e.entities);
-        console.timeEnd(`workerParsing=${t.x},${t.y},${t.z}`);
+        console.timeEnd(`parsingTile=${t.x},${t.y},${t.z}`);
       });
   }
   private async toFeatures(bbox: BBox, zoom: number) {

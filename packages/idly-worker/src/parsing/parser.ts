@@ -19,7 +19,6 @@ import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
-  console.time('Imm: calculateParentWays');
   const x = parentWays.withMutations(p => {
     ways.forEach(w => {
       w.nodes.forEach(nodeId => {
@@ -27,7 +26,6 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
       });
     });
   });
-  console.timeEnd('Imm: calculateParentWays');
   return x;
 }
 
