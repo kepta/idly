@@ -29,7 +29,7 @@ describe('presetPreset', function() {
   describe('#matchScore', function() {
     const way1 = wayFactory({
       id: 'w-1',
-      tags: tagsFactory({ highway: 'motorway' })
+      tags: tagsFactory([['highway', 'motorway']])
     });
     it('returns -1 if preset does not match tags', function() {
       const preset = presetPreset('test', { tags: { foo: 'bar' } });
@@ -41,7 +41,7 @@ describe('presetPreset', function() {
         tags: { highway: 'motorway' },
         matchScore: 0.2
       });
-      const entity = wayFactory(way1);
+      const entity = way1;
       expect(preset.matchScore(entity.tags)).toBe(0.2);
     });
 
@@ -51,7 +51,7 @@ describe('presetPreset', function() {
       });
       let entity = wayFactory({
         id: 'w-2',
-        tags: tagsFactory({ highway: 'residential' })
+        tags: tagsFactory([['highway', 'residential']])
       });
       expect(preset.matchScore(entity.tags)).toBe(1);
 
@@ -60,7 +60,7 @@ describe('presetPreset', function() {
       });
       entity = wayFactory({
         id: 'w-3',
-        tags: tagsFactory({ highway: 'service', service: 'alley' })
+        tags: tagsFactory([['highway', 'service'], ['service', 'alley']])
       });
       expect(preset.matchScore(entity.tags)).toBe(2);
     });
@@ -69,7 +69,7 @@ describe('presetPreset', function() {
       const preset = presetPreset('test', { tags: { building: '*' } });
       const entity = wayFactory({
         id: 'w-3',
-        tags: tagsFactory({ building: 'yep' })
+        tags: tagsFactory([['building', 'yep']])
       });
       expect(preset.matchScore(entity.tags)).toBe(0.5);
     });

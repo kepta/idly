@@ -12,6 +12,7 @@ import { getWayGeometry } from '../../helpers/getWayGeometry';
 import { presetsMatch } from '../match';
 import { initPresets } from '../presets';
 import { initAreaKeys } from '../areaKeys';
+import { ImSet } from 'idly-common/lib/misc/immutable';
 
 describe('presetIndex', function() {
   describe('#match', function() {
@@ -47,7 +48,7 @@ describe('presetIndex', function() {
       const presets = initPresets(testPresets);
       const way = wayFactory({
         id: 'w-1',
-        tags: tagsFactory({ highway: 'residential' })
+        tags: tagsFactory([['highway', 'residential']])
       });
 
       expect(curriedPresetsMatch(getWayGeometry(way), way.tags).id).toEqual(
@@ -58,11 +59,11 @@ describe('presetIndex', function() {
       const point = nodeFactory({ id: 'n1' });
       const line = wayFactory({
         id: 'w-1',
-        tags: tagsFactory({ foo: 'bar' })
+        tags: tagsFactory([['foo', 'bar']])
       });
 
       expect(
-        curriedPresetsMatch(getNodeGeometry(point.id, new Map()), point.tags).id
+        curriedPresetsMatch(getNodeGeometry(point.id, ImSet()), point.tags).id
       ).toEqual('point');
       expect(curriedPresetsMatch(getWayGeometry(line), line.tags).id).toEqual(
         'line'
@@ -72,16 +73,16 @@ describe('presetIndex', function() {
     it.skip('matches vertices on a line as vertices', function() {
       const point = nodeFactory({
         id: 'n1',
-        tags: tagsFactory({ leisure: 'park' })
+        tags: tagsFactory([['leisure', 'park']])
       });
       const way = wayFactory({
         id: 'w-1',
         nodes: ['n1'],
-        tags: tagsFactory({ highway: 'residential' })
+        tags: tagsFactory([['highway', 'residential']])
       });
 
       expect(
-        curriedPresetsMatch(getNodeGeometry(point.id, new Map()), point.tags).id
+        curriedPresetsMatch(getNodeGeometry(point.id, ImSet()), point.tags).id
       ).toEqual('vertex');
     });
     /**
@@ -94,17 +95,16 @@ describe('presetIndex', function() {
 
         const point = nodeFactory({
           id: 'n-1',
-          tags: tagsFactory({ leisure: 'park' })
+          tags: tagsFactory([['leisure', 'park']])
         });
         const line = wayFactory({
           nodes: [point.id],
           id: 'w-1',
-          tags: tagsFactory({ 'addr:interpolation': 'even' })
+          tags: tagsFactory([['addr:interpolation', 'even']])
         });
 
         expect(
-          curriedPresetsMatch(getNodeGeometry(point.id, new Map()), point.tags)
-            .id
+          curriedPresetsMatch(getNodeGeometry(point.id, ImSet()), point.tags).id
         ).toEqual('park');
       }
     );
@@ -159,18 +159,30 @@ describe('presetIndex', function() {
     it('blacklists key-values for presets with both area and line geometry', function() {
       const { all } = initPresets(testPresets);
       expect(initAreaKeys(all).has('natural')).toEqual(true);
-      expect(initAreaKeys(all).get('leisure').has('track')).toEqual(true);
+      expect(
+        initAreaKeys(all)
+          .get('leisure')
+          .has('track')
+      ).toEqual(true);
     });
 
     it('does not blacklist key-values for presets with neither area nor line geometry', function() {
       const { all } = initPresets(testPresets);
       expect(initAreaKeys(all).has('natural')).toEqual(true);
-      expect(initAreaKeys(all).get('natural').has('peak')).toEqual(false);
+      expect(
+        initAreaKeys(all)
+          .get('natural')
+          .has('peak')
+      ).toEqual(false);
     });
 
     it("does not blacklist generic '*' key-values", function() {
       const { all } = initPresets(testPresets);
-      expect(initAreaKeys(all).get('natural').has('natural')).toEqual(false);
+      expect(
+        initAreaKeys(all)
+          .get('natural')
+          .has('natural')
+      ).toEqual(false);
     });
 
     it("ignores keys like 'highway' that are assumed to be lines", function() {
@@ -191,21 +203,22 @@ describe('presetIndex', function() {
     it('prefers building to multipolygon', function() {
       const relation = relationFactory({
         id: 'r-1',
-        tags: tagsFactory({ type: 'multipolygon', building: 'yes' })
+        tags: tagsFactory([['type', 'multipolygon'], ['building', 'yes']])
       });
       expect(
-        curriedPresetsMatch(getRelationGeometry(relation), relation.tags).id
+        curriedPresetsMatch(getRelationGeometry(/* relation */), relation.tags)
+          .id
       ).toEqual('building');
     });
 
     it('prefers building to address', function() {
       const way = wayFactory({
         id: 'w-1',
-        tags: tagsFactory({
-          area: 'yes',
-          building: 'yes',
-          'addr:housenumber': '1234'
-        })
+        tags: tagsFactory([
+          ['area', 'yes'],
+          ['building', 'yes'],
+          ['addr:housenumber', '1234']
+        ])
       });
       console.log(getWayGeometry(way));
       expect(curriedPresetsMatch(getWayGeometry(way), way.tags).id).toEqual(
@@ -216,7 +229,7 @@ describe('presetIndex', function() {
     it('prefers pedestrian to area', function() {
       const way = wayFactory({
         id: 'w-1',
-        tags: tagsFactory({ area: 'yes', highway: 'pedestrian' })
+        tags: tagsFactory([['area', 'yes'], ['highway', 'pedestrian']])
       });
       expect(curriedPresetsMatch(getWayGeometry(way), way.tags).id).toEqual(
         'highway/pedestrian'

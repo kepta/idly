@@ -4,7 +4,11 @@ import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 
 import { tagClasses } from '../tagClasses/tagClasses';
 
-const generate = tags => tagsFactory(tags);
+const generate = (tags: { [index: string]: string }) => {
+  return tagsFactory(
+    Object.keys(tags).map((k): [string, string] => [k, tags[k]])
+  );
+};
 
 const tagger = R.compose(tagClasses, generate);
 

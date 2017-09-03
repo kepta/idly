@@ -10,11 +10,12 @@ import {
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 
 import { presetsMatcherCached } from '../presets/presets';
+import { ImSet } from 'idly-common/lib/misc/immutable';
 
 export const DEFAULT_NODE_ICON = 'circle';
 
 export const nodePropertiesGen = weakCache2(
-  (node: Node, parentWay: Set<string>) => {
+  (node: Node, parentWay: ImSet<string>) => {
     return applyNodeMarkup(getNodeGeometry(node.id, parentWay), node.tags);
   }
 );

@@ -1,9 +1,10 @@
 import { weakCache } from 'idly-common/lib/misc/weakCache';
 import {
   EntityTable,
+  EntityType,
   OsmGeometry,
-  Way,
-  EntityType
+  Tags,
+  Way
 } from 'idly-common/lib/osm/structures';
 
 import { isArea } from '../helpers/isArea';

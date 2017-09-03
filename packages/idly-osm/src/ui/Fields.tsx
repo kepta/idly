@@ -1,6 +1,5 @@
 import { Generic } from './fields/Generic';
 import * as React from 'react';
-import { connect } from 'react-redux';
 import Card from 'antd/lib/card';
 
 import { FeatureTable } from 'idly-common/lib/osm/feature';

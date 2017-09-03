@@ -5,6 +5,8 @@ import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { wayPropertiesGen } from '../parsers/way';
+import { isArea } from '../helpers/isArea';
+import { isClosed } from '../helpers/isClosed';
 
 describe('wayCombiner', () => {
   const n1 = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
@@ -14,12 +16,12 @@ describe('wayCombiner', () => {
   const way = wayFactory({
     id: 'w1',
     nodes: ['n1'],
-    tags: tagsFactory({ highway: 'residential' })
+    tags: tagsFactory([['highway', 'residential']])
   });
 
-  const g = entityTableGen(new Map(), [n1, n2, n3]);
+  const g = entityTableGen([n1, n2, n3]);
   it('should behave...', () => {
-    const result = wayPropertiesGen(way, g);
+    const result = wayPropertiesGen(way);
     expect(result).toMatchSnapshot();
   });
 
@@ -27,10 +29,10 @@ describe('wayCombiner', () => {
     const w2 = wayFactory({
       id: 'w1',
       nodes: ['n1'],
-      tags: tagsFactory({ highway: 'residential', name: 'great highway' })
+      tags: tagsFactory([['highway', 'residential'], ['name', 'great highway']])
     });
-    const gg = entityTableGen(new Map(), [node, w2]);
-    const result = wayPropertiesGen(w2, gg);
+    const gg = entityTableGen([node, w2]);
+    const result = wayPropertiesGen(w2);
     expect(result.name).toEqual('great highway');
   });
 });
