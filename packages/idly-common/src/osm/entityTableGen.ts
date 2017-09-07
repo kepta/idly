@@ -4,27 +4,12 @@ import {
   EntityId,
   EntityTable,
   EntityType,
-  Tags
+  Node,
+  Relation,
+  Tags,
+  Way
 } from '../osm/structures';
-// export function entityTableGen(t: EntityTable, entities: Entity[]) {
-//   for (const e of entities) {
-//     if (t.has(e.id)) continue;
-//     t.set(e.id, e);
-//   }
-//   return t;
-// }
 
-// export const entityTableGen: (
-//   entityTable: EntityTable,
-//   entities: ImList<Entity>
-// ) => EntityTable = (
-//   entityTable: EntityTable,
-//   entities: ImList<Entity>
-// ): EntityTable => {
-//   return entityTable.withMutations(m => {
-//     entities.forEach(e => m.set(e.id, e));
-//   });
-// };
 function isImmutableList(
   item: ImList<Entity> | Entity[]
 ): item is ImList<Entity> {

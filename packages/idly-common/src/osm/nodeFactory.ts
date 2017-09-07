@@ -3,6 +3,7 @@ import { attributesGen } from '../osm/attributesGen';
 import { genLngLat } from '../osm/genLngLat';
 import {
   Attributes,
+  Entity,
   EntityId,
   EntityType,
   LngLat,

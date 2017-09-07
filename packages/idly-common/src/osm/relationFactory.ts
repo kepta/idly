@@ -20,7 +20,7 @@ export function relationFactory({
   id: EntityId;
   tags?: Tags;
   attributes?: Attributes;
-  members?: RelationMember[];
+  members?: RelationMember[] | ReadonlyArray<RelationMember>;
 }): Relation {
   return deepFreeze<Relation>({
     id,

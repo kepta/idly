@@ -1,0 +1,23 @@
+{
+  "name": "idly-graph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "rm -r lib/*",
+    "start": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tslint": "^5.7.0",
+    "tslint-consistent-codestyle": "^1.6.0",
+    "tslint-immutable": "^4.1.0",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {
+    "idly-common": "file:../idly-common"
+  }
+}

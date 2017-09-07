@@ -15,4 +15,4 @@ export interface Feature<
 export type FeatureTable<
   T extends GeometryObject,
   K extends { [index: string]: boolean | string | number | null | undefined }
-> = ImMap<EntityId, Feature<T, K>>;
+> = ImMap<EntityId, Feature<T, K> | undefined>;

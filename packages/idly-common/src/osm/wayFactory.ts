@@ -12,7 +12,7 @@ export function wayFactory({
   id: EntityId;
   tags?: Tags;
   attributes?: Attributes;
-  nodes?: EntityId[];
+  nodes?: EntityId[] | ReadonlyArray<EntityId>;
 }): Way {
   return deepFreeze<Way>({
     id,

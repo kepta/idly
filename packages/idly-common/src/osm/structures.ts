@@ -1,4 +1,5 @@
 import { Tags } from './Tags';
+import { tagsFactory } from './tagsFactory';
 export { Tags } from './Tags';
 import { ImMap, ImSet } from '../misc/immutable';
 
@@ -8,9 +9,9 @@ export type EntityId = string;
 export type NodeId = string;
 export type WayId = string;
 
-export type ParentWays = ImMap<NodeId, ImSet<WayId>>;
+export type ParentWays = ImMap<NodeId, ImSet<WayId> | undefined>;
 // Table used to map id -> entity
-export type EntityTable = ImMap<EntityId, Entity>;
+export type EntityTable = ImMap<EntityId, Entity | undefined>;
 // export type Tags = Tags<string, string>;
 
 export type FeaturePropsTable = Map<EntityId, FeatureProps>;
@@ -38,46 +39,46 @@ export enum EntityType {
   RELATION = 'relation'
 }
 
-export type Node = Readonly<{
+export interface Node {
   readonly id: EntityId;
   readonly tags: Tags;
   readonly type: EntityType.NODE;
   readonly loc: LngLat;
   readonly attributes: Attributes;
-}>;
+}
 
-export type Way = Readonly<{
+export interface Way {
   readonly id: EntityId;
   readonly type: EntityType.WAY;
   readonly tags: Tags;
   readonly attributes: Attributes;
   readonly nodes: ReadonlyArray<EntityId>;
-}>;
+}
 
-export type Relation = Readonly<{
+export interface Relation {
   readonly id: EntityId;
   readonly type: EntityType.RELATION;
   readonly tags: Tags;
   readonly members: ReadonlyArray<RelationMember>;
   readonly attributes: Attributes;
-}>;
+}
 
-export type Attributes = Readonly<{
+export interface Attributes {
   readonly visible?: boolean;
   readonly version?: number;
   readonly timestamp?: string;
   readonly changeset?: string;
   readonly uid?: string;
   readonly user?: string;
-}>;
+}
 
-export type RelationMember = Readonly<{
+export interface RelationMember {
   readonly id?: string;
   readonly type?: string;
   readonly role?: string;
-}>;
+}
 
-export type LngLat = Readonly<{
+export interface LngLat {
   readonly lat: number;
   readonly lon: number;
-}>;
+}
