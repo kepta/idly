@@ -9,10 +9,11 @@ import { Entity, EntityType, Tags } from '../osm/structures';
 export function parseJSONFriendlyEntities(
   parsedEntities: Array<{
     string: any;
+    tags: string;
   }>
 ): Entity[] {
   return parsedEntities.map((entity: any) => {
-    // e.tags = tagsFactory(JSON.parse(e.tags));
+    entity.tags = tagsFactory(JSON.parse(entity.tags));
     switch (entity.type) {
       case EntityType.NODE:
         return nodeFactory(entity);

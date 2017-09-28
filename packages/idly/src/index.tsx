@@ -10,10 +10,13 @@ import { store } from 'common/store';
 
 import { attachToWindow } from 'utils/attach_to_window';
 
+require('mapbox-gl/dist/mapbox-gl.css');
 import { Map } from 'map/map';
 
-require('mapbox-gl/dist/mapbox-gl.css');
-require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
+// require('antd/dist/antd.css');
+// require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
+require('./index.css');
+
 // require('mapbox-gl-inspect/dist/mapbox-gl-inspect.css');
 
 attachToWindow('R', R);
@@ -31,4 +34,23 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-console.log(process.env.NODE_ENV);
+// shim
+window.requestIdleCallback =
+  window.requestIdleCallback ||
+  function(cb) {
+    let start = Date.now();
+    return setTimeout(function() {
+      cb({
+        didTimeout: false,
+        timeRemaining() {
+          return Math.max(0, 50 - (Date.now() - start));
+        }
+      });
+    }, 1);
+  };
+
+window.cancelIdleCallback =
+  window.cancelIdleCallback ||
+  function(id) {
+    clearTimeout(id);
+  };

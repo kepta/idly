@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 let CircularDependencyPlugin = require('circular-dependency-plugin');
 var DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
-
-// var BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-// .BundleAnalyzerPlugin;
+var webpack = require('webpack');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
 const fs = require('fs');
 const path = require('path');
@@ -26,12 +26,21 @@ module.exports = {
 
   // Enable sourcemaps for debugging webpack's output.
   // devtool: 'hidden-source-map',
-  devtool: 'cheap-eval-source-map',
+  devtool: 'eval',
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    alias: {
+      ...alias,
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom'),
+      antd: path.resolve('./node_modules/antd'),
+      'idly-common': path.resolve('./node_modules/idly-common'),
+      lodash: path.resolve('./node_modules/lodash'),
+      immutable: path.resolve('./node_modules/immutable'),
+      ramda: path.resolve('./node_modules/ramda')
+    }
   },
   node: {
     fs: 'empty'
@@ -41,6 +50,15 @@ module.exports = {
     contentBase: './dist'
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      async: true,
+      minChunks: 2
+      // (Modules must be shared between 3 entries)
+
+      // chunks: ["pageA", "pageB"],
+      // (Only use these entries)
+    }),
     new DuplicatePackageCheckerPlugin({
       // Also show module that is requiring each duplicate package
       verbose: true,
@@ -53,6 +71,7 @@ module.exports = {
       filename: 'index.html',
       template: 'public/index.html'
     }),
+
     new CircularDependencyPlugin({
       // exclude detection of files based on a RegExp
       exclude: /a\.js|node_modules/,

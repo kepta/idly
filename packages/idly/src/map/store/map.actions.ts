@@ -1,4 +1,5 @@
 import { action, Action } from 'common/actions';
+import { Entities } from 'idly-common/lib/osm/structures';
 import { Set as $Set } from 'immutable';
 
 export const OSM_TILES = {

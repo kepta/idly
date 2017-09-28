@@ -89,6 +89,10 @@
   version "20.0.8"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.8.tgz#7f8c97f73d20d3bf5448fbe33661a342002b5954"
 
+"@types/lodash@^4.14.74":
+  version "4.14.74"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.74.tgz#ac3bd8db988e7f7038e5d22bd76a7ba13f876168"
+
 "@types/react@^16.0.5":
   version "16.0.5"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.5.tgz#d713cf67cc211dea20463d2a0b66005c22070c4b"
@@ -1095,6 +1099,11 @@ iconv-lite@~0.4.13:
 
 "idly-data@file:../idly-data/":
   version "1.0.0"
+
+"idly-graph@file:../idly-graph":
+  version "1.0.0"
+  dependencies:
+    idly-common "file:../idly-common"
 
 immutable@^3.7.4, immutable@^3.8.1:
   version "3.8.1"

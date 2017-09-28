@@ -13,7 +13,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "pretty": true,
-    "declaration": true
+    "declaration": false
   },
   "include": [
     "./src/**/*"

@@ -24,7 +24,10 @@ export const highwayTrack = (sourceName: string) =>
         'line-opacity': 1,
         'line-width': 4
       },
-      filter: fromJS(['all', ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-highway-track']])
+      filter: fromJS([
+        'all',
+        ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-highway-track']
+      ])
     })
   });
 
@@ -96,9 +99,6 @@ export const highwayNarrowCasing = (sourceName: string) =>
           'tag-highway-bridleway',
           'tag-highway-cycleway'
         ]
-      ])
-    })
-  });
       ])
     })
   });

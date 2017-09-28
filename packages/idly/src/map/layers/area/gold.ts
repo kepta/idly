@@ -16,7 +16,12 @@ const filter = fromJS([
    * @TOFIX need to figure out for `tagsClass` and let the ``${PLUGIN_NAME}.tagsClassType`` override
    *  based on priority.
    */
-  ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-landuse-residential', 'tag-landuse-construction']
+  [
+    'in',
+    `${PLUGIN_NAME}.tagsClassType`,
+    'tag-landuse-residential',
+    'tag-landuse-construction'
+  ]
 ]);
 
 export const areaGoldLayer = (sourceName: string) =>
@@ -58,10 +63,5 @@ export const areaGoldLayerCasing = (sourceName: string) =>
       },
       paint: { ...areaPaintStyle, 'line-color': areaColor },
       filter
-    })
-  });
-      },
-paint: { ...areaPaintStyle, 'line-color': areaColor },
-filter
     })
   });

@@ -1,24 +1,16 @@
-import { Generic } from './fields/Generic';
-import * as React from 'react';
-import Card from 'antd/lib/card';
-
 import { FeatureTable } from 'idly-common/lib/osm/feature';
-import {
-  EntityId,
-  EntityTable,
-  EntityType,
-  OsmGeometry,
-  Tags
-} from 'idly-common/lib/osm/structures';
+import { Tags } from 'idly-common/lib/osm/structures';
+import { Tree } from 'idly-graph/lib/graph/Tree';
+import * as React from 'react';
 
 import { PLUGIN_NAME } from '../config/config';
-import { getNodeGeometry } from '../helpers/getNodeGeometry';
-import { presets, presetsMatcher } from '../presets/presets';
+import { presetsMatcher } from '../presets/presets';
+import { Generic } from './fields/Generic';
+
 // import { Localized } from './fields/Localized';
 
 export interface SelectState {
-  readonly selectedIds: EntityId[];
-  readonly entityTable: EntityTable;
+  readonly tree: Tree;
   readonly featureTable: FeatureTable<any, any>;
 }
 
@@ -115,15 +107,16 @@ export class Fields extends React.Component<PropsType, {}> {
     });
   }
   render() {
-    if (!this.props.idlyState) {
-      throw new Error('no idly state');
+    if (!this.props.idlyState.select || !this.props.idlyState.select.tree) {
+      return null;
     }
-    const selectedIds = this.props.idlyState.select.selectedIds;
-    // console.log(nameField);
+    const selected = this.props.idlyState.select.tree;
+
+    const selectedIds = selected.getKnownIds();
+
+    console.log(selected, this.props.idlyState.select.featureTable);
     if (selectedIds.length === 1) {
-      const entity = this.props.idlyState.select.entityTable.get(
-        selectedIds[0]
-      );
+      const entity = selected.entity(selectedIds[0]);
       let geometry = this.props.idlyState.select.featureTable.get(
         selectedIds[0]
       ).properties[`${PLUGIN_NAME}.geometry`];

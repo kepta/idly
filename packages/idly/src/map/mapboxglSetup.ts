@@ -13,7 +13,8 @@ export function mapboxglSetup(divId: string) {
     center: [-73.97694, 40.76109], // starting position
     zoom: 17,
     hash: true,
-    doubleClickZoom: false
+    doubleClickZoom: false,
+    trackResize: true
   });
 }
 

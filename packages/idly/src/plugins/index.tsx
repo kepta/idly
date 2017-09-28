@@ -2,11 +2,22 @@ import * as R from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+// import K from 'idly-osm';
+// console.log(K);
 const PLUGINS = [
-  import('idly-osm').then(r => r.default).catch(e => {
-    console.error('failed to load');
-    return Promise.reject('couldnt load idly-osm');
-  })
+  import(/* webpackChunkName: "idly-osm" */
+  /* webpackMode: "lazy" */
+  'idly-osm/lib/index')
+    // Promise.resolve()
+    .then(r => r.default)
+    .then(r => {
+      console.log('plugin', r);
+      return r;
+    })
+    .catch(e => {
+      console.error(e);
+      return Promise.reject('couldnt load idly-osm');
+    })
 ];
 
 export interface Plugin {

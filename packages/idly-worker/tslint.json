@@ -25,7 +25,7 @@
     "arrow-parens": false,
     "curly": false,
     "no-unused-variable": [
-      true,
+      false,
       {
         "ignore-pattern": "^_"
       }

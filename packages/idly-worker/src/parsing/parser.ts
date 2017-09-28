@@ -43,13 +43,11 @@ const xmlIndex = process.env.NODE_ENV === 'test' ? 0 : 2;
 export function parseXML(
   xml: Document | undefined,
   parentWays: ParentWays = ImMap()
-):
-  | undefined
-  | {
-      entities: Entity[];
-      parentWays: ParentWays;
-    } {
-  if (!xml || !xml.childNodes) return;
+): {
+  entities: Entity[];
+  parentWays: ParentWays;
+} {
+  if (!xml || !xml.childNodes) return { entities: [], parentWays };
   const root = xml.childNodes[xmlIndex];
 
   const children = root.childNodes;

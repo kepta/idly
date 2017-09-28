@@ -1,7 +1,8 @@
 import { actionBuilderFactory } from 'common/actions';
 
-import { Feature } from 'idly-common/lib/osm/feature';
-import { Entity, EntityId } from 'idly-common/lib/osm/structures';
+import { Feature, FeatureTable } from 'idly-common/lib/osm/feature';
+import { Entity, EntityId, EntityTable } from 'idly-common/lib/osm/structures';
+import { Tree } from 'idly-graph/lib/graph/Tree';
 
 export enum SelectActions {
   SELECT_ENTITIES = 'Selection.SELECT_ENTITIES',
@@ -14,19 +15,19 @@ export type SelectActionType = SelectEntitiesAction | SelectCommitAction;
 
 export interface SelectEntitiesAction {
   type: SelectActions.SELECT_ENTITIES;
-  entitiesId: EntityId[];
+  entityIds: EntityId[];
 }
 
 export const selectEntitiesAction = selectActionBuilder<SelectEntitiesAction>(
   SelectActions.SELECT_ENTITIES
-)('entitiesId');
+)('entityIds');
 
 export interface SelectCommitAction {
   type: SelectActions.COMMIT;
-  entities: Entity[];
-  features: Array<Feature<any, any>>;
+  tree: Tree;
+  featureTable: FeatureTable<any, any>;
 }
 
 export const selectCommitAction = selectActionBuilder<SelectCommitAction>(
   SelectActions.COMMIT
-)('features', 'entities');
+)('tree', 'featureTable');

@@ -1,4 +1,6 @@
 import * as turfHelpers from '@turf/helpers';
+import { Tree } from 'idly-graph/lib/graph/Tree';
+
 import {
   WorkerActions,
   WorkerActionsType,
@@ -28,11 +30,14 @@ export function main(plugins) {
       }
       case WorkerActions.GET_VIRGIN_ENTITIES: {
         const { entityIds } = message.request;
-        const entities = manager.entityLookup(entityIds);
+        const tree = Tree.fromObject({
+          knownIds: entityIds,
+          entities: manager.entityLookup(entityIds)
+        }).toJSON();
         return {
           ...message,
           response: {
-            entities
+            tree
           }
         };
       }

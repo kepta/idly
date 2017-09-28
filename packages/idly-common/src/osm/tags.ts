@@ -12,6 +12,7 @@ export class Tags {
   public toJSON() {
     return JSON.stringify([...this.map]);
   }
+
   public forEach(cb: (v: string, k: string) => void) {
     this.map.forEach(cb);
   }
@@ -28,14 +29,6 @@ export class Tags {
     return new Tags(arr);
   }
   public set(id: string, modify: string): Tags {
-    // const arr: Array<[string, string]> = [];
-    // for (const [k, v] of this.map) {
-    //   if (k === id) {
-    //     arr.push([k, modify]);
-    //   } else {
-    //     arr.push([k, v]);
-    //   }
-    // }
     return new Tags([...this.map, [id, modify]]);
   }
   public has(id: string) {

@@ -1,29 +1,35 @@
-import { Map as $Map, Set as $Set } from 'immutable';
-
-import { Entities, Entity, EntityId } from 'idly-common/lib/osm/structures';
-
-import { Feature } from 'idly-common/lib/osm/feature';
-
+import { ImMap } from 'idly-common/lib/misc/immutable';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
+import { Feature, FeatureTable } from 'idly-common/lib/osm/feature';
+import { featureTableGen } from 'idly-common/lib/osm/featureTableGen';
+import {
+  Entities,
+  Entity,
+  EntityId,
+  EntityTable
+} from 'idly-common/lib/osm/structures';
+import { Tree } from 'idly-graph/lib/graph/Tree';
 import { SelectActions, SelectActionType } from './select.actions';
 
-export interface SelectState {
-  readonly features: $Map<EntityId, Feature<any, any>>;
-  readonly entities: $Map<EntityId, Entity>;
-}
+export type SelectState = Readonly<{
+  readonly tree: Tree;
+  readonly featureTable: FeatureTable<any, any>;
+}>;
+// const featureTable: FeatureTable<any, any> = ImMap();
 
 const selectState: SelectState = {
-  features: $Map(),
-  entities: $Map()
+  tree: null,
+  featureTable: ImMap()
 };
 
-export function selectReducer(state = selectState, action: SelectActionType) {
+export function selectReducer(
+  state = selectState,
+  action: SelectActionType
+): SelectState {
   switch (action.type) {
     case SelectActions.COMMIT: {
-      const { features, entities } = action;
-      return {
-        features: $Map(features.map(f => [f.id, f])),
-        entities: $Map(entities.map(e => [e.id, e]))
-      };
+      const { tree, featureTable } = action;
+      return { tree, featureTable };
     }
     default: {
       return state;

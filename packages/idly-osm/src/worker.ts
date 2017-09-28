@@ -1,10 +1,14 @@
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { PLUGIN_NAME } from './config/config';
 import {
+  Entity,
   EntityTable,
   EntityType,
   FeatureProps,
   FeaturePropsTable,
-  ParentWays
+  ParentWays,
+  Relation,
+  Way
 } from 'idly-common/lib/osm/structures';
 import { nodePropertiesGen } from './parsers/node';
 import { wayPropertiesGen } from './parsers/way';
@@ -29,6 +33,7 @@ export function onParseEntities(
 ): FeaturePropsTable {
   console.log('onParseEntities called worker !!!');
   const fProps: FeaturePropsTable = new Map();
+
   entityTable.forEach((entity, id) => {
     if (entity.type === EntityType.NODE) {
       // @TOFIX why do we need to send the entire parentWays lol.

@@ -11,16 +11,16 @@ import {
   Way
 } from '../osm/structures';
 
-export function entityTableGen(
-  entities: ImList<Entity> | Entity[] = [],
+export function removeFromEntityTable(
+  entityIds: ImList<EntityId> | EntityId[] = [],
   entityTable: EntityTable = ImMap()
 ) {
-  if (isImmutableList(entities)) {
+  if (isImmutableList(entityIds)) {
     return entityTable.withMutations(m => {
-      entities.forEach((e: Entity) => m.set(e.id, e));
+      entityIds.forEach((e: EntityId) => m.delete(e));
     });
   }
   return entityTable.withMutations(m => {
-    entities.forEach(e => m.set(e.id, e));
+    entityIds.forEach(e => m.delete(e));
   });
 }

@@ -1,9 +1,4 @@
-import {
-  Entity,
-  EntityId,
-  EntityTable,
-  EntityType
-} from 'idly-common/lib/osm/structures';
+import { Entity, EntityId, EntityTable, EntityType } from 'idly-common/lib/osm/structures';
 
 export function recursiveLookup(
   id: EntityId | undefined,
@@ -16,13 +11,17 @@ export function recursiveLookup(
   }
   if (entity.type === EntityType.WAY) {
     const entities = entity.nodes.map(nodeId => table.get(nodeId));
-
     entities.push(entity);
     return entities;
   } else {
-    // if (entity.type === EntityType.RELATION)
     const entities = entity.members
-      .map(member => recursiveLookup(member.id, table))
+      .map(member => {
+        if (member.type === EntityType.RELATION) {
+          const relation = table.get(member.id);
+          return [relation];
+        }
+        return recursiveLookup(member.id, table);
+      })
       .reduce((prev, curr) => prev.concat(curr), []);
 
     entities.push(entity);

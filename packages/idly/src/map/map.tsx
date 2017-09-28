@@ -26,6 +26,7 @@ import { dirtyPopup } from 'map/utils/map.popup';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as R from 'ramda';
 
+import sizeMe from 'react-sizeme';
 export type DirtyMapAccessType = (map: any) => void;
 /**
  * The job of map module is to handle
@@ -56,9 +57,11 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   state = {
     mapLoaded: false,
-    sourceLayered: SourceLayered
+    sourceLayered: SourceLayered,
+    height: 0,
+    width: 0
   };
-
+  ref = null;
   private map;
   private jsonqueue: string;
   private mapRenderTask: any;
@@ -80,7 +83,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
     attachToWindow('map', this.map);
-
     attachToWindow('popup', () => dirtyPopup(this.map));
     attachToWindow('MapboxInspect', MapboxInspect);
     attachToWindow('hideLayer', name => {
@@ -102,7 +104,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         ]
       });
     });
-
     this.map.on('click', e => {
       const bbox = [
         [e.point.x - 4, e.point.y - 4],
@@ -171,11 +172,18 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     removeLayerX(layerId);
   };
 
+  componentWillReceiveProps(nextProps, nextState) {
+    if (nextProps.size.height !== this.props.size.height) {
+      console.log('resizing map');
+      window.requestIdleCallback(() => this.map.resize());
+    }
+  }
+
   dirtyMapAccess = mapCb => this.state.mapLoaded && mapCb(this.map);
   render() {
     return (
-      <div>
-        <div id="map-container" style={{ height: '50vh', width: '50vw' }} />
+      <div style={{ flexGrow: 1 }}>
+        <div id="map-container" style={{ height: this.props.size.height }} />
         {this.state.mapLoaded &&
           <div>
             {/* <Draw dirtyMapAccess={this.dirtyMapAccess} /> */}
@@ -186,8 +194,9 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
                 dirtyMapAccess={this.dirtyMapAccess}
                 updateSource={this.props.updateSource}
                 entities={this.props[s.data]}>
-                {this.state.sourceLayered[k].map(L =>
+                {this.state.sourceLayered[k].map((L, i) =>
                   <L
+                    key={i}
                     entities={this.props[s.data]}
                     updateLayer={this.updateLayer}
                     removeLayer={this.removeLayer}
@@ -207,4 +216,4 @@ export const Map = connect<any, any, any>(
     modifiedEntities: $Set()
   }),
   { updateSource, getOSMTiles }
-)(MapComp);
+)(sizeMe({ monitorHeight: true, monitorWidth: true })(MapComp));
