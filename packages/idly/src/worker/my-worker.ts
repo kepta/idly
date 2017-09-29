@@ -1,6 +1,6 @@
 import { plugins } from 'plugins';
 
-import { main } from 'idly-worker/lib/worker';
 import registerPromiseWorker from 'promise-worker/register';
+import { main } from 'worker/worker';
 
 registerPromiseWorker(main(plugins));

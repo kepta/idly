@@ -1,2 +1,0 @@
-npm i -S ../idly-common && \
-npm link idly-common
