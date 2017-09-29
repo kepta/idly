@@ -17,13 +17,11 @@ import { watchSelect } from '../select/store/select.saga';
 // Sagas
 
 export interface IRootStateType {
-  osmTiles: OsmTilesState;
   select: SelectState;
 }
 
 // Root reducer
 const reducers = combineReducers({
-  osmTiles: osmReducer,
   // core: coreReducer,
   // draw: drawReducer,
   select: selectReducer
@@ -73,12 +71,7 @@ const persistedState = {};
 const store = createStore(reducers, persistedState, appliedMiddlewares);
 
 function* rootSaga() {
-  yield all([
-    call(watchOSMTiles),
-    // call(watchDraw),
-    // call(watchCore),
-    call(watchSelect)
-  ]);
+  yield all([call(watchSelect)]);
 }
 
 sagaMiddleware.run(rootSaga).done.catch(e => {

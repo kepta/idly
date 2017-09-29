@@ -15,7 +15,6 @@ import { SOURCES, ZOOM } from 'map/constants';
 import { SourceLayered } from 'map/layers/layers';
 import { mapboxglSetup } from 'map/mapboxglSetup';
 import { Source } from 'map/source';
-import { getOSMTiles, updateSource } from 'map/store/map.actions';
 import {
   removeLayer as removeLayerX,
   updateLayer as updateLayerX
@@ -41,12 +40,6 @@ export type DirtyMapAccessType = (map: any) => void;
 interface IPropsType {
   entities: $Set<any>;
   modifiedEntities: $Set<any>;
-  updateSource: (
-    data: $Set<any>,
-    dirtyMapAccess: (map: any) => void,
-    sourceId: string
-  ) => void;
-  getOSMTiles: (xys: number[][], zoom: number) => void;
 }
 
 const win: any = window;
@@ -184,36 +177,34 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     return (
       <div style={{ flexGrow: 1 }}>
         <div id="map-container" style={{ height: this.props.size.height }} />
-        {this.state.mapLoaded &&
+        {this.state.mapLoaded && (
           <div>
             {/* <Draw dirtyMapAccess={this.dirtyMapAccess} /> */}
-            {SOURCES.map((s, k) =>
+            {SOURCES.map((s, k) => (
               <Source
                 key={k}
                 sourceName={s.source}
                 dirtyMapAccess={this.dirtyMapAccess}
-                updateSource={this.props.updateSource}
+                updateSource={() => ({})}
                 entities={this.props[s.data]}>
-                {this.state.sourceLayered[k].map((L, i) =>
+                {this.state.sourceLayered[k].map((L, i) => (
                   <L
                     key={i}
                     entities={this.props[s.data]}
                     updateLayer={this.updateLayer}
                     removeLayer={this.removeLayer}
                   />
-                )}
+                ))}
               </Source>
-            )}
-          </div>}
+            ))}
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export const Map = connect<any, any, any>(
-  (state: IRootStateType, props) => ({
-    entities: $Set(),
-    modifiedEntities: $Set()
-  }),
-  { updateSource, getOSMTiles }
-)(sizeMe({ monitorHeight: true, monitorWidth: true })(MapComp));
+export const Map = connect<any, any, any>((state: IRootStateType, props) => ({
+  entities: $Set(),
+  modifiedEntities: $Set()
+}))(sizeMe({ monitorHeight: true, monitorWidth: true })(MapComp));

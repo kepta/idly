@@ -6,7 +6,6 @@ import Icon from 'antd/lib/icon';
 import Layout from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
 
-import { EditableTable } from 'app/Test';
 import { plugins } from 'plugins';
 import { Map } from '../map/map';
 
