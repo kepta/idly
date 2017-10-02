@@ -11,7 +11,6 @@ import { store } from 'common/store';
 import { attachToWindow } from 'utils/attach_to_window';
 
 require('mapbox-gl/dist/mapbox-gl.css');
-import { Map } from 'map/map';
 
 // require('antd/dist/antd.css');
 // require('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
@@ -38,7 +37,7 @@ ReactDOM.render(
 window.requestIdleCallback =
   window.requestIdleCallback ||
   function(cb) {
-    let start = Date.now();
+    const start = Date.now();
     return setTimeout(function() {
       cb({
         didTimeout: false,

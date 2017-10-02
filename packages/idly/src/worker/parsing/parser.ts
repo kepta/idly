@@ -1,4 +1,3 @@
-import { deepFreeze } from 'idly-common/lib/misc/deepFreeze';
 import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { attributesGen } from 'idly-common/lib/osm/attributesGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
@@ -7,8 +6,6 @@ import { relationFactory } from 'idly-common/lib/osm/relationFactory';
 import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
 import {
   Entity,
-  EntityId,
-  EntityTable,
   Node,
   ParentWays,
   Relation,

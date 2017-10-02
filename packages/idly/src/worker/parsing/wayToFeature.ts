@@ -1,4 +1,3 @@
-import { geometry } from '@turf/helpers';
 import * as turfLineString from 'turf-linestring';
 import * as turfPolygon from 'turf-polygon';
 
@@ -9,7 +8,6 @@ import {
   Way
 } from 'idly-common/lib/osm/structures';
 
-import { LineString, Polygon } from 'geojson';
 
 /**
  * @REVISIT this func also needs to handle modifiedGraph

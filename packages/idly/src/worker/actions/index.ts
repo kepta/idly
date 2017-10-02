@@ -1,7 +1,6 @@
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { Feature } from 'idly-common/lib/osm/feature';
 import { EntityId } from 'idly-common/lib/osm/structures';
-import { Tree } from 'idly-graph/lib/graph/Tree';
 
 export enum WorkerActions {
   GET_VIRGIN_ENTITIES = 'WorkerActions.GET_VIRGIN_ENTITIES',

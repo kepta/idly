@@ -35,11 +35,9 @@
     "semicolon": [
       false
     ],
-    "no-unused-new": true,
     "no-unused-expression": [
       true
     ],
-    "no-unused-imports": true,
     "max-line-length": [
       false
     ],

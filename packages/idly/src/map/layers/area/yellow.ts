@@ -1,9 +1,9 @@
 import { fromJS } from 'immutable';
 
 import { areaPaintStyle } from 'map/layers/area';
+import { PLUGIN_NAME } from 'map/style';
 import { LayerSpec } from 'map/utils/layerFactory';
 import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
-import { PLUGIN_NAME } from 'map/style';
 
 const displayName = (sourceName: string) => sourceName + 'areaYellowLayer';
 

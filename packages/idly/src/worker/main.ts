@@ -1,13 +1,11 @@
-import { Feature } from 'idly-common/lib/osm/feature';
-import { EntityType } from 'idly-common/lib/osm/structures';
+import * as MyWorker from 'worker-loader!worker/worker';
 import {
   WorkerActions,
   WorkerActionsType,
   WorkerFetchMap,
   WorkerGetEntities,
   WorkerGetFeatures
-} from 'idly-worker/lib/actions';
-import * as MyWorker from 'worker-loader!worker/my-worker';
+} from 'worker/actions';
 const PromiseWorker = require('promise-worker');
 
 export const worker: Worker = new MyWorker();

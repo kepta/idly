@@ -75,6 +75,17 @@ export class Tree {
     };
   }
 
+  public isEqual(tree: Tree): boolean {
+    if (tree === this) {
+      return true;
+    }
+    return (
+      this._knownIds.equals(tree._knownIds) &&
+      this._entityTable.equals(tree._entityTable) &&
+      this._parentWays.equals(tree._parentWays)
+    );
+  }
+
   public size(): number {
     return this._entityTable.size;
   }

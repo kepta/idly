@@ -2,10 +2,10 @@ import { Set as $Set } from 'immutable';
 import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { selectEntitiesAction } from '../select/store/select.actions';
+import { selectEntitiesAction } from '../core/store/core.actions';
 import { workerFetchMap } from '../worker/main';
 
-import { IRootStateType, observe, store } from 'common/store';
+import { IRootStateType, store } from 'common/store';
 
 import { attachToWindow } from 'utils/attach_to_window';
 

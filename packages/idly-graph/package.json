@@ -12,6 +12,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^21.1.1",
+    "jest": "^21.2.1",
+    "ts-jest": "^21.0.1",
     "tslint": "^5.7.0",
     "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
@@ -19,5 +22,25 @@
   },
   "dependencies": {
     "idly-common": "file:../idly-common"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }

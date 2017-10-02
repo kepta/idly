@@ -9,35 +9,39 @@ import { TagForm } from './TagForm';
 
 export interface PropsType {
   idlyState: {
-    select: SelectState;
+    core: SelectState;
   };
 }
 export interface StateType {
   tags: Tags | undefined;
 }
 
-export interface SelectState {
-  readonly tree: Tree;
+export type SelectState = Readonly<{
+  readonly selectedTree: Tree;
   readonly featureTable: FeatureTable<any, any>;
-}
+}>;
 
 export class TagEditor extends React.PureComponent<PropsType, StateType> {
   state: StateType = { tags: undefined };
   componentWillReceiveProps(nextProps: PropsType) {
-    const selectedId = nextProps.idlyState.select.tree.getKnownIds();
-    const entity = nextProps.idlyState.select.tree.entity(selectedId[0]);
+    const selectedId = nextProps.idlyState.core.selectedTree.getKnownIds();
+    const entity = nextProps.idlyState.core.selectedTree.entity(selectedId[0]);
     if (entity) {
       this.setState({ tags: entity.tags });
     }
   }
   modifyEntity = (tags?: Tags) => {
     if (tags) {
-      const selectedId = this.props.idlyState.select.selectedIds;
+      const selectedId = this.props.idlyState.core.selectedTree.getKnownIds();
       if (Array.isArray(selectedId)) {
-        let entity: Entity = this.props.idlyState.select.entityTable.get(
+        let entity:
+          | Entity
+          | undefined = this.props.idlyState.core.selectedTree.entity(
           selectedId[0]
         );
-        entity = modifyEntity(entity, { tags });
+        if (entity) {
+          entity = modifyEntity(entity, { tags });
+        }
       }
     }
   };

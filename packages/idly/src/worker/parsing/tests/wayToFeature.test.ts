@@ -1,4 +1,3 @@
-import { geometry } from '@turf/helpers';
 
 import { ImMap } from 'idly-common/lib/misc/immutable';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';

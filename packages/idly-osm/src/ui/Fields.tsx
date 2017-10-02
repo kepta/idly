@@ -7,16 +7,14 @@ import { PLUGIN_NAME } from '../config/config';
 import { presetsMatcher } from '../presets/presets';
 import { Generic } from './fields/Generic';
 
-// import { Localized } from './fields/Localized';
-
-export interface SelectState {
-  readonly tree: Tree;
+export type SelectState = Readonly<{
+  readonly selectedTree: Tree;
   readonly featureTable: FeatureTable<any, any>;
-}
+}>;
 
 export interface PropsType {
   idlyState: {
-    select: SelectState;
+    core: SelectState;
   };
 }
 
@@ -107,19 +105,18 @@ export class Fields extends React.Component<PropsType, {}> {
     });
   }
   render() {
-    if (!this.props.idlyState.select || !this.props.idlyState.select.tree) {
+    if (!this.props.idlyState.core || !this.props.idlyState.core.selectedTree) {
       return null;
     }
-    const selected = this.props.idlyState.select.tree;
+    const selected = this.props.idlyState.core.selectedTree;
 
     const selectedIds = selected.getKnownIds();
 
-    console.log(selected, this.props.idlyState.select.featureTable);
+    console.log(selected, this.props.idlyState.core.featureTable);
     if (selectedIds.length === 1) {
       const entity = selected.entity(selectedIds[0]);
-      let geometry = this.props.idlyState.select.featureTable.get(
-        selectedIds[0]
-      ).properties[`${PLUGIN_NAME}.geometry`];
+      let geometry = this.props.idlyState.core.featureTable.get(selectedIds[0])
+        .properties[`${PLUGIN_NAME}.geometry`];
 
       const matchedPreset = presetsMatcher(geometry, entity.tags);
       // matchedPreset.fields.forEach(f => console.log(f.label()));

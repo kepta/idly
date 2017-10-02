@@ -4,10 +4,6 @@ import { DOMParser } from 'xmldom';
 
 import { stubXML } from '../parsing/fixtures';
 
-// const merc = new SphericalMercator({
-//   size: 256
-// });
-
 const fetchStub = () => {
   return Promise.resolve(stubXML);
 };

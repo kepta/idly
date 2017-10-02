@@ -4,7 +4,7 @@ import * as bboxPolygon from '@turf/bbox-polygon';
 import * as transformScale from '@turf/transform-scale';
 
 import { BBox } from 'idly-common/lib/geo/bbox';
-import { Entity, EntityType, Tags } from 'idly-common/lib/osm/structures';
+import { Entity } from 'idly-common/lib/osm/structures';
 
 import { Tile } from 'idly-common/lib/geo/tile';
 

@@ -1,17 +1,17 @@
 import * as turfHelpers from '@turf/helpers';
 import { Tree } from 'idly-graph/lib/graph/Tree';
+import { plugins } from 'plugins';
+import registerPromiseWorker from 'promise-worker/register';
 
 import {
   WorkerActions,
-  WorkerActionsType,
-  WorkerDefault,
-  WorkerFetchMap,
-  WorkerGetEntities,
-  WorkerGetFeatures
+  WorkerActionsType
 } from './actions';
 import { Manager } from './store/manager';
 
-export function main(plugins) {
+registerPromiseWorker(main());
+
+function main() {
   const manager = new Manager(plugins);
   return function messageParsing(
     message: WorkerActionsType
