@@ -20,12 +20,12 @@ export function coreReducer(
   switch (action.type) {
     case CoreActions.SELECT_COMMIT: {
       const { tree, featureTable } = action;
-      if (state.selectedTree) {
-        return {
-          selectedTree: state.selectedTree.merge(tree),
-          featureTable
-        };
-      }
+      // if (state.selectedTree) {
+      //   return {
+      //     selectedTree: tree,
+      //     featureTable
+      //   };
+      // }
       return { selectedTree: tree, featureTable };
     }
     default: {
