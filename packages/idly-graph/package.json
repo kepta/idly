@@ -6,14 +6,16 @@
   "scripts": {
     "prestart": "rm -r lib/*",
     "start": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^21.1.1",
+    "idly-osm": "file:../idly-osm",
     "jest": "^21.2.1",
+    "node-fetch": "^1.7.3",
     "ts-jest": "^21.0.1",
     "tslint": "^5.7.0",
     "tslint-consistent-codestyle": "^1.6.0",
@@ -21,7 +23,18 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "idly-common": "file:../idly-common"
+    "@turf/bbox": "^5.0.0",
+    "@turf/bbox-polygon": "^4.7.3",
+    "@turf/helpers": "^5.0.0",
+    "@turf/transform-scale": "^4.7.3",
+    "@types/rbush": "^2.0.2",
+    "@types/xmldom": "^0.1.29",
+    "idly-common": "file:../idly-common",
+    "promise-worker": "^1.1.1",
+    "rbush": "^2.0.1",
+    "turf-linestring": "^1.0.2",
+    "turf-polygon": "^1.0.3",
+    "xmldom": "^0.1.27"
   },
   "jest": {
     "globals": {
@@ -32,6 +45,10 @@
     "moduleDirectories": [
       "<rootDir>/node_modules",
       "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib"
     ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"

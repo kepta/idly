@@ -10,11 +10,11 @@
     "pretty": true,
     "declaration": true,
     "isolatedModules": false,
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
   },

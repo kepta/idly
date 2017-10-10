@@ -8,30 +8,45 @@ import { calculateParentWays } from '../misc/calculateParentWays';
 
 const EMPTY_ARRAY = Object.freeze([]);
 
+export interface ToObjectType {
+  readonly deletedIds: ImSet<EntityId>;
+  readonly knownIds: ImSet<EntityId>;
+  readonly entityTable: EntityTable;
+}
+
+export interface ToJsonType {
+  readonly deletedIds: EntityId[];
+  readonly knownIds: EntityId[];
+  readonly entities: Array<Entity | undefined>;
+}
+
 /**
  * @TOFIX figure out deleting ids
  *  and merging of two trees
+ * @TOFIX figure out parentWays
+ *  when one of the id is deleted
  */
 export class Tree {
   public static fromString(json: string): Tree {
-    const { entities, knownIds }: any = JSON.parse(json);
-    if (!knownIds || !entities) {
+    const { entities, knownIds, deletedIds }: ToJsonType = JSON.parse(json);
+    if (!knownIds || !entities || !deletedIds) {
       throw new Error(
         'This thing is not parsable, please provide a valid tree',
       );
     }
     const table = entityTableGen(entities.map(entityFactory));
-    return new Tree(ImSet(knownIds), table);
+    return new Tree(ImSet(knownIds), table, ImSet(deletedIds));
   }
 
-  public static fromObject({ entities, knownIds }: any): Tree {
-    if (!knownIds || !entities) {
-      throw new Error(
-        'This thing is not parsable, please provide a valid tree',
-      );
+  public static fromObject({
+    entityTable,
+    knownIds,
+    deletedIds,
+  }: ToObjectType): Tree {
+    if (!knownIds || !entityTable || !deletedIds) {
+      throw new Error('wrong schema');
     }
-    const table = entityTableGen(entities.map(entityFactory));
-    return new Tree(ImSet(knownIds), table);
+    return new Tree(knownIds, entityTable, deletedIds);
   }
 
   public static fromEntities(entity: Entity[]): Tree {
@@ -40,35 +55,41 @@ export class Tree {
     return new Tree(knownIds, entityTable);
   }
 
-  private _knownIds: ImSet<EntityId>;
-  private _entityTable: EntityTable;
-  private _parentWays: ParentWays;
+  private readonly _deletedIds: ImSet<EntityId>;
+  private readonly _knownIds: ImSet<EntityId>;
+  private readonly _entityTable: EntityTable;
+  private readonly _parentWays: ParentWays;
 
   constructor(
     knownIds: ImSet<EntityId>,
     entityTable: EntityTable,
-    parentWays?: ParentWays,
+    deletedIds: ImSet<EntityId> = ImSet(),
   ) {
     /* tslint:disable */
+    this._deletedIds = deletedIds;
     this._knownIds = knownIds;
     this._entityTable = entityTable;
-    this._parentWays = parentWays || calculateParentWays(entityTable);
+    this._parentWays = calculateParentWays(entityTable, deletedIds);
     /* tslint:enable */
   }
 
-  public toJSON(): string {
-    return JSON.stringify({
+  public toJs(): ToJsonType {
+    const obj: ToJsonType = {
+      deletedIds: this._deletedIds.toArray(),
       entities: this._entityTable.valueSeq().toArray(),
-      knownIds: this._knownIds,
-    });
+      knownIds: this._knownIds.toArray(),
+    };
+    return obj;
   }
 
   public toObject(): {
+    readonly deletedIds: ImSet<EntityId>;
     readonly knownIds: ImSet<EntityId>;
     readonly entityTable: EntityTable;
     readonly parentWays: ParentWays;
   } {
     return {
+      deletedIds: this._deletedIds,
       entityTable: this._entityTable,
       knownIds: this._knownIds,
       parentWays: this._parentWays,
@@ -81,6 +102,7 @@ export class Tree {
     }
     return (
       this._knownIds.equals(tree._knownIds) &&
+      this._deletedIds.equals(tree._deletedIds) &&
       this._entityTable.equals(tree._entityTable) &&
       this._parentWays.equals(tree._parentWays)
     );
@@ -91,7 +113,7 @@ export class Tree {
   }
 
   public entity(id: EntityId): Entity | undefined {
-    if (!this._knownIds.has(id)) {
+    if (!this._knownIds.has(id) || this._deletedIds.has(id)) {
       return;
     }
     return this._entityTable.get(id);
@@ -102,7 +124,7 @@ export class Tree {
   }
 
   public getParentWay(id: NodeId): Way[] | undefined {
-    if (!this._knownIds.has(id)) {
+    if (!this._knownIds.has(id) || this._deletedIds.has(id)) {
       return;
     }
     const parentWay = this._parentWays.get(id);
@@ -133,8 +155,10 @@ export class Tree {
 
   public modifyEntities(entities: Entity[]): Tree {
     const table = entityTableGen(entities, this._entityTable);
-    const knownIds = ImSet(entities.map(e => e.id)).union(this._knownIds);
-    return new Tree(knownIds, table);
+    const ids = ImSet(entities.map(e => e.id));
+    const knownIds = ids.union(this._knownIds);
+    const deletedIds = this._deletedIds.subtract(ids);
+    return new Tree(knownIds, table, deletedIds);
   }
 
   public addEntities(entities: Entity[]): Tree {
@@ -143,8 +167,9 @@ export class Tree {
 
   public removeEntities(entityIds: EntityId[]): Tree {
     const table = removeFromEntityTable(entityIds);
-    const knownIds = this._knownIds.subtract(ImSet(entityIds));
-    return new Tree(knownIds, table);
+    const deletedIds = ImSet(entityIds);
+    const knownIds = this._knownIds.subtract(deletedIds);
+    return new Tree(knownIds, table, deletedIds);
   }
 
   public replace(entity?: Entity): Tree {
@@ -156,6 +181,7 @@ export class Tree {
     return new Tree(
       this._knownIds.add(entity.id),
       this._entityTable.set(entity.id, entity),
+      this._deletedIds.remove(entity.id),
     );
   }
 
@@ -163,12 +189,16 @@ export class Tree {
     return this._knownIds.toArray();
   }
 
+  public getDeletedIds(): EntityId[] {
+    return this._deletedIds.toArray();
+  }
+
   public merge(tree: Tree): Tree {
-    const { entityTable, knownIds, parentWays } = tree.toObject();
+    const { entityTable, knownIds, deletedIds } = tree.toObject();
     return new Tree(
       this._knownIds.union(knownIds),
       this._entityTable.merge(entityTable),
-      this._parentWays.merge(parentWays),
+      this._deletedIds.merge(deletedIds),
     );
   }
 }

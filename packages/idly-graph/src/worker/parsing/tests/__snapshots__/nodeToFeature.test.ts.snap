@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts node to feat nodeCombiner should add computed Props 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      0,
+      0,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {
+    "h": 3,
+    "id": "n-1",
+    "test": "1234",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`converts node to feat nodeCombiner should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      0,
+      0,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {
+    "id": "n-1",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`converts node to feat nodeCombiner should behave... 2`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      15,
+      10,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {
+    "id": "n-1",
+  },
+  "type": "Feature",
+}
+`;
