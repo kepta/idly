@@ -32,7 +32,7 @@ export const LineLabelLayer = (sourceName: string) =>
       layout: {
         'symbol-placement': 'line',
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-        'text-field': `{${PLUGIN_NAME}.name}`, // part 2 of this is how to do it
+        'text-field': `{${PLUGIN_NAME}--name}`, // part 2 of this is how to do it
         'text-size': 9,
         'text-transform': 'uppercase',
         'text-letter-spacing': 0.05,

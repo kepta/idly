@@ -69,9 +69,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
       lonLat.getEast(),
       lonLat.getNorth()
     ];
-    workerFetchMap({ bbox, zoom }).then(r =>
-      this.onWorkerDone(r.featureCollection)
-    );
+    workerFetchMap({ bbox, zoom }).then(this.onWorkerDone);
   };
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
@@ -126,9 +124,9 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   }
   onWorkerDone = data => {
     console.time('parse1');
-    if (!data.startsWith('{"type":"FeatureCollection","features":')) {
-      return;
-    }
+    // if (!data.startsWith('{"type":"FeatureCollection","features":')) {
+    //   return;
+    // }
     if (data === this.jsonqueue) {
       console.log('repeat string');
       return;
@@ -147,11 +145,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   parsePending = () => {
     if (this.jsonqueue) {
-      console.time('acparse');
-      // var parse = JSON.stringify(JSON.parse(this.jsonqueue));
-      console.timeEnd('acparse');
-
-      this.map.getSource('virgin').setData(JSON.parse(this.jsonqueue));
+      this.map.getSource('virgin').setData(this.jsonqueue);
       console.timeEnd('parse1');
     }
   };

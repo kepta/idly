@@ -26,7 +26,7 @@ export const highwayTrack = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-highway-track']
+        ['in', `${PLUGIN_NAME}--tagsClassType`, 'tag-highway-track']
       ])
     })
   });
@@ -55,7 +55,7 @@ export const highwayNarrow = (sourceName: string) =>
         'all',
         [
           'in',
-          `${PLUGIN_NAME}.tagsClassType`,
+          `${PLUGIN_NAME}--tagsClassType`,
           'tag-highway-path',
           'tag-highway-footway',
           'tag-highway-bridleway',
@@ -93,7 +93,7 @@ export const highwayNarrowCasing = (sourceName: string) =>
         'all',
         [
           'in',
-          `${PLUGIN_NAME}.tagsClassType`,
+          `${PLUGIN_NAME}--tagsClassType`,
           'tag-highway-path',
           'tag-highway-footway',
           'tag-highway-bridleway',

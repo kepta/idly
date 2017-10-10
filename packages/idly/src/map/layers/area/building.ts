@@ -13,8 +13,8 @@ const filter = fromJS([
   ['==', '$type', 'Polygon'],
   [
     'any',
-    ['==', `${PLUGIN_NAME}.tagsClassType`, 'tag-amenity-shelter'],
-    ['==', `${PLUGIN_NAME}.tagsClass`, 'tag-building']
+    ['==', `${PLUGIN_NAME}--tagsClassType`, 'tag-amenity-shelter'],
+    ['==', `${PLUGIN_NAME}--tagsClass`, 'tag-building']
   ]
 ]);
 

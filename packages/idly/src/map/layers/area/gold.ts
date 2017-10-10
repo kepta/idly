@@ -13,12 +13,12 @@ const filter = fromJS([
   'all',
   ['==', '$type', 'Polygon'],
   /**
-   * @TOFIX need to figure out for `tagsClass` and let the ``${PLUGIN_NAME}.tagsClassType`` override
+   * @TOFIX need to figure out for `tagsClass` and let the ``${PLUGIN_NAME}--tagsClassType`` override
    *  based on priority.
    */
   [
     'in',
-    `${PLUGIN_NAME}.tagsClassType`,
+    `${PLUGIN_NAME}--tagsClassType`,
     'tag-landuse-residential',
     'tag-landuse-construction'
   ]

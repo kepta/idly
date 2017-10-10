@@ -17,10 +17,10 @@ const filter = fromJS([
     /**
      * @TOFIX doesnt work for a way, I guess a !area, with tag natural=coastline
      */
-    ['in', `${PLUGIN_NAME}.tagsClass`, 'tag-natural', 'tag-landuse'],
+    ['in', `${PLUGIN_NAME}--tagsClass`, 'tag-natural', 'tag-landuse'],
     [
       'in',
-      `${PLUGIN_NAME}.tagsClassType`,
+      `${PLUGIN_NAME}--tagsClassType`,
       'tag-leisure-nature_reserve',
       'tag-leisure-pitch',
       'tag-leisure-park',

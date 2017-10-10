@@ -53,7 +53,7 @@ export const AreaLayer = (sourceName: string) =>
          * @REVISIT buildings or any small really look ugly with that gl offset artifact
          *  going for a fill layer for now.
          */
-        ['!=', `${PLUGIN_NAME}.tagsClass`, 'tag-building']
+        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building']
       ])
     })
   });
@@ -77,7 +77,7 @@ export const AreaLayerCasing = (sourceName: string) =>
       filter: fromJS([
         'all',
         ['==', '$type', 'Polygon'],
-        ['!=', `${PLUGIN_NAME}.tagsClass`, 'tag-building']
+        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building']
       ])
     })
   });

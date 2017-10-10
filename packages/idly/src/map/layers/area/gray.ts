@@ -14,7 +14,7 @@ const filter = fromJS([
   ['==', '$type', 'Polygon'],
   [
     'in',
-    `${PLUGIN_NAME}.tagsClassType`,
+    `${PLUGIN_NAME}--tagsClassType`,
     'tag-amenity-parking',
     'tag-leisure-pitch.tag-sport-basketball',
     'tag-leisure-pitch.tag-sport-skateboard',

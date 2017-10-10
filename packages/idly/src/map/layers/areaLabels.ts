@@ -31,11 +31,11 @@ export const AreaLabelsLayer = (sourceName: string) =>
       source: sourceName,
       layout: {
         'symbol-placement': 'point',
-        'icon-image': `{${PLUGIN_NAME}.icon}-12`,
+        'icon-image': `{${PLUGIN_NAME}--icon}-12`,
         'icon-allow-overlap': true,
         'icon-offset': [0, 2],
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-        'text-field': `{${PLUGIN_NAME}.name}`, // part 2 of this is how to do it
+        'text-field': `{${PLUGIN_NAME}--name}`, // part 2 of this is how to do it
         'text-size': 9,
         'text-transform': 'uppercase',
         'text-letter-spacing': 0.05,

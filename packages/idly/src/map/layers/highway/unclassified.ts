@@ -26,7 +26,7 @@ export const highwayUnclassified = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-highway-unclassified']
+        ['in', `${PLUGIN_NAME}--tagsClassType`, 'tag-highway-unclassified']
       ])
     })
   });

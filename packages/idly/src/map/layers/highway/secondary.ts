@@ -28,7 +28,7 @@ export const highwaySecondary = (sourceName: string) =>
         'all',
         [
           'in',
-          `${PLUGIN_NAME}.tagsClassType`,
+          `${PLUGIN_NAME}--tagsClassType`,
           'tag-highway-secondary',
           'tag-highway-secondary_link'
         ]

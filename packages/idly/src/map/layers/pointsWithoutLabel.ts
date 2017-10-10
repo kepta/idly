@@ -26,14 +26,14 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['!has', `${PLUGIN_NAME}.icon`],
+        ['!has', `${PLUGIN_NAME}--icon`],
         ['==', '$type', 'Point'],
         /**
          * @REVISIT this vertex problem
          */
         [
           '!in',
-          `${PLUGIN_NAME}.geometry`,
+          `${PLUGIN_NAME}--geometry`,
           OsmGeometry.VERTEX,
           OsmGeometry.VERTEX_SHARED
         ]

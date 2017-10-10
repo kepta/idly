@@ -28,7 +28,7 @@ export const highwayResidential = (sourceName: string) =>
         'all',
         [
           'in',
-          `${PLUGIN_NAME}.tagsClassType`,
+          `${PLUGIN_NAME}--tagsClassType`,
           'tag-highway-residential',
           'tag-highway-residential_link',
           'tag-highway-service'

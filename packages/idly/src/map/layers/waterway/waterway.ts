@@ -26,7 +26,7 @@ export const waterway = (sourceName: string) =>
       },
       filter: fromJS([
         'all',
-        ['in', `${PLUGIN_NAME}.tagsClass`, 'tag-waterway']
+        ['in', `${PLUGIN_NAME}--tagsClass`, 'tag-waterway']
       ])
     })
   });
@@ -52,6 +52,6 @@ export const waterway = (sourceName: string) =>
 //         'line-width': 3,
 //         'line-dasharray': [1, 4]
 //       },
-//       filter: fromJS(['all', ['in', `${PLUGIN_NAME}.tagsClass`, 'tag-waterway']])
+//       filter: fromJS(['all', ['in', `${PLUGIN_NAME}--tagsClass`, 'tag-waterway']])
 //     })
 //   });

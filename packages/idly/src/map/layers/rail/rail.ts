@@ -24,7 +24,10 @@ export const railway = (sourceName: string) =>
         'line-opacity': 0.85,
         'line-width': 5
       },
-      filter: fromJS(['all', ['in', `${PLUGIN_NAME}.tagsClass`, 'tag-railway']])
+      filter: fromJS([
+        'all',
+        ['in', `${PLUGIN_NAME}--tagsClass`, 'tag-railway']
+      ])
     })
   });
 
@@ -49,6 +52,9 @@ export const railwayCasing = (sourceName: string) =>
         'line-width': 3,
         'line-dasharray': [1, 4]
       },
-      filter: fromJS(['all', ['in', `${PLUGIN_NAME}.tagsClass`, 'tag-railway']])
+      filter: fromJS([
+        'all',
+        ['in', `${PLUGIN_NAME}--tagsClass`, 'tag-railway']
+      ])
     })
   });

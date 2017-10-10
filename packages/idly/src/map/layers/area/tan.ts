@@ -14,7 +14,7 @@ const areaColor = '#f5dcba';
 const filter = fromJS([
   'all',
   ['==', '$type', 'Polygon'],
-  ['in', `${PLUGIN_NAME}.tagsClassType`, 'tag-landuse-farmyard']
+  ['in', `${PLUGIN_NAME}--tagsClassType`, 'tag-landuse-farmyard']
 ]);
 
 export const areaTanLayer = (sourceName: string) =>

@@ -28,7 +28,7 @@ export const highwayMotorway = (sourceName: string) =>
         'all',
         [
           'in',
-          `${PLUGIN_NAME}.tagsClassType`,
+          `${PLUGIN_NAME}--tagsClassType`,
           'tag-highway-motorway',
           /**
            * @TOFIX iD uses a mix of x_link and x-link.
