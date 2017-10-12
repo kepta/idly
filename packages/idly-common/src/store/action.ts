@@ -6,7 +6,11 @@ export function action<T extends object>(type: string, payload: T): Action<T> {
   return Object.assign({ type }, payload);
 }
 
-/** Returns a function that builds action-builders for a family of action types, represented by the `ActionTypes` type argument */
+/**
+ * Returns a function that builds action-builders for a family of action types,
+ * represented by the `ActionTypes` type argument
+ *
+ */
 export function actionBuilderFactory<TActions extends { type: string }>() {
   return function<T extends { type: TActions['type'] }>(
     s: T['type']
