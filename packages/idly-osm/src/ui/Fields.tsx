@@ -116,10 +116,9 @@ export class Fields extends React.Component<PropsType, {}> {
     if (selectedIds.length === 1) {
       const entity = selected.entity(selectedIds[0]);
       let geometry = this.props.idlyState.core.featureTable.get(selectedIds[0])
-        .properties[`${PLUGIN_NAME}.geometry`];
+        .properties[`${PLUGIN_NAME}--geometry`];
 
       const matchedPreset = presetsMatcher(geometry, entity.tags);
-      // matchedPreset.fields.forEach(f => console.log(f.label()));
       return (
         <div style={{ margin: 4 }}>
           {this.renderMatchingFields(matchedPreset.fields, entity.tags)}
