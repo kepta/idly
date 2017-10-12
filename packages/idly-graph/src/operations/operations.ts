@@ -15,9 +15,8 @@ function controller(
       return workerFetchMap(manager)(message.request);
     case WorkerActions.FetchEntities:
       return workerFetchEntities(manager)(message.request);
-    case WorkerActions.FetchFeatures: {
+    case WorkerActions.FetchFeatures:
       return workerFetchFeatures(manager)(message.request);
-    }
     default: {
       console.error('no handler for', message.type);
       return Promise.resolve(message.type);
