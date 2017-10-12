@@ -1,4 +1,4 @@
-import { SagaIterator } from 'redux-saga';
+import { Effect, SagaIterator } from 'redux-saga';
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import { workerGetEntities, workerGetFeatures } from '../../worker/main';
@@ -20,22 +20,25 @@ export function* watchSelect(): SagaIterator {
   ]);
 }
 
-export function* selectSaga({ type, entityIds }: SelectEntitiesAction) {
-  const response: [
-    WorkerGetFeatures['response'],
-    WorkerGetEntities['response']
-  ] = yield all([
-    call(workerGetFeatures, {
-      entityIds
-    }),
-    call(workerGetEntities, {
-      entityIds
-    })
-  ]);
+export function* selectSaga({
+  type,
+  entityIds
+}: SelectEntitiesAction): IterableIterator<Effect> {
+  // const response: [
+  //   WorkerGetFeatures['response'],
+  //   WorkerGetEntities['response']
+  // ] = yield all([
+  //   call(workerGetFeatures, {
+  //     entityIds
+  //   }),
+  //   call(workerGetEntities, {
+  //     entityIds
+  //   })
+  // ]);
 
-  const features = response[0].features;
-  const tree = Tree.fromString(response[1].tree);
+  // const features = response[0].features;
+  const tree = yield call(workerGetEntities, { entityIds });
+  const features = yield call(workerGetFeatures, { entityIds });
   const featureTable: FeatureTable<any, any> = featureTableGen(features);
-
   yield put(selectCommitAction(tree, featureTable));
 }

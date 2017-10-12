@@ -59,7 +59,6 @@
     "idly-common": "file:../idly-common",
     "idly-graph": "file:../idly-graph",
     "idly-osm": "file:../idly-osm",
-    "idly-worker": "file:../idly-worker",
     "immutable": "3.8.1",
     "lodash": "^4.17.4",
     "lodash.debounce": "^4.0.8",

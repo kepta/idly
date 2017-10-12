@@ -1,3 +1,7 @@
+import { fetchEntities } from 'idly-graph/lib/operations/fetchEntities';
+import { fetchMap } from 'idly-graph/lib/operations/fetchMap';
+
+import { fetchFeatures } from 'idly-graph/lib/operations/fetchFeatures';
 import * as MyWorker from 'worker-loader!worker/worker';
 import {
   WorkerActions,
@@ -6,10 +10,10 @@ import {
   WorkerGetEntities,
   WorkerGetFeatures
 } from 'worker/actions';
+
 const PromiseWorker = require('promise-worker');
 
 export const worker: Worker = new MyWorker();
-
 export const promiseWorker = new PromiseWorker(worker);
 
 function builder<W extends WorkerActionsType>() {
@@ -25,14 +29,8 @@ function builder<W extends WorkerActionsType>() {
   };
 }
 
-export const workerFetchMap = builder<WorkerFetchMap>()(
-  WorkerActions.FETCH_MAP
-);
+export const workerFetchMap = fetchMap(promiseWorker);
 
-export const workerGetEntities = builder<WorkerGetEntities>()(
-  WorkerActions.GET_VIRGIN_ENTITIES
-);
+export const workerGetEntities = fetchEntities(promiseWorker);
 
-export const workerGetFeatures = builder<WorkerGetFeatures>()(
-  WorkerActions.GET_VIRGIN_FEATURES
-);
+export const workerGetFeatures = fetchFeatures(promiseWorker);

@@ -6,16 +6,12 @@ import { Tree } from 'idly-graph/lib/graph/Tree';
 
 export enum CoreActions {
   SELECT_ENTITIES = 'Core.SELECT_ENTITIES',
-  SELECT_COMMIT = 'Core.SELECT_COMMIT',
-  SELECT_MODIFY = 'Core.SELECT_MODIFY'
+  SELECT_COMMIT = 'Core.SELECT_COMMIT'
 }
 
 const builder = actionBuilderFactory<CoreActionType>();
 
-export type CoreActionType =
-  | SelectEntitiesAction
-  | SelectCommitAction
-  | SelectModifyAction;
+export type CoreActionType = SelectEntitiesAction | SelectCommitAction;
 
 /**
  * @DESC initiates the async selection of entities
