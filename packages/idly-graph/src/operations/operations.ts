@@ -1,5 +1,6 @@
 import { Manager } from '../worker/store/manager';
 import { workerFetchEntities } from './fetchEntities';
+import { workerFetchFeatures } from './fetchFeatures';
 import { workerFetchMap } from './fetchMap';
 import { WorkerActions, WorkerActionsType } from './types';
 
@@ -8,10 +9,15 @@ function controller(
   message: WorkerActionsType,
 ): Promise<string> {
   switch (message.type) {
+    // @TOFIX convert this to a dynamic rather than a static one
+    // or should i?
     case WorkerActions.FetchMap:
       return workerFetchMap(manager)(message.request);
     case WorkerActions.FetchEntities:
       return workerFetchEntities(manager)(message.request);
+    case WorkerActions.FetchFeatures: {
+      return workerFetchFeatures(manager)(message.request);
+    }
     default: {
       console.error('no handler for', message.type);
       return Promise.resolve(message.type);

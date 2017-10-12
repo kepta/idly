@@ -15,20 +15,10 @@ export function channelBuilder<T extends WorkerActionsType>(promiseWorker: {
         request,
         type,
       };
-      return (
-        promiseWorker
-          .postMessage(toSend)
-          // .then((r: WorkerResponse) => {
-          //   if (!r) {
-          //     throw new Error("couldn't comprehend the worker response");
-          //   }
-          //   return r;
-          // })
-          .catch((e: Error) => {
-            console.log(e.message);
-            return Promise.reject(e.message);
-          })
-      );
+      return promiseWorker.postMessage(toSend).catch((e: Error) => {
+        console.log(e.message);
+        return Promise.reject(e.message);
+      });
     };
   };
 }

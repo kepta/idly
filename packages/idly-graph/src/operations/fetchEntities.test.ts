@@ -24,8 +24,7 @@ describe('fetchEntities', () => {
     const promiseWorker = new PromiseWorkerStub();
     const controller = operations(pluginsStub());
     promiseWorker.registerPromiseWorker(controller);
-    const bindedFetchMap = fetchMap(promiseWorker);
-    await bindedFetchMap({
+    await fetchMap(promiseWorker)({
       bbox: [
         -73.98630242339283,
         40.73537277780156,
@@ -34,11 +33,11 @@ describe('fetchEntities', () => {
       ],
       zoom: 17.54,
     });
-    const resp1 = await fetchEntities(promiseWorker)({ entityIds: ['n1'] });
-    const resp2 = await fetchEntities(promiseWorker)({
+    const resp1 = fetchEntities(promiseWorker)({ entityIds: ['n1'] });
+    const resp2 = fetchEntities(promiseWorker)({
       entityIds: ['n2', 'w1'],
     });
-    expect(resp1).toMatchSnapshot();
-    expect(resp2).toMatchSnapshot();
+    expect(await resp1).toMatchSnapshot();
+    expect(await resp2).toMatchSnapshot();
   });
 });
