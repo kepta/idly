@@ -1,24 +1,14 @@
-import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { ImSet } from 'idly-common/lib/misc/immutable';
+import { EntityTable, EntityType, FeaturePropsTable, ParentWays } from 'idly-common/lib/osm/structures';
+
 import { PLUGIN_NAME } from './config/config';
-import {
-  Entity,
-  EntityTable,
-  EntityType,
-  FeatureProps,
-  FeaturePropsTable,
-  ParentWays,
-  Relation,
-  Way
-} from 'idly-common/lib/osm/structures';
 import { nodePropertiesGen } from './parsers/node';
 import { wayPropertiesGen } from './parsers/way';
-
-import { ImSet } from 'idly-common/lib/misc/immutable';
 
 function nameSpaceKeys(name, obj: { [index: string]: string }) {
   var newObj = {};
   Object.keys(obj).forEach(k => {
-    newObj[name + '.' + k] = obj[k];
+    newObj[name + '--' + k] = obj[k];
   });
   return newObj;
 }
