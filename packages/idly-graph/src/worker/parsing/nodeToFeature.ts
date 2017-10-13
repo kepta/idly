@@ -7,11 +7,11 @@ export function nodeCombiner(node: Node, existingProps: {}): Feature<any, any> {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [node.loc.lon, node.loc.lat]
+      coordinates: [node.loc.lon, node.loc.lat],
     },
     properties: {
       ...existingProps,
-      id: node.id
-    }
+      id: node.id,
+    },
   };
 }

@@ -1,16 +1,12 @@
+import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { ParentWays } from 'idly-common/lib/osm/structures';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
-import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
-import {
-  miniWayXML1,
-  miniXML1,
-  miniXML2,
-  miniXML3,
-  nodeXML1
-} from '../../parsing/fixtures';
-import { calculateParentWays, parseXML } from '../../parsing/parser';
+import { stubParser } from '../../../thread/xmlToEntities';
+import { miniWayXML1, miniXML1, miniXML2, miniXML3, nodeXML1 } from '../../parsing/fixtures';
+import { calculateParentWays } from '../../parsing/parser';
 
+const parseXML = stubParser;
 const wayXML =
   '<?xml version="1.0" encoding="UTF-8"?><osm>' +
   '<way id="1" visible="true" timestamp="2008-01-03T05:24:43Z" version="1" changeset="522559"><nd ref="1"/></way>' +
@@ -23,7 +19,7 @@ describe('parsers', () => {
       const xml = parser.parseFromString(miniXML2, 'text/xml');
       expect(parseXML(xml)).toMatchSnapshot();
       expect(
-        parseXML(parser.parseFromString(miniXML1, 'text/xml'))
+        parseXML(parser.parseFromString(miniXML1, 'text/xml')),
       ).toMatchSnapshot();
     });
     it('matches a bigger example', () => {
@@ -48,9 +44,9 @@ describe('parsers', () => {
         'w40882200',
         'w237684574',
         'w173431854',
-        'w450548831'
+        'w450548831',
       ]),
-      n1485636774: ImSet(['w40882200', 'w135262258'])
+      n1485636774: ImSet(['w40882200', 'w135262258']),
     };
 
     const parentWays: ParentWays = ImMap(obj);
@@ -64,7 +60,7 @@ describe('parsers', () => {
     it('takes existing parentways and adds a way', () => {
       const w1 = wayFactory({ id: 'w', nodes: ['n'] });
       expect(calculateParentWays(parentWays, [w1]).get('n')).toEqual(
-        ImSet([w1.id])
+        ImSet([w1.id]),
       );
     });
     it('takes existing parentways and appends a way', () => {
@@ -74,7 +70,7 @@ describe('parsers', () => {
     it('takes handles words', () => {
       const w1 = wayFactory({ id: 'way-great', nodes: ['n-random'] });
       expect(calculateParentWays(parentWays, [w1]).get('n-random')).toEqual(
-        ImSet([w1.id])
+        ImSet([w1.id]),
       );
     });
   });

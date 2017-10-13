@@ -6,12 +6,13 @@ import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Entity, EntityId, EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
 
+import { stubParser } from '../../thread/xmlToEntities';
 import { entityToGeoJSON } from '../geojson/entityToGeoJSON';
 import { fetchTile } from '../parsing/fetch';
-import { parseXML } from '../parsing/parser';
 import { TilesCache } from '../store/tilesCache';
 import { recursiveLookup } from '../util/recursiveLookup';
 
+// tslint:disable
 export class Manager {
   private tilesCache = new TilesCache();
   private parentWays: ParentWays = ImMap();
@@ -93,7 +94,7 @@ export class Manager {
     return fetchTile(t.x, t.y, t.z)
       .then(xml => {
         console.time(`parsingTile=${t.x},${t.y},${t.z}`);
-        return parseXML(xml, this.parentWays);
+        return stubParser(xml, this.parentWays);
       })
       .then(({ entities, parentWays }) => {
         this.parentWays = parentWays;
@@ -118,7 +119,6 @@ export class Manager {
       );
       const feats = entityToGeoJSON(entityTable, cmptProps);
       console.timeEnd(`worker.toFeatures`);
-
       return feats;
     } catch (e) {
       console.error(e);
