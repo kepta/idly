@@ -6,8 +6,8 @@ import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Entity, EntityId, EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
 
+import { entityToFeature } from '../../thread/entityToFeatures';
 import { stubParser } from '../../thread/xmlToEntities';
-import { entityToGeoJSON } from '../geojson/entityToGeoJSON';
 import { fetchTile } from '../parsing/fetch';
 import { TilesCache } from '../store/tilesCache';
 import { recursiveLookup } from '../util/recursiveLookup';
@@ -25,7 +25,6 @@ export class Manager {
         return [];
       }
       return x.workers.map(w => {
-        console.log(w);
         if (!w || !w.worker || !w.pluginName) throw new Error('empty worker');
         return {
           ...w,
@@ -52,12 +51,7 @@ export class Manager {
   async featureLookup(entityIds: EntityId[]): Promise<any[]> {
     const entities = this.entityLookup(entityIds);
     const entityTable: EntityTable = entityTableGen(entities);
-    const cmptProps = await this.computePropsTable(
-      entityTable,
-      this.parentWays,
-    );
-    const feats = entityToGeoJSON(entityTable, cmptProps);
-    return feats;
+    return this.computePropsTable(entityTable, this.parentWays);
   }
 
   private async computePropsTable(
@@ -67,21 +61,9 @@ export class Manager {
     console.time('computePropsTable');
     const props = new Map();
     const workerPlugins = await this.pluginsWorker;
-    for (const { worker } of workerPlugins) {
-      const computedProps = worker(entityTable, parentWays);
-      for (const [entityId, val] of computedProps) {
-        if (props.has(entityId)) {
-          props.get(entityId).push(val);
-        } else {
-          props.set(entityId, [val]);
-        }
-      }
-    }
-    for (const [key, val] of props) {
-      props.set(key, Object.assign({}, ...val));
-    }
+    const p = entityToFeature(workerPlugins.map(r => r.worker))(entityTable);
     console.timeEnd('computePropsTable');
-    return props;
+    return p;
   }
 
   private fetchAndParse(xyzs: Tile[]) {
@@ -110,16 +92,13 @@ export class Manager {
 
   private async toFeatures(bbox: BBox, zoom: number) {
     try {
-      console.time(`worker.toFeatures`);
+      // console.time(`worker.toFeatures`);
       const entities = this.tilesCache.search(bbox, zoom, 1);
       const entityTable: EntityTable = entityTableGen(entities);
-      const cmptProps = await this.computePropsTable(
-        entityTable,
-        this.parentWays,
-      );
-      const feats = entityToGeoJSON(entityTable, cmptProps);
-      console.timeEnd(`worker.toFeatures`);
-      return feats;
+      return this.computePropsTable(entityTable, this.parentWays);
+      // const feats = entityToGeoJSON(entityTable, cmptProps);
+      // console.timeEnd(`worker.toFeatures`);
+      // return feats;
     } catch (e) {
       console.error(e);
     }

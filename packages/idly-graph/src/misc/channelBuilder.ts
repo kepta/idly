@@ -16,7 +16,7 @@ export function channelBuilder<T extends WorkerActionsType>(promiseWorker: {
         type,
       };
       return promiseWorker.postMessage(toSend).catch((e: Error) => {
-        console.log(e.message);
+        console.log('Worker Error', e.message);
         return Promise.reject(e.message);
       });
     };

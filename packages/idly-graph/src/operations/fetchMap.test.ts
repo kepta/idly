@@ -39,7 +39,7 @@ describe('fetchMap: custom controller', () => {
     expect(resp).toMatchSnapshot();
   });
 
-  test.skip('big xml test', async () => {
+  test('big xml test', async () => {
     global.fetch = jest.fn().mockImplementation(() => {
       return new Promise((resolve, reject) => {
         resolve({

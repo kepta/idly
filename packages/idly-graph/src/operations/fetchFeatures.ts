@@ -36,7 +36,6 @@ export function workerFetchFeatures(
 ): (request: WorkerFetchFeatures['request']) => Promise<string> {
   return async ({ entityIds }) => {
     const toReturn: ReturnType = await manager.featureLookup(entityIds);
-    console.log(entityIds, toReturn);
     return JSON.stringify(toReturn);
   };
 }

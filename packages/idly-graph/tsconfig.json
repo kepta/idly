@@ -5,7 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "target": "es2015",
+    "target": "es2017",
     "strict": true,
     "pretty": true,
     "declaration": true,
