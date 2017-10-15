@@ -1,23 +1,66 @@
-import { WorkerGetEntities } from './fetchEntities';
-import { WorkerFetchFeatures } from './fetchFeatures';
-import { WorkerFetchMap } from './fetchMap';
+import { ImMap } from 'idly-common/lib/misc/immutable';
+import { Entity, EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
 
-export enum WorkerStateAccessActions {
-  FetchEntities = 'WorkerActions.FETCH_ENTITIES',
-  FetchFeatures = 'WorkerActions.FETCH_FEATURES',
-  FetchMap = 'WorkerActions.FETCH_MAP',
-  Default = 'WorkerActions.DEFAULT',
+import { WorkerGetEntities } from './fetchEntities';
+import { WorkerGetFeatures } from './fetchFeatures';
+import { WorkerFetchMap } from './fetchMap';
+import { WorkerSetOsmTiles } from './setOsmTiles';
+
+export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
+
+export interface WorkerState {
+  readonly entityTable: EntityTable;
+  readonly parentWays: ParentWays;
+  readonly tilesDataTable: TilesDataTable;
+  readonly plugins: Promise<any>;
 }
 
-export interface DefaultCase {
-  readonly type: WorkerStateAccessActions.Default;
+export interface TileData {
+  readonly entities: Entity[];
+  readonly entityTable: EntityTable;
+  readonly parentWays: ParentWays;
+}
+
+/**
+ * Get type worker actions
+ * These actions access the worker state
+ * and cannot modify the state.
+ */
+export enum WorkerGetStateActions {
+  GetEntities = 'WorkerGetState.GET_ENTITIES',
+  GetFeatures = 'WorkerGetState.GET_FEATURES',
+  GetDefault = 'WorkerGetState.GET_DEFAULT',
+  FetchMap = 'WorkerGetState.GET_MAP',
+}
+
+export interface DefaultGetCase {
+  readonly type: WorkerGetStateActions.GetDefault;
   readonly request: any;
 }
 
-export type WorkerActionsType =
-  | WorkerFetchMap
+export type WorkerGetStateActionsType =
   | WorkerGetEntities
-  | WorkerFetchFeatures
-  | DefaultCase;
+  | WorkerGetFeatures
+  | WorkerFetchMap
+  | DefaultGetCase;
 
-export type WorkerResponse = string;
+export type WorkerGetResponse = string;
+
+/**
+ * Set type actions
+ * These actions change the state of the worker
+ * and do not necessarily reply with data
+ */
+export enum WorkerSetStateActions {
+  SetOsmTiles = 'WorkerSetState.SET_OSM_TILES',
+  SetDefault = 'WorkerSetState.SET_DEFAULT',
+}
+
+export interface DefaultSetCase {
+  readonly type: WorkerSetStateActions.SetDefault;
+  readonly request: any;
+}
+
+export type WorkerSetStateActionsType = WorkerSetOsmTiles | DefaultSetCase;
+
+export type WorkerSetResponse = string;

@@ -1,10 +1,11 @@
-import { WorkerActionsType } from '../operations/types';
+import { WorkerGetStateActionsType } from '../operations/types';
 
+// TOFIX WorkerGetStateActionsType only does GetState actions, want to add SetState aswell
 export class PromiseWorkerStub {
   /* tslint:disable */
-  public _workerCb: (message: WorkerActionsType) => Promise<any>;
+  public _workerCb: (message: WorkerGetStateActionsType) => Promise<any>;
   registerPromiseWorker(
-    workerCb: (message: WorkerActionsType) => Promise<any>,
+    workerCb: (message: WorkerGetStateActionsType) => Promise<any>,
   ) {
     this._workerCb = workerCb;
   }
@@ -13,7 +14,7 @@ export class PromiseWorkerStub {
     readonly request: any;
     readonly type: string;
   }): Promise<any> {
-    const t: WorkerActionsType = JSON.parse(JSON.stringify(data));
+    const t: WorkerGetStateActionsType = JSON.parse(JSON.stringify(data));
     if (!t.type) {
       throw new Error('need type');
     }

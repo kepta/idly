@@ -4,6 +4,7 @@ import { miniXML3 } from '../worker/parsing/fixtures';
 import { fetchFeatures } from './fetchFeatures';
 import { fetchMap } from './fetchMap';
 import { operations } from './operations';
+import { setOsmTiles } from './setOsmTiles';
 
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
@@ -23,9 +24,10 @@ describe('fetchFeatures', () => {
   const promiseWorker = new PromiseWorkerStub();
   const controller = operations(pluginsStub());
   promiseWorker.registerPromiseWorker(controller);
+
   const bindedFetchMap = fetchMap(promiseWorker);
   test('small xml test', async () => {
-    await bindedFetchMap({
+    await setOsmTiles(promiseWorker)({
       bbox: [
         -73.98630242339283,
         40.73537277780156,
@@ -42,7 +44,7 @@ describe('fetchFeatures', () => {
     expect(await resp2).toMatchSnapshot();
   });
   test.skip('non existent id should not fail', async () => {
-    await bindedFetchMap({
+    await setOsmTiles(promiseWorker)({
       bbox: [
         -73.98630242339283,
         40.73537277780156,

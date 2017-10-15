@@ -2,12 +2,12 @@ import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { EntityId } from 'idly-common/lib/osm/structures';
 
 import { Tree } from '../graph/Tree';
-import { channelBuilder } from '../misc/channelBuilder';
-import { Manager } from '../worker/store/manager';
-import { WorkerStateAccessActions } from './types';
+import { getChannelBuilder } from '../misc/channelBuilder';
+import { recursiveLookup } from '../worker/util/recursiveLookup';
+import { WorkerGetStateActions, WorkerState } from './types';
 
 export interface WorkerGetEntities {
-  readonly type: WorkerStateAccessActions.FetchEntities;
+  readonly type: WorkerGetStateActions.GetEntities;
   readonly request: {
     readonly entityIds: EntityId[];
   };
@@ -20,8 +20,8 @@ export type ReturnType = Tree;
 export function fetchEntities(
   connector: any,
 ): (req: WorkerGetEntities['request']) => Promise<ReturnType> {
-  const channel = channelBuilder<WorkerGetEntities>(connector)(
-    WorkerStateAccessActions.FetchEntities,
+  const channel = getChannelBuilder<WorkerGetEntities>(connector)(
+    WorkerGetStateActions.GetEntities,
   );
   return async request => {
     const json = await channel(request);
@@ -33,10 +33,13 @@ export function fetchEntities(
 /** Worker Thread */
 
 export function workerFetchEntities(
-  manager: Manager,
+  state: WorkerState,
 ): (request: WorkerGetEntities['request']) => Promise<string> {
   return async ({ entityIds }) => {
-    const entities = await manager.entityLookup(entityIds).map(e => [e.id, e]);
+    const entities = entityIds
+      .map(id => recursiveLookup(id, state.entityTable))
+      .reduce((prev, curr) => prev.concat(curr), [])
+      .map(e => [e.id, e]);
     const toReturn: ReturnType = Tree.fromObject({
       deletedIds: ImSet(),
       entityTable: ImMap(entities),

@@ -11,9 +11,11 @@ export type PluginComputeProps = (
 
 export function entityToFeature(
   computer: PluginComputeProps[],
-): (entityTable: EntityTable) => Array<Feature<any, any>> {
-  return entityTable => {
-    const parentWays = calculateParentWays(entityTable);
+): (
+  entityTable: EntityTable,
+  parentWays?: ParentWays,
+) => Array<Feature<any, any>> {
+  return (entityTable, parentWays = calculateParentWays(entityTable)) => {
     const props = new Map();
     for (const comp of computer) {
       const computedProps = comp(entityTable, parentWays);

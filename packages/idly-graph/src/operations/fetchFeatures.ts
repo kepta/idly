@@ -1,12 +1,14 @@
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Feature } from 'idly-common/lib/osm/feature';
-import { EntityId } from 'idly-common/lib/osm/structures';
+import { EntityId, EntityTable } from 'idly-common/lib/osm/structures';
 
-import { channelBuilder } from '../misc/channelBuilder';
-import { Manager } from '../worker/store/manager';
-import { WorkerStateAccessActions } from './types';
+import { getChannelBuilder } from '../misc/channelBuilder';
+import { entityToFeature } from '../thread/entityToFeatures';
+import { recursiveLookup } from '../worker/util/recursiveLookup';
+import { WorkerGetStateActions, WorkerState } from './types';
 
-export interface WorkerFetchFeatures {
-  readonly type: WorkerStateAccessActions.FetchFeatures;
+export interface WorkerGetFeatures {
+  readonly type: WorkerGetStateActions.GetFeatures;
   readonly request: {
     readonly entityIds: EntityId[];
   };
@@ -18,9 +20,9 @@ export type ReturnType = Array<Feature<any, any>>;
 
 export function fetchFeatures(
   connector: any,
-): (req: WorkerFetchFeatures['request']) => Promise<ReturnType> {
-  const channel = channelBuilder<WorkerFetchFeatures>(connector)(
-    WorkerStateAccessActions.FetchFeatures,
+): (req: WorkerGetFeatures['request']) => Promise<ReturnType> {
+  const channel = getChannelBuilder<WorkerGetFeatures>(connector)(
+    WorkerGetStateActions.GetFeatures,
   );
   return async request => {
     const json = await channel(request);
@@ -32,10 +34,18 @@ export function fetchFeatures(
 /** Worker Thread */
 
 export function workerFetchFeatures(
-  manager: Manager,
-): (request: WorkerFetchFeatures['request']) => Promise<string> {
+  state: WorkerState,
+): (request: WorkerGetFeatures['request']) => any {
   return async ({ entityIds }) => {
-    const toReturn: ReturnType = await manager.featureLookup(entityIds);
+    const result = [];
+    const entities = entityIds
+      .map(id => recursiveLookup(id, state.entityTable))
+      .reduce((prev, curr) => prev.concat(curr), []);
+    const entityTable: EntityTable = entityTableGen(entities);
+    const workerPlugins = await state.plugins;
+    const toReturn: ReturnType = entityToFeature(
+      workerPlugins.map(r => r.worker),
+    )(entityTable);
     return JSON.stringify(toReturn);
   };
 }
