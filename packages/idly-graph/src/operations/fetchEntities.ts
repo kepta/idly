@@ -4,10 +4,10 @@ import { EntityId } from 'idly-common/lib/osm/structures';
 import { Tree } from '../graph/Tree';
 import { channelBuilder } from '../misc/channelBuilder';
 import { Manager } from '../worker/store/manager';
-import { WorkerActions } from './types';
+import { WorkerStateAccessActions } from './types';
 
 export interface WorkerGetEntities {
-  readonly type: WorkerActions.FetchEntities;
+  readonly type: WorkerStateAccessActions.FetchEntities;
   readonly request: {
     readonly entityIds: EntityId[];
   };
@@ -21,7 +21,7 @@ export function fetchEntities(
   connector: any,
 ): (req: WorkerGetEntities['request']) => Promise<ReturnType> {
   const channel = channelBuilder<WorkerGetEntities>(connector)(
-    WorkerActions.FetchEntities,
+    WorkerStateAccessActions.FetchEntities,
   );
   return async request => {
     const json = await channel(request);

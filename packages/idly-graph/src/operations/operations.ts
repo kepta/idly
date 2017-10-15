@@ -2,20 +2,20 @@ import { Manager } from '../worker/store/manager';
 import { workerFetchEntities } from './fetchEntities';
 import { workerFetchFeatures } from './fetchFeatures';
 import { workerFetchMap } from './fetchMap';
-import { WorkerActions, WorkerActionsType } from './types';
+import { WorkerActionsType, WorkerStateAccessActions } from './types';
 
-function controller(
+function stateAccessor(
   manager: Manager,
   message: WorkerActionsType,
 ): Promise<string> {
   switch (message.type) {
     // @TOFIX convert this to a dynamic rather than a static one
     // or should i?
-    case WorkerActions.FetchMap:
+    case WorkerStateAccessActions.FetchMap:
       return workerFetchMap(manager)(message.request);
-    case WorkerActions.FetchEntities:
+    case WorkerStateAccessActions.FetchEntities:
       return workerFetchEntities(manager)(message.request);
-    case WorkerActions.FetchFeatures:
+    case WorkerStateAccessActions.FetchFeatures:
       return workerFetchFeatures(manager)(message.request);
     default: {
       console.error('no handler for', message.type);
@@ -36,6 +36,6 @@ export function operations(
 ): (message: WorkerActionsType) => Promise<any> {
   const manager = new Manager(plugins);
   return message => {
-    return controller(manager, message);
+    return stateAccessor(manager, message);
   };
 }

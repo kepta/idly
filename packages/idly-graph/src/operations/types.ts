@@ -2,7 +2,7 @@ import { WorkerGetEntities } from './fetchEntities';
 import { WorkerFetchFeatures } from './fetchFeatures';
 import { WorkerFetchMap } from './fetchMap';
 
-export enum WorkerActions {
+export enum WorkerStateAccessActions {
   FetchEntities = 'WorkerActions.FETCH_ENTITIES',
   FetchFeatures = 'WorkerActions.FETCH_FEATURES',
   FetchMap = 'WorkerActions.FETCH_MAP',
@@ -10,7 +10,7 @@ export enum WorkerActions {
 }
 
 export interface DefaultCase {
-  readonly type: WorkerActions.Default;
+  readonly type: WorkerStateAccessActions.Default;
   readonly request: any;
 }
 

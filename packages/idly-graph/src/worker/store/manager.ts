@@ -7,8 +7,8 @@ import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Entity, EntityId, EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
 
 import { entityToFeature } from '../../thread/entityToFeatures';
+import { fetchTileXml } from '../../thread/fetchTileXml';
 import { stubParser } from '../../thread/xmlToEntities';
-import { fetchTile } from '../parsing/fetch';
 import { TilesCache } from '../store/tilesCache';
 import { recursiveLookup } from '../util/recursiveLookup';
 
@@ -17,14 +17,14 @@ export class Manager {
   private tilesCache = new TilesCache();
   private parentWays: ParentWays = ImMap();
   private masterTable: EntityTable = ImMap();
-  private pluginsWorker: Promise<any[]>;
+  public pluginsWorker: Promise<any[]>;
   constructor(pluginPromise: Promise<any>) {
-    this.pluginsWorker = pluginPromise.then(x => {
-      if (!x) {
+    this.pluginsWorker = pluginPromise.then(plugs => {
+      if (!plugs) {
         console.error('empty plugin promise');
         return [];
       }
-      return x.workers.map(w => {
+      return plugs.workers.map(w => {
         if (!w || !w.worker || !w.pluginName) throw new Error('empty worker');
         return {
           ...w,
@@ -34,11 +34,21 @@ export class Manager {
     });
   }
 
-  receive(bbox: BBox, zoom: number) {
+  async receive(bbox: BBox, zoom: number) {
     zoom = 18;
     zoom = Math.floor(zoom);
     const xyzs = bboxToTiles(bbox, zoom);
-    return this.fetchAndParse(xyzs).then(() => this.toFeatures(bbox, zoom));
+    console.time('nonlethal');
+    await Promise.all(
+      xyzs.filter(t => !this.tilesCache.has(t)).map(t => this.fetchProcess(t)),
+    );
+    const entities = this.tilesCache.search(bbox, zoom, 1);
+    const ret = this.computePropsTable(
+      entityTableGen(entities),
+      this.parentWays,
+    );
+    console.timeEnd('nonlethal');
+    return ret;
   }
 
   entityLookup(entityIds: EntityId[]): Entity[] {
@@ -48,7 +58,7 @@ export class Manager {
       .reduce((prev, curr) => prev.concat(curr), []);
   }
 
-  async featureLookup(entityIds: EntityId[]): Promise<any[]> {
+  featureLookup(entityIds: EntityId[]): Promise<any[]> {
     const entities = this.entityLookup(entityIds);
     const entityTable: EntityTable = entityTableGen(entities);
     return this.computePropsTable(entityTable, this.parentWays);
@@ -59,48 +69,17 @@ export class Manager {
     parentWays: ParentWays,
   ): Promise<Map<EntityId, { [index: string]: string }>> {
     console.time('computePropsTable');
-    const props = new Map();
     const workerPlugins = await this.pluginsWorker;
     const p = entityToFeature(workerPlugins.map(r => r.worker))(entityTable);
     console.timeEnd('computePropsTable');
     return p;
   }
 
-  private fetchAndParse(xyzs: Tile[]) {
-    return Promise.all(
-      xyzs.filter(t => !this.tilesCache.has(t)).map(t => this.fetchProcess(t)),
-    );
-  }
-
-  private fetchProcess(t: Tile) {
-    return fetchTile(t.x, t.y, t.z)
-      .then(xml => {
-        console.time(`parsingTile=${t.x},${t.y},${t.z}`);
-        return stubParser(xml, this.parentWays);
-      })
-      .then(({ entities, parentWays }) => {
-        this.parentWays = parentWays;
-        this.masterTable = entityTableGen(entities, this.masterTable);
-        this.tilesCache.set(t, entities);
-        console.timeEnd(`parsingTile=${t.x},${t.y},${t.z}`);
-      })
-      .catch(e => {
-        console.error(e);
-        throw e;
-      });
-  }
-
-  private async toFeatures(bbox: BBox, zoom: number) {
-    try {
-      // console.time(`worker.toFeatures`);
-      const entities = this.tilesCache.search(bbox, zoom, 1);
-      const entityTable: EntityTable = entityTableGen(entities);
-      return this.computePropsTable(entityTable, this.parentWays);
-      // const feats = entityToGeoJSON(entityTable, cmptProps);
-      // console.timeEnd(`worker.toFeatures`);
-      // return feats;
-    } catch (e) {
-      console.error(e);
-    }
+  private async fetchProcess(t: Tile) {
+    const xml = await fetchTileXml(t.x, t.y, t.z);
+    const { entities, parentWays } = stubParser(xml, this.parentWays);
+    this.parentWays = parentWays;
+    this.masterTable = entityTableGen(entities, this.masterTable);
+    this.tilesCache.set(t, entities);
   }
 }
