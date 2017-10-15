@@ -8,11 +8,11 @@ import { Tile } from '../geo/tile';
  */
 export function bboxToTiles(bbox: BBox, z: number): Tile[] {
   const xyzs: Tile[] = [];
-
-  const { minX, minY, maxX, maxY } = bboxToXY(bbox, z);
+  const intZ = Math.ceil(z);
+  const { minX, minY, maxX, maxY } = bboxToXY(bbox, intZ);
   for (let x = minX; x <= maxX; x++) {
     for (let y = minY; y <= maxY; y++) {
-      xyzs.push({ x, y, z });
+      xyzs.push({ x, y, z: intZ });
     }
   }
   return xyzs;
