@@ -22,6 +22,7 @@
         "quotemark": [
             "single"
         ],
+        "max-line-length": false,
         "arrow-parens": false,
         // Immutability rules
         "readonly-keyword": true,

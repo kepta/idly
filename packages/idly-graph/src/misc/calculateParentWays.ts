@@ -1,5 +1,10 @@
 import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
-import { EntityId, EntityTable, EntityType, ParentWays } from 'idly-common/lib/osm/structures';
+import {
+  EntityId,
+  EntityTable,
+  EntityType,
+  ParentWays,
+} from 'idly-common/lib/osm/structures';
 
 export function calculateParentWays(
   entityTable: EntityTable,
@@ -19,22 +24,3 @@ export function calculateParentWays(
     });
   });
 }
-
-// export function calculateParentWaysForArray(
-//   entities: Entity[],
-//   deletedIds: ImSet<EntityId> = ImSet(),
-//   parentWays: ParentWays = ImMap(),
-// ): ParentWays {
-//   return parentWays.withMutations(p => {
-//     entities.forEach(w => {
-//       if (!w || w.type !== EntityType.WAY || deletedIds.has(w.id)) {
-//         return;
-//       }
-//       w.nodes.forEach(nodeId => {
-//         /* tslint:disable */
-//         p.update(nodeId, (s = ImSet()) => s.add(w.id));
-//         /* tslint:enable */
-//       });
-//     });
-//   });
-// }

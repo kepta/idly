@@ -1,815 +1,643 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`parsers calculateParentWays  takes existing parentways and appends a way 1`] = `
-Immutable.Map {
-  "n3780767744": Immutable.Set [
-    "w40542208",
-  ],
-  "n4558992269": Immutable.Set [
-    "w40542208",
-  ],
-  "n253179996": Immutable.Set [
-    "w40882200",
-    "w237684574",
-    "w173431854",
-    "w450548831",
-    "w",
-  ],
-  "n1485636774": Immutable.Set [
-    "w40882200",
-    "w135262258",
-  ],
-}
-`;
-
 exports[`parsers it makes good parentways matches snapshot 1`] = `
-Object {
-  "entities": Array [
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n2",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
+    "id": "n1",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": "[]",
-      "type": "way",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w2",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": "[]",
-      "type": "way",
-    },
-  ],
-  "parentWays": Immutable.Map {
-    "n1": Immutable.Set [
-      "w1",
-      "w2",
-    ],
-    "n2": Immutable.Set [
-      "w1",
-    ],
-    "n3": Immutable.Set [
-      "w2",
-    ],
+    "tags": "[]",
+    "type": "node",
   },
-}
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n2",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n3",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "50089927",
+      "timestamp": "2017-07-06T17:19:04Z",
+      "uid": "2815653",
+      "user": "Srihari Thalla",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w1",
+    "nodes": Array [
+      "n1",
+      "n2",
+    ],
+    "tags": "[]",
+    "type": "way",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "50089927",
+      "timestamp": "2017-07-06T17:19:04Z",
+      "uid": "2815653",
+      "user": "Srihari Thalla",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w2",
+    "nodes": Array [
+      "n1",
+      "n3",
+    ],
+    "tags": "[]",
+    "type": "way",
+  },
+]
 `;
 
 exports[`parsers it makes good parentways reuses parent Ways and adds stuff to it 1`] = `
-Object {
-  "entities": Array [
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n2",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
+    "id": "n1",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": "[]",
-      "type": "way",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w2",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": "[]",
-      "type": "way",
-    },
-  ],
-  "parentWays": Immutable.Map {
-    "n1": Immutable.Set [
-      "w1",
-      "w2",
-    ],
-    "n2": Immutable.Set [
-      "w1",
-    ],
-    "n3": Immutable.Set [
-      "w2",
-    ],
+    "tags": "[]",
+    "type": "node",
   },
-}
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n2",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n3",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "50089927",
+      "timestamp": "2017-07-06T17:19:04Z",
+      "uid": "2815653",
+      "user": "Srihari Thalla",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w1",
+    "nodes": Array [
+      "n1",
+      "n2",
+    ],
+    "tags": "[]",
+    "type": "way",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "50089927",
+      "timestamp": "2017-07-06T17:19:04Z",
+      "uid": "2815653",
+      "user": "Srihari Thalla",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w2",
+    "nodes": Array [
+      "n1",
+      "n3",
+    ],
+    "tags": "[]",
+    "type": "way",
+  },
+]
 `;
 
 exports[`parsers node matches a bigger example 1`] = `
-Object {
-  "entities": Array [
-    Object {
-      "attributes": Object {
-        "changeset": "138701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n12",
-      "loc": Object {
-        "lat": 34.5280866,
-        "lon": 74.1795357,
-      },
-      "tags": "[]",
-      "type": "node",
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "138701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782712",
-      "loc": Object {
-        "lat": 34.5280866,
-        "lon": 74.1795357,
-      },
-      "tags": "[]",
-      "type": "node",
+    "id": "n12",
+    "loc": Object {
+      "lat": 34.5280866,
+      "lon": 74.1795357,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782713",
-      "loc": Object {
-        "lat": 34.528206,
-        "lon": 74.1807924,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782714",
-      "loc": Object {
-        "lat": 34.5283653,
-        "lon": 74.1822907,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782715",
-      "loc": Object {
-        "lat": 34.528425,
-        "lon": 74.1815174,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782716",
-      "loc": Object {
-        "lat": 34.5285445,
-        "lon": 74.1788832,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782717",
-      "loc": Object {
-        "lat": 34.5290024,
-        "lon": 74.1788349,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782718",
-      "loc": Object {
-        "lat": 34.5292015,
-        "lon": 74.179584,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782719",
-      "loc": Object {
-        "lat": 34.529301,
-        "lon": 74.1824357,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782720",
-      "loc": Object {
-        "lat": 34.5294603,
-        "lon": 74.1794149,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782721",
-      "loc": Object {
-        "lat": 34.5296992,
-        "lon": 74.1823873,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782722",
-      "loc": Object {
-        "lat": 34.5297191,
-        "lon": 74.1788349,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782723",
-      "loc": Object {
-        "lat": 34.5300377,
-        "lon": 74.1821698,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782724",
-      "loc": Object {
-        "lat": 34.5303562,
-        "lon": 74.1783274,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782725",
-      "loc": Object {
-        "lat": 34.530396,
-        "lon": 74.1816382,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782726",
-      "loc": Object {
-        "lat": 34.5305354,
-        "lon": 74.1805024,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782727",
-      "loc": Object {
-        "lat": 34.5309137,
-        "lon": 74.1799224,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782728",
-      "loc": Object {
-        "lat": 34.5311526,
-        "lon": 74.1786899,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:40Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782729",
-      "loc": Object {
-        "lat": 34.5314114,
-        "lon": 74.1793182,
-      },
-      "tags": "[]",
-      "type": "node",
-    },
-    Object {
-      "attributes": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w411770875",
-      "nodes": Array [
-        "n4133782719",
-        "n4133782714",
-        "n4133782715",
-        "n4133782713",
-        "n4133782712",
-        "n4133782716",
-        "n4133782717",
-        "n4133782718",
-        "n4133782720",
-        "n4133782722",
-        "n4133782724",
-        "n4133782728",
-        "n4133782729",
-        "n4133782727",
-        "n4133782726",
-        "n4133782725",
-        "n4133782723",
-        "n4133782721",
-        "n4133782719",
-      ],
-      "tags": "[[\\"landuse\\",\\"residential\\"],[\\"place\\",\\"village\\"],[\\"source\\",\\"MSF Survey\\"]]",
-      "type": "way",
-    },
-  ],
-  "parentWays": Immutable.Map {
-    "n4133782720": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782721": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782722": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782712": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782723": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782713": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782724": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782714": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782725": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782715": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782726": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782716": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782727": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782717": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782728": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782718": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782729": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782719": Immutable.Set [
-      "w411770875",
-    ],
+    "tags": "[]",
+    "type": "node",
   },
-}
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782712",
+    "loc": Object {
+      "lat": 34.5280866,
+      "lon": 74.1795357,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782713",
+    "loc": Object {
+      "lat": 34.528206,
+      "lon": 74.1807924,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782714",
+    "loc": Object {
+      "lat": 34.5283653,
+      "lon": 74.1822907,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782715",
+    "loc": Object {
+      "lat": 34.528425,
+      "lon": 74.1815174,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782716",
+    "loc": Object {
+      "lat": 34.5285445,
+      "lon": 74.1788832,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782717",
+    "loc": Object {
+      "lat": 34.5290024,
+      "lon": 74.1788349,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782718",
+    "loc": Object {
+      "lat": 34.5292015,
+      "lon": 74.179584,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782719",
+    "loc": Object {
+      "lat": 34.529301,
+      "lon": 74.1824357,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782720",
+    "loc": Object {
+      "lat": 34.5294603,
+      "lon": 74.1794149,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782721",
+    "loc": Object {
+      "lat": 34.5296992,
+      "lon": 74.1823873,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782722",
+    "loc": Object {
+      "lat": 34.5297191,
+      "lon": 74.1788349,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782723",
+    "loc": Object {
+      "lat": 34.5300377,
+      "lon": 74.1821698,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782724",
+    "loc": Object {
+      "lat": 34.5303562,
+      "lon": 74.1783274,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782725",
+    "loc": Object {
+      "lat": 34.530396,
+      "lon": 74.1816382,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782726",
+    "loc": Object {
+      "lat": 34.5305354,
+      "lon": 74.1805024,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782727",
+    "loc": Object {
+      "lat": 34.5309137,
+      "lon": 74.1799224,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782728",
+    "loc": Object {
+      "lat": 34.5311526,
+      "lon": 74.1786899,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:40Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782729",
+    "loc": Object {
+      "lat": 34.5314114,
+      "lon": 74.1793182,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "50089927",
+      "timestamp": "2017-07-06T17:19:04Z",
+      "uid": "2815653",
+      "user": "Srihari Thalla",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w411770875",
+    "nodes": Array [
+      "n4133782719",
+      "n4133782714",
+      "n4133782715",
+      "n4133782713",
+      "n4133782712",
+      "n4133782716",
+      "n4133782717",
+      "n4133782718",
+      "n4133782720",
+      "n4133782722",
+      "n4133782724",
+      "n4133782728",
+      "n4133782729",
+      "n4133782727",
+      "n4133782726",
+      "n4133782725",
+      "n4133782723",
+      "n4133782721",
+      "n4133782719",
+    ],
+    "tags": "[[\\"landuse\\",\\"residential\\"],[\\"place\\",\\"village\\"],[\\"source\\",\\"MSF Survey\\"]]",
+    "type": "way",
+  },
+]
 `;
 
 exports[`parsers node matches snapshot 1`] = `
-Object {
-  "entities": Array [
-    Object {
-      "attributes": Object {
-        "changeset": "1",
-        "timestamp": "2009-03-07T03:26:33Z",
-        "uid": null,
-        "user": null,
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": "[]",
-      "type": "node",
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "1",
+      "timestamp": "2009-03-07T03:26:33Z",
+      "uid": null,
+      "user": null,
+      "version": "1",
+      "visible": true,
     },
-  ],
-  "parentWays": Immutable.Map {},
-}
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+]
 `;
 
 exports[`parsers node matches snapshot 2`] = `
-Object {
-  "entities": Array [
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782712",
-      "loc": Object {
-        "lat": 34.5280866,
-        "lon": 74.1795357,
-      },
-      "tags": "[]",
-      "type": "node",
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
     },
-    Object {
-      "attributes": Object {
-        "changeset": "38701677",
-        "timestamp": "2016-04-19T17:58:39Z",
-        "uid": "592097",
-        "user": "Dombo",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "n4133782713",
-      "loc": Object {
-        "lat": 34.528206,
-        "lon": 74.1807924,
-      },
-      "tags": "[]",
-      "type": "node",
+    "id": "n4133782712",
+    "loc": Object {
+      "lat": 34.5280866,
+      "lon": 74.1795357,
     },
-  ],
-  "parentWays": Immutable.Map {},
-}
+    "tags": "[]",
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "38701677",
+      "timestamp": "2016-04-19T17:58:39Z",
+      "uid": "592097",
+      "user": "Dombo",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "n4133782713",
+    "loc": Object {
+      "lat": 34.528206,
+      "lon": 74.1807924,
+    },
+    "tags": "[]",
+    "type": "node",
+  },
+]
 `;
 
 exports[`parsers way matches snapshot 1`] = `
-Object {
-  "entities": Array [
-    Object {
-      "attributes": Object {
-        "changeset": "50089927",
-        "timestamp": "2017-07-06T17:19:04Z",
-        "uid": "2815653",
-        "user": "Srihari Thalla",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w411770875",
-      "nodes": Array [
-        "n4133782719",
-        "n4133782714",
-        "n4133782715",
-        "n4133782713",
-        "n4133782712",
-        "n4133782716",
-        "n4133782717",
-        "n4133782718",
-        "n4133782720",
-        "n4133782722",
-        "n4133782724",
-        "n4133782728",
-        "n4133782729",
-        "n4133782727",
-        "n4133782726",
-        "n4133782725",
-        "n4133782723",
-        "n4133782721",
-        "n4133782719",
-      ],
-      "tags": "[[\\"landuse\\",\\"residential\\"],[\\"place\\",\\"village\\"],[\\"source\\",\\"MSF Survey\\"]]",
-      "type": "way",
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "50089927",
+      "timestamp": "2017-07-06T17:19:04Z",
+      "uid": "2815653",
+      "user": "Srihari Thalla",
+      "version": "2",
+      "visible": true,
     },
-  ],
-  "parentWays": Immutable.Map {
-    "n4133782720": Immutable.Set [
-      "w411770875",
+    "id": "w411770875",
+    "nodes": Array [
+      "n4133782719",
+      "n4133782714",
+      "n4133782715",
+      "n4133782713",
+      "n4133782712",
+      "n4133782716",
+      "n4133782717",
+      "n4133782718",
+      "n4133782720",
+      "n4133782722",
+      "n4133782724",
+      "n4133782728",
+      "n4133782729",
+      "n4133782727",
+      "n4133782726",
+      "n4133782725",
+      "n4133782723",
+      "n4133782721",
+      "n4133782719",
     ],
-    "n4133782721": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782722": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782712": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782723": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782713": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782724": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782714": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782725": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782715": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782726": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782716": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782727": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782717": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782728": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782718": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782729": Immutable.Set [
-      "w411770875",
-    ],
-    "n4133782719": Immutable.Set [
-      "w411770875",
-    ],
+    "tags": "[[\\"landuse\\",\\"residential\\"],[\\"place\\",\\"village\\"],[\\"source\\",\\"MSF Survey\\"]]",
+    "type": "way",
   },
-}
+]
 `;

@@ -4,7 +4,16 @@ import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/relationFactory';
 import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
-import { Entity, LngLat, Node, ParentWays, Relation, RelationMember, Tags, Way } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  LngLat,
+  Node,
+  ParentWays,
+  Relation,
+  RelationMember,
+  Tags,
+  Way,
+} from 'idly-common/lib/osm/structures';
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
@@ -19,21 +28,6 @@ export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
   return x;
 }
 
-export function stubParser(
-  xml: Document | undefined,
-  parentWays: ParentWays = ImMap(),
-): {
-  entities: Entity[];
-  parentWays: ParentWays;
-} {
-  if (!xml || !xml.childNodes) return { entities: [], parentWays };
-  const j = xmlToEntities(xml);
-  const p = calculateParentWays(parentWays, j.filter(j => j.type === 'way'));
-  return {
-    entities: j,
-    parentWays: p,
-  };
-}
 /**
  * Converts the osm xml to an array of Entity,
  * This implementation is inspired from the iD
