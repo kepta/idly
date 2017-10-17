@@ -1,8 +1,8 @@
 import { Feature } from 'idly-common/lib/osm/feature';
 import { Entity, EntityTable, EntityType } from 'idly-common/lib/osm/structures';
 
-import { nodeCombiner } from '../parsing/nodeToFeature';
-import { wayCombiner } from '../parsing/wayToFeature';
+import { nodeCombiner } from './nodeCombiner';
+import { wayCombiner } from './wayCombiner';
 
 export function entityToGeoJSON(
   entityTable: EntityTable,

@@ -2,7 +2,7 @@ import { Feature } from 'idly-common/lib/osm/feature';
 import { EntityTable, FeaturePropsTable, ParentWays } from 'idly-common/lib/osm/structures';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
-import { entityToGeoJSON } from '../worker/geojson/entityToGeoJSON';
+import { entityToGeoJSON } from '../misc/entityToGeoJSON';
 
 export type PluginComputeProps = (
   entityTable: EntityTable,

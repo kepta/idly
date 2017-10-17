@@ -6,7 +6,7 @@ import { Entity, EntityTable, OsmGeometry } from 'idly-common/lib/osm/structures
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
-import { getCoordsFromTable, wayCombiner, wayToLineString } from '../../parsing/wayToFeature';
+import { getCoordsFromTable, wayCombiner, wayToLineString } from './wayCombiner';
 
 const way = wayFactory({
   id: 'w1',

@@ -10,7 +10,7 @@ import { entityToFeature } from '../../thread/entityToFeatures';
 import { fetchTileXml } from '../../thread/fetchTileXml';
 import { stubParser } from '../../thread/xmlToEntities';
 import { TilesCache } from '../store/tilesCache';
-import { recursiveLookup } from '../util/recursiveLookup';
+import { recursiveLookup } from '../../misc/recursiveLookup';
 
 // tslint:disable
 export class Manager {

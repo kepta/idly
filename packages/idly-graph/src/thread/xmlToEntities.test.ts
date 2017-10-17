@@ -2,9 +2,14 @@ import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { ParentWays } from 'idly-common/lib/osm/structures';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
-import { stubParser } from '../../../thread/xmlToEntities';
-import { miniWayXML1, miniXML1, miniXML2, miniXML3, nodeXML1 } from '../../parsing/fixtures';
-import { calculateParentWays } from '../../parsing/parser';
+import {
+  miniWayXML1,
+  miniXML1,
+  miniXML2,
+  miniXML3,
+  nodeXML1,
+} from '../misc/fixtures';
+import { calculateParentWays, stubParser } from './xmlToEntities';
 
 const parseXML = stubParser;
 const wayXML =
@@ -12,6 +17,7 @@ const wayXML =
   '<way id="1" visible="true" timestamp="2008-01-03T05:24:43Z" version="1" changeset="522559"><nd ref="1"/></way>' +
   '</osm>';
 
+// tslint:disable:no-expression-statement
 describe('parsers', () => {
   describe('node', () => {
     it('matches snapshot', () => {

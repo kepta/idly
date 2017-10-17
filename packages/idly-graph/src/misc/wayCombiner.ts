@@ -1,4 +1,9 @@
-import { EntityTable, Node, OsmGeometry, Way } from 'idly-common/lib/osm/structures';
+import {
+  EntityTable,
+  Node,
+  OsmGeometry,
+  Way,
+} from 'idly-common/lib/osm/structures';
 import * as turfLineString from 'turf-linestring';
 import * as turfPolygon from 'turf-polygon';
 

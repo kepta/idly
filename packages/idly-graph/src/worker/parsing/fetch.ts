@@ -2,7 +2,7 @@ import { mercator } from 'idly-common/lib/geo/sphericalMercator';
 import { handleErrors } from 'idly-common/lib/network/promise';
 import { DOMParser } from 'xmldom';
 
-import { stubXML } from '../parsing/fixtures';
+import { stubXML } from '../../misc/fixtures';
 
 const fetchStub = () => {
   return Promise.resolve(stubXML);

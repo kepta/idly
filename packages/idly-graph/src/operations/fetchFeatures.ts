@@ -4,7 +4,7 @@ import { EntityId, EntityTable } from 'idly-common/lib/osm/structures';
 
 import { getChannelBuilder } from '../misc/channelBuilder';
 import { entityToFeature } from '../thread/entityToFeatures';
-import { recursiveLookup } from '../worker/util/recursiveLookup';
+import { recursiveLookup } from '../misc/recursiveLookup';
 import { WorkerGetStateActions, WorkerState } from './types';
 
 export interface WorkerGetFeatures {

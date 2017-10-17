@@ -3,7 +3,7 @@ import { EntityId } from 'idly-common/lib/osm/structures';
 
 import { Tree } from '../graph/Tree';
 import { getChannelBuilder } from '../misc/channelBuilder';
-import { recursiveLookup } from '../worker/util/recursiveLookup';
+import { recursiveLookup } from '../misc/recursiveLookup';
 import { WorkerGetStateActions, WorkerState } from './types';
 
 export interface WorkerGetEntities {

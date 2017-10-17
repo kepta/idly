@@ -1,4 +1,4 @@
-import { miniXML3 } from '../worker/parsing/fixtures';
+import { miniXML3 } from '../misc/fixtures';
 import { fetchTile } from './fetchTile';
 
 declare var global: any;

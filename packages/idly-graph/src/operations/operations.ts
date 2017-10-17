@@ -21,6 +21,7 @@ const DEFAULT_STATE: WorkerState = {
   plugins: pluginsStub(),
   tilesDataTable: ImMap(),
 };
+
 function getStateController(
   state: WorkerState,
   message: WorkerGetStateActionsType,

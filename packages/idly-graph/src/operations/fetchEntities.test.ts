@@ -1,6 +1,6 @@
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
-import { miniXML3 } from '../worker/parsing/fixtures';
+import { miniXML3 } from '../misc/fixtures';
 import { fetchEntities } from './fetchEntities';
 import { operations } from './operations';
 import { setOsmTiles } from './setOsmTiles';
