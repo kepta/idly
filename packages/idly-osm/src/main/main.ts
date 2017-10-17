@@ -4,6 +4,7 @@ import { EntityType, FeatureProps } from 'idly-common/lib/osm/structures';
 import { PLUGIN_NAME } from '../config/config';
 import { onParseEntities } from '../worker';
 import { Fields } from '../ui/Fields';
+import { NewTagsEditor } from '../ui/NewTagsEditor';
 
 export interface Plugin {
   name: string;
@@ -18,7 +19,7 @@ export interface Plugin {
 export var plugin: Plugin = {
   name: PLUGIN_NAME,
   description: 'Core osm functionality for jalebi editor',
-  uiComponents: [Fields, TagEditor],
+  uiComponents: [Fields, NewTagsEditor, TagEditor],
   actions: [],
   workers: [onParseEntities]
 };
