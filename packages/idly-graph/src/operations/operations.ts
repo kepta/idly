@@ -8,11 +8,11 @@ import { workerFetchFeatures } from './fetchFeatures';
 import { workerFetchMap } from './fetchMap';
 import { workerSetOsmTiles } from './setOsmTiles';
 import {
-    WorkerGetStateActions,
-    WorkerGetStateActionsType,
-    WorkerSetStateActions,
-    WorkerSetStateActionsType,
-    WorkerState,
+  WorkerGetStateActions,
+  WorkerGetStateActionsType,
+  WorkerSetStateActions,
+  WorkerSetStateActionsType,
+  WorkerState,
 } from './types';
 
 const DEFAULT_STATE: WorkerState = {

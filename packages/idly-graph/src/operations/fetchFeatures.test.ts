@@ -1,6 +1,6 @@
+import { miniXML3 } from '../misc/fixtures';
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
-import { miniXML3 } from '../misc/fixtures';
 import { fetchFeatures } from './fetchFeatures';
 import { fetchMap } from './fetchMap';
 import { operations } from './operations';
