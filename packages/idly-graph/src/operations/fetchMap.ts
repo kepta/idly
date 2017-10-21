@@ -1,8 +1,22 @@
+import * as area from '@turf/area';
+import * as bboxPolygon from '@turf/bbox-polygon';
+import * as intersects from '@turf/intersect';
+import { filterXyz } from '../misc/filterXYZ';
+
 import { featureCollection } from '@turf/helpers';
+import { mercator } from 'idly-common/lib/geo/sphericalMercator';
+import { Tile } from 'idly-common/lib/geo/tile';
+
 import { BBox } from 'idly-common/lib/geo/bbox';
+
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
 import { ImMap } from 'idly-common/lib/misc/immutable';
-import { Entity, EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  EntityId,
+  EntityTable,
+  ParentWays,
+} from 'idly-common/lib/osm/structures';
 
 import { getChannelBuilder } from '../misc/channelBuilder';
 import { tileId } from '../misc/tileId';
@@ -14,6 +28,7 @@ export interface WorkerFetchMap {
   readonly request: {
     readonly bbox: BBox;
     readonly zoom: number;
+    readonly hiddenIds?: EntityId[];
   };
 }
 /**
@@ -47,20 +62,20 @@ export function workerFetchMap(
 ): (request: WorkerFetchMap['request']) => Promise<string> {
   // let entityTable: EntityTable;
   // let parentWays: ParentWays;
-  return async ({ bbox, zoom }) => {
+  return async ({ bbox, zoom, hiddenIds }) => {
     // const r = await manager.receive(bbox, zoom);
     // const toReturn: ReturnType = featureCollection(r);
     // return JSON.stringify(toReturn);
-
     console.time('fetching');
-
     const xyzs = bboxToTiles(bbox, zoom);
-    // const prom = xyzs.map(tile => fetchTile(tile.x, tile.y, tile.z));
-    const prom = xyzs.map(tile => {
+    console.log(state.tilesDataTable);
+    const prom = filterXyz(xyzs, bbox, zoom > 18 ? 0.05 : 0.2).map(tile => {
       const res = state.tilesDataTable.get(tileId(tile));
       if (!res) {
         throw new Error(
-          'cannot find tile data, make sure to setOsmTiles before calling fetchMap ',
+          `cannot find tile data for ${JSON.stringify(
+            tile,
+          )}, make sure to setOsmTiles before calling fetchMap `,
         );
       }
       return res;
@@ -70,7 +85,7 @@ export function workerFetchMap(
     const data = await Promise.all(prom);
     console.timeEnd('fetching');
 
-    console.log('size=', data.length);
+    console.log('size = ', data.length);
 
     console.time('process');
     console.time('merging');
@@ -98,11 +113,15 @@ export function workerFetchMap(
     );
     console.timeEnd('merging');
 
-    const p = entityToFeature(workerPlugins.map(r => r.worker))(
+    let features = entityToFeature(workerPlugins.map((r: any) => r.worker))(
       entityTable,
       parentWays,
     );
-    const toReturn: ReturnType = featureCollection(p);
+    if (hiddenIds && hiddenIds.length > 0) {
+      // tslint:disable-next-line:no-expression-statement
+      features = features.filter(r => r.id && hiddenIds.indexOf(r.id) === -1);
+    }
+    const toReturn: ReturnType = featureCollection(features);
     console.timeEnd('process');
     return JSON.stringify(toReturn);
   };

@@ -2,10 +2,11 @@ import { ImMap } from 'idly-common/lib/misc/immutable';
 import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
+import { List } from 'immutable';
 import { pluginsStub } from '../misc/pluginsStub';
 import { workerFetchEntities } from './fetchEntities';
-import { workerFetchFeatures } from './fetchFeatures';
 import { workerFetchMap } from './fetchMap';
+import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
 import { workerSetOsmTiles } from './setOsmTiles';
 import {
   WorkerGetStateActions,
@@ -36,8 +37,8 @@ function getStateController(
     }
     case WorkerGetStateActions.GetEntities:
       return workerFetchEntities(state)(message.request);
-    case WorkerGetStateActions.GetFeatures:
-      return workerFetchFeatures(state)(message.request);
+    case WorkerGetStateActions.GetFeaturesOfEntityIds:
+      return workerGetFeaturesOfEntityIds(state)(message.request);
     default: {
       console.error('no get handler for', message.type);
       return Promise.resolve(message.type);
@@ -95,8 +96,10 @@ function sanitizePlugins(plugins: Promise<any>): Promise<any> {
       console.error('empty plugin promise');
       return [];
     }
-    return plugs.workers.map(w => {
-      if (!w || !w.worker || !w.pluginName) throw new Error('empty worker');
+    return plugs.workers.map((w: any) => {
+      if (!w || !w.worker || !w.pluginName) {
+        throw new Error('empty worker');
+      }
       return {
         ...w,
         worker: weakCache2(w.worker),

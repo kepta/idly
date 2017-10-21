@@ -1,7 +1,7 @@
 import { miniXML3 } from '../misc/fixtures';
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
-import { fetchFeatures } from './fetchFeatures';
+import { getFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
 import { fetchMap } from './fetchMap';
 import { operations } from './operations';
 import { setOsmTiles } from './setOsmTiles';
@@ -36,8 +36,8 @@ describe('fetchFeatures', () => {
       ],
       zoom: 17.54,
     });
-    const resp1 = fetchFeatures(promiseWorker)({ entityIds: ['n1'] });
-    const resp2 = fetchFeatures(promiseWorker)({
+    const resp1 = getFeaturesOfEntityIds(promiseWorker)({ entityIds: ['n1'] });
+    const resp2 = getFeaturesOfEntityIds(promiseWorker)({
       entityIds: ['n2', 'w1'],
     });
     expect(await resp1).toMatchSnapshot();
@@ -53,7 +53,9 @@ describe('fetchFeatures', () => {
       ],
       zoom: 17.54,
     });
-    const resp1 = fetchFeatures(promiseWorker)({ entityIds: ['non1'] });
+    const resp1 = getFeaturesOfEntityIds(promiseWorker)({
+      entityIds: ['non1'],
+    });
     expect(await resp1).toMatchSnapshot();
   });
 });

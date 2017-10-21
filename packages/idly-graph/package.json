@@ -23,9 +23,11 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
+    "@turf/area": "^4.7.3",
     "@turf/bbox": "^5.0.0",
     "@turf/bbox-polygon": "^4.7.3",
     "@turf/helpers": "^5.0.0",
+    "@turf/intersect": "^4.7.4",
     "@turf/transform-scale": "^4.7.3",
     "@types/rbush": "^2.0.2",
     "@types/xmldom": "^0.1.29",

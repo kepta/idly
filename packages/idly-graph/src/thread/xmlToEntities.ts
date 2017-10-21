@@ -17,17 +17,6 @@ import {
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
-export function calculateParentWays(parentWays: ParentWays, ways: Way[]) {
-  const x = parentWays.withMutations(p => {
-    ways.forEach(w => {
-      w.nodes.forEach(nodeId => {
-        p.update(nodeId, (s = ImSet()) => s.add(w.id));
-      });
-    });
-  });
-  return x;
-}
-
 /**
  * Converts the osm xml to an array of Entity,
  * This implementation is inspired from the iD

@@ -1,9 +1,15 @@
 import { ImMap } from 'idly-common/lib/misc/immutable';
-import { Entity, EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  EntityId,
+  EntityTable,
+  ParentWays,
+} from 'idly-common/lib/osm/structures';
+import { List } from 'immutable';
 
 import { WorkerGetEntities } from './fetchEntities';
-import { WorkerGetFeatures } from './fetchFeatures';
 import { WorkerFetchMap } from './fetchMap';
+import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
 import { WorkerSetOsmTiles } from './setOsmTiles';
 
 export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
@@ -28,7 +34,7 @@ export interface TileData {
  */
 export enum WorkerGetStateActions {
   GetEntities = 'WorkerGetState.GET_ENTITIES',
-  GetFeatures = 'WorkerGetState.GET_FEATURES',
+  GetFeaturesOfEntityIds = 'WorkerGetState.GET_FEATURES',
   GetDefault = 'WorkerGetState.GET_DEFAULT',
   FetchMap = 'WorkerGetState.GET_MAP',
 }
@@ -40,7 +46,7 @@ export interface DefaultGetCase {
 
 export type WorkerGetStateActionsType =
   | WorkerGetEntities
-  | WorkerGetFeatures
+  | GetFeaturesOfEntityIds
   | WorkerFetchMap
   | DefaultGetCase;
 
@@ -53,6 +59,7 @@ export type WorkerGetResponse = string;
  */
 export enum WorkerSetStateActions {
   SetOsmTiles = 'WorkerSetState.SET_OSM_TILES',
+  SetHideEntities = 'WorkerSetState.SET_HIDE_ENTITIES',
   SetDefault = 'WorkerSetState.SET_DEFAULT',
 }
 

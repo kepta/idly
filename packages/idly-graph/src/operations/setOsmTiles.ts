@@ -1,6 +1,7 @@
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
 import { EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
+import { filterXyz } from '../misc/filterXYZ';
 
 import { setChannelBuilder } from '../misc/channelBuilder';
 import { cacheFetchTile } from '../thread/fetchTile';
@@ -35,7 +36,11 @@ export function workerSetOsmTiles(
 ): (request: WorkerSetOsmTiles['request']) => Promise<WorkerState> {
   return async ({ bbox, zoom }) => {
     console.time('fetching');
-    const xyzs = bboxToTiles(bbox, zoom);
+    const xyzs = filterXyz(
+      bboxToTiles(bbox, zoom),
+      bbox,
+      zoom > 18 ? 0.05 : 0.2,
+    );
     const { tilesDataTable, tilesData } = cacheFetchTile(
       state.tilesDataTable,
       xyzs,
