@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFeaturesOfTree small xml test 1`] = `
+Array [
+  Object {
+    "geometry": Object {
+      "coordinates": Array [
+        74.1816382,
+        34.530396,
+      ],
+      "type": "Point",
+    },
+    "id": "n1",
+    "properties": Object {
+      "id": "n1",
+      "osm_basic--geometry": "line",
+    },
+    "type": "Feature",
+  },
+]
+`;

@@ -6,13 +6,31 @@ import {
   ParentWays,
 } from 'idly-common/lib/osm/structures';
 import { List } from 'immutable';
-
-import { WorkerGetEntities } from './fetchEntities';
-import { WorkerFetchMap } from './fetchMap';
+import { GetEntities } from './getEntities';
 import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
+import { GetFeaturesOfTree } from './getFeaturesOfTree';
+import { GetMap } from './getMap';
 import { WorkerSetOsmTiles } from './setOsmTiles';
 
 export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
+
+/**
+ * This is an abstraction of the entire main to worker thread.
+ * The 'request' allows to type to accepted param and 'response'
+ * allows to type to generated response by the worker.
+ * Note: only use serializable types, hence do not use Map, Set etc.
+ */
+export type Operation<T extends GetActionTypes> = (
+  req: T['request'],
+) => Promise<T['response']>;
+
+/**
+ * You would want to return string because anything going out of webworker
+ * to main thread needs to be serializable.
+ */
+export type WorkerOperation<T extends GetActionTypes> = (
+  req: T['request'],
+) => Promise<string>;
 
 export interface WorkerState {
   readonly entityTable: EntityTable;
@@ -32,25 +50,30 @@ export interface TileData {
  * These actions access the worker state
  * and cannot modify the state.
  */
-export enum WorkerGetStateActions {
-  GetEntities = 'WorkerGetState.GET_ENTITIES',
-  GetFeaturesOfEntityIds = 'WorkerGetState.GET_FEATURES',
-  GetDefault = 'WorkerGetState.GET_DEFAULT',
-  FetchMap = 'WorkerGetState.GET_MAP',
+export enum GetActions {
+  GetEntities = 'GET_ENTITIES',
+  GetFeaturesOfEntityIds = 'GET_FEATURES_OF_ENTITY_IDS',
+  GetFeaturesOfTree = 'GET_FEATURES_OF_TREE',
+  GetDefault = 'GET_DEFAULT',
+  GetMap = 'GET_MAP',
 }
 
 export interface DefaultGetCase {
-  readonly type: WorkerGetStateActions.GetDefault;
+  readonly type: GetActions.GetDefault;
   readonly request: any;
+  readonly response: any;
 }
 
-export type WorkerGetStateActionsType =
-  | WorkerGetEntities
+export type GetActionTypes =
+  | GetEntities
   | GetFeaturesOfEntityIds
-  | WorkerFetchMap
+  | GetFeaturesOfTree
+  | GetMap
   | DefaultGetCase;
 
-export type WorkerGetResponse = string;
+/**
+ * ======= SET =========
+ */
 
 /**
  * Set type actions
@@ -58,9 +81,9 @@ export type WorkerGetResponse = string;
  * and do not necessarily reply with data
  */
 export enum WorkerSetStateActions {
-  SetOsmTiles = 'WorkerSetState.SET_OSM_TILES',
-  SetHideEntities = 'WorkerSetState.SET_HIDE_ENTITIES',
-  SetDefault = 'WorkerSetState.SET_DEFAULT',
+  SetOsmTiles = 'SET_OSM_TILES',
+  SetHideEntities = 'SET_HIDE_ENTITIES',
+  SetDefault = 'SET_DEFAULT',
 }
 
 export interface DefaultSetCase {

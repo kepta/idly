@@ -5,28 +5,25 @@ import { EntityId, EntityTable } from 'idly-common/lib/osm/structures';
 import { getChannelBuilder } from '../misc/channelBuilder';
 import { recursiveLookup } from '../misc/recursiveLookup';
 import { entityToFeature } from '../thread/entityToFeatures';
-import { WorkerGetStateActions, WorkerState } from './types';
+import { GetActions, Operation, WorkerOperation, WorkerState } from './operationsTypes';
 
 export interface GetFeaturesOfEntityIds {
-  readonly type: WorkerGetStateActions.GetFeaturesOfEntityIds;
+  readonly type: GetActions.GetFeaturesOfEntityIds;
   readonly request: {
     readonly entityIds: EntityId[];
   };
+  readonly response: Array<Feature<any, any>>;
 }
-
-export type ReturnType = Array<Feature<any, any>>;
-
-/** Main Thread */
 
 export function getFeaturesOfEntityIds(
   connector: any,
-): (req: GetFeaturesOfEntityIds['request']) => Promise<ReturnType> {
+): Operation<GetFeaturesOfEntityIds> {
   const channel = getChannelBuilder<GetFeaturesOfEntityIds>(connector)(
-    WorkerGetStateActions.GetFeaturesOfEntityIds,
+    GetActions.GetFeaturesOfEntityIds,
   );
   return async request => {
     const json = await channel(request);
-    const parsedFeatures: ReturnType = JSON.parse(json);
+    const parsedFeatures: GetFeaturesOfEntityIds['response'] = JSON.parse(json);
     return parsedFeatures;
   };
 }
@@ -35,7 +32,7 @@ export function getFeaturesOfEntityIds(
 
 export function workerGetFeaturesOfEntityIds(
   state: WorkerState,
-): (request: GetFeaturesOfEntityIds['request']) => any {
+): WorkerOperation<GetFeaturesOfEntityIds> {
   return async ({ entityIds }) => {
     const entities = entityIds
       .map(id => recursiveLookup(id, state.entityTable))
@@ -43,7 +40,7 @@ export function workerGetFeaturesOfEntityIds(
       .filter(r => r);
     const entityTable: EntityTable = entityTableGen(entities);
     const workerPlugins = await state.plugins;
-    const toReturn: ReturnType = entityToFeature(
+    const toReturn: GetFeaturesOfEntityIds['response'] = entityToFeature(
       workerPlugins.map((r: any) => r.worker),
     )(entityTable);
     return JSON.stringify(toReturn);

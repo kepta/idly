@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fetchEntities small xml test 1`] = `
+exports[`getEntities small xml test 1`] = `
 Tree {
   "_deletedIds": Immutable.Set [],
   "_entityTable": Immutable.Map {
@@ -29,7 +29,7 @@ Tree {
 }
 `;
 
-exports[`fetchEntities small xml test 2`] = `
+exports[`getEntities small xml test 2`] = `
 Tree {
   "_deletedIds": Immutable.Set [],
   "_entityTable": Immutable.Map {

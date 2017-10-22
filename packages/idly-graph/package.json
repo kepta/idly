@@ -13,7 +13,6 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^21.1.1",
-    "idly-osm": "file:../idly-osm",
     "jest": "^21.2.1",
     "node-fetch": "^1.7.3",
     "ts-jest": "^21.0.1",

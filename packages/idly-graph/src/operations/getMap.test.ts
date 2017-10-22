@@ -7,11 +7,10 @@ import { calculateParentWays } from '../misc/calculateParentWays';
 import { miniXML3, stubXML } from '../misc/fixtures';
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
-import { fetchMap, workerFetchMap } from './fetchMap';
+import { getMap, workerGetMap } from './getMap';
 import { operations } from './operations';
-import { setHideEntities } from './setHideEntities';
+import { WorkerState } from './operationsTypes';
 import { setOsmTiles } from './setOsmTiles';
-import { WorkerState } from './types';
 
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
@@ -52,7 +51,7 @@ describe('fetchMap: custom controller', () => {
       ],
       zoom: 17.54,
     });
-    const bindedFetchMap = fetchMap(promiseWorker);
+    const bindedFetchMap = getMap(promiseWorker);
     const resp = await bindedFetchMap({
       bbox: [
         -73.98630242339283,
@@ -91,7 +90,7 @@ describe('fetchMap: custom controller', () => {
       ],
       zoom: 17.54,
     });
-    const bindedFetchMap = fetchMap(promiseWorker);
+    const bindedFetchMap = getMap(promiseWorker);
 
     const resp = await bindedFetchMap({
       bbox: [
@@ -131,7 +130,7 @@ describe('fetchMap: custom controller', () => {
       ],
       zoom: 17.54,
     });
-    const bindedFetchMap = fetchMap(promiseWorker);
+    const bindedFetchMap = getMap(promiseWorker);
     const resp = await bindedFetchMap({
       bbox: [
         -73.98630242339283,

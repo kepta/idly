@@ -1,4 +1,4 @@
-import { WorkerGetStateActionsType, WorkerSetStateActionsType } from '../operations/types';
+import { GetActionTypes, WorkerSetStateActionsType } from '../operations/operationsTypes';
 
 /**
  * A wrapper around `promiseWorker.postMessage` api
@@ -6,9 +6,7 @@ import { WorkerGetStateActionsType, WorkerSetStateActionsType } from '../operati
  * the main <-> worker calls.
  * @param promiseWorker
  */
-export function getChannelBuilder<
-  T extends WorkerGetStateActionsType
->(promiseWorker: {
+export function getChannelBuilder<T extends GetActionTypes>(promiseWorker: {
   readonly postMessage: any;
 }): (type: T['type']) => (request: T['request']) => Promise<string> {
   return type => {

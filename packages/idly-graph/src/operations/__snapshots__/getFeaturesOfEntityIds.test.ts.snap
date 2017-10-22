@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fetchFeatures small xml test 1`] = `
+exports[`getFeaturesOfEntityIds small xml test 1`] = `
 Array [
   Object {
     "geometry": Object {
@@ -20,7 +20,7 @@ Array [
 ]
 `;
 
-exports[`fetchFeatures small xml test 2`] = `
+exports[`getFeaturesOfEntityIds small xml test 2`] = `
 Array [
   Object {
     "geometry": Object {

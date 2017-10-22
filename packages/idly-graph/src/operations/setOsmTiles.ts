@@ -5,7 +5,7 @@ import { filterXyz } from '../misc/filterXYZ';
 
 import { setChannelBuilder } from '../misc/channelBuilder';
 import { cacheFetchTile } from '../thread/fetchTile';
-import { WorkerSetStateActions, WorkerState } from './types';
+import { WorkerSetStateActions, WorkerState } from './operationsTypes';
 
 export interface WorkerSetOsmTiles {
   readonly type: WorkerSetStateActions.SetOsmTiles;

@@ -3,7 +3,7 @@ import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 import { tileId } from '../misc/tileId';
-import { TileData, TilesDataTable } from '../operations/types';
+import { TileData, TilesDataTable } from '../operations/operationsTypes';
 import { fetchTileXml } from './fetchTileXml';
 import { xmlToEntities } from './xmlToEntities';
 

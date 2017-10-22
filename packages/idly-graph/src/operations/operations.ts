@@ -1,20 +1,22 @@
+import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
+import { List } from 'immutable';
+
 import { ImMap } from 'idly-common/lib/misc/immutable';
 import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
-import { List } from 'immutable';
 import { pluginsStub } from '../misc/pluginsStub';
-import { workerFetchEntities } from './fetchEntities';
-import { workerFetchMap } from './fetchMap';
+import { workerGetEntities } from './getEntities';
 import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
-import { workerSetOsmTiles } from './setOsmTiles';
+import { workerGetMap } from './getMap';
 import {
-  WorkerGetStateActions,
-  WorkerGetStateActionsType,
+  GetActions,
+  GetActionTypes,
   WorkerSetStateActions,
   WorkerSetStateActionsType,
   WorkerState,
-} from './types';
+} from './operationsTypes';
+import { workerSetOsmTiles } from './setOsmTiles';
 
 const DEFAULT_STATE: WorkerState = {
   entityTable: entityTableGen(),
@@ -25,21 +27,27 @@ const DEFAULT_STATE: WorkerState = {
 
 function getStateController(
   state: WorkerState,
-  message: WorkerGetStateActionsType,
+  message: GetActionTypes,
 ): Promise<string> {
   switch (message.type) {
     // @TOFIX convert this to a dynamic rather than a static one
     // or should i?
     // case WorkerGetStateActions.FetchMap:
     //   return workerFetchMap(state)(message.request);
-    case WorkerGetStateActions.FetchMap: {
-      return workerFetchMap(state)(message.request);
-    }
-    case WorkerGetStateActions.GetEntities:
-      return workerFetchEntities(state)(message.request);
-    case WorkerGetStateActions.GetFeaturesOfEntityIds:
+    case GetActions.GetMap:
+      return workerGetMap(state)(message.request);
+
+    case GetActions.GetEntities:
+      return workerGetEntities(state)(message.request);
+
+    case GetActions.GetFeaturesOfEntityIds:
       return workerGetFeaturesOfEntityIds(state)(message.request);
+
+    case GetActions.GetFeaturesOfTree:
+      return workerGetFeaturesOfTree(state)(message.request);
+
     default: {
+      // tslint:disable-next-line:no-expression-statement
       console.error('no get handler for', message.type);
       return Promise.resolve(message.type);
     }
@@ -84,6 +92,7 @@ export function operations(
       return Promise.resolve('SUCCESS');
     }
     return getStateController(state, message).catch(e => {
+      // tslint:disable-next-line:no-expression-statement
       console.error(e);
       return Promise.reject(e);
     });
@@ -93,6 +102,7 @@ export function operations(
 function sanitizePlugins(plugins: Promise<any>): Promise<any> {
   return plugins.then(plugs => {
     if (!plugs) {
+      // tslint:disable-next-line:no-expression-statement
       console.error('empty plugin promise');
       return [];
     }
