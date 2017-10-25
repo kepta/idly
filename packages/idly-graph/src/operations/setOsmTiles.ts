@@ -39,7 +39,7 @@ export function workerSetOsmTiles(
     const xyzs = filterXyz(
       bboxToTiles(bbox, zoom),
       bbox,
-      zoom > 18 ? 0.05 : 0.2,
+      zoom >= 18 ? 0.05 : 0.2,
     );
     const { tilesDataTable, tilesData } = cacheFetchTile(
       state.tilesDataTable,
