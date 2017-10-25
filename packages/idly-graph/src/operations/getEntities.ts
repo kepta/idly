@@ -4,7 +4,12 @@ import { EntityId } from 'idly-common/lib/osm/structures';
 import { Tree } from '../graph/Tree';
 import { getChannelBuilder } from '../misc/channelBuilder';
 import { recursiveLookup } from '../misc/recursiveLookup';
-import { GetActions, Operation, WorkerOperation, WorkerState } from './operationsTypes';
+import {
+  GetActions,
+  Operation,
+  WorkerOperation,
+  WorkerState,
+} from './operationsTypes';
 
 export interface GetEntities {
   readonly type: GetActions.GetEntities;
@@ -43,3 +48,86 @@ export function workerGetEntities(
     return JSON.stringify(toReturn.toJs());
   };
 }
+
+// function workerGetEntitiesTest(
+//   state: WorkerState,
+// ): (t: GetEntities['request']) => Promise<GetEntities['response']> {
+//   return async ({ entityIds }) => {
+//     const entities = entityIds
+//       .map(id => recursiveLookup(id, state.entityTable))
+//       .reduce((prev, curr) => prev.concat(curr), [])
+//       .map(e => [e.id, e]);
+//     return Tree.fromObject({
+//       deletedIds: ImSet(),
+//       entityTable: ImMap(entities),
+//       knownIds: ImSet(entityIds),
+//     });
+//   };
+// }
+
+// const request = {
+//   async serializer(input: GetEntities['request']): Promise<string> {
+//     return JSON.stringify(input);
+//   },
+//   async deserializer(string: string): Promise<GetEntities['request']> {
+//     return JSON.parse(string);
+//   },
+//   async logic(input: GetEntities['request']): Promise<GetEntities['response']> {
+//     return Tree.fromEntities([]);
+//   },
+// };
+
+// export interface Smartie<T> {
+//   readonly type: string;
+//   readonly request;
+//   readonly response: Tree;
+// }
+
+// function connectToWorker(
+//   connector: any,
+//   type: any,
+//   request: any,
+//   serializer: any,
+//   deserializer: any,
+// ): any {
+//   const toSend = {
+//     request,
+//     type,
+//   };
+//   return connector.postMessage(toSend).catch((e: Error) => {
+//     // tslint:disable-next-line:no-expression-statement
+//     console.log('Worker Error', e.message);
+//     return Promise.reject(e.message);
+//   });
+// }
+
+// function connectToMain(record: Map<string, any>) {
+//   return (type: string, cb: any) => {
+//     // tslint:disable-next-line:no-expression-statement
+//     record.set(type, cb);
+//     return record;
+//   };
+// }
+
+// const response = {
+//   async serializer(input: GetEntities['response']): Promise<string> {
+//     return JSON.stringify(input.toJs());
+//   },
+//   async deserializer(string: string): Promise<GetEntities['response']> {
+//     return Tree.fromString(string);
+//   },
+//   async logic(
+//     state: any,
+//     { entityIds }: GetEntities['request'],
+//   ): Promise<GetEntities['response']> {
+//     const entities = entityIds
+//       .map(id => recursiveLookup(id, state.entityTable))
+//       .reduce((prev, curr) => prev.concat(curr), [])
+//       .map(e => [e.id, e]);
+//     return Tree.fromObject({
+//       deletedIds: ImSet(),
+//       entityTable: ImMap(entities),
+//       knownIds: ImSet(entityIds),
+//     });
+//   },
+// };

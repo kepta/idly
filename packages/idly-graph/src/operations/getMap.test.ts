@@ -1,4 +1,4 @@
-import { BBox } from '@turf/center/node_modules/@turf/helpers';
+import { BBox } from '@turf/helpers';
 import { ImMap } from 'idly-common/lib/misc/immutable';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';

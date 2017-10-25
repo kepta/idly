@@ -2,6 +2,7 @@ import * as area from '@turf/area';
 import * as bboxPolygon from '@turf/bbox-polygon';
 import { featureCollection } from '@turf/helpers';
 import * as intersects from '@turf/intersect';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
@@ -73,32 +74,15 @@ export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
 
     const workerPlugins = await state.plugins;
     const data = await Promise.all(prom);
-
-    const { entityTable, parentWays } = data.reduce(
-      (
-        prev: {
-          readonly entities: Entity[];
-          readonly entityTable: EntityTable;
-          readonly parentWays: ParentWays;
-        },
-        cur,
-      ) => {
-        return {
-          entities: prev.entities.concat(cur.entities),
-          entityTable: prev.entityTable.merge(cur.entityTable),
-          parentWays: prev.parentWays.mergeDeep(cur.parentWays),
-        };
+    const entities = data.reduce(
+      (prev: Entity[], cur) => {
+        return prev.concat(cur.entities);
       },
-      {
-        entities: [],
-        entityTable: ImMap(),
-        parentWays: ImMap(),
-      },
+      [] as Entity[],
     );
-
     let features = entityToFeature(workerPlugins.map((r: any) => r.worker))(
-      entityTable,
-      parentWays,
+      entityTableGen(entities),
+      state.parentWays,
     );
     if (hiddenIds && hiddenIds.length > 0) {
       // tslint:disable-next-line:no-expression-statement

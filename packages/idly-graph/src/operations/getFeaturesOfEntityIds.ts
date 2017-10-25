@@ -1,11 +1,16 @@
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Feature } from 'idly-common/lib/osm/feature';
-import { EntityId, EntityTable } from 'idly-common/lib/osm/structures';
+import { Entity, EntityId, EntityTable } from 'idly-common/lib/osm/structures';
 
 import { getChannelBuilder } from '../misc/channelBuilder';
 import { recursiveLookup } from '../misc/recursiveLookup';
 import { entityToFeature } from '../thread/entityToFeatures';
-import { GetActions, Operation, WorkerOperation, WorkerState } from './operationsTypes';
+import {
+  GetActions,
+  Operation,
+  WorkerOperation,
+  WorkerState,
+} from './operationsTypes';
 
 export interface GetFeaturesOfEntityIds {
   readonly type: GetActions.GetFeaturesOfEntityIds;
@@ -36,9 +41,15 @@ export function workerGetFeaturesOfEntityIds(
   return async ({ entityIds }) => {
     const entities = entityIds
       .map(id => recursiveLookup(id, state.entityTable))
-      .reduce((prev, curr) => prev.concat(curr), [])
-      .filter(r => r);
-    const entityTable: EntityTable = entityTableGen(entities);
+      .reduce((prev: Set<Entity>, curr) => {
+        for (const e of curr) {
+          // tslint:disable-next-line:no-expression-statement
+          prev.add(e);
+        }
+        return prev;
+      }, new Set<Entity>());
+    // .filter(r => r);
+    const entityTable: EntityTable = entityTableGen(Array.from(entities));
     const workerPlugins = await state.plugins;
     const toReturn: GetFeaturesOfEntityIds['response'] = entityToFeature(
       workerPlugins.map((r: any) => r.worker),
