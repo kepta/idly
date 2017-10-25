@@ -55,6 +55,7 @@ export function updateStyle(s): Style {
 }
 
 export function updateLayer(layer: ILayerSpec) {
+  debugger;
   // const layer = layerSpec.toJS();
   // console.log('updating', layer.get('id'));
   Layers = Layers.set(layer.get('id'), layer);
@@ -89,7 +90,10 @@ const layerMap = weakCache((v: ILayerSpec) => {
   return layer;
 });
 const layerToArray = weakCache((l: OrderedMap<string, any>) => {
-  return l.map(layerMap).sort((a, b) => a.priority - b.priority).toArray();
+  return l
+    .map(layerMap)
+    .sort((a, b) => a.priority - b.priority)
+    .toArray();
 });
 
 const parseLayers = (l: OrderedMap<string, any>, styleObj: Style) => {

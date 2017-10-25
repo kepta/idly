@@ -2,6 +2,7 @@ import { Set } from 'immutable';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
 import { coreReducer, CoreState } from '../core/store/core.reducer';
 
 import { observeStore } from 'common/observeStore';
@@ -33,7 +34,8 @@ const logger = state => next => action => {
 
 const middlewares = [
   // logger,
-  sagaMiddleware
+  sagaMiddleware,
+  thunk
 ];
 
 let appliedMiddlewares = applyMiddleware(...middlewares);

@@ -9,7 +9,7 @@ export type CoreState = Readonly<{
 }>;
 
 const coreState: CoreState = {
-  selectedTree: null,
+  selectedTree: Tree.fromEntities([]),
   featureTable: ImMap()
 };
 
@@ -20,13 +20,11 @@ export function coreReducer(
   switch (action.type) {
     case CoreActions.SELECT_COMMIT: {
       const { tree, featureTable } = action;
-      // if (state.selectedTree) {
-      //   return {
-      //     selectedTree: tree,
-      //     featureTable
-      //   };
-      // }
       return { selectedTree: tree, featureTable };
+    }
+    case CoreActions.SELECT_MODIFY: {
+      const { tree } = action;
+      return { ...state, selectedTree: tree };
     }
     default: {
       return state;

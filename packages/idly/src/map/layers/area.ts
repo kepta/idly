@@ -44,7 +44,6 @@ export const AreaLayer = (sourceName: string) =>
         'line-color': areaColor,
         'line-width': 2,
         'line-opacity': 1
-        // 'line-dasharray': [1, 2, 1]
       },
       filter: fromJS([
         'all',

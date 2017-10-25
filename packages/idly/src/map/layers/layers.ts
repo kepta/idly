@@ -26,9 +26,7 @@ import {
 import { highwayPrimary } from 'map/layers/highway/primary';
 import { highwayResidential } from 'map/layers/highway/residential';
 import { highwaySecondary } from 'map/layers/highway/secondary';
-import {
-  highwayTertiary
-} from 'map/layers/highway/tertiary';
+import { highwayTertiary } from 'map/layers/highway/tertiary';
 import { highwayTrunk } from 'map/layers/highway/trunk';
 import { highwayUnclassified } from 'map/layers/highway/unclassified';
 import { LineLayer } from 'map/layers/line';
@@ -84,14 +82,12 @@ export const Layers = [
 ];
 
 export const SourceLayered = SOURCES.map(s => Layers.map(l => l(s.source))); // flatten the array
-
 export const SELECTABLE_LAYERS = SourceLayered.reduce(
   (prv, c) => prv.concat(c),
   []
 )
   .filter(l => l.selectable)
   .map(l => l.displayName);
-console.log(SELECTABLE_LAYERS);
 export const LAYERS = SourceLayered.reduce((prv, c) => prv.concat(c), []).map(
   l => l.displayName
 );

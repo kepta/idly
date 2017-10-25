@@ -3,7 +3,7 @@ import * as MapboxInspect from 'mapbox-gl-inspect';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { selectEntitiesAction } from '../core/store/core.actions';
-import { workerFetchMap } from '../worker/main';
+import { workerFetchMap, workerSetOsmTiles } from '../worker/main';
 
 import { IRootStateType, store } from 'common/store';
 
@@ -25,6 +25,7 @@ import { dirtyPopup } from 'map/utils/map.popup';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as R from 'ramda';
 
+import { Tree } from 'idly-graph/lib/graph/Tree';
 import sizeMe from 'react-sizeme';
 export type DirtyMapAccessType = (map: any) => void;
 /**
@@ -40,6 +41,8 @@ export type DirtyMapAccessType = (map: any) => void;
 interface IPropsType {
   entities: $Set<any>;
   modifiedEntities: $Set<any>;
+  selectedTree: Tree;
+  size: any;
 }
 
 const win: any = window;
@@ -56,11 +59,13 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   ref = null;
   private map;
+  private currentZoom;
   private jsonqueue: string;
   private mapRenderTask: any;
   private fetchTileTask: any;
-  dispatchTiles = () => {
-    const zoom = this.map.getZoom();
+  private currentBbox: any;
+  dispatchTiles = async () => {
+    let zoom = this.map.getZoom();
     if (zoom < ZOOM) return;
     const lonLat = this.map.getBounds();
     const bbox: BBox = [
@@ -69,8 +74,20 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
       lonLat.getEast(),
       lonLat.getNorth()
     ];
-    workerFetchMap({ bbox, zoom }).then(this.onWorkerDone);
+    this.currentBbox = bbox;
+    zoom--;
+    this.currentZoom = zoom;
+    await workerSetOsmTiles({ bbox, zoom });
+    if (this.currentBbox === bbox) {
+      const data = await workerFetchMap({
+        bbox,
+        zoom,
+        hiddenIds: this.props.selectedTree.getKnownIds()
+      });
+      this.onWorkerDone(data);
+    }
   };
+
   componentDidMount() {
     this.map = mapboxglSetup('map-container');
     attachToWindow('map', this.map);
@@ -123,10 +140,10 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     });
   }
   onWorkerDone = data => {
+    console.log(data);
+
     console.time('parse1');
-    // if (!data.startsWith('{"type":"FeatureCollection","features":')) {
-    //   return;
-    // }
+
     if (data === this.jsonqueue) {
       console.log('repeat string');
       return;
@@ -141,7 +158,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     this.mapRenderTask = win.requestIdleCallback(this.parsePending, {
       timeout: 300
     });
-    // console.timeEnd('magic');
   };
   parsePending = () => {
     if (this.jsonqueue) {
@@ -151,18 +167,26 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
   };
   updateLayer = (layerSpec: ILayerSpec) => {
     updateLayerX(layerSpec);
-    // let newLayer = layerSpec.toJS();
-    // newLayer = R.reject(R.isNil, newLayer);
-    // this.map.addLayer(newLayer);
   };
   removeLayer = (layerId: string) => {
     removeLayerX(layerId);
   };
 
-  componentWillReceiveProps(nextProps, nextState) {
+  async componentWillReceiveProps(nextProps: IPropsType, nextState) {
     if (nextProps.size.height !== this.props.size.height) {
       console.log('resizing map');
       window.requestIdleCallback(() => this.map.resize());
+    }
+    if (
+      this.currentBbox &&
+      nextProps.selectedTree !== this.props.selectedTree
+    ) {
+      const data = await workerFetchMap({
+        bbox: this.currentBbox,
+        zoom: this.currentZoom,
+        hiddenIds: nextProps.selectedTree.getKnownIds()
+      });
+      this.onWorkerDone(data);
     }
   }
 
@@ -173,7 +197,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
         <div id="map-container" style={{ height: this.props.size.height }} />
         {this.state.mapLoaded && (
           <div>
-            {/* <Draw dirtyMapAccess={this.dirtyMapAccess} /> */}
             {SOURCES.map((s, k) => (
               <Source
                 key={k}
@@ -200,5 +223,6 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 
 export const Map = connect<any, any, any>((state: IRootStateType, props) => ({
   entities: $Set(),
-  modifiedEntities: $Set()
+  modifiedEntities: $Set(),
+  selectedTree: state.core.selectedTree
 }))(sizeMe({ monitorHeight: true, monitorWidth: true })(MapComp));

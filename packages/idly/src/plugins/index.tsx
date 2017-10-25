@@ -1,3 +1,4 @@
+import { selectCommitAction } from 'core/store/core.actions';
 import * as R from 'ramda';
 import { connect } from 'react-redux';
 
@@ -49,7 +50,9 @@ function bindComponents(
   if (!Array.isArray(uiComponents)) uiComponents = [uiComponents];
   return uiComponents
     .map(c =>
-      connect<any, any, any>((idlyState, props) => ({ idlyState }))(c as any)
+      connect<any, any, any>((idlyState, props) => ({ idlyState }), {
+        selectCommitAction
+      })(c as any)
     )
     .map(c => ({
       pluginName,

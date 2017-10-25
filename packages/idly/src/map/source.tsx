@@ -36,10 +36,6 @@ export class Source extends React.PureComponent<IPropsType, {}> {
   }
   shouldComponentUpdate(nextProps: IPropsType, nextState) {
     return true;
-    // return (
-    //   !nextProps.entities.equals(this.props.entities) ||
-    //   this.state.sourceLoaded !== nextState.sourceLoaded
-    // );
   }
   componentDidMount() {
     this.props.dirtyMapAccess(map => {
@@ -53,11 +49,7 @@ export class Source extends React.PureComponent<IPropsType, {}> {
   }
   render() {
     if (this.state.sourceLoaded) {
-      return (
-        <span>
-          {this.props.children}
-        </span>
-      );
+      return <span>{this.props.children}</span>;
     }
     return null;
   }
