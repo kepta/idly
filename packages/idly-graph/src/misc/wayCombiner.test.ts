@@ -2,11 +2,19 @@ import { ImMap } from 'idly-common/lib/misc/immutable';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
-import { Entity, EntityTable, OsmGeometry } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  EntityTable,
+  OsmGeometry,
+} from 'idly-common/lib/osm/structures';
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
-import { getCoordsFromTable, wayCombiner, wayToLineString } from './wayCombiner';
+import {
+  getCoordsFromTable,
+  wayCombiner,
+  wayToLineString,
+} from './wayCombiner';
 
 const way = wayFactory({
   id: 'w1',
@@ -16,11 +24,11 @@ const way = wayFactory({
 
 const node = nodeFactory({ id: 'n1' });
 
+// tslint:disable:no-expression-statement object-literal-key-quotes
 describe('way.test', () => {
   describe('wayToLineString', () => {
     it('should throw error when no geometry provided', () => {
-      // @ts-ignore
-      expect(() => wayToLineString(undefined, [[1, 2]])).toThrow();
+      expect(() => wayToLineString(undefined as any, [[1, 2]])).toThrow(); // ts:disable-line
       expect(() => wayToLineString(OsmGeometry.POINT, [[1, 2]])).toThrow();
     });
     it('should not work when correct coords provided with wrong geometry', () => {
@@ -79,23 +87,23 @@ describe('way.test', () => {
       tags: tagsFactory([['highway', 'residential']]),
     });
 
-    const g = entityTableGen([n1, n2, n3]);
+    const g = entityTableGen([n1, n2, n3, w1]);
     it('should behave...', () => {
-      const result = wayCombiner(way, g, {
+      const result = wayCombiner(w1, g, {
         'osm_basic--geometry': OsmGeometry.LINE,
       });
       expect(result).toMatchSnapshot();
     });
 
     it('sets up existing props', () => {
-      const result = wayCombiner(way, g, {
-        'osm_basic--geometry': OsmGeometry.LINE,
+      const result = wayCombiner(w1, g, {
         k: 'k',
+        'osm_basic--geometry': OsmGeometry.LINE,
       });
       expect(result.properties).toMatchObject({
-        'osm_basic--geometry': 'line',
         id: 'w1',
         k: 'k',
+        'osm_basic--geometry': 'line',
       });
     });
     it('throws error if no geometry is provided', () => {
