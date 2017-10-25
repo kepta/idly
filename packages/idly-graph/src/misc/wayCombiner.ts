@@ -1,11 +1,16 @@
 import {
+  Feature,
+  LineString,
+  lineString,
+  Polygon,
+  polygon,
+} from '@turf/helpers';
+import {
   EntityTable,
   Node,
   OsmGeometry,
   Way,
 } from 'idly-common/lib/osm/structures';
-import * as turfLineString from 'turf-linestring';
-import * as turfPolygon from 'turf-polygon';
 
 /**
  * @REVISIT this func also needs to handle modifiedGraph
@@ -16,8 +21,11 @@ import * as turfPolygon from 'turf-polygon';
 export function wayCombiner(
   way: Way,
   table: EntityTable,
-  existingProps: { 'osm_basic--geometry': OsmGeometry; [key: string]: string },
-) {
+  existingProps: {
+    readonly 'osm_basic--geometry': OsmGeometry;
+    readonly [key: string]: string;
+  },
+): Feature<Polygon | LineString> {
   // @TOFIX code duplication
   // @REVISIT this osm_basic injection, sems hacks
   const existingGeometry = existingProps['osm_basic--geometry'];
@@ -40,7 +48,9 @@ export function getCoordsFromTable(
   nodes: Way['nodes'],
 ): number[][] {
   return nodes.map(n => {
-    if (!table.has(n)) throw new Error('node not found ' + n);
+    if (!table.has(n)) {
+      throw new Error('node not found ' + n);
+    }
     const node = table.get(n) as Node;
     return [node.loc.lon, node.loc.lat];
   });
@@ -51,11 +61,14 @@ export function getCoordsFromTable(
  *  planning to use it for memoization.
  *  every ms counts. hehehe.
  */
-export function wayToLineString(geom: OsmGeometry, nodeCoords: number[][]) {
+export function wayToLineString(
+  geom: OsmGeometry,
+  nodeCoords: number[][],
+): Feature<Polygon | LineString> {
   if (geom === OsmGeometry.LINE) {
-    return turfLineString(nodeCoords, {});
+    return lineString(nodeCoords, {});
   } else if (geom === OsmGeometry.AREA) {
-    return turfPolygon([nodeCoords], {});
+    return polygon([nodeCoords], {});
   } else {
     throw new Error('not a matching geometry provided for way');
   }

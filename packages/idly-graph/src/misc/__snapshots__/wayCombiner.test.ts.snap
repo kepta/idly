@@ -39,6 +39,10 @@ Object {
         1,
         2,
       ],
+      Array [
+        1,
+        4,
+      ],
     ],
     "type": "LineString",
   },
