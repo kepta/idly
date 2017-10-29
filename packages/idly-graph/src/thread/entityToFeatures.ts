@@ -6,7 +6,7 @@ import {
 } from 'idly-common/lib/osm/structures';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
-import { entityToGeoJSON } from '../misc/entityToGeoJSON';
+import { entityToGeoJson } from '../misc/entityToGeoJSON';
 
 export type PluginComputeProps = (
   entityTable: EntityTable,
@@ -37,6 +37,6 @@ export function entityToFeature(
       // tslint:disable-next-line:no-expression-statement
       props.set(key, Object.assign({}, ...val));
     }
-    return entityToGeoJSON(entityTable, props);
+    return entityToGeoJson(entityTable, props);
   };
 }

@@ -1,10 +1,7 @@
-import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Feature } from 'idly-common/lib/osm/feature';
-import { EntityId, EntityTable } from 'idly-common/lib/osm/structures';
 
 import { Tree } from '../graph/Tree';
 import { getChannelBuilder } from '../misc/channelBuilder';
-import { recursiveLookup } from '../misc/recursiveLookup';
 import { entityToFeature } from '../thread/entityToFeatures';
 import {
   GetActions,

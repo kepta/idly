@@ -1,4 +1,4 @@
-import { miniXML3 } from '../misc/fixtures';
+import { XML3 } from '../misc/fixtures';
 import { fetchTile } from './fetchTile';
 
 declare var global: any;
@@ -11,7 +11,7 @@ describe.skip('fetchTile', () => {
         resolve({
           id: '123',
           async text(): Promise<any> {
-            return miniXML3;
+            return XML3;
           },
           ok: true,
         });

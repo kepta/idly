@@ -1,15 +1,9 @@
 import { BBox } from '@turf/helpers';
-import { ImMap } from 'idly-common/lib/misc/immutable';
-import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
-import { wayFactory } from 'idly-common/lib/osm/wayFactory';
-import { calculateParentWays } from '../misc/calculateParentWays';
-import { miniXML3, stubXML } from '../misc/fixtures';
+import { XML3, XML4 } from '../misc/fixtures';
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
-import { getMap, workerGetMap } from './getMap';
+import { getMap } from './getMap';
 import { operations } from './operations';
-import { WorkerState } from './operationsTypes';
 import { setOsmTiles } from './setOsmTiles';
 
 declare var global: any;
@@ -31,7 +25,7 @@ describe('fetchMap: custom controller', () => {
         resolve({
           id: '123',
           text(): Promise<any> {
-            return Promise.resolve(miniXML3);
+            return Promise.resolve(XML3);
           },
           ok: true,
         });
@@ -70,7 +64,7 @@ describe('fetchMap: custom controller', () => {
         resolve({
           id: '123',
           text(): Promise<any> {
-            return Promise.resolve(miniXML3);
+            return Promise.resolve(XML3);
           },
           ok: true,
         });
@@ -110,7 +104,7 @@ describe('fetchMap: custom controller', () => {
         resolve({
           id: '123',
           text(): Promise<any> {
-            return Promise.resolve(stubXML);
+            return Promise.resolve(XML4);
           },
           ok: true,
         });

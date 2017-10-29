@@ -35,13 +35,7 @@
         "no-mixed-interface": true,
         "no-expression-statement": true,
         // Consistent coding
-        // "member-ordering": [
-        //     true,
-        //     {
-        //         "order": "statics-first",
-        //         "alphabetize": true
-        //     }
-        // ],
+        "no-unused-variable": true,
         "early-exit": true,
         "object-shorthand-properties-first": true,
         "no-static-this": true,

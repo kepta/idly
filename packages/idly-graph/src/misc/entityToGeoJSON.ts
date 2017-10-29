@@ -1,10 +1,15 @@
 import { Feature } from 'idly-common/lib/osm/feature';
-import { Entity, EntityTable, EntityType } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  EntityTable,
+  EntityType,
+} from 'idly-common/lib/osm/structures';
 
 import { nodeCombiner } from './nodeCombiner';
 import { wayCombiner } from './wayCombiner';
 
-export function entityToGeoJSON(
+// tslint:disable:no-expression-statement object-literal-key-quotes
+export function entityToGeoJson(
   entityTable: EntityTable,
   computedProps: any,
 ): Array<Feature<any, any>> {

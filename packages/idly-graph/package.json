@@ -16,7 +16,7 @@
     "jest": "^21.2.1",
     "node-fetch": "^1.7.3",
     "ts-jest": "^21.0.1",
-    "tslint": "^5.7.0",
+    "tslint": "^5.8.0",
     "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
     "typescript": "^2.4.2"

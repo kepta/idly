@@ -1,8 +1,7 @@
-import { miniXML3 } from '../misc/fixtures';
+import { XML3 } from '../misc/fixtures';
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
 import { getFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
-import { getMap } from './getMap';
 import { operations } from './operations';
 import { setOsmTiles } from './setOsmTiles';
 
@@ -15,7 +14,7 @@ describe('getFeaturesOfEntityIds', () => {
       resolve({
         id: '123',
         async text(): Promise<any> {
-          return miniXML3;
+          return XML3;
         },
         ok: true,
       });

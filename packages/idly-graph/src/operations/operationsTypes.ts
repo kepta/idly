@@ -1,11 +1,10 @@
 import { ImMap } from 'idly-common/lib/misc/immutable';
 import {
   Entity,
-  EntityId,
   EntityTable,
   ParentWays,
 } from 'idly-common/lib/osm/structures';
-import { List } from 'immutable';
+
 import { GetEntities } from './getEntities';
 import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
 import { GetFeaturesOfTree } from './getFeaturesOfTree';

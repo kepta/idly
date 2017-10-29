@@ -1,4 +1,4 @@
-import { miniXML3 } from '../misc/fixtures';
+import { XML3 } from '../misc/fixtures';
 import { pluginsStub } from '../misc/pluginsStub';
 import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
 
@@ -16,7 +16,7 @@ describe('getEntities', () => {
         resolve({
           id: '123',
           text(): Promise<any> {
-            return Promise.resolve(miniXML3);
+            return Promise.resolve(XML3);
           },
           ok: true,
         });

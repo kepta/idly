@@ -1,26 +1,13 @@
-import * as area from '@turf/area';
-import * as bboxPolygon from '@turf/bbox-polygon';
 import { featureCollection } from '@turf/helpers';
-import * as intersects from '@turf/intersect';
-import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
-import { mercator } from 'idly-common/lib/geo/sphericalMercator';
-import { Tile } from 'idly-common/lib/geo/tile';
-import { ImMap } from 'idly-common/lib/misc/immutable';
-import {
-  Entity,
-  EntityId,
-  EntityTable,
-  ParentWays,
-} from 'idly-common/lib/osm/structures';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
+import { Entity, EntityId } from 'idly-common/lib/osm/structures';
 
 import { getChannelBuilder } from '../misc/channelBuilder';
 import { filterXyz } from '../misc/filterXYZ';
 import { tileId } from '../misc/tileId';
 import { entityToFeature } from '../thread/entityToFeatures';
-
 import {
   GetActions,
   Operation,

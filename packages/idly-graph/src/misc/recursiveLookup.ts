@@ -17,7 +17,6 @@ export function recursiveLookup(
   if (!entity) {
     return [];
   }
-
   if (entity.type === EntityType.NODE) {
     return [entity];
   }
@@ -33,7 +32,11 @@ export function recursiveLookup(
     const entities = entity.members
       .map(member => {
         // if member is relation dont dive deeper,
-        // to avoid complexity.
+        // @TODO I don't really know the schema of member
+        // is it id=x or ref=x. Figure it out?
+        if (!member.id) {
+          return [];
+        }
         if (member.type === EntityType.RELATION) {
           const relation = table.get(member.id); // TOFIX when does member not have id
           if (relation) {

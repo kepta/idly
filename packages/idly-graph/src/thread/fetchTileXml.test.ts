@@ -1,4 +1,4 @@
-import { miniXML3 } from '../misc/fixtures';
+import { XML3 } from '../misc/fixtures';
 import { fetchTileXml } from './fetchTileXml';
 
 declare var global: any;
@@ -11,7 +11,7 @@ describe('fetchTileXml', () => {
         resolve({
           id: '123',
           async text(): Promise<any> {
-            return miniXML3;
+            return XML3;
           },
           ok: true,
         });
@@ -28,7 +28,7 @@ describe('fetchTileXml', () => {
           ok: false,
           statusText: 'errored',
           async text(): Promise<any> {
-            return miniXML3;
+            return XML3;
           },
         });
       });

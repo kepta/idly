@@ -1,8 +1,8 @@
 import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
-import { ParentWays } from 'idly-common/lib/osm/structures';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+
 import { calculateParentWays } from './calculateParentWays';
 
 // tslint:disable:no-expression-statement

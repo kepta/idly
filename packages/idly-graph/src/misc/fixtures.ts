@@ -1,16 +1,16 @@
-export const miniXML1 = `
+export const XML1 = `
 <osm version="0.6" generator="CGImap 0.6.0 (2742 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
  <bounds minlat="34.5291871" minlon="74.1741943" maxlat="34.5337124" maxlon="74.1796875"/>
  <node id="4133782712" visible="true" version="1" changeset="38701677" timestamp="2016-04-19T17:58:39Z" user="Dombo" uid="592097" lat="34.5280866" lon="74.1795357"/>
  <node id="4133782713" visible="true" version="1" changeset="38701677" timestamp="2016-04-19T17:58:39Z" user="Dombo" uid="592097" lat="34.5282060" lon="74.1807924"/>
 </osm>
  `;
-export const miniXML2 = `
+export const XML2 = `
         <?xml version="1.0" encoding="UTF-8"?><osm>
         <node id="1" version="1" changeset="1" lat="0" lon="0" visible="true" timestamp="2009-03-07T03:26:33Z"></node>
         </osm>`;
 
-export const miniXML3 = `
+export const XML3 = `
         <?xml version="1.0" encoding="UTF-8"?><osm>
         <node id="1" visible="true" version="1" changeset="38701677" timestamp="2016-04-19T17:58:40Z" user="Dombo" uid="592097" lat="34.5303960" lon="74.1816382"/>
         <node id="2" visible="true" version="1" changeset="38701677" timestamp="2016-04-19T17:58:40Z" user="Dombo" uid="592097" lat="34.5303960" lon="74.1816382"/>
@@ -25,7 +25,7 @@ export const miniXML3 = `
         </way>
         </osm>`;
 
-export const miniWayXML1 = `
+export const WAY_XML1 = `
 <osm version="0.6" generator="CGImap 0.6.0 (2742 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
          <way id="411770875" visible="true" version="2" changeset="50089927" timestamp="2017-07-06T17:19:04Z" user="Srihari Thalla" uid="2815653">
   <nd ref="4133782719"/>
@@ -52,7 +52,7 @@ export const miniWayXML1 = `
   <tag k="source" v="MSF Survey"/>
  </way>
  </osm>`;
-export const nodeXML1 = `
+export const NODE_XML1 = `
 <osm version="0.6" generator="CGImap 0.6.0 (2742 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
  <bounds minlat="34.5291871" minlon="74.1741943" maxlat="34.5337124" maxlon="74.1796875"/>
  <node id="12" visible="true" version="1" changeset="138701677" timestamp="2016-04-19T17:58:39Z" user="Dombo" uid="592097" lat="34.5280866" lon="74.1795357"/>
@@ -101,7 +101,7 @@ export const nodeXML1 = `
 </osm>
 `;
 
-export const stubXML = `<?xml version="1.0" encoding="UTF-8"?>
+export const XML4 = `<?xml version="1.0" encoding="UTF-8"?>
 <osm version="0.6" generator="CGImap 0.6.0 (4199 thorn-03.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
  <bounds minlat="51.5087425" minlon="-0.0164795" maxlat="51.5121612" maxlon="-0.0109863"/>
  <node id="107486" visible="true" version="4" changeset="18779251" timestamp="2013-11-08T10:25:35Z" user="Amaroussi" uid="1016290" lat="51.5108162" lon="-0.0205621"/>

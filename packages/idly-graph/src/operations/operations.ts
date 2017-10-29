@@ -1,6 +1,3 @@
-import { List } from 'immutable';
-import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
-
 import { ImMap } from 'idly-common/lib/misc/immutable';
 import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
@@ -8,6 +5,7 @@ import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { pluginsStub } from '../misc/pluginsStub';
 import { workerGetEntities } from './getEntities';
 import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
+import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
 import { workerGetMap } from './getMap';
 import {
   GetActions,

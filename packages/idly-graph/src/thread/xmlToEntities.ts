@@ -1,4 +1,3 @@
-import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
 import { attributesGen } from 'idly-common/lib/osm/attributesGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
@@ -7,8 +6,7 @@ import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
 import {
   Entity,
   LngLat,
-  Node,
-  ParentWays,
+  Node as OSMNode,
   Relation,
   RelationMember,
   Tags,
@@ -51,7 +49,7 @@ export function xmlToEntities(xml: Document): Entity[] {
   return entities;
 }
 
-function getVisible(attrs: any): boolean {
+function getVisible(attrs: NamedNodeMap): boolean {
   return (
     !attrs.getNamedItem('visible') ||
     attrs.getNamedItem('visible').value !== 'false'
@@ -104,13 +102,13 @@ function getTags(obj: any): Tags {
   return tagsFactory(t);
 }
 
-function getLoc(attrs: any): LngLat {
+function getLoc(attrs: NamedNodeMap): LngLat {
   const lon = attrs.getNamedItem('lon') && attrs.getNamedItem('lon').value;
   const lat = attrs.getNamedItem('lat') && attrs.getNamedItem('lat').value;
   return genLngLat([parseFloat(lon), parseFloat(lat)]);
 }
 
-function nodeData(obj: any): Node {
+function nodeData(obj: Node): OSMNode {
   const attrs = obj.attributes;
   return nodeFactory({
     attributes: attributesGen({
@@ -131,7 +129,7 @@ function nodeData(obj: any): Node {
   });
 }
 
-function relationData(obj: any): Relation {
+function relationData(obj: Node): Relation {
   const attrs = obj.attributes;
   return relationFactory({
     attributes: attributesGen({
@@ -152,7 +150,7 @@ function relationData(obj: any): Relation {
   });
 }
 
-function wayData(obj: any): Way {
+function wayData(obj: Node): Way {
   const attrs = obj.attributes;
   return wayFactory({
     attributes: attributesGen({

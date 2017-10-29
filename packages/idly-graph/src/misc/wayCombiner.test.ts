@@ -107,7 +107,7 @@ describe('way.test', () => {
       });
     });
     it('throws error if no geometry is provided', () => {
-      expect(() => wayCombiner(way, g, { s: 'k' })).toThrow();
+      expect(() => wayCombiner(way, g, { s: 'k' } as any)).toThrow();
     });
   });
 });
