@@ -22,6 +22,10 @@ class MapComp extends React.PureComponent<any, any> {
         virgin: {
           type: 'geojson',
           data: featureCollection()
+        },
+        modified: {
+          type: 'geojson',
+          data: featureCollection()
         }
       }),
       center: [-73.97694, 40.76109],

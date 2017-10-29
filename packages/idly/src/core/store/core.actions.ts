@@ -36,11 +36,10 @@ export const selectEntitiesAction = builder<SelectEntitiesAction>(
 export interface SelectCommitAction {
   type: CoreActions.SELECT_COMMIT;
   tree: Tree;
-  featureTable: FeatureTable<any, any>;
 }
 export const selectCommitAction = builder<SelectCommitAction>(
   CoreActions.SELECT_COMMIT
-)('tree', 'featureTable');
+)('tree');
 
 /**
  * modifies the current selection

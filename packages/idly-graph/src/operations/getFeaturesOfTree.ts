@@ -41,11 +41,18 @@ export function workerGetFeaturesOfTree(
 ): WorkerOperation<GetFeaturesOfTree> {
   return async ({ treeString }) => {
     const tree = Tree.fromString(treeString);
-    const entityTable: EntityTable = tree.toObject().entityTable;
+    const { entityTable, deletedIds } = tree.toObject();
+    // TODO figure out deleted entities, for now I will subtract them
+    //  from entityTable :?
+    const filteredTable = entityTable
+      .filter((v, k = '') => {
+        return !deletedIds.has(k);
+      })
+      .toMap();
     const workerPlugins = await state.plugins;
     const toReturn: GetFeaturesOfTree['response'] = entityToFeature(
       workerPlugins.map((r: any) => r.worker),
-    )(entityTable);
+    )(filteredTable);
     return JSON.stringify(toReturn);
   };
 }

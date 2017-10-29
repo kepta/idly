@@ -2,7 +2,15 @@ import { ImSet } from 'idly-common/lib/misc/immutable';
 import { entityFactory } from 'idly-common/lib/osm/entityFactory';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { removeFromEntityTable } from 'idly-common/lib/osm/removeFromEntityTable';
-import { Entity, EntityId, EntityTable, NodeId, ParentWays, Way, WayId } from 'idly-common/lib/osm/structures';
+import {
+  Entity,
+  EntityId,
+  EntityTable,
+  NodeId,
+  ParentWays,
+  Way,
+  WayId,
+} from 'idly-common/lib/osm/structures';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 
@@ -82,6 +90,10 @@ export class Tree {
     return obj;
   }
 
+  public toString(): string {
+    return JSON.stringify(this.toJs());
+  }
+
   public toObject(): {
     readonly deletedIds: ImSet<EntityId>;
     readonly knownIds: ImSet<EntityId>;
@@ -96,6 +108,15 @@ export class Tree {
     };
   }
 
+  /**
+   * @BUG _entityTable shows some other world when doing
+   * this on the main thread. The objects(enitity) are not exactly
+   * equal even though they are deep equal because they have
+   * different instances running. I think when we parse a string
+   * we might wanna cache the object in some sort of global store
+   * to avoid creating another instance of the same thing.
+   * @param tree
+   */
   public isEqual(tree: Tree): boolean {
     if (tree === this) {
       return true;

@@ -1,5 +1,5 @@
-import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
 import { List } from 'immutable';
+import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
 
 import { ImMap } from 'idly-common/lib/misc/immutable';
 import { weakCache2 } from 'idly-common/lib/misc/weakCache';

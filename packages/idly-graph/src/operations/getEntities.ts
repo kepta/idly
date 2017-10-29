@@ -45,7 +45,7 @@ export function workerGetEntities(
       entityTable: ImMap(entities),
       knownIds: ImSet(entityIds),
     });
-    return JSON.stringify(toReturn.toJs());
+    return toReturn.toString();
   };
 }
 

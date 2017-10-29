@@ -1,7 +1,7 @@
 import { getEntities } from 'idly-graph/lib/operations/getEntities';
-import { getMap } from 'idly-graph/lib/operations/getMap';
-
 import { getFeaturesOfEntityIds } from 'idly-graph/lib/operations/getFeaturesOfEntityIds';
+import { getFeaturesOfTree } from 'idly-graph/lib/operations/getFeaturesOfTree';
+import { getMap } from 'idly-graph/lib/operations/getMap';
 import { setOsmTiles } from 'idly-graph/lib/operations/setOsmTiles';
 
 import * as MyWorker from 'worker-loader!worker/worker';
@@ -20,3 +20,5 @@ export const workerGetEntities = getEntities(promiseWorker);
 export const workerGetFeaturesOfEntityIds = getFeaturesOfEntityIds(
   promiseWorker
 );
+
+export const workerGetFeaturesOfTree = getFeaturesOfTree(promiseWorker);

@@ -27,7 +27,5 @@ export function* selectSaga({
   entityIds
 }: SelectEntitiesAction): IterableIterator<Effect> {
   const tree: Tree = yield call(workerGetEntities, { entityIds });
-  const features = yield call(workerGetFeaturesOfEntityIds, { entityIds });
-  const featureTable: FeatureTable<any, any> = featureTableGen(features);
-  yield put(selectCommitAction(tree, featureTable));
+  yield put(selectCommitAction(tree));
 }

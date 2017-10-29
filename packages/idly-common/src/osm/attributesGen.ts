@@ -9,7 +9,7 @@ export function attributesGen({
   user
 }: {
   visible?: boolean;
-  version?: number;
+  version?: string;
   timestamp?: string;
   changeset?: string;
   uid?: string;

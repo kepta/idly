@@ -5,12 +5,10 @@ import { CoreActions, CoreActionType } from './core.actions';
 
 export type CoreState = Readonly<{
   readonly selectedTree: Tree;
-  readonly featureTable: FeatureTable<any, any>;
 }>;
 
 const coreState: CoreState = {
-  selectedTree: Tree.fromEntities([]),
-  featureTable: ImMap()
+  selectedTree: Tree.fromEntities([])
 };
 
 export function coreReducer(
@@ -19,12 +17,8 @@ export function coreReducer(
 ): CoreState {
   switch (action.type) {
     case CoreActions.SELECT_COMMIT: {
-      const { tree, featureTable } = action;
-      return { selectedTree: tree, featureTable };
-    }
-    case CoreActions.SELECT_MODIFY: {
       const { tree } = action;
-      return { ...state, selectedTree: tree };
+      return { selectedTree: state.selectedTree.merge(tree) };
     }
     default: {
       return state;

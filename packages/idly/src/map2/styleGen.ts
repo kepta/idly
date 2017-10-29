@@ -33,9 +33,7 @@ export function styleGen(style: any = defaultStyle) {
   return layers => {
     style = {
       ...style,
-      layers: [...style.layers, ...layers].sort(
-        (a, b) => a.priority - b.priority
-      )
+      layers: [...style.layers, ...layers]
     };
     return sources => ({
       ...style,

@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { BBox } from '@turf/helpers';
 import { IRootStateType } from 'common/store';
 import sizeMe from 'react-sizeme';
-import { workerFetchMap, workerSetOsmTiles } from '../worker/main';
+import {
+  workerFetchMap,
+  workerGetFeaturesOfTree,
+  workerSetOsmTiles
+} from '../worker/main';
 
 import { selectEntitiesAction } from 'core/store/core.actions';
 import debounce from 'lodash.debounce';
@@ -45,6 +49,7 @@ class MapController extends React.PureComponent<any, any> {
   componentDidUpdate(prevProps) {
     if (!prevProps.selectedTree.isEqual(this.props.selectedTree)) {
       this.fetchMap();
+      this.renderModifiedEntities();
     }
   }
   onClick() {
@@ -73,7 +78,6 @@ class MapController extends React.PureComponent<any, any> {
     });
   }
   dispatchTiles = async () => {
-    console.log('called');
     const zoom = this.props.map.getZoom() - 1;
     if (zoom < 15) return;
     const lonLat = this.props.map.getBounds();
@@ -110,9 +114,20 @@ class MapController extends React.PureComponent<any, any> {
         virgin: {
           type: 'geojson',
           data: featureCollection()
+        },
+        modified: {
+          type: 'geojson',
+          data: featureCollection()
         }
       })
     );
+  };
+  renderModifiedEntities = async () => {
+    const data = await workerGetFeaturesOfTree({
+      treeString: this.props.selectedTree.toString()
+    });
+    console.log(data);
+    this.props.map.getSource('modified').setData(featureCollection(data));
   };
   fetchMap = async () => {
     const data = await workerFetchMap({
@@ -140,6 +155,14 @@ class MapController extends React.PureComponent<any, any> {
         {SourceLayered[0].map((L, i) => (
           <L
             key={i}
+            entities={$Set()}
+            updateLayer={this.updateLayer}
+            removeLayer={this.removeLayer}
+          />
+        ))}
+        {SourceLayered[1].map((L, i) => (
+          <L
+            key={SourceLayered[0].length + i}
             entities={$Set()}
             updateLayer={this.updateLayer}
             removeLayer={this.removeLayer}

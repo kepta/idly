@@ -65,7 +65,7 @@ export interface Relation {
 
 export interface Attributes {
   readonly visible?: boolean;
-  readonly version?: number;
+  readonly version?: string;
   readonly timestamp?: string;
   readonly changeset?: string;
   readonly uid?: string;
