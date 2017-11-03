@@ -1,6 +1,7 @@
 import { presetField } from './presetField';
 import { presetPreset } from './presetPreset';
-/* globals context: true */
+// changes
+// 1. removed Way() to simple ({}). Since presetPreset just uses entity.tags
 
 describe('presetPreset', function() {
   it('has optional fields', function() {
@@ -22,37 +23,39 @@ describe('presetPreset', function() {
 
   describe('#matchScore', function() {
     it('returns -1 if preset does not match tags', function() {
-      var preset = presetPreset('test', { tags: { foo: 'bar' } }),
-        entity = Way({ tags: { highway: 'motorway' } });
+      var preset = presetPreset('test', { tags: { foo: 'bar' } });
+      // change
+      var entity = { tags: { highway: 'motorway' } };
       expect(preset.matchScore(entity)).toBe(-1);
     });
 
     it('returns the value of the matchScore property when matched', function() {
       var preset = presetPreset('test', {
-          tags: { highway: 'motorway' },
-          matchScore: 0.2
-        }),
-        entity = Way({ tags: { highway: 'motorway' } });
+        tags: { highway: 'motorway' },
+        matchScore: 0.2
+      });
+      // change
+      var entity = { tags: { highway: 'motorway' } };
       expect(preset.matchScore(entity)).toBe(0.2);
     });
 
     it('defaults to the number of matched tags', function() {
       var preset = presetPreset('test', {
-          tags: { highway: 'residential' }
-        }),
-        entity = Way({ tags: { highway: 'residential' } });
+        tags: { highway: 'residential' }
+      });
+      var entity = { tags: { highway: 'residential' } };
       expect(preset.matchScore(entity)).toBe(1);
 
       preset = presetPreset('test', {
         tags: { highway: 'service', service: 'alley' }
       });
-      entity = Way({ tags: { highway: 'service', service: 'alley' } });
+      entity = { tags: { highway: 'service', service: 'alley' } };
       expect(preset.matchScore(entity)).toBe(2);
     });
 
     it('counts * as a match for any value with score 0.5', function() {
-      var preset = presetPreset('test', { tags: { building: '*' } }),
-        entity = Way({ tags: { building: 'yep' } });
+      var preset = presetPreset('test', { tags: { building: '*' } });
+      var entity = { tags: { building: 'yep' } };
       expect(preset.matchScore(entity)).toBe(0.5);
     });
   });
