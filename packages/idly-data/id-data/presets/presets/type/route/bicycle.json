@@ -1,0 +1,17 @@
+{
+    "icon": "route-bicycle",
+    "fields": [
+        "name",
+        "ref_route",
+        "network_bicycle",
+        "cycle_network"
+    ],
+    "geometry": [
+        "relation"
+    ],
+    "tags": {
+        "type": "route",
+        "route": "bicycle"
+    },
+    "name": "Cycle Route"
+}

@@ -1,0 +1,14 @@
+{
+    "icon": "restriction-no-u-turn",
+    "fields": [
+        "except"
+    ],
+    "geometry": [
+        "relation"
+    ],
+    "tags": {
+        "type": "restriction",
+        "restriction": "no_u_turn"
+    },
+    "name": "No U-turn"
+}

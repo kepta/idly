@@ -1,0 +1,35 @@
+{
+    "icon": "hospital",
+    "fields": [
+        "name",
+        "operator",
+        "healthcare/speciality",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "medical",
+        "urgentcare"
+    ],
+    "tags": {
+        "amenity": "clinic"
+    },
+    "addTags": {
+        "amenity": "clinic",
+        "healthcare": "clinic"
+    },
+    "removeTags": {
+        "amenity": "clinic",
+        "healthcare": "clinic"
+    },
+    "reference": {
+        "key": "amenity",
+        "value": "clinic"
+    },
+    "name": "Clinic"
+}

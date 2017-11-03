@@ -1,9 +1,0 @@
-{
-    "name": "Other",
-    "tags": {},
-    "fields": [
-        "name"
-    ],
-    "geometry": ["vertex"],
-    "matchScore": 0.1
-}

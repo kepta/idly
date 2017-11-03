@@ -1,0 +1,26 @@
+{
+    "icon": "water",
+    "fields": [
+        "name",
+        "intermittent"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "natural": "water",
+        "water": "pond"
+    },
+    "reference": {
+        "key": "natural",
+        "value": "water"
+    },
+    "terms": [
+        "lakelet",
+        "millpond",
+        "tarn",
+        "pool",
+        "mere"
+    ],
+    "name": "Pond"
+}

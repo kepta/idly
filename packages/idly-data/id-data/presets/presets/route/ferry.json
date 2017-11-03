@@ -1,0 +1,16 @@
+{
+    "icon": "ferry-line",
+    "geometry": [
+        "line"
+    ],
+    "fields": [
+        "name",
+        "operator",
+        "duration",
+        "access"
+    ],
+    "tags": {
+        "route": "ferry"
+    },
+    "name": "Ferry Route"
+}

@@ -1,0 +1,22 @@
+{
+    "fields": [
+        "crossing",
+        "access",
+        "surface",
+        "kerb",
+        "tactile_paving"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "footway",
+        "footway": "crossing"
+    },
+    "reference": {
+        "key": "footway",
+        "value": "crossing"
+    },
+    "terms": [],
+    "name": "Street Crossing"
+}

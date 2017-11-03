@@ -1,0 +1,15 @@
+{
+    "key": "source",
+    "type": "semiCombo",
+    "icon": "source",
+    "universal": true,
+    "label": "Sources",
+    "snake_case": false,
+    "options": [
+        "survey",
+        "local knowledge",
+        "gps",
+        "aerial imagery",
+        "streetlevel imagery"
+    ]
+}

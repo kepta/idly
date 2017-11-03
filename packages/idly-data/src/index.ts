@@ -1,7 +1,7 @@
-import { categories } from './data/presets/categories.json';
-import { defaults } from './data/presets/defaults.json';
-import { fields } from './data/presets/fields.json';
-import { presets } from './data/presets/presets.json';
+import { categories } from '../id-data/presets/categories.json';
+import { defaults } from '../id-data/presets/defaults.json';
+import { fields } from '../id-data/presets/fields.json';
+import { presets } from '../id-data/presets/presets.json';
 
 export const osmPavedTags = {
   surface: {

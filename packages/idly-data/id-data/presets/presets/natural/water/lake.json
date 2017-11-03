@@ -1,0 +1,24 @@
+{
+    "icon": "water",
+    "fields": [
+        "name",
+        "intermittent"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "natural": "water",
+        "water": "lake"
+    },
+    "reference": {
+        "key": "natural",
+        "value": "water"
+    },
+    "terms": [
+        "lakelet",
+        "loch",
+        "mere"
+    ],
+    "name": "Lake"
+}

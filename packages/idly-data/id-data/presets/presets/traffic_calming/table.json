@@ -1,0 +1,19 @@
+{
+    "icon": "poi-warning",
+    "fields": [
+        "surface"
+    ],
+    "geometry": [
+        "vertex"
+    ],
+    "tags": {
+        "traffic_calming": "table"
+    },
+    "terms": [
+        "flat top",
+        "hump",
+        "speed",
+        "slow"
+    ],
+    "name": "Speed Table"
+}

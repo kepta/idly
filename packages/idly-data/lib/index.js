@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const categories_json_1 = require("./data/presets/categories.json");
-const defaults_json_1 = require("./data/presets/defaults.json");
-const fields_json_1 = require("./data/presets/fields.json");
-const presets_json_1 = require("./data/presets/presets.json");
+const categories_json_1 = require("../id-data/presets/categories.json");
+const defaults_json_1 = require("../id-data/presets/defaults.json");
+const fields_json_1 = require("../id-data/presets/fields.json");
+const presets_json_1 = require("../id-data/presets/presets.json");
 exports.osmPavedTags = {
     surface: {
         paved: true,
