@@ -1,8 +1,7 @@
+import { presetIndex } from './presetIndex';
 import { clone as _clone, keys as _keys, omit as _omit } from 'lodash';
 import { t } from './t';
-import { genAreaKeys } from '../areaKeys/areaKeys';
-
-const areaKeys = genAreaKeys();
+import { getAreaKeys } from '../areaKeys/areaKeys';
 
 export function presetPreset(id, preset, fields) {
   preset = _clone(preset);
@@ -21,14 +20,14 @@ export function presetPreset(id, preset, fields) {
 
   preset.originalScore = preset.matchScore || 1;
 
-  preset.matchScore = function(entity) {
+  preset.matchScore = function(entityTags) {
     var tags = preset.tags,
       score = 0;
 
     for (var t in tags) {
-      if (entity.tags[t] === tags[t]) {
+      if (entityTags[t] === tags[t]) {
         score += preset.originalScore;
-      } else if (tags[t] === '*' && t in entity.tags) {
+      } else if (tags[t] === '*' && t in entityTags) {
         score += preset.originalScore / 2;
       } else {
         return -1;
@@ -107,7 +106,6 @@ export function presetPreset(id, preset, fields) {
   var applyTags = preset.addTags || preset.tags || {};
   preset.applyTags = function(tags, geometry) {
     var k;
-
     tags = _clone(tags);
 
     for (k in applyTags) {
@@ -128,7 +126,7 @@ export function presetPreset(id, preset, fields) {
         var needsAreaTag = true;
         if (preset.geometry.indexOf('line') === -1) {
           for (k in applyTags) {
-            if (k in areaKeys) {
+            if (k in getAreaKeys()) {
               needsAreaTag = false;
               break;
             }

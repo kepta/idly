@@ -1,16 +1,7 @@
-describe.only('presetIndex', function() {
-  var savedPresets;
-
-  //   before(function() {
-  //     savedPresets = data.presets;
-  //   });
-
-  //   after(function() {
-  //     data.presets = savedPresets;
-  //   });
-
+import { presetIndex } from './presetIndex';
+describe('presetIndex', function() {
   describe('#match', function() {
-    var testPresets = {
+    var testPresets = () => ({
       presets: {
         point: {
           tags: {},
@@ -33,54 +24,51 @@ describe.only('presetIndex', function() {
           geometry: ['point', 'area']
         }
       }
-    };
+    });
 
     it('returns a collection containing presets matching a geometry and tags', function() {
-      data.presets = testPresets;
-      var presets = Context().presets(),
-        way = Way({ tags: { highway: 'residential' } }),
-        graph = Graph([way]);
-
-      expect(presets.match(way, graph).id).toEqual('residential');
+      var presets = presetIndex(testPresets()).init();
+      var way = { id: 'w-1', tags: { highway: 'residential' } };
+      expect(presets.match(way.tags, 'line').id).toEqual('residential');
     });
 
     it('returns the appropriate fallback preset when no tags match', function() {
-      data.presets = testPresets;
-      var presets = Context().presets(),
-        point = Node(),
-        line = Way({ tags: { foo: 'bar' } }),
-        graph = Graph([point, line]);
-
-      expect(presets.match(point, graph).id).toEqual('point');
-      expect(presets.match(line, graph).id).toEqual('line');
+      var presets = presetIndex(testPresets()).init();
+      var point = { tags: {} };
+      var line = { id: 'w-2', tags: { foo: 'bar' } };
+      expect(presets.match(point.tags, 'point').id).toEqual('point');
+      expect(presets.match(line.tags, 'line').id).toEqual('line');
     });
 
     it('matches vertices on a line as vertices', function() {
-      data.presets = testPresets;
-      var presets = Context().presets(),
-        point = Node({ tags: { leisure: 'park' } }),
-        line = Way({ nodes: [point.id], tags: { highway: 'residential' } }),
-        graph = Graph([point, line]);
+      var presets = presetIndex(testPresets()).init();
+      var point = { id: 'n-2', tags: { leisure: 'park' } };
+      var line = {
+        id: 'w-3',
+        nodes: [point.id],
+        tags: { highway: 'residential' }
+      };
 
-      expect(presets.match(point, graph).id).toEqual('vertex');
+      expect(presets.match(point.tags, 'vertex').id).toEqual('vertex');
     });
 
     it('matches vertices on an addr:interpolation line as points', function() {
-      data.presets = testPresets;
-      var presets = Context().presets(),
-        point = Node({ tags: { leisure: 'park' } }),
-        line = Way({
-          nodes: [point.id],
-          tags: { 'addr:interpolation': 'even' }
-        }),
-        graph = Graph([point, line]);
+      var presets = presetIndex(testPresets()).init();
+      var point = { id: 'n-3', tags: { leisure: 'park' } };
 
-      expect(presets.match(point, graph).id).toEqual('park');
+      var line = {
+        id: 'w-4',
+        nodes: [point.id],
+        tags: { 'addr:interpolation': 'even' }
+      };
+
+      // NOTE: since addr:interpolation it will be point
+      expect(presets.match(point.tags, 'point').id).toEqual('park');
     });
   });
 
   describe('#areaKeys', function() {
-    var testPresets = {
+    var testPresets = () => ({
       presets: {
         'amenity/fuel/shell': {
           tags: { amenity: 'fuel' },
@@ -112,87 +100,84 @@ describe.only('presetIndex', function() {
           geometry: ['point', 'area']
         }
       }
-    };
+    });
 
     it('whitelists keys for presets with area geometry', function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys()).toEqual(expect.arrayContaining('natural'));
+      var presets = presetIndex(testPresets()).init();
+      expect(presets.areaKeys().hasOwnProperty('natural')).toEqual(true);
     });
 
     it('blacklists key-values for presets with a line geometry', function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys().natural).toEqual(
-        expect.arrayContaining('tree_row')
+      var presets = presetIndex(testPresets()).init();
+      var keys = presets.areaKeys().natural;
+      expect(presets.areaKeys().natural.hasOwnProperty('tree_row')).toEqual(
+        true
       );
       expect(presets.areaKeys().natural.tree_row).toBe(true);
     });
 
     it('blacklists key-values for presets with both area and line geometry', function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys().leisure).toEqual(
-        expect.arrayContaining('track')
-      );
+      var presets = presetIndex(testPresets()).init();
+      expect(presets.areaKeys().leisure.hasOwnProperty('track')).toEqual(true);
     });
 
     it('does not blacklist key-values for presets with neither area nor line geometry', function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys().natural).toEqual(
-        expect.arrayContaining('peak')
-      );
+      var presets = presetIndex(testPresets()).init();
+
+      expect(presets.areaKeys().natural.hasOwnProperty('peak')).toEqual(false);
     });
 
     it("does not blacklist generic '*' key-values", function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys().natural).toEqual(
-        expect.arrayContaining('natural')
+      var presets = presetIndex(testPresets()).init();
+      expect(presets.areaKeys().natural.hasOwnProperty('natural')).toEqual(
+        false
       );
     });
 
     it("ignores keys like 'highway' that are assumed to be lines", function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys()).toEqual(expect.arrayContaining('highway'));
+      var presets = presetIndex(testPresets()).init();
+      expect(presets.areaKeys().hasOwnProperty('highway')).toEqual(false);
     });
 
     it('ignores suggestion presets', function() {
-      data.presets = testPresets;
-      var presets = Context().presets();
-      expect(presets.areaKeys()).toEqual(expect.arrayContaining('amenity'));
+      var presets = presetIndex(testPresets()).init();
+      expect(presets.areaKeys().hasOwnProperty('amenity')).toEqual(false);
     });
   });
 
   describe('expected matches', function() {
     it('prefers building to multipolygon', function() {
-      data.presets = savedPresets;
-      var presets = Context().presets(),
-        relation = Relation({
-          tags: { type: 'multipolygon', building: 'yes' }
-        }),
-        graph = Graph([relation]);
-      expect(presets.match(relation, graph).id).toEqual('building');
+      var presets = presetIndex().init();
+
+      var relation = {
+        id: 'r-1',
+        tags: { type: 'multipolygon', building: 'yes' }
+      };
+      expect(presets.match(relation.tags, 'area').id).toEqual('building');
     });
 
     it('prefers building to address', function() {
-      data.presets = savedPresets;
-      var presets = Context().presets(),
-        way = Way({
-          tags: { area: 'yes', building: 'yes', 'addr:housenumber': '1234' }
-        }),
-        graph = Graph([way]);
-      expect(presets.match(way, graph).id).toEqual('building');
+      var presets = presetIndex().init();
+
+      var way = {
+        id: 'w-10',
+        tags: { area: 'yes', building: 'yes', 'addr:housenumber': '1234' }
+      };
+
+      //   var graph = Graph([way]);
+      expect(presets.match(way.tags, 'area').id).toEqual('building');
     });
 
     it('prefers pedestrian to area', function() {
-      data.presets = savedPresets;
-      var presets = Context().presets(),
-        way = Way({ tags: { area: 'yes', highway: 'pedestrian' } }),
-        graph = Graph([way]);
-      expect(presets.match(way, graph).id).toEqual('highway/pedestrian_area');
+      var presets = presetIndex().init();
+      var way = {
+        id: 'w-12',
+        tags: { area: 'yes', highway: 'pedestrian' }
+      };
+      //   var graph = Graph([way]);
+      expect(presets.match(way.tags, 'area').id).toEqual(
+        'highway/pedestrian_area'
+      );
     });
   });
 });

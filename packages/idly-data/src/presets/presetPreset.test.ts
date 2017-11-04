@@ -26,7 +26,7 @@ describe('presetPreset', function() {
       var preset = presetPreset('test', { tags: { foo: 'bar' } });
       // change
       var entity = { tags: { highway: 'motorway' } };
-      expect(preset.matchScore(entity)).toBe(-1);
+      expect(preset.matchScore(entity.tags)).toBe(-1);
     });
 
     it('returns the value of the matchScore property when matched', function() {
@@ -36,7 +36,7 @@ describe('presetPreset', function() {
       });
       // change
       var entity = { tags: { highway: 'motorway' } };
-      expect(preset.matchScore(entity)).toBe(0.2);
+      expect(preset.matchScore(entity.tags)).toBe(0.2);
     });
 
     it('defaults to the number of matched tags', function() {
@@ -44,19 +44,19 @@ describe('presetPreset', function() {
         tags: { highway: 'residential' }
       });
       var entity = { tags: { highway: 'residential' } };
-      expect(preset.matchScore(entity)).toBe(1);
+      expect(preset.matchScore(entity.tags)).toBe(1);
 
       preset = presetPreset('test', {
         tags: { highway: 'service', service: 'alley' }
       });
       entity = { tags: { highway: 'service', service: 'alley' } };
-      expect(preset.matchScore(entity)).toBe(2);
+      expect(preset.matchScore(entity.tags)).toBe(2);
     });
 
     it('counts * as a match for any value with score 0.5', function() {
       var preset = presetPreset('test', { tags: { building: '*' } });
       var entity = { tags: { building: 'yep' } };
-      expect(preset.matchScore(entity)).toBe(0.5);
+      expect(preset.matchScore(entity.tags)).toBe(0.5);
     });
   });
 

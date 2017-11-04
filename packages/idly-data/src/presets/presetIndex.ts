@@ -1,7 +1,9 @@
-import _bind from 'lodash-es/bind';
-import _forEach from 'lodash-es/forEach';
-import _reject from 'lodash-es/reject';
-import _uniq from 'lodash-es/uniq';
+import {
+  bind as _bind,
+  forEach as _forEach,
+  reject as _reject,
+  uniq as _uniq
+} from 'lodash';
 
 import { presetsData } from '../index';
 import { presetCategory } from './category';
@@ -13,15 +15,20 @@ import { presetPreset } from './presetPreset';
 // export { presetCollection };
 // export { presetField };
 // export { presetPreset };
+function stubIsOnAddressLine(id) {
+  if (id === 'n-2') return false;
+  if (id === 'n-3') return true;
+  throw new Error('stubIsOnAddressLine failed' + ' ' + id);
+}
 
-export function presetIndex() {
+export function presetIndex(data = presetsData.presets) {
   // a presetCollection with methods for
   // loading new data and returning defaults
 
   var all = presetCollection([]),
     defaults = { area: all, line: all, point: all, vertex: all, relation: all },
     fields = {},
-    universal = [],
+    universalFields = [],
     recent = presetCollection([]);
 
   // Index of presets by (geometry, tag key).
@@ -32,21 +39,14 @@ export function presetIndex() {
     area: {},
     relation: {}
   };
-
-  all.match = function(entity, resolver) {
-    var geometry = entity.geometry(resolver);
+  //changes
+  all.match = function(tags, geometry) {
     var address;
-
-    // Treat entities on addr:interpolation lines as points, not vertices - #3241
-    if (geometry === 'vertex' && entity.isOnAddressLine(resolver)) {
-      geometry = 'point';
-    }
 
     var geometryMatches = index[geometry],
       best = -1,
       match;
-
-    for (var k in entity.tags) {
+    for (var k in tags) {
       // If any part of an address is present,
       // allow fallback to "Address" preset - #4353
       if (k.match(/^addr:/) !== null && geometryMatches['addr:*']) {
@@ -57,7 +57,7 @@ export function presetIndex() {
       if (!keyMatches) continue;
 
       for (var i = 0; i < keyMatches.length; i++) {
-        var score = keyMatches[i].matchScore(entity);
+        var score = keyMatches[i].matchScore(tags);
         if (score > best) {
           best = score;
           match = keyMatches[i];
@@ -120,41 +120,39 @@ export function presetIndex() {
   };
 
   all.init = function() {
-    var d = presetsData;
-
     all.collection = [];
     recent.collection = [];
     fields = {};
-    universal = [];
+    universalFields = [];
     index = { point: {}, vertex: {}, line: {}, area: {}, relation: {} };
 
-    if (d.fields) {
-      _forEach(d.fields, function(d, id) {
+    if (data.fields) {
+      _forEach(data.fields, function(d, id) {
         fields[id] = presetField(id, d);
-        if (d.universal) universal.push(fields[id]);
+        if (d.universal) universalFields.push(fields[id]);
       });
     }
 
-    if (d.presets) {
-      _forEach(d.presets, function(d, id) {
+    if (data.presets) {
+      _forEach(data.presets, function(d, id) {
         all.collection.push(presetPreset(id, d, fields));
       });
     }
 
-    if (d.categories) {
-      _forEach(d.categories, function(d, id) {
+    if (data.categories) {
+      _forEach(data.categories, function(d, id) {
         all.collection.push(presetCategory(id, d, all));
       });
     }
 
-    if (d.defaults) {
+    if (data.defaults) {
       var getItem = _bind(all.item, all);
       defaults = {
-        area: presetCollection(d.defaults.area.map(getItem)),
-        line: presetCollection(d.defaults.line.map(getItem)),
-        point: presetCollection(d.defaults.point.map(getItem)),
-        vertex: presetCollection(d.defaults.vertex.map(getItem)),
-        relation: presetCollection(d.defaults.relation.map(getItem))
+        area: presetCollection(data.defaults.area.map(getItem)),
+        line: presetCollection(data.defaults.line.map(getItem)),
+        point: presetCollection(data.defaults.point.map(getItem)),
+        vertex: presetCollection(data.defaults.vertex.map(getItem)),
+        relation: presetCollection(data.defaults.relation.map(getItem))
       };
     }
 
@@ -169,7 +167,6 @@ export function presetIndex() {
         }
       }
     }
-
     return all;
   };
 
@@ -178,7 +175,7 @@ export function presetIndex() {
   };
 
   all.universal = function() {
-    return universal;
+    return universalFields;
   };
 
   all.defaults = function(geometry, n) {
