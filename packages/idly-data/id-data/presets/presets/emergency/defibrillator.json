@@ -1,0 +1,21 @@
+{
+    "icon": "defibrillator",
+    "fields": [
+        "ref",
+        "access",
+        "opening_hours",
+        "indoor",
+        "phone"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "terms": [
+        "AED"
+    ],
+   "tags": {
+        "emergency": "defibrillator"
+    },
+    "name": "Defibrillator"
+}

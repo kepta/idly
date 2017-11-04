@@ -1,0 +1,22 @@
+{
+    "icon": "home",
+    "fields": [
+        "name",
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "house"
+    },
+    "terms": [
+        "home",
+        "family",
+        "residence",
+        "dwelling"
+    ],
+    "matchScore": 0.5,
+    "name": "House"
+}

@@ -1,0 +1,19 @@
+{
+    "icon": "restaurant",
+    "fields": [
+        "name",
+        "cuisine",
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "craft": "caterer"
+    },
+    "name": "Caterer"
+}

@@ -1,0 +1,13 @@
+{
+    "icon": "poi-junction",
+    "geometry": [
+        "vertex"
+    ],
+    "tags": {
+        "highway": "motorway_junction"
+    },
+    "fields": [
+        "ref_highway_junction"
+    ],
+    "name": "Motorway Junction / Exit"
+}

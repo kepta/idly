@@ -1,0 +1,16 @@
+{
+    "icon": "triangle",
+    "geometry": [
+        "point",
+        "vertex",
+        "line",
+        "area"
+    ],
+    "tags": {
+        "natural": "cliff"
+    },
+    "terms": [
+        "escarpment"
+    ],
+    "name": "Cliff"
+}

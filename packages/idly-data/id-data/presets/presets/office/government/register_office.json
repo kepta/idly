@@ -1,0 +1,30 @@
+{
+    "icon": "town-hall",
+    "fields": [
+        "name",
+        "address",
+        "building_area",
+        "opening_hours",
+        "operator"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "clerk",
+        "marriage",
+        "death",
+        "birth",
+        "certificate"
+    ],
+    "tags": {
+        "office": "government",
+        "government": "register_office"
+    },
+    "reference": {
+        "key": "government",
+        "value": "register_office"
+    },
+    "name": "Register Office"
+}

@@ -1,0 +1,18 @@
+{
+    "icon": "park",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "fields": [
+        "name"
+    ],
+    "tags": {
+        "leisure": "nature_reserve"
+    },
+    "terms": [
+        "protected",
+        "wildlife"
+    ],
+    "name": "Nature Reserve"
+}

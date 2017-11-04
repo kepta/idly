@@ -1,0 +1,16 @@
+{
+    "icon": "route-road",
+    "fields": [
+        "name",
+        "ref_route",
+        "network_road"
+    ],
+    "geometry": [
+        "relation"
+    ],
+    "tags": {
+        "type": "route",
+        "route": "road"
+    },
+    "name": "Road Route"
+}

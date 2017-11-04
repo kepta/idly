@@ -1,0 +1,19 @@
+{
+    "icon": "home",
+    "fields": [
+        "name",
+        "building",
+        "levels",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "building": "*"
+    },
+    "matchScore": 0.6,
+    "terms": [],
+    "name": "Building"
+}

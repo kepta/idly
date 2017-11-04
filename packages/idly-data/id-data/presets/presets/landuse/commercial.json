@@ -1,0 +1,14 @@
+{
+    "icon": "commercial",
+    "fields": [
+        "name"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "commercial"
+    },
+    "terms": [],
+    "name": "Commercial Area"
+}

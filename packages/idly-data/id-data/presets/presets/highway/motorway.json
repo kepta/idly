@@ -1,0 +1,32 @@
+{
+    "icon": "highway-motorway",
+    "fields": [
+        "name",
+        "ref_road_number",
+        "oneway_yes",
+        "maxspeed",
+        "lanes",
+        "surface",
+        "structure",
+        "maxheight",
+        "toll",
+        "access"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "motorway"
+    },
+    "terms": [
+        "autobahn",
+        "expressway",
+        "freeway",
+        "highway",
+        "interstate",
+        "parkway",
+        "thruway",
+        "turnpike"
+    ],
+    "name": "Motorway"
+}

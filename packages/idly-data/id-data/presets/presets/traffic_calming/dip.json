@@ -1,0 +1,19 @@
+{
+    "icon": "poi-warning",
+    "fields": [
+        "surface",
+        "parallel_direction"
+    ],
+    "geometry": [
+        "vertex",
+        "line"
+    ],
+    "terms": [
+        "speed",
+        "slow"
+    ],
+    "tags": {
+        "traffic_calming": "dip"
+    },
+    "name": "Dip"
+}

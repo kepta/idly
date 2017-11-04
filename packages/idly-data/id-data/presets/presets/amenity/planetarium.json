@@ -1,0 +1,23 @@
+{
+    "icon": "museum",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "museum",
+        "astronomy",
+        "observatory"
+    ],
+    "tags": {
+        "amenity": "planetarium"
+    },
+    "name": "Planetarium"
+}

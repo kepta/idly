@@ -1,0 +1,16 @@
+{
+    "icon": "water",
+    "fields": [
+        "name",
+        "operator",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "man_made": "water_works"
+    },
+    "name": "Water Works"
+}

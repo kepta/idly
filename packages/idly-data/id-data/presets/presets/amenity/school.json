@@ -1,0 +1,22 @@
+{
+    "icon": "school",
+    "fields": [
+        "name",
+        "operator",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "academy",
+        "elementary school",
+        "middle school",
+        "high school"
+    ],
+    "tags": {
+        "amenity": "school"
+    },
+    "name": "School Grounds"
+}

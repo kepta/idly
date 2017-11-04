@@ -1,0 +1,14 @@
+{
+    "icon": "waterway-ditch",
+    "fields": [
+        "structure_waterway",
+        "intermittent"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "waterway": "drain"
+    },
+    "name": "Drain"
+}

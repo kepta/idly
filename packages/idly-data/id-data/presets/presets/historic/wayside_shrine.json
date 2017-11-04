@@ -1,0 +1,16 @@
+{
+    "icon": "landmark",
+    "fields": [
+        "name",
+        "inscription"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "historic": "wayside_shrine"
+    },
+    "name": "Wayside Shrine"
+}

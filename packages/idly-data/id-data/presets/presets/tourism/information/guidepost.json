@@ -1,0 +1,23 @@
+{
+    "icon": "information",
+    "fields": [
+        "operator",
+        "ref"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "terms": [
+        "signpost"
+    ],
+    "tags": {
+        "tourism": "information",
+        "information": "guidepost"
+    },
+    "reference": {
+        "key": "information",
+        "value": "guidepost"
+    },
+    "name": "Guidepost"
+}

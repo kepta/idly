@@ -1,0 +1,18 @@
+{
+    "icon": "poi-clock",
+    "fields": [
+        "name",
+        "support",
+        "display",
+        "visibility",
+        "date"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "amenity": "clock"
+    },
+    "name": "Clock"
+}

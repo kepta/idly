@@ -1,0 +1,15 @@
+{
+    "icon": "village",
+    "fields": [
+        "name",
+        "population"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "place": "village"
+    },
+    "name": "Village"
+}

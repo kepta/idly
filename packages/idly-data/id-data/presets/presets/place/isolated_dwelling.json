@@ -1,0 +1,14 @@
+{
+    "icon": "home",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "fields": [
+        "name"
+    ],
+    "tags": {
+        "place": "isolated_dwelling"
+    },
+    "name": "Isolated Dwelling"
+}

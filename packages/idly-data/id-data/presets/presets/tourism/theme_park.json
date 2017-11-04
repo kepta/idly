@@ -1,0 +1,17 @@
+{
+    "icon": "amusement-park",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "tourism": "theme_park"
+    },
+    "name": "Theme Park"
+}

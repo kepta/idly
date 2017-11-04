@@ -1,0 +1,16 @@
+{
+    "icon": "horse-riding",
+    "fields": [
+        "name",
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "stable"
+    },
+    "matchScore": 0.5,
+    "name": "Stable"
+}

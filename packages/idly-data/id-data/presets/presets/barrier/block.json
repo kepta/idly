@@ -1,0 +1,14 @@
+{
+    "icon": "roadblock",
+    "fields": [
+        "access"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "barrier": "block"
+    },
+    "name": "Block"
+}

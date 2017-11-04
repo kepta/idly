@@ -1,0 +1,20 @@
+{
+    "icon": "prison",
+    "fields": [
+        "name",
+        "operator",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "cell",
+        "jail"
+    ],
+    "tags": {
+        "amenity": "prison"
+    },
+    "name": "Prison Grounds"
+}

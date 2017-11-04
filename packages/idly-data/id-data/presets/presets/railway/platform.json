@@ -1,0 +1,18 @@
+{
+    "icon": "highway-footway",
+    "fields": [
+        "name",
+        "ref_platform",
+        "surface",
+        "lit",
+        "shelter"
+    ],
+    "geometry": [
+        "line",
+        "area"
+    ],
+    "tags": {
+        "railway": "platform"
+    },
+    "name": "Railway Platform"
+}

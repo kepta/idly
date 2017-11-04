@@ -1,0 +1,26 @@
+{
+    "icon": "campsite",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "capacity",
+        "fee",
+        "internet_access",
+        "internet_access/fee",
+        "internet_access/ssid"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "terms": [
+        "tent",
+        "rv"
+    ],
+    "tags": {
+        "tourism": "camp_site"
+    },
+    "name": "Campground"
+}

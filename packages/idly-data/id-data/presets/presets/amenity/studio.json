@@ -1,0 +1,22 @@
+{
+    "icon": "karaoke",
+    "fields": [
+        "name",
+        "studio",
+        "address",
+        "building_area"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "recording",
+        "radio",
+        "television"
+    ],
+    "tags": {
+        "amenity": "studio"
+    },
+    "name": "Studio"
+}

@@ -1,0 +1,17 @@
+{
+    "icon": "monument",
+    "fields": [
+        "name",
+        "operator",
+        "address"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "tourism": "attraction"
+    },
+    "name": "Tourist Attraction"
+}

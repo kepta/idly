@@ -1,0 +1,16 @@
+{
+    "icon": "natural",
+    "fields": [
+        "name",
+        "natural"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "natural": "*"
+    },
+    "name": "Natural"
+}

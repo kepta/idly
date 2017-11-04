@@ -1,0 +1,23 @@
+{
+    "icon": "marker-stroked",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "craft": "optician"
+    },
+    "reference": {
+        "key": "shop",
+        "value": "optician"
+    },
+    "name": "Optician",
+    "searchable": false
+}

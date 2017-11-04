@@ -1,0 +1,17 @@
+{
+    "icon": "embassy",
+    "fields": [
+        "name",
+        "country",
+        "address",
+        "building_area"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "amenity": "embassy"
+    },
+    "name": "Embassy"
+}

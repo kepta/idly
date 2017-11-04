@@ -1,0 +1,23 @@
+{
+    "icon": "home",
+    "fields": [
+        "name",
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "detached"
+    },
+    "terms": [
+        "home",
+        "single",
+        "family",
+        "residence",
+        "dwelling"
+    ],
+    "matchScore": 0.5,
+    "name": "Detached House"
+}

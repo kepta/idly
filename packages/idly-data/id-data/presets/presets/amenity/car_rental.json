@@ -1,0 +1,15 @@
+{
+    "icon": "car",
+    "fields": [
+        "name",
+        "operator"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "amenity": "car_rental"
+    },
+    "name": "Car Rental"
+}

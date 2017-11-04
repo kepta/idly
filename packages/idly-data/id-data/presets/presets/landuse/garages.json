@@ -1,0 +1,13 @@
+{
+    "geometry": [
+        "area"
+    ],
+    "fields": [
+        "name"
+    ],
+    "tags": {
+        "landuse": "garages"
+    },
+    "terms": [],
+    "name": "Garages"
+}

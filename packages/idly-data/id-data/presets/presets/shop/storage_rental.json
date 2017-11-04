@@ -1,0 +1,18 @@
+{
+    "icon": "shop",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "building",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "shop": "storage_rental"
+    },
+    "name": "Storage Rental"
+}

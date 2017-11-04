@@ -1,0 +1,16 @@
+{
+    "icon": "attraction",
+    "fields": [
+        "name",
+        "tourism"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "tourism": "*"
+    },
+    "name": "Tourism"
+}

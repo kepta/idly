@@ -1,0 +1,15 @@
+{
+    "icon": "shelter",
+    "fields": [
+        "name",
+        "address"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "roof"
+    },
+    "matchScore": 0.5,
+    "name": "Roof"
+}

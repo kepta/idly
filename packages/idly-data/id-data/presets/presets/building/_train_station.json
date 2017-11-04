@@ -1,0 +1,19 @@
+{
+    "icon": "building",
+    "fields": [
+        "name",
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "area"
+    ],
+    "tags": {
+        "building": "train_station"
+    },
+    "matchScore": 0.5,
+    "name": "Train Station",
+    "searchable":false
+}

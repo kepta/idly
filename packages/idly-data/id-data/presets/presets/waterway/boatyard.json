@@ -1,0 +1,16 @@
+{
+     "icon": "harbor",
+     "fields":[
+        "name",
+        "operator"
+    ],
+    "geometry": [
+        "area",
+        "vertex",
+        "point"
+    ],
+    "tags": {
+        "waterway": "boatyard"
+    },
+    "name": "Boatyard"
+}

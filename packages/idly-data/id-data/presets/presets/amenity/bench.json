@@ -1,0 +1,18 @@
+{
+    "icon": "poi-bench",
+    "fields": [
+        "backrest"
+    ],
+    "geometry": [
+        "point",
+        "vertex",
+        "line"
+    ],
+    "terms": [
+        "seat"
+    ],
+    "tags": {
+        "amenity": "bench"
+    },
+    "name": "Bench"
+}

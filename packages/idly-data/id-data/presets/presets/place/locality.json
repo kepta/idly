@@ -1,0 +1,14 @@
+{
+    "icon": "triangle-stroked",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "fields": [
+        "name"
+    ],
+    "tags": {
+        "place": "locality"
+    },
+    "name": "Locality"
+}

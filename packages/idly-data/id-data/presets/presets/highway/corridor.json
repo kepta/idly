@@ -1,0 +1,24 @@
+{
+    "icon": "highway-footway",
+    "fields": [
+        "name",
+        "width",
+        "level",
+        "access_simple"
+    ],
+    "geometry": [
+        "line"
+    ],
+    "tags": {
+        "highway": "corridor"
+    },
+    "terms": [
+        "gallery",
+        "hall",
+        "hallway",
+        "indoor",
+        "passage",
+        "passageway"
+    ],
+    "name": "Indoor Corridor"
+}

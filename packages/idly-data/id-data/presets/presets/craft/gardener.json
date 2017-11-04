@@ -1,0 +1,22 @@
+{
+    "icon": "garden",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "landscaper",
+        "grounds keeper"
+    ],
+    "tags": {
+        "craft": "gardener"
+    },
+    "name": "Gardener"
+}

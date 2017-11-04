@@ -1,0 +1,17 @@
+{
+    "icon": "route-horse",
+    "fields": [
+        "name",
+        "ref_route",
+        "operator",
+        "network_horse"
+    ],
+    "geometry": [
+        "relation"
+    ],
+    "tags": {
+        "type": "route",
+        "route": "horse"
+    },
+    "name": "Riding Route"
+}

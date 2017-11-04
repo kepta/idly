@@ -1,0 +1,16 @@
+{
+    "icon": "home",
+    "fields": [
+        "name",
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "cabin"
+    },
+    "matchScore": 0.5,
+    "name": "Cabin"
+}

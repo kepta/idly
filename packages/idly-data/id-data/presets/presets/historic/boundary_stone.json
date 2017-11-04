@@ -1,0 +1,15 @@
+{
+    "icon": "poi-milestone",
+    "fields": [
+        "name",
+        "inscription"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "historic": "boundary_stone"
+    },
+    "name": "Boundary Stone"
+}

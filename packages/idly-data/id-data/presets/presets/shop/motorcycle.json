@@ -1,0 +1,21 @@
+{
+    "icon": "scooter",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],    
+    "terms": [
+        "bike"
+    ],
+    "tags": {
+        "shop": "motorcycle"
+    },
+    "name": "Motorcycle Dealership"
+}

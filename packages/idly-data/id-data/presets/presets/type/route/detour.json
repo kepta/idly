@@ -1,0 +1,15 @@
+{
+    "icon": "route-detour",
+    "fields": [
+        "name",
+        "ref_route"
+    ],
+    "geometry": [
+        "relation"
+    ],
+    "tags": {
+        "type": "route",
+        "route": "detour"
+    },
+    "name": "Detour Route"
+}

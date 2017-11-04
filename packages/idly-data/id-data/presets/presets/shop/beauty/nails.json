@@ -1,0 +1,27 @@
+{
+    "icon": "shop",
+    "fields": [
+        "name",
+        "operator",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "terms": [
+        "manicure",
+        "pedicure"
+    ],
+    "tags": {
+        "shop": "beauty",
+        "beauty": "nails"
+    },
+    "reference": {
+        "key": "shop",
+        "value": "beauty"
+    },
+    "name": "Nail Salon"
+}

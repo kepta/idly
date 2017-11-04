@@ -1,0 +1,16 @@
+{
+    "icon": "building",
+    "fields": [
+        "name",
+        "address",
+        "levels"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "building": "construction"
+    },
+    "matchScore": 0.5,
+    "name": "Building Under Construction"
+}

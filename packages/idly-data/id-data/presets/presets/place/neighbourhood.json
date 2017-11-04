@@ -1,0 +1,18 @@
+{
+    "icon": "triangle-stroked",
+    "fields": [
+        "name",
+        "population"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "place": "neighbourhood"
+    },
+    "terms": [
+        "neighbourhood"
+    ],
+    "name": "Neighborhood"
+}

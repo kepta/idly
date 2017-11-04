@@ -1,0 +1,24 @@
+{
+    "icon": "pitch",
+    "fields": [
+        "name",
+        "sport",
+        "address",
+        "building_area",
+        "opening_hours"
+    ],
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "tags": {
+        "leisure": "fitness_centre"
+    },
+    "terms": [
+        "health",
+        "gym",
+        "leisure",
+        "studio"
+    ],
+    "name": "Gym / Fitness Center"
+}

@@ -1,0 +1,16 @@
+{
+    "icon": "dog-park",
+    "geometry": [
+        "point",
+        "area"
+    ],
+    "fields": [
+        "name"
+    ],
+    "terms": [
+    ],
+    "tags": {
+        "leisure": "dog_park"
+    },
+    "name": "Dog Park"
+}

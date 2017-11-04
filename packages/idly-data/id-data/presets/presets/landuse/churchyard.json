@@ -1,0 +1,15 @@
+{
+    "fields": [
+        "name",
+        "religion",
+        "denomination"
+    ],
+    "geometry": [
+        "area"
+    ],
+    "tags": {
+        "landuse": "churchyard"
+    },
+    "terms": [],
+    "name": "Churchyard"
+}

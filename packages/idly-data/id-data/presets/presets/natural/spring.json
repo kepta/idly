@@ -1,0 +1,16 @@
+{
+    "icon": "water",
+    "fields": [
+        "name",
+        "intermittent"
+    ],
+    "geometry": [
+        "point",
+        "vertex"
+    ],
+    "tags": {
+        "natural": "spring"
+    },
+    "terms": [],
+    "name": "Spring"
+}
