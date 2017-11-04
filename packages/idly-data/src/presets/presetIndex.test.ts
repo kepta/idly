@@ -27,13 +27,13 @@ describe('presetIndex', function() {
     });
 
     it('returns a collection containing presets matching a geometry and tags', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       var way = { id: 'w-1', tags: { highway: 'residential' } };
       expect(presets.match(way.tags, 'line').id).toEqual('residential');
     });
 
     it('returns the appropriate fallback preset when no tags match', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       var point = { tags: {} };
       var line = { id: 'w-2', tags: { foo: 'bar' } };
       expect(presets.match(point.tags, 'point').id).toEqual('point');
@@ -41,7 +41,7 @@ describe('presetIndex', function() {
     });
 
     it('matches vertices on a line as vertices', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       var point = { id: 'n-2', tags: { leisure: 'park' } };
       var line = {
         id: 'w-3',
@@ -53,7 +53,7 @@ describe('presetIndex', function() {
     });
 
     it('matches vertices on an addr:interpolation line as points', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       var point = { id: 'n-3', tags: { leisure: 'park' } };
 
       var line = {
@@ -103,12 +103,12 @@ describe('presetIndex', function() {
     });
 
     it('whitelists keys for presets with area geometry', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       expect(presets.areaKeys().hasOwnProperty('natural')).toEqual(true);
     });
 
     it('blacklists key-values for presets with a line geometry', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       var keys = presets.areaKeys().natural;
       expect(presets.areaKeys().natural.hasOwnProperty('tree_row')).toEqual(
         true
@@ -117,30 +117,30 @@ describe('presetIndex', function() {
     });
 
     it('blacklists key-values for presets with both area and line geometry', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       expect(presets.areaKeys().leisure.hasOwnProperty('track')).toEqual(true);
     });
 
     it('does not blacklist key-values for presets with neither area nor line geometry', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
 
       expect(presets.areaKeys().natural.hasOwnProperty('peak')).toEqual(false);
     });
 
     it("does not blacklist generic '*' key-values", function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       expect(presets.areaKeys().natural.hasOwnProperty('natural')).toEqual(
         false
       );
     });
 
     it("ignores keys like 'highway' that are assumed to be lines", function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       expect(presets.areaKeys().hasOwnProperty('highway')).toEqual(false);
     });
 
     it('ignores suggestion presets', function() {
-      var presets = presetIndex(testPresets()).init();
+      var presets = presetIndex(undefined, testPresets()).init();
       expect(presets.areaKeys().hasOwnProperty('amenity')).toEqual(false);
     });
   });

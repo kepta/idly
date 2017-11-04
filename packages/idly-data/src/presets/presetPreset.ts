@@ -1,9 +1,9 @@
 import { presetIndex } from './presetIndex';
 import { clone as _clone, keys as _keys, omit as _omit } from 'lodash';
-import { t } from './t';
+import { t as stubT } from './t';
 import { getAreaKeys } from '../areaKeys/areaKeys';
 
-export function presetPreset(id, preset, fields) {
+export function presetPreset(id, preset, fields, t = stubT) {
   preset = _clone(preset);
 
   preset.id = id;

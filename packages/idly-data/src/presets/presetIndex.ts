@@ -10,26 +10,29 @@ import { presetCategory } from './category';
 import { presetCollection } from './collection';
 import { presetField } from './presetField';
 import { presetPreset } from './presetPreset';
+import { t as stubT } from './t';
 
-// export { presetCategory };
-// export { presetCollection };
-// export { presetField };
-// export { presetPreset };
-function stubIsOnAddressLine(id) {
-  if (id === 'n-2') return false;
-  if (id === 'n-3') return true;
-  throw new Error('stubIsOnAddressLine failed' + ' ' + id);
-}
+export { presetCategory };
+export { presetCollection };
+export { presetField };
+export { presetPreset };
 
-export function presetIndex(data = presetsData.presets) {
+export function presetIndex(t, data = presetsData.presets) {
   // a presetCollection with methods for
   // loading new data and returning defaults
 
-  var all = presetCollection([]),
-    defaults = { area: all, line: all, point: all, vertex: all, relation: all },
-    fields = {},
-    universalFields = [],
-    recent = presetCollection([]);
+  var all = presetCollection([]);
+
+  var defaults = {
+    area: all,
+    line: all,
+    point: all,
+    vertex: all,
+    relation: all
+  };
+  var fields = {};
+  var universalFields = [];
+  var recent = presetCollection([]);
 
   // Index of presets by (geometry, tag key).
   var index = {
@@ -43,9 +46,9 @@ export function presetIndex(data = presetsData.presets) {
   all.match = function(tags, geometry) {
     var address;
 
-    var geometryMatches = index[geometry],
-      best = -1,
-      match;
+    var geometryMatches = index[geometry];
+    var best = -1;
+    var match;
     for (var k in tags) {
       // If any part of an address is present,
       // allow fallback to "Address" preset - #4353
@@ -71,7 +74,6 @@ export function presetIndex(data = presetsData.presets) {
 
     return match || all.item(geometry);
   };
-
   // Because of the open nature of tagging, iD will never have a complete
   // list of tags used in OSM, so we want it to have logic like "assume
   // that a closed way with an amenity tag is an area, unless the amenity
@@ -84,9 +86,9 @@ export function presetIndex(data = presetsData.presets) {
   // (see `Way#isArea()`). In other words, the keys of L form the whitelist,
   // and the subkeys form the blacklist.
   all.areaKeys = function() {
-    var areaKeys = {},
-      ignore = ['barrier', 'highway', 'footway', 'railway', 'type'], // probably a line..
-      presets = _reject(all.collection, 'suggestion');
+    var areaKeys = {};
+    var ignore = ['barrier', 'highway', 'footway', 'railway', 'type']; // probably a line..
+    var presets = _reject(all.collection, 'suggestion');
 
     // whitelist
     presets.forEach(function(d) {
@@ -128,20 +130,20 @@ export function presetIndex(data = presetsData.presets) {
 
     if (data.fields) {
       _forEach(data.fields, function(d, id) {
-        fields[id] = presetField(id, d);
+        fields[id] = presetField(id, d, t);
         if (d.universal) universalFields.push(fields[id]);
       });
     }
 
     if (data.presets) {
       _forEach(data.presets, function(d, id) {
-        all.collection.push(presetPreset(id, d, fields));
+        all.collection.push(presetPreset(id, d, fields, t));
       });
     }
 
     if (data.categories) {
       _forEach(data.categories, function(d, id) {
-        all.collection.push(presetCategory(id, d, all));
+        all.collection.push(presetCategory(id, d, all, t));
       });
     }
 
@@ -157,8 +159,8 @@ export function presetIndex(data = presetsData.presets) {
     }
 
     for (var i = 0; i < all.collection.length; i++) {
-      var preset = all.collection[i],
-        geometry = preset.geometry;
+      var preset = all.collection[i];
+      var geometry = preset.geometry;
 
       for (var j = 0; j < geometry.length; j++) {
         var g = index[geometry[j]];
@@ -179,8 +181,8 @@ export function presetIndex(data = presetsData.presets) {
   };
 
   all.defaults = function(geometry, n) {
-    var rec = recent.matchGeometry(geometry).collection.slice(0, 4),
-      def = _uniq(rec.concat(defaults[geometry].collection)).slice(0, n - 1);
+    var rec = recent.matchGeometry(geometry).collection.slice(0, 4);
+    var def = _uniq(rec.concat(defaults[geometry].collection)).slice(0, n - 1);
     return presetCollection(_uniq(rec.concat(def).concat(all.item(geometry))));
   };
 

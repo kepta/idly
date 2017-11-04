@@ -1,7 +1,7 @@
 import { clone as _clone, keys as _keys, omit as _omit } from 'lodash';
-import { t } from './t';
+import { t as stubT } from './t';
 
-export function presetField(id, field) {
+export function presetField(id, field, t = stubT) {
   field = _clone(field);
 
   field.id = id;
