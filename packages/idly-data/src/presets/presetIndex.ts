@@ -20,7 +20,6 @@ export { presetPreset };
 export function presetIndex(t, data = presetsData.presets) {
   // a presetCollection with methods for
   // loading new data and returning defaults
-  console.log('test');
   var all = presetCollection([]);
 
   var defaults = {

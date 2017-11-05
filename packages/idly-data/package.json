@@ -1,7 +1,7 @@
 {
   "name": "idly-data",
   "version": "1.0.0",
-  "description": "",
+  "description": "git@github.com:kepta/idly-data.git",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
