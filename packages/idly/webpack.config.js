@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 let CircularDependencyPlugin = require('circular-dependency-plugin');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 var DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 var webpack = require('webpack');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
@@ -78,6 +79,7 @@ module.exports = {
       // add errors to webpack instead of warnings
       failOnError: true
     })
+    // new DashboardPlugin()
     // new BundleAnalyzerPlugin()
   ],
   module: {

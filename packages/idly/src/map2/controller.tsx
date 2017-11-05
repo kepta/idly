@@ -126,7 +126,6 @@ class MapController extends React.PureComponent<any, any> {
     const data = await workerGetFeaturesOfTree({
       treeString: this.props.selectedTree.toString()
     });
-    console.log(data);
     this.props.map.getSource('modified').setData(featureCollection(data));
   };
   fetchMap = async () => {
