@@ -6,7 +6,7 @@ import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { onParseEntities } from '../worker';
 import { dummyParentWaysGen } from '../helpers/dummyParentWaysGen';
-import { ImSet } from 'idly-common/lib/misc/immutable';
+import { Set as ImSet } from 'immutable';
 
 describe('test IdlyOSM', () => {
   describe('onParseEntities', () => {

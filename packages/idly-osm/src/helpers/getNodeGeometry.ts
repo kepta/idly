@@ -4,7 +4,7 @@ import {
   OsmGeometry,
   ParentWays
 } from 'idly-common/lib/osm/structures';
-import { ImSet } from 'idly-common/lib/misc/immutable';
+import { Set as ImSet } from 'immutable';
 
 export function getNodeGeometry(
   id: EntityId,

@@ -1,6 +1,6 @@
 import { OsmGeometry, ParentWays } from 'idly-common/lib/osm/structures';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
-import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
+import { Map as ImMap, Set as ImSet } from 'immutable';
 
 function genParentWays() {
   const obj = {

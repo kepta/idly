@@ -21,7 +21,7 @@
     "idly-common": "file:../idly-common",
     "idly-data": "latest",
     "idly-graph": "file:../idly-graph",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.2",
     "lodash": "^4.17.4",
     "ramda": "^0.24.1"
   },
@@ -33,7 +33,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "ts-jest": "^20.0.10",
-    "typescript": "^2.4.2"
+    "typescript": "^2.6.1"
   },
   "jest": {
     "globals": {

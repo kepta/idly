@@ -10,7 +10,7 @@ import {
 } from 'idly-common/lib/osm/structures';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 
-import { ImSet } from 'idly-common/lib/misc/immutable';
+import { Set as ImSet } from 'immutable';
 
 export const DEFAULT_NODE_ICON = 'circle';
 

@@ -1,5 +1,10 @@
-import { ImSet } from 'idly-common/lib/misc/immutable';
-import { EntityTable, EntityType, FeaturePropsTable, ParentWays } from 'idly-common/lib/osm/structures';
+import { Set as ImSet } from 'immutable';
+import {
+  EntityTable,
+  EntityType,
+  FeaturePropsTable,
+  ParentWays
+} from 'idly-common/lib/osm/structures';
 
 import { PLUGIN_NAME } from './config/config';
 import { nodePropertiesGen } from './parsers/node';
