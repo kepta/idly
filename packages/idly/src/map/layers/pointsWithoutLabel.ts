@@ -31,12 +31,7 @@ export const PointsWithoutLabelsLayer = (sourceName: string) =>
         /**
          * @REVISIT this vertex problem
          */
-        [
-          '!in',
-          `${PLUGIN_NAME}--geometry`,
-          OsmGeometry.VERTEX,
-          OsmGeometry.VERTEX_SHARED
-        ]
+        ['!in', `${PLUGIN_NAME}--geometry`, OsmGeometry.VERTEX]
       ])
     })
   });

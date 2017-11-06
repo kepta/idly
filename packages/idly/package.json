@@ -36,7 +36,6 @@
     "typedoc": "^0.8.0",
     "typescript": "^2.4.2",
     "webpack": "^3.5.5",
-    "webpack-dashboard": "^1.0.0",
     "webpack-dev-server": "^2.7.1",
     "why-did-you-update": "0.0.8",
     "worker-loader": "^0.8.1",

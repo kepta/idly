@@ -42,12 +42,7 @@ export const PointsWithLabelsLayer = (sourceName: string) =>
         'all',
         ['has', `${PLUGIN_NAME}--icon`],
         ['==', '$type', 'Point'],
-        [
-          '!in',
-          `${PLUGIN_NAME}--geometry`,
-          OsmGeometry.VERTEX,
-          OsmGeometry.VERTEX_SHARED
-        ]
+        ['!in', `${PLUGIN_NAME}--geometry`, OsmGeometry.VERTEX]
       ])
     })
   });
