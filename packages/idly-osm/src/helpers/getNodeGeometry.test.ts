@@ -29,9 +29,9 @@ describe('getNodeGeometry', () => {
       getNodeGeometry('n3780767744', genParentWays().get('n3780767744'))
     ).toEqual(OsmGeometry.VERTEX);
   });
-  it('should give VERTEX_SHARED when shared between vertices', () => {
+  it('should give VERTEX when shared between vertices', () => {
     expect(
       getNodeGeometry('n253179996', genParentWays().get('n253179996'))
-    ).toEqual(OsmGeometry.VERTEX_SHARED);
+    ).toEqual(OsmGeometry.VERTEX);
   });
 });
