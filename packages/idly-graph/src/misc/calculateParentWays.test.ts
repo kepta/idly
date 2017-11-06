@@ -1,4 +1,5 @@
-import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
+import { Map as ImMap, Set as ImSet } from 'immutable';
+
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';

@@ -1,4 +1,5 @@
-import { ImMap } from 'idly-common/lib/misc/immutable';
+import { Map as ImMap } from 'immutable';
+
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';

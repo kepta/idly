@@ -1,4 +1,5 @@
-import { ImSet } from 'idly-common/lib/misc/immutable';
+import { Set as ImSet } from 'immutable';
+
 import { entityFactoryCache } from 'idly-common/lib/osm/entityFactory';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { removeFromEntityTable } from 'idly-common/lib/osm/removeFromEntityTable';

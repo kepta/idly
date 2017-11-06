@@ -1,4 +1,5 @@
-import { ImMap, ImSet } from 'idly-common/lib/misc/immutable';
+import { Map as ImMap, Set as ImSet } from 'immutable';
+
 import {
   EntityId,
   EntityTable,

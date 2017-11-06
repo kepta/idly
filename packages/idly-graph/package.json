@@ -21,7 +21,7 @@
     "tslint": "^5.8.0",
     "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
-    "typescript": "^2.4.2"
+    "typescript": "^2.6.1"
   },
   "dependencies": {
     "@turf/area": "^4.7.3",
@@ -33,6 +33,7 @@
     "@types/rbush": "^2.0.2",
     "@types/xmldom": "^0.1.29",
     "idly-common": "file:../idly-common",
+    "immutable": "^3.8.2",
     "promise-worker": "^1.1.1",
     "rbush": "^2.0.1",
     "turf-linestring": "^1.0.2",

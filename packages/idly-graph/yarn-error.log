@@ -1,0 +1,102 @@
+Arguments: 
+  /Users/kushanjoshi/.nvm/versions/node/v8.4.0/bin/node /usr/local/Cellar/yarn/1.1.0/libexec/bin/yarn.js add -D ts-jest@latest
+
+PATH: 
+  /Users/kushanjoshi/.yarn/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/kushanjoshi/.cargo/bin:/Users/kushanjoshi/.nvm/versions/node/v8.4.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/kushanjoshi/.yarn/bin:/Users/kushanjoshi/.cargo/bin
+
+Yarn version: 
+  1.1.0
+
+Node version: 
+  8.4.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "idly-graph",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "prestart": "rm -r lib/*",
+      "start": "tsc",
+      "test": "jest src"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@types/geojson": "^1.0.6",
+      "@types/jest": "^21.1.1",
+      "geojson": "^0.5.0",
+      "jest": "^21.2.1",
+      "node-fetch": "^1.7.3",
+      "ts-jest": "^21.0.1",
+      "tslint": "^5.8.0",
+      "tslint-consistent-codestyle": "^1.6.0",
+      "tslint-immutable": "^4.1.0",
+      "typescript": "^2.6.1"
+    },
+    "dependencies": {
+      "@turf/area": "^4.7.3",
+      "@turf/bbox": "^5.0.0",
+      "@turf/bbox-polygon": "^4.7.3",
+      "@turf/helpers": "^5.0.0",
+      "@turf/intersect": "^4.7.4",
+      "@turf/transform-scale": "^4.7.3",
+      "@types/rbush": "^2.0.2",
+      "@types/xmldom": "^0.1.29",
+      "idly-common": "file:../idly-common",
+      "immutable": "^3.8.2",
+      "promise-worker": "^1.1.1",
+      "rbush": "^2.0.1",
+      "turf-linestring": "^1.0.2",
+      "turf-polygon": "^1.0.3",
+      "xmldom": "^0.1.27"
+    },
+    "jest": {
+      "globals": {
+        "ts-jest": {
+          "skipBabel": false
+        }
+      },
+      "moduleDirectories": [
+        "<rootDir>/node_modules",
+        "<rootDir>/src"
+      ],
+      "testPathIgnorePatterns": [
+        "<rootDir>/node_modules",
+        "<rootDir>/lib"
+      ],
+      "transform": {
+        ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      },
+      "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: connect ENETUNREACH 104.16.60.173:443 - Local (0.0.0.0:50081)
+      at Object._errnoException (util.js:1041:11)
+      at _exceptionWithHostPort (util.js:1064:20)
+      at internalConnect (net.js:941:16)
+      at emitLookup (net.js:1077:7)
+      at /usr/local/Cellar/yarn/1.1.0/libexec/lib/cli.js:93786:28
+      at /usr/local/Cellar/yarn/1.1.0/libexec/lib/cli.js:93695:13
+      at RawTask.module.exports.RawTask.call (/usr/local/Cellar/yarn/1.1.0/libexec/lib/cli.js:78358:19)
+      at flush (/usr/local/Cellar/yarn/1.1.0/libexec/lib/cli.js:78440:29)
+      at _combinedTickCallback (internal/process/next_tick.js:131:7)
+      at process._tickCallback (internal/process/next_tick.js:180:9)
