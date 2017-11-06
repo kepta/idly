@@ -90,15 +90,12 @@ function getNodes(obj: any): string[] {
 
 function getTags(obj: any): Tags {
   const elems = obj.getElementsByTagName('tag');
-  const t: Array<[string, string]> = [];
+  const t: any = {};
 
-  // tslint:disable no-expression-statement
   for (let i = 0, l = elems.length; i < l; i++) {
     const attrs = elems[i].attributes;
-    t.push([attrs.getNamedItem('k').value, attrs.getNamedItem('v').value]);
+    t[attrs.getNamedItem('k').value] = attrs.getNamedItem('v').value;
   }
-  // tslint:enable no-expression-statement
-
   return tagsFactory(t);
 }
 

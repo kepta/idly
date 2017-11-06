@@ -7,7 +7,7 @@ const n1 = nodeFactory({ id: 'n-1' });
 const n11 = nodeFactory({
   id: 'n-1',
   loc: genLngLat({ lon: 15, lat: 10 }),
-  tags: tagsFactory([['k', 'k']]),
+  tags: tagsFactory({ k: 'k' }),
 });
 
 describe('converts node to feat', () => {

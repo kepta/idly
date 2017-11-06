@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`calculateParentWays  takes existing parentways and appends a way 1`] = `Immutable.Map {}`;

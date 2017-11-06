@@ -19,7 +19,7 @@ import {
 const way = wayFactory({
   id: 'w1',
   nodes: ['n1'],
-  tags: tagsFactory([['highway', 'residential']]),
+  tags: tagsFactory({ highway: 'residential' }),
 });
 
 const node = nodeFactory({ id: 'n1' });
@@ -84,7 +84,7 @@ describe('way.test', () => {
     const w1 = wayFactory({
       id: 'w1',
       nodes: ['n1', 'n3'],
-      tags: tagsFactory([['highway', 'residential']]),
+      tags: tagsFactory({ highway: 'residential' }),
     });
 
     const g = entityTableGen([n1, n2, n3, w1]);

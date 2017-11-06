@@ -16,7 +16,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -33,7 +33,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -50,7 +50,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -67,7 +67,7 @@ Array [
       "n1",
       "n2",
     ],
-    "tags": "[]",
+    "tags": Object {},
     "type": "way",
   },
   Object {
@@ -84,7 +84,7 @@ Array [
       "n1",
       "n3",
     ],
-    "tags": "[]",
+    "tags": Object {},
     "type": "way",
   },
 ]
@@ -106,7 +106,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -123,7 +123,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -140,7 +140,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -157,7 +157,7 @@ Array [
       "n1",
       "n2",
     ],
-    "tags": "[]",
+    "tags": Object {},
     "type": "way",
   },
   Object {
@@ -174,7 +174,7 @@ Array [
       "n1",
       "n3",
     ],
-    "tags": "[]",
+    "tags": Object {},
     "type": "way",
   },
 ]
@@ -196,7 +196,7 @@ Array [
       "lat": 34.5280866,
       "lon": 74.1795357,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -213,7 +213,7 @@ Array [
       "lat": 34.5280866,
       "lon": 74.1795357,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -230,7 +230,7 @@ Array [
       "lat": 34.528206,
       "lon": 74.1807924,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -247,7 +247,7 @@ Array [
       "lat": 34.5283653,
       "lon": 74.1822907,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -264,7 +264,7 @@ Array [
       "lat": 34.528425,
       "lon": 74.1815174,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -281,7 +281,7 @@ Array [
       "lat": 34.5285445,
       "lon": 74.1788832,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -298,7 +298,7 @@ Array [
       "lat": 34.5290024,
       "lon": 74.1788349,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -315,7 +315,7 @@ Array [
       "lat": 34.5292015,
       "lon": 74.179584,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -332,7 +332,7 @@ Array [
       "lat": 34.529301,
       "lon": 74.1824357,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -349,7 +349,7 @@ Array [
       "lat": 34.5294603,
       "lon": 74.1794149,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -366,7 +366,7 @@ Array [
       "lat": 34.5296992,
       "lon": 74.1823873,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -383,7 +383,7 @@ Array [
       "lat": 34.5297191,
       "lon": 74.1788349,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -400,7 +400,7 @@ Array [
       "lat": 34.5300377,
       "lon": 74.1821698,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -417,7 +417,7 @@ Array [
       "lat": 34.5303562,
       "lon": 74.1783274,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -434,7 +434,7 @@ Array [
       "lat": 34.530396,
       "lon": 74.1816382,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -451,7 +451,7 @@ Array [
       "lat": 34.5305354,
       "lon": 74.1805024,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -468,7 +468,7 @@ Array [
       "lat": 34.5309137,
       "lon": 74.1799224,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -485,7 +485,7 @@ Array [
       "lat": 34.5311526,
       "lon": 74.1786899,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -502,7 +502,7 @@ Array [
       "lat": 34.5314114,
       "lon": 74.1793182,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -536,7 +536,11 @@ Array [
       "n4133782721",
       "n4133782719",
     ],
-    "tags": "[[\\"landuse\\",\\"residential\\"],[\\"place\\",\\"village\\"],[\\"source\\",\\"MSF Survey\\"]]",
+    "tags": Object {
+      "landuse": "residential",
+      "place": "village",
+      "source": "MSF Survey",
+    },
     "type": "way",
   },
 ]
@@ -558,7 +562,7 @@ Array [
       "lat": 0,
       "lon": 0,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
 ]
@@ -580,7 +584,7 @@ Array [
       "lat": 34.5280866,
       "lon": 74.1795357,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
   Object {
@@ -597,7 +601,7 @@ Array [
       "lat": 34.528206,
       "lon": 74.1807924,
     },
-    "tags": "[]",
+    "tags": Object {},
     "type": "node",
   },
 ]
@@ -636,7 +640,11 @@ Array [
       "n4133782721",
       "n4133782719",
     ],
-    "tags": "[[\\"landuse\\",\\"residential\\"],[\\"place\\",\\"village\\"],[\\"source\\",\\"MSF Survey\\"]]",
+    "tags": Object {
+      "landuse": "residential",
+      "place": "village",
+      "source": "MSF Survey",
+    },
     "type": "way",
   },
 ]

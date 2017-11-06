@@ -1,5 +1,5 @@
 import { ImSet } from 'idly-common/lib/misc/immutable';
-import { entityFactory } from 'idly-common/lib/osm/entityFactory';
+import { entityFactoryString } from 'idly-common/lib/osm/entityFactory';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { removeFromEntityTable } from 'idly-common/lib/osm/removeFromEntityTable';
 import {
@@ -14,8 +14,8 @@ import {
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 
+const cachedEntityFactory = entityFactoryString();
 const EMPTY_ARRAY = Object.freeze([]);
-
 export interface ToObjectType {
   readonly deletedIds: ImSet<EntityId>;
   readonly knownIds: ImSet<EntityId>;
@@ -25,7 +25,7 @@ export interface ToObjectType {
 export interface ToJsonType {
   readonly deletedIds: EntityId[];
   readonly knownIds: EntityId[];
-  readonly entities: Array<Entity | undefined>;
+  readonly entities: string[];
 }
 
 /**
@@ -42,7 +42,7 @@ export class Tree {
         'This thing is not parsable, please provide a valid tree',
       );
     }
-    const table = entityTableGen(entities.map(entityFactory));
+    const table = entityTableGen(entities.map(cachedEntityFactory));
     return new Tree(ImSet(knownIds), table, ImSet(deletedIds));
   }
 
@@ -84,7 +84,10 @@ export class Tree {
   public toJs(): ToJsonType {
     const obj: ToJsonType = {
       deletedIds: this._deletedIds.toArray(),
-      entities: this._entityTable.valueSeq().toArray(),
+      entities: this._entityTable
+        .valueSeq()
+        .toArray()
+        .map(e => JSON.stringify(e)),
       knownIds: this._knownIds.toArray(),
     };
     return obj;

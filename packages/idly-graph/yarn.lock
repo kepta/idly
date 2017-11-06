@@ -136,6 +136,10 @@
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.5.tgz#ef9f12277233399c7f32086818a56a84c8952f8f"
 
+"@types/geojson@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.6.tgz#3e02972728c69248c2af08d60a48cbb8680fffdf"
+
 "@types/jest@^21.1.1":
   version "21.1.5"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-21.1.5.tgz#3db93d069d12602ca115d3604550e15131d8eb7a"
@@ -1148,20 +1152,21 @@ iconv-lite@~0.4.13:
   version "1.0.0"
   dependencies:
     "@mapbox/sphericalmercator" "^1.0.5"
+    "@turf/area" "^4.7.3"
     "@turf/bbox" "^4.6.0"
     "@turf/bbox-polygon" "^4.6.0"
     "@turf/helpers" "^4.6.0"
     "@turf/transform-scale" "^4.6.1"
     "@types/geojson" "^1.0.3"
     geojson "^0.5.0"
-    immutable "^3.8.1"
+    immutable "^3.8.2"
     typed-immutable-record "0.0.6"
 
 immediate@~3.0.5:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
 
-immutable@^3.8.1:
+immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
