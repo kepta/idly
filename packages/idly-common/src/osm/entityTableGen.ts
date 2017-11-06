@@ -25,6 +25,7 @@ export function entityTableGen(
       entities.forEach(e => m.set(e.id, e));
     });
   }
+  // A Set
   return entityTable.withMutations(m => {
     for (const e of entities) {
       m.set(e.id, e);
