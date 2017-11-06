@@ -2235,7 +2235,7 @@ typed-immutable-record@0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typed-immutable-record/-/typed-immutable-record-0.0.6.tgz#03ac0636a34819144fbcbe0ae2ed9abf6c19a908"
 
-typescript@^2.5.2:
+typescript@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.1.tgz#ef39cdea27abac0b500242d6726ab90e0c846631"
 

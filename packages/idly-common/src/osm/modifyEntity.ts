@@ -6,12 +6,14 @@ import { wayFactory } from './wayFactory';
 
 export function modifyEntity(entity: Entity, obj: Partial<Entity>): Entity {
   switch (entity.type) {
-    case EntityType.NODE:
+    case EntityType.NODE: {
+      const en = entity;
       return nodeFactory({
         ...entity,
         ...obj,
         id: entity.id
       });
+    }
 
     case EntityType.WAY:
       return wayFactory({
