@@ -12,15 +12,22 @@ import {
 } from '../osm/structures';
 
 export function entityTableGen(
-  entities: ImList<Entity> | Entity[] = [],
+  entities: ImList<Entity> | Entity[] | Set<Entity> = [],
   entityTable: EntityTable = ImMap()
 ) {
   if (isImmutableList(entities)) {
     return entityTable.withMutations(m => {
-      entities.forEach((e: Entity) => m.set(e.id, e));
+      entities.forEach(e => m.set(e.id, e));
+    });
+  }
+  if (Array.isArray(entities)) {
+    return entityTable.withMutations(m => {
+      entities.forEach(e => m.set(e.id, e));
     });
   }
   return entityTable.withMutations(m => {
-    entities.forEach(e => m.set(e.id, e));
+    for (const e of entities) {
+      m.set(e.id, e);
+    }
   });
 }
