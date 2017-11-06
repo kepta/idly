@@ -17,7 +17,7 @@ export { presetCollection };
 export { presetField };
 export { presetPreset };
 
-export function presetIndex(t, data = presetsData.presets) {
+export function presetIndex(t = stubT, data = presetsData.presets) {
   // a presetCollection with methods for
   // loading new data and returning defaults
   var all = presetCollection([]);
