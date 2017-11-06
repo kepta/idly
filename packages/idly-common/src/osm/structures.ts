@@ -1,4 +1,5 @@
-import { ImMap, ImSet } from '../misc/immutable';
+import { List as ImList, Map as ImMap, Set as ImSet } from 'immutable';
+
 import { tagsFactory } from './tagsFactory';
 
 export type Entity = Node | Way | Relation;

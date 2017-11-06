@@ -1,5 +1,5 @@
 import { GeometryObject } from 'geojson';
-import { ImMap } from '../misc/immutable';
+import { Map as ImMap } from 'immutable';
 import { Feature, FeatureTable } from './feature';
 
 export function featureTableGen<

@@ -1,4 +1,5 @@
-import { ImList, ImMap } from '../misc/immutable';
+import { List as ImList, Map as ImMap } from 'immutable';
+
 import { isImmutableList } from '../misc/isImmutableList';
 import {
   Entity,
