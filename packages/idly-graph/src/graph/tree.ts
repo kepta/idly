@@ -1,5 +1,5 @@
 import { ImSet } from 'idly-common/lib/misc/immutable';
-import { entityFactoryString } from 'idly-common/lib/osm/entityFactory';
+import { entityFactoryCache } from 'idly-common/lib/osm/entityFactory';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { removeFromEntityTable } from 'idly-common/lib/osm/removeFromEntityTable';
 import {
@@ -14,7 +14,7 @@ import {
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 
-const cachedEntityFactory = entityFactoryString();
+const cachedEntityFactory = entityFactoryCache();
 const EMPTY_ARRAY = Object.freeze([]);
 export interface ToObjectType {
   readonly deletedIds: ImSet<EntityId>;
