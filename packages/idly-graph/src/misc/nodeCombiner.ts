@@ -1,7 +1,7 @@
-import { Feature } from 'idly-common/lib/osm/feature';
+import { Feature, Point } from '@turf/helpers';
 import { Node } from 'idly-common/lib/osm/structures';
 
-export function nodeCombiner(node: Node, existingProps: {}): Feature<any, any> {
+export function nodeCombiner(node: Node, existingProps: {}): Feature<Point> {
   return {
     geometry: {
       coordinates: [node.loc.lon, node.loc.lat],

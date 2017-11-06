@@ -1,4 +1,4 @@
-import { Feature } from 'idly-common/lib/osm/feature';
+import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 import {
   EntityTable,
   FeaturePropsTable,
@@ -18,7 +18,7 @@ export function entityToFeature(
 ): (
   entityTable: EntityTable,
   parentWays?: ParentWays,
-) => Array<Feature<any, any>> {
+) => Array<Feature<Point | Polygon | LineString>> {
   return (entityTable, parentWays = calculateParentWays(entityTable)) => {
     const props = new Map();
     for (const comp of computer) {

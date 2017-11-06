@@ -1,5 +1,5 @@
+import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { Feature } from 'idly-common/lib/osm/feature';
 import { Entity, EntityId, EntityTable } from 'idly-common/lib/osm/structures';
 
 import { getChannelBuilder } from '../misc/channelBuilder';
@@ -17,7 +17,7 @@ export interface GetFeaturesOfEntityIds {
   readonly request: {
     readonly entityIds: EntityId[];
   };
-  readonly response: Array<Feature<any, any>>;
+  readonly response: Array<Feature<Point | Polygon | LineString>>;
 }
 
 export function getFeaturesOfEntityIds(

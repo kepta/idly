@@ -73,7 +73,9 @@ export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
     );
     if (hiddenIds && hiddenIds.length > 0) {
       // tslint:disable-next-line:no-expression-statement
-      features = features.filter(r => r.id && hiddenIds.indexOf(r.id) === -1);
+      features = features.filter(
+        r => typeof r.id === 'string' && hiddenIds.indexOf(r.id) === -1,
+      );
     }
     const toReturn: GetMap['response'] = featureCollection(features);
     return JSON.stringify(toReturn);

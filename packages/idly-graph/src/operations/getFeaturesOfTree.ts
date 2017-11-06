@@ -1,4 +1,4 @@
-import { Feature } from 'idly-common/lib/osm/feature';
+import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 
 import { Tree } from '../graph/Tree';
 import { getChannelBuilder } from '../misc/channelBuilder';
@@ -15,7 +15,7 @@ export interface GetFeaturesOfTree {
   readonly request: {
     readonly treeString: string;
   };
-  readonly response: Array<Feature<any, any>>;
+  readonly response: Array<Feature<Point | LineString | Polygon>>;
 }
 
 export function getFeaturesOfTree(
