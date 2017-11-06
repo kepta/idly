@@ -1,3 +1,4 @@
+import { entityFactory } from 'idly-common/lib/osm/entityFactory';
 import {
   Entity,
   EntityTable,
@@ -14,7 +15,10 @@ export function entityToGeoJson(
   computedProps: any,
 ): Array<Feature<Point | Polygon | LineString>> {
   const arr: Array<Feature<Point | Polygon | LineString>> = [];
-  entityTable.forEach((entity: Entity, id) => {
+  entityTable.forEach((entity: Entity | undefined, id) => {
+    if (!entity) {
+      return;
+    }
     if (entity.type === EntityType.NODE) {
       arr.push(nodeCombiner(entity, computedProps.get(id)));
     } else if (entity.type === EntityType.WAY) {
