@@ -44,7 +44,7 @@ const secondaries = [
   'sport'
 ];
 
-export const tagClassesPrimary = (t: Tags) => {
+export const tagClassesPrimary = (tags: Tags) => {
   let classes = '';
   let primary;
   let status;
@@ -56,7 +56,7 @@ export const tagClassesPrimary = (t: Tags) => {
   // pick at most one primary classification tag..
   for (i = 0; i < primaries.length; i++) {
     key = primaries[i];
-    value = t.get(key);
+    value = tags[key];
     if (!value || value === 'no') continue;
 
     primary = key;
@@ -73,7 +73,7 @@ export const tagClassesPrimary = (t: Tags) => {
   return classes.trim().split(' ');
 };
 
-export function tagClasses(t: Tags) {
+export function tagClasses(tags: Tags) {
   let classes = '';
   let primary;
   let status;
@@ -85,7 +85,7 @@ export function tagClasses(t: Tags) {
   // pick at most one primary classification tag..
   for (i = 0; i < primaries.length; i++) {
     key = primaries[i];
-    value = t.get(key);
+    value = tags[key];
     if (!value || value === 'no') continue;
 
     primary = key;
@@ -104,7 +104,7 @@ export function tagClasses(t: Tags) {
   if (!status) {
     for (i = 0; i < statuses.length; i++) {
       key = statuses[i];
-      value = t.get(key);
+      value = tags[key];
       if (!value || value === 'no') continue;
 
       if (value === 'yes') {
@@ -131,21 +131,21 @@ export function tagClasses(t: Tags) {
   // add any secondary (structure) tags
   for (i = 0; i < secondaries.length; i++) {
     key = secondaries[i];
-    value = t.get(key);
+    value = tags[key];
     if (!value || value === 'no') continue;
     classes += ' tag-' + key + ' tag-' + key + '-' + value;
   }
 
   // For highways, look for surface tagging..
   if (primary === 'highway') {
-    let paved = t.get('highway') !== 'track';
-    t.forEach((v, k) => {
+    var paved = tags.highway !== 'track';
+    for (const k in tags) {
+      const v = tags[k];
       if (k in osmPavedTags) {
         paved = !!osmPavedTags[k][v];
-        return false;
+        break;
       }
-    });
-
+    }
     if (!paved) {
       classes += ' tag-unpaved';
     }
@@ -155,4 +155,3 @@ export function tagClasses(t: Tags) {
   return classes;
 }
 
-// function i

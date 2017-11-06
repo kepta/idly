@@ -3,22 +3,22 @@ import { Tags } from 'idly-common/lib/osm/structures';
 import * as React from 'react';
 import { Input, Col, Form } from 'antd';
 export interface IProps {
-  tags: Tags | undefined;
+  tags: Tags;
   onChange: any;
 }
 
 class _TagForm extends React.PureComponent<IProps & FormComponentProps, {}> {
   state = {};
   handleSubmit = () => {};
+  static defaultProps = {
+    tags: {}
+  };
   render() {
     const { getFieldDecorator } = this.props.form;
-    let t: [string, string][] = [];
-    if (this.props.tags) {
-      t = this.props.tags.toArray();
-    }
+    const tags: string[] = Object.keys(this.props.tags);
     return (
       <Form layout="horizontal">
-        {t.map(([key, val], index) => (
+        {tags.map((key, index) => (
           <Input.Group compact key={key}>
             <Form.Item>
               {getFieldDecorator(`key_${key}`, {
@@ -47,13 +47,13 @@ export const TagForm = Form.create({
   },
   mapPropsToFields(props: IProps) {
     if (props.tags) {
-      const t = props.tags.toArray().reduce((prev: any, curr, index) => {
-        // console.log(`key_${curr[0]}`, curr[0], curr[1]);
-        prev[`key_${curr[0]}`] = { value: curr[0] };
-        prev[`val_${curr[0]}`] = { value: curr[1] };
-        return prev;
-      }, {});
-      return t;
+      // const t = props.tags.toArray().reduce((prev: any, curr, index) => {
+      //   // console.log(`key_${curr[0]}`, curr[0], curr[1]);
+      //   prev[`key_${curr[0]}`] = { value: curr[0] };
+      //   prev[`val_${curr[0]}`] = { value: curr[1] };
+      //   return prev;
+      // }, {});
+      return;
     }
     return {};
   }

@@ -8,7 +8,7 @@ describe('#isArea', function() {
     const w1 = wayFactory({
       id: 'w-1',
       nodes: ['n1', 'n1'],
-      tags: tagsFactory([['building', 'yes']])
+      tags: tagsFactory({'building': 'yes'})
     });
     expect(isArea(w1)).toEqual(true);
     expect(isArea(w1)).toEqual(true);
@@ -18,7 +18,7 @@ describe('#isArea', function() {
   });
   it('returns true if the way has tag area=yes', function() {
     expect(
-      isArea(wayFactory({ id: 'w-1', tags: tagsFactory([['area', 'yes']]) }))
+      isArea(wayFactory({ id: 'w-1', tags: tagsFactory({'area': 'yes'}) }))
     ).toEqual(true);
   });
   it('returns false if the way is closed and has no tags', function() {
@@ -32,7 +32,7 @@ describe('#isArea', function() {
         wayFactory({
           id: 'w-1',
           nodes: ['n1', 'n1'],
-          tags: tagsFactory([['building', 'yes']])
+          tags: tagsFactory({'building': 'yes'})
         })
       )
     ).toEqual(true);
@@ -43,7 +43,7 @@ describe('#isArea', function() {
         wayFactory({
           id: 'w-1',
           nodes: ['n1', 'n1'],
-          tags: tagsFactory([['a', 'b']])
+          tags: tagsFactory({'a': 'b'})
         })
       )
     ).toBe(false);
@@ -54,7 +54,7 @@ describe('#isArea', function() {
         wayFactory({
           id: 'w-1',
           nodes: ['n1', 'n1'],
-          tags: tagsFactory([['area', 'no'], ['building', 'yes']])
+          tags: tagsFactory({'area':'no', 'building': 'yes'})
         })
       )
     ).toBe(false);
@@ -65,7 +65,7 @@ describe('#isArea', function() {
         wayFactory({
           id: 'w-1',
           nodes: ['n1', 'n1'],
-          tags: tagsFactory([['natural', 'coastline']])
+          tags: tagsFactory({'natural': 'coastline'})
         })
       )
     ).toBe(false);

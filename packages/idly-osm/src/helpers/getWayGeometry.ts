@@ -1,7 +1,6 @@
 import {
   EntityType,
   OsmGeometry,
-  Tags,
   Way
 } from 'idly-common/lib/osm/structures';
 

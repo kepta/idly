@@ -1,8 +1,7 @@
+import { all } from '../../parsers/presetsInit';
 import { Tags } from 'idly-common/lib/osm/structures';
 import * as React from 'react';
 import Card from 'antd/lib/card';
-
-import { presets } from '../../presets/presets';
 
 export interface PropsType {
   tags: Tags;
@@ -31,7 +30,7 @@ export class Address extends React.PureComponent<PropsType, any> {
   field: any;
   constructor(props) {
     super(props);
-    var { field } = presets;
+    var { field } = all;
     this.field = field('name');
   }
   render() {
@@ -47,7 +46,7 @@ export class Address extends React.PureComponent<PropsType, any> {
         }}
       >
         {dropdowns.map((d, i) => (
-          <span key={i}>{tags.get('addr:' + d) || 'Placeholder -' + d}</span>
+          <span key={i}>{tags['addr:' + d] || 'Placeholder -' + d}</span>
         ))}
       </Card>
     );

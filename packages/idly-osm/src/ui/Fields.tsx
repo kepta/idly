@@ -4,7 +4,7 @@ import { Tree } from 'idly-graph/lib/graph/Tree';
 import * as React from 'react';
 
 import { PLUGIN_NAME } from '../config/config';
-import { presetsMatcher } from '../presets/presets';
+
 import { Generic } from './fields/Generic';
 
 export type SelectState = Readonly<{
@@ -112,19 +112,18 @@ export class Fields extends React.Component<PropsType, {}> {
 
     const selectedIds = selected.getKnownIds();
 
-    console.log(selected, this.props.idlyState.core.featureTable);
-    if (selectedIds.length === 1) {
-      const entity = selected.entity(selectedIds[0]);
-      let geometry = this.props.idlyState.core.featureTable.get(selectedIds[0])
-        .properties[`${PLUGIN_NAME}--geometry`];
+    // if (selectedIds.length === 1) {
+    //   const entity = selected.entity(selectedIds[0]);
+    //   let geometry = this.props.idlyState.core.featureTable.get(selectedIds[0])
+    //     .properties[`${PLUGIN_NAME}--geometry`];
 
-      const matchedPreset = presetsMatcher(geometry, entity.tags);
-      return (
-        <div style={{ margin: 4 }}>
-          {this.renderMatchingFields(matchedPreset.fields, entity.tags)}
-        </div>
-      );
-    }
+    //   const matchedPreset = presetsMatcher(geometry, entity.tags);
+    //   return (
+    //     <div style={{ margin: 4 }}>
+    //       {this.renderMatchingFields(matchedPreset.fields, entity.tags)}
+    //     </div>
+    //   );
+    // }
     return null;
   }
 }

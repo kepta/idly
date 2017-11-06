@@ -6,7 +6,7 @@ import { tagClasses } from '../tagClasses/tagClasses';
 
 const generate = (tags: { [index: string]: string }) => {
   return tagsFactory(
-    Object.keys(tags).map((k): [string, string] => [k, tags[k]])
+    tags
   );
 };
 

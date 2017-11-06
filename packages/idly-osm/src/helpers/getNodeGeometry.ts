@@ -12,5 +12,5 @@ export function getNodeGeometry(
 ): NodeGeometry {
   if (parentWay.size === 0) return OsmGeometry.POINT;
 
-  return parentWay.size === 1 ? OsmGeometry.VERTEX : OsmGeometry.VERTEX_SHARED;
+  return OsmGeometry.VERTEX;
 }

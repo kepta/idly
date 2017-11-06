@@ -16,7 +16,7 @@ describe('wayCombiner', () => {
   const way = wayFactory({
     id: 'w1',
     nodes: ['n1'],
-    tags: tagsFactory([['highway', 'residential']])
+    tags: tagsFactory({'highway': 'residential'})
   });
 
   const g = entityTableGen([n1, n2, n3]);
@@ -29,7 +29,7 @@ describe('wayCombiner', () => {
     const w2 = wayFactory({
       id: 'w1',
       nodes: ['n1'],
-      tags: tagsFactory([['highway', 'residential'], ['name', 'great highway']])
+      tags: tagsFactory({'highway':'residential', 'name': 'great highway'})
     });
     const gg = entityTableGen([node, w2]);
     const result = wayPropertiesGen(w2);

@@ -1,3 +1,4 @@
+import { presetMatch } from './presetsInit';
 import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import {
   Node,
@@ -9,7 +10,6 @@ import {
 } from 'idly-common/lib/osm/structures';
 import { getNodeGeometry } from '../helpers/getNodeGeometry';
 
-import { presetsMatcherCached } from '../presets/presets';
 import { ImSet } from 'idly-common/lib/misc/immutable';
 
 export const DEFAULT_NODE_ICON = 'circle';
@@ -21,10 +21,10 @@ export const nodePropertiesGen = weakCache2(
 );
 
 export const applyNodeMarkup = (geometry: NodeGeometry, tags: Tags) => {
-  const match = presetsMatcherCached(geometry)(tags);
+  const match = presetMatch(tags, geometry); //presetsMatcherCached(geometry)(tags);
   return {
     icon: (match && match.icon) || DEFAULT_NODE_ICON,
-    name: tags.get('name'),
+    name: tags['name'],
     geometry
   };
 };

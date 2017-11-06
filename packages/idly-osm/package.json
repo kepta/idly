@@ -19,7 +19,7 @@
     "@types/lodash": "^4.14.74",
     "diacritics": "^1.3.0",
     "idly-common": "file:../idly-common",
-    "idly-data": "file:../idly-data/",
+    "idly-data": "latest",
     "idly-graph": "file:../idly-graph",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",

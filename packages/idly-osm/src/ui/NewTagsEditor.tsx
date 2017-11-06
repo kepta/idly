@@ -21,15 +21,15 @@ export type SelectState = Readonly<{
   readonly selectedTree: Tree;
   readonly featureTable: FeatureTable<any, any>;
 }>;
-function getTags(tree: Tree) {
-  if (!tree) return [];
+function getTags(tree: Tree): Tags {
+  if (!tree) return {};
   const ids = tree.getKnownIds();
   if (ids.length === 0) {
-    return [];
+    return {};
   }
   const entity = tree.entity(ids[0]);
-  if (!entity) return [];
-  return entity.tags.toArray();
+  if (!entity) return {};
+  return entity.tags;
 }
 function getEntity(tree: Tree): Entity {
   if (!tree) return;
@@ -56,7 +56,6 @@ export class NewTagsEditor extends React.PureComponent<PropsType, StateType> {
   };
 
   handleSubmit = (event: any) => {
-    console.log(this.state.tags);
     const t = tagsFactory(this.state.tags);
     const en = modifyEntity(getEntity(this.props.idlyState.core.selectedTree), {
       tags: t
@@ -75,9 +74,11 @@ export class NewTagsEditor extends React.PureComponent<PropsType, StateType> {
       <form onSubmit={this.handleSubmit}>
         <textarea
           style={{ fontSize: 24 }}
-          value={this.state.tags.map(tag => `${tag[0]}=${tag[1]}`).join('\n')}
+          value={Object.keys(this.state.tags)
+            .map(t => `${t}=${this.state.tags[t]}`)
+            .join('\n')}
           onChange={this.handleChange}
-          rows={this.state.tags.length + 4}
+          rows={Object.keys(this.state.tags).length + 4}
         />
         <input type="submit" value="Submit" />
       </form>

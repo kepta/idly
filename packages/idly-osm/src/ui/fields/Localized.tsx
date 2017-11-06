@@ -1,8 +1,7 @@
+import { all } from '../../parsers/presetsInit';
 import { Tags } from 'idly-common/lib/osm/structures';
 import * as React from 'react';
 import Card from 'antd/lib/card';
-
-import { presets } from '../../presets/presets';
 
 export interface PropsType {
   tags: Tags;
@@ -11,7 +10,7 @@ export class Localized extends React.PureComponent<PropsType, any> {
   field: any;
   constructor(props) {
     super(props);
-    var { field } = presets;
+    var { field } = all;
     this.field = field('name');
   }
   render() {
@@ -25,7 +24,7 @@ export class Localized extends React.PureComponent<PropsType, any> {
           boxSizing: 'content-box'
         }}
       >
-        <span>{this.props.tags.get(this.field.key) || 'no name'}</span>
+        <span>{this.props.tags[this.field.key] || 'no name'}</span>
       </Card>
     );
   }

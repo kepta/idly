@@ -1,4 +1,3 @@
-import { Tags } from '../Tags';
 import { tagsFactory } from '../tagsFactory';
 
 describe('Tags', () => {

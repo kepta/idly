@@ -2,8 +2,6 @@ import { Tags } from 'idly-common/lib/osm/structures';
 import * as React from 'react';
 import Card from 'antd/lib/card';
 
-import { presets } from '../../presets/presets';
-
 export interface PropsType {
   tags: Tags;
   field: any;
@@ -40,9 +38,9 @@ export class Generic extends React.PureComponent<PropsType, any> {
       >
         <div>
           {key
-            .filter(k => tags.get(k))
+            .filter(k => tags[k])
             .map((k, i) => (
-              <span key={i}>{tags.get(k) || 'Placeholder -' + k}</span>
+              <span key={i}>{tags[k] || 'Placeholder -' + k}</span>
             ))}
         </div>
       </Card>

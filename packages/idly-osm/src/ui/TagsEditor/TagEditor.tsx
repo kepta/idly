@@ -56,7 +56,7 @@ export class TagEditor extends React.PureComponent<PropsType, StateType> {
       const prefix = fieldKey.slice(0, 4);
 
       let tagKey = rowKey;
-      let tagVal = stateTags.get(rowKey);
+      let tagVal = stateTags[rowKey];
       console.log('old =', tagKey, tagVal);
       if (prefix === 'key_' && changedFields[fieldKey].value !== tagKey) {
         tagKey = changedFields[fieldKey].value;
@@ -67,8 +67,12 @@ export class TagEditor extends React.PureComponent<PropsType, StateType> {
       }
       if (!tagVal) return;
       console.log(tagKey, tagVal);
-      stateTags = stateTags.delete(rowKey);
-      stateTags = stateTags.set(tagKey, tagVal);
+      stateTags = {...stateTags};
+      delete stateTags[rowKey];
+      stateTags = {
+        ...stateTags,
+        [tagKey]: tagVal
+      }
     });
     // console.log('new tagsArray', JSON.stringify(tagsArray));
     this.setState({
