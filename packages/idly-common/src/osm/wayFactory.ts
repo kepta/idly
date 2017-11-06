@@ -5,8 +5,8 @@ import { tagsFactory } from './tagsFactory';
 
 export function wayFactory({
   id,
-  tags = tagsFactory([]),
-  attributes = attributesGen({}),
+  tags = tagsFactory(),
+  attributes = attributesGen(),
   nodes = []
 }: {
   id: EntityId;

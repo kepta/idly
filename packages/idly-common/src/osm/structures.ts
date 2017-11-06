@@ -1,7 +1,6 @@
+import { ImMap, ImSet } from '../misc/immutable';
 import { Tags } from './Tags';
 import { tagsFactory } from './tagsFactory';
-export { Tags } from './Tags';
-import { ImMap, ImSet } from '../misc/immutable';
 
 export type Entity = Node | Way | Relation;
 export type Entities = Set<Node | Way | Relation>;
@@ -12,22 +11,22 @@ export type WayId = string;
 export type ParentWays = ImMap<NodeId, ImSet<WayId> | undefined>;
 // Table used to map id -> entity
 export type EntityTable = ImMap<EntityId, Entity | undefined>;
-// export type Tags = Tags<string, string>;
+
+export interface Tags {
+  [key: string]: string;
+}
 
 export type FeaturePropsTable = Map<EntityId, FeatureProps>;
 export interface FeatureProps {
   [key: string]: string;
 }
 
-export type NodeGeometry =
-  | OsmGeometry.POINT
-  | OsmGeometry.VERTEX
-  | OsmGeometry.VERTEX_SHARED;
+export type NodeGeometry = OsmGeometry.POINT | OsmGeometry.VERTEX;
 
 export enum OsmGeometry {
   POINT = 'point',
   VERTEX = 'vertex',
-  VERTEX_SHARED = 'vertex_shared', // the one shared among multiple ways
+  // VERTEX_SHARED = 'vertex_shared', // the one shared among multiple ways
   AREA = 'area',
   LINE = 'line',
   RELATION = 'relation'

@@ -14,9 +14,9 @@ import { tagsFactory } from './tagsFactory';
 
 export function nodeFactory({
   id,
-  tags = tagsFactory([]),
+  tags = tagsFactory(),
   loc = genLngLat([0, 0]),
-  attributes = attributesGen({})
+  attributes = attributesGen()
 }: {
   id: EntityId;
   tags?: Tags;

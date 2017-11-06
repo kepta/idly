@@ -13,8 +13,8 @@ import { tagsFactory } from './tagsFactory';
 
 export function relationFactory({
   id,
-  tags = tagsFactory([]),
-  attributes = attributesGen({}),
+  tags = tagsFactory(),
+  attributes = attributesGen(),
   members = []
 }: {
   id: EntityId;
