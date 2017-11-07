@@ -48,8 +48,8 @@ export function workerGetFeaturesOfEntityIds(
         }
         return prev;
       }, new Set<Entity>());
-    // .filter(r => r);
-    const entityTable: EntityTable = entityTableGen(Array.from(entities));
+
+    const entityTable: EntityTable = entityTableGen(entities);
     const workerPlugins = await state.plugins;
     const toReturn: GetFeaturesOfEntityIds['response'] = entityToFeature(
       workerPlugins.map((r: any) => r.worker),

@@ -1,6 +1,7 @@
 import { XML3 } from '../misc/fixtures';
-import { pluginsStub } from '../misc/pluginsStub';
-import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
+import { pluginsStub } from '../mocks/pluginsStub';
+import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
+import { xmlFetchMock } from '../mocks/xmlFetchMock';
 import { getEntities } from './getEntities';
 import { getFeaturesOfTree } from './getFeaturesOfTree';
 import { operations } from './operations';
@@ -10,20 +11,8 @@ declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
 
 describe('getFeaturesOfTree', () => {
-  global.fetch = jest.fn().mockImplementation(() => {
-    return new Promise((resolve, reject) => {
-      resolve({
-        id: '123',
-        async text(): Promise<any> {
-          return XML3;
-        },
-        ok: true,
-      });
-    });
-  });
-  const promiseWorker = new PromiseWorkerStub();
-  const controller = operations(pluginsStub());
-  promiseWorker.registerPromiseWorker(controller);
+  global.fetch = xmlFetchMock(XML3);
+  const promiseWorker = stubWorkerLogic();
 
   test('small xml test', async () => {
     await setOsmTiles(promiseWorker)({

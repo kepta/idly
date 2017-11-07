@@ -1,6 +1,6 @@
 import { XML3 } from '../misc/fixtures';
-import { pluginsStub } from '../misc/pluginsStub';
-import { PromiseWorkerStub } from '../misc/PromiseWorkerStub';
+import { stubWorkerLogic } from '../mocks/PromiseWorkerStub';
+import { xmlFetchMock } from '../mocks/xmlFetchMock';
 
 import { getEntities } from './getEntities';
 import { operations } from './operations';
@@ -10,21 +10,9 @@ declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
 
 describe('getEntities', () => {
+  const promiseWorker = stubWorkerLogic();
+  global.fetch = xmlFetchMock(XML3);
   test('small xml test', async () => {
-    global.fetch = jest.fn().mockImplementation(() => {
-      return new Promise((resolve, reject) => {
-        resolve({
-          id: '123',
-          text(): Promise<any> {
-            return Promise.resolve(XML3);
-          },
-          ok: true,
-        });
-      });
-    });
-    const promiseWorker = new PromiseWorkerStub();
-    const controller = operations(pluginsStub());
-    promiseWorker.registerPromiseWorker(controller);
     await setOsmTiles(promiseWorker)({
       bbox: [
         -73.98630242339283,

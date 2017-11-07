@@ -223,7 +223,7 @@ export class Tree {
     return new Tree(
       this._knownIds.union(knownIds),
       this._entityTable.merge(entityTable),
-      this._deletedIds.merge(deletedIds),
+      this._deletedIds.union(deletedIds),
     );
   }
 }

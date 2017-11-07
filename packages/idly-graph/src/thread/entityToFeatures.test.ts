@@ -1,5 +1,5 @@
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { pluginsStub } from '../misc/pluginsStub';
+import { pluginsStub } from '../mocks/pluginsStub';
 import { entityToFeature } from './entityToFeatures';
 
 declare var global: any;

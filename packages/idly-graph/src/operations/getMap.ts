@@ -46,7 +46,6 @@ export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
   return async ({ bbox, zoom, hiddenIds }) => {
     const xyzs = bboxToTiles(bbox, zoom);
     // tslint:disable-next-line:no-expression-statement
-    console.log(state.tilesDataTable);
     const prom = filterXyz(xyzs, bbox, zoom >= 18 ? 0.05 : 0.2).map(tile => {
       const res = state.tilesDataTable.get(tileId(tile));
       if (!res) {

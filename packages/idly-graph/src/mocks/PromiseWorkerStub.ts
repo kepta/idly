@@ -1,6 +1,7 @@
+import { pluginsStub } from '../../lib/misc/pluginsStub';
+import { operations } from '../operations/operations';
 import { GetActionTypes } from '../operations/operationsTypes';
 
-// TOFIX WorkerGetStateActionsType only does GetState actions, want to add SetState aswell
 export class PromiseWorkerStub {
   /* tslint:disable */
   public _workerCb: (message: GetActionTypes) => Promise<any>;
@@ -21,4 +22,12 @@ export class PromiseWorkerStub {
     }
     return this._workerCb(t);
   }
+}
+
+export function stubWorkerLogic(): PromiseWorkerStub {
+  const promiseWorker = new PromiseWorkerStub();
+  const controller = operations(pluginsStub());
+  // tslint:disable-next-line:no-expression-statement
+  promiseWorker.registerPromiseWorker(controller);
+  return promiseWorker;
 }

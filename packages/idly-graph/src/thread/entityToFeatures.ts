@@ -13,12 +13,14 @@ export type PluginComputeProps = (
   parentWays: ParentWays,
 ) => FeaturePropsTable;
 
-export function entityToFeature(
-  computer: PluginComputeProps[],
-): (
+export type EntityToFeatureType = (
   entityTable: EntityTable,
   parentWays?: ParentWays,
-) => Array<Feature<Point | Polygon | LineString>> {
+) => Array<Feature<Point | Polygon | LineString>>;
+
+export function entityToFeature(
+  computer: PluginComputeProps[],
+): EntityToFeatureType {
   return (entityTable, parentWays = calculateParentWays(entityTable)) => {
     const props = new Map();
     for (const comp of computer) {

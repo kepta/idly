@@ -3,7 +3,7 @@ import { Map as ImMap } from 'immutable';
 import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
-import { pluginsStub } from '../misc/pluginsStub';
+import { pluginsStub } from '../mocks/pluginsStub';
 import { workerGetEntities } from './getEntities';
 import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
 import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
