@@ -1,6 +1,5 @@
 import { BBox } from '@turf/helpers';
 import { XML3, XML4 } from '../misc/fixtures';
-import { pluginsStub } from '../mocks/pluginsStub';
 import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../mocks/xmlFetchMock';
 import { getMap } from './getMap';
@@ -62,7 +61,7 @@ describe('fetchMap: custom controller', () => {
     });
     expect(resp.features.map(r => r.id)).toEqual(['n3', 'w1']);
   });
-  test('big xml test', async () => {
+  test.only('big xml test', async () => {
     global.fetch = xmlFetchMock(XML4);
     const promiseWorker = stubWorkerLogic();
 

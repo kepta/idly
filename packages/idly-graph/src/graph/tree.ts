@@ -1,4 +1,5 @@
-import { Set as ImSet } from 'immutable';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import { Iterable, Set as ImSet } from 'immutable';
 
 import { entityFactoryCache } from 'idly-common/lib/osm/entityFactory';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
@@ -7,8 +8,11 @@ import {
   Entity,
   EntityId,
   EntityTable,
+  EntityType,
+  Node,
   NodeId,
   ParentWays,
+  Relation,
   Way,
   WayId,
 } from 'idly-common/lib/osm/structures';
@@ -52,7 +56,7 @@ export class Tree {
     knownIds,
     deletedIds,
   }: ToObjectType): Tree {
-    if (!knownIds || !entityTable || !deletedIds) {
+    if (!knownIds || !entityTable) {
       throw new Error('wrong schema');
     }
     return new Tree(knownIds, entityTable, deletedIds);
@@ -148,7 +152,7 @@ export class Tree {
     return this._entityTable.get(id);
   }
 
-  public getParentWay(id: NodeId): Way[] | undefined {
+  public getParentWays(id: NodeId): Way[] | undefined {
     if (!this._knownIds.has(id) || this._deletedIds.has(id)) {
       return;
     }
@@ -190,12 +194,12 @@ export class Tree {
     return this.modifyEntities(entities);
   }
 
-  public removeEntities(entityIds: EntityId[]): Tree {
-    const table = removeFromEntityTable(entityIds);
-    const deletedIds = ImSet(entityIds);
-    const knownIds = this._knownIds.subtract(deletedIds);
-    return new Tree(knownIds, table, deletedIds);
-  }
+  // public removeEntities(entityIds: EntityId[]): Tree {
+  //   const table = removeFromEntityTable(entityIds);
+  //   const deletedIds = ImSet(entityIds);
+  //   const knownIds = this._knownIds.subtract(deletedIds);
+  //   return new Tree(knownIds, table, deletedIds);
+  // }
 
   public replace(entity?: Entity): Tree {
     if (!entity || this.unsafeGetEntity(entity.id) === entity) {
@@ -226,4 +230,186 @@ export class Tree {
       this._deletedIds.union(deletedIds),
     );
   }
+  public get(id: EntityId): Entity | undefined {
+    if (!this._knownIds.has(id) || this._deletedIds.has(id)) {
+      return;
+    }
+    return this._entityTable.get(id);
+  }
+
+  public removeNode(id: EntityId): Tree {
+    let { entityTable } = this.toObject();
+    const parent = this._parentWays.get(id);
+
+    if (parent) {
+      const ways = parent.map((wayId = '') => {
+        const way = this.get(wayId) as Way;
+        if (!way) {
+          throw new Error('way' + wayId + ' must be in the knownIds');
+        }
+        // tslint:disable-next-line:no-expression-statement
+        entityTable = entityTable.set(
+          wayId,
+          wayFactory(
+            Object.assign({}, way, {
+              nodes: way.nodes.filter(n => n === id),
+            }),
+          ),
+        );
+      });
+    }
+    return Tree.fromObject({
+      deletedIds: this._deletedIds.add(id),
+      entityTable: entityTable.remove(id),
+      knownIds: this._knownIds.remove(id),
+    });
+  }
+  public remove(id: EntityId): Tree {
+    const entity = this.get(id);
+    if (!entity) {
+      // tslint:disable-next-line:no-expression-statement
+      console.error('couldnt find entity' + id);
+      return this;
+    }
+    // tslint:disable:no-expression-statement
+
+    let { entityTable, knownIds, deletedIds, parentWays } = this.toObject();
+
+    switch (entity.type) {
+      case EntityType.NODE: {
+        const parent = parentWays.get(id);
+        if (!parent) {
+          break;
+        }
+        const ways = parent.map((wayId = '') => {
+          const way = this.get(wayId) as Way;
+          if (!way) {
+            throw new Error('way' + wayId + ' must be in the knownIds');
+          }
+          entityTable = entityTable.set(
+            wayId,
+            wayFactory(
+              Object.assign({}, way, {
+                nodes: way.nodes.filter(n => n === id),
+              }),
+            ),
+          );
+        });
+        break;
+      }
+      case EntityType.WAY: {
+        const way = this.get(id) as Way;
+        if (!way) {
+          throw new Error('way' + id + ' must be in the knownIds');
+        }
+        entityTable = deleteInEntityTable(way.nodes as EntityId[], entityTable);
+        break;
+      }
+      case EntityType.RELATION: {
+        // @TOFIX
+        break;
+      }
+    }
+
+    // tslint:enable:no-expression-statement
+  }
+  /**
+   * if any side effect returns `false` loop exits.
+   * @param cb
+   */
+  public forEach(cb: (p: Entity) => any): number {
+    return this._knownIds.forEach((id = '') => {
+      const entity = this._entityTable.get(id);
+      if (entity) {
+        return cb(entity);
+      }
+    });
+  }
+
+  public nodeMap(cb: (node: Node, getParentWays: any) => Node): Tree {
+    const { entityTable, knownIds } = this.toObject();
+
+    const oldEntities = knownIds
+      .filter((id = '') => id[0] === 'n')
+      .map((id = '') => entityTable.get(id)) as Iterable<string, Node>;
+
+    const bindedGetParentWays = this.getParentWays.bind(this);
+
+    const newEntities = oldEntities.map(prevEntity => {
+      if (!prevEntity) {
+        return;
+      }
+      const newEntity = cb(prevEntity, bindedGetParentWays);
+
+      if (newEntity === prevEntity) {
+        return prevEntity;
+      }
+      if (newEntity.id !== prevEntity.id) {
+        throw new Error('Not allowed to change entity id');
+      }
+      if (newEntity.type !== prevEntity.type) {
+        throw new Error('Not allowed to change the entity type');
+      }
+
+      return newEntity;
+    });
+
+    const table = setInEntityTable(newEntities, entityTable);
+
+    const newIds = ImSet(
+      newEntities.map(entity => entity && entity.id),
+    ) as ImSet<string>;
+
+    return new Tree(newIds, table);
+  }
+}
+
+function setInEntityTable(
+  entities: Iterable<string, Node | Way | Relation | undefined>,
+  table: EntityTable,
+): EntityTable {
+  return table.withMutations(t => {
+    // tslint:disable:no-expression-statement
+    entities.forEach(entity => {
+      if (entity) {
+        t.set(entity.id, entity);
+      }
+    });
+    // tslint:enable:no-expression-statement
+  });
+}
+
+function deleteInEntityTable(
+  ids: ImSet<EntityId> | EntityId[],
+  table: EntityTable,
+): EntityTable {
+  // tslint:disable:no-expression-statement
+  if (Array.isArray(ids)) {
+    return table.withMutations(t => {
+      ids.forEach((id = '') => {
+        t.delete(id);
+      });
+    });
+  }
+  return table.withMutations(t => {
+    ids.forEach((id = '') => {
+      t.delete(id);
+    });
+  });
+  // tslint:enable:no-expression-statement
+}
+
+function addInEntityTable(
+  entities: Iterable<string, Node | Way | Relation | undefined>,
+  table: EntityTable,
+): EntityTable {
+  // tslint:disable:no-expression-statement
+  return table.withMutations(t => {
+    entities.forEach(entity => {
+      if (entity) {
+        t.set(entity.id, entity);
+      }
+    });
+  });
+  // tslint:enable:no-expression-statement
 }

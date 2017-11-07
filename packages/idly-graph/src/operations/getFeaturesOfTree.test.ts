@@ -1,5 +1,4 @@
 import { XML3 } from '../misc/fixtures';
-import { pluginsStub } from '../mocks/pluginsStub';
 import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../mocks/xmlFetchMock';
 import { getEntities } from './getEntities';

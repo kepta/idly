@@ -14,6 +14,7 @@ import {
   WorkerOperation,
   WorkerState,
 } from './operationsTypes';
+const fs = require('fs');
 
 export interface GetMap {
   readonly type: GetActions.GetMap;
