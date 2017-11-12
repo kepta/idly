@@ -22,20 +22,62 @@ import {
 import { calculateParentWays } from '../misc/calculateParentWays';
 
 export class Tree {
+  public static create(leaf: Leaf): Tree {
+    return new Tree(undefined, ImSet([leaf]));
+  }
   private readonly _parent: Tree | undefined;
-  private readonly _leaves: ImSet<Leaf>;
-  constructor(parent: Tree | undefined, leaves: ImSet<Leaf>) {
+  private readonly _branch: ImSet<Leaf>;
+  constructor(parent: Tree | undefined, branch: ImSet<Leaf>) {
     /* tslint:disable */
     this._parent = parent;
-    this._leaves = leaves;
+    this._branch = branch;
     /* tslint:enable */
   }
 
-  public newLeaves(leaves: ImSet<Leaf>): Tree {
-    return new Tree(this, leaves);
+  public getParent(): Tree | undefined {
+    return this._parent;
   }
+
+  public getBranch(): ImSet<Leaf> {
+    return this._branch;
+  }
+
+  // for debugging
+  public getDepth(count = 1): number {
+    return this._parent ? this._parent.getDepth(count + 1) : count;
+  }
+
+  // for debugging
+  public print(arr = []): string {
+    const toPrint = arr.concat([
+      this._branch.toArray().map(leaf => leaf.getEntity()),
+    ]);
+    if (!this._parent) {
+      return JSON.stringify(toPrint, null, 2);
+    }
+    return this._parent.print(toPrint);
+  }
+
+  public newBranch(branch: ImSet<Leaf>): Tree {
+    return new Tree(this, branch);
+  }
+
+  public getOldLeaves(): ImSet<Leaf> {
+    if (!this._parent) {
+      return ImSet();
+    }
+    return this._parent.getAllLeaves().subtract(this._branch);
+  }
+
+  public getAllLeaves(): ImSet<Leaf> {
+    if (!this._parent) {
+      return this._branch;
+    }
+    return this._branch.union(this._parent.getAllLeaves());
+  }
+
   public getAllVirginIds(): string[] {
-    const allEntities = this.unionLeaves().toArray();
+    const allEntities = this.getAllLeaves().toArray();
     return Array.from(
       allEntities
         .filter((en: Leaf | undefined) => {
@@ -55,21 +97,5 @@ export class Tree {
           return prev;
         }, new Set()),
     );
-  }
-  public getHidden(): ImSet<Leaf> {
-    const hidden = ImSet();
-    if (!this._parent) {
-      return ImSet();
-    }
-    return this._parent.unionLeaves().subtract(this._leaves);
-  }
-  public getLeaves(): ImSet<Leaf> {
-    return this._leaves;
-  }
-  public unionLeaves(): ImSet<Leaf> {
-    if (!this._parent) {
-      return ImSet();
-    }
-    return this._leaves.union(this._parent.unionLeaves());
   }
 }

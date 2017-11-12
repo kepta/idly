@@ -4,5 +4,5 @@ import { Leaf } from './Leaf';
 import { Tree } from './Tree';
 
 export function getAbsent(tree: Tree): ImSet<Leaf> {
-  return tree.getHidden();
+  return tree.getOldLeaves();
 }

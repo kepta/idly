@@ -4,5 +4,5 @@ import { Leaf } from './Leaf';
 import { Tree } from './Tree';
 
 export function getPresent(tree: Tree): ImSet<Leaf> {
-  return tree.getLeaves();
+  return tree.getBranch();
 }
