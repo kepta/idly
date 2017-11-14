@@ -2,10 +2,10 @@
 
 exports[`modify simple node seed tree creation 1`] = `
 Tree {
-  "_branch": Immutable.Set [
+  "branch": Immutable.Set [
     Leaf {
-      "_ancestor": undefined,
-      "_entity": Object {
+      "ancestor": undefined,
+      "entity": Object {
         "attributes": Object {
           "changeset": undefined,
           "timestamp": undefined,
@@ -26,6 +26,6 @@ Tree {
       },
     },
   ],
-  "_parent": undefined,
+  "parent": undefined,
 }
 `;

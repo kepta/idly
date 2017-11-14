@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stringifying 3 parents 1`] = `"[\\"{\\\\\\"attributes\\\\\\":{},\\\\\\"id\\\\\\":\\\\\\"n-a\\\\\\",\\\\\\"loc\\\\\\":{\\\\\\"lon\\\\\\":1,\\\\\\"lat\\\\\\":2},\\\\\\"tags\\\\\\":{\\\\\\"k\\\\\\":\\\\\\"n-a4\\\\\\"},\\\\\\"type\\\\\\":\\\\\\"node\\\\\\"}\\",\\"{\\\\\\"attributes\\\\\\":{},\\\\\\"id\\\\\\":\\\\\\"n-a\\\\\\",\\\\\\"loc\\\\\\":{\\\\\\"lon\\\\\\":0,\\\\\\"lat\\\\\\":0},\\\\\\"tags\\\\\\":{\\\\\\"k\\\\\\":\\\\\\"n-a3\\\\\\"},\\\\\\"type\\\\\\":\\\\\\"node\\\\\\"}\\",\\"{\\\\\\"attributes\\\\\\":{},\\\\\\"id\\\\\\":\\\\\\"n-a\\\\\\",\\\\\\"loc\\\\\\":{\\\\\\"lon\\\\\\":0,\\\\\\"lat\\\\\\":0},\\\\\\"tags\\\\\\":{\\\\\\"k\\\\\\":\\\\\\"n-a2\\\\\\"},\\\\\\"type\\\\\\":\\\\\\"node\\\\\\"}\\",\\"{\\\\\\"attributes\\\\\\":{},\\\\\\"id\\\\\\":\\\\\\"n-a\\\\\\",\\\\\\"loc\\\\\\":{\\\\\\"lon\\\\\\":0,\\\\\\"lat\\\\\\":0},\\\\\\"tags\\\\\\":{\\\\\\"k\\\\\\":\\\\\\"n-a1\\\\\\"},\\\\\\"type\\\\\\":\\\\\\"node\\\\\\"}\\"]"`;
+
+exports[`stringifying 3 parents 2`] = `
+Array [
+  "{\\"attributes\\":{},\\"id\\":\\"n-a\\",\\"loc\\":{\\"lon\\":1,\\"lat\\":2},\\"tags\\":{\\"k\\":\\"n-a4\\"},\\"type\\":\\"node\\"}",
+  "{\\"attributes\\":{},\\"id\\":\\"n-a\\",\\"loc\\":{\\"lon\\":0,\\"lat\\":0},\\"tags\\":{\\"k\\":\\"n-a3\\"},\\"type\\":\\"node\\"}",
+  "{\\"attributes\\":{},\\"id\\":\\"n-a\\",\\"loc\\":{\\"lon\\":0,\\"lat\\":0},\\"tags\\":{\\"k\\":\\"n-a2\\"},\\"type\\":\\"node\\"}",
+  "{\\"attributes\\":{},\\"id\\":\\"n-a\\",\\"loc\\":{\\"lon\\":0,\\"lat\\":0},\\"tags\\":{\\"k\\":\\"n-a1\\"},\\"type\\":\\"node\\"}",
+]
+`;
+
+exports[`stringifying 3 parents 3`] = `
+Array [
+  Object {
+    "attributes": Object {},
+    "id": "n-a",
+    "loc": Object {
+      "lat": 2,
+      "lon": 1,
+    },
+    "tags": Object {
+      "k": "n-a4",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {},
+    "id": "n-a",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {
+      "k": "n-a3",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {},
+    "id": "n-a",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {
+      "k": "n-a2",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {},
+    "id": "n-a",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {
+      "k": "n-a1",
+    },
+    "type": "node",
+  },
+]
+`;
+
+exports[`stringifying simple stringify 1`] = `"[\\"{\\\\\\"attributes\\\\\\":{},\\\\\\"id\\\\\\":\\\\\\"n1\\\\\\",\\\\\\"loc\\\\\\":{\\\\\\"lon\\\\\\":0,\\\\\\"lat\\\\\\":0},\\\\\\"tags\\\\\\":{},\\\\\\"type\\\\\\":\\\\\\"node\\\\\\"}\\"]"`;
+
+exports[`stringifying simple stringify 2`] = `
+Array [
+  "{\\"attributes\\":{},\\"id\\":\\"n1\\",\\"loc\\":{\\"lon\\":0,\\"lat\\":0},\\"tags\\":{},\\"type\\":\\"node\\"}",
+]
+`;
+
+exports[`stringifying simple stringify 3`] = `
+Array [
+  Object {
+    "attributes": Object {},
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+]
+`;

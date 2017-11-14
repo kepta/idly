@@ -1,11 +1,6 @@
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 import { Iterable, Set as ImSet } from 'immutable';
-import { recursiveLookup } from '../misc/recursiveLookup';
-import { Leaf } from './Leaf';
 
-import { entityFactoryCache } from 'idly-common/lib/osm/entityFactory';
-import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { removeFromEntityTable } from 'idly-common/lib/osm/removeFromEntityTable';
 import {
   Entity,
   EntityId,
@@ -18,6 +13,8 @@ import {
   Way,
   WayId,
 } from 'idly-common/lib/osm/structures';
+import { recursiveLookup } from '../misc/recursiveLookup';
+import { Leaf } from './Leaf';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 
@@ -25,37 +22,37 @@ export class Tree {
   public static create(leaf: Leaf): Tree {
     return new Tree(undefined, ImSet([leaf]));
   }
-  private readonly _parent: Tree | undefined;
-  private readonly _branch: ImSet<Leaf>;
+  private readonly parent: Tree | undefined;
+  private readonly branch: ImSet<Leaf>;
   constructor(parent: Tree | undefined, branch: ImSet<Leaf>) {
     /* tslint:disable */
-    this._parent = parent;
-    this._branch = branch;
+    this.parent = parent;
+    this.branch = branch;
     /* tslint:enable */
   }
 
   public getParent(): Tree | undefined {
-    return this._parent;
+    return this.parent;
   }
 
   public getBranch(): ImSet<Leaf> {
-    return this._branch;
+    return this.branch;
   }
 
   // for debugging
   public getDepth(count = 1): number {
-    return this._parent ? this._parent.getDepth(count + 1) : count;
+    return this.parent ? this.parent.getDepth(count + 1) : count;
   }
 
   // for debugging
   public print(arr = []): string {
     const toPrint = arr.concat([
-      this._branch.toArray().map(leaf => leaf.getEntity()),
+      this.branch.toArray().map(leaf => leaf.getEntity()),
     ]);
-    if (!this._parent) {
+    if (!this.parent) {
       return JSON.stringify(toPrint, null, 2);
     }
-    return this._parent.print(toPrint);
+    return this.parent.print(toPrint);
   }
 
   public newBranch(branch: ImSet<Leaf>): Tree {
@@ -63,17 +60,17 @@ export class Tree {
   }
 
   public getOldLeaves(): ImSet<Leaf> {
-    if (!this._parent) {
+    if (!this.parent) {
       return ImSet();
     }
-    return this._parent.getAllLeaves().subtract(this._branch);
+    return this.parent.getAllLeaves().subtract(this.branch);
   }
 
   public getAllLeaves(): ImSet<Leaf> {
-    if (!this._parent) {
-      return this._branch;
+    if (!this.parent) {
+      return this.branch;
     }
-    return this._branch.union(this._parent.getAllLeaves());
+    return this.branch.union(this.parent.getAllLeaves());
   }
 
   public getAllVirginIds(): string[] {

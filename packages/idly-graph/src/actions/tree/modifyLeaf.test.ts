@@ -1,62 +1,49 @@
 // tslint:disable no-expression-statement
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
-import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { EntityType } from 'idly-common/lib/osm/structures';
-import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 import { Iterable, Set as ImSet } from 'immutable';
 
 import { Leaf } from '../../graph/Leaf';
 import { Tree } from '../../graph/Tree';
+import { createNode, createWay } from '../entity/createEntity';
 import { modifyLeaf } from './modifyLeaf';
 
-// tslint:disable:naming-convention
+// tslint:disable:variable-name
 describe('modify simple node', () => {
-  const leaf_na_1 = Leaf.create(
-    nodeFactory({ id: 'n-a', tags: { k: 'n-a1' } }),
-  );
+  const leaf_na_1 = Leaf.create(createNode({ id: 'n-a', tags: { k: 'n-a1' } }));
   const leaf_na_2 = leaf_na_1.map(entity => {
-    return nodeFactory({ id: 'n-a', tags: { k: 'n-a2' } });
+    return createNode({ id: 'n-a', tags: { k: 'n-a2' } });
   });
 
   const leaf_na_3 = leaf_na_2.map(entity => {
-    return nodeFactory({ id: 'n-a', tags: { k: 'n-a3' } });
+    return createNode({ id: 'n-a', tags: { k: 'n-a3' } });
   });
   const leaf_na_4 = leaf_na_3.map(entity => {
-    return nodeFactory({
+    return createNode({
       id: 'n-a',
       loc: genLngLat([1, 2]),
       tags: { k: 'n-a4' },
     });
   });
 
-  const leaf_nb_1 = Leaf.create(
-    nodeFactory({ id: 'n-b', tags: { k: 'n-b1' } }),
-  );
+  const leaf_nb_1 = Leaf.create(createNode({ id: 'n-b', tags: { k: 'n-b1' } }));
 
-  const leaf_nc_1 = Leaf.create(
-    nodeFactory({ id: 'n-c', tags: { k: 'n-c1' } }),
-  );
+  const leaf_nc_1 = Leaf.create(createNode({ id: 'n-c', tags: { k: 'n-c1' } }));
 
-  const leaf_nd_1 = Leaf.create(
-    nodeFactory({ id: 'n-d', tags: { k: 'n-d1' } }),
-  );
+  const leaf_nd_1 = Leaf.create(createNode({ id: 'n-d', tags: { k: 'n-d1' } }));
   const leaf_nd_2 = leaf_nd_1.map(entity => {
-    return nodeFactory({
+    return createNode({
       id: 'n-d',
       loc: genLngLat([1, 2]),
       tags: { k: 'n-d2' },
     });
   });
 
-  const leaf_ne_1 = Leaf.create(
-    nodeFactory({ id: 'n-e', tags: { k: 'n-e1' } }),
-  );
+  const leaf_ne_1 = Leaf.create(createNode({ id: 'n-e', tags: { k: 'n-e1' } }));
 
-  const leaf_nf_1 = Leaf.create(
-    nodeFactory({ id: 'n-f', tags: { k: 'n-f1' } }),
-  );
+  const leaf_nf_1 = Leaf.create(createNode({ id: 'n-f', tags: { k: 'n-f1' } }));
   const leaf_nf_2 = leaf_nf_1.map(entity => {
-    return nodeFactory({
+    return createNode({
       id: 'n-f',
       loc: genLngLat([1, 2]),
       tags: { k: 'n-f2' },
@@ -66,14 +53,14 @@ describe('modify simple node', () => {
   let tree = Tree.create(leaf_na_1);
 
   const leaf_wa_1 = Leaf.create(
-    wayFactory({
+    createWay({
       id: 'w-a',
       nodes: ['n-d', 'n-b', 'n-c'],
     }),
   );
   const leaf_wa_2 = leaf_wa_1.map(entity => {
     if (entity.type === EntityType.WAY) {
-      return wayFactory({
+      return createWay({
         id: 'w-a',
         nodes: ['n-d', 'n-b', 'n-c', 'n-a'],
       });
@@ -83,7 +70,7 @@ describe('modify simple node', () => {
 
   const leaf_wa_3 = leaf_wa_2.map(entity => {
     if (entity.type === EntityType.WAY) {
-      return wayFactory({
+      return createWay({
         id: 'w-a',
         nodes: ['n-d', 'n-b', 'n-a'],
       });
@@ -112,9 +99,8 @@ describe('modify simple node', () => {
 
   it('add a diverged leaf', () => {
     // diversion of leaf2
-    // tslint:disable-next-line:naming-convention
     const leaf_na_3_1 = leaf_na_2.map(entity => {
-      return nodeFactory({
+      return createNode({
         id: 'n-a',
         loc: genLngLat([1, 2]),
         tags: { k: 'n-a3_1' },
@@ -215,7 +201,5 @@ describe('modify simple node', () => {
 
     expect(tree.getBranch()).not.toContain(leaf_wa_1);
     expect(tree.getBranch()).not.toContain(leaf_wa_2);
-
-    // newly added 5
   });
 });
