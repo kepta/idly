@@ -3,7 +3,7 @@
  * so the code was copied and put in a js file.
  * TOFIX find a better solutiion
  */
-
+// tslint:disable
 export const SphericalMercatorLib = Main() as any;
 
 function Main() {

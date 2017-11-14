@@ -8,7 +8,7 @@ export function attributesGen(
     timestamp,
     changeset,
     uid,
-    user
+    user,
   }: {
     visible?: boolean;
     version?: string;
@@ -16,7 +16,7 @@ export function attributesGen(
     changeset?: string;
     uid?: string;
     user?: string;
-  } = {}
+  } = {},
 ): Attributes {
   return {
     changeset,
@@ -24,6 +24,6 @@ export function attributesGen(
     uid,
     user,
     version,
-    visible
+    visible,
   };
 }

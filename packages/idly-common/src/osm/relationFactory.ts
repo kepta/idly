@@ -7,26 +7,32 @@ import {
   EntityType,
   Relation,
   RelationMember,
-  Tags
+  Tags,
 } from '../osm/structures';
 import { tagsFactory } from './tagsFactory';
 
-export function relationFactory({
-  id,
-  tags = tagsFactory(),
-  attributes = attributesGen(),
-  members = []
-}: {
-  id: EntityId;
-  tags?: Tags;
-  attributes?: Attributes;
-  members?: RelationMember[] | ReadonlyArray<RelationMember>;
-}): Relation {
-  return deepFreeze<Relation>({
+export function relationFactory(
+  {
     id,
-    type: EntityType.RELATION,
-    tags,
-    attributes,
-    members
-  });
+    tags = tagsFactory(),
+    attributes = attributesGen(),
+    members = [],
+  }: {
+    id: EntityId;
+    tags?: Tags;
+    attributes?: Attributes;
+    members?: RelationMember[] | ReadonlyArray<RelationMember>;
+  },
+  freeze = true,
+): Relation {
+  return deepFreeze<Relation>(
+    {
+      attributes,
+      id,
+      members,
+      tags,
+      type: EntityType.RELATION,
+    },
+    freeze,
+  );
 }

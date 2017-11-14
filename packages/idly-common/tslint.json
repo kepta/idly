@@ -19,7 +19,7 @@
             false
         ],
         "object-literal-sort-keys": [
-            false
+            true
         ],
         "interface-name": [
             false

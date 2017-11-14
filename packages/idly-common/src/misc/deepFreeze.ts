@@ -1,4 +1,10 @@
-export function deepFreeze<T extends { [index: string]: any }>(obj: T): T {
+export function deepFreeze<T extends { [index: string]: any }>(
+  obj: T,
+  freeze = true
+): T {
+  if (!freeze) {
+    return obj;
+  }
   // Retrieve the property names defined on obj
   const propNames = Object.getOwnPropertyNames(obj);
 
