@@ -1,4 +1,5 @@
 import { weakCache } from 'idly-common/lib/misc/weakCache';
+
 import {
   EntityType,
   Node,
@@ -7,7 +8,12 @@ import {
 } from 'idly-common/lib/osm/structures';
 import { Entity } from 'idly-common/lib/osm/structures';
 
-import { createEntity } from '../actions/entity/createEntity';
+import {
+  createEntity,
+  NodeLike,
+  RelLike,
+  WayLike,
+} from '../actions/entity/createEntity';
 
 let LeafCache = new WeakMap<Entity, Leaf>();
 
@@ -70,17 +76,17 @@ export class Leaf {
   public getEntity(): Entity {
     return this.entity;
   }
-
-  public map(cb: (e: Entity) => { [index in EntityKeys]: any } | Entity): Leaf {
+  /**
+   * accepts an EntityLike
+   */
+  public map(cb: (e: Entity) => any): Leaf {
     const partEntity = cb(this.entity);
 
     if (partEntity.id && partEntity.id !== this.entity.id) {
       throw new Error('cannot modify entity id');
     }
 
-    const newEntity = createEntity(
-      Object.assign({}, this.entity, partEntity as any),
-    );
+    const newEntity = createEntity(partEntity);
 
     if (newEntity !== this.entity) {
       return Leaf.create(newEntity, this);
@@ -89,7 +95,6 @@ export class Leaf {
   }
 
   /** derived methods */
-
   public toString(): string {
     return leafToString(this);
   }

@@ -1,4 +1,5 @@
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
+import { Way } from 'idly-common/lib/osm/structures';
 
 import { createNode, createWay } from '../actions/entity/createEntity';
 
@@ -33,8 +34,9 @@ describe('map', () => {
       return createNode({ id: 'n1', tags: { K: 'K' } });
     });
     const l2d = l1.map(entity => {
-      return createNode({ id: 'n1', tags: { K: 'Kj' } });
+      return createNode({ id: 'n1', tags: { K: 'K' } });
     });
+    expect(l2).toBe(l2);
   });
 
   test('old ancestor become new ancestor', () => {
@@ -55,7 +57,40 @@ describe('map', () => {
     expect(l3.map(entity => n1)).toBe(l1);
   });
 
-  test('be able to return partial entity', () => {});
+  test('be able to return partial entity', () => {
+    const l1 = Leaf.create(createNode({ id: 'n1' }));
+    const l2 = l1.map(entity => {
+      return { ...entity, tags: { k: 'k', a: 'a' } };
+    });
+    expect(l2).toBe(
+      Leaf.create(createNode({ id: 'n1', tags: { k: 'k', a: 'a' } })),
+    );
+    const l3 = Leaf.create(createWay({ id: 'w1' }));
+    const l4 = l3.map(entity => {
+      return { ...entity, nodes: ['n1', 'n2'] };
+    });
+    expect((l4.getEntity() as Way).nodes).toEqual(['n1', 'n2']);
+  });
+
+  test('be able to ignore not found properties ', () => {
+    const l3 = Leaf.create(createNode({ id: 'w1' }));
+    const l4 = l3.map(entity => {
+      return { ...entity, nodes: ['n1'] };
+    });
+    expect(l4).toBe(l3);
+    const l5 = l4.map(entity => {
+      return { ...entity, garbage: ['n1'], tags: { k: 'k' } };
+    });
+
+    expect(l5).toBe(
+      l3.map(entity => ({
+        ...entity,
+        tags: {
+          k: 'k',
+        },
+      })),
+    );
+  });
 });
 
 describe('ancestors', () => {
