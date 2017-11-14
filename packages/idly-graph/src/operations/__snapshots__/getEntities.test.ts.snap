@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`getEntities small xml test 1`] = `
-Tree {
-  "_deletedIds": Immutable.Set [],
-  "_entityTable": Immutable.Map {
+Shrub {
+  "entityTable": Immutable.Map {
     "n1": Object {
       "attributes": Object {
         "changeset": "38701677",
@@ -22,17 +21,15 @@ Tree {
       "type": "node",
     },
   },
-  "_knownIds": Immutable.Set [
+  "knownIds": Array [
     "n1",
   ],
-  "_parentWays": Immutable.Map {},
 }
 `;
 
 exports[`getEntities small xml test 2`] = `
-Tree {
-  "_deletedIds": Immutable.Set [],
-  "_entityTable": Immutable.Map {
+Shrub {
+  "entityTable": Immutable.Map {
     "n2": Object {
       "attributes": Object {
         "changeset": "38701677",
@@ -85,17 +82,9 @@ Tree {
       "type": "way",
     },
   },
-  "_knownIds": Immutable.Set [
+  "knownIds": Array [
     "n2",
     "w1",
   ],
-  "_parentWays": Immutable.Map {
-    "n1": Immutable.Set [
-      "w1",
-    ],
-    "n2": Immutable.Set [
-      "w1",
-    ],
-  },
 }
 `;

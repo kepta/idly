@@ -1,4 +1,5 @@
 import { Map as ImMap, Set as ImSet } from 'immutable';
+import { Shrub } from '../graph/Shrub';
 
 import { EntityId } from 'idly-common/lib/osm/structures';
 
@@ -17,7 +18,7 @@ export interface GetEntities {
   readonly request: {
     readonly entityIds: EntityId[];
   };
-  readonly response: Tree;
+  readonly response: Shrub;
 }
 
 /** Main Thread */
@@ -27,7 +28,7 @@ export function getEntities(connector: any): Operation<GetEntities> {
   );
   return async request => {
     const json = await channel(request);
-    const parsedTree: GetEntities['response'] = Tree.fromString(json);
+    const parsedTree: GetEntities['response'] = Shrub.fromString(json);
     return parsedTree;
   };
 }
@@ -41,11 +42,10 @@ export function workerGetEntities(
       .map(id => recursiveLookup(id, state.entityTable))
       .reduce((prev, curr) => prev.concat(curr), [])
       .map(e => [e.id, e]);
-    const toReturn: GetEntities['response'] = Tree.fromObject({
-      deletedIds: ImSet(),
-      entityTable: ImMap(entities),
-      knownIds: ImSet(entityIds),
-    });
+    const toReturn: GetEntities['response'] = Shrub.create(
+      entityIds,
+      ImMap(entities),
+    );
     return toReturn.toString();
   };
 }

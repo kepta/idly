@@ -1,15 +1,16 @@
+import { Shrub } from '../graph/Shrub';
 import { XML3 } from '../misc/fixtures';
 import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../mocks/xmlFetchMock';
 import { getEntities } from './getEntities';
-import { getFeaturesOfTree } from './getFeaturesOfTree';
+import { getFeaturesOfShrub } from './getFeaturesOfShrub';
 import { operations } from './operations';
 import { setOsmTiles } from './setOsmTiles';
 
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
 
-describe('getFeaturesOfTree', () => {
+describe('getFeaturesOfShrub', () => {
   global.fetch = xmlFetchMock(XML3);
   const promiseWorker = stubWorkerLogic();
 
@@ -23,9 +24,10 @@ describe('getFeaturesOfTree', () => {
       ],
       zoom: 17.54,
     });
-    const tree = await getEntities(promiseWorker)({ entityIds: ['n1'] });
-    const resp1 = getFeaturesOfTree(promiseWorker)({
-      treeString: JSON.stringify(tree.toJs()),
+    const shrub = await getEntities(promiseWorker)({ entityIds: ['n1'] });
+    const { entityTable } = shrub.toObject();
+    const resp1 = getFeaturesOfShrub(promiseWorker)({
+      shrubString: Shrub.create([], entityTable).toString(),
     });
     expect(await resp1).toMatchSnapshot();
   });

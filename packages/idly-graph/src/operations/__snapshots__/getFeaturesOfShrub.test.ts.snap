@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFeaturesOfTree small xml test 1`] = `
+exports[`getFeaturesOfShrub small xml test 1`] = `
 Array [
   Object {
     "geometry": Object {

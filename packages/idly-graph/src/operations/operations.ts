@@ -6,7 +6,7 @@ import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { pluginsStub } from '../mocks/pluginsStub';
 import { workerGetEntities } from './getEntities';
 import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
-import { workerGetFeaturesOfTree } from './getFeaturesOfTree';
+import { workergetFeaturesOfShrub } from './getFeaturesOfShrub';
 import { workerGetMap } from './getMap';
 import {
   GetActions,
@@ -42,8 +42,8 @@ function getStateController(
     case GetActions.GetFeaturesOfEntityIds:
       return workerGetFeaturesOfEntityIds(state)(message.request);
 
-    case GetActions.GetFeaturesOfTree:
-      return workerGetFeaturesOfTree(state)(message.request);
+    case GetActions.getFeaturesOfShrub:
+      return workergetFeaturesOfShrub(state)(message.request);
 
     default: {
       // tslint:disable-next-line:no-expression-statement

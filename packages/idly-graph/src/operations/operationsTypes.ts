@@ -8,7 +8,7 @@ import {
 
 import { GetEntities } from './getEntities';
 import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
-import { GetFeaturesOfTree } from './getFeaturesOfTree';
+import { GetFeaturesOfShrub } from './getFeaturesOfShrub';
 import { GetMap } from './getMap';
 import { WorkerSetOsmTiles } from './setOsmTiles';
 
@@ -53,7 +53,7 @@ export interface TileData {
 export enum GetActions {
   GetEntities = 'GET_ENTITIES',
   GetFeaturesOfEntityIds = 'GET_FEATURES_OF_ENTITY_IDS',
-  GetFeaturesOfTree = 'GET_FEATURES_OF_TREE',
+  getFeaturesOfShrub = 'GET_FEATURES_OF_TREE',
   GetDefault = 'GET_DEFAULT',
   GetMap = 'GET_MAP',
 }
@@ -67,7 +67,7 @@ export interface DefaultGetCase {
 export type GetActionTypes =
   | GetEntities
   | GetFeaturesOfEntityIds
-  | GetFeaturesOfTree
+  | GetFeaturesOfShrub
   | GetMap
   | DefaultGetCase;
 
