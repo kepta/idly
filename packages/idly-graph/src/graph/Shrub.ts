@@ -40,14 +40,14 @@ export class Shrub {
     return entity && Leaf.create(entity);
   }
 
-  public getEntity(id: EntityId): Leaf | undefined {
+  public getLeaf(id: EntityId): Leaf | undefined {
     if (this.knownIds.indexOf(id) === -1) {
       return undefined;
     }
     return this.getDependant(id);
   }
 
-  public getAllEntities(): Array<Leaf | undefined> {
+  public getLeaves(): Array<Leaf | undefined> {
     return this.knownIds.map(id => this.getDependant(id));
   }
   public toObject() {
