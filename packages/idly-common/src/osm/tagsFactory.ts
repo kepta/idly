@@ -1,3 +1,4 @@
+import { sortObjectKeys } from '../../lib/misc/sortObjectKeys';
 import { Tags } from '../osm/structures';
 
 // @TOFIX make tags frozen objects.
@@ -5,7 +6,7 @@ import { Tags } from '../osm/structures';
 // or use so other data structure.
 const emptyTag = {};
 export function tagsFactory(
-  rawTags: { [key: string]: string } = emptyTag
+  rawTags: { [key: string]: string } = emptyTag,
 ): Tags {
-  return rawTags;
+  return sortObjectKeys(rawTags);
 }
