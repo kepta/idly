@@ -27,10 +27,10 @@ export function relationFactory(
 ): Relation {
   return deepFreeze<Relation>(
     {
-      attributes,
+      attributes: attributesGen(attributes),
       id,
       members,
-      tags,
+      tags: tagsFactory(tags),
       type: EntityType.RELATION,
     },
     freeze,

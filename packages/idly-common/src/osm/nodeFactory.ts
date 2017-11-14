@@ -28,10 +28,10 @@ export function nodeFactory(
 ): Node {
   return deepFreeze<Node>(
     {
-      attributes,
+      attributes: attributesGen(attributes),
       id,
       loc,
-      tags,
+      tags: tagsFactory(tags),
       type: EntityType.NODE,
     },
     freeze,

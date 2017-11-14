@@ -19,10 +19,10 @@ export function wayFactory(
 ): Way {
   return deepFreeze<Way>(
     {
-      attributes,
+      attributes: attributesGen(attributes),
       id,
       nodes,
-      tags,
+      tags: tagsFactory(tags),
       type: EntityType.WAY,
     },
     freeze,

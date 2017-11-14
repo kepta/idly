@@ -1,4 +1,5 @@
 import { entityFromString } from './entityFromString';
+import { entityToString } from './entityToString';
 import { nodeFactory } from './nodeFactory';
 import { relationFactory } from './relationFactory';
 import {
@@ -37,29 +38,18 @@ export interface RelLike {
   readonly attributes?: Attributes;
 }
 
-export function createEntity(entityLike: NodeLike | WayLike | RelLike) {
+export function createEntity(
+  entityLike: NodeLike | WayLike | RelLike | string,
+) {
+  if (typeof entityLike === 'string') {
+    entityLike = JSON.parse(entityLike) as NodeLike | WayLike | RelLike;
+  }
+
   if (!entityLike.id || !entityLike.type) {
     throw new Error('not a valid entity');
   }
 
-  // get a stable object
-  let entity;
-  switch (entityLike.type) {
-    case EntityType.NODE: {
-      entity = nodeFactory(entityLike, false);
-      break;
-    }
-    case EntityType.WAY: {
-      entity = wayFactory(entityLike, false);
-      break;
-    }
-    case EntityType.RELATION: {
-      entity = relationFactory(entityLike, false);
-      break;
-    }
-  }
-
-  return entityFromString(JSON.stringify(entity));
+  return entityFromString(entityToString(entityLike));
 }
 
 export function createNode(entityLike: NodeLike): Node {

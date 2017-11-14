@@ -4,8 +4,11 @@ import { relationFactory } from './relationFactory';
 import { Entity, EntityType, Node, Relation, Way } from './structures';
 import { wayFactory } from './wayFactory';
 
-export let entityToString = (entity: Entity): string => {
+export let entityToString = (entity: any): string => {
   let toStringify;
+  // get a stable object, needed to remove the
+  // possibility of unordered object keys.Which is
+  // needed for json.stringify equality/caching
   switch (entity.type) {
     case EntityType.NODE: {
       toStringify = nodeFactory(entity, false);
