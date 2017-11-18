@@ -49,11 +49,11 @@ export function xmlToEntities(xml: Document): Entity[] {
   return entities;
 }
 
-function getVisible(attrs: NamedNodeMap): boolean {
-  return (
-    !attrs.getNamedItem('visible') ||
+function getVisible(attrs: NamedNodeMap): string {
+  return !attrs.getNamedItem('visible') ||
     attrs.getNamedItem('visible').value !== 'false'
-  );
+    ? 'true'
+    : 'false';
 }
 
 function getMembers(obj: any): RelationMember[] {
@@ -88,7 +88,7 @@ function getNodes(obj: any): string[] {
   return nodes;
 }
 
-function getTags(obj: any): Tags {
+function getTags(obj: any): { [index: string]: string } {
   const elems = obj.getElementsByTagName('tag');
   const t: any = {};
 
@@ -96,7 +96,7 @@ function getTags(obj: any): Tags {
     const attrs = elems[i].attributes;
     t[attrs.getNamedItem('k').value] = attrs.getNamedItem('v').value;
   }
-  return tagsFactory(t);
+  return t;
 }
 
 function getLoc(attrs: NamedNodeMap): LngLat {
@@ -107,63 +107,72 @@ function getLoc(attrs: NamedNodeMap): LngLat {
 
 function nodeData(obj: Node): OSMNode {
   const attrs = obj.attributes;
-  return nodeFactory({
-    attributes: attributesGen({
-      changeset:
-        attrs.getNamedItem('changeset') &&
-        attrs.getNamedItem('changeset').value,
-      timestamp:
-        attrs.getNamedItem('timestamp') &&
-        attrs.getNamedItem('timestamp').value,
-      uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
-      user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
-      version: attrs.getNamedItem('version').value,
-      visible: getVisible(attrs),
-    }),
-    id: 'n' + attrs.getNamedItem('id').value,
-    loc: getLoc(attrs),
-    tags: getTags(obj),
-  });
+  return nodeFactory(
+    {
+      attributes: {
+        changeset:
+          attrs.getNamedItem('changeset') &&
+          attrs.getNamedItem('changeset').value,
+        timestamp:
+          attrs.getNamedItem('timestamp') &&
+          attrs.getNamedItem('timestamp').value,
+        uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
+        user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
+        version: attrs.getNamedItem('version').value,
+        visible: getVisible(attrs),
+      },
+      id: 'n' + attrs.getNamedItem('id').value,
+      loc: getLoc(attrs),
+      tags: getTags(obj),
+    },
+    false,
+  );
 }
 
 function relationData(obj: Node): Relation {
   const attrs = obj.attributes;
-  return relationFactory({
-    attributes: attributesGen({
-      changeset:
-        attrs.getNamedItem('changeset') &&
-        attrs.getNamedItem('changeset').value,
-      timestamp:
-        attrs.getNamedItem('timestamp') &&
-        attrs.getNamedItem('timestamp').value,
-      uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
-      user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
-      version: attrs.getNamedItem('version').value,
-      visible: getVisible(attrs),
-    }),
-    id: 'r' + attrs.getNamedItem('id').value,
-    members: getMembers(obj),
-    tags: getTags(obj),
-  });
+  return relationFactory(
+    {
+      attributes: {
+        changeset:
+          attrs.getNamedItem('changeset') &&
+          attrs.getNamedItem('changeset').value,
+        timestamp:
+          attrs.getNamedItem('timestamp') &&
+          attrs.getNamedItem('timestamp').value,
+        uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
+        user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
+        version: attrs.getNamedItem('version').value,
+        visible: getVisible(attrs),
+      },
+      id: 'r' + attrs.getNamedItem('id').value,
+      members: getMembers(obj),
+      tags: getTags(obj),
+    },
+    false,
+  );
 }
 
 function wayData(obj: Node): Way {
   const attrs = obj.attributes;
-  return wayFactory({
-    attributes: attributesGen({
-      changeset:
-        attrs.getNamedItem('changeset') &&
-        attrs.getNamedItem('changeset').value,
-      timestamp:
-        attrs.getNamedItem('timestamp') &&
-        attrs.getNamedItem('timestamp').value,
-      uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
-      user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
-      version: attrs.getNamedItem('version').value,
-      visible: getVisible(attrs),
-    }),
-    id: 'w' + attrs.getNamedItem('id').value,
-    nodes: getNodes(obj),
-    tags: getTags(obj),
-  });
+  return wayFactory(
+    {
+      attributes: {
+        changeset:
+          attrs.getNamedItem('changeset') &&
+          attrs.getNamedItem('changeset').value,
+        timestamp:
+          attrs.getNamedItem('timestamp') &&
+          attrs.getNamedItem('timestamp').value,
+        uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
+        user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
+        version: attrs.getNamedItem('version').value,
+        visible: getVisible(attrs),
+      },
+      id: 'w' + attrs.getNamedItem('id').value,
+      nodes: getNodes(obj),
+      tags: getTags(obj),
+    },
+    false,
+  );
 }

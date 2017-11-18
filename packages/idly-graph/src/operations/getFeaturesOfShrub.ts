@@ -34,7 +34,7 @@ export function getFeaturesOfShrub(
 
 /** Worker Thread */
 
-export function workergetFeaturesOfShrub(
+export function workerGetFeaturesOfShrub(
   state: WorkerState,
 ): WorkerOperation<GetFeaturesOfShrub> {
   return async ({ shrubString }) => {

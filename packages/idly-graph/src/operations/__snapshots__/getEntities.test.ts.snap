@@ -10,7 +10,7 @@ Shrub {
         "uid": "592097",
         "user": "Dombo",
         "version": "1",
-        "visible": true,
+        "visible": "true",
       },
       "id": "n1",
       "loc": Object {
@@ -37,7 +37,7 @@ Shrub {
         "uid": "592097",
         "user": "Dombo",
         "version": "1",
-        "visible": true,
+        "visible": "true",
       },
       "id": "n2",
       "loc": Object {
@@ -54,7 +54,7 @@ Shrub {
         "uid": "592097",
         "user": "Dombo",
         "version": "1",
-        "visible": true,
+        "visible": "true",
       },
       "id": "n1",
       "loc": Object {
@@ -71,7 +71,7 @@ Shrub {
         "uid": "2815653",
         "user": "Srihari Thalla",
         "version": "2",
-        "visible": true,
+        "visible": "true",
       },
       "id": "w1",
       "nodes": Array [
