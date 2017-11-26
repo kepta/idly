@@ -201,6 +201,11 @@
             "type": "typeCombo",
             "label": "Type"
         },
+        "agrarian": {
+            "key": "agrarian",
+            "type": "semiCombo",
+            "label": "Products"
+        },
         "amenity": {
             "key": "amenity",
             "type": "typeCombo",
@@ -813,6 +818,11 @@
         "generator/type": {
             "key": "generator:type",
             "type": "combo",
+            "label": "Type"
+        },
+        "government": {
+            "key": "government",
+            "type": "typeCombo",
             "label": "Type"
         },
         "grape_variety": {
@@ -1429,7 +1439,7 @@
             "label": "Maximum Age"
         },
         "playground/min_age": {
-            "key": "max_age",
+            "key": "min_age",
             "type": "number",
             "label": "Minimum Age"
         },

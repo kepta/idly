@@ -1885,6 +1885,25 @@
             },
             "name": "Motorcycle Parking"
         },
+        "amenity/music_school": {
+            "icon": "school",
+            "fields": [
+                "name",
+                "operator",
+                "address"
+            ],
+            "geometry": [
+                "point",
+                "area"
+            ],
+            "terms": [
+                "school of music"
+            ],
+            "tags": {
+                "amenity": "music_school"
+            },
+            "name": "Music School"
+        },
         "amenity/nightclub": {
             "icon": "bar",
             "fields": [
@@ -2902,6 +2921,14 @@
         },
         "amenity/telephone": {
             "icon": "telephone",
+            "fields": [
+                "operator",
+                "phone",
+                "fee",
+                "payment_multi",
+                "covered",
+                "indoor"
+            ],
             "geometry": [
                 "point",
                 "vertex"
@@ -4993,6 +5020,24 @@
             },
             "name": "Caterer"
         },
+        "craft/chimney_sweeper": {
+            "icon": "poi-chimney",
+            "fields": [
+                "name",
+                "operator",
+                "address",
+                "building_area",
+                "opening_hours"
+            ],
+            "geometry": [
+                "point",
+                "area"
+            ],
+            "tags": {
+                "craft": "chimney_sweeper"
+            },
+            "name": "Chimney Sweeper"
+        },
         "craft/clockmaker": {
             "icon": "poi-clock",
             "fields": [
@@ -5501,7 +5546,7 @@
             },
             "name": "Scaffolder"
         },
-        "craft/sculpter": {
+        "craft/sculptor": {
             "icon": "art-gallery",
             "fields": [
                 "name",
@@ -5515,9 +5560,9 @@
                 "area"
             ],
             "tags": {
-                "craft": "sculpter"
+                "craft": "sculptor"
             },
-            "name": "Sculpter"
+            "name": "Sculptor"
         },
         "craft/shoemaker": {
             "icon": "poi-tool",
@@ -5560,24 +5605,6 @@
                 "craft": "stonemason"
             },
             "name": "Stonemason"
-        },
-        "craft/sweep": {
-            "icon": "poi-chimney",
-            "fields": [
-                "name",
-                "operator",
-                "address",
-                "building_area",
-                "opening_hours"
-            ],
-            "geometry": [
-                "point",
-                "area"
-            ],
-            "tags": {
-                "craft": "sweep"
-            },
-            "name": "Chimney Sweep"
         },
         "craft/tiler": {
             "icon": "poi-tool",
@@ -11799,6 +11826,7 @@
             "icon": "commercial",
             "fields": [
                 "name",
+                "government",
                 "address",
                 "building_area",
                 "opening_hours"
@@ -13138,6 +13166,28 @@
             ],
             "name": "Railway Crossing (Road)"
         },
+        "railway/light_rail": {
+            "icon": "railway-light-rail",
+            "geometry": [
+                "line"
+            ],
+            "tags": {
+                "railway": "light_rail"
+            },
+            "fields": [
+                "name",
+                "structure",
+                "gauge",
+                "electrified",
+                "service_rail"
+            ],
+            "terms": [
+                "light rail",
+                "streetcar",
+                "trolley"
+            ],
+            "name": "Light Rail"
+        },
         "railway/milestone": {
             "icon": "poi-milestone",
             "geometry": [
@@ -13155,6 +13205,28 @@
                 "marker"
             ],
             "name": "Railway Milestone"
+        },
+        "railway/miniature": {
+            "icon": "railway-rail",
+            "geometry": [
+                "line"
+            ],
+            "tags": {
+                "railway": "miniature"
+            },
+            "fields": [
+                "name",
+                "structure",
+                "gauge",
+                "electrified",
+                "service_rail"
+            ],
+            "terms": [
+                "rideable miniature railway",
+                "narrow gauge railway",
+                "minimum gauge railway"
+            ],
+            "name": "Miniature Railway"
         },
         "railway/monorail": {
             "icon": "railway-monorail",
@@ -13499,6 +13571,33 @@
             },
             "name": "Vacant Shop",
             "searchable": false
+        },
+        "shop/agrarian": {
+            "icon": "shop",
+            "fields": [
+                "name",
+                "operator",
+                "agrarian",
+                "address",
+                "building_area",
+                "opening_hours"
+            ],
+            "geometry": [
+                "point",
+                "area"
+            ],
+            "terms": [
+                "agricultural inputs",
+                "agricultural machines",
+                "seeds",
+                "pesticides",
+                "fertilizer",
+                "agricultural tools"
+            ],
+            "tags": {
+                "shop": "agrarian"
+            },
+            "name": "Agriculture Shop"
         },
         "shop/alcohol": {
             "icon": "alcohol-shop",
@@ -14877,7 +14976,7 @@
             "tags": {
                 "shop": "kiosk"
             },
-            "name": "News Kiosk"
+            "name": "Kiosk"
         },
         "shop/kitchen": {
             "icon": "shop",
@@ -16984,6 +17083,23 @@
             },
             "name": "Riding Route"
         },
+        "type/route/light_rail": {
+            "icon": "route-tram",
+            "fields": [
+                "name",
+                "ref_route",
+                "operator",
+                "network"
+            ],
+            "geometry": [
+                "relation"
+            ],
+            "tags": {
+                "type": "route",
+                "route": "light_rail"
+            },
+            "name": "Light Rail Route"
+        },
         "type/route/pipeline": {
             "icon": "route-pipeline",
             "fields": [
@@ -16999,6 +17115,23 @@
                 "route": "pipeline"
             },
             "name": "Pipeline Route"
+        },
+        "type/route/piste": {
+            "icon": "route-piste",
+            "fields": [
+                "name",
+                "ref_route",
+                "operator",
+                "network"
+            ],
+            "geometry": [
+                "relation"
+            ],
+            "tags": {
+                "type": "route",
+                "route": "piste"
+            },
+            "name": "Piste/Ski Route"
         },
         "type/route/power": {
             "icon": "route-power",
@@ -17031,6 +17164,23 @@
                 "route": "road"
             },
             "name": "Road Route"
+        },
+        "type/route/subway": {
+            "icon": "route-subway",
+            "fields": [
+                "name",
+                "ref_route",
+                "operator",
+                "network"
+            ],
+            "geometry": [
+                "relation"
+            ],
+            "tags": {
+                "type": "route",
+                "route": "subway"
+            },
+            "name": "Subway Route"
         },
         "type/route/train": {
             "icon": "route-train",

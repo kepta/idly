@@ -165,6 +165,9 @@ en:
       aeroway:
         # aeroway=*
         label: Type
+      agrarian:
+        # agrarian=*
+        label: Products
       amenity:
         # amenity=*
         label: Type
@@ -596,6 +599,9 @@ en:
         label: Source
       generator/type:
         # 'generator:type=*'
+        label: Type
+      government:
+        # government=*
         label: Type
       grape_variety:
         # grape_variety=*
@@ -1079,7 +1085,7 @@ en:
         # max_age=*
         label: Maximum Age
       playground/min_age:
-        # max_age=*
+        # min_age=*
         label: Minimum Age
       population:
         # population=*
@@ -1971,6 +1977,11 @@ en:
         # amenity=motorcycle_parking
         name: Motorcycle Parking
         terms: '<translate with synonyms or related terms for ''Motorcycle Parking'', separated by commas>'
+      amenity/music_school:
+        # amenity=music_school
+        name: Music School
+        # 'terms: school of music'
+        terms: '<translate with synonyms or related terms for ''Music School'', separated by commas>'
       amenity/nightclub:
         # amenity=nightclub
         name: Nightclub
@@ -2632,6 +2643,10 @@ en:
         # craft=caterer
         name: Caterer
         terms: '<translate with synonyms or related terms for ''Caterer'', separated by commas>'
+      craft/chimney_sweeper:
+        # craft=chimney_sweeper
+        name: Chimney Sweeper
+        terms: '<translate with synonyms or related terms for ''Chimney Sweeper'', separated by commas>'
       craft/clockmaker:
         # craft=clockmaker
         name: Clockmaker
@@ -2752,10 +2767,10 @@ en:
         # craft=scaffolder
         name: Scaffolder
         terms: '<translate with synonyms or related terms for ''Scaffolder'', separated by commas>'
-      craft/sculpter:
-        # craft=sculpter
-        name: Sculpter
-        terms: '<translate with synonyms or related terms for ''Sculpter'', separated by commas>'
+      craft/sculptor:
+        # craft=sculptor
+        name: Sculptor
+        terms: '<translate with synonyms or related terms for ''Sculptor'', separated by commas>'
       craft/shoemaker:
         # craft=shoemaker
         name: Shoemaker
@@ -2766,10 +2781,6 @@ en:
         name: Stonemason
         # 'terms: masonry'
         terms: '<translate with synonyms or related terms for ''Stonemason'', separated by commas>'
-      craft/sweep:
-        # craft=sweep
-        name: Chimney Sweep
-        terms: '<translate with synonyms or related terms for ''Chimney Sweep'', separated by commas>'
       craft/tailor:
         # craft=tailor
         name: Tailor
@@ -4432,11 +4443,21 @@ en:
         name: Railway Crossing (Road)
         # 'terms: crossing,railroad crossing,level crossing,grade crossing,road through railroad,train crossing'
         terms: '<translate with synonyms or related terms for ''Railway Crossing (Road)'', separated by commas>'
+      railway/light_rail:
+        # railway=light_rail
+        name: Light Rail
+        # 'terms: light rail,streetcar,trolley'
+        terms: '<translate with synonyms or related terms for ''Light Rail'', separated by commas>'
       railway/milestone:
         # railway=milestone
         name: Railway Milestone
         # 'terms: milestone,marker'
         terms: '<translate with synonyms or related terms for ''Railway Milestone'', separated by commas>'
+      railway/miniature:
+        # railway=miniature
+        name: Miniature Railway
+        # 'terms: rideable miniature railway,narrow gauge railway,minimum gauge railway'
+        terms: '<translate with synonyms or related terms for ''Miniature Railway'', separated by commas>'
       railway/monorail:
         # railway=monorail
         name: Monorail
@@ -4508,6 +4529,11 @@ en:
         # shop=*
         name: Shop
         terms: '<translate with synonyms or related terms for ''Shop'', separated by commas>'
+      shop/agrarian:
+        # shop=agrarian
+        name: Agriculture Shop
+        # 'terms: agricultural inputs,agricultural machines,seeds,pesticides,fertilizer,agricultural tools'
+        terms: '<translate with synonyms or related terms for ''Agriculture Shop'', separated by commas>'
       shop/alcohol:
         # shop=alcohol
         name: Liquor Store
@@ -4810,8 +4836,8 @@ en:
         terms: '<translate with synonyms or related terms for ''Jeweler'', separated by commas>'
       shop/kiosk:
         # shop=kiosk
-        name: News Kiosk
-        terms: '<translate with synonyms or related terms for ''News Kiosk'', separated by commas>'
+        name: Kiosk
+        terms: '<translate with synonyms or related terms for ''Kiosk'', separated by commas>'
       shop/kitchen:
         # shop=kitchen
         name: Kitchen Design Store
@@ -5286,10 +5312,18 @@ en:
         # 'type=route, route=horse'
         name: Riding Route
         terms: '<translate with synonyms or related terms for ''Riding Route'', separated by commas>'
+      type/route/light_rail:
+        # 'type=route, route=light_rail'
+        name: Light Rail Route
+        terms: '<translate with synonyms or related terms for ''Light Rail Route'', separated by commas>'
       type/route/pipeline:
         # 'type=route, route=pipeline'
         name: Pipeline Route
         terms: '<translate with synonyms or related terms for ''Pipeline Route'', separated by commas>'
+      type/route/piste:
+        # 'type=route, route=piste'
+        name: Piste/Ski Route
+        terms: '<translate with synonyms or related terms for ''Piste/Ski Route'', separated by commas>'
       type/route/power:
         # 'type=route, route=power'
         name: Power Route
@@ -5298,6 +5332,10 @@ en:
         # 'type=route, route=road'
         name: Road Route
         terms: '<translate with synonyms or related terms for ''Road Route'', separated by commas>'
+      type/route/subway:
+        # 'type=route, route=subway'
+        name: Subway Route
+        terms: '<translate with synonyms or related terms for ''Subway Route'', separated by commas>'
       type/route/train:
         # 'type=route, route=train'
         name: Train Route

@@ -369,6 +369,10 @@
         },
         {
             "key": "amenity",
+            "value": "music_school"
+        },
+        {
+            "key": "amenity",
             "value": "nightclub"
         },
         {
@@ -956,6 +960,10 @@
         },
         {
             "key": "craft",
+            "value": "chimney_sweeper"
+        },
+        {
+            "key": "craft",
             "value": "clockmaker"
         },
         {
@@ -1056,7 +1064,7 @@
         },
         {
             "key": "craft",
-            "value": "sculpter"
+            "value": "sculptor"
         },
         {
             "key": "craft",
@@ -1065,10 +1073,6 @@
         {
             "key": "craft",
             "value": "stonemason"
-        },
-        {
-            "key": "craft",
-            "value": "sweep"
         },
         {
             "key": "craft",
@@ -2518,7 +2522,15 @@
         },
         {
             "key": "railway",
+            "value": "light_rail"
+        },
+        {
+            "key": "railway",
             "value": "milestone"
+        },
+        {
+            "key": "railway",
+            "value": "miniature"
         },
         {
             "key": "railway",
@@ -2586,6 +2598,10 @@
         {
             "key": "shop",
             "value": "vacant"
+        },
+        {
+            "key": "shop",
+            "value": "agrarian"
         },
         {
             "key": "shop",
@@ -3283,7 +3299,15 @@
         },
         {
             "key": "route",
+            "value": "light_rail"
+        },
+        {
+            "key": "route",
             "value": "pipeline"
+        },
+        {
+            "key": "route",
+            "value": "piste"
         },
         {
             "key": "route",
@@ -3292,6 +3316,10 @@
         {
             "key": "route",
             "value": "road"
+        },
+        {
+            "key": "route",
+            "value": "subway"
         },
         {
             "key": "route",
