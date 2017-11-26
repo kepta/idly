@@ -1,15 +1,10 @@
 import { fromJS } from 'immutable';
 
-import { areaPaintStyle } from 'map/layers/area';
-import { PLUGIN_NAME } from 'map/style';
-import { LayerSpec } from 'map/utils/layerFactory';
-import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
+import { areaPaintStyle } from '../../layers/area';
+import { PLUGIN_NAME } from '../../constants';
+import { addSource } from '../../helper/addSource';
 
-const displayName = (sourceName: string) => sourceName + 'areaBlueLayer';
-
-const areaColor = '#77d3de';
-
-const filter = fromJS([
+const filter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
@@ -23,46 +18,46 @@ const filter = fromJS([
     'tag-landuse-harbour',
     'tag-landuse-reservoir'
   ]
-]);
+];
+
+const blueLayer = {
+  id: 'areaBlueLayer',
+  type: 'line',
+  source: undefined,
+  layout: {
+    'line-join': 'round',
+    'line-cap': 'round'
+  },
+  paint: {
+    'line-color': '#77d3de',
+    'line-width': 2,
+    'line-opacity': 1
+  },
+  filter
+};
+
+const blueLayerCasing = {
+  id: 'areaBlueLayerCasing',
+  type: 'line',
+  source: undefined,
+  layout: {
+    'line-join': 'round',
+    'line-cap': 'round'
+  },
+  paint: { ...areaPaintStyle, 'line-color': '#77d3de' },
+  filter
+};
 
 export const areaBlueLayer = (sourceName: string) =>
-  simpleLayerHOC({
-    displayName: displayName(sourceName),
+  fromJS({
     selectable: false,
-    layer: LayerSpec({
-      priority: 1,
-      id: displayName(sourceName),
-      type: 'line',
-      source: sourceName,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: {
-        'line-color': areaColor,
-        'line-width': 2,
-        'line-opacity': 1
-      },
-      filter
-    })
+    priority: 1,
+    layer: addSource(blueLayer, sourceName)
   });
 
-const displayNameC = (sourceName: string) => sourceName + 'areaBlueLayerCasing';
-
 export const areaBlueLayerCasing = (sourceName: string) =>
-  simpleLayerHOC({
-    displayName: displayNameC(sourceName),
+  fromJS({
     selectable: false,
-    layer: LayerSpec({
-      priority: 1,
-      id: displayNameC(sourceName),
-      type: 'line',
-      source: sourceName,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: { ...areaPaintStyle, 'line-color': areaColor },
-      filter
-    })
+    priority: 1,
+    layer: addSource(blueLayerCasing, sourceName)
   });

@@ -1,9 +1,8 @@
 import { fromJS } from 'immutable';
 
-import { areaPaintStyle } from 'map/layers/area';
-import { PLUGIN_NAME } from 'map/style';
-import { LayerSpec } from 'map/utils/layerFactory';
-import { simpleLayerHOC } from 'map/utils/simpleLayer.hoc';
+import { areaPaintStyle } from '../layers/layers/area';
+import { PLUGIN_NAME } from '../layers/style';
+import { fromJS } from '../layers/utils/layerFactory';
 
 const displayName = (sourceName: string) => sourceName + 'areaLightGreenLayer';
 
@@ -23,45 +22,43 @@ const filter = fromJS([
   ]
 ]);
 
-export const areaLightGreenLayer = (sourceName: string) =>
-  simpleLayerHOC({
-    displayName: displayName(sourceName),
-    selectable: false,
-    layer: LayerSpec({
-      priority: 1,
-      id: displayName(sourceName),
-      type: 'line',
-      source: sourceName,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: {
-        'line-color': areaColor,
-        'line-width': 2,
-        'line-opacity': 1
-      },
-      filter
-    })
-  });
+export const areaLightGreenLayer = (sourceName: string) => ({
+  displayName: displayName(sourceName),
+  selectable: false,
+  layer: fromJS({
+    priority: 1,
+    id: displayName(sourceName),
+    type: 'line',
+    source: sourceName,
+    layout: {
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+    paint: {
+      'line-color': areaColor,
+      'line-width': 2,
+      'line-opacity': 1
+    },
+    filter
+  })
+});
 
 const displayNameC = (sourceName: string) =>
   sourceName + 'areaLightGreenLayerCasing';
 
-export const areaLightGreenLayerCasing = (sourceName: string) =>
-  simpleLayerHOC({
-    displayName: displayNameC(sourceName),
-    selectable: false,
-    layer: LayerSpec({
-      priority: 1,
-      id: displayNameC(sourceName),
-      type: 'line',
-      source: sourceName,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      paint: { ...areaPaintStyle, 'line-color': areaColor },
-      filter
-    })
-  });
+export const areaLightGreenLayerCasing = (sourceName: string) => ({
+  displayName: displayNameC(sourceName),
+  selectable: false,
+  layer: fromJS({
+    priority: 1,
+    id: displayNameC(sourceName),
+    type: 'line',
+    source: sourceName,
+    layout: {
+      'line-join': 'round',
+      'line-cap': 'round'
+    },
+    paint: { ...areaPaintStyle, 'line-color': areaColor },
+    filter
+  })
+});

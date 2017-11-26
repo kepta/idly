@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "immutable": "^3.8.2",
     "mapbox-gl": "^0.42.2"
   }
 }
