@@ -14,7 +14,7 @@ import {
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { featureTableGen } from 'idly-common/lib/osm/featureTableGen';
 
-import { Tree } from 'idly-graph/lib/graph/Tree';
+import { Shrub } from 'idly-graph/lib/graph/Shrub';
 
 export function* watchSelect(): SagaIterator {
   yield all([
@@ -26,6 +26,6 @@ export function* selectSaga({
   type,
   entityIds
 }: SelectEntitiesAction): IterableIterator<Effect> {
-  const tree: Tree = yield call(workerGetEntities, { entityIds });
-  yield put(selectCommitAction(tree));
+  const shrub: Shrub = yield call(workerGetEntities, { entityIds });
+  yield put(selectCommitAction(shrub));
 }

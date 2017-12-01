@@ -1,6 +1,6 @@
 import { getEntities } from 'idly-graph/lib/operations/getEntities';
 import { getFeaturesOfEntityIds } from 'idly-graph/lib/operations/getFeaturesOfEntityIds';
-import { getFeaturesOfTree } from 'idly-graph/lib/operations/getFeaturesOfTree';
+import { getFeaturesOfShrub } from 'idly-graph/lib/operations/getFeaturesOfShrub';
 import { getMap } from 'idly-graph/lib/operations/getMap';
 import { setOsmTiles } from 'idly-graph/lib/operations/setOsmTiles';
 
@@ -21,4 +21,4 @@ export const workerGetFeaturesOfEntityIds = getFeaturesOfEntityIds(
   promiseWorker
 );
 
-export const workerGetFeaturesOfTree = getFeaturesOfTree(promiseWorker);
+export const workerGetFeaturesOfShrub = getFeaturesOfShrub(promiseWorker);

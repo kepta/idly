@@ -21,7 +21,6 @@ export function modifyLeaf(
 ) => Tree {
   return (leaf, opt) => {
     const entity = leaf.getEntity();
-    // tslint:disable-next-line:no-expression-statement
     wayCheck(entity, tree, opt);
 
     // remove any previous ancestor of the entity in the view

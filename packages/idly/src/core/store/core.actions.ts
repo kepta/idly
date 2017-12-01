@@ -2,7 +2,7 @@ import { actionBuilderFactory } from 'common/actions';
 
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { EntityId } from 'idly-common/lib/osm/structures';
-import { Tree } from 'idly-graph/lib/graph/Tree';
+import { Shrub } from 'idly-graph/lib/graph/Shrub';
 
 export enum CoreActions {
   SELECT_ENTITIES = 'Core.SELECT_ENTITIES',
@@ -35,20 +35,20 @@ export const selectEntitiesAction = builder<SelectEntitiesAction>(
  */
 export interface SelectCommitAction {
   type: CoreActions.SELECT_COMMIT;
-  tree: Tree;
+  shrub: Shrub;
 }
 export const selectCommitAction = builder<SelectCommitAction>(
   CoreActions.SELECT_COMMIT
-)('tree');
+)('shrub');
 
 /**
  * modifies the current selection
  */
 export interface SelectModifyAction {
   type: CoreActions.SELECT_MODIFY;
-  tree: Tree;
+  shrub: Shrub;
 }
 
 export const selectModifyAction = builder<SelectModifyAction>(
   CoreActions.SELECT_MODIFY
-)('tree');
+)('shrub');

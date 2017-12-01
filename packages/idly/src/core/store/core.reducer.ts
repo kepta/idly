@@ -1,14 +1,15 @@
-import { ImMap } from 'idly-common/lib/misc/immutable';
+import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { FeatureTable } from 'idly-common/lib/osm/feature';
-import { Tree } from 'idly-graph/lib/graph/Tree';
+import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Map as ImMap } from 'immutable';
 import { CoreActions, CoreActionType } from './core.actions';
 
 export type CoreState = Readonly<{
-  readonly selectedTree: Tree;
+  readonly selectedShrub: Shrub;
 }>;
 
 const coreState: CoreState = {
-  selectedTree: Tree.fromEntities([])
+  selectedShrub: Shrub.create([], entityTableGen())
 };
 
 export function coreReducer(
@@ -17,8 +18,8 @@ export function coreReducer(
 ): CoreState {
   switch (action.type) {
     case CoreActions.SELECT_COMMIT: {
-      const { tree } = action;
-      return { selectedTree: state.selectedTree.merge(tree) };
+      const { shrub } = action;
+      return { selectedShrub: shrub };
     }
     default: {
       return state;

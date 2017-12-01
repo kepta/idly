@@ -1,14 +1,7 @@
-import { fromJS } from 'immutable';
+import { areaPaintStyle } from './helper';
+import { PLUGIN_NAME } from '../../constants';
 
-import { areaPaintStyle } from '../layers/layers/area';
-import { PLUGIN_NAME } from '../layers/style';
-import { fromJS } from '../layers/utils/layerFactory';
-
-const displayName = (sourceName: string) => sourceName + 'areaGoldLayer';
-
-const areaColor = '#c4bd19';
-
-const filter = fromJS([
+const filter = [
   'all',
   ['==', '$type', 'Polygon'],
   /**
@@ -21,44 +14,41 @@ const filter = fromJS([
     'tag-landuse-residential',
     'tag-landuse-construction'
   ]
-]);
+];
 
-export const areaGoldLayer = (sourceName: string) => ({
-  displayName: displayName(sourceName),
-  selectable: false,
-  layer: fromJS({
+export default [
+  {
+    selectable: false,
     priority: 1,
-    id: displayName(sourceName),
-    type: 'line',
-    source: sourceName,
-    layout: {
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    paint: {
-      'line-color': areaColor,
-      'line-width': 2,
-      'line-opacity': 1
-    },
-    filter
-  })
-});
-
-const displayNameC = (sourceName: string) => sourceName + 'areaGoldLayerCasing';
-
-export const areaGoldLayerCasing = (sourceName: string) => ({
-  displayName: displayNameC(sourceName),
-  selectable: false,
-  layer: fromJS({
+    layer: {
+      id: 'areaGoldLayer',
+      type: 'line',
+      source: undefined,
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': '#c4bd19',
+        'line-width': 2,
+        'line-opacity': 1
+      },
+      filter
+    }
+  },
+  {
+    selectable: false,
     priority: 1,
-    id: displayNameC(sourceName),
-    type: 'line',
-    source: sourceName,
-    layout: {
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    paint: { ...areaPaintStyle, 'line-color': areaColor },
-    filter
-  })
-});
+    layer: {
+      id: 'areaGoldLayerCasing',
+      type: 'line',
+      source: undefined,
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: { ...areaPaintStyle, 'line-color': '#c4bd19' },
+      filter
+    }
+  }
+];

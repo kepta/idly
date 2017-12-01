@@ -1,0 +1,8 @@
+module.exports = { contents: "\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.default = [\n    {\n        selectable: true,\n        priority: 1,\n        layer: {\n            id: 'LineLayer',\n            source: undefined,\n            type: 'line',\n            layout: {\n                'line-join': 'round',\n                'line-cap': 'round'\n            },\n            paint: {\n                'line-color': '#eee',\n                'line-width': 2\n            },\n            filter: ['all', ['==', '$type', 'LineString']]\n        }\n    }\n];\n//# sourceMappingURL=line.js.map",
+dependencies: [],
+sourceMap: "{\"version\":3,\"file\":\"layers/line.js\",\"sourceRoot\":\"\",\"sources\":[\"/src/layers/line.ts\"],\"names\":[],\"mappings\":\";;AAAA,kBAAe;IACb;QACE,UAAU,EAAE,IAAI;QAChB,QAAQ,EAAE,CAAC;QACX,KAAK,EAAE;YACL,EAAE,EAAE,WAAW;YACf,MAAM,EAAE,SAAS;YACjB,IAAI,EAAE,MAAM;YACZ,MAAM,EAAE;gBACN,WAAW,EAAE,OAAO;gBACpB,UAAU,EAAE,OAAO;aACpB;YACD,KAAK,EAAE;gBACL,YAAY,EAAE,MAAM;gBACpB,YAAY,EAAE,CAAC;aAChB;YACD,MAAM,EAAE,CAAC,KAAK,EAAE,CAAC,IAAI,EAAE,OAAO,EAAE,YAAY,CAAC,CAAC;SAC/C;KACF;CACF,CAAC\",\"sourcesContent\":[\"export default [\\n  {\\n    selectable: true,\\n    priority: 1,\\n    layer: {\\n      id: 'LineLayer',\\n      source: undefined,\\n      type: 'line',\\n      layout: {\\n        'line-join': 'round',\\n        'line-cap': 'round'\\n      },\\n      paint: {\\n        'line-color': '#eee',\\n        'line-width': 2\\n      },\\n      filter: ['all', ['==', '$type', 'LineString']]\\n    }\\n  }\\n];\\n\"]}",
+headerContent: undefined,
+mtime: 1512125008000,
+devLibsRequired : undefined,
+_ : {}
+}

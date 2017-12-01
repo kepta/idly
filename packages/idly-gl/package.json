@@ -11,5 +11,10 @@
   "dependencies": {
     "immutable": "^3.8.2",
     "mapbox-gl": "^0.42.2"
+  },
+  "devDependencies": {
+    "@types/mapbox-gl": "^0.41.0",
+    "fuse-box": "^2.5.0-beta.1",
+    "typescript": "^2.6.2"
   }
 }

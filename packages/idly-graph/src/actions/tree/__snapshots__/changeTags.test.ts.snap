@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`changes the tag changes the tags 1`] = `
+Tree {
+  "branch": Immutable.Set [
+    Leaf {
+      "ancestor": Leaf {
+        "ancestor": undefined,
+        "entity": Object {
+          "attributes": Object {
+            "changeset": undefined,
+            "timestamp": undefined,
+            "uid": undefined,
+            "user": undefined,
+            "version": undefined,
+            "visible": undefined,
+          },
+          "id": "n-a",
+          "loc": Object {
+            "lat": 0,
+            "lon": 0,
+          },
+          "tags": Object {
+            "k": "n-a1",
+          },
+          "type": "node",
+        },
+      },
+      "entity": Object {
+        "attributes": Object {
+          "changeset": undefined,
+          "timestamp": undefined,
+          "uid": undefined,
+          "user": undefined,
+          "version": undefined,
+          "visible": undefined,
+        },
+        "id": "n-a",
+        "loc": Object {
+          "lat": 0,
+          "lon": 0,
+        },
+        "tags": Object {
+          "k": "1",
+        },
+        "type": "node",
+      },
+    },
+  ],
+  "parent": Tree {
+    "branch": Immutable.Set [
+      Leaf {
+        "ancestor": undefined,
+        "entity": Object {
+          "attributes": Object {
+            "changeset": undefined,
+            "timestamp": undefined,
+            "uid": undefined,
+            "user": undefined,
+            "version": undefined,
+            "visible": undefined,
+          },
+          "id": "n-a",
+          "loc": Object {
+            "lat": 0,
+            "lon": 0,
+          },
+          "tags": Object {
+            "k": "n-a1",
+          },
+          "type": "node",
+        },
+      },
+    ],
+    "parent": undefined,
+  },
+}
+`;
+
+exports[`changes the tag changes the tags 2`] = `
+Tree {
+  "branch": Immutable.Set [
+    Leaf {
+      "ancestor": Leaf {
+        "ancestor": undefined,
+        "entity": Object {
+          "attributes": Object {
+            "changeset": undefined,
+            "timestamp": undefined,
+            "uid": undefined,
+            "user": undefined,
+            "version": undefined,
+            "visible": undefined,
+          },
+          "id": "n-a",
+          "loc": Object {
+            "lat": 0,
+            "lon": 0,
+          },
+          "tags": Object {
+            "k": "n-a1",
+          },
+          "type": "node",
+        },
+      },
+      "entity": Object {
+        "attributes": Object {
+          "changeset": undefined,
+          "timestamp": undefined,
+          "uid": undefined,
+          "user": undefined,
+          "version": undefined,
+          "visible": undefined,
+        },
+        "id": "n-a",
+        "loc": Object {
+          "lat": 0,
+          "lon": 0,
+        },
+        "tags": Object {
+          "k": "1",
+        },
+        "type": "node",
+      },
+    },
+    Leaf {
+      "ancestor": Leaf {
+        "ancestor": undefined,
+        "entity": Object {
+          "attributes": Object {
+            "changeset": undefined,
+            "timestamp": undefined,
+            "uid": undefined,
+            "user": undefined,
+            "version": undefined,
+            "visible": undefined,
+          },
+          "id": "n-a",
+          "loc": Object {
+            "lat": 0,
+            "lon": 0,
+          },
+          "tags": Object {
+            "k": "n-a1",
+          },
+          "type": "node",
+        },
+      },
+      "entity": Object {
+        "attributes": Object {
+          "changeset": undefined,
+          "timestamp": undefined,
+          "uid": undefined,
+          "user": undefined,
+          "version": undefined,
+          "visible": undefined,
+        },
+        "id": "n-a",
+        "loc": Object {
+          "lat": 0,
+          "lon": 0,
+        },
+        "tags": Object {
+          "j": "f",
+          "k": "1",
+        },
+        "type": "node",
+      },
+    },
+  ],
+  "parent": Tree {
+    "branch": Immutable.Set [
+      Leaf {
+        "ancestor": Leaf {
+          "ancestor": undefined,
+          "entity": Object {
+            "attributes": Object {
+              "changeset": undefined,
+              "timestamp": undefined,
+              "uid": undefined,
+              "user": undefined,
+              "version": undefined,
+              "visible": undefined,
+            },
+            "id": "n-a",
+            "loc": Object {
+              "lat": 0,
+              "lon": 0,
+            },
+            "tags": Object {
+              "k": "n-a1",
+            },
+            "type": "node",
+          },
+        },
+        "entity": Object {
+          "attributes": Object {
+            "changeset": undefined,
+            "timestamp": undefined,
+            "uid": undefined,
+            "user": undefined,
+            "version": undefined,
+            "visible": undefined,
+          },
+          "id": "n-a",
+          "loc": Object {
+            "lat": 0,
+            "lon": 0,
+          },
+          "tags": Object {
+            "k": "1",
+          },
+          "type": "node",
+        },
+      },
+    ],
+    "parent": Tree {
+      "branch": Immutable.Set [
+        Leaf {
+          "ancestor": undefined,
+          "entity": Object {
+            "attributes": Object {
+              "changeset": undefined,
+              "timestamp": undefined,
+              "uid": undefined,
+              "user": undefined,
+              "version": undefined,
+              "visible": undefined,
+            },
+            "id": "n-a",
+            "loc": Object {
+              "lat": 0,
+              "lon": 0,
+            },
+            "tags": Object {
+              "k": "n-a1",
+            },
+            "type": "node",
+          },
+        },
+      ],
+      "parent": undefined,
+    },
+  },
+}
+`;

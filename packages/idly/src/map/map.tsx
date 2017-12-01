@@ -25,7 +25,7 @@ import { dirtyPopup } from 'map/utils/map.popup';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as R from 'ramda';
 
-import { Tree } from 'idly-graph/lib/graph/Tree';
+import { Shrub } from 'idly-graph/lib/graph/Shrub';
 import sizeMe from 'react-sizeme';
 export type DirtyMapAccessType = (map: any) => void;
 /**
@@ -41,7 +41,7 @@ export type DirtyMapAccessType = (map: any) => void;
 interface IPropsType {
   entities: $Set<any>;
   modifiedEntities: $Set<any>;
-  selectedTree: Tree;
+  selectedShrub: Shrub;
   size: any;
 }
 
@@ -82,7 +82,7 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
       const data = await workerFetchMap({
         bbox,
         zoom,
-        hiddenIds: this.props.selectedTree.getKnownIds()
+        hiddenIds: this.props.selectedShrub.toObject().knownIds
       });
       this.onWorkerDone(data);
     }
@@ -179,12 +179,12 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
     }
     if (
       this.currentBbox &&
-      nextProps.selectedTree !== this.props.selectedTree
+      nextProps.selectedShrub !== this.props.selectedShrub
     ) {
       const data = await workerFetchMap({
         bbox: this.currentBbox,
         zoom: this.currentZoom,
-        hiddenIds: nextProps.selectedTree.getKnownIds()
+        hiddenIds: nextProps.selectedShrub.toObject().knownIds
       });
       this.onWorkerDone(data);
     }
@@ -224,5 +224,5 @@ class MapComp extends React.PureComponent<IPropsType, {}> {
 export const Map = connect<any, any, any>((state: IRootStateType, props) => ({
   entities: $Set(),
   modifiedEntities: $Set(),
-  selectedTree: state.core.selectedTree
+  selectedShrub: state.core.selectedShrub
 }))(sizeMe({ monitorHeight: true, monitorWidth: true })(MapComp));

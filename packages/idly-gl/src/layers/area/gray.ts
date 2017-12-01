@@ -1,14 +1,7 @@
-import { fromJS } from 'immutable';
+import { areaPaintStyle } from './helper';
+import { PLUGIN_NAME } from '../../constants';
 
-import { areaPaintStyle } from '../layers/layers/area';
-import { PLUGIN_NAME } from '../layers/style';
-import { fromJS } from '../layers/utils/layerFactory';
-
-const displayName = (sourceName: string) => sourceName + 'areaGrayLayer';
-
-const areaColor = '#bbb';
-
-const filter = fromJS([
+const filter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
@@ -24,44 +17,41 @@ const filter = fromJS([
     'tag-natural-cave_entrance',
     'tag-natural-glacier'
   ]
-]);
+];
 
-export const areaGrayLayer = (sourceName: string) => ({
-  displayName: displayName(sourceName),
-  selectable: false,
-  layer: fromJS({
+export default [
+  {
+    selectable: false,
     priority: 1,
-    id: displayName(sourceName),
-    type: 'line',
-    source: sourceName,
-    layout: {
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    paint: {
-      'line-color': areaColor,
-      'line-width': 2,
-      'line-opacity': 1
-    },
-    filter
-  })
-});
-
-const displayNameC = (sourceName: string) => sourceName + 'areaGrayLayerCasing';
-
-export const areaGrayLayerCasing = (sourceName: string) => ({
-  displayName: displayNameC(sourceName),
-  selectable: false,
-  layer: fromJS({
-    priority: 1,
-    id: displayNameC(sourceName),
-    type: 'line',
-    source: sourceName,
-    layout: {
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    paint: { ...areaPaintStyle, 'line-color': areaColor },
-    filter
-  })
-});
+    layer: {
+      id: 'areaGrayLayer',
+      type: 'line',
+      source: undefined,
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': '#bbb',
+        'line-width': 2,
+        'line-opacity': 1
+      },
+      filter
+    }
+  },
+  {
+    selectable: false,
+    layer: {
+      priority: 1,
+      id: 'areaGrayLayerCasing',
+      type: 'line',
+      source: undefined,
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      paint: { ...areaPaintStyle, 'line-color': '#bbb' },
+      filter
+    }
+  }
+];

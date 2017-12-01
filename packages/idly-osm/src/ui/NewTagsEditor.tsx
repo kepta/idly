@@ -1,8 +1,7 @@
+import { Shrub } from 'idly-graph/lib/graph/Shrub';
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { FeatureTable } from 'idly-common/lib/osm/feature';
-import { modifyEntity } from 'idly-common/lib/osm/modifyEntity';
 import { Entity, Tags } from 'idly-common/lib/osm/structures';
-import { Tree } from 'idly-graph/lib/graph/Tree';
 
 import { debounce } from 'lodash';
 import * as React from 'react';
@@ -14,40 +13,40 @@ export interface PropsType {
   selectCommitAction: (r: any) => any;
 }
 export interface StateType {
-  tags: [string, string][];
+  tags: Tags;
 }
 
 export type SelectState = Readonly<{
-  readonly selectedTree: Tree;
+  readonly selectedShrub: Shrub;
   readonly featureTable: FeatureTable<any, any>;
 }>;
-function getTags(tree: Tree): Tags {
-  if (!tree) return {};
-  const ids = tree.getKnownIds();
+function getTags(shrub: Shrub): Tags {
+  if (!shrub) return {};
+  const ids = shrub.toObject().knownIds;
   if (ids.length === 0) {
     return {};
   }
-  const entity = tree.entity(ids[0]);
-  if (!entity) return {};
-  return entity.tags;
+  const leaf = shrub.getLeaf(ids[0]);
+  if (!leaf) return {};
+  return leaf.getEntity().tags;
 }
-function getEntity(tree: Tree): Entity {
-  if (!tree) return;
-  const ids = tree.getKnownIds();
-  if (ids.length === 0) {
+
+function getEntity(shrub: Shrub): Entity | undefined {
+  if (!shrub) return;
+  const leaf = shrub.getLeaves()[0];
+  if (!leaf) {
     return;
   }
-  const entity: Entity | undefined = tree.entity(ids[0]);
-  if (!entity) return;
+  const entity: Entity | undefined = leaf.getEntity();
   return entity;
 }
 export class NewTagsEditor extends React.PureComponent<PropsType, StateType> {
   state = {
-    tags: getTags(this.props.idlyState.core.selectedTree)
+    tags: getTags(this.props.idlyState.core.selectedShrub)
   };
   componentWillReceiveProps(nextProps: PropsType) {
     this.setState({
-      tags: getTags(nextProps.idlyState.core.selectedTree)
+      tags: getTags(nextProps.idlyState.core.selectedShrub)
     });
   }
   handleChange = (event: any) => {
@@ -56,17 +55,21 @@ export class NewTagsEditor extends React.PureComponent<PropsType, StateType> {
   };
 
   handleSubmit = (event: any) => {
-    const t = tagsFactory(this.state.tags);
-    const en = modifyEntity(getEntity(this.props.idlyState.core.selectedTree), {
-      tags: t
-    });
-    const tree = this.props.idlyState.core.selectedTree;
-
-    this.props.selectCommitAction(
-      tree.replace(en),
-      this.props.idlyState.core.featureTable
-    );
-    event.preventDefault();
+    // const t = tagsFactory(this.state.tags);
+    // const en = modifyEntity(
+    //   getEntity(this.props.idlyState.core.selectedShrub),
+    //   {
+    //     tags: t
+    //   }
+    // );
+    const leaf = this.props.idlyState.core.selectedShrub.getLeaves()[0];
+    if (!leaf) return;
+    // const {} = s
+    // this.props.selectCommitAction(
+    // //  Shrub.create() shrub.replace(en),
+    //   this.props.idlyState.core.featureTable
+    // );
+    // event.preventDefault();
   };
 
   render() {

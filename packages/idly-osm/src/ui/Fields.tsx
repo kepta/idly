@@ -1,6 +1,6 @@
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { Tags } from 'idly-common/lib/osm/structures';
-import { Tree } from 'idly-graph/lib/graph/Tree';
+import { Shrub } from 'idly-graph/lib/graph/shrub';
 import * as React from 'react';
 
 import { PLUGIN_NAME } from '../config/config';
@@ -8,7 +8,7 @@ import { PLUGIN_NAME } from '../config/config';
 import { Generic } from './fields/Generic';
 
 export type SelectState = Readonly<{
-  readonly selectedTree: Tree;
+  readonly selectedShrub: Shrub;
   readonly featureTable: FeatureTable<any, any>;
 }>;
 
@@ -105,12 +105,15 @@ export class Fields extends React.Component<PropsType, {}> {
     });
   }
   render() {
-    if (!this.props.idlyState.core || !this.props.idlyState.core.selectedTree) {
+    if (
+      !this.props.idlyState.core ||
+      !this.props.idlyState.core.selectedShrub
+    ) {
       return null;
     }
-    const selected = this.props.idlyState.core.selectedTree;
+    const selected = this.props.idlyState.core.selectedShrub;
 
-    const selectedIds = selected.getKnownIds();
+    const selectedIds = selected.toObject().knownIds;
 
     // if (selectedIds.length === 1) {
     //   const entity = selected.entity(selectedIds[0]);

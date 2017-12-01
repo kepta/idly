@@ -57,6 +57,7 @@
     "d3": "^4.10.0",
     "diacritics": "^1.3.0",
     "idly-common": "file:../idly-common",
+    "idly-gl": "file:../idly-gl",
     "idly-graph": "file:../idly-graph",
     "idly-osm": "file:../idly-osm",
     "immutable": "3.8.1",

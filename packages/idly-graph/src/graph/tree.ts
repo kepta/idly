@@ -34,7 +34,6 @@ export class Tree {
   public getParent(): Tree | undefined {
     return this.parent;
   }
-
   public getBranch(): ImSet<Leaf> {
     return this.branch;
   }

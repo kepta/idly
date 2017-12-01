@@ -31,6 +31,7 @@ describe('modify simple node', () => {
   const leaf_nc_1 = Leaf.create(createNode({ id: 'n-c', tags: { k: 'n-c1' } }));
 
   const leaf_nd_1 = Leaf.create(createNode({ id: 'n-d', tags: { k: 'n-d1' } }));
+
   const leaf_nd_2 = leaf_nd_1.map(entity => {
     return createNode({
       id: 'n-d',
