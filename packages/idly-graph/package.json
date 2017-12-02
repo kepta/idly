@@ -21,7 +21,8 @@
     "tslint": "^5.8.0",
     "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
-    "typescript": "^2.6.1"
+    "typescript": "^2.6.1",
+    "webpack": "^3.9.1"
   },
   "dependencies": {
     "@turf/area": "^4.7.3",
