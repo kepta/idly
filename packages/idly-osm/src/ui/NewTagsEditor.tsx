@@ -1,4 +1,4 @@
-import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { Entity, Tags } from 'idly-common/lib/osm/structures';
