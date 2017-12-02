@@ -1,4 +1,3 @@
-import { entityFactory } from 'idly-common/lib/osm/entityFactory';
 import {
   Entity,
   EntityTable,

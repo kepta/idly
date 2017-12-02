@@ -1,4 +1,5 @@
-import { Shrub } from '../graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
+
 import { XML3 } from '../misc/fixtures';
 import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../mocks/xmlFetchMock';
