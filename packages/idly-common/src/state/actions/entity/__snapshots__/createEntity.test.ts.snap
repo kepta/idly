@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create simple node simple test 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": undefined,
+    "timestamp": undefined,
+    "uid": undefined,
+    "user": undefined,
+    "version": undefined,
+    "visible": undefined,
+  },
+  "id": "n1",
+  "loc": Object {
+    "lat": 0,
+    "lon": 0,
+  },
+  "tags": Object {},
+  "type": "node",
+}
+`;
+
+exports[`create simple node simple test node with tags 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": undefined,
+    "timestamp": undefined,
+    "uid": undefined,
+    "user": undefined,
+    "version": undefined,
+    "visible": undefined,
+  },
+  "id": "n1",
+  "loc": Object {
+    "lat": 0,
+    "lon": 0,
+  },
+  "tags": Object {
+    "k": "na",
+  },
+  "type": "node",
+}
+`;
+
+exports[`create simple node works with full blown object 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": undefined,
+    "timestamp": undefined,
+    "uid": undefined,
+    "user": undefined,
+    "version": undefined,
+    "visible": undefined,
+  },
+  "id": "n-a",
+  "loc": Object {
+    "lat": 2,
+    "lon": 1,
+  },
+  "tags": Object {
+    "k": "n-a4",
+  },
+  "type": "node",
+}
+`;
