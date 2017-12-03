@@ -6,7 +6,6 @@ import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 import { calculateParentWays } from './calculateParentWays';
 
-// tslint:disable:no-expression-statement
 describe('calculateParentWays ', () => {
   const n1 = nodeFactory({
     id: 'n1',

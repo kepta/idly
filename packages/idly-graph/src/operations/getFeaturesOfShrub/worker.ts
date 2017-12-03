@@ -1,38 +1,17 @@
 import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 import { Shrub } from 'idly-common/lib/state/graph/shrub';
 
-import { getChannelBuilder } from '../misc/channelBuilder';
-import { entityToFeature } from '../thread/entityToFeatures';
+import { getChannelBuilder } from '../../misc/channelBuilder';
+import { entityToFeature } from '../../thread/entityToFeatures';
 import {
   GetActions,
   Operation,
   WorkerOperation,
   WorkerState,
-} from './operationsTypes';
-
-export interface GetFeaturesOfShrub {
-  readonly type: GetActions.getFeaturesOfShrub;
-  readonly request: {
-    readonly shrubString: string;
-  };
-  readonly response: Array<Feature<Point | LineString | Polygon>>;
-}
-
-export function getFeaturesOfShrub(
-  connector: any,
-): Operation<GetFeaturesOfShrub> {
-  const channel = getChannelBuilder<GetFeaturesOfShrub>(connector)(
-    GetActions.getFeaturesOfShrub,
-  );
-  return async request => {
-    const json = await channel(request);
-    const parsedFeatures: GetFeaturesOfShrub['response'] = JSON.parse(json);
-    return parsedFeatures;
-  };
-}
+} from '../operationsTypes';
+import { GetFeaturesOfShrub } from './type';
 
 /** Worker Thread */
-
 export function workerGetFeaturesOfShrub(
   state: WorkerState,
 ): WorkerOperation<GetFeaturesOfShrub> {

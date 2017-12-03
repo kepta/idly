@@ -1,13 +1,15 @@
 import { Shrub } from 'idly-common/lib/state/graph/shrub';
+import { XML3 } from '../../misc/fixtures';
+import {
+  PromiseWorkerStub,
+  stubWorkerLogic,
+} from '../../mocks/PromiseWorkerStub';
+import { xmlFetchMock } from '../../mocks/xmlFetchMock';
+import { getFeaturesOfShrub } from './main';
+import { operations } from '../operations';
+import { setOsmTiles } from '../setOsmTiles/main';
 
-import { XML3 } from '../misc/fixtures';
-import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
-import { xmlFetchMock } from '../mocks/xmlFetchMock';
-import { getEntities } from './getEntities';
-import { getFeaturesOfShrub } from './getFeaturesOfShrub';
-import { operations } from './operations';
-import { setOsmTiles } from './setOsmTiles';
-
+import { getEntities } from '../getEntities/main';
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
 

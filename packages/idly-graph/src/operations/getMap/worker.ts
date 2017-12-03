@@ -4,16 +4,16 @@ import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Entity, EntityId } from 'idly-common/lib/osm/structures';
 
-import { getChannelBuilder } from '../misc/channelBuilder';
-import { filterXyz } from '../misc/filterXYZ';
-import { tileId } from '../misc/tileId';
-import { entityToFeature } from '../thread/entityToFeatures';
+import { getChannelBuilder } from '../../misc/channelBuilder';
+import { filterXyz } from '../../misc/filterXYZ';
+import { tileId } from '../../misc/tileId';
+import { entityToFeature } from '../../thread/entityToFeatures';
 import {
   GetActions,
   Operation,
   WorkerOperation,
   WorkerState,
-} from './operationsTypes';
+} from '../operationsTypes';
 
 export interface GetMap {
   readonly type: GetActions.GetMap;
@@ -25,23 +25,7 @@ export interface GetMap {
   readonly response: GeoJSON.FeatureCollection<any>;
 }
 
-/**
- * this type helps in keeping the parsing worker / main side in
- * sync.
- */
-
-/** Main Thread */
-export function getMap(connector: any): Operation<GetMap> {
-  const channel = getChannelBuilder<GetMap>(connector)(GetActions.GetMap);
-  return async req => {
-    const json = await channel(req);
-    const fc: GetMap['response'] = JSON.parse(json);
-    return fc;
-  };
-}
-
 /** Worker Thread */
-
 export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
   return async ({ bbox, zoom, hiddenIds }) => {
     const xyzs = bboxToTiles(bbox, zoom);

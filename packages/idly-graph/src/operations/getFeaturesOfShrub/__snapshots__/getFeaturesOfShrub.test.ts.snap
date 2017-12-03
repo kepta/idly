@@ -13,7 +13,8 @@ Array [
     "id": "n1",
     "properties": Object {
       "id": "n1",
-      "osm_basic--geometry": "line",
+      "osm_basic--geometry": "point",
+      "osm_basic--icon": "circle",
     },
     "type": "Feature",
   },

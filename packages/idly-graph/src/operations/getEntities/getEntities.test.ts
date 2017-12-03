@@ -1,10 +1,10 @@
-import { XML3 } from '../misc/fixtures';
-import { stubWorkerLogic } from '../mocks/PromiseWorkerStub';
-import { xmlFetchMock } from '../mocks/xmlFetchMock';
+import { XML3 } from '../../misc/fixtures';
+import { stubWorkerLogic } from '../../mocks/PromiseWorkerStub';
+import { xmlFetchMock } from '../../mocks/xmlFetchMock';
 
-import { getEntities } from './getEntities';
-import { operations } from './operations';
-import { setOsmTiles } from './setOsmTiles';
+import { operations } from '../operations';
+import { setOsmTiles } from '../setOsmTiles/main';
+import { getEntities } from './main';
 
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation

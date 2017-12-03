@@ -1,12 +1,15 @@
-import { XML3 } from '../misc/fixtures';
-import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
-import { xmlFetchMock } from '../mocks/xmlFetchMock';
-import { getFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
-import { operations } from './operations';
-import { setOsmTiles } from './setOsmTiles';
+import { XML3 } from '../../misc/fixtures';
+import {
+  PromiseWorkerStub,
+  stubWorkerLogic,
+} from '../../mocks/PromiseWorkerStub';
+import { xmlFetchMock } from '../../mocks/xmlFetchMock';
+import { operations } from '../operations';
+import { setOsmTiles } from '../setOsmTiles/main';
+
+import { getFeaturesOfEntityIds } from './main';
 
 declare var global: any;
-// tslint:disable no-expression-statement no-object-mutation
 
 describe('getFeaturesOfEntityIds', () => {
   global.fetch = xmlFetchMock(XML3);

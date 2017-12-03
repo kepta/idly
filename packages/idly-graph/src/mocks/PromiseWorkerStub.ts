@@ -1,6 +1,6 @@
-import { pluginsStub } from '../../lib/misc/pluginsStub';
 import { operations } from '../operations/operations';
 import { GetActionTypes } from '../operations/operationsTypes';
+import { pluginsStub } from './pluginsStub';
 
 export class PromiseWorkerStub {
   /* tslint:disable */

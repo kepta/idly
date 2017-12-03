@@ -1,10 +1,13 @@
 import { BBox } from '@turf/helpers';
-import { XML3, XML4 } from '../misc/fixtures';
-import { PromiseWorkerStub, stubWorkerLogic } from '../mocks/PromiseWorkerStub';
-import { xmlFetchMock } from '../mocks/xmlFetchMock';
-import { getMap } from './getMap';
-import { operations } from './operations';
-import { setOsmTiles } from './setOsmTiles';
+import { XML3, XML4 } from '../../misc/fixtures';
+import {
+  PromiseWorkerStub,
+  stubWorkerLogic,
+} from '../../mocks/PromiseWorkerStub';
+import { xmlFetchMock } from '../../mocks/xmlFetchMock';
+import { getMap } from './main';
+import { operations } from '../operations';
+import { setOsmTiles } from '../setOsmTiles/main';
 
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation
@@ -13,7 +16,6 @@ describe('fetchMap: custom controller', () => {
   global.fetch = xmlFetchMock(XML3);
   test('small xml test', async () => {
     const promiseWorker = stubWorkerLogic();
-    // TOFIX use a static state
     await setOsmTiles(promiseWorker)({
       bbox: [
         -73.98630242339283,
@@ -61,7 +63,7 @@ describe('fetchMap: custom controller', () => {
     });
     expect(resp.features.map(r => r.id)).toEqual(['n3', 'w1']);
   });
-  test.only('big xml test', async () => {
+  test('big xml test', async () => {
     global.fetch = xmlFetchMock(XML4);
     const promiseWorker = stubWorkerLogic();
 
@@ -85,6 +87,8 @@ describe('fetchMap: custom controller', () => {
       ],
       zoom: 17.54,
     });
-    expect(resp).toMatchSnapshot();
+    // console.log(resp.features.length);
+    expect(resp.features.length).toBe(1441);
+    expect(resp.features.map(f => f.properties)).toMatchSnapshot();
   });
 });

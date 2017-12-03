@@ -4,10 +4,10 @@ import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { pluginsStub } from '../mocks/pluginsStub';
-import { workerGetEntities } from './getEntities';
-import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds';
-import { workerGetFeaturesOfShrub } from './getFeaturesOfShrub';
-import { workerGetMap } from './getMap';
+import { workerGetEntities } from './getEntities/worker';
+import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/worker';
+import { workerGetFeaturesOfShrub } from './getFeaturesOfShrub/worker';
+import { workerGetMap } from './getMap/worker';
 import {
   GetActions,
   GetActionTypes,
@@ -15,7 +15,7 @@ import {
   WorkerSetStateActionsType,
   WorkerState,
 } from './operationsTypes';
-import { workerSetOsmTiles } from './setOsmTiles';
+import { workerSetOsmTiles } from './setOsmTiles/worker';
 
 const DEFAULT_STATE: WorkerState = {
   entityTable: entityTableGen(),
@@ -77,6 +77,7 @@ function setStateController(
 export function operations(
   plugins: Promise<any>,
   prevState?: WorkerState,
+  debug?: boolean,
 ): (message: any) => Promise<any> {
   let state = {
     ...(prevState || DEFAULT_STATE),
@@ -84,6 +85,7 @@ export function operations(
   };
   const setStateActions = Object.keys(WorkerSetStateActions);
   return async message => {
+    if (debug) console.log('worker--', message);
     const newState = await setStateController(state, message);
     if (state !== newState) {
       // tslint:disable-next-line:no-expression-statement
