@@ -1,5 +1,8 @@
+import _clone from 'lodash-es/clone';
+import _keys from 'lodash-es/keys';
+import _omit from 'lodash-es/omit';
+
 import { presetIndex } from './presetIndex';
-import { clone as _clone, keys as _keys, omit as _omit } from 'lodash';
 import { t as stubT } from './t';
 import { getAreaKeys } from '../areaKeys/areaKeys';
 

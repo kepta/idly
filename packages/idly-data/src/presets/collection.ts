@@ -1,11 +1,9 @@
-import {
-  filter as _filter,
-  find as _find,
-  some as _some,
-  uniq as _uniq,
-  values as _values,
-  without as _without
-} from 'lodash';
+import _filter from 'lodash-es/filter';
+import _find from 'lodash-es/find';
+import _some from 'lodash-es/some';
+import _uniq from 'lodash-es/uniq';
+import _values from 'lodash-es/values';
+import _without from 'lodash-es/without';
 
 import { editDistance } from '../helpers/editDistance';
 

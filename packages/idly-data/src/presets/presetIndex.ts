@@ -1,9 +1,7 @@
-import {
-  bind as _bind,
-  forEach as _forEach,
-  reject as _reject,
-  uniq as _uniq
-} from 'lodash';
+import _bind from 'lodash-es/bind';
+import _forEach from 'lodash-es/forEach';
+import _reject from 'lodash-es/reject';
+import _uniq from 'lodash-es/uniq';
 
 import { presetsData } from '../index';
 import { presetCategory } from './category';
