@@ -13,6 +13,7 @@
   "devDependencies": {
     "@std/esm": "^0.13.0",
     "@types/jest": "^21.1.5",
+    "@types/lodash": "^4.14.86",
     "jest": "^21.2.1",
     "ts-jest": "^21.1.4",
     "typescript": "^2.4.2"
@@ -20,6 +21,7 @@
   "dependencies": {
     "@types/lodash-es": "^4.17.0",
     "diacritics": "^1.3.0",
+    "lodash": "^4.17.4",
     "lodash-es": "^4.17.4"
   },
   "jest": {
@@ -28,21 +30,12 @@
         "skipBabel": true
       }
     },
-    "testPathIgnorePatterns": [
-      "<rootDir>/lib"
-    ],
-    "moduleDirectories": [
-      "<rootDir>/node_modules",
-      "<rootDir>/src"
-    ],
+    "testPathIgnorePatterns": ["<rootDir>/lib"],
+    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   }
 }

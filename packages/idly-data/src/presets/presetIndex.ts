@@ -1,14 +1,10 @@
-import _bind from 'lodash-es/bind';
-import _forEach from 'lodash-es/forEach';
-import _reject from 'lodash-es/reject';
-import _uniq from 'lodash-es/uniq';
-
 import { presetsData } from '../index';
 import { presetCategory } from './category';
 import { presetCollection } from './collection';
 import { presetField } from './presetField';
 import { presetPreset } from './presetPreset';
 import { t as stubT } from './t';
+import { uniq } from '../helpers/uniq';
 
 export { presetCategory };
 export { presetCollection };
@@ -85,7 +81,7 @@ export function presetIndex(t = stubT, data = presetsData.presets) {
   all.areaKeys = function() {
     var areaKeys = {};
     var ignore = ['barrier', 'highway', 'footway', 'railway', 'type']; // probably a line..
-    var presets = _reject(all.collection, 'suggestion');
+    var presets = all.collection.filter(obj => !obj.suggestion);
 
     // whitelist
     presets.forEach(function(d) {
@@ -124,28 +120,34 @@ export function presetIndex(t = stubT, data = presetsData.presets) {
     fields = {};
     universalFields = [];
     index = { point: {}, vertex: {}, line: {}, area: {}, relation: {} };
-
     if (data.fields) {
-      _forEach(data.fields, function(d, id) {
+      Object.keys(data.fields).forEach(id => {
+        var d = data.fields[id];
+      });
+
+      Object.keys(data.fields).forEach(id => {
+        var d = data.fields[id];
         fields[id] = presetField(id, d, t);
         if (d.universal) universalFields.push(fields[id]);
       });
     }
 
     if (data.presets) {
-      _forEach(data.presets, function(d, id) {
+      Object.keys(data.presets).forEach(id => {
+        var d = data.presets[id];
         all.collection.push(presetPreset(id, d, fields, t));
       });
     }
 
     if (data.categories) {
-      _forEach(data.categories, function(d, id) {
+      Object.keys(data.categories).forEach(id => {
+        var d = data.categories[id];
         all.collection.push(presetCategory(id, d, all, t));
       });
     }
 
     if (data.defaults) {
-      var getItem = _bind(all.item, all);
+      var getItem = all.item.bind(all);
       defaults = {
         area: presetCollection(data.defaults.area.map(getItem)),
         line: presetCollection(data.defaults.line.map(getItem)),
@@ -179,13 +181,13 @@ export function presetIndex(t = stubT, data = presetsData.presets) {
 
   all.defaults = function(geometry, n) {
     var rec = recent.matchGeometry(geometry).collection.slice(0, 4);
-    var def = _uniq(rec.concat(defaults[geometry].collection)).slice(0, n - 1);
-    return presetCollection(_uniq(rec.concat(def).concat(all.item(geometry))));
+    var def = uniq(rec.concat(defaults[geometry].collection)).slice(0, n - 1);
+    return presetCollection(uniq(rec.concat(def).concat(all.item(geometry))));
   };
 
   all.choose = function(preset) {
     if (!preset.isFallback()) {
-      recent = presetCollection(_uniq([preset].concat(recent.collection)));
+      recent = presetCollection(uniq([preset].concat(recent.collection)));
     }
     return all;
   };

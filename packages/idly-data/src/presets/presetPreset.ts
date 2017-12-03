@@ -1,13 +1,11 @@
-import _clone from 'lodash-es/clone';
-import _keys from 'lodash-es/keys';
-import _omit from 'lodash-es/omit';
-
 import { presetIndex } from './presetIndex';
 import { t as stubT } from './t';
 import { getAreaKeys } from '../areaKeys/areaKeys';
+import { omit } from '../helpers/omit';
+import { keys } from '../helpers/keys';
 
 export function presetPreset(id, preset, fields, t = stubT) {
-  preset = _clone(preset);
+  preset = Object.assign({}, preset);
 
   preset.id = id;
   preset.fields = (preset.fields || []).map(getFields);
@@ -64,7 +62,7 @@ export function presetPreset(id, preset, fields, t = stubT) {
   };
 
   preset.isFallback = function() {
-    var tagCount = Object.keys(preset.tags).length;
+    var tagCount = keys(preset.tags).length;
     return (
       tagCount === 0 || (tagCount === 1 && preset.tags.hasOwnProperty('area'))
     );
@@ -72,7 +70,7 @@ export function presetPreset(id, preset, fields, t = stubT) {
 
   var reference = preset.reference || {};
   preset.reference = function(geometry) {
-    var key = reference.key || Object.keys(_omit(preset.tags, 'name'))[0],
+    var key = reference.key || keys(preset.tags).filter(r => r !== 'name')[0], // da fuck ?@TOFIX
       value = reference.value || preset.tags[key];
 
     if (geometry === 'relation' && key === 'type') {
@@ -93,7 +91,7 @@ export function presetPreset(id, preset, fields, t = stubT) {
 
   var removeTags = preset.removeTags || preset.tags || {};
   preset.removeTags = function(tags, geometry) {
-    tags = _omit(tags, _keys(removeTags));
+    tags = omit(tags, keys(removeTags));
 
     for (var f in preset.fields) {
       var field = preset.fields[f];
@@ -109,7 +107,7 @@ export function presetPreset(id, preset, fields, t = stubT) {
   var applyTags = preset.addTags || preset.tags || {};
   preset.applyTags = function(tags, geometry) {
     var k;
-    tags = _clone(tags);
+    tags = Object.assign({}, tags);
 
     for (k in applyTags) {
       if (applyTags[k] === '*') {

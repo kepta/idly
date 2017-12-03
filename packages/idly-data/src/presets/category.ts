@@ -1,13 +1,9 @@
-import _clone from 'lodash-es/clone';
-import _keys from 'lodash-es/keys';
-import _omit from 'lodash-es/omit';
-
 import { t as stubT } from './t';
 
 import { presetCollection } from './collection';
 
 export function presetCategory(id, category, all, t = stubT) {
-  category = _clone(category);
+  category = Object.assign({}, category);
 
   category.id = id;
 

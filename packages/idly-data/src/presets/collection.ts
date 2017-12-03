@@ -1,11 +1,7 @@
-import _filter from 'lodash-es/filter';
-import _find from 'lodash-es/find';
-import _some from 'lodash-es/some';
-import _uniq from 'lodash-es/uniq';
-import _values from 'lodash-es/values';
-import _without from 'lodash-es/without';
-
 import { editDistance } from '../helpers/editDistance';
+import { uniq } from '../helpers/uniq';
+import { values } from '../helpers/values';
+import { filter } from '../helpers/filter';
 
 export function presetCollection(collection: Array<any>) {
   var maxSearchResults = 50,
@@ -15,7 +11,7 @@ export function presetCollection(collection: Array<any>) {
     collection: collection,
 
     item: function(id) {
-      return _find(this.collection, function(d) {
+      return this.collection.find(function(d) {
         return d.id === id;
       });
     },
@@ -46,15 +42,15 @@ export function presetCollection(collection: Array<any>) {
 
       value = value.toLowerCase();
 
-      var searchable = _filter(this.collection, function(a) {
+      var searchable = filter(this.collection, function(a) {
           return a.searchable !== false && a.suggestion !== true;
         }),
-        suggestions = _filter(this.collection, function(a) {
+        suggestions = filter(this.collection, function(a) {
           return a.suggestion === true;
         });
 
       // matches value to preset.name
-      var leading_name = _filter(searchable, function(a) {
+      var leading_name = filter(searchable, function(a) {
         return leading(a.name().toLowerCase());
       }).sort(function(a, b) {
         var aCompare = a.name().toLowerCase(),
@@ -78,13 +74,16 @@ export function presetCollection(collection: Array<any>) {
       });
 
       // matches value to preset.terms values
-      var leading_terms = _filter(searchable, function(a) {
-        return _some(a.terms() || [], leading);
+      var leading_terms = filter(searchable, function(a) {
+        const terms = a.terms();
+        return terms ? terms.some(leading) : false;
       });
 
       // matches value to preset.tags values
-      var leading_tag_values = _filter(searchable, function(a) {
-        return _some(_without(_values(a.tags || {}), '*'), leading);
+      var leading_tag_values = filter(searchable, function(a) {
+        return values(a.tags || {})
+          .filter(r => r !== '*')
+          .some(leading);
       });
 
       // finds close matches to value in preset.name
@@ -108,15 +107,15 @@ export function presetCollection(collection: Array<any>) {
         });
 
       // finds close matches to value in preset.terms
-      var similar_terms = _filter(searchable, function(a) {
-        return _some(a.terms() || [], function(b) {
+      var similar_terms = filter(searchable, function(a) {
+        return (a.terms() || []).some(function(b) {
           return (
             editDistance(value, b) + Math.min(value.length - b.length, 0) < 3
           );
         });
       });
 
-      var leading_suggestions = _filter(suggestions, function(a) {
+      var leading_suggestions = filter(suggestions, function(a) {
         return leading(suggestionName(a.name()));
       }).sort(function(a, b) {
         a = suggestionName(a.name());
@@ -163,7 +162,7 @@ export function presetCollection(collection: Array<any>) {
         )
         .slice(0, maxSearchResults - 1);
 
-      return presetCollection(_uniq(results.concat(other)));
+      return presetCollection(uniq(results.concat(other)));
     }
   };
 

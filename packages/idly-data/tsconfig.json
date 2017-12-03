@@ -8,11 +8,11 @@
     "strict": true,
     "pretty": true,
     "declaration": true,
-    "isolatedModules": false
+    "lib": ["es2015", "es2017"],
+    "isolatedModules": false,
+    "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   "exclude": [
     "./src/**/*.test.ts",
     "node_modules",
