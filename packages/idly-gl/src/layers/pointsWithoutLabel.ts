@@ -1,6 +1,6 @@
 import { PLUGIN_NAME } from '../constants';
 
-var x = [
+export default [
   {
     selectable: true,
     priority: 3,
