@@ -29,7 +29,6 @@ export function onParseEntities(
 ): FeaturePropsTable {
   console.log('onParseEntities called worker !!!');
   let fProps: FeaturePropsTable = new Map();
-  console.time('forEachx');
   entityTable.forEach((entity, id) => {
     if (entity.type === EntityType.NODE) {
       // @TOFIX why do we need to send the entire parentWays lol.
@@ -43,6 +42,5 @@ export function onParseEntities(
       fProps.set(id, nameSpaceKeys(PLUGIN_NAME, wayPropertiesGen(entity)));
     }
   });
-  console.timeEnd('forEachx');
   return fProps;
 }
