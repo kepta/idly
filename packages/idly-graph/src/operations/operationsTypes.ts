@@ -11,6 +11,7 @@ import { GetMap } from './getMap/type';
 import { GetEntities } from './getEntities/type';
 import { GetFeaturesOfShrub } from './getFeaturesOfShrub/type';
 import { WorkerSetOsmTiles } from './setOsmTiles/type';
+import { GetBbox } from './getBbox/type';
 
 export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
 
@@ -56,6 +57,7 @@ export enum GetActions {
   getFeaturesOfShrub = 'GET_FEATURES_OF_TREE',
   GetDefault = 'GET_DEFAULT',
   GetMap = 'GET_MAP',
+  GetBbox = 'GET_BBOX',
 }
 
 export interface DefaultGetCase {
@@ -69,6 +71,7 @@ export type GetActionTypes =
   | GetFeaturesOfEntityIds
   | GetFeaturesOfShrub
   | GetMap
+  | GetBbox
   | DefaultGetCase;
 
 /**

@@ -14,35 +14,21 @@ import {
   WorkerOperation,
   WorkerState,
 } from '../operationsTypes';
-import { GetMap } from './type';
+import { GetBbox } from './type';
+import { fetchBboxXml } from '../../thread/fetchBboxXml';
+import { smartParser } from '../../thread/smartParser';
+import { calculateParentWays } from '../../misc/calculateParentWays';
 
 /** Worker Thread */
-export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
-  return async ({ bbox, zoom, hiddenIds }) => {
-    const xyzs = bboxToTiles(bbox, zoom);
-    const prom = filterXyz(xyzs, bbox, zoom >= 18 ? 0.05 : 0.2).map(tile => {
-      const res = state.tilesDataTable.get(tileId(tile));
-      if (!res) {
-        throw new Error(
-          `cannot find tile data for ${JSON.stringify(
-            tile,
-          )}, make sure to setOsmTiles before calling fetchMap `,
-        );
-      }
-      return res;
-    });
-
+export function workerGetBbox(state: WorkerState): WorkerOperation<GetBbox> {
+  return async ({ bbox, hiddenIds }) => {
+    const entities = smartParser(await fetchBboxXml(bbox));
+    const entityTable = entityTableGen(entities);
+    const parentWays = calculateParentWays(entityTable);
     const workerPlugins = await state.plugins;
-    const data = await Promise.all(prom);
-    const entities = data.reduce(
-      (prev: Entity[], cur) => {
-        return prev.concat(cur.entities);
-      },
-      [] as Entity[],
-    );
     let features = entityToFeature(workerPlugins.map((r: any) => r.worker))(
       entityTableGen(entities),
-      state.parentWays,
+      parentWays,
     );
     if (hiddenIds && hiddenIds.length > 0) {
       // tslint:disable-next-line:no-expression-statement
@@ -50,7 +36,7 @@ export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
         r => typeof r.id === 'string' && hiddenIds.indexOf(r.id) === -1,
       );
     }
-    const toReturn: GetMap['response'] = featureCollection(features);
+    const toReturn: GetBbox['response'] = featureCollection(features);
     return JSON.stringify(toReturn);
   };
 }

@@ -16,6 +16,7 @@ import {
   WorkerState,
 } from './operationsTypes';
 import { workerSetOsmTiles } from './setOsmTiles/worker';
+import { workerGetBbox } from './getBbox/worker';
 
 const DEFAULT_STATE: WorkerState = {
   entityTable: entityTableGen(),
@@ -44,7 +45,8 @@ function getStateController(
 
     case GetActions.getFeaturesOfShrub:
       return workerGetFeaturesOfShrub(state)(message.request);
-
+    case GetActions.GetBbox:
+      return workerGetBbox(state)(message.request);
     default: {
       // tslint:disable-next-line:no-expression-statement
       console.error('no get handler for', message.type);
