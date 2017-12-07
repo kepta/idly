@@ -25,7 +25,6 @@ export function recursiveLookup(
     //   table would always have that node. This may or may not be correct.
     //   please check!.
     const entities = entity.nodes.map(nodeId => table.get(nodeId)) as Entity[];
-    // tslint:disable-next-line:no-expression-statement
     entities.push(entity);
     return entities;
   } else {
@@ -49,7 +48,6 @@ export function recursiveLookup(
       })
       .reduce((prev, curr) => prev.concat(curr), []);
 
-    // tslint:disable-next-line:no-expression-statement
     entities.push(entity);
     return entities;
   }

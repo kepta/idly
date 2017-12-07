@@ -1,4 +1,3 @@
-import { attributesGen } from 'idly-common/lib/osm/attributesGen';
 import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/relationFactory';
@@ -9,10 +8,8 @@ import {
   Node as OSMNode,
   Relation,
   RelationMember,
-  Tags,
   Way,
 } from 'idly-common/lib/osm/structures';
-import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 /**

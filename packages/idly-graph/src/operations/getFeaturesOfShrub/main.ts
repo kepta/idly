@@ -1,6 +1,6 @@
-import { Operation, GetActions } from '../operationsTypes';
-import { GetFeaturesOfShrub } from './type';
 import { getChannelBuilder } from '../../misc/channelBuilder';
+import { GetActions, Operation } from '../operationsTypes';
+import { GetFeaturesOfShrub } from './type';
 
 export function getFeaturesOfShrub(
   connector: any,

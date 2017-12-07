@@ -25997,7 +25997,7 @@ export const BIG_XML2 = `<?xml version="1.0" encoding="UTF-8"?>
   <tag k="wikipedia" v="en:Green Line (Namma Metro)"/>
  </relation>
 </osm>
-`
+`;
 
 export const BIG_XML3 = `<?xml version="1.0" encoding="UTF-8"?>
 <osm version="0.6" generator="CGImap 0.6.0 (31920 thorn-01.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
@@ -35070,4 +35070,4 @@ export const BIG_XML3 = `<?xml version="1.0" encoding="UTF-8"?>
   <tag k="type" v="route"/>
  </relation>
 </osm>
-`
+`;

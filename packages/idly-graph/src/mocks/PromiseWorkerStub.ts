@@ -27,7 +27,6 @@ export class PromiseWorkerStub {
 export function stubWorkerLogic(): PromiseWorkerStub {
   const promiseWorker = new PromiseWorkerStub();
   const controller = operations(pluginsStub());
-  // tslint:disable-next-line:no-expression-statement
   promiseWorker.registerPromiseWorker(controller);
   return promiseWorker;
 }

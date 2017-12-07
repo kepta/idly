@@ -1,4 +1,3 @@
-import { mercator } from 'idly-common/lib/geo/sphericalMercator';
 import { BBox } from '@turf/helpers';
 
 export async function fetchBboxXml(bbox: BBox): Promise<string> {

@@ -1,9 +1,9 @@
 import * as unescape from 'lodash.unescape';
 
 import { nodeFactory } from '../../../idly-common/lib/osm/nodeFactory';
-import { wayFactory } from '../../../idly-common/lib/osm/wayFactory';
 import { relationFactory } from '../../../idly-common/lib/osm/relationFactory';
 import { Entity } from '../../../idly-common/lib/osm/structures';
+import { wayFactory } from '../../../idly-common/lib/osm/wayFactory';
 
 export function smartParser(str: string): Entity[] {
   let closer: string | undefined;
@@ -24,7 +24,7 @@ export function smartParser(str: string): Entity[] {
         .reduce(
           (prev, cur, index, arr) => {
             if (index % 2 === 1) {
-              var before = arr[index - 1];
+              let before = arr[index - 1];
               prev.push([
                 before.slice(before.lastIndexOf(' ') + 1, before.length - 1),
                 cur,
@@ -43,15 +43,15 @@ export function smartParser(str: string): Entity[] {
         );
 
       if (p.startsWith('<nd')) {
-        lastObj['nodes'].push('n' + attributesObj.ref);
+        lastObj.nodes.push('n' + attributesObj.ref);
         return; // 4732
       } else if (p.startsWith('<tag')) {
-        lastObj['tags'][attributesObj.k] = unescape(attributesObj.v);
+        lastObj.tags[attributesObj.k] = unescape(attributesObj.v);
         return; // 4361
       } else if (p.startsWith('<member')) {
         attributesObj.id = attributesObj.type.charAt(0) + attributesObj.ref;
         delete attributesObj.ref;
-        lastObj['members'].push(attributesObj);
+        lastObj.members.push(attributesObj);
         return; // 4024
       } else if (p.startsWith('<node')) {
         // 3241
@@ -132,7 +132,7 @@ function attr(z: any[]) {
   return z.reduce(
     (prev, cur, index, arr) => {
       if (index % 2 === 1) {
-        var before = arr[index - 1];
+        let before = arr[index - 1];
         prev.push([
           before.slice(before.lastIndexOf(' ') + 1, before.length - 1),
           cur,
@@ -144,7 +144,7 @@ function attr(z: any[]) {
   );
 }
 
-var ATTR = [
+let ATTR = [
   'version',
   'encoding',
   'generator',

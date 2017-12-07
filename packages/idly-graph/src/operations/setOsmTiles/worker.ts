@@ -1,10 +1,10 @@
 import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
 import { EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
 
-import { WorkerState } from '../operationsTypes';
-import { WorkerSetOsmTiles } from './type';
 import { filterXyz } from '../../misc/filterXYZ';
 import { cacheFetchTile } from '../../thread/fetchTile';
+import { WorkerState } from '../operationsTypes';
+import { WorkerSetOsmTiles } from './type';
 
 /** Worker Thread */
 

@@ -1,12 +1,12 @@
 import { Feature, LineString, Point, Polygon } from '@turf/helpers';
+import { entityToGeoJson } from 'idly-common/lib/geojson/entityToGeojson';
+import { onParseEntities } from 'idly-common/lib/geojson/onParseEntities';
 import {
   EntityTable,
   FeaturePropsTable,
   ParentWays,
 } from 'idly-common/lib/osm/structures';
-import { onParseEntities } from 'idly-common/lib/geojson/onParseEntities';
 import { calculateParentWays } from '../misc/calculateParentWays';
-import { entityToGeoJson } from 'idly-common/lib/geojson/entityToGeojson';
 
 export type PluginComputeProps = (
   entityTable: EntityTable,

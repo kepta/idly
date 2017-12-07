@@ -1,7 +1,7 @@
 import { Shrub } from 'idly-common/lib/state/graph/shrub';
 
 import { getChannelBuilder } from '../../misc/channelBuilder';
-import { Operation, GetActions } from '../operationsTypes';
+import { GetActions, Operation } from '../operationsTypes';
 import { GetEntities } from './type';
 
 export function getEntities(connector: any): Operation<GetEntities> {

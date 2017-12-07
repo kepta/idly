@@ -6,12 +6,12 @@ import {
   ParentWays,
 } from 'idly-common/lib/osm/structures';
 
-import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/type';
-import { GetMap } from './getMap/type';
-import { GetEntities } from './getEntities/type';
-import { GetFeaturesOfShrub } from './getFeaturesOfShrub/type';
-import { WorkerSetOsmTiles } from './setOsmTiles/type';
 import { GetBbox } from './getBbox/type';
+import { GetEntities } from './getEntities/type';
+import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/type';
+import { GetFeaturesOfShrub } from './getFeaturesOfShrub/type';
+import { GetMap } from './getMap/type';
+import { WorkerSetOsmTiles } from './setOsmTiles/type';
 
 export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
 

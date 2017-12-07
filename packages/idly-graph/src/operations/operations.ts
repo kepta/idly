@@ -4,6 +4,7 @@ import { weakCache2 } from 'idly-common/lib/misc/weakCache';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { pluginsStub } from '../mocks/pluginsStub';
+import { workerGetBbox } from './getBbox/worker';
 import { workerGetEntities } from './getEntities/worker';
 import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/worker';
 import { workerGetFeaturesOfShrub } from './getFeaturesOfShrub/worker';
@@ -16,7 +17,6 @@ import {
   WorkerState,
 } from './operationsTypes';
 import { workerSetOsmTiles } from './setOsmTiles/worker';
-import { workerGetBbox } from './getBbox/worker';
 
 const DEFAULT_STATE: WorkerState = {
   entityTable: entityTableGen(),
@@ -48,7 +48,6 @@ function getStateController(
     case GetActions.GetBbox:
       return workerGetBbox(state)(message.request);
     default: {
-      // tslint:disable-next-line:no-expression-statement
       console.error('no get handler for', message.type);
       return Promise.resolve(message.type);
     }
@@ -85,17 +84,16 @@ export function operations(
     ...(prevState || DEFAULT_STATE),
     plugins: sanitizePlugins(plugins),
   };
+  let x;
   const setStateActions = Object.keys(WorkerSetStateActions);
   return async message => {
-    if (debug) console.log('worker--', message);
+    if (debug) { console.log('worker--', message); }
     const newState = await setStateController(state, message);
     if (state !== newState) {
-      // tslint:disable-next-line:no-expression-statement
       state = newState;
       return Promise.resolve('SUCCESS');
     }
     return getStateController(state, message).catch(e => {
-      // tslint:disable-next-line:no-expression-statement
       console.error(e);
       return Promise.reject(e);
     });
@@ -105,7 +103,6 @@ export function operations(
 function sanitizePlugins(plugins: Promise<any>): Promise<any> {
   return plugins.then(plugs => {
     if (!plugs) {
-      // tslint:disable-next-line:no-expression-statement
       console.error('empty plugin promise');
       return [];
     }

@@ -1,13 +1,19 @@
 import layers from '../layers';
 import { addSource } from '../helper/addSource';
-import { workerFetchMap, workerSetOsmTiles } from './worker/index';
+import {
+  workerFetchMap,
+  workerSetOsmTiles,
+  workerGetBbox
+} from './worker/index';
 import { BBox } from 'idly-common/lib/geo/bbox';
+import * as debounce from 'lodash.debounce';
 
 const SOURCE_1 = 'idly-gl-src-1';
 
 export class IdlyGlPlugin {
   private map: any;
   private opts: any;
+  private _container: any;
   constructor(opts: { [index: string]: string }) {
     this.opts = opts;
   }
@@ -37,10 +43,10 @@ export class IdlyGlPlugin {
       .map(r => addSource(r.layer, SOURCE_1))
       .forEach(l => this.map.addLayer(l));
 
-    this.map.on('moveend', () => this.render());
+    this.map.on('moveend', debounce(this.render, 200));
     this.render();
   }
-  render() {
+  render = () => {
     const zoom = this.map.getZoom() - 1;
     if (zoom < 15) return;
     const lonLat = this.map.getBounds();
@@ -50,15 +56,19 @@ export class IdlyGlPlugin {
       lonLat.getEast(),
       lonLat.getNorth()
     ];
-
-    workerSetOsmTiles({ bbox, zoom }).then(() => {
-      workerFetchMap({
-        bbox,
-        zoom
-      }).then(fc => {
-        this.map.getSource(SOURCE_1).setData(fc);
-      });
+    workerGetBbox({ bbox }).then(fc => {
+      console.log('gotdata', fc);
+      this.map.getSource(SOURCE_1).setData(fc);
     });
-  }
+    // workerSetOsmTiles({ bbox, zoom }).then(() => {
+    //   workerFetchMap({
+    //     bbox,
+    //     zoom
+    // }).then(fc => {
+    //   console.log('gotdata');
+    //   this.map.getSource(SOURCE_1).setData(fc);
+    // });
+    // });
+  };
   onRemove() {}
 }

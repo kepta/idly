@@ -1,11 +1,7 @@
-import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 import { Shrub } from 'idly-common/lib/state/graph/shrub';
 
-import { getChannelBuilder } from '../../misc/channelBuilder';
 import { entityToFeature } from '../../thread/entityToFeatures';
 import {
-  GetActions,
-  Operation,
   WorkerOperation,
   WorkerState,
 } from '../operationsTypes';

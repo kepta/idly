@@ -1,13 +1,11 @@
-import { BBox } from '@turf/helpers';
-import { XML3, BIG_XML1 } from '../../misc/fixtures';
+import { BIG_XML1, XML3 } from '../../misc/fixtures';
 import {
   PromiseWorkerStub,
   stubWorkerLogic,
 } from '../../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../../mocks/xmlFetchMock';
-import { getMap } from './main';
-import { operations } from '../operations';
 import { setOsmTiles } from '../setOsmTiles/main';
+import { getMap } from './main';
 
 declare var global: any;
 // tslint:disable no-expression-statement no-object-mutation

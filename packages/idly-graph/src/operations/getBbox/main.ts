@@ -1,6 +1,6 @@
-import { Operation, GetActions } from '../operationsTypes';
-import { GetBbox } from './type';
 import { getChannelBuilder } from '../../misc/channelBuilder';
+import { GetActions, Operation } from '../operationsTypes';
+import { GetBbox } from './type';
 
 /** Main Thread */
 export function getBbox(connector: any): Operation<GetBbox> {

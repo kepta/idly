@@ -5,9 +5,8 @@ import {
   stubWorkerLogic,
 } from '../../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../../mocks/xmlFetchMock';
-import { getFeaturesOfShrub } from './main';
-import { operations } from '../operations';
 import { setOsmTiles } from '../setOsmTiles/main';
+import { getFeaturesOfShrub } from './main';
 
 import { getEntities } from '../getEntities/main';
 declare var global: any;

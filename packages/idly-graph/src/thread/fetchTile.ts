@@ -2,27 +2,14 @@ import { Tile } from 'idly-common/lib/geo/tile';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { DOMParser } from 'xmldom';
 
+import diff from 'deep-diff';
 import { calculateParentWays } from '../misc/calculateParentWays';
 import { tileId } from '../misc/tileId';
 import { TileData, TilesDataTable } from '../operations/operationsTypes';
 import { fetchTileXml } from './fetchTileXml';
-import { xmlToEntities } from './xmlToEntities';
 import { smartParser } from './smartParser';
-import diff from 'deep-diff';
+import { xmlToEntities } from './xmlToEntities';
 
-function difference(object, base) {
-  function changes(object, base) {
-    return _.transform(object, function(result, value, key) {
-      if (!_.isEqual(value, base[key])) {
-        result[key] =
-          _.isObject(value) && _.isObject(base[key])
-            ? changes(value, base[key])
-            : value;
-      }
-    });
-  }
-  return changes(object, base);
-}
 export async function fetchTile(
   x: number,
   y: number,

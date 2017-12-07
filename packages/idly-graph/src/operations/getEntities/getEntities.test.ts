@@ -2,7 +2,6 @@ import { XML3 } from '../../misc/fixtures';
 import { stubWorkerLogic } from '../../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../../mocks/xmlFetchMock';
 
-import { operations } from '../operations';
 import { setOsmTiles } from '../setOsmTiles/main';
 import { getEntities } from './main';
 

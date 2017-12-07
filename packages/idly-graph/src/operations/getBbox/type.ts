@@ -1,5 +1,5 @@
-import { EntityId } from 'idly-common/lib/osm/structures';
 import { BBox } from '@turf/helpers';
+import { EntityId } from 'idly-common/lib/osm/structures';
 import { GetActions } from '../operationsTypes';
 
 export interface GetBbox {

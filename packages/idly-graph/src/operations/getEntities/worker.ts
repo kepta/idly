@@ -1,14 +1,9 @@
-import { Map as ImMap, Set as ImSet } from 'immutable';
+import { Map as ImMap } from 'immutable';
 
 import { Shrub } from 'idly-common/lib/state/graph/shrub';
-import { Tree } from 'idly-common/lib/state/graph/tree';
-import { EntityId } from 'idly-common/lib/osm/structures';
 
-import { getChannelBuilder } from '../../misc/channelBuilder';
 import { recursiveLookup } from '../../misc/recursiveLookup';
 import {
-  GetActions,
-  Operation,
   WorkerOperation,
   WorkerState,
 } from '../operationsTypes';

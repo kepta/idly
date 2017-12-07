@@ -1,6 +1,6 @@
-import { Operation, GetActions } from '../operationsTypes';
-import { GetFeaturesOfEntityIds } from './type';
 import { getChannelBuilder } from '../../misc/channelBuilder';
+import { GetActions, Operation } from '../operationsTypes';
+import { GetFeaturesOfEntityIds } from './type';
 
 export function getFeaturesOfEntityIds(
   connector: any,

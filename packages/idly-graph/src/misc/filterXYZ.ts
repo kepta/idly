@@ -1,6 +1,6 @@
 import area from '@turf/area';
-import bboxPolygon from '@turf/bbox-polygon';
 import bboxClip from '@turf/bbox-clip';
+import bboxPolygon from '@turf/bbox-polygon';
 
 import { BBox } from 'idly-common/lib/geo/bbox';
 import { mercator } from 'idly-common/lib/geo/sphericalMercator';

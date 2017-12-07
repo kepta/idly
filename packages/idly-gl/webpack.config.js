@@ -24,7 +24,10 @@ module.exports = {
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-    alias: {}
+    alias: {
+      immutable: path.resolve('./node_modules/immutable'),
+      '@turf/helpers': path.resolve('./node_modules/@turf/helpers')
+    }
   },
   node: {
     fs: 'empty'
@@ -34,27 +37,12 @@ module.exports = {
     contentBase: './dist'
   },
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'commons',
-    //   async: true,
-    //   minChunks: 2
-    //   // (Modules must be shared between 3 entries)
-
-    //   // chunks: ["pageA", "pageB"],
-    //   // (Only use these entries)
-    // }),
     new DuplicatePackageCheckerPlugin({
       // Also show module that is requiring each duplicate package
       verbose: true,
       // Emit errors instead of warnings
       emitError: false
     }),
-    // new HtmlWebpackPlugin({
-    //   title: 'Development',
-    //   hash: true,
-    //   filename: 'index.html',
-    //   template: 'public/index.html'
-    // }),
 
     new CircularDependencyPlugin({
       // exclude detection of files based on a RegExp

@@ -4,7 +4,6 @@ import {
   stubWorkerLogic,
 } from '../../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../../mocks/xmlFetchMock';
-import { operations } from '../operations';
 import { setOsmTiles } from '../setOsmTiles/main';
 
 import { getFeaturesOfEntityIds } from './main';
