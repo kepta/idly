@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`node property generator should work 1`] = `
+Object {
+  "geometry": "point",
+  "icon": "circle",
+  "name": undefined,
+}
+`;

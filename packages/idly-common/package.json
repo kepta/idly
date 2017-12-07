@@ -1,6 +1,7 @@
 {
   "name": "idly-common",
-  "version": "1.0.0",
+  "version": "0.0.3",
+  "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "main": "lib/index.js",
   "types": "lib",
   "scripts": {
@@ -9,15 +10,15 @@
   "license": "MIT",
   "dependencies": {
     "@mapbox/sphericalmercator": "^1.0.5",
-    "@turf/area": "^4.7.3",
-    "@turf/bbox": "^4.6.0",
-    "@turf/bbox-polygon": "^4.6.0",
-    "@turf/helpers": "^4.6.0",
-    "@turf/transform-scale": "^4.6.1",
+    "@turf/bbox": "^5.0.4",
+    "@turf/bbox-polygon": "^5.0.4",
+    "@turf/helpers": "^5.0.4",
+    "@turf/transform-scale": "^5.0.4",
+    "@turf/turf": "^5.0.4",
     "@types/geojson": "^1.0.3",
     "geojson": "^0.5.0",
-    "immutable": "^3.8.2",
-    "typed-immutable-record": "0.0.6"
+    "idly-data": "^1.6.0",
+    "immutable": "^3.8.2"
   },
   "devDependencies": {
     "@types/jest": "^20.0.8",
