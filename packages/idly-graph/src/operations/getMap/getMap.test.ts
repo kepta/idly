@@ -1,5 +1,5 @@
 import { BBox } from '@turf/helpers';
-import { XML3, XML4 } from '../../misc/fixtures';
+import { XML3, BIG_XML1 } from '../../misc/fixtures';
 import {
   PromiseWorkerStub,
   stubWorkerLogic,
@@ -64,7 +64,7 @@ describe('fetchMap: custom controller', () => {
     expect(resp.features.map(r => r.id)).toEqual(['n3', 'w1']);
   });
   test('big xml test', async () => {
-    global.fetch = xmlFetchMock(XML4);
+    global.fetch = xmlFetchMock(BIG_XML1);
     const promiseWorker = stubWorkerLogic();
 
     // TOFIX use a static state

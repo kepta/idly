@@ -552,8 +552,8 @@ Array [
     "attributes": Object {
       "changeset": "1",
       "timestamp": "2009-03-07T03:26:33Z",
-      "uid": null,
-      "user": null,
+      "uid": undefined,
+      "user": undefined,
       "version": "1",
       "visible": "true",
     },

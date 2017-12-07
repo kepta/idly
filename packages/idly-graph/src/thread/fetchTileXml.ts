@@ -1,11 +1,12 @@
 import { mercator } from 'idly-common/lib/geo/sphericalMercator';
 import { DOMParser } from 'xmldom';
+import { BBox } from '@turf/helpers';
 
 export async function fetchTileXml(
   x: number,
   y: number,
   zoom: number,
-): Promise<Document> {
+): Promise<string> {
   const xyz = [x, y, zoom].join(',');
   const bboxStr = mercator.bbox(x, y, zoom).join(',');
   const response = await fetch(
@@ -15,6 +16,5 @@ export async function fetchTileXml(
     throw new Error(response.statusText);
   }
   const text = await response.text();
-  const xml = new DOMParser().parseFromString(text, 'text/xml');
-  return xml;
+  return text;
 }

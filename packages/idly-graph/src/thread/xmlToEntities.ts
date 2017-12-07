@@ -21,6 +21,7 @@ import { wayFactory } from 'idly-common/lib/osm/wayFactory';
  * editor. Please look into `Entity` for more details.
  * @param xml osm xml document
  */
+
 export function xmlToEntities(xml: Document): Entity[] {
   if (!xml || !xml.childNodes) {
     return [];
@@ -44,8 +45,6 @@ export function xmlToEntities(xml: Document): Entity[] {
       entities.push(wayData(child));
     }
   }
-  // tslint:enable no-expression-statement
-
   return entities;
 }
 
@@ -110,16 +109,20 @@ function nodeData(obj: Node): OSMNode {
   return nodeFactory(
     {
       attributes: {
-        changeset:
-          attrs.getNamedItem('changeset') &&
-          attrs.getNamedItem('changeset').value,
-        timestamp:
-          attrs.getNamedItem('timestamp') &&
-          attrs.getNamedItem('timestamp').value,
-        uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
-        user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
+        changeset: attrs.getNamedItem('changeset')
+          ? attrs.getNamedItem('changeset').value
+          : undefined,
+        timestamp: attrs.getNamedItem('timestamp')
+          ? attrs.getNamedItem('timestamp').value
+          : undefined,
+        uid: attrs.getNamedItem('uid')
+          ? attrs.getNamedItem('uid').value
+          : undefined,
+        user: attrs.getNamedItem('user')
+          ? attrs.getNamedItem('user').value
+          : undefined,
         version: attrs.getNamedItem('version').value,
-        visible: getVisible(attrs),
+        visible: getVisible(attrs) as boolean,
       },
       id: 'n' + attrs.getNamedItem('id').value,
       loc: getLoc(attrs),
@@ -134,16 +137,20 @@ function relationData(obj: Node): Relation {
   return relationFactory(
     {
       attributes: {
-        changeset:
-          attrs.getNamedItem('changeset') &&
-          attrs.getNamedItem('changeset').value,
-        timestamp:
-          attrs.getNamedItem('timestamp') &&
-          attrs.getNamedItem('timestamp').value,
-        uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
-        user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
+        changeset: attrs.getNamedItem('changeset')
+          ? attrs.getNamedItem('changeset').value
+          : undefined,
+        timestamp: attrs.getNamedItem('timestamp')
+          ? attrs.getNamedItem('timestamp').value
+          : undefined,
+        uid: attrs.getNamedItem('uid')
+          ? attrs.getNamedItem('uid').value
+          : undefined,
+        user: attrs.getNamedItem('user')
+          ? attrs.getNamedItem('user').value
+          : undefined,
         version: attrs.getNamedItem('version').value,
-        visible: getVisible(attrs),
+        visible: getVisible(attrs) as boolean,
       },
       id: 'r' + attrs.getNamedItem('id').value,
       members: getMembers(obj),
@@ -158,16 +165,20 @@ function wayData(obj: Node): Way {
   return wayFactory(
     {
       attributes: {
-        changeset:
-          attrs.getNamedItem('changeset') &&
-          attrs.getNamedItem('changeset').value,
-        timestamp:
-          attrs.getNamedItem('timestamp') &&
-          attrs.getNamedItem('timestamp').value,
-        uid: attrs.getNamedItem('uid') && attrs.getNamedItem('uid').value,
-        user: attrs.getNamedItem('user') && attrs.getNamedItem('user').value,
+        changeset: attrs.getNamedItem('changeset')
+          ? attrs.getNamedItem('changeset').value
+          : undefined,
+        timestamp: attrs.getNamedItem('timestamp')
+          ? attrs.getNamedItem('timestamp').value
+          : undefined,
+        uid: attrs.getNamedItem('uid')
+          ? attrs.getNamedItem('uid').value
+          : undefined,
+        user: attrs.getNamedItem('user')
+          ? attrs.getNamedItem('user').value
+          : undefined,
         version: attrs.getNamedItem('version').value,
-        visible: getVisible(attrs),
+        visible: getVisible(attrs) as boolean,
       },
       id: 'w' + attrs.getNamedItem('id').value,
       nodes: getNodes(obj),

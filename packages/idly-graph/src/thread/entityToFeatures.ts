@@ -28,16 +28,13 @@ export function entityToFeature(
       const computedProps = comp(entityTable, parentWays);
       for (const [entityId, val] of computedProps) {
         if (props.has(entityId)) {
-          // tslint:disable-next-line:no-expression-statement
           props.get(entityId).push(val);
         } else {
-          // tslint:disable-next-line:no-expression-statement
           props.set(entityId, [val]);
         }
       }
     }
     for (const [key, val] of props) {
-      // tslint:disable-next-line:no-expression-statement
       props.set(key, Object.assign({}, ...val));
     }
     return entityToGeoJson(entityTable, props);
