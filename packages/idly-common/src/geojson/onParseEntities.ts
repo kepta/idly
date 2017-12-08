@@ -27,8 +27,7 @@ export function onParseEntities(
   entityTable: EntityTable,
   parentWays: ParentWays,
 ): FeaturePropsTable {
-  console.log('onParseEntities called worker !!!');
-  let fProps: FeaturePropsTable = new Map();
+  const fProps: FeaturePropsTable = new Map();
   entityTable.forEach((entity, id) => {
     if (entity.type === EntityType.NODE) {
       // @TOFIX why do we need to send the entire parentWays lol.

@@ -9,7 +9,7 @@ import {
   OsmGeometry,
 } from '../osm/structures';
 
-import { presetMatch } from './presetsMatch';
+import { presetMatch } from './presetMatch';
 import { getNodeGeometry } from '../osm/getNodeGeometry';
 
 export const DEFAULT_NODE_ICON = 'circle';

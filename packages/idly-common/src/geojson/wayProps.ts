@@ -7,7 +7,7 @@ import {
   Way,
 } from '../osm/structures';
 
-import { presetMatch } from './presetsMatch';
+import { presetMatch } from './presetMatch';
 import { isArea } from '../osm/isArea';
 import { tagClassesPrimary } from '../tagClasses/tagClasses';
 
