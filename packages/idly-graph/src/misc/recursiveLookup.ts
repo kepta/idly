@@ -15,6 +15,7 @@ export function recursiveLookup(
   const entity = table.get(id);
 
   if (!entity) {
+    console.warn("Lookup: Couldn'nt find " + id + ' in the table');
     return [];
   }
   if (entity.type === EntityType.NODE) {

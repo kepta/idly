@@ -29,3 +29,25 @@ describe('getEntities', () => {
     expect(await resp2).toMatchSnapshot();
   });
 });
+
+describe('should throw Error when entity not found', () => {
+  const promiseWorker = stubWorkerLogic();
+  global.fetch = xmlFetchMock(XML3);
+  test('small xml test', async () => {
+    await setOsmTiles(promiseWorker)({
+      bbox: [
+        -73.98630242339283,
+        40.73537277780156,
+        -73.98264244865518,
+        40.73941515574535,
+      ],
+      zoom: 17.54,
+    });
+
+    try {
+      await getEntities(promiseWorker)({ entityIds: ['n8'] });
+    } catch (e) {
+      expect(e).toMatch('Entity IDs not found');
+    }
+  });
+});
