@@ -9,8 +9,10 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@turf/helpers": "^5.0.4",
+    "@turf/helpers": "^5.1.0",
+    "@types/lodash.debounce": "^4.0.3",
     "html-webpack-plugin": "^2.30.1",
+    "idly-common": "file:../idly-common",
     "idly-graph": "file:../idly-graph",
     "immutable": "^3.8.2",
     "lodash.debounce": "^4.0.8",
