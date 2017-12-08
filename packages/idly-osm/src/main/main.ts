@@ -1,4 +1,3 @@
-import { TagEditor } from '../ui/TagsEditor/TagEditor';
 import { EntityType, FeatureProps } from 'idly-common/lib/osm/structures';
 
 import { PLUGIN_NAME } from '../config/config';

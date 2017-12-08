@@ -3,7 +3,6 @@ import { tagsFactory } from 'idly-common/lib/osm/tagsFactory';
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { Entity, Tags } from 'idly-common/lib/osm/structures';
 
-import { debounce } from 'lodash';
 import * as React from 'react';
 
 export interface PropsType {

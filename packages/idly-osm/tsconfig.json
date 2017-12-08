@@ -2,7 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "outDir": "lib",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "target": "es2015",
@@ -12,9 +12,7 @@
     "declaration": true,
     "isolatedModules": false
   },
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   "exclude": [
     "./lib/**/*",
     "node_modules",
