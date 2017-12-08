@@ -12,7 +12,7 @@ import {
   workerSetOsmTiles
 } from '../worker/main';
 import { selectEntitiesAction } from 'core/store/core.actions';
-import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 import debounce from 'lodash.debounce';
 import { SourceLayered } from 'map/layers/layers';
 import {

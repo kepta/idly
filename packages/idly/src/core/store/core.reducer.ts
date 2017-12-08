@@ -1,6 +1,6 @@
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { FeatureTable } from 'idly-common/lib/osm/feature';
-import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 import { Map as ImMap } from 'immutable';
 import { CoreActions, CoreActionType } from './core.actions';
 

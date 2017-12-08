@@ -92,7 +92,7 @@ async function importUiPlugin(
   return {
     components: bindComponents(plugin.uiComponents, plugin.name),
     actions: bindActions(plugin.actions, plugin.name),
-    workers: bindWorkers(plugin.workers, plugin.name)
+    workers: [] // bindWorkers(plugin.workers, plugin.name)
   };
 }
 

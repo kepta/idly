@@ -14,7 +14,7 @@ import {
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { featureTableGen } from 'idly-common/lib/osm/featureTableGen';
 
-import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 
 export function* watchSelect(): SagaIterator {
   yield all([

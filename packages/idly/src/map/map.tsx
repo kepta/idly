@@ -25,7 +25,7 @@ import { dirtyPopup } from 'map/utils/map.popup';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as R from 'ramda';
 
-import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 import sizeMe from 'react-sizeme';
 export type DirtyMapAccessType = (map: any) => void;
 /**

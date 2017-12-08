@@ -2,7 +2,7 @@ import { actionBuilderFactory } from 'common/actions';
 
 import { FeatureTable } from 'idly-common/lib/osm/feature';
 import { EntityId } from 'idly-common/lib/osm/structures';
-import { Shrub } from 'idly-graph/lib/graph/Shrub';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 
 export enum CoreActions {
   SELECT_ENTITIES = 'Core.SELECT_ENTITIES',
