@@ -87,16 +87,26 @@ export function operations(
   let x;
   const setStateActions = Object.keys(WorkerSetStateActions);
   return async message => {
-    if (debug) { console.log('worker--', message); }
+    if (debug) {
+      console.log('worker--', message);
+    }
     const newState = await setStateController(state, message);
     if (state !== newState) {
       state = newState;
       return Promise.resolve('SUCCESS');
     }
-    return getStateController(state, message).catch(e => {
-      console.error(e);
-      return Promise.reject(e);
-    });
+    return getStateController(state, message)
+      .then(r => {
+        if (debug) {
+          self.workerState = state;
+          console.log('workerstate', JSON.parse(JSON.stringify(state)));
+        }
+        return r;
+      })
+      .catch(e => {
+        console.error(e);
+        return Promise.reject(e);
+      });
   };
 }
 

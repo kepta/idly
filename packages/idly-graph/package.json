@@ -12,6 +12,7 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
+    "@types/deep-diff": "0.0.31",
     "@types/geojson": "^1.0.6",
     "@types/jest": "^21.1.1",
     "@types/lodash.unescape": "^4.0.3",

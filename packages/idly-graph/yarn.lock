@@ -936,6 +936,10 @@
     "@turf/invariant" "^5.0.4"
     d3-voronoi "1.1.2"
 
+"@types/deep-diff@0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@types/deep-diff/-/deep-diff-0.0.31.tgz#0632b274d1db23cb80f0c1d4e4254c3392fd8219"
+
 "@types/geojson@^1.0.3", "@types/geojson@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-1.0.6.tgz#3e02972728c69248c2af08d60a48cbb8680fffdf"
