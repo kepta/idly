@@ -36,8 +36,23 @@ export function PresetsUi({
     >
       {fields.map((field, i) => {
         const Comp = IDPresetsUI[field.type];
-        return <Comp key={i} field={field} tags={leaf.getEntity().tags} />;
+        return (
+          <PresetSingle field={field} key={i}>
+            <Comp field={field} tags={leaf.getEntity().tags} />
+          </PresetSingle>
+        );
       })}
+    </div>
+  );
+}
+
+function PresetSingle({ field, children }) {
+  return (
+    <div>
+      <span className="preset-label" style={{ fontWeight: 700 }}>
+        {field.label()}
+      </span>
+      <span>{children}</span>
     </div>
   );
 }
