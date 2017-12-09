@@ -6,12 +6,9 @@ import {
   workerGetBbox,
   workerGetEntities
 } from './worker/index';
-import { feature } from '@turf/helpers';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as debounce from 'lodash.debounce';
 
-import { Leaf } from 'idly-common/lib/state/graph/Leaf';
-import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
 import { renderPresets } from '../presetsUi/index';
 const SOURCE_1 = 'idly-gl-src-1';
 

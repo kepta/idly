@@ -17,7 +17,7 @@
     "@turf/turf": "^5.0.4",
     "@types/geojson": "^1.0.3",
     "geojson": "^0.5.0",
-    "idly-data": "^1.6.0",
+    "idly-data": "^1.9.0",
     "immutable": "^3.8.2"
   },
   "devDependencies": {

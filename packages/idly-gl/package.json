@@ -11,8 +11,6 @@
   "dependencies": {
     "@turf/helpers": "^5.1.0",
     "@types/lodash.debounce": "^4.0.3",
-    "@types/react": "^16.0.28",
-    "@types/react-dom": "^16.0.3",
     "html-webpack-plugin": "^2.30.1",
     "idly-common": "file:../idly-common",
     "idly-graph": "file:../idly-graph",
@@ -24,16 +22,50 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "@types/jest": "^21.1.8",
     "@types/mapbox-gl": "^0.41.0",
+    "@types/react": "^16.0.28",
+    "@types/react-dom": "^16.0.3",
     "awesome-typescript-loader": "^3.4.1",
     "circular-dependency-plugin": "^4.2.1",
     "duplicate-package-checker-webpack-plugin": "^2.0.1",
     "fuse-box": "^2.5.0-beta.1",
+    "jest": "^21.2.1",
+    "react-test-renderer": "^16.2.0",
     "source-map-loader": "^0.2.3",
+    "ts-jest": "^21.2.4",
     "typescript": "^2.6.2",
     "webpack": "^3.9.1",
     "webpack-bundle-analyzer": "^2.9.1",
     "webpack-dev-server": "^2.9.7",
+    "whatwg-fetch": "^2.0.3",
     "worker-loader": "^1.1.0"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
+    "setupFiles": [
+      "<rootDir>/test-shim/shim.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
