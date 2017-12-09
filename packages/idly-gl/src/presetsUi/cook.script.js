@@ -11,7 +11,7 @@ var x = [
   'FieldWikipedia',
   'FieldCheck',
   'FieldCombo',
-  'FieldEmail',
+  'FieldText',
   'FieldRadio'
 ];
 var react = i => `

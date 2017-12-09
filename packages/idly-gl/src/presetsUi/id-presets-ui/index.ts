@@ -20,12 +20,12 @@ import {
   FieldCombo as FieldTypeCombo
 } from './FieldCombo';
 import {
-  FieldEmail,
-  FieldEmail as FieldNumber,
-  FieldEmail as FieldTel,
-  FieldEmail as FieldText,
-  FieldEmail as FieldUrl
-} from './FieldEmail';
+  FieldText,
+  FieldText as FieldEmail,
+  FieldText as FieldNumber,
+  FieldText as FieldTel,
+  FieldText as FieldUrl
+} from './FieldText';
 
 import { FieldRadio, FieldRadio as FieldStructureRadio } from './FieldRadio';
 
