@@ -1,4 +1,3 @@
-import { wayIsClosed } from './wayIsClosed';
 import { Way } from '../../../osm/structures';
 
 /**

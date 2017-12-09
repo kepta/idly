@@ -1,8 +1,5 @@
 import { Way } from '../osm/structures';
 
-export function isClosed(entity: Way) {
-  return (
-    entity.nodes.length > 1 &&
-    entity.nodes[0] === entity.nodes[entity.nodes.length - 1]
-  );
+export function isClosed({ nodes }: Way) {
+  return nodes.length > 1 && nodes[0] === nodes[nodes.length - 1];
 }
