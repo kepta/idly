@@ -9,7 +9,10 @@ import {
 import { feature } from '@turf/helpers';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as debounce from 'lodash.debounce';
+
+import { Leaf } from 'idly-common/lib/state/graph/Leaf';
 import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
+import { renderPresets } from '../presetsUi/index';
 const SOURCE_1 = 'idly-gl-src-1';
 
 export class IdlyGlPlugin {
@@ -30,8 +33,8 @@ export class IdlyGlPlugin {
       this.map.on('load', () => this.init());
     }
     this._container = document.createElement('div');
-    this._container.className = 'mapboxgl-ctrl';
-    this._container.textContent = 'Hello, world';
+    // this._container.className = 'mapboxgl-ctrl';
+    // this._container.textContent = 'Hello, world';
     return this._container;
   }
 
@@ -96,14 +99,10 @@ export class IdlyGlPlugin {
       entityIds: [this.selectedId]
     });
     const leaf = shrub.getDependant(this.selectedId);
-    // console.log(shrub);
-    window.leaf = leaf;
-    window.feature = feature;
+
     if (!leaf) return;
-    window.match = presetMatch(
-      leaf.getEntity().tags,
-      feature.properties['osm_basic--geometry']
-    );
+
+    renderPresets(this._container, { feature, leaf });
   };
 
   onIdDeselect = () => {

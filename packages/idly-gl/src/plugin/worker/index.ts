@@ -4,11 +4,18 @@ import { getFeaturesOfShrub } from 'idly-graph/lib/operations/getFeaturesOfShrub
 import { getMap } from 'idly-graph/lib/operations/getMap/main';
 import { setOsmTiles } from 'idly-graph/lib/operations/setOsmTiles/main';
 import { getBbox } from 'idly-graph/lib/operations/getBbox/main';
+import {
+  FeatureCollection,
+  Point,
+  Feature,
+  LineString,
+  Polygon
+} from 'geojson';
+import { Shrub } from 'idly-common/lib/state/graph/shrub';
 
 import * as MyWorker from './worker.worker';
 
 const PromiseWorker = require('promise-worker');
-
 export const worker: Worker = new MyWorker();
 export const promiseWorker = new PromiseWorker(worker);
 

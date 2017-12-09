@@ -1,4 +1,4 @@
-import * as geojson from './data.json';
+import geojson from './data.json';
 import * as mapboxgl from 'mapbox-gl';
 import layers from './layers';
 import { addSource } from './helper/addSource';
@@ -18,6 +18,5 @@ map.on('load', function() {
     type: 'geojson',
     data: geojson
   });
-  console.log(layers);
   layers.map(r => addSource(r.layer, 'virgin')).forEach(l => map.addLayer(l));
 });

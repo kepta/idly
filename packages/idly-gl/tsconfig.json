@@ -11,12 +11,15 @@
     "declaration": true,
     "isolatedModules": false,
     "noEmitOnError": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react"
   },
   "compileOnSave": true,
   "include": ["./src/**/*"],
