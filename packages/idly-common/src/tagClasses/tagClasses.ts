@@ -140,8 +140,9 @@ export function tagClasses(tags: Tags) {
     var paved = tags.highway !== 'track';
     for (const k in tags) {
       const v = tags[k];
-      if (k in osmPavedTags) {
-        paved = !!osmPavedTags[k][v];
+
+      if (osmPavedTags.hasOwnProperty(k)) {
+        paved = !!(<any>osmPavedTags)[k][v];
         break;
       }
     }

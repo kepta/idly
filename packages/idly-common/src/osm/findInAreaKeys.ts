@@ -23,10 +23,16 @@ getAreaKeys();
 export function findInAreaKeys(tags: Tags) {
   const areaKeys = getAreaKeys();
   for (const key in tags) {
-    if (key in areaKeys && !(tags[key] in areaKeys[key])) {
+    if (
+      areaKeys.hasOwnProperty(key) &&
+      !areaKeys[key].hasOwnProperty(tags[key])
+    ) {
       return true;
     }
-    if (key in lineKeys && tags[key] in lineKeys[key]) {
+    if (
+      lineKeys.hasOwnProperty(key) &&
+      lineKeys[key].hasOwnProperty(tags[key])
+    ) {
       return true;
     }
   }
