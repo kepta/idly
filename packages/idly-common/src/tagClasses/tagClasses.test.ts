@@ -2,10 +2,8 @@ import { tagsFactory } from '../osm/tagsFactory';
 
 import { tagClasses } from './tagClasses';
 
-const generate = (tags: { [index: string]: string }) => {
-  return tagsFactory(tags);
-};
-const tagger = tags => tagClasses(tagsFactory(tags));
+const tagger = (tags: { [index: string]: string }) =>
+  tagClasses(tagsFactory(tags));
 
 describe('iD.svgTagClasses', function() {
   it('adds no classes to elements whose datum has no tags', function() {

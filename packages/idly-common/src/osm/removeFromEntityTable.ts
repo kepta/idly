@@ -9,16 +9,16 @@ import {
   Node,
   Relation,
   Tags,
-  Way
+  Way,
 } from '../osm/structures';
 
 export function removeFromEntityTable(
   entityIds: ImList<EntityId> | EntityId[] = [],
-  entityTable: EntityTable = ImMap()
+  entityTable: EntityTable = ImMap(),
 ) {
   if (isImmutableList(entityIds)) {
     return entityTable.withMutations(m => {
-      entityIds.forEach((e: EntityId) => m.delete(e));
+      entityIds.forEach((e: EntityId = '') => m.delete(e));
     });
   }
   return entityTable.withMutations(m => {

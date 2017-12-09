@@ -66,18 +66,18 @@ describe('create simple node', () => {
   });
   test('works with attributes 2', () => {
     const n = createNode({
-      attributes: { visible: 'false', timestamp: '1' },
+      attributes: { visible: false, timestamp: '1' },
       id: 'n1',
     });
     const n2 = createNode({
       id: 'n1',
-      attributes: { visible: 'false', timestamp: '2' },
+      attributes: { visible: false, timestamp: '2' },
     });
     expect(n.attributes).not.toEqual(n2.attributes);
   });
   test('works with attributes with differnt key order', () => {
     const n = createNode({
-      attributes: { visible: 'false', timestamp: '1', uid: '1' },
+      attributes: { visible: false, timestamp: '1', uid: '1' },
       id: 'n1',
     });
     expect(Object.keys(n.attributes)).toEqual([

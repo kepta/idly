@@ -163,7 +163,7 @@ describe('stringifying', () => {
     expect(JSON.parse(leaf4.toString())).toMatchSnapshot();
     expect(JSON.parse(leaf4.toString()).map(JSON.parse)).toMatchSnapshot();
 
-    const newLeaf4 = Leaf.fromString(leaf4.toString()) as Leaft;
+    const newLeaf4 = Leaf.fromString(leaf4.toString()) as Leaf;
     expect(newLeaf4).toEqual(leaf4);
     expect(newLeaf4).toBe(leaf4);
 

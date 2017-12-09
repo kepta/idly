@@ -8,16 +8,17 @@ import {
   Node,
   Relation,
   Tags,
-  Way
+  Way,
 } from '../osm/structures';
 
+// @TOFIX this could be written with better performance
 export function entityTableGen(
   entities: ImList<Entity> | Entity[] | Set<Entity> = [],
-  entityTable: EntityTable = ImMap()
+  entityTable: EntityTable = ImMap(),
 ) {
   if (isImmutableList(entities)) {
     return entityTable.withMutations(m => {
-      entities.forEach(e => m.set(e.id, e));
+      entities.forEach((e: any) => m.set(e.id, e));
     });
   }
   if (Array.isArray(entities)) {
@@ -25,7 +26,6 @@ export function entityTableGen(
       entities.forEach(e => m.set(e.id, e));
     });
   }
-  // A Set
   return entityTable.withMutations(m => {
     for (const e of entities) {
       m.set(e.id, e);

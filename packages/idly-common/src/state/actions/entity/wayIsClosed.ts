@@ -1,7 +1,5 @@
 import { Way } from '../../../osm/structures';
 
-export function wayIsClosed(way: Way): boolean {
-  const first = way.nodes[0];
-  const last = way.nodes[way.nodes.length - 1];
-  return way.nodes.length > 1 && first === last;
+export function wayIsClosed({ nodes }: Way) {
+  return nodes.length > 1 && nodes[0] === nodes[nodes.length - 1];
 }
