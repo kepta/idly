@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import { Feature } from 'geojson';
 import { Leaf } from 'idly-common/lib/state/graph/Leaf';
 import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
+import { en } from './en.json';
+
 import IDPresetsUI from './id-presets-ui';
 
 export function renderPresets(
@@ -17,6 +19,7 @@ export function renderPresets(
     dom
   );
 }
+export const tOpts = () => ({ dynamicTranslation: en });
 
 export function PresetsUi({
   fields,
