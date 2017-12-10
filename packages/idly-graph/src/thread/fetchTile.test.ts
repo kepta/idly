@@ -2,7 +2,6 @@ import { XML3 } from '../misc/fixtures';
 import { fetchTile } from './fetchTile';
 
 declare var global: any;
-// tslint:disable no-expression-statement no-object-mutation
 
 describe.skip('fetchTile', () => {
   test('basic test', async () => {

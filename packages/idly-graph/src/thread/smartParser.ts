@@ -1,9 +1,9 @@
 import * as unescape from 'lodash.unescape';
 
-import { nodeFactory } from '../../../idly-common/lib/osm/nodeFactory';
-import { relationFactory } from '../../../idly-common/lib/osm/relationFactory';
-import { Entity } from '../../../idly-common/lib/osm/structures';
-import { wayFactory } from '../../../idly-common/lib/osm/wayFactory';
+import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
+import { relationFactory } from 'idly-common/lib/osm/relationFactory';
+import { Entity } from 'idly-common/lib/osm/structures';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 export function smartParser(str: string): Entity[] {
   let closer: string | undefined;

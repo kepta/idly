@@ -8,7 +8,6 @@ import { setOsmTiles } from '../setOsmTiles/main';
 import { getMap } from './main';
 
 declare var global: any;
-// tslint:disable no-expression-statement no-object-mutation
 
 describe('fetchMap: custom controller', () => {
   global.fetch = xmlFetchMock(XML3);

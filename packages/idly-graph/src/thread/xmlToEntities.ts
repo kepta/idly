@@ -24,7 +24,6 @@ export function xmlToEntities(xml: Document): Entity[] {
     return [];
   }
   let root = xml.childNodes[2];
-  // tslint:disable no-expression-statement
   if (!root) {
     // TOFIX this is only added to let test cases pass
     root = xml.childNodes[0];
@@ -58,7 +57,6 @@ function getMembers(obj: any): RelationMember[] {
   const len = elems.length;
   for (let i = 0; i < len; i++) {
     const attrs = elems[i].attributes;
-    // tslint:disable no-expression-statement
     members.push(
       relationMemberGen({
         id:
@@ -67,7 +65,6 @@ function getMembers(obj: any): RelationMember[] {
         type: attrs.getNamedItem('type').value,
       }),
     );
-    // tslint:enable no-expression-statement
   }
   return members;
 }
@@ -76,11 +73,9 @@ function getNodes(obj: any): string[] {
   const elems = obj.getElementsByTagName('nd');
   const nodes: string[] = [];
   const len = elems.length;
-  // tslint:disable no-expression-statement
   for (let i = 0; i < len; i++) {
     nodes.push('n' + elems[i].attributes.getNamedItem('ref').value);
   }
-  // tslint:enable no-expression-statement
   return nodes;
 }
 

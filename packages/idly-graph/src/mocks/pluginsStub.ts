@@ -9,7 +9,6 @@ export function pluginsStub(
     workers: [
       {
         pluginName: 'dummy',
-        // tslint:disable no-expression-statement
         worker: (entityTable: EntityTable) => {
           const m = new Map();
           entityTable.forEach((v, k) => {

@@ -6,7 +6,6 @@ import { setOsmTiles } from '../setOsmTiles/main';
 import { getEntities } from './main';
 
 declare var global: any;
-// tslint:disable no-expression-statement no-object-mutation
 
 describe('getEntities', () => {
   const promiseWorker = stubWorkerLogic();

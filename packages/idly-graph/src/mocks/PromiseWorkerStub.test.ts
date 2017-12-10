@@ -1,6 +1,5 @@
 import { PromiseWorkerStub } from './PromiseWorkerStub';
 
-// tslint:disable no-expression-statement
 describe('PromiseWorkerStub', () => {
   test('postMessage calls worker once', async () => {
     const promiseWorker = new PromiseWorkerStub();

@@ -2453,20 +2453,6 @@ iconv-lite@0.4.19, iconv-lite@~0.4.13:
     idly-data "^1.11.0"
     immutable "^3.8.2"
 
-"idly-common@file:../idly-common/":
-  version "0.0.3"
-  dependencies:
-    "@mapbox/sphericalmercator" "^1.0.5"
-    "@turf/bbox" "^5.0.4"
-    "@turf/bbox-polygon" "^5.0.4"
-    "@turf/helpers" "^5.0.4"
-    "@turf/transform-scale" "^5.0.4"
-    "@turf/turf" "^5.0.4"
-    "@types/geojson" "^1.0.3"
-    geojson "^0.5.0"
-    idly-data "^1.11.0"
-    immutable "^3.8.2"
-
 idly-data@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/idly-data/-/idly-data-1.11.0.tgz#3e74cfa1e8a6b3a66687c16455d720b2a82e55ab"

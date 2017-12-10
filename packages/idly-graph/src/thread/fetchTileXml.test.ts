@@ -2,7 +2,6 @@ import { XML3 } from '../misc/fixtures';
 import { fetchTileXml } from './fetchTileXml';
 
 declare var global: any;
-// tslint:disable no-expression-statement no-object-mutation
 
 describe('fetchTileXml', () => {
   test('gives an xml', async () => {

@@ -49,7 +49,6 @@ export function cacheFetchTile(
       return cached;
     }
     const res = fetchTile(x, y, z);
-    // tslint:disable-next-line:no-expression-statement
     tilesDataTable = tilesDataTable.set(str, res);
     return res;
   });

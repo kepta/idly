@@ -10,7 +10,6 @@ import { getFeaturesOfShrub } from './main';
 
 import { getEntities } from '../getEntities/main';
 declare var global: any;
-// tslint:disable no-expression-statement no-object-mutation
 
 describe('getFeaturesOfShrub', () => {
   global.fetch = xmlFetchMock(XML3);

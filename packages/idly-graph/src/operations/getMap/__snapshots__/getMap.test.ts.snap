@@ -270,7 +270,7 @@ Array [
   Object {
     "id": "w51993919",
     "osm_basic--geometry": "area",
-    "osm_basic--icon": "shop",
+    "osm_basic--icon": "commercial",
     "osm_basic--tagsClass": "tag-landuse",
     "osm_basic--tagsClassType": "tag-landuse-retail",
   },
@@ -323,7 +323,7 @@ Array [
   Object {
     "id": "w413328803",
     "osm_basic--geometry": "area",
-    "osm_basic--icon": "commercial",
+    "osm_basic--icon": "suitcase",
     "osm_basic--name": "Poplar Coroners Court",
     "osm_basic--tagsClass": "tag-building",
     "osm_basic--tagsClassType": "tag-building-commercial",
@@ -460,7 +460,7 @@ Array [
   Object {
     "id": "w413330047",
     "osm_basic--geometry": "area",
-    "osm_basic--icon": "commercial",
+    "osm_basic--icon": "suitcase",
     "osm_basic--tagsClass": "tag-building",
     "osm_basic--tagsClassType": "tag-building-commercial",
   },
@@ -2645,7 +2645,7 @@ Array [
   Object {
     "id": "w51995120",
     "osm_basic--geometry": "area",
-    "osm_basic--icon": "shop",
+    "osm_basic--icon": "commercial",
     "osm_basic--tagsClass": "tag-landuse",
     "osm_basic--tagsClassType": "tag-landuse-retail",
   },
@@ -4263,7 +4263,7 @@ Array [
   Object {
     "id": "w51995126",
     "osm_basic--geometry": "area",
-    "osm_basic--icon": "shop",
+    "osm_basic--icon": "commercial",
     "osm_basic--name": "Chrisp Street Market",
     "osm_basic--tagsClass": "tag-landuse",
     "osm_basic--tagsClassType": "tag-landuse-retail",

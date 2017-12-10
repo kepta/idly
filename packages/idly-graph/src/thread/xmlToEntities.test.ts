@@ -1,7 +1,6 @@
 import { NODE_XML1, WAY_XML1, XML1, XML2, XML3 } from '../misc/fixtures';
 import { xmlToEntities } from './xmlToEntities';
 
-// tslint:disable:no-expression-statement
 describe('parsers', () => {
   describe('node', () => {
     it('matches snapshot', () => {
