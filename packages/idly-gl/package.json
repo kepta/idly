@@ -27,7 +27,7 @@
     "@types/react": "^16.0.28",
     "@types/react-dom": "^16.0.3",
     "awesome-typescript-loader": "^3.4.1",
-    "circular-dependency-plugin": "^4.2.1",
+    "circular-dependency-plugin": "^4.3.0",
     "duplicate-package-checker-webpack-plugin": "^2.0.1",
     "fuse-box": "^2.5.0-beta.1",
     "jest": "^21.2.1",

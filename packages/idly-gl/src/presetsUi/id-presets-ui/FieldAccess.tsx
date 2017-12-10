@@ -111,7 +111,7 @@ export function FieldAccess({ field, tags }) {
   const fieldPlaceholder: string = field.placeholder() || 'Unknown';
   const fieldKeys: string[] = field.keys;
 
-  const opts = fieldKeys.map(d => field.t('types.' + d, tOpts()));
+  const opts = fieldKeys.map(d => field.t('types.' + d, tOpts));
   // const value: string = tags[fieldKey] || '';
   const _placeholders = placeholders[tags.highway];
 
