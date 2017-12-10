@@ -3,16 +3,9 @@ import { weakCache } from '../../misc/weakCache';
 import { EntityType, Node, Relation, Way } from '../../osm/structures';
 import { Entity } from '../../osm/structures';
 
-import {
-  createEntity,
-  NodeLike,
-  RelLike,
-  WayLike,
-} from '../actions/entity/createEntity';
+import { createEntity } from '../actions/entity/createEntity';
 
 let LeafCache = new WeakMap<Entity, Leaf>();
-
-const mStrongCache = new Map();
 
 export type EntityKeys = keyof (Node & Way & Relation);
 
@@ -43,10 +36,6 @@ export class Leaf {
       prevLeaf = Leaf.create(entity, prevLeaf);
     }
     return prevLeaf;
-  }
-
-  private static _create(entity: Entity, ancestor: Leaf | undefined): Leaf {
-    return new Leaf(entity, ancestor);
   }
 
   private readonly entity: Entity;

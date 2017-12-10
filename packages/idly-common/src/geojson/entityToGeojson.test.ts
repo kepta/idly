@@ -39,8 +39,6 @@ const way = wayFactory({
   tags: tagsFactory({ highway: 'residential' }),
 });
 
-const node = nodeFactory({ id: 'n1' });
-
 // tslint:disable:no-expression-statement object-literal-key-quotes
 describe('way.test', () => {
   describe('wayToLineString', () => {

@@ -1,18 +1,5 @@
-import { Iterable, Set as ImSet } from 'immutable';
+import { Set as ImSet } from 'immutable';
 
-import { wayFactory } from '../../osm/wayFactory';
-import {
-  Entity,
-  EntityId,
-  EntityTable,
-  EntityType,
-  Node,
-  NodeId,
-  ParentWays,
-  Relation,
-  Way,
-  WayId,
-} from '../../osm/structures';
 import { Leaf } from './Leaf';
 
 export class Tree {

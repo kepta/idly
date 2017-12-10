@@ -1,14 +1,8 @@
+import { Map as ImMap } from 'immutable';
+import { Node, Way, Relation } from '../../osm/structures';
+
 import { entityTableGen } from '../../osm/entityTableGen';
-import { entityToString } from '../../osm/entityToString';
-import {
-  Entity,
-  EntityId,
-  EntityTable,
-  Node,
-  Relation,
-  Way,
-} from '../../osm/structures';
-import { Map } from 'immutable';
+import { EntityId, EntityTable } from '../../osm/structures';
 
 import { createEntity } from '../actions/entity/createEntity';
 import { Leaf } from './Leaf';

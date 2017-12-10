@@ -1,13 +1,6 @@
 import { Set as ImSet } from 'immutable';
 import { weakCache2 } from '../misc/weakCache';
-import {
-  Node,
-  EntityType,
-  NodeGeometry,
-  ParentWays,
-  Tags,
-  OsmGeometry,
-} from '../osm/structures';
+import { Node, NodeGeometry, Tags, OsmGeometry } from '../osm/structures';
 
 import { presetMatch } from './presetMatch';
 import { getNodeGeometry } from '../osm/getNodeGeometry';
@@ -21,7 +14,7 @@ export const nodePropertiesGen = weakCache2(
 );
 
 export const applyNodeMarkup = (geometry: NodeGeometry, tags: Tags) => {
-  const match = presetMatch(tags, geometry); //presetsMatcherCached(geometry)(tags);
+  const match = presetMatch(tags, geometry);
   return {
     icon: (match && match.icon) || DEFAULT_NODE_ICON,
     name: tags['name'],

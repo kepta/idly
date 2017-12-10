@@ -32,9 +32,7 @@ describe('map', () => {
     const l2 = l1.map(entity => {
       return createNode({ id: 'n1', tags: { K: 'K' } });
     });
-    const l2d = l1.map(entity => {
-      return createNode({ id: 'n1', tags: { K: 'K' } });
-    });
+
     expect(l2).toBe(l2);
   });
 
@@ -135,7 +133,6 @@ describe('isFirstGeneration', () => {
 describe('stringifying', () => {
   const e = createNode({ id: 'n1' });
   const l1 = Leaf.create(e);
-  const l2 = l1.map(entity => entity);
   test('simple stringify', () => {
     expect(l1.toString()).toMatchSnapshot();
     expect(JSON.parse(l1.toString())).toMatchSnapshot();
