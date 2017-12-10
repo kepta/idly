@@ -6,7 +6,6 @@ import { Entity } from 'idly-common/lib/osm/structures';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 export function smartParser(str: string): Entity[] {
-  let closer: string | undefined;
   let lastObj: any = {};
   return str
     .split('\n')
@@ -128,44 +127,28 @@ export function smartParser(str: string): Entity[] {
     });
 }
 
-function attr(z: any[]) {
-  return z.reduce(
-    (prev, cur, index, arr) => {
-      if (index % 2 === 1) {
-        let before = arr[index - 1];
-        prev.push([
-          before.slice(before.lastIndexOf(' ') + 1, before.length - 1),
-          cur,
-        ]);
-      }
-      return prev;
-    },
-    [] as string[][],
-  );
-}
-
-let ATTR = [
-  'version',
-  'encoding',
-  'generator',
-  'copyright',
-  'attribution',
-  'license',
-  'minlat',
-  'minlon',
-  'maxlat',
-  'maxlon',
-  'id',
-  'visible',
-  'changeset',
-  'timestamp',
-  'user',
-  'uid',
-  'lat',
-  'lon',
-  'k',
-  'v',
-  'ref',
-  'type',
-  'role',
-];
+// let ATTR = [
+//   'version',
+//   'encoding',
+//   'generator',
+//   'copyright',
+//   'attribution',
+//   'license',
+//   'minlat',
+//   'minlon',
+//   'maxlat',
+//   'maxlon',
+//   'id',
+//   'visible',
+//   'changeset',
+//   'timestamp',
+//   'user',
+//   'uid',
+//   'lat',
+//   'lon',
+//   'k',
+//   'v',
+//   'ref',
+//   'type',
+//   'role',
+// ];

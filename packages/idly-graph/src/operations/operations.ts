@@ -84,8 +84,6 @@ export function operations(
     ...(prevState || DEFAULT_STATE),
     plugins: sanitizePlugins(plugins),
   };
-  let x;
-  const setStateActions = Object.keys(WorkerSetStateActions);
   return async message => {
     if (debug) {
       console.log('worker--', message);

@@ -57,7 +57,6 @@ describe('PromiseWorkerStub', () => {
   test('postMessage returns value correctly', async () => {
     const promiseWorker = new PromiseWorkerStub();
     const mockFetchMap = jest.fn();
-    const mockFetchEntities = jest.fn();
     const mockDefault = jest.fn();
     const response = {
       data: [1, 2],

@@ -14,14 +14,12 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": false,
+    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
   },
   "compileOnSave": true,
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   "exclude": [
     "./lib/**/*",
     "node_modules",

@@ -1,8 +1,5 @@
 import { BIG_XML1, XML3 } from '../../misc/fixtures';
-import {
-  PromiseWorkerStub,
-  stubWorkerLogic,
-} from '../../mocks/PromiseWorkerStub';
+import { stubWorkerLogic } from '../../mocks/PromiseWorkerStub';
 import { xmlFetchMock } from '../../mocks/xmlFetchMock';
 import { setOsmTiles } from '../setOsmTiles/main';
 import { getMap } from './main';

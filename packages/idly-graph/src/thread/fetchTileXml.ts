@@ -5,7 +5,6 @@ export async function fetchTileXml(
   y: number,
   zoom: number,
 ): Promise<string> {
-  const xyz = [x, y, zoom].join(',');
   const bboxStr = mercator.bbox(x, y, zoom).join(',');
   const response = await fetch(
     `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`,
