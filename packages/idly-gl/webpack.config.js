@@ -49,9 +49,9 @@ module.exports = {
       exclude: /a\.js|node_modules/,
       // add errors to webpack instead of warnings
       failOnError: true
-    }),
+    })
     // new DashboardPlugin()
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [
