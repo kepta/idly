@@ -1,8 +1,0 @@
-module.exports = { contents: "\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar motorway_1 = require(\"./motorway\");\nvar narrow_1 = require(\"./narrow\");\nvar primary_1 = require(\"./primary\");\nvar residential_1 = require(\"./residential\");\nvar secondary_1 = require(\"./secondary\");\nvar tertiary_1 = require(\"./tertiary\");\nvar trunk_1 = require(\"./trunk\");\nvar unclassified_1 = require(\"./unclassified\");\nexports.default = motorway_1.default.concat(narrow_1.default, primary_1.default, residential_1.default, secondary_1.default, tertiary_1.default, trunk_1.default, unclassified_1.default);\n",
-dependencies: ["./motorway","./narrow","./primary","./residential","./secondary","./tertiary","./trunk","./unclassified"],
-sourceMap: "{\"version\":3,\"file\":\"layers/highway/index.js\",\"sourceRoot\":\"\",\"sources\":[\"/src/layers/highway/index.ts\"],\"names\":[],\"mappings\":\";;AAAA,yCAAkC;AAClC,qCAA8B;AAC9B,uCAAgC;AAChC,+CAAwC;AACxC,2CAAoC;AACpC,yCAAkC;AAClC,mCAA4B;AAC5B,iDAA0C;AAE1C,kBAAe;IACb,GAAG,kBAAQ;IACX,GAAG,gBAAM;IACT,GAAG,iBAAO;IACV,GAAG,qBAAW;IACd,GAAG,mBAAS;IACZ,GAAG,kBAAQ;IACX,GAAG,eAAK;IACR,GAAG,sBAAY;CAChB,CAAC\",\"sourcesContent\":[\"import motorway from './motorway';\\nimport narrow from './narrow';\\nimport primary from './primary';\\nimport residential from './residential';\\nimport secondary from './secondary';\\nimport tertiary from './tertiary';\\nimport trunk from './trunk';\\nimport unclassified from './unclassified';\\n\\nexport default [\\n  ...motorway,\\n  ...narrow,\\n  ...primary,\\n  ...residential,\\n  ...secondary,\\n  ...tertiary,\\n  ...trunk,\\n  ...unclassified\\n];\\n\"]}",
-headerContent: undefined,
-mtime: 1512124549000,
-devLibsRequired : undefined,
-_ : {}
-}
