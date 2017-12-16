@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/idly-gl.js",
-  "author": "",
+  "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
