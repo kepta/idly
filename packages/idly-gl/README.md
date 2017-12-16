@@ -2,6 +2,8 @@
 
 > Note: this is currently highly experimental !
 
+### [DEMO](https://kepta.github.io/idly-gl-example/)
+
 A mapbox-gl plugin to render Openstreetmap as geojson layer using [iD](https://github.com/openstreetmap/iD)'s style.
 
 ## Usage
