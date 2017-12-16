@@ -1,9 +1,9 @@
-import { getEntities } from 'idly-graph/lib/operations/getEntities/main';
-import { getFeaturesOfEntityIds } from 'idly-graph/lib/operations/getFeaturesOfEntityIds/main';
-import { getFeaturesOfShrub } from 'idly-graph/lib/operations/getFeaturesOfShrub/main';
-import { getMap } from 'idly-graph/lib/operations/getMap/main';
-import { setOsmTiles } from 'idly-graph/lib/operations/setOsmTiles/main';
-import { getBbox } from 'idly-graph/lib/operations/getBbox/main';
+import { getEntities } from 'idly-worker/lib/operations/getEntities/main';
+import { getFeaturesOfEntityIds } from 'idly-worker/lib/operations/getFeaturesOfEntityIds/main';
+import { getFeaturesOfShrub } from 'idly-worker/lib/operations/getFeaturesOfShrub/main';
+import { getMap } from 'idly-worker/lib/operations/getMap/main';
+import { setOsmTiles } from 'idly-worker/lib/operations/setOsmTiles/main';
+import { getBbox } from 'idly-worker/lib/operations/getBbox/main';
 import {
   FeatureCollection,
   Point,
