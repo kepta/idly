@@ -35,7 +35,7 @@
     "@turf/turf": "^5.0.4",
     "@types/xmldom": "^0.1.29",
     "deep-diff": "^0.3.8",
-    "idly-common": "file:../idly-common/",
+    "idly-common": "^1.0.3",
     "immutable": "^3.8.2",
     "lineclip": "^1.1.5",
     "lodash.unescape": "^4.0.1",
@@ -48,12 +48,22 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
-    "testPathIgnorePatterns": ["<rootDir>/node_modules", "<rootDir>/lib"],
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib"
+    ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
