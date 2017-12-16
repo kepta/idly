@@ -51,16 +51,7 @@ export function renderPresets(
 }
 export const tOpts = { dynamicTranslation: en };
 
-export function PresetsUi({
-  fields,
-  feature,
-  leaf
-}: {
-  fields: any;
-  feature: any;
-  leaf: Leaf;
-}) {
-  console.log(fields);
+export function PresetsUi({ fields, leaf }: { fields: any; leaf: Leaf }) {
   return (
     <div
       style={{

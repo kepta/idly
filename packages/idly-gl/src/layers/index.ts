@@ -8,7 +8,7 @@ import lineLabel from './lineLabel';
 import pointsWithLabels from './pointsWithLabels';
 import pointsWithoutLabels from './pointsWithoutLabel';
 
-export default [
+const layers = [
   ...area,
   ...highway,
   ...rail,
@@ -19,3 +19,8 @@ export default [
   ...pointsWithLabels,
   ...pointsWithoutLabels
 ];
+export default layers;
+
+if (layers.some(r => !(r.priority < 10 && r.priority >= 0))) {
+  throw new Error('priority must be 0 <= p < 10');
+}

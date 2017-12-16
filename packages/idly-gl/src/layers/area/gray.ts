@@ -41,8 +41,8 @@ export default [
   },
   {
     selectable: false,
+    priority: 1,
     layer: {
-      priority: 1,
       id: 'areaGrayLayerCasing',
       type: 'line',
       source: undefined,

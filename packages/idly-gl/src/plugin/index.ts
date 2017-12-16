@@ -1,4 +1,6 @@
 import layers from '../layers';
+import shadows from '../shadows';
+
 import { addSource } from '../helper/addSource';
 import {
   workerFetchMap,
@@ -10,7 +12,9 @@ import { BBox } from 'idly-common/lib/geo/bbox';
 import * as debounce from 'lodash.debounce';
 
 import { renderPresets } from '../presetsUi/index';
-const SOURCE_1 = 'idly-gl-src-1';
+const BASE_SOURCE = 'idly-gl-base-src-1';
+const ACTIVE_SOURCE = 'idly-gl-active-src-1';
+const SHADOW_SOURCE = 'idly-gl-shadow-src-1';
 
 export class IdlyGlPlugin {
   private map: any;
@@ -23,15 +27,12 @@ export class IdlyGlPlugin {
   onAdd(map: any) {
     this.map = map;
     window.map = map;
-    window.plugin = this;
     if (this.map.loaded()) {
       this.init();
     } else {
       this.map.on('load', () => this.init());
     }
     this._container = document.createElement('div');
-    // this._container.className = 'mapboxgl-ctrl';
-    // this._container.textContent = 'Hello, world';
     return this._container;
   }
 
@@ -39,7 +40,7 @@ export class IdlyGlPlugin {
     this.map.on('click', this.onClick);
     this.map.on('mousemove', this.onHover);
 
-    this.map.addSource(SOURCE_1, {
+    this.map.addSource(BASE_SOURCE, {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
@@ -47,10 +48,40 @@ export class IdlyGlPlugin {
       }
     });
 
-    layers
-      .map(r => addSource(r.layer, SOURCE_1))
+    this.map.addSource(ACTIVE_SOURCE, {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: []
+      }
+    });
+
+    this.map.addSource(SHADOW_SOURCE, {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: []
+      }
+    });
+
+    shadows
+      .map(r => {
+        return { ...r, priority: r.priority + 10 };
+      })
+      .map(r => addSource(r.layer, SHADOW_SOURCE))
       .forEach(l => this.map.addLayer(l));
 
+    layers
+      .map(r => addSource(r.layer, BASE_SOURCE))
+      .forEach(l => this.map.addLayer(l));
+
+    // add higher priority for ACTIVE SOURCES
+    layers
+      .map(r => {
+        return { ...r, priority: r.priority + 20 };
+      })
+      .map(r => addSource(r.layer, ACTIVE_SOURCE))
+      .forEach(glLayer => this.map.addLayer(glLayer));
     this.map.on('moveend', debounce(this.render, 200));
     this.render();
   }
@@ -69,7 +100,8 @@ export class IdlyGlPlugin {
         bbox,
         zoom
       }).then(fc => {
-        this.map.getSource(SOURCE_1).setData(fc);
+        this.data = fc;
+        this.map.getSource(BASE_SOURCE).setData(fc);
       });
     });
     // workerGetBbox({ bbox }).then(fc => {
@@ -98,6 +130,13 @@ export class IdlyGlPlugin {
     const leaf = shrub.getDependant(this.selectedId);
 
     if (!leaf) return;
+    var d = {
+      type: 'FeatureCollection',
+      features: [
+        this.data.features.find(f => f.properties.id === this.selectedId)
+      ]
+    };
+    this.map.getSource(SHADOW_SOURCE).setData(d);
 
     renderPresets(this._container, { feature, leaf });
   };

@@ -8,6 +8,6 @@ registerPromiseWorker(
       workers: []
     }),
     undefined,
-    true
+    false
   )
 );

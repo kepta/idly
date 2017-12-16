@@ -30,7 +30,7 @@ export default [
   },
   {
     selectable: true,
-    priority: -2,
+    priority: 2,
     layer: {
       id: 'highwayTertiaryCasing',
       type: 'line',
