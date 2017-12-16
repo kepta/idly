@@ -12,7 +12,6 @@ export function workerSetOsmTiles(
   state: WorkerState,
 ): (request: WorkerSetOsmTiles['request']) => Promise<WorkerState> {
   return async ({ bbox, zoom }) => {
-    console.time('fetching');
     const xyzs = filterXyz(
       bboxToTiles(bbox, zoom),
       bbox,
@@ -23,9 +22,6 @@ export function workerSetOsmTiles(
       xyzs,
     );
     const data = await Promise.all(tilesData);
-
-    console.timeEnd('fetching');
-    console.time('Proccessing');
 
     const { entityTable, parentWays } = data.reduce(
       (
@@ -45,8 +41,6 @@ export function workerSetOsmTiles(
         parentWays: state.parentWays,
       },
     );
-
-    console.timeEnd('Proccessing');
 
     return {
       ...state,
