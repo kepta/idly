@@ -10,7 +10,7 @@ export default [
       type: 'symbol',
       source: undefined,
       layout: {
-        'icon-image': `{${PLUGIN_NAME}--icon}-11`,
+        'icon-image': `{${PLUGIN_NAME}--icon}-15`,
         'icon-allow-overlap': true,
         'text-field': `{${PLUGIN_NAME}--name}`,
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
@@ -35,4 +35,22 @@ export default [
       ]
     }
   }
+  // {
+  //   selectable: true,
+  //   priority: 3,
+  //   layer: {
+  //     type: 'circle',
+  //     id: 'PointsWithLabelsLayerCircle',
+  //     source: undefined,
+  //     paint: {
+  //       // make circles larger as the user zooms from z12 to z22
+  //       'circle-radius': {
+  //         base: 5.75,
+  //         stops: [[12, 2], [22, 180]]
+  //       },
+  //       // color circles by ethnicity, using data-driven styles
+  //       'circle-color': '#000'
+  //     }
+  //   }
+  // }
 ];

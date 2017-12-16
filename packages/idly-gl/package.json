@@ -2,7 +2,7 @@
   "name": "idly-gl",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/idly-gl.js",
   "author": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -47,25 +47,13 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": [
-      "<rootDir>/node_modules",
-      "<rootDir>/src"
-    ],
-    "setupFiles": [
-      "<rootDir>/test-shim/shim.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules",
-      "<rootDir>/lib"
-    ],
+    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
+    "setupFiles": ["<rootDir>/test-shim/shim.js"],
+    "testPathIgnorePatterns": ["<rootDir>/node_modules", "<rootDir>/lib"],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   }
 }

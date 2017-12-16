@@ -5,13 +5,12 @@ import { addSource } from '../helper/addSource';
 import {
   workerFetchMap,
   workerSetOsmTiles,
-  workerGetBbox,
   workerGetEntities
 } from './worker/index';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import * as debounce from 'lodash.debounce';
 
-import { renderPresets } from '../presetsUi/index';
+// import { renderPresets } from '../presetsUi/index';
 const BASE_SOURCE = 'idly-gl-base-src-1';
 const ACTIVE_SOURCE = 'idly-gl-active-src-1';
 const SHADOW_SOURCE = 'idly-gl-shadow-src-1';
@@ -26,7 +25,6 @@ export class IdlyGlPlugin {
   }
   onAdd(map: any) {
     this.map = map;
-    window.map = map;
     if (this.map.loaded()) {
       this.init();
     } else {
@@ -127,9 +125,11 @@ export class IdlyGlPlugin {
     const shrub = await workerGetEntities({
       entityIds: [this.selectedId]
     });
+
     const leaf = shrub.getDependant(this.selectedId);
 
     if (!leaf) return;
+
     var d = {
       type: 'FeatureCollection',
       features: [
@@ -137,8 +137,6 @@ export class IdlyGlPlugin {
       ]
     };
     this.map.getSource(SHADOW_SOURCE).setData(d);
-
-    renderPresets(this._container, { feature, leaf });
   };
 
   onIdDeselect = () => {

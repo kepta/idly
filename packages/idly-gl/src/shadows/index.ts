@@ -10,7 +10,7 @@ export default [
       paint: {
         'line-color': '#551A8B',
         'line-opacity': 0.5,
-        'line-width': 14
+        'line-width': 18
         // 'line-blur': 2
       },
       filter: ['all', ['==', '$type', 'LineString']]
@@ -30,7 +30,7 @@ export default [
       paint: {
         'line-color': '#ccc',
         'line-opacity': 1,
-        'line-width': 12
+        'line-width': 16
       },
       filter: ['all', ['==', '$type', 'LineString']]
     }

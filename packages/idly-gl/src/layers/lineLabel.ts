@@ -20,8 +20,8 @@ export default [
       },
       paint: {
         'text-halo-color': '#ffffff',
-        'text-halo-width': 1.5,
-        'text-halo-blur': 0.5
+        'text-halo-width': 3.5,
+        'text-halo-blur': 0.3
       },
       filter: ['all', ['==', '$type', 'LineString']]
     }

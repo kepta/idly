@@ -15,7 +15,7 @@ export default [
       paint: {
         'line-color': '#FFF9B3',
         'line-opacity': 0.85,
-        'line-width': 5
+        'line-width': 9
       },
       filter: [
         'all',
