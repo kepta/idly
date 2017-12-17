@@ -1,6 +1,6 @@
 {
   "name": "idly-common",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "main": "lib/index.js",
   "types": "lib",
@@ -37,12 +37,22 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": ["<rootDir>/node_modules", "<rootDir>/src"],
-    "testPathIgnorePatterns": ["<rootDir>/node_modules", "<rootDir>/lib"],
+    "moduleDirectories": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib"
+    ],
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }

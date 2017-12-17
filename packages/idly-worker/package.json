@@ -1,6 +1,6 @@
 {
   "name": "idly-worker",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "description": "",
   "main": "index.js",
@@ -35,7 +35,7 @@
     "@turf/turf": "^5.0.4",
     "@types/xmldom": "^0.1.29",
     "deep-diff": "^0.3.8",
-    "idly-common": "^1.0.3",
+    "idly-common": "^1.1.1",
     "immutable": "^3.8.2",
     "lineclip": "^1.1.5",
     "lodash.unescape": "^4.0.1",
