@@ -23,11 +23,11 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-    alias: {
-      immutable: path.resolve('./node_modules/immutable'),
-      '@turf/helpers': path.resolve('./node_modules/@turf/helpers')
-    }
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+    // alias: {
+    //   immutable: path.resolve('../node_modules/immutable'),
+    //   '@turf/helpers': path.resolve('../node_modules/@turf/helpers')
+    // }
   },
   node: {
     fs: 'empty'

@@ -13,13 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "@types/deep-diff": "0.0.31",
-    "@types/geojson": "^1.0.6",
-    "@types/jest": "^21.1.1",
+    "@types/geojson": "^7946.0.0",
+    "@types/jest": "^22.0.1",
     "@types/lodash.unescape": "^4.0.3",
     "geojson": "^0.5.0",
-    "jest": "^21.2.1",
+    "jest": "^22.0.4",
     "node-fetch": "^1.7.3",
-    "ts-jest": "^21.0.1",
+    "ts-jest": "^22.0.1",
     "tslint": "^5.8.0",
     "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
@@ -27,12 +27,12 @@
     "webpack": "^3.9.1"
   },
   "dependencies": {
-    "@turf/area": "^5.0.4",
-    "@turf/bbox": "^5.0.4",
-    "@turf/bbox-clip": "^5.0.4",
-    "@turf/bbox-polygon": "^5.0.4",
-    "@turf/helpers": "^5.0.4",
-    "@turf/turf": "^5.0.4",
+    "@turf/area": "^5.1.5",
+    "@turf/bbox": "^5.1.5",
+    "@turf/bbox-clip": "^5.1.5",
+    "@turf/bbox-polygon": "^5.1.5",
+    "@turf/helpers": "^5.1.5",
+    "@turf/turf": "^5.1.5",
     "@types/xmldom": "^0.1.29",
     "deep-diff": "^0.3.8",
     "idly-common": "^1.1.1",
@@ -48,16 +48,15 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": [
-      "<rootDir>/node_modules",
-      "<rootDir>/src"
-    ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules",
-      "<rootDir>/lib"
+      "<rootDir>/lib",
+      "<rootDir>/packages/.*/node_modules",
+      "<rootDir>/packages/.*/lib",
+      "<rootDir>/packages/.*/dist"
     ],
     "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [

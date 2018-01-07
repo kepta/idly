@@ -8,9 +8,8 @@ import {
   workerGetEntities
 } from './worker/index';
 import { BBox } from 'idly-common/lib/geo/bbox';
-import * as debounce from 'lodash.debounce';
+import debounce from 'lodash-es/debounce';
 
-// import { renderPresets } from '../presetsUi/index';
 const BASE_SOURCE = 'idly-gl-base-src-1';
 const ACTIVE_SOURCE = 'idly-gl-active-src-1';
 const SHADOW_SOURCE = 'idly-gl-shadow-src-1';

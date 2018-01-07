@@ -1,10 +1,6 @@
 import { compareShallow } from './compareShallow';
 import { Node, Way } from './structures';
-// readonly id: EntityId;
-// readonly tags: Tags;
-// readonly type: EntityType.NODE;
-// readonly loc: LngLat;
-// readonly attributes: Attributes;
+
 export function compareNode(node: Node, compareWith: Node): boolean {
   if (node === compareWith) {
     return true;

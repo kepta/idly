@@ -6,28 +6,31 @@
   "types": "lib",
   "repository": {
     "type": "git",
+    "test": "jest",
     "url": "https://github.com/kepta/idly.git"
   },
   "scripts": {
-    "clean": "rm -r lib/*"
+    "clean": "rm -r lib/*",
+    "test": "jest"
   },
   "license": "MIT",
   "dependencies": {
     "@mapbox/sphericalmercator": "^1.0.5",
-    "@turf/bbox": "^5.0.4",
-    "@turf/bbox-polygon": "^5.0.4",
-    "@turf/helpers": "^5.0.4",
-    "@turf/transform-scale": "^5.0.4",
-    "@turf/turf": "^5.0.4",
-    "@types/geojson": "^1.0.3",
-    "geojson": "^0.5.0",
+    "@turf/bbox": "^5.1.5",
+    "@turf/bbox-polygon": "^5.1.5",
+    "@turf/helpers": "^5.1.5",
+    "@turf/transform-scale": "^5.1.5",
+    "@turf/turf": "^5.1.5",
     "idly-data": "^1.11.0",
     "immutable": "^3.8.2"
   },
   "devDependencies": {
-    "@types/jest": "^20.0.8",
-    "jest": "^21.2.1",
-    "ts-jest": "^21.2.2",
+    "@types/geojson": "^7946.0.0",
+    "@types/jest": "^22.0.1",
+    "geojson": "^0.5.0",
+    "jest": "^22.0.4",
+    "jest-resolve": "^22.0.4",
+    "ts-jest": "^22.0.1",
     "tslint": "^5.6.0",
     "typescript": "^2.6.1"
   },
@@ -37,22 +40,17 @@
         "skipBabel": true
       }
     },
-    "moduleDirectories": [
-      "<rootDir>/node_modules",
-      "<rootDir>/src"
-    ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules",
-      "<rootDir>/lib"
+      "<rootDir>/lib",
+      "<rootDir>/packages/.*/node_modules",
+      "<rootDir>/packages/.*/lib",
+      "<rootDir>/packages/.*/dist"
     ],
     "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js"]
   }
 }

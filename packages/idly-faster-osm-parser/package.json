@@ -1,0 +1,41 @@
+{
+  "name": "idly-faster-osm-parser",
+  "version": "1.1.1",
+  "description": "An insanely fast osm xml parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["osm", "xml", "parser"],
+  "author": "Kushan Joshi <0o3ko0@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "idly-common": "^1.1.1",
+    "lodash-es": "^4.17.4",
+    "lodash.unescape": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "jest": "^22.0.4",
+    "ts-jest": "^22.0.1"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "skipBabel": true
+      }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/lib",
+      "<rootDir>/packages/.*/node_modules",
+      "<rootDir>/packages/.*/lib",
+      "<rootDir>/packages/.*/dist"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": ["ts", "tsx", "js"]
+  }
+}
