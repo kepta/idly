@@ -1,5 +1,4 @@
 import { Attributes } from '../osm/structures';
-const attr = {};
 
 export function attributesGen(
   {
@@ -10,13 +9,13 @@ export function attributesGen(
     uid,
     user,
   }: {
-    visible?: boolean;
-    version?: string;
-    timestamp?: string;
-    changeset?: string;
-    uid?: string;
-    user?: string;
-  } = {},
+      visible?: boolean;
+      version?: string;
+      timestamp?: string;
+      changeset?: string;
+      uid?: string;
+      user?: string;
+    } = {},
 ): Attributes {
   return {
     changeset,
