@@ -1,6 +1,6 @@
 {
   "name": "idly-faster-osm-parser",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An insanely fast osm xml parser",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,7 +8,11 @@
     "test": "jest",
     "doc": "typedoc  --out ./docs/ --mode modules  --theme minimal ./src/"
   },
-  "keywords": ["osm", "xml", "parser"],
+  "keywords": [
+    "osm",
+    "xml",
+    "parser"
+  ],
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -42,6 +46,10 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   }
 }
