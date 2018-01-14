@@ -1315,6 +1315,12 @@
   dependencies:
     "@types/lodash" "*"
 
+"@types/lodash.isequal@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@types/lodash.isequal/-/lodash.isequal-4.5.2.tgz#adbdff67f7c956ed703009e5466a34eeddb0b712"
+  dependencies:
+    "@types/lodash" "*"
+
 "@types/lodash.unescape@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@types/lodash.unescape/-/lodash.unescape-4.0.3.tgz#17c5addb5054631d6da4fd61d2a59a5511b888b7"
