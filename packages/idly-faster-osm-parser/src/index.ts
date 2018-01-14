@@ -27,7 +27,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
     prependEntityChar: true,
     useRef: false,
     freeze: false,
-    ...opts
+    ...opts,
   };
 
   return str
@@ -55,12 +55,12 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
         if (opts.useRef) {
           attributesObj.ref = prependEntityChar(
             attributesObj.ref,
-            attributesObj.type
+            attributesObj.type,
           );
         } else {
           attributesObj.id = prependEntityChar(
             attributesObj.ref,
-            attributesObj.type
+            attributesObj.type,
           );
           delete attributesObj.ref;
         }
@@ -79,7 +79,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
           attributes: attributesObj,
           type: 'way',
           nodes: [],
-          tags: {}
+          tags: {},
         };
         return lastObj;
       }
@@ -94,7 +94,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
           attributes: attributesObj,
           type: 'relation',
           members: [],
-          tags: {}
+          tags: {},
         };
         return lastObj;
       }
@@ -112,7 +112,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
       }
 
       throw new Error(
-        'Invalid osm xml, please use /api/0.6/map?bbox=left,bottom,right,top'
+        'Invalid osm xml, please use /api/0.6/map?bbox=left,bottom,right,top',
       );
     })
     .filter(r => r)
@@ -126,11 +126,11 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             attributes: r.attributes,
             loc: {
               lon: parseFloat(r.attributes.lon),
-              lat: parseFloat(r.attributes.lat)
+              lat: parseFloat(r.attributes.lat),
             },
-            tags: r.tags
+            tags: r.tags,
           },
-          opts.freeze
+          opts.freeze,
         );
       } else if (r.type === 'way') {
         return wayFactory(
@@ -138,9 +138,9 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             id: prependEntityChar(r.attributes.id, r.type),
             attributes: r.attributes,
             tags: r.tags,
-            nodes: r.nodes
+            nodes: r.nodes,
           },
-          opts.freeze
+          opts.freeze,
         );
       } else if (r.type === 'relation') {
         return relationFactory(
@@ -148,12 +148,12 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             id: prependEntityChar(r.attributes.id, r.type),
             attributes: r.attributes,
             tags: r.tags,
-            members: r.members
+            members: r.members,
           },
-          opts.freeze
+          opts.freeze,
         );
       } else {
-        throw new Error('what type ' + JSON.stringify(r));
+        throw new Error('Unknown type ' + r.type);
       }
     });
 
@@ -179,19 +179,19 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             prev.push([
               // key comes in the format '<node k=' or ' k='
               key.slice(key.lastIndexOf(' ') + 1, key.length - 1),
-              val
+              val,
             ]);
           }
           return prev;
         },
-        [] as Array<[string, string]>
+        [] as Array<[string, string]>,
       )
       .reduce(
         (prev, cur) => {
           prev[cur[0]] = cur[1];
           return prev;
         },
-        {} as { [index: string]: string }
+        {} as { [index: string]: string },
       );
   }
 }

@@ -2,7 +2,7 @@
   "name": "idly-faster-osm-parser",
   "version": "1.1.1",
   "description": "An insanely fast osm xml parser",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "doc": "typedoc  --out ./docs/ --mode modules  --theme minimal ./src/"

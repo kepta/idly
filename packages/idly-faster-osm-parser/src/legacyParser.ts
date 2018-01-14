@@ -40,7 +40,6 @@ export function legacyParser(xml: Document): Entity[] {
   return entities;
 }
 /**
- * sexx
  * @param attrs
  */
 function getVisible(attrs: NamedNodeMap): boolean {

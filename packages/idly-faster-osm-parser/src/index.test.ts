@@ -15,7 +15,6 @@ import smartParser from './';
 
 describe('smart parser', () => {
   test('case 1', () => {
-    var x = 'x';
     const parser = new DOMParser();
     const xml = parser.parseFromString(XML2, 'text/xml');
     const en = smartParser(XML2);
