@@ -1,3 +1,4 @@
+import equal = require('lodash.isequal');
 import {
   BIG_XML1,
   BIG_XML3,
@@ -6,7 +7,7 @@ import {
   XML5,
   XML7,
   XML8,
-  XML9
+  XML9,
 } from './fixtures';
 import { legacyParser } from './legacyParser';
 
@@ -14,6 +15,7 @@ import smartParser from './';
 
 describe('smart parser', () => {
   test('case 1', () => {
+    var x = 'x';
     const parser = new DOMParser();
     const xml = parser.parseFromString(XML2, 'text/xml');
     const en = smartParser(XML2);
@@ -29,62 +31,62 @@ describe('smart parser', () => {
   });
   test('case 3', () => {
     const parser = new DOMParser();
-    const saneXML = XML5.split('\n')
+    const rawXML = XML5.split('\n')
       .slice(1)
       .join('\n');
-    const xml = parser.parseFromString(saneXML, 'text/xml');
+    const xml = parser.parseFromString(rawXML, 'text/xml');
     const entities = legacyParser(xml);
-    const en = smartParser(saneXML);
-    expect(en.slice(0)).toEqual(entities.slice(0));
+    const en = smartParser(rawXML);
+    expect(en).toEqual(entities);
   });
   test('case 4', () => {
     const parser = new DOMParser();
-    const saneXML = XML7.split('\n')
+    const rawXML = XML7.split('\n')
       .slice(1)
       .join('\n');
-    const xml = parser.parseFromString(saneXML, 'text/xml');
+    const xml = parser.parseFromString(rawXML, 'text/xml');
     const entities = legacyParser(xml);
-    const en = smartParser(saneXML);
-    expect(en.slice(0)).toEqual(entities.slice(0));
+    const en = smartParser(rawXML);
+    expect(en).toEqual(entities);
   });
   test('case 5', () => {
     const parser = new DOMParser();
-    const saneXML = XML8.split('\n')
+    const rawXML = XML8.split('\n')
       .slice(1)
       .join('\n');
-    const xml = parser.parseFromString(saneXML, 'text/xml');
+    const xml = parser.parseFromString(rawXML, 'text/xml');
     const entities = legacyParser(xml);
-    const en = smartParser(saneXML);
-    expect(en.slice(0)).toEqual(entities.slice(0));
+    const en = smartParser(rawXML);
+    expect(equal(en, entities)).toBe(true);
   });
-  test('case 6', () => {
+  test('big case 1', () => {
     const parser = new DOMParser();
-    const saneXML = XML9.split('\n')
+    const rawXML = XML9.split('\n')
       .slice(1)
       .join('\n');
-    const xml = parser.parseFromString(saneXML, 'text/xml');
+    const xml = parser.parseFromString(rawXML, 'text/xml');
     const entities = legacyParser(xml);
-    const en = smartParser(saneXML);
-    expect(en.slice(0)).toEqual(entities.slice(0));
+    const en = smartParser(rawXML);
+    expect(equal(en, entities)).toBe(true);
   });
   test('big case 2', () => {
     const parser = new DOMParser();
-    const saneXML = BIG_XML1.split('\n')
+    const rawXML = BIG_XML1.split('\n')
       .slice(1)
       .join('\n');
-    const xml = parser.parseFromString(saneXML, 'text/xml');
+    const xml = parser.parseFromString(rawXML, 'text/xml');
     const entities = legacyParser(xml);
-    const en = smartParser(saneXML);
-    expect(en.slice(0)).toEqual(entities.slice(0));
+    const en = smartParser(rawXML);
+    expect(equal(en, entities)).toBe(true);
   });
   test('big case 3', () => {
     const parser = new DOMParser();
-    const saneXML = BIG_XML3.split('\n')
+    const rawXML = BIG_XML3.split('\n')
       .slice(1)
       .join('\n');
-    const xml = parser.parseFromString(saneXML, 'text/xml');
+    const xml = parser.parseFromString(rawXML, 'text/xml');
     const entities = legacyParser(xml);
-    const en = smartParser(saneXML);
-    expect(en.slice(0)).toEqual(entities.slice(0));
+    const en = smartParser(rawXML);
+    expect(equal(en, entities)).toBe(true);
   });
 });

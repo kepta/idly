@@ -7,97 +7,122 @@ import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 export default smartParser;
 
-export function smartParser(str: string): Entity[] {
+export type Options = {
+  // flag for prepending `n`, `w`, `r` to the id of entity
+  prependEntityChar?: boolean;
+  // when true uses `ref` key for iding a member
+  // when false uses `id` key for iding a member
+  useRef?: boolean;
+  // deep freezes each entity
+  freeze?: boolean;
+};
+
+/**
+ * A smart parser for osm bbox api
+ */
+export function smartParser(str: string, opts: Options = {}): Entity[] {
   let lastObj: any = {};
+
+  opts = {
+    prependEntityChar: true,
+    useRef: false,
+    freeze: false,
+    ...opts
+  };
 
   return str
     .split('\n')
     .map((r: string) => {
-      const p = r.trim();
-      if (p === '') {
+      const line = r.trim();
+      if (line === '') {
         return;
       }
-      if (p[0] !== '<' || p[p.length - 1] !== '>') {
-        throw new Error('unknown osm bbox xml format, ' + p);
+      if (line[0] !== '<' || line[line.length - 1] !== '>') {
+        throw new Error('unknown osm bbox xml format, ' + line);
       }
 
-      const attributesObj = p
-        .split('"')
-        .reduce(
-          (prev, cur, index, arr) => {
-            if (index % 2 === 1) {
-              let before = arr[index - 1];
-              prev.push([
-                before.slice(before.lastIndexOf(' ') + 1, before.length - 1),
-                cur
-              ]);
-            }
-            return prev;
-          },
-          [] as string[][]
-        )
-        .reduce(
-          (prev: { [index: string]: string | null }, cur: [string, string]) => {
-            prev[cur[0]] = cur[1] != null ? cur[1] : null; // TOFIX might wanna move away from null :{}
-            return prev;
-          },
-          {}
-        );
+      const attributesObj = parseAttributes(line);
 
-      if (p.startsWith('<nd')) {
+      if (line.startsWith('<nd')) {
         lastObj.nodes.push('n' + attributesObj.ref);
-        return; // 4732
-      } else if (p.startsWith('<tag')) {
+        return;
+      }
+      if (line.startsWith('<tag')) {
         lastObj.tags[attributesObj.k] = unescape(attributesObj.v);
-        return; // 4361
-      } else if (p.startsWith('<member')) {
-        attributesObj.id = attributesObj.type.charAt(0) + attributesObj.ref;
-        delete attributesObj.ref;
+        return;
+      }
+      if (line.startsWith('<member')) {
+        if (opts.useRef) {
+          attributesObj.ref = prependEntityChar(
+            attributesObj.ref,
+            attributesObj.type
+          );
+        } else {
+          attributesObj.id = prependEntityChar(
+            attributesObj.ref,
+            attributesObj.type
+          );
+          delete attributesObj.ref;
+        }
         lastObj.members.push(attributesObj);
-        return; // 4024
-      } else if (p.startsWith('<node')) {
-        // 3241
+        return;
+      }
+      if (line.startsWith('<node')) {
         lastObj = { attributes: attributesObj, type: 'node', tags: {} };
         return lastObj;
-      } else if (p.startsWith('</node>')) {
-        return; //422
-      } else if (p.startsWith('<way')) {
+      }
+      if (line.startsWith('</node>')) {
+        return;
+      }
+      if (line.startsWith('<way')) {
         lastObj = {
           attributes: attributesObj,
           type: 'way',
           nodes: [],
           tags: {}
         };
-        return lastObj; // 504
-      } else if (p.startsWith('</way>')) {
-        return; //504
-      } else if (p.startsWith('</relation>')) {
-        return; //51
-      } else if (p.startsWith('<relation')) {
+        return lastObj;
+      }
+      if (line.startsWith('</way>')) {
+        return;
+      }
+      if (line.startsWith('</relation>')) {
+        return;
+      }
+      if (line.startsWith('<relation')) {
         lastObj = {
           attributes: attributesObj,
           type: 'relation',
           members: [],
           tags: {}
         };
-        return lastObj; // 51
-      } else if (p.startsWith('<?xml')) {
-        return;
-      } else if (p.startsWith('<bounds')) {
-        return;
-      } else if (p.startsWith('<osm')) {
-        return;
-      } else if (p.startsWith('</osm>')) {
+        return lastObj;
+      }
+      if (line.startsWith('<?xml')) {
         return;
       }
-      throw new Error('what shit man?');
+      if (line.startsWith('<bounds')) {
+        return;
+      }
+      if (line.startsWith('<osm')) {
+        return;
+      }
+      if (line.startsWith('</osm>')) {
+        return;
+      }
+
+      throw new Error(
+        'Invalid osm xml, please use /api/0.6/map?bbox=left,bottom,right,top'
+      );
     })
     .filter(r => r)
     .map(r => {
+      r.attributes = parseVisibility(r.attributes);
+
       if (r.type === 'node') {
         return nodeFactory(
           {
-            id: r.type.charAt(0) + r.attributes.id,
+            id: prependEntityChar(r.attributes.id, r.type),
             attributes: r.attributes,
             loc: {
               lon: parseFloat(r.attributes.lon),
@@ -105,27 +130,68 @@ export function smartParser(str: string): Entity[] {
             },
             tags: r.tags
           },
-          false
+          opts.freeze
         );
       } else if (r.type === 'way') {
         return wayFactory(
           {
-            id: r.type.charAt(0) + r.attributes.id,
+            id: prependEntityChar(r.attributes.id, r.type),
             attributes: r.attributes,
             tags: r.tags,
             nodes: r.nodes
           },
-          false
+          opts.freeze
         );
       } else if (r.type === 'relation') {
-        return relationFactory({
-          id: r.type.charAt(0) + r.attributes.id,
-          attributes: r.attributes,
-          tags: r.tags,
-          members: r.members
-        });
+        return relationFactory(
+          {
+            id: prependEntityChar(r.attributes.id, r.type),
+            attributes: r.attributes,
+            tags: r.tags,
+            members: r.members
+          },
+          opts.freeze
+        );
       } else {
         throw new Error('what type ' + JSON.stringify(r));
       }
     });
+
+  function parseVisibility(attr: any): boolean {
+    attr.visible = !attr.visible || attr.visible !== 'false' ? true : false;
+    return attr;
+  }
+
+  function prependEntityChar(id: string, type: string) {
+    if (!opts.prependEntityChar) {
+      return id;
+    }
+    return type.charAt(0) + id;
+  }
+
+  function parseAttributes(str: string) {
+    return str
+      .split('"')
+      .reduce(
+        (prev, val, index, arr) => {
+          if (index % 2 === 1) {
+            let key = arr[index - 1];
+            prev.push([
+              // key comes in the format '<node k=' or ' k='
+              key.slice(key.lastIndexOf(' ') + 1, key.length - 1),
+              val
+            ]);
+          }
+          return prev;
+        },
+        [] as Array<[string, string]>
+      )
+      .reduce(
+        (prev, cur) => {
+          prev[cur[0]] = cur[1];
+          return prev;
+        },
+        {} as { [index: string]: string }
+      );
+  }
 }
