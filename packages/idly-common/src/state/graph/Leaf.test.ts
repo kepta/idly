@@ -1,8 +1,8 @@
 import { createNode, createWay } from '../actions/entity/createEntity';
 
-import { Leaf } from './Leaf';
-import { Way } from '../../osm/structures';
 import { genLngLat } from '../../osm/genLngLat';
+import { Way } from '../../osm/structures';
+import { Leaf } from './Leaf';
 
 describe('map', () => {
   test('maintains the same instance', () => {

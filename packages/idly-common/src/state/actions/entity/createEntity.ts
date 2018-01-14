@@ -1,7 +1,8 @@
+import { entityFromString } from '../../../osm/entityFromString';
+import { entityToString } from '../../../osm/entityToString';
 import {
   Attributes,
   EntityId,
-  EntityType,
   LngLat,
   Node,
   Relation,
@@ -9,8 +10,6 @@ import {
   Tags,
   Way,
 } from '../../../osm/structures';
-import { entityFromString } from '../../../osm/entityFromString';
-import { entityToString } from '../../../osm/entityToString';
 
 export interface NodeLike {
   readonly id: EntityId;

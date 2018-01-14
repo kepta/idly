@@ -1,11 +1,11 @@
-import { Iterable, Set as ImSet } from 'immutable';
+import { Set as ImSet } from 'immutable';
 
+import { genLngLat } from '../../../osm/genLngLat';
+import { EntityType } from '../../../osm/structures';
 import { Leaf } from '../../graph/Leaf';
 import { Tree } from '../../graph/Tree';
 import { createNode, createWay } from '../entity/createEntity';
 import { modifyLeaf } from './modifyLeaf';
-import { genLngLat } from '../../../osm/genLngLat';
-import { EntityType } from '../../../osm/structures';
 
 // tslint:disable:variable-name
 describe('modify simple node', () => {

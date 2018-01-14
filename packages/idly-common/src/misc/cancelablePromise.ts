@@ -14,7 +14,7 @@ export function cancelablePromise<T>(promise: Promise<T>) {
         (val: T) => (hasCanceled ? reject({ isCanceled: true }) : resolve(val)),
       )
       .catch(
-        (error) => (hasCanceled ? reject({ isCanceled: true }) : reject(error)),
+        error => (hasCanceled ? reject({ isCanceled: true }) : reject(error)),
       ),
   );
   return {

@@ -3,16 +3,16 @@ import {
   EntityTable,
   EntityType,
   Node,
-  Way,
   OsmGeometry,
+  Way,
 } from '../osm/structures';
 
 import {
   Feature,
   LineString,
+  lineString,
   Point,
   Polygon,
-  lineString,
   polygon,
 } from '@turf/helpers';
 

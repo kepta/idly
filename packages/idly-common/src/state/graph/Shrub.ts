@@ -1,5 +1,3 @@
-import { Map as ImMap } from 'immutable';
-import { Node, Way, Relation } from '../../osm/structures';
 
 import { entityTableGen } from '../../osm/entityTableGen';
 import { EntityId, EntityTable } from '../../osm/structures';

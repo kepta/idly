@@ -2,13 +2,7 @@ import { List as ImList, Map as ImMap } from 'immutable';
 import { isImmutableList } from '../misc/isImmutableList';
 import {
   Entity,
-  EntityId,
   EntityTable,
-  EntityType,
-  Node,
-  Relation,
-  Tags,
-  Way,
 } from '../osm/structures';
 
 // @TOFIX this could be written with better performance

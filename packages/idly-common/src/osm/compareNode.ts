@@ -1,5 +1,5 @@
 import { compareShallow } from './compareShallow';
-import { Node, Way } from './structures';
+import { Node } from './structures';
 
 export function compareNode(node: Node, compareWith: Node): boolean {
   if (node === compareWith) {

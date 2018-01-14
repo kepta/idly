@@ -56,7 +56,9 @@ export const tagClassesPrimary = (tags: Tags) => {
   for (i = 0; i < primaries.length; i++) {
     key = primaries[i];
     value = tags[key];
-    if (!value || value === 'no') continue;
+    if (!value || value === 'no') {
+      continue;
+    }
 
     primary = key;
     if (statuses.indexOf(value) !== -1) {
@@ -85,7 +87,9 @@ export function tagClasses(tags: Tags) {
   for (i = 0; i < primaries.length; i++) {
     key = primaries[i];
     value = tags[key];
-    if (!value || value === 'no') continue;
+    if (!value || value === 'no') {
+      continue;
+    }
 
     primary = key;
     if (statuses.indexOf(value) !== -1) {
@@ -104,7 +108,9 @@ export function tagClasses(tags: Tags) {
     for (i = 0; i < statuses.length; i++) {
       key = statuses[i];
       value = tags[key];
-      if (!value || value === 'no') continue;
+      if (!value || value === 'no') {
+        continue;
+      }
 
       if (value === 'yes') {
         // e.g. `railway=rail + abandoned=yes`
@@ -119,7 +125,9 @@ export function tagClasses(tags: Tags) {
         classes += ' tag-' + value;
       } // else ignore e.g.  `highway=path + abandoned=railway`
 
-      if (status) break;
+      if (status) {
+        break;
+      }
     }
   }
 
@@ -131,18 +139,20 @@ export function tagClasses(tags: Tags) {
   for (i = 0; i < secondaries.length; i++) {
     key = secondaries[i];
     value = tags[key];
-    if (!value || value === 'no') continue;
+    if (!value || value === 'no') {
+      continue;
+    }
     classes += ' tag-' + key + ' tag-' + key + '-' + value;
   }
 
   // For highways, look for surface tagging..
   if (primary === 'highway') {
-    var paved = tags.highway !== 'track';
+    let paved = tags.highway !== 'track';
     for (const k in tags) {
       const v = tags[k];
 
       if (osmPavedTags.hasOwnProperty(k)) {
-        paved = !!(<any>osmPavedTags)[k][v];
+        paved = !!(osmPavedTags as any)[k][v];
         break;
       }
     }

@@ -8,7 +8,7 @@ import { Relation } from './structures';
 // readonly attributes: Attributes;
 export function compareRelation(
   relation: Relation,
-  compareWith: Relation
+  compareWith: Relation,
 ): boolean {
   if (relation === compareWith) {
     return true;

@@ -1,6 +1,6 @@
 export function deepFreeze<T extends { [index: string]: any }>(
   obj: T,
-  freeze = true
+  freeze = true,
 ): T {
   if (!freeze) {
     return obj;

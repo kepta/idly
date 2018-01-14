@@ -2,7 +2,6 @@ import { deepFreeze } from '../misc/deepFreeze';
 import { attributesGen } from '../osm/attributesGen';
 import {
   Attributes,
-  Entity,
   EntityId,
   EntityType,
   Relation,

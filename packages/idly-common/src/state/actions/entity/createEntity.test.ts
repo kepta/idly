@@ -1,12 +1,8 @@
 // tslint:disable no-expression-statement
-import { Iterable, Set as ImSet } from 'immutable';
 
-import { Leaf } from '../../graph/Leaf';
-import { Tree } from '../../graph/Tree';
-import { createNode } from './createEntity';
 import { genLngLat } from '../../../osm/genLngLat';
+import { createNode } from './createEntity';
 
-// tslint:disable:variable-name,object-literal-sort-keys
 // tslint:disable:object-literal-sort-keys
 
 describe('create simple node', () => {

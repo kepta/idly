@@ -1,7 +1,6 @@
-import { weakCache } from '../misc/weakCache';
 import { nodeFactory } from './nodeFactory';
 import { relationFactory } from './relationFactory';
-import { Entity, EntityType, Node, Relation, Way } from './structures';
+import { Entity, EntityType } from './structures';
 import { wayFactory } from './wayFactory';
 
 export let entityToString = (entity: any): string => {

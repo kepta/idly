@@ -1,4 +1,4 @@
-import { Set as ImSet, Map as ImMap } from 'immutable';
+import { Map as ImMap, Set as ImSet } from 'immutable';
 
 import {
   applyNodeMarkup,
@@ -6,11 +6,10 @@ import {
   nodePropertiesGen,
 } from './nodeProps';
 
-import { ParentWays } from '../osm/structures';
 import { nodeFactory } from '../osm/nodeFactory';
-import { genLngLat } from '../osm/genLngLat';
-import { tagsFactory } from '../osm/tagsFactory';
+import { ParentWays } from '../osm/structures';
 import { OsmGeometry } from '../osm/structures';
+import { tagsFactory } from '../osm/tagsFactory';
 
 export function dummyParentWaysGen(obj: any): ParentWays {
   return ImMap(obj);

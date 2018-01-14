@@ -12,7 +12,7 @@ import { wayPropertiesGen } from './wayProps';
 export const PLUGIN_NAME = 'osm_basic';
 
 function nameSpaceKeys(name: string, obj: { [index: string]: string }) {
-  var newObj: { [index: string]: string } = {};
+  const newObj: { [index: string]: string } = {};
   Object.keys(obj).forEach(k => {
     newObj[name + '--' + k] = obj[k];
   });
@@ -36,7 +36,7 @@ export function onParseEntities(
 
     if (entity.type === EntityType.NODE) {
       // @TOFIX why do we need to send the entire parentWays lol.
-      var x = nameSpaceKeys(
+      const x = nameSpaceKeys(
         PLUGIN_NAME,
         nodePropertiesGen(entity, parentWays.get(entity.id) || blankImSet),
       );

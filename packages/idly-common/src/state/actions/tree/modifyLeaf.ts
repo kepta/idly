@@ -1,6 +1,6 @@
-import { Iterable, Set as ImSet } from 'immutable';
+import { Set as ImSet } from 'immutable';
 
-import { Entity, EntityType, Relation, Way } from '../../../osm/structures';
+import { Entity, EntityType } from '../../../osm/structures';
 
 import { Leaf } from '../../graph/Leaf';
 import { Tree } from '../../graph/Tree';

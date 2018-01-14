@@ -1,5 +1,5 @@
 // tslint:disable no-expression-statement
-import { Iterable, Set as ImSet } from 'immutable';
+import { Set as ImSet } from 'immutable';
 import { createNode } from '../actions/entity/createEntity';
 import { modifyLeaf } from '../actions/tree/modifyLeaf';
 import { Leaf } from './Leaf';

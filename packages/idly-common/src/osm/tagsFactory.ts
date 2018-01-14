@@ -1,5 +1,5 @@
-import { Tags } from '../osm/structures';
 import { sortObjectKeys } from '../misc/sortObjectKeys';
+import { Tags } from '../osm/structures';
 
 // @TOFIX make tags frozen objects.
 // and also figure out how to make reserved keys work in object

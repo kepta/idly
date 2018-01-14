@@ -6,7 +6,7 @@ export type IFunc<T extends object, TResult> = (arg: T) => TResult;
  */
 export function weakCache<T extends object, K>(fn: IFunc<T, K>): IFunc<T, K> {
   const cache = new WeakMap<T, K>();
-  return (arg) => {
+  return arg => {
     let value = cache.get(arg);
     if (value) {
       return value;

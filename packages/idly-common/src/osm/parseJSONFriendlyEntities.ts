@@ -1,16 +1,15 @@
-import { deepFreeze } from '../misc/deepFreeze';
 import { nodeFactory } from './nodeFactory';
 import { relationFactory } from './relationFactory';
 import { tagsFactory } from './tagsFactory';
 import { wayFactory } from './wayFactory';
 
-import { Entity, EntityType, Tags } from '../osm/structures';
+import { Entity, EntityType } from '../osm/structures';
 
 export function parseJSONFriendlyEntities(
   parsedEntities: Array<{
     string: any;
     tags: string;
-  }>
+  }>,
 ): Entity[] {
   return parsedEntities.map((entity: any) => {
     entity.tags = tagsFactory(JSON.parse(entity.tags));

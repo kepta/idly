@@ -1,12 +1,9 @@
 import { entityFromString } from './entityFromString';
 import { entityToString } from './entityToString';
-import { nodeFactory } from './nodeFactory';
-import { relationFactory } from './relationFactory';
 import {
   Attributes,
   Entity,
   EntityId,
-  EntityType,
   LngLat,
   Node,
   Relation,
@@ -14,7 +11,6 @@ import {
   Tags,
   Way,
 } from './structures';
-import { wayFactory } from './wayFactory';
 
 export interface NodeLike {
   readonly id: EntityId;

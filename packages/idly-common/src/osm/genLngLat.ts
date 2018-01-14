@@ -1,4 +1,4 @@
-import { LngLat } from "../osm/structures";
+import { LngLat } from '../osm/structures';
 
 export function genLngLat(
   obj: { lon: number; lat: number } | [number, number],

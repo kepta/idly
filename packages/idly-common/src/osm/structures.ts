@@ -1,6 +1,4 @@
-import { List as ImList, Map as ImMap, Set as ImSet } from 'immutable';
-
-import { tagsFactory } from './tagsFactory';
+import { Map as ImMap, Set as ImSet } from 'immutable';
 
 export type Entity = Node | Way | Relation;
 export type Entities = Set<Node | Way | Relation>;
@@ -26,16 +24,15 @@ export type NodeGeometry = OsmGeometry.POINT | OsmGeometry.VERTEX;
 export enum OsmGeometry {
   POINT = 'point',
   VERTEX = 'vertex',
-  // VERTEX_SHARED = 'vertex_shared', // the one shared among multiple ways
   AREA = 'area',
   LINE = 'line',
-  RELATION = 'relation'
+  RELATION = 'relation',
 }
 
 export enum EntityType {
   NODE = 'node',
   WAY = 'way',
-  RELATION = 'relation'
+  RELATION = 'relation',
 }
 
 export interface Node {
@@ -71,8 +68,11 @@ export interface Attributes {
   readonly user?: string;
 }
 
+// id & ref are the same thing
+// it exists for backward compatibility with iD
 export interface RelationMember {
   readonly id?: string;
+  readonly ref?: string;
   readonly type?: string;
   readonly role?: string;
 }

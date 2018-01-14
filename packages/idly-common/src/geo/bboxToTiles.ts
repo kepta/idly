@@ -20,7 +20,7 @@ export function bboxToTiles(bbox: BBox, z: number): Tile[] {
 
 function bboxToXY(
   bbox: BBox,
-  zoom: number
+  zoom: number,
 ): { minX: number; minY: number; maxX: number; maxY: number } {
   /**
    * zoom needs to be an integer

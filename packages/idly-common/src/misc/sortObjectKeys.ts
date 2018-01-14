@@ -1,5 +1,5 @@
 export function sortObjectKeys<T extends { [index: string]: any }>(
-  rawTags: T
+  rawTags: T,
 ): T {
   return Object.keys(rawTags)
     .sort()

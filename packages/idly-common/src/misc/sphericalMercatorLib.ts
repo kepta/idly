@@ -97,7 +97,7 @@ function Main() {
     y: any,
     zoom: any,
     tmsStyle: any,
-    srs: any
+    srs: any,
   ) {
     // Convert xyz into bbox with srs WGS84
     if (tmsStyle) {
@@ -128,7 +128,7 @@ function Main() {
     bbox: any,
     zoom: any,
     tmsStyle: any,
-    srs: any
+    srs: any,
   ) {
     // If web mercator provided reproject to WGS84.
     if (srs === '900913') {
@@ -142,22 +142,22 @@ function Main() {
     // Y = 0 for XYZ is the top hence minY uses px_ur[1].
     const x = [
       Math.floor(pxll[0] / this.size),
-      Math.floor((pxur[0] - 1) / this.size)
+      Math.floor((pxur[0] - 1) / this.size),
     ];
     const y = [
       Math.floor(pxur[1] / this.size),
-      Math.floor((pxll[1] - 1) / this.size)
+      Math.floor((pxll[1] - 1) / this.size),
     ];
     const bounds = {
       minX: Math.min.apply(Math, x) < 0 ? 0 : Math.min.apply(Math, x),
       minY: Math.min.apply(Math, y) < 0 ? 0 : Math.min.apply(Math, y),
       maxX: Math.max.apply(Math, x),
-      maxY: Math.max.apply(Math, y)
+      maxY: Math.max.apply(Math, y),
     };
     if (tmsStyle) {
       const tms = {
         minY: Math.pow(2, zoom) - 1 - bounds.maxY,
-        maxY: Math.pow(2, zoom) - 1 - bounds.minY
+        maxY: Math.pow(2, zoom) - 1 - bounds.minY,
       };
       bounds.minY = tms.minY;
       bounds.maxY = tms.maxY;
@@ -174,11 +174,11 @@ function Main() {
   SphericalMercator.prototype.convert = function(bbox: any, to: any) {
     if (to === '900913') {
       return this.forward(bbox.slice(0, 2)).concat(
-        this.forward(bbox.slice(2, 4))
+        this.forward(bbox.slice(2, 4)),
       );
     } else {
       return this.inverse(bbox.slice(0, 2)).concat(
-        this.inverse(bbox.slice(2, 4))
+        this.inverse(bbox.slice(2, 4)),
       );
     }
   };
@@ -187,7 +187,7 @@ function Main() {
   SphericalMercator.prototype.forward = (ll: any) => {
     const xy = [
       A * ll[0] * D2R,
-      A * Math.log(Math.tan(Math.PI * 0.25 + 0.5 * ll[1] * D2R))
+      A * Math.log(Math.tan(Math.PI * 0.25 + 0.5 * ll[1] * D2R)),
     ];
     // if xy value is beyond maxextent (e.g. poles), return maxextent.
     if (xy[0] > MAXEXTENT) {
@@ -209,7 +209,7 @@ function Main() {
   SphericalMercator.prototype.inverse = (xy: any) => {
     return [
       xy[0] * R2D / A,
-      (Math.PI * 0.5 - 2.0 * Math.atan(Math.exp(-xy[1] / A))) * R2D
+      (Math.PI * 0.5 - 2.0 * Math.atan(Math.exp(-xy[1] / A))) * R2D,
     ];
   };
 

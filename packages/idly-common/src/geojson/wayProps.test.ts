@@ -1,8 +1,8 @@
-import { nodeFactory } from '../osm/nodeFactory';
-import { genLngLat } from '../osm/genLngLat';
-import { wayFactory } from '../osm/wayFactory';
-import { tagsFactory } from '../osm/tagsFactory';
 import { entityTableGen } from '../osm/entityTableGen';
+import { genLngLat } from '../osm/genLngLat';
+import { nodeFactory } from '../osm/nodeFactory';
+import { tagsFactory } from '../osm/tagsFactory';
+import { wayFactory } from '../osm/wayFactory';
 import { wayPropertiesGen } from './wayProps';
 
 describe('wayCombiner', () => {

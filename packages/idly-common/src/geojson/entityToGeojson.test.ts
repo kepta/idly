@@ -1,18 +1,18 @@
 import { Map as ImMap } from 'immutable';
 
-import { nodeFactory } from '../osm/nodeFactory';
 import { genLngLat } from '../osm/genLngLat';
+import { nodeFactory } from '../osm/nodeFactory';
 import { tagsFactory } from '../osm/tagsFactory';
 
-import {
-  nodeCombiner,
-  wayToLineString,
-  getCoordsFromTable,
-  wayCombiner,
-} from './entityToGeojson';
-import { wayFactory } from '../osm/wayFactory';
-import { OsmGeometry, Entity, EntityTable } from '../osm/structures';
 import { entityTableGen } from '../osm/entityTableGen';
+import { Entity, EntityTable, OsmGeometry } from '../osm/structures';
+import { wayFactory } from '../osm/wayFactory';
+import {
+  getCoordsFromTable,
+  nodeCombiner,
+  wayCombiner,
+  wayToLineString,
+} from './entityToGeojson';
 
 const n1 = nodeFactory({ id: 'n-1' });
 const n11 = nodeFactory({

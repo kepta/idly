@@ -1,6 +1,5 @@
 import { attributesGen } from '../attributesGen';
 import { compareNode } from '../compareNode';
-import { compareShallow } from '../compareShallow';
 import { genLngLat } from '../genLngLat';
 import { nodeFactory } from '../nodeFactory';
 test('simple 1', () => {

@@ -1,5 +1,5 @@
 import { compareShallow } from './compareShallow';
-import { Node, Way } from './structures';
+import { Way } from './structures';
 
 // readonly id: EntityId;
 // readonly type: EntityType.WAY;

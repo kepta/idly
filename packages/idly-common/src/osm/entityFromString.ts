@@ -1,8 +1,7 @@
 import { nodeFactory } from '../osm/nodeFactory';
 import { relationFactory } from '../osm/relationFactory';
 import { EntityType } from '../osm/structures';
-import { Entity, Node, Relation, Way } from './structures';
-import { tagsFactory } from './tagsFactory';
+import { Entity } from './structures';
 import { wayFactory } from './wayFactory';
 
 export function entityFromStringCache() {
