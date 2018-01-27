@@ -10,15 +10,15 @@ export default smartParser;
 export type Options = {
   // flag for prepending `n`, `w`, `r` to the id of entity
   prependEntityChar?: boolean;
-  // when true uses `ref` key for iding a member
-  // when false uses `id` key for iding a member
+  // when true uses `ref` key for uniquely identifying a member
+  // when false uses `id` key for uniquely identifying a member
   useRef?: boolean;
   // deep freezes each entity
   freeze?: boolean;
 };
 
 /**
- * A smart parser for osm bbox api
+ * A an extrememly fast smart parser for osm bbox api
  */
 export function smartParser(str: string, opts: Options = {}): Entity[] {
   let lastObj: any = {};
