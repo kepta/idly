@@ -10,7 +10,6 @@ function Main() {
   // Closures including constants and other precalculated values.
   const cache = {};
 
-  const EPSLN = 1.0e-10;
   const D2R = Math.PI / 180;
   const R2D = 180 / Math.PI;
 
@@ -97,7 +96,7 @@ function Main() {
     y: any,
     zoom: any,
     tmsStyle: any,
-    srs: any,
+    srs: any
   ) {
     // Convert xyz into bbox with srs WGS84
     if (tmsStyle) {
@@ -128,7 +127,7 @@ function Main() {
     bbox: any,
     zoom: any,
     tmsStyle: any,
-    srs: any,
+    srs: any
   ) {
     // If web mercator provided reproject to WGS84.
     if (srs === '900913') {
@@ -174,11 +173,11 @@ function Main() {
   SphericalMercator.prototype.convert = function(bbox: any, to: any) {
     if (to === '900913') {
       return this.forward(bbox.slice(0, 2)).concat(
-        this.forward(bbox.slice(2, 4)),
+        this.forward(bbox.slice(2, 4))
       );
     } else {
       return this.inverse(bbox.slice(0, 2)).concat(
-        this.inverse(bbox.slice(2, 4)),
+        this.inverse(bbox.slice(2, 4))
       );
     }
   };

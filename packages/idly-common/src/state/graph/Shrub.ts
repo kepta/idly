@@ -1,13 +1,14 @@
-
 import { entityTableGen } from '../../osm/entityTableGen';
 import { EntityId, EntityTable } from '../../osm/structures';
 
 import { createEntity } from '../actions/entity/createEntity';
 import { Leaf } from './Leaf';
+
 interface ShrubObj {
   entities: string[];
   knownIds: string[];
 }
+
 export class Shrub {
   public static create(knownIds: string[], entityTable: EntityTable) {
     return new Shrub(knownIds, entityTable);
@@ -42,7 +43,10 @@ export class Shrub {
   public getLeaves(): Array<Leaf | undefined> {
     return this.knownIds.map(id => this.getDependant(id));
   }
-  public toObject() {
+  public toObject(): {
+    entityTable: EntityTable;
+    knownIds: string[];
+  } {
     return {
       entityTable: this.entityTable,
       knownIds: this.knownIds,

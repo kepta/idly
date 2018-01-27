@@ -27,18 +27,6 @@ export class Tree {
     return this.parent ? this.parent.getDepth(count + 1) : count;
   }
 
-  // for debugging
-  public print(arr = []): string {
-    // const toPrint = arr.concat([
-    //   this.branch.toArray().map(leaf => leaf.getEntity()),
-    // ]);
-    // if (!this.parent) {
-    //   return JSON.stringify(toPrint, null, 2);
-    // }
-    // return this.parent.print(toPrint);
-    return '';
-  }
-
   public newBranch(branch: ImSet<Leaf>): Tree {
     return new Tree(this, branch);
   }
@@ -76,7 +64,7 @@ export class Tree {
             /* tslint:enable */
           }
           return prev;
-        }, new Set()),
+        }, new Set())
     );
   }
 }

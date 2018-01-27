@@ -1,15 +1,12 @@
 import { List as ImList, Map as ImMap } from 'immutable';
 
 import { isImmutableList } from '../misc/isImmutableList';
-import {
-  EntityId,
-  EntityTable,
-} from '../osm/structures';
+import { EntityId, EntityTable } from '../osm/structures';
 
 export function removeFromEntityTable(
   entityIds: ImList<EntityId> | EntityId[] = [],
-  entityTable: EntityTable = ImMap(),
-) {
+  entityTable: EntityTable = ImMap()
+): EntityTable {
   if (isImmutableList(entityIds)) {
     return entityTable.withMutations(m => {
       entityIds.forEach((e: EntityId = '') => m.delete(e));

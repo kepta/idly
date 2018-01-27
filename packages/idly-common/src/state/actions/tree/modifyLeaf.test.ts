@@ -10,14 +10,14 @@ import { modifyLeaf } from './modifyLeaf';
 // tslint:disable:variable-name
 describe('modify simple node', () => {
   const leaf_na_1 = Leaf.create(createNode({ id: 'n-a', tags: { k: 'n-a1' } }));
-  const leaf_na_2 = leaf_na_1.map(entity => {
+  const leaf_na_2 = leaf_na_1.map(() => {
     return createNode({ id: 'n-a', tags: { k: 'n-a2' } });
   });
 
-  const leaf_na_3 = leaf_na_2.map(entity => {
+  const leaf_na_3 = leaf_na_2.map(() => {
     return createNode({ id: 'n-a', tags: { k: 'n-a3' } });
   });
-  const leaf_na_4 = leaf_na_3.map(entity => {
+  const leaf_na_4 = leaf_na_3.map(() => {
     return createNode({
       id: 'n-a',
       loc: genLngLat([1, 2]),
@@ -31,18 +31,8 @@ describe('modify simple node', () => {
 
   const leaf_nd_1 = Leaf.create(createNode({ id: 'n-d', tags: { k: 'n-d1' } }));
 
-  const leaf_nd_2 = leaf_nd_1.map(entity => {
-    return createNode({
-      id: 'n-d',
-      loc: genLngLat([1, 2]),
-      tags: { k: 'n-d2' },
-    });
-  });
-
-  const leaf_ne_1 = Leaf.create(createNode({ id: 'n-e', tags: { k: 'n-e1' } }));
-
   const leaf_nf_1 = Leaf.create(createNode({ id: 'n-f', tags: { k: 'n-f1' } }));
-  const leaf_nf_2 = leaf_nf_1.map(entity => {
+  const leaf_nf_2 = leaf_nf_1.map(() => {
     return createNode({
       id: 'n-f',
       loc: genLngLat([1, 2]),
@@ -56,7 +46,7 @@ describe('modify simple node', () => {
     createWay({
       id: 'w-a',
       nodes: ['n-d', 'n-b', 'n-c'],
-    }),
+    })
   );
   const leaf_wa_2 = leaf_wa_1.map(entity => {
     if (entity.type === EntityType.WAY) {
@@ -99,7 +89,7 @@ describe('modify simple node', () => {
 
   it('add a diverged leaf', () => {
     // diversion of leaf2
-    const leaf_na_3_1 = leaf_na_2.map(entity => {
+    const leaf_na_3_1 = leaf_na_2.map(() => {
       return createNode({
         id: 'n-a',
         loc: genLngLat([1, 2]),
@@ -120,7 +110,7 @@ describe('modify simple node', () => {
     expect(tree.getDepth()).toBe(4);
     expect(tree.getBranch()).toEqual(ImSet([leaf_na_4]));
     expect(tree.getOldLeaves()).toEqual(
-      ImSet([leaf_na_3, leaf_na_2, leaf_na_1]),
+      ImSet([leaf_na_3, leaf_na_2, leaf_na_1])
     );
   });
 

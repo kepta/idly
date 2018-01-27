@@ -26,5 +26,6 @@ export let entityToString = (entity: any): string => {
 };
 
 // don't use this is you dont know what you are doing
-export let unsafeEntityToString = (entity: Entity): string =>
-  JSON.stringify(entity);
+export function unsafeEntityToString(entity: Entity): string {
+  return JSON.stringify(entity);
+}

@@ -4,7 +4,7 @@ import { EntityType } from '../osm/structures';
 import { Entity } from './structures';
 import { wayFactory } from './wayFactory';
 
-export function entityFromStringCache() {
+export function entityFromStringCache(): (strEntity: string) => Entity {
   const cache = new Map();
   return (strEntity: string): Entity => {
     if (cache.has(strEntity)) {
@@ -16,7 +16,9 @@ export function entityFromStringCache() {
   };
 }
 
-export const entityFromString = entityFromStringCache();
+export const entityFromString: (
+  strEntity: string
+) => Entity = entityFromStringCache();
 
 function _entityFromString(entity: any): Entity {
   if (!entity.id) {

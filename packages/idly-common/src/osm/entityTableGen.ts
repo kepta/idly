@@ -1,15 +1,12 @@
 import { List as ImList, Map as ImMap } from 'immutable';
 import { isImmutableList } from '../misc/isImmutableList';
-import {
-  Entity,
-  EntityTable,
-} from '../osm/structures';
+import { Entity, EntityTable } from '../osm/structures';
 
 // @TOFIX this could be written with better performance
 export function entityTableGen(
   entities: ImList<Entity> | Entity[] | Set<Entity> = [],
-  entityTable: EntityTable = ImMap(),
-) {
+  entityTable: EntityTable = ImMap()
+): EntityTable {
   if (isImmutableList(entities)) {
     return entityTable.withMutations(m => {
       entities.forEach((e: any) => m.set(e.id, e));

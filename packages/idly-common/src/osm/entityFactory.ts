@@ -2,7 +2,6 @@ import { entityFromString } from './entityFromString';
 import { entityToString } from './entityToString';
 import {
   Attributes,
-  Entity,
   EntityId,
   LngLat,
   Node,
@@ -35,7 +34,7 @@ export interface RelLike {
 }
 
 export function createEntity(
-  entityLike: NodeLike | WayLike | RelLike | string,
+  entityLike: NodeLike | WayLike | RelLike | string
 ) {
   if (typeof entityLike === 'string') {
     entityLike = JSON.parse(entityLike) as NodeLike | WayLike | RelLike;

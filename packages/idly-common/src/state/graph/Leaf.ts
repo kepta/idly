@@ -42,11 +42,7 @@ export class Leaf {
 
   private readonly ancestor: Leaf | undefined;
 
-  constructor(
-    entity: Entity,
-    ancestor: Leaf | undefined,
-    cache?: WeakMap<any, any>,
-  ) {
+  constructor(entity: Entity, ancestor: Leaf | undefined) {
     /* tslint:disable */
     this.ancestor = ancestor;
     this.entity = entity;

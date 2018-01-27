@@ -45,8 +45,6 @@ const secondaries = [
 
 export const tagClassesPrimary = (tags: Tags) => {
   let classes = '';
-  let primary;
-  let status;
 
   let i;
   let key;
@@ -60,7 +58,6 @@ export const tagClassesPrimary = (tags: Tags) => {
       continue;
     }
 
-    primary = key;
     if (statuses.indexOf(value) !== -1) {
       // e.g. `railway=abandoned`
       status = value;

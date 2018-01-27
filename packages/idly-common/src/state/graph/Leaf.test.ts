@@ -20,7 +20,7 @@ describe('map', () => {
   test('different instance', () => {
     const e = createNode({ id: 'n1' });
     const l1 = Leaf.create(e);
-    const l2 = l1.map(entity => {
+    const l2 = l1.map(() => {
       return createNode({ id: 'n1', tags: { K: 'K' } });
     });
     expect(l2.getAncestor()).toBe(l1);
@@ -29,7 +29,7 @@ describe('map', () => {
   test('divergence of leaf', () => {
     const e = createNode({ id: 'n1' });
     const l1 = Leaf.create(e);
-    const l2 = l1.map(entity => {
+    const l2 = l1.map(() => {
       return createNode({ id: 'n1', tags: { K: 'K' } });
     });
 
@@ -45,13 +45,13 @@ describe('map', () => {
     const n3 = createNode({ id: 'n1', tags: { K: '3' } });
     const l1 = Leaf.create(n1);
 
-    const l2 = l1.map(entity => {
+    const l2 = l1.map(() => {
       return n2;
     });
-    const l3 = l2.map(entity => {
+    const l3 = l2.map(() => {
       return n3;
     });
-    expect(l3.map(entity => n1)).toBe(l1);
+    expect(l3.map(() => n1)).toBe(l1);
   });
 
   test('be able to return partial entity', () => {
@@ -60,7 +60,7 @@ describe('map', () => {
       return { ...entity, tags: { k: 'k', a: 'a' } };
     });
     expect(l2).toBe(
-      Leaf.create(createNode({ id: 'n1', tags: { k: 'k', a: 'a' } })),
+      Leaf.create(createNode({ id: 'n1', tags: { k: 'k', a: 'a' } }))
     );
     const l3 = Leaf.create(createWay({ id: 'w1' }));
     const l4 = l3.map(entity => {
@@ -85,7 +85,7 @@ describe('map', () => {
         tags: {
           k: 'k',
         },
-      })),
+      }))
     );
   });
 });
@@ -94,11 +94,11 @@ describe('ancestors', () => {
   const e = createNode({ id: 'n1' });
   const l1 = Leaf.create(e);
 
-  const l2 = l1.map(entity => {
+  const l2 = l1.map(() => {
     return createNode({ id: 'n1', tags: { K: 'K' } });
   });
 
-  const l3 = l2.map(entity => {
+  const l3 = l2.map(() => {
     return createNode({ id: 'n1', tags: { K: 'K', T: 'T' } });
   });
 
@@ -140,14 +140,14 @@ describe('stringifying', () => {
   });
 
   const leaf1 = Leaf.create(createNode({ id: 'n-a', tags: { k: 'n-a1' } }));
-  const leaf2 = leaf1.map(entity => {
+  const leaf2 = leaf1.map(() => {
     return createNode({ id: 'n-a', tags: { k: 'n-a2' } });
   });
 
-  const leaf3 = leaf2.map(entity => {
+  const leaf3 = leaf2.map(() => {
     return createNode({ id: 'n-a', tags: { k: 'n-a3' } });
   });
-  const leaf4 = leaf3.map(entity => {
+  const leaf4 = leaf3.map(() => {
     return createNode({
       id: 'n-a',
       loc: genLngLat([1, 2]),
@@ -167,7 +167,7 @@ describe('stringifying', () => {
     expect(newLeaf4.getAncestor()).toEqual(leaf3);
     expect((newLeaf4.getAncestor() as Leaf).getAncestor()).toEqual(leaf2);
     expect(
-      ((newLeaf4.getAncestor() as Leaf).getAncestor() as Leaf).getAncestor(),
+      ((newLeaf4.getAncestor() as Leaf).getAncestor() as Leaf).getAncestor()
     ).toEqual(leaf1);
   });
 });
