@@ -1,5 +1,4 @@
-import unescape = require('lodash.unescape');
-
+import unescape from 'lodash-es/unescape';
 import { Entity } from 'idly-common/lib/osm/structures';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/relationFactory';
@@ -55,12 +54,12 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
         if (opts.useRef) {
           attributesObj.ref = prependEntityChar(
             attributesObj.ref,
-            attributesObj.type,
+            attributesObj.type
           );
         } else {
           attributesObj.id = prependEntityChar(
             attributesObj.ref,
-            attributesObj.type,
+            attributesObj.type
           );
           delete attributesObj.ref;
         }
@@ -112,7 +111,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
       }
 
       throw new Error(
-        'Invalid osm xml, please use /api/0.6/map?bbox=left,bottom,right,top',
+        'Invalid osm xml, please use /api/0.6/map?bbox=left,bottom,right,top'
       );
     })
     .filter(r => r)
@@ -130,7 +129,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             },
             tags: r.tags,
           },
-          opts.freeze,
+          opts.freeze
         );
       } else if (r.type === 'way') {
         return wayFactory(
@@ -140,7 +139,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             tags: r.tags,
             nodes: r.nodes,
           },
-          opts.freeze,
+          opts.freeze
         );
       } else if (r.type === 'relation') {
         return relationFactory(
@@ -150,7 +149,7 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
             tags: r.tags,
             members: r.members,
           },
-          opts.freeze,
+          opts.freeze
         );
       } else {
         throw new Error('Unknown type ' + r.type);
@@ -184,14 +183,14 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
           }
           return prev;
         },
-        [] as Array<[string, string]>,
+        [] as Array<[string, string]>
       )
       .reduce(
         (prev, cur) => {
           prev[cur[0]] = cur[1];
           return prev;
         },
-        {} as { [index: string]: string },
+        {} as { [index: string]: string }
       );
   }
 }

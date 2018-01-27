@@ -1,4 +1,4 @@
-import equal = require('lodash.isequal');
+import equal from 'lodash-es/isEqual';
 import {
   BIG_XML1,
   BIG_XML3,
@@ -11,7 +11,7 @@ import {
 } from './fixtures';
 import { legacyParser } from './legacyParser';
 
-import smartParser from './';
+import smartParser from './index';
 
 describe('smart parser', () => {
   test('case 1', () => {

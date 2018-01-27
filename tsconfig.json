@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "es2015",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "pretty": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true
+  },
+  "compileOnSave": true
+}
