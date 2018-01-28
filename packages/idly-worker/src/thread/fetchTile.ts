@@ -1,11 +1,11 @@
 import { Tile } from 'idly-common/lib/geo/tile';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
+import { smartParser } from 'idly-faster-osm-parser';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 import { tileId } from '../misc/tileId';
 import { TileData, TilesDataTable } from '../operations/operationsTypes';
 import { fetchTileXml } from './fetchTileXml';
-import { smartParser } from './smartParser';
 
 export async function fetchTile(
   x: number,

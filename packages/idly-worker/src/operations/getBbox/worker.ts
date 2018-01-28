@@ -1,10 +1,10 @@
 import { featureCollection } from '@turf/helpers';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
+import { smartParser } from 'idly-faster-osm-parser';
 
 import { calculateParentWays } from '../../misc/calculateParentWays';
 import { entityToFeature } from '../../thread/entityToFeatures';
 import { fetchBboxXml } from '../../thread/fetchBboxXml';
-import { smartParser } from '../../thread/smartParser';
 import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetBbox } from './type';
 

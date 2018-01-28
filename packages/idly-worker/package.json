@@ -37,6 +37,7 @@
     "@types/xmldom": "^0.1.29",
     "deep-diff": "^0.3.8",
     "idly-common": "^1.2.0",
+    "idly-faster-osm-parser": "^1.2.1",
     "immutable": "^3.8.2",
     "lineclip": "^1.1.5",
     "lodash-es": "^4.17.4",
