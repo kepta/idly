@@ -1,6 +1,6 @@
 // tag-landuse-farmyard
-import { areaPaintStyle } from './helper';
 import { PLUGIN_NAME } from '../../constants';
+import { areaPaintStyle } from './helper';
 
 const filter = [
   'all',

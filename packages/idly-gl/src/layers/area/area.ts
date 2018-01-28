@@ -11,12 +11,12 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#551A8B',
         'line-width': 2,
-        'line-opacity': 1
+        'line-opacity': 1,
       },
       filter: [
         'all',
@@ -25,9 +25,9 @@ export default [
          * @REVISIT buildings or any small really look ugly with that gl offset artifact
          *  going for a fill layer for now.
          */
-        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building']
-      ]
-    }
+        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building'],
+      ],
+    },
   },
   {
     selectable: false,
@@ -38,14 +38,14 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: areaPaintStyle,
       filter: [
         'all',
         ['==', '$type', 'Polygon'],
-        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building']
-      ]
-    }
-  }
+        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building'],
+      ],
+    },
+  },
 ];

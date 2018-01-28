@@ -1,12 +1,5 @@
 import { FieldAccess } from './FieldAccess';
 import { FieldAddress } from './FieldAddress';
-import { FieldCycleway } from './FieldCycleway';
-import { FieldLanes } from './FieldLanes';
-import { FieldLocalized } from './FieldLocalized';
-import { FieldMaxspeed } from './FieldMaxspeed';
-import { FieldRestrictions } from './FieldRestrictions';
-import { FieldTextarea } from './FieldTextarea';
-import { FieldWikipedia } from './FieldWikipedia';
 import {
   FieldCheck,
   FieldCheck as FieldDefaultCheck,
@@ -19,6 +12,12 @@ import {
   FieldCombo as FieldSemiCombo,
   FieldCombo as FieldTypeCombo
 } from './FieldCombo';
+import { FieldCycleway } from './FieldCycleway';
+import { FieldLanes } from './FieldLanes';
+import { FieldLocalized } from './FieldLocalized';
+import { FieldMaxspeed } from './FieldMaxspeed';
+import { FieldRadio, FieldRadio as FieldStructureRadio } from './FieldRadio';
+import { FieldRestrictions } from './FieldRestrictions';
 import {
   FieldText,
   FieldText as FieldEmail,
@@ -26,7 +25,8 @@ import {
   FieldText as FieldTel,
   FieldText as FieldUrl
 } from './FieldText';
-import { FieldRadio, FieldRadio as FieldStructureRadio } from './FieldRadio';
+import { FieldTextarea } from './FieldTextarea';
+import { FieldWikipedia } from './FieldWikipedia';
 
 export const fields: any = {
   access: FieldAccess,

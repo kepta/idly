@@ -1,17 +1,17 @@
-import * as React from 'react';
 import * as mapboxgl from 'mapbox-gl';
+import * as React from 'react';
 
-import 'mapbox-gl/dist/mapbox-gl.css';
-import layers from 'idly-gl/lib/layers';
 import { addSource } from 'idly-gl/lib/helper/addSource';
+import layers from 'idly-gl/lib/layers';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import data from '../../map/data.json';
 
 (mapboxgl as any).accessToken =
   'pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew';
-
+// tslint:disable:max-line-length
 export class Map extends React.PureComponent {
-  componentDidMount() {
+  public componentDidMount() {
     const map = new mapboxgl.Map({
       container: 'map',
       style: {
@@ -26,9 +26,9 @@ export class Map extends React.PureComponent {
               'https://ecn.t0.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
               'https://ecn.t1.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
               'https://ecn.t2.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
-              'https://ecn.t3.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z'
-            ]
-          }
+              'https://ecn.t3.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
+            ],
+          },
         },
         layers: [
           {
@@ -36,19 +36,19 @@ export class Map extends React.PureComponent {
             type: 'raster',
             source: 'raster-tiles',
             minzoom: 0,
-            maxzoom: 22
-          }
-        ]
+            maxzoom: 22,
+          },
+        ],
       },
       center: [-68.13734351262877, 45.137451890638886],
       zoom: 5,
-      hash: true
+      hash: true,
     });
 
-    map.on('load', function() {
+    map.on('load', () => {
       map.addSource('virgin', {
         type: 'geojson',
-        data
+        data,
       });
 
       layers
@@ -56,7 +56,7 @@ export class Map extends React.PureComponent {
         .forEach(l => map.addLayer(l));
     });
   }
-  render() {
+  public render() {
     return <div id="map" style={{ width: '60vw', height: '100vh' }} />;
   }
 }

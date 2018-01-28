@@ -1,4 +1,7 @@
-import { GetActionTypes, WorkerSetStateActionsType } from '../operations/operationsTypes';
+import {
+  GetActionTypes,
+  WorkerSetStateActionsType,
+} from '../operations/operationsTypes';
 
 /**
  * A wrapper around `promiseWorker.postMessage` api
@@ -16,6 +19,7 @@ export function getChannelBuilder<T extends GetActionTypes>(promiseWorker: {
         type,
       };
       return promiseWorker.postMessage(toSend).catch((e: Error) => {
+        // tslint:disable-next-line:no-console
         console.log('Worker Error', e.message);
         return Promise.reject(e.message);
       });

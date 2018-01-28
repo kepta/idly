@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { FieldAccess } from './FieldAccess';
 import { all } from 'idly-common/lib/geojson/presetMatch';
+import { FieldAccess } from './FieldAccess';
 
 describe('Field Access', () => {
   it('should mount', () => {

@@ -4,16 +4,19 @@
   "description": "An xperiment editor",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "op": "webpack-dev-server --port 5000"
+    "op": "webpack-dev-server --port 5000",
+    "test": "jest $npm_package_name --config ../../jest.config.js",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
+    "tsc": "tsc",
+    "lint": "tslint -p .",
+    "pretest": "npm run lint && npm run tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kepta/idly.git"
   },
-  "keywords": [
-    "Openstreetmap"
-  ],
+  "keywords": ["Openstreetmap"],
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "license": "ISC",
   "bugs": {
@@ -33,6 +36,7 @@
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.1",
     "ts-jest": "^22.0.1",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",
@@ -43,6 +47,7 @@
     "@types/react-dom": "^16.0.3",
     "@types/react-test-renderer": "^16.0.0",
     "idly-gl": "^1.2.1",
+    "mapbox-gl": "^0.44.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "webpack-dev-server": "^2.9.7"

@@ -11,8 +11,14 @@
   },
   "scripts": {
     "clean": "rm -r lib/*",
-    "test": "jest idly-common --config ../../jest.config.js ",
-    "test:watch": "jest idly-common --config ../../jest.config.js --watch"
+    "test": "jest $npm_package_name --config ../../jest.config.js",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+
+    "lint": "tslint -p .",
+    "pretest": "npm run lint && npm run tsc"
   },
   "license": "MIT",
   "dependencies": {

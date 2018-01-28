@@ -1,14 +1,14 @@
 import layers from '../layers';
 import shadows from '../shadows';
 
+import { BBox } from 'idly-common/lib/geo/bbox';
+import debounce from 'lodash-es/debounce';
 import { addSource } from '../helper/addSource';
 import {
   workerFetchMap,
-  workerSetOsmTiles,
   workerGetEntities,
+  workerSetOsmTiles,
 } from './worker/index';
-import { BBox } from 'idly-common/lib/geo/bbox';
-import debounce from 'lodash-es/debounce';
 
 const BASE_SOURCE = 'idly-gl-base-src-1';
 const ACTIVE_SOURCE = 'idly-gl-active-src-1';
@@ -17,22 +17,22 @@ const SHADOW_SOURCE = 'idly-gl-shadow-src-1';
 export class IdlyGlPlugin {
   private map: any;
   private data: any;
-  private _container: any;
+  private container: any;
   private selectedId: string | undefined;
-  constructor() {}
+  // constructor() {}
 
-  onAdd(map: any) {
+  public onAdd(map: any) {
     this.map = map;
     if (this.map.loaded()) {
       this.init();
     } else {
       this.map.on('load', () => this.init());
     }
-    this._container = document.createElement('div');
-    return this._container;
+    this.container = document.createElement('div');
+    return this.container;
   }
 
-  init() {
+  public init() {
     this.map.on('click', this.onClick);
     this.map.on('mousemove', this.onHover);
 
@@ -81,9 +81,11 @@ export class IdlyGlPlugin {
     this.map.on('moveend', debounce(this.render, 200));
     this.render();
   }
-  render = () => {
+  public render = () => {
     const zoom = this.map.getZoom() - 1;
-    if (zoom < 15) return;
+    if (zoom < 15) {
+      return;
+    }
     const lonLat = this.map.getBounds();
     const bbox: BBox = [
       lonLat.getWest(),
@@ -104,7 +106,7 @@ export class IdlyGlPlugin {
     //   this.map.getSource(SOURCE_1).setData(fc);
     // });
   };
-  onClick = (e: any) => {
+  public onClick = (e: any) => {
     const bbox = bboxify(e, 3);
     const features = this.map.queryRenderedFeatures(bbox);
     const feat = features.find((f: any) => f.properties.id);
@@ -115,7 +117,7 @@ export class IdlyGlPlugin {
     }
   };
 
-  onIdSelect = async (feature: any) => {
+  public onIdSelect = async (feature: any) => {
     this.selectedId = feature.properties.id;
     if (!this.selectedId) {
       return;
@@ -126,9 +128,11 @@ export class IdlyGlPlugin {
 
     const leaf = shrub.getDependant(this.selectedId);
 
-    if (!leaf) return;
+    if (!leaf) {
+      return;
+    }
 
-    var d = {
+    const d = {
       type: 'FeatureCollection',
       features: [
         this.data.features.find(
@@ -139,15 +143,14 @@ export class IdlyGlPlugin {
     this.map.getSource(SHADOW_SOURCE).setData(d);
   };
 
-  onIdDeselect = () => {
+  public onIdDeselect = () => {
     this.selectedId = undefined;
   };
 
-  onHover = () => {
+  public onHover = () => {
     // this.map.getCanvas().style.cursor = featureId ? 'pointer' : '')
     // );
   };
-  onRemove() {}
 }
 function bboxify(e: any, factor: number) {
   return [

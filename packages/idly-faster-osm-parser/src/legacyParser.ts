@@ -2,7 +2,6 @@ import { genLngLat } from 'idly-common/lib/osm/genLngLat';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/relationFactory';
 import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
-import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 import {
   Entity,
   LngLat,
@@ -11,6 +10,7 @@ import {
   RelationMember,
   Way,
 } from 'idly-common/lib/osm/structures';
+import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 /**
  * Converts the osm xml to an array of Entity,

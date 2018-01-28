@@ -1,12 +1,12 @@
 import area from './area';
-import highway from './highway';
-import rail from './rail';
-import waterway from './waterway';
 import areaLabels from './areaLabels';
+import highway from './highway';
 import line from './line';
 import lineLabel from './lineLabel';
 import pointsWithLabels from './pointsWithLabels';
 import pointsWithoutLabels from './pointsWithoutLabel';
+import rail from './rail';
+import waterway from './waterway';
 
 const layers = [
   ...area,

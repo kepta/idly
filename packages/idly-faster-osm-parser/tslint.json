@@ -1,0 +1,10 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "no-unsafe-any": false,
+    "no-console": false,
+    "object-literal-sort-keys": false,
+    "no-bitwise": false,
+    "max-line-length": false
+  }
+}

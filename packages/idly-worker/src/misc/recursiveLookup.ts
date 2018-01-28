@@ -7,7 +7,7 @@ import {
 
 export function recursiveLookup(
   id: EntityId | undefined,
-  table: EntityTable,
+  table: EntityTable
 ): Entity[] {
   if (!id) {
     return [];
@@ -15,7 +15,7 @@ export function recursiveLookup(
   const entity = table.get(id);
 
   if (!entity) {
-    console.warn("Lookup: Couldn'nt find " + id + ' in the table');
+    console.log("Lookup: Couldn'nt find " + id + ' in the table');
     return [];
   }
   if (entity.type === EntityType.NODE) {

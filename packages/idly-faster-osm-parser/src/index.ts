@@ -1,12 +1,12 @@
-import unescape from 'lodash-es/unescape';
-import { Entity } from 'idly-common/lib/osm/structures';
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/relationFactory';
+import { Entity } from 'idly-common/lib/osm/structures';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import unescape from 'lodash-es/unescape';
 
 export default smartParser;
 
-export type Options = {
+export interface Options {
   // flag for prepending `n`, `w`, `r` to the id of entity
   prependEntityChar?: boolean;
   // when true uses `ref` key for uniquely identifying a member
@@ -14,7 +14,7 @@ export type Options = {
   useRef?: boolean;
   // deep freezes each entity
   freeze?: boolean;
-};
+}
 
 /**
  * A an extrememly fast smart parser for osm bbox api
@@ -168,13 +168,13 @@ export function smartParser(str: string, opts: Options = {}): Entity[] {
     return type.charAt(0) + id;
   }
 
-  function parseAttributes(str: string) {
-    return str
+  function parseAttributes(s: string) {
+    return s
       .split('"')
       .reduce(
         (prev, val, index, arr) => {
           if (index % 2 === 1) {
-            let key = arr[index - 1];
+            const key = arr[index - 1];
             prev.push([
               // key comes in the format '<node k=' or ' k='
               key.slice(key.lastIndexOf(' ') + 1, key.length - 1),

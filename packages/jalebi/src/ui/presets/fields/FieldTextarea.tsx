@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { Tags } from 'idly-common/lib/osm/structures';
+import * as React from 'react';
 
 export function FieldTextarea({ field, tags }: { field: any; tags: Tags }) {
   return (

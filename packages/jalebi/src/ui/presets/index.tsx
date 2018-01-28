@@ -1,7 +1,7 @@
 import * as React from 'react';
 
+import { all, presetMatch } from 'idly-common/lib/geojson/presetMatch';
 import { Leaf } from 'idly-common/lib/state/graph/Leaf';
-import { presetMatch, all } from 'idly-common/lib/geojson/presetMatch';
 import { en } from '../../translations/en';
 
 import { fields as fieldsUi } from './fields';
@@ -18,16 +18,17 @@ export function Presets({ feature, leaf }: { feature: any; leaf: Leaf }) {
    * universal fields aren't that straightforward. They are hidden by default
    * and https://github.com/openstreetmap/iD/blob/master/modules/ui/field.js#L198
    * decides whether to show or not. If it is not shown, it sits in the `Add Field`
-   * for the user to add them. If the user clicks them the https://github.com/openstreetmap/iD/blob/master/modules/ui/field.js#L188
+   * for the user to add them. If the user clicks them the
+   * https://github.com/openstreetmap/iD/blob/master/modules/ui/field.js#L188
    * variable is put to true and they are shown.
    */
-  let fields = preset.fields.filter((field: any) =>
+  const fields = preset.fields.filter((field: any) =>
     field.matchGeometry(geometry)
   );
 
   const showUniversal = false;
 
-  let universalFields = all
+  const universalFields = all
     .universal()
     .filter((field: any) => preset.fields.indexOf(field) === -1)
     .filter(
@@ -55,7 +56,7 @@ export function PresetsUi({ fields, leaf }: { fields: any[]; leaf: Leaf }) {
     <div
       style={{
         backgroundColor: 'yellow',
-        width: '20vw'
+        width: '20vw',
       }}
     >
       {fields.map((field, i) => {
@@ -73,7 +74,7 @@ export function PresetsUi({ fields, leaf }: { fields: any[]; leaf: Leaf }) {
 function PresetSingle({
   field,
   children,
-  index
+  index,
 }: {
   field: any;
   children: any;

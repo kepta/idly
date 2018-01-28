@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "idly-faster-osm-parser"
+		},
+		{
+			"path": "idly-common"
+		},
+		{
+			"path": "idly-worker"
+		},
+		{
+			"path": "idly-gl"
+		},
+		{
+			"path": "jalebi"
+		}
+	],
+	"settings": {
+		"workbench.editor.labelFormat": "medium"
+	}
+
+}

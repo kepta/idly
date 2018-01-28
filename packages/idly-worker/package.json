@@ -6,9 +6,13 @@
   "main": "index.js",
   "scripts": {
     "prestart": "rm -r lib/*",
-    "test": "jest idly-worker --config ../../jest.config.js",
-    "test:watch": "jest idly-worker --config ../../jest.config.js --watch",
-    "start": "tsc"
+    "test": "jest $npm_package_name --config ../../jest.config.js",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "lint": "tslint -p .",
+    "pretest": "npm run lint && npm run tsc"
   },
   "keywords": [],
   "license": "ISC",
@@ -24,7 +28,7 @@
     "tslint": "^5.8.0",
     "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
-    "typescript": "^2.6.1",
+    "typescript": "^2.6.2",
     "webpack": "^3.9.1"
   },
   "dependencies": {

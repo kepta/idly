@@ -1,18 +1,19 @@
-import { getEntities } from 'idly-worker/lib/operations/getEntities/main';
-import { getFeaturesOfEntityIds } from 'idly-worker/lib/operations/getFeaturesOfEntityIds/main';
-import { getFeaturesOfShrub } from 'idly-worker/lib/operations/getFeaturesOfShrub/main';
-import { getMap } from 'idly-worker/lib/operations/getMap/main';
-import { setOsmTiles } from 'idly-worker/lib/operations/setOsmTiles/main';
 import { getBbox } from 'idly-worker/lib/operations/getBbox/main';
-import { Operation } from 'idly-worker/lib/operations/operationsTypes';
-import { GetFeaturesOfShrub } from 'idly-worker/lib/operations/getFeaturesOfShrub/type';
-import { GetFeaturesOfEntityIds } from 'idly-worker/lib/operations/getFeaturesOfEntityIds/type';
 import { GetBbox } from 'idly-worker/lib/operations/getBbox/type';
+import { getEntities } from 'idly-worker/lib/operations/getEntities/main';
 import { GetEntities } from 'idly-worker/lib/operations/getEntities/type';
+import { getFeaturesOfEntityIds } from 'idly-worker/lib/operations/getFeaturesOfEntityIds/main';
+import { GetFeaturesOfEntityIds } from 'idly-worker/lib/operations/getFeaturesOfEntityIds/type';
+import { getFeaturesOfShrub } from 'idly-worker/lib/operations/getFeaturesOfShrub/main';
+import { GetFeaturesOfShrub } from 'idly-worker/lib/operations/getFeaturesOfShrub/type';
+import { getMap } from 'idly-worker/lib/operations/getMap/main';
 import { GetMap } from 'idly-worker/lib/operations/getMap/type';
+import { Operation } from 'idly-worker/lib/operations/operationsTypes';
+import { setOsmTiles } from 'idly-worker/lib/operations/setOsmTiles/main';
 
 import * as MyWorker from './worker.worker';
 
+// tslint:disable-next-line:no-var-requires
 const PromiseWorker = require('promise-worker');
 // @ts-ignore
 export const worker: Worker = new MyWorker();
