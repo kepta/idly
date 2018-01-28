@@ -60,7 +60,6 @@ export const tagClassesPrimary = (tags: Tags) => {
 
     if (statuses.indexOf(value) !== -1) {
       // e.g. `railway=abandoned`
-      status = value;
       classes += ' tag-' + key;
     } else {
       classes += ' tag-' + key + ' tag-' + key + '-' + value;

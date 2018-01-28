@@ -5,7 +5,7 @@ import { addSource } from '../helper/addSource';
 import {
   workerFetchMap,
   workerSetOsmTiles,
-  workerGetEntities
+  workerGetEntities,
 } from './worker/index';
 import { BBox } from 'idly-common/lib/geo/bbox';
 import debounce from 'lodash-es/debounce';
@@ -16,12 +16,11 @@ const SHADOW_SOURCE = 'idly-gl-shadow-src-1';
 
 export class IdlyGlPlugin {
   private map: any;
-  private opts: any;
+  private data: any;
   private _container: any;
   private selectedId: string | undefined;
-  constructor(opts: { [index: string]: string }) {
-    this.opts = opts;
-  }
+  constructor() {}
+
   onAdd(map: any) {
     this.map = map;
     if (this.map.loaded()) {
@@ -41,24 +40,24 @@ export class IdlyGlPlugin {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: []
-      }
+        features: [],
+      },
     });
 
     this.map.addSource(ACTIVE_SOURCE, {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: []
-      }
+        features: [],
+      },
     });
 
     this.map.addSource(SHADOW_SOURCE, {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: []
-      }
+        features: [],
+      },
     });
 
     shadows
@@ -90,12 +89,12 @@ export class IdlyGlPlugin {
       lonLat.getWest(),
       lonLat.getSouth(),
       lonLat.getEast(),
-      lonLat.getNorth()
+      lonLat.getNorth(),
     ];
     workerSetOsmTiles({ bbox, zoom }).then(() => {
       workerFetchMap({
         bbox,
-        zoom
+        zoom,
       }).then(fc => {
         this.data = fc;
         this.map.getSource(BASE_SOURCE).setData(fc);
@@ -105,10 +104,10 @@ export class IdlyGlPlugin {
     //   this.map.getSource(SOURCE_1).setData(fc);
     // });
   };
-  onClick = e => {
+  onClick = (e: any) => {
     const bbox = bboxify(e, 3);
     const features = this.map.queryRenderedFeatures(bbox);
-    const feat = features.find(f => f.properties.id);
+    const feat = features.find((f: any) => f.properties.id);
     if (feat && feat.properties) {
       this.onIdSelect(feat);
     } else {
@@ -122,7 +121,7 @@ export class IdlyGlPlugin {
       return;
     }
     const shrub = await workerGetEntities({
-      entityIds: [this.selectedId]
+      entityIds: [this.selectedId],
     });
 
     const leaf = shrub.getDependant(this.selectedId);
@@ -132,8 +131,10 @@ export class IdlyGlPlugin {
     var d = {
       type: 'FeatureCollection',
       features: [
-        this.data.features.find(f => f.properties.id === this.selectedId)
-      ]
+        this.data.features.find(
+          (f: any) => f.properties.id === this.selectedId
+        ),
+      ],
     };
     this.map.getSource(SHADOW_SOURCE).setData(d);
   };
@@ -142,15 +143,15 @@ export class IdlyGlPlugin {
     this.selectedId = undefined;
   };
 
-  onHover = e => {
+  onHover = () => {
     // this.map.getCanvas().style.cursor = featureId ? 'pointer' : '')
     // );
   };
   onRemove() {}
 }
-function bboxify(e, factor) {
+function bboxify(e: any, factor: number) {
   return [
     [e.point.x - factor, e.point.y - factor],
-    [e.point.x + factor, e.point.y + factor]
+    [e.point.x + factor, e.point.y + factor],
   ];
 }

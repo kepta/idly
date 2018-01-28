@@ -1,4 +1,4 @@
-import { Feature, Point, Polygon, LineString } from 'geojson';
+import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 
 import { entityToGeoJson } from 'idly-common/lib/geojson/entityToGeojson';
 import { onParseEntities } from 'idly-common/lib/geojson/onParseEntities';
@@ -12,16 +12,16 @@ import { calculateParentWays } from '../misc/calculateParentWays';
 
 export type PluginComputeProps = (
   entityTable: EntityTable,
-  parentWays: ParentWays,
+  parentWays: ParentWays
 ) => FeaturePropsTable;
 
 export type EntityToFeatureType = (
   entityTable: EntityTable,
-  parentWays?: ParentWays,
+  parentWays?: ParentWays
 ) => Array<Feature<Point | Polygon | LineString>>;
 
 export function entityToFeature(
-  computer: PluginComputeProps[],
+  computer: PluginComputeProps[]
 ): EntityToFeatureType {
   return (entityTable, parentWays = calculateParentWays(entityTable)) => {
     const props = new Map();

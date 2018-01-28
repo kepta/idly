@@ -2,3 +2,5 @@ node_modules/
 dist/
 lib/
 .DS_Store
+lerna-debug.log
+yarn-error.log

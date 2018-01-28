@@ -6,7 +6,7 @@ declare var global: any;
 describe('fetchTileXml', () => {
   test('gives an xml', async () => {
     global.fetch = jest.fn().mockImplementation(() => {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         resolve({
           id: '123',
           async text(): Promise<any> {
@@ -21,7 +21,7 @@ describe('fetchTileXml', () => {
   });
   test('should fail if status > 400', async () => {
     global.fetch = jest.fn().mockImplementation(() => {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         resolve({
           id: '123',
           ok: false,

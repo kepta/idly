@@ -1,36 +1,15 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
     "outDir": "lib",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "strict": true,
-    "pretty": true,
-    "declaration": true,
-    "isolatedModules": false,
-    "noEmitOnError": false,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "jsx": "react"
+    "noEmitOnError": false
   },
-  "compileOnSave": true,
-  "include": ["./src/**/*"],
   "exclude": [
     "./lib/**/*",
     "node_modules",
     "build",
     "scripts",
-    "acceptance-tests",
     "webpack",
-    "jest",
-    "src/setupTests.ts"
+    "jest"
   ]
 }

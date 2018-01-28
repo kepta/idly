@@ -4,14 +4,19 @@ declare module '*/data.json' {
 }
 
 declare module '*/worker.worker' {
-  class WebpackWorker extends Worker {
+  export class WebpackWorker extends Worker {
     constructor();
   }
 
-  export = WebpackWorker;
+  // export WebpackWorker;
 }
 
 declare module '*/en.json' {
   const en: any;
   export { en };
+}
+
+declare module 'promise-worker/register' {
+  const dataDeprecated: any;
+  export default dataDeprecated;
 }

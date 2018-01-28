@@ -1,4 +1,4 @@
-import { BBox } from '@turf/helpers';
+import { BBox, FeatureCollection } from '@turf/helpers';
 import { EntityId } from 'idly-common/lib/osm/structures';
 import { GetActions } from '../operationsTypes';
 
@@ -9,5 +9,5 @@ export interface GetMap {
     readonly zoom: number;
     readonly hiddenIds?: EntityId[];
   };
-  readonly response: GeoJSON.FeatureCollection<any>;
+  readonly response: FeatureCollection<any>;
 }

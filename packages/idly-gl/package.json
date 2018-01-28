@@ -13,12 +13,10 @@
     "idly-common": "^1.2.0",
     "idly-worker": "^1.2.0",
     "lodash-es": "^4.17.4",
-    "lodash.debounce": "^4.0.8",
     "promise-worker": "^1.1.1"
   },
   "devDependencies": {
     "@types/jest": "^22.0.1",
-    "@types/lodash.debounce": "^4.0.3",
     "@types/mapbox-gl": "^0.42.0",
     "awesome-typescript-loader": "^3.4.1",
     "circular-dependency-plugin": "^4.3.0",

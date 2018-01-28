@@ -5,10 +5,7 @@ import { calculateParentWays } from '../../misc/calculateParentWays';
 import { entityToFeature } from '../../thread/entityToFeatures';
 import { fetchBboxXml } from '../../thread/fetchBboxXml';
 import { smartParser } from '../../thread/smartParser';
-import {
-  WorkerOperation,
-  WorkerState,
-} from '../operationsTypes';
+import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetBbox } from './type';
 
 /** Worker Thread */
@@ -20,11 +17,11 @@ export function workerGetBbox(state: WorkerState): WorkerOperation<GetBbox> {
     const workerPlugins = await state.plugins;
     let features = entityToFeature(workerPlugins.map((r: any) => r.worker))(
       entityTableGen(entities),
-      parentWays,
+      parentWays
     );
     if (hiddenIds && hiddenIds.length > 0) {
       features = features.filter(
-        r => typeof r.id === 'string' && hiddenIds.indexOf(r.id) === -1,
+        r => typeof r.id === 'string' && hiddenIds.indexOf(r.id) === -1
       );
     }
     const toReturn: GetBbox['response'] = featureCollection(features);

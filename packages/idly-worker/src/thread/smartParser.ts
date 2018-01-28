@@ -1,9 +1,8 @@
-import * as unescape from 'lodash.unescape';
-
 import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/relationFactory';
 import { Entity } from 'idly-common/lib/osm/structures';
 import { wayFactory } from 'idly-common/lib/osm/wayFactory';
+import unescape from 'lodash-es/unescape';
 
 export function smartParser(str: string): Entity[] {
   let lastObj: any = {};
@@ -23,7 +22,7 @@ export function smartParser(str: string): Entity[] {
         .reduce(
           (prev, cur, index, arr) => {
             if (index % 2 === 1) {
-              let before = arr[index - 1];
+              const before = arr[index - 1];
               prev.push([
                 before.slice(before.lastIndexOf(' ') + 1, before.length - 1),
                 cur,
@@ -31,14 +30,14 @@ export function smartParser(str: string): Entity[] {
             }
             return prev;
           },
-          [] as string[][],
+          [] as string[][]
         )
         .reduce(
           (prev: { [index: string]: string | null }, cur: [string, string]) => {
             prev[cur[0]] = cur[1] != null ? cur[1] : null; // TOFIX might wanna move away from null :{}
             return prev;
           },
-          {},
+          {}
         );
 
       if (p.startsWith('<nd')) {
@@ -57,7 +56,7 @@ export function smartParser(str: string): Entity[] {
         lastObj = { attributes: attributesObj, type: 'node', tags: {} };
         return lastObj;
       } else if (p.startsWith('</node>')) {
-        return; //422
+        return; // 422
       } else if (p.startsWith('<way')) {
         lastObj = {
           attributes: attributesObj,
@@ -67,9 +66,9 @@ export function smartParser(str: string): Entity[] {
         };
         return lastObj; // 504
       } else if (p.startsWith('</way>')) {
-        return; //504
+        return; // 504
       } else if (p.startsWith('</relation>')) {
-        return; //51
+        return; // 51
       } else if (p.startsWith('<relation')) {
         lastObj = {
           attributes: attributesObj,
@@ -102,7 +101,7 @@ export function smartParser(str: string): Entity[] {
             },
             tags: r.tags,
           },
-          false,
+          false
         );
       } else if (r.type === 'way') {
         return wayFactory(
@@ -112,7 +111,7 @@ export function smartParser(str: string): Entity[] {
             tags: r.tags,
             nodes: r.nodes,
           },
-          false,
+          false
         );
       } else if (r.type === 'relation') {
         return relationFactory({
@@ -126,29 +125,3 @@ export function smartParser(str: string): Entity[] {
       }
     });
 }
-
-// let ATTR = [
-//   'version',
-//   'encoding',
-//   'generator',
-//   'copyright',
-//   'attribution',
-//   'license',
-//   'minlat',
-//   'minlon',
-//   'maxlat',
-//   'maxlon',
-//   'id',
-//   'visible',
-//   'changeset',
-//   'timestamp',
-//   'user',
-//   'uid',
-//   'lat',
-//   'lon',
-//   'k',
-//   'v',
-//   'ref',
-//   'type',
-//   'role',
-// ];

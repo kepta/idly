@@ -1,4 +1,3 @@
-import { PLUGIN_NAME } from '../../constants';
 
 export const areaPaintStyle = {
   'line-color': '#551A8B',

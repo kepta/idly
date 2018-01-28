@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "prestart": "rm -r lib/*",
-    "start": "tsc",
-    "test": "jest src"
+    "test": "jest idly-worker --config ../../jest.config.js",
+    "test:watch": "jest idly-worker --config ../../jest.config.js --watch",
+    "start": "tsc"
   },
   "keywords": [],
   "license": "ISC",
@@ -38,31 +39,9 @@
     "idly-common": "^1.2.0",
     "immutable": "^3.8.2",
     "lineclip": "^1.1.5",
+    "lodash-es": "^4.17.4",
     "lodash.unescape": "^4.0.1",
     "promise-worker": "^1.1.1",
     "xmldom": "^0.1.27"
-  },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "skipBabel": true
-      }
-    },
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules",
-      "<rootDir>/lib",
-      "<rootDir>/packages/.*/node_modules",
-      "<rootDir>/packages/.*/lib",
-      "<rootDir>/packages/.*/dist"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
   }
 }

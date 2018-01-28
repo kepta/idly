@@ -6,7 +6,7 @@ declare var global: any;
 describe.skip('fetchTile', () => {
   test('basic test', async () => {
     global.fetch = jest.fn().mockImplementation(() => {
-      return new Promise((resolve, reject) => {
+      return new Promise(resolve => {
         resolve({
           id: '123',
           async text(): Promise<any> {

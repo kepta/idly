@@ -27,7 +27,7 @@ const DEFAULT_STATE: WorkerState = {
 
 function getStateController(
   state: WorkerState,
-  message: GetActionTypes,
+  message: GetActionTypes
 ): Promise<string> {
   switch (message.type) {
     // @TOFIX convert this to a dynamic rather than a static one
@@ -56,7 +56,7 @@ function getStateController(
 
 function setStateController(
   state: WorkerState,
-  message: WorkerSetStateActionsType,
+  message: WorkerSetStateActionsType
 ): Promise<WorkerState> {
   switch (message.type) {
     case WorkerSetStateActions.SetOsmTiles: {
@@ -78,7 +78,7 @@ function setStateController(
 export function operations(
   plugins: Promise<any>,
   prevState?: WorkerState,
-  debug?: boolean,
+  debug?: boolean
 ): (message: any) => Promise<any> {
   let state = {
     ...(prevState || DEFAULT_STATE),
@@ -96,7 +96,7 @@ export function operations(
     return getStateController(state, message)
       .then(r => {
         if (debug) {
-          self.workerState = state;
+          (self as any).workerState = state;
           console.log('workerstate', JSON.parse(JSON.stringify(state)));
         }
         return r;

@@ -3,7 +3,7 @@ import { EntityTable } from 'idly-common/lib/osm/structures';
 export function pluginsStub(
   geometry: any = {
     'osm_basic--geometry': 'line',
-  },
+  }
 ): Promise<any> {
   return Promise.resolve({
     workers: [
@@ -11,7 +11,7 @@ export function pluginsStub(
         pluginName: 'dummy',
         worker: (entityTable: EntityTable) => {
           const m = new Map();
-          entityTable.forEach((v, k) => {
+          entityTable.forEach((_, k) => {
             m.set(k, geometry);
           });
           return m;

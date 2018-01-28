@@ -63,7 +63,7 @@ function getMembers(obj: any): RelationMember[] {
           attrs.getNamedItem('type').value[0] + attrs.getNamedItem('ref').value,
         role: attrs.getNamedItem('role').value,
         type: attrs.getNamedItem('type').value,
-      }),
+      })
     );
   }
   return members;
@@ -120,7 +120,7 @@ function nodeData(obj: Node): OSMNode {
       loc: getLoc(attrs),
       tags: getTags(obj),
     },
-    false,
+    false
   );
 }
 
@@ -148,7 +148,7 @@ function relationData(obj: Node): Relation {
       members: getMembers(obj),
       tags: getTags(obj),
     },
-    false,
+    false
   );
 }
 
@@ -176,6 +176,6 @@ function wayData(obj: Node): Way {
       nodes: getNodes(obj),
       tags: getTags(obj),
     },
-    false,
+    false
   );
 }
