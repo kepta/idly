@@ -1,5 +1,8 @@
-import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
-import { EntityTable, ParentWays } from 'idly-common/lib/osm/structures';
+import { bboxToTiles } from 'idly-common/lib/geo';
+import {
+  EntityTable,
+  ParentWays,
+} from 'idly-common/lib/osm/immutableStructures';
 
 import { filterXyz } from '../../misc/filterXYZ';
 import { cacheFetchTile } from '../../thread/fetchTile';
@@ -9,17 +12,17 @@ import { WorkerSetOsmTiles } from './type';
 /** Worker Thread */
 
 export function workerSetOsmTiles(
-  state: WorkerState,
+  state: WorkerState
 ): (request: WorkerSetOsmTiles['request']) => Promise<WorkerState> {
   return async ({ bbox, zoom }) => {
     const xyzs = filterXyz(
       bboxToTiles(bbox, zoom),
       bbox,
-      zoom >= 18 ? 0.05 : 0.2,
+      zoom >= 18 ? 0.05 : 0.2
     );
     const { tilesDataTable, tilesData } = cacheFetchTile(
       state.tilesDataTable,
-      xyzs,
+      xyzs
     );
     const data = await Promise.all(tilesData);
 
@@ -29,7 +32,7 @@ export function workerSetOsmTiles(
           readonly entityTable: EntityTable;
           readonly parentWays: ParentWays;
         },
-        cur,
+        cur
       ) => {
         return {
           entityTable: prev.entityTable.merge(cur.entityTable),
@@ -39,7 +42,7 @@ export function workerSetOsmTiles(
       {
         entityTable: state.entityTable,
         parentWays: state.parentWays,
-      },
+      }
     );
 
     return {

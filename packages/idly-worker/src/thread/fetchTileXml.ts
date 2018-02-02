@@ -1,4 +1,4 @@
-import { mercator } from 'idly-common/lib/geo/sphericalMercator';
+import { mercator } from 'idly-common/lib/geo';
 
 export async function fetchTileXml(
   x: number,

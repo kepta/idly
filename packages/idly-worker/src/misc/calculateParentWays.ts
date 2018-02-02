@@ -1,16 +1,15 @@
 import { Map as ImMap, Set as ImSet } from 'immutable';
 
 import {
-  EntityId,
   EntityTable,
-  EntityType,
   ParentWays,
-} from 'idly-common/lib/osm/structures';
+} from 'idly-common/lib/osm/immutableStructures';
+import { EntityId, EntityType } from 'idly-common/lib/osm/structures';
 
 export function calculateParentWays(
   entityTable: EntityTable,
   deletedIds: ImSet<EntityId> = ImSet(),
-  parentWays: ParentWays = ImMap(),
+  parentWays: ParentWays = ImMap()
 ): ParentWays {
   return parentWays.withMutations(p => {
     entityTable.forEach(w => {

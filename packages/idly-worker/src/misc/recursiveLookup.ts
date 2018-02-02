@@ -1,9 +1,5 @@
-import {
-  Entity,
-  EntityId,
-  EntityTable,
-  EntityType,
-} from 'idly-common/lib/osm/structures';
+import { EntityTable } from 'idly-common/lib/osm/immutableStructures';
+import { Entity, EntityId, EntityType } from 'idly-common/lib/osm/structures';
 
 export function recursiveLookup(
   id: EntityId | undefined,

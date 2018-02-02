@@ -1,6 +1,6 @@
-import { Tile } from 'idly-common/lib/geo/tile';
+import { Tile } from 'idly-common/lib/geo';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { smartParser } from 'idly-faster-osm-parser';
+import { parser } from 'idly-faster-osm-parser';
 
 import { calculateParentWays } from '../misc/calculateParentWays';
 import { tileId } from '../misc/tileId';
@@ -13,7 +13,7 @@ export async function fetchTile(
   z: number
 ): Promise<TileData> {
   const xml = await fetchTileXml(x, y, z);
-  const entities = smartParser(xml);
+  const entities = parser(xml);
 
   const entityTable = entityTableGen(entities);
   const parentWays = calculateParentWays(entityTable);

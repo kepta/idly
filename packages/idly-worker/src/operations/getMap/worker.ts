@@ -1,15 +1,12 @@
 import { featureCollection } from '@turf/helpers';
-import { bboxToTiles } from 'idly-common/lib/geo/bboxToTiles';
+import { bboxToTiles } from 'idly-common/lib/geo';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 import { Entity } from 'idly-common/lib/osm/structures';
 
 import { filterXyz } from '../../misc/filterXYZ';
 import { tileId } from '../../misc/tileId';
 import { entityToFeature } from '../../thread/entityToFeatures';
-import {
-  WorkerOperation,
-  WorkerState,
-} from '../operationsTypes';
+import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetMap } from './type';
 
 /** Worker Thread */
@@ -21,8 +18,8 @@ export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
       if (!res) {
         throw new Error(
           `cannot find tile data for ${JSON.stringify(
-            tile,
-          )}, make sure to setOsmTiles before calling fetchMap `,
+            tile
+          )}, make sure to setOsmTiles before calling fetchMap `
         );
       }
       return res;
@@ -34,15 +31,15 @@ export function workerGetMap(state: WorkerState): WorkerOperation<GetMap> {
       (prev: Entity[], cur) => {
         return prev.concat(cur.entities);
       },
-      [] as Entity[],
+      [] as Entity[]
     );
     let features = entityToFeature(workerPlugins.map((r: any) => r.worker))(
       entityTableGen(entities),
-      state.parentWays,
+      state.parentWays
     );
     if (hiddenIds && hiddenIds.length > 0) {
       features = features.filter(
-        r => typeof r.id === 'string' && hiddenIds.indexOf(r.id) === -1,
+        r => typeof r.id === 'string' && hiddenIds.indexOf(r.id) === -1
       );
     }
     const toReturn: GetMap['response'] = featureCollection(features);

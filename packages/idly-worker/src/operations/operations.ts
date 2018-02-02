@@ -1,6 +1,6 @@
 import { Map as ImMap } from 'immutable';
 
-import { weakCache2 } from 'idly-common/lib/misc/weakCache';
+import { weakCache2 } from 'idly-common/lib/misc';
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
 
 import { pluginsStub } from '../mocks/pluginsStub';

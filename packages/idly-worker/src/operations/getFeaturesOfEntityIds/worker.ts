@@ -1,17 +1,15 @@
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { Entity, EntityTable } from 'idly-common/lib/osm/structures';
+import { EntityTable } from 'idly-common/lib/osm/immutableStructures';
+import { Entity } from 'idly-common/lib/osm/structures';
 
 import { recursiveLookup } from '../../misc/recursiveLookup';
 import { entityToFeature } from '../../thread/entityToFeatures';
-import {
-  WorkerOperation,
-  WorkerState,
-} from '../operationsTypes';
+import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetFeaturesOfEntityIds } from './type';
 
 /** Worker Thread */
 export function workerGetFeaturesOfEntityIds(
-  state: WorkerState,
+  state: WorkerState
 ): WorkerOperation<GetFeaturesOfEntityIds> {
   return async ({ entityIds }) => {
     const entities = entityIds
@@ -26,7 +24,7 @@ export function workerGetFeaturesOfEntityIds(
     const entityTable: EntityTable = entityTableGen(entities);
     const workerPlugins = await state.plugins;
     const toReturn: GetFeaturesOfEntityIds['response'] = entityToFeature(
-      workerPlugins.map((r: any) => r.worker),
+      workerPlugins.map((r: any) => r.worker)
     )(entityTable);
     return JSON.stringify(toReturn);
   };

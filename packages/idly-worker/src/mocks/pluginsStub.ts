@@ -1,4 +1,4 @@
-import { EntityTable } from 'idly-common/lib/osm/structures';
+import { EntityTable } from 'idly-common/lib/osm/immutableStructures';
 
 export function pluginsStub(
   geometry: any = {

@@ -1,10 +1,10 @@
 import { Map as ImMap } from 'immutable';
 
 import {
-  Entity,
   EntityTable,
   ParentWays,
-} from 'idly-common/lib/osm/structures';
+} from 'idly-common/lib/osm/immutableStructures';
+import { Entity } from 'idly-common/lib/osm/structures';
 
 import { GetBbox } from './getBbox/type';
 import { GetEntities } from './getEntities/type';
@@ -22,7 +22,7 @@ export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
  * Note: only use serializable types, hence do not use Map, Set etc.
  */
 export type Operation<T extends GetActionTypes> = (
-  req: T['request'],
+  req: T['request']
 ) => Promise<T['response']>;
 
 /**
@@ -30,7 +30,7 @@ export type Operation<T extends GetActionTypes> = (
  * to main thread needs to be serializable.
  */
 export type WorkerOperation<T extends GetActionTypes> = (
-  req: T['request'],
+  req: T['request']
 ) => Promise<string>;
 
 export interface WorkerState {

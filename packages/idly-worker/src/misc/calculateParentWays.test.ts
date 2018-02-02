@@ -1,9 +1,8 @@
 import { Map as ImMap, Set as ImSet } from 'immutable';
 
 import { entityTableGen } from 'idly-common/lib/osm/entityTableGen';
-import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
-import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
+import { nodeFactory, wayFactory } from 'idly-common/lib/osm/entityFactory';
 import { calculateParentWays } from './calculateParentWays';
 
 describe('calculateParentWays ', () => {
@@ -26,7 +25,7 @@ describe('calculateParentWays ', () => {
       ImMap({
         n1: ImSet(['w1']),
         n2: ImSet(['w1']),
-      }),
+      })
     );
   });
   it('takes existing parentways and adds a way', () => {
@@ -40,13 +39,13 @@ describe('calculateParentWays ', () => {
       calculateParentWays(
         entityTableGen([n1, n2, w1, w2]),
         undefined,
-        existingParentWay,
-      ),
+        existingParentWay
+      )
     ).toEqual(
       ImMap({
         n1: ImSet(['w1', 'w2']),
         n2: ImSet(['w1']),
-      }),
+      })
     );
   });
 });
