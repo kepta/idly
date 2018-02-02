@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Code coverage report for history/graph.ts</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../prettify.css" />
+  <link rel="stylesheet" href="../base.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type='text/css'>
+    .coverage-summary .sorter {
+      background-image: url(../sort-arrow-sprite.png);
+    }
+  </style>
+</head>
+
+<body>
+  <div class='wrapper'>
+    <div class='pad1'>
+      <h1>
+        <a href="../index.html">All files</a> / <a href="index.html">history</a> graph.ts
+      </h1>
+      <div class='clearfix'>
+        <div class='fl pad1y space-right2'>
+          <span class="strong">100% </span>
+          <span class="quiet">Statements</span>
+          <span class='fraction'>17/17</span>
+        </div>
+        <div class='fl pad1y space-right2'>
+          <span class="strong">100% </span>
+          <span class="quiet">Branches</span>
+          <span class='fraction'>2/2</span>
+        </div>
+        <div class='fl pad1y space-right2'>
+          <span class="strong">100% </span>
+          <span class="quiet">Functions</span>
+          <span class='fraction'>6/6</span>
+        </div>
+        <div class='fl pad1y space-right2'>
+          <span class="strong">100% </span>
+          <span class="quiet">Lines</span>
+          <span class='fraction'>15/15</span>
+        </div>
+      </div>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">57x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Record, Map, List } from 'immutable';
+import { ITags, tagsFactory } from 'osm/others/tags';
+import { Node } from 'osm/entities/node';
+import { Way } from 'osm/entities/way';
+import { Relation } from 'osm/entities/relation';
+import { groupBy } from 'ramda';
+import { Properties, propertiesGen } from 'osm/others/properties';
+&nbsp;
+var graphBaseRecord = Record({
+  node: Map(),
+  way: Map(),
+  relation: Map()
+});
+&nbsp;
+export class Graph extends graphBaseRecord {
+  node: Map&lt;string, Node&gt;;
+  way: Map&lt;string, Way&gt;;
+  relation: Map&lt;string, Relation&gt;;
+  set(k: string, v: any): Graph {
+    return &lt;Graph&gt;super.set(k, v);
+  }
+}
+type EntityType = Node | Way | Relation;
+&nbsp;
+export function graphFactory(entitiesList: EntityType[] = []) {
+  const createMapFromArray = (array = []) =&gt; {
+    var map = Map();
+    return map.withMutations(m =&gt; {
+      array.forEach(a =&gt; {
+        m.set(a.id, a);
+      });
+    });
+  };
+  var { node, way, relation } = groupBy(e =&gt; e.type, entitiesList);
+  return new Graph({
+    node: createMapFromArray(node),
+    way: createMapFromArray(way),
+    relation: createMapFromArray(relation)
+  });
+}
+&nbsp;</pre>
+    </td>
+    </tr>
+    </table>
+    </pre>
+    <div class='push'></div>
+    <!-- for sticky footer -->
+  </div>
+  <!-- /wrapper -->
+  <div class='footer quiet pad2 space-top1 center small'>
+    Code coverage generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 20 2017 01:43:12
+    GMT+0530 (IST)
+  </div>
+  </div>
+  <script src="../prettify.js"></script>
+  <script>
+    window.onload = function () {
+      if (typeof prettyPrint === 'function') {
+        prettyPrint();
+      }
+    };
+
+  </script>
+  <script src="../sorter.js"></script>
+</body>
+
+</html>
