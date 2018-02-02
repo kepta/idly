@@ -1,6 +1,7 @@
 import { List as ImList, Map as ImMap } from 'immutable';
 import { isImmutableList } from '../misc/isImmutableList';
-import { Entity, EntityTable } from '../osm/structures';
+import { EntityTable } from '../osm/immutableStructures';
+import { Entity } from '../osm/structures';
 
 // @TOFIX this could be written with better performance
 export function entityTableGen(

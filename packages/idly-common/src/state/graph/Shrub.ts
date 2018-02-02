@@ -1,5 +1,6 @@
 import { entityTableGen } from '../../osm/entityTableGen';
-import { EntityId, EntityTable } from '../../osm/structures';
+import { EntityTable } from '../../osm/immutableStructures';
+import { EntityId } from '../../osm/structures';
 
 import { createEntity } from '../actions/entity/createEntity';
 import { Leaf } from './Leaf';

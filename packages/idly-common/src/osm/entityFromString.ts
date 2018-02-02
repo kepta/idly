@@ -1,8 +1,8 @@
-import { nodeFactory } from '../osm/nodeFactory';
-import { relationFactory } from '../osm/relationFactory';
 import { EntityType } from '../osm/structures';
+import { nodeFactory } from './entityFactory/nodeFactory';
+import { relationFactory } from './entityFactory/relationFactory';
+import { wayFactory } from './entityFactory/wayFactory';
 import { Entity } from './structures';
-import { wayFactory } from './wayFactory';
 
 export function entityFromStringCache(): (strEntity: string) => Entity {
   const cache = new Map();

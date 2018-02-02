@@ -1,5 +1,5 @@
-import { RelationMember } from '../osm/structures';
-export function relationMemberGen({
+import { RelationMember } from './structures';
+export function relationMemberFactory({
   id,
   type,
   role,

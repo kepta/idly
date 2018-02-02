@@ -1,7 +1,7 @@
-import { nodeFactory } from './nodeFactory';
-import { relationFactory } from './relationFactory';
-import { tagsFactory } from './tagsFactory';
-import { wayFactory } from './wayFactory';
+import { nodeFactory } from './entityFactory/nodeFactory';
+import { relationFactory } from './entityFactory/relationFactory';
+import { tagsFactory } from './entityFactory/tagsFactory';
+import { wayFactory } from './entityFactory/wayFactory';
 
 import { Entity, EntityType } from '../osm/structures';
 

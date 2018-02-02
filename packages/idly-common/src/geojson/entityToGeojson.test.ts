@@ -1,12 +1,14 @@
 import { Map as ImMap } from 'immutable';
 
-import { genLngLat } from '../osm/genLngLat';
-import { nodeFactory } from '../osm/nodeFactory';
-import { tagsFactory } from '../osm/tagsFactory';
+import { lngLatFactory } from '../geo/lngLatFactory';
+import { nodeFactory } from '../osm/entityFactory/nodeFactory';
+import { tagsFactory } from '../osm/entityFactory/tagsFactory';
 
+import { wayFactory } from '../osm/entityFactory/wayFactory';
 import { entityTableGen } from '../osm/entityTableGen';
-import { Entity, EntityTable, OsmGeometry } from '../osm/structures';
-import { wayFactory } from '../osm/wayFactory';
+import { EntityTable } from '../osm/immutableStructures';
+import { Entity, OsmGeometry } from '../osm/structures';
+
 import {
   getCoordsFromTable,
   nodeCombiner,
@@ -17,7 +19,7 @@ import {
 const n1 = nodeFactory({ id: 'n-1' });
 const n11 = nodeFactory({
   id: 'n-1',
-  loc: genLngLat({ lon: 15, lat: 10 }),
+  loc: lngLatFactory({ lon: 15, lat: 10 }),
   tags: tagsFactory({ k: 'k' }),
 });
 
@@ -70,21 +72,24 @@ describe('way.test', () => {
 
   describe('getNodesFromGraph', () => {
     it('should get nodes correctly', () => {
-      const node: Entity = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
+      const node: Entity = nodeFactory({
+        id: 'n1',
+        loc: lngLatFactory([1, 2]),
+      });
       let g: EntityTable = ImMap();
       g = g.set(node.id, node);
       expect(getCoordsFromTable(g, ['n1'])).toMatchSnapshot();
     });
     it('should throw error if nodes not found', () => {
-      const node = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
+      const node = nodeFactory({ id: 'n1', loc: lngLatFactory([1, 2]) });
       let g: EntityTable = ImMap();
       g = g.set(node.id, node);
       expect(() => getCoordsFromTable(g, ['n2'])).toThrow();
     });
 
     it('should work when multiple nodes are there ingraph', () => {
-      const node = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
-      const n2 = nodeFactory({ id: 'n2', loc: genLngLat([3, 4]) });
+      const node = nodeFactory({ id: 'n1', loc: lngLatFactory([1, 2]) });
+      const n2 = nodeFactory({ id: 'n2', loc: lngLatFactory([3, 4]) });
       const g = entityTableGen([node, n2]);
       expect(getCoordsFromTable(g, ['n2'])).toMatchSnapshot();
       expect(getCoordsFromTable(g, ['n1', 'n2'])).toMatchSnapshot();
@@ -92,9 +97,9 @@ describe('way.test', () => {
   });
 
   describe('wayCombiner', () => {
-    const node = nodeFactory({ id: 'n1', loc: genLngLat([1, 2]) });
-    const n2 = nodeFactory({ id: 'n2', loc: genLngLat([3, 4]) });
-    const n3 = nodeFactory({ id: 'n3', loc: genLngLat([1, 4]) });
+    const node = nodeFactory({ id: 'n1', loc: lngLatFactory([1, 2]) });
+    const n2 = nodeFactory({ id: 'n2', loc: lngLatFactory([3, 4]) });
+    const n3 = nodeFactory({ id: 'n3', loc: lngLatFactory([1, 4]) });
 
     const w1 = wayFactory({
       id: 'w1',

@@ -1,6 +1,6 @@
 import { Set as ImSet } from 'immutable';
 
-import { genLngLat } from '../../../osm/genLngLat';
+import { lngLatFactory } from '../../../geo/lngLatFactory';
 import { EntityType } from '../../../osm/structures';
 import { Leaf } from '../../graph/Leaf';
 import { Tree } from '../../graph/Tree';
@@ -20,7 +20,7 @@ describe('modify simple node', () => {
   const leaf_na_4 = leaf_na_3.map(() => {
     return createNode({
       id: 'n-a',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'n-a4' },
     });
   });
@@ -35,7 +35,7 @@ describe('modify simple node', () => {
   const leaf_nf_2 = leaf_nf_1.map(() => {
     return createNode({
       id: 'n-f',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'n-f2' },
     });
   });
@@ -92,7 +92,7 @@ describe('modify simple node', () => {
     const leaf_na_3_1 = leaf_na_2.map(() => {
       return createNode({
         id: 'n-a',
-        loc: genLngLat([1, 2]),
+        loc: lngLatFactory([1, 2]),
         tags: { k: 'n-a3_1' },
       });
     });

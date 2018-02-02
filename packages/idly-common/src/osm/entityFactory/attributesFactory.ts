@@ -1,6 +1,6 @@
-import { Attributes } from '../osm/structures';
+import { Attributes } from '../structures';
 
-export function attributesGen({
+export function attributesFactory({
   visible,
   version,
   timestamp,

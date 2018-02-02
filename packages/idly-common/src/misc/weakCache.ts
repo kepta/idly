@@ -1,8 +1,8 @@
 export type IFunc<T extends object, TResult> = (arg: T) => TResult;
 
 /**
- * @DESC takes a func<T,K> and returns func<T,K>
- *  T must extend object.
+ * takes a func<T,K> and returns func<T,K>
+ * T must extend object.
  */
 export function weakCache<T extends object, K>(fn: IFunc<T, K>): IFunc<T, K> {
   const cache = new WeakMap<T, K>();
@@ -19,12 +19,12 @@ export function weakCache<T extends object, K>(fn: IFunc<T, K>): IFunc<T, K> {
 
 export type IFunc2<T extends object, P extends object, TResult> = (
   arg1: T,
-  arg2: P,
+  arg2: P
 ) => TResult;
 
 // @TODO need to test vv this. SERIOUSLY!
 export function weakCache2<T extends object, P extends object, K>(
-  fn: IFunc2<T, P, K>,
+  fn: IFunc2<T, P, K>
 ): IFunc2<T, P, K> {
   const cache = new WeakMap<T, WeakMap<P, K>>();
   return (arg1, arg2) => {

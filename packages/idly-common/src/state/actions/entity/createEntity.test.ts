@@ -1,6 +1,6 @@
 // tslint:disable no-expression-statement
 
-import { genLngLat } from '../../../osm/genLngLat';
+import { lngLatFactory } from '../../../geo/lngLatFactory';
 import { createNode } from './createEntity';
 
 // tslint:disable:object-literal-sort-keys
@@ -23,7 +23,7 @@ describe('create simple node', () => {
   test('works with full blown object', () => {
     const n = createNode({
       id: 'n-a',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'n-a4' },
       type: 'node',
     });
@@ -31,14 +31,14 @@ describe('create simple node', () => {
   });
   test('different order of keys produce same output', () => {
     const n1 = createNode({
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       id: 'n-a',
       type: 'node',
       tags: { k: 'n-a4' },
     });
     const n2 = createNode({
       id: 'n-a',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'n-a4' },
       type: 'node',
     });
@@ -103,25 +103,25 @@ describe('create simple node', () => {
 
   test('reuses already existing instance when lngLat', () => {
     const n1 = createNode({
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'na', a: 'b' },
       id: 'n1',
     });
     const n2 = createNode({
       id: 'n1',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'na', a: 'b' },
     });
 
     expect(n1).toBe(n2);
 
     const n3 = createNode({
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       id: 'n1',
     });
     const n4 = createNode({
       id: 'n1',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
     });
     expect(n3).toBe(n4);
   });

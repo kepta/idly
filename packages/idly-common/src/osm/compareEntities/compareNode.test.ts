@@ -1,7 +1,9 @@
-import { attributesGen } from '../attributesGen';
-import { compareNode } from '../compareNode';
-import { genLngLat } from '../genLngLat';
-import { nodeFactory } from '../nodeFactory';
+import { lngLatFactory } from '../../geo/lngLatFactory';
+import { compareNode } from '../compareEntities/compareNode';
+import { attributesFactory } from '../entityFactory/attributesFactory';
+import { nodeFactory } from '../entityFactory/nodeFactory';
+
+// tslint:disable:object-literal-sort-keys
 test('simple 1', () => {
   const n1 = nodeFactory({ id: '1', tags: { a: 'a', b: 'a' } });
   expect(compareNode(n1, n1)).toBe(true);
@@ -28,12 +30,12 @@ test('simple 4', () => {
   const a = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([0, 0]),
+    loc: lngLatFactory([0, 0]),
   });
   const b = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([0, 0]),
+    loc: lngLatFactory([0, 0]),
   });
   expect(compareNode(a, b)).toBe(true);
 });
@@ -42,12 +44,12 @@ test('simple 4', () => {
   const a = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([0, 1]),
+    loc: lngLatFactory([0, 1]),
   });
   const b = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([0, 0]),
+    loc: lngLatFactory([0, 0]),
   });
   expect(compareNode(a, b)).toBe(false);
 });
@@ -56,12 +58,12 @@ test('simple 4', () => {
   const a = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([1, 0]),
+    loc: lngLatFactory([1, 0]),
   });
   const b = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([0, 0]),
+    loc: lngLatFactory([0, 0]),
   });
   expect(compareNode(a, b)).toBe(false);
 });
@@ -70,18 +72,18 @@ test('simple 4', () => {
   const a = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([NaN, 0]),
+    loc: lngLatFactory([NaN, 0]),
   });
   const b = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
-    loc: genLngLat([0, 0]),
+    loc: lngLatFactory([0, 0]),
   });
   expect(compareNode(a, b)).toBe(false);
 });
 
 test('simple 4', () => {
-  const loc = genLngLat([0, 0]);
+  const loc = lngLatFactory([0, 0]);
   const a = nodeFactory({
     id: '1',
     tags: { a: 'ab', b: 'a', c: 'k' },
@@ -96,7 +98,7 @@ test('simple 4', () => {
 });
 
 test('simple 4', () => {
-  const loc = genLngLat([0, 0]);
+  const loc = lngLatFactory([0, 0]);
   const a = nodeFactory({
     id: '1',
     tags: { a: 'a', b: 'a', c: 'k' },
@@ -111,12 +113,12 @@ test('simple 4', () => {
 });
 
 test('simple attribtuons', () => {
-  const loc = genLngLat([0, 0]);
+  const loc = lngLatFactory([0, 0]);
   const a = nodeFactory({
     id: '1',
     tags: { a: 'a', b: 'a', c: 'k' },
     loc,
-    attributes: attributesGen({ visible: true }),
+    attributes: attributesFactory({ visible: true }),
   });
   const b = nodeFactory({
     id: '1',
@@ -127,19 +129,19 @@ test('simple attribtuons', () => {
 });
 
 test('simple attribtuons 2', () => {
-  const loc = genLngLat([0, 0]);
+  const loc = lngLatFactory([0, 0]);
   const a = nodeFactory({
     id: '1',
     tags: { a: 'a', b: 'a', c: 'k' },
     loc,
-    attributes: attributesGen({ visible: true }),
+    attributes: attributesFactory({ visible: true }),
   });
 
   const b = nodeFactory({
     id: '1',
     tags: { a: 'a', b: 'a', c: 'k' },
     loc,
-    attributes: attributesGen({ visible: true }),
+    attributes: attributesFactory({ visible: true }),
   });
   expect(compareNode(a, b)).toBe(true);
 });

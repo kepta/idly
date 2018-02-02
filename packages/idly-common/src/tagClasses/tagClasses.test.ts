@@ -1,4 +1,4 @@
-import { tagsFactory } from '../osm/tagsFactory';
+import { tagsFactory } from '../osm/entityFactory/tagsFactory';
 
 import { tagClasses } from './tagClasses';
 

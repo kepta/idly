@@ -1,11 +1,6 @@
-import { compareShallow } from './compareShallow';
-import { Way } from './structures';
+import { Way } from '../structures';
+import { compareTags } from './compareTags';
 
-// readonly id: EntityId;
-// readonly type: EntityType.WAY;
-// readonly tags: Tags;
-// readonly attributes: Attributes;
-// readonly nodes: ReadonlyArray<EntityId>;
 export function compareWay(way: Way, compareWith: Way): boolean {
   if (way === compareWith) {
     return true;
@@ -24,10 +19,10 @@ export function compareWay(way: Way, compareWith: Way): boolean {
     }
   }
 
-  if (!compareShallow(way.tags, compareWith.tags)) {
+  if (!compareTags(way.tags, compareWith.tags)) {
     return false;
   }
-  if (!compareShallow(way.attributes, compareWith.attributes)) {
+  if (!compareTags(way.attributes, compareWith.attributes)) {
     return false;
   }
 

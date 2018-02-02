@@ -1,13 +1,4 @@
 import {
-  Entity,
-  EntityTable,
-  EntityType,
-  Node,
-  OsmGeometry,
-  Way,
-} from '../osm/structures';
-
-import {
   Feature,
   LineString,
   lineString,
@@ -15,11 +6,13 @@ import {
   Polygon,
   polygon,
 } from '@turf/helpers';
+import { EntityTable } from '../osm/immutableStructures';
+import { Entity, EntityType, Node, OsmGeometry, Way } from '../osm/structures';
 
 // tslint:disable:no-expression-statement object-literal-key-quotes
 export function entityToGeoJson(
   entityTable: EntityTable,
-  computedProps: any,
+  computedProps: any
 ): Array<Feature<Point | Polygon | LineString>> {
   const arr: Array<Feature<Point | Polygon | LineString>> = [];
   entityTable.forEach((entity: Entity | undefined, id) => {
@@ -59,7 +52,7 @@ export function wayCombiner(
   existingProps: {
     readonly 'osm_basic--geometry': OsmGeometry;
     readonly [key: string]: string;
-  },
+  }
 ): Feature<Polygon | LineString> {
   // @TOFIX code duplication
   // @REVISIT this osm_basic injection, sems hacks
@@ -80,7 +73,7 @@ export function wayCombiner(
 
 export function getCoordsFromTable(
   table: EntityTable,
-  nodes: Way['nodes'],
+  nodes: Way['nodes']
 ): number[][] {
   return nodes.map(n => {
     if (!table.has(n)) {
@@ -98,7 +91,7 @@ export function getCoordsFromTable(
  */
 export function wayToLineString(
   geom: OsmGeometry,
-  nodeCoords: number[][],
+  nodeCoords: number[][]
 ): Feature<Polygon | LineString> {
   if (geom === OsmGeometry.LINE) {
     return lineString(nodeCoords, {});

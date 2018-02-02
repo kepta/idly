@@ -1,5 +1,5 @@
-import { entityFromString } from './entityFromString';
-import { entityToString } from './entityToString';
+import { entityFromString } from '../entityFromString';
+import { entityToString } from '../entityToString';
 import {
   Attributes,
   EntityId,
@@ -9,7 +9,7 @@ import {
   RelationMember,
   Tags,
   Way,
-} from './structures';
+} from '../structures';
 
 export interface NodeLike {
   readonly id: EntityId;

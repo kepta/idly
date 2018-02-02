@@ -1,6 +1,6 @@
 import { createNode, createWay } from '../actions/entity/createEntity';
 
-import { genLngLat } from '../../osm/genLngLat';
+import { lngLatFactory } from '../../geo/lngLatFactory';
 import { Way } from '../../osm/structures';
 import { Leaf } from './Leaf';
 
@@ -150,7 +150,7 @@ describe('stringifying', () => {
   const leaf4 = leaf3.map(() => {
     return createNode({
       id: 'n-a',
-      loc: genLngLat([1, 2]),
+      loc: lngLatFactory([1, 2]),
       tags: { k: 'n-a4' },
       type: 'node',
     });

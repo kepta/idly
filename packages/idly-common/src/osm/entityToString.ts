@@ -1,7 +1,7 @@
-import { nodeFactory } from './nodeFactory';
-import { relationFactory } from './relationFactory';
+import { nodeFactory } from './entityFactory/nodeFactory';
+import { relationFactory } from './entityFactory/relationFactory';
+import { wayFactory } from './entityFactory/wayFactory';
 import { Entity, EntityType } from './structures';
-import { wayFactory } from './wayFactory';
 
 export let entityToString = (entity: any): string => {
   let toStringify;

@@ -1,11 +1,12 @@
-import { compareWay } from '../compareWay';
-import { wayFactory } from '../wayFactory';
+import { compareWay } from '../compareEntities/compareWay';
+import { wayFactory } from '../entityFactory/wayFactory';
 
+// tslint:disable:object-literal-sort-keys
 test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['0', '1']
+    nodes: ['0', '1'],
   });
   const w2 = wayFactory({ id: '1', tags: { a: 'ab', b: 'a' } });
   expect(compareWay(w1, w2)).toBe(false);
@@ -15,12 +16,12 @@ test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['0', '1']
+    nodes: ['0', '1'],
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['0', '1']
+    nodes: ['0', '1'],
   });
   expect(compareWay(w1, w2)).toBe(true);
 });
@@ -29,12 +30,12 @@ test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: []
+    nodes: [],
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: []
+    nodes: [],
   });
   expect(compareWay(w1, w2)).toBe(true);
 });
@@ -43,12 +44,12 @@ test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: []
+    nodes: [],
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['a']
+    nodes: ['a'],
   });
   expect(compareWay(w1, w2)).toBe(false);
 });
@@ -58,12 +59,12 @@ test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: arr
+    nodes: arr,
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: arr
+    nodes: arr,
   });
   expect(compareWay(w1, w2)).toBe(true);
 });
@@ -73,12 +74,12 @@ test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: arr
+    nodes: arr,
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['c', 'b', 'a']
+    nodes: ['c', 'b', 'a'],
   });
   expect(compareWay(w1, w2)).toBe(false);
 });
@@ -87,12 +88,12 @@ test('simple 3', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['0', '1']
+    nodes: ['0', '1'],
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: ['1', '0']
+    nodes: ['1', '0'],
   });
   expect(compareWay(w1, w2)).toBe(false);
 });
@@ -102,12 +103,12 @@ test('simple 2', () => {
   const w1 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'a' },
-    nodes: arr
+    nodes: arr,
   });
   const w2 = wayFactory({
     id: '1',
     tags: { a: 'a', b: 'aa' },
-    nodes: arr
+    nodes: arr,
   });
   expect(compareWay(w1, w2)).toBe(false);
 });

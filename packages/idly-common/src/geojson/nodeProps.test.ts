@@ -6,10 +6,10 @@ import {
   nodePropertiesGen,
 } from './nodeProps';
 
-import { nodeFactory } from '../osm/nodeFactory';
-import { ParentWays } from '../osm/structures';
+import { nodeFactory } from '../osm/entityFactory/nodeFactory';
+import { tagsFactory } from '../osm/entityFactory/tagsFactory';
+import { ParentWays } from '../osm/immutableStructures';
 import { OsmGeometry } from '../osm/structures';
-import { tagsFactory } from '../osm/tagsFactory';
 
 export function dummyParentWaysGen(obj: any): ParentWays {
   return ImMap(obj);
@@ -18,16 +18,16 @@ export function dummyParentWaysGen(obj: any): ParentWays {
 const n1 = nodeFactory({ id: 'n-1' });
 
 const dummyParentWays = dummyParentWaysGen({
+  n1485636774: ImSet(['w40882200', 'w135262258']),
+  n253179996: ImSet(['w40882200', 'w237684574', 'w173431854', 'w450548831']),
   n3780767744: ImSet(['w40542208']),
   n4558992269: ImSet(['w40542208']),
-  n253179996: ImSet(['w40882200', 'w237684574', 'w173431854', 'w450548831']),
-  n1485636774: ImSet(['w40882200', 'w135262258']),
 });
 describe('node property generator', () => {
   it('should work', () => {
     // @TOFIX change to immutable once finsished rolling out
     expect(
-      nodePropertiesGen(n1, dummyParentWays.get(n1.id) || ImSet()),
+      nodePropertiesGen(n1, dummyParentWays.get(n1.id) || ImSet())
     ).toMatchSnapshot();
   });
 
@@ -35,34 +35,34 @@ describe('node property generator', () => {
     it('should work', () => {
       const markup = applyNodeMarkup(
         OsmGeometry.POINT,
-        tagsFactory({ k: 'k' }),
+        tagsFactory({ k: 'k' })
       );
       expect(markup).toEqual({
+        geometry: OsmGeometry.POINT,
         icon: DEFAULT_NODE_ICON,
         name: undefined,
-        geometry: OsmGeometry.POINT,
       });
     });
     it('should get the icon', () => {
       const markup = applyNodeMarkup(
         OsmGeometry.POINT,
-        tagsFactory({ k: 'k' }),
+        tagsFactory({ k: 'k' })
       );
       expect(markup).toEqual({
+        geometry: OsmGeometry.POINT,
         icon: DEFAULT_NODE_ICON,
         name: undefined,
-        geometry: OsmGeometry.POINT,
       });
     });
     it('should get the name', () => {
       const markup = applyNodeMarkup(
         OsmGeometry.POINT,
-        tagsFactory({ name: 'whatsInTheName' }),
+        tagsFactory({ name: 'whatsInTheName' })
       );
       expect(markup).toEqual({
+        geometry: OsmGeometry.POINT,
         icon: DEFAULT_NODE_ICON,
         name: 'whatsInTheName',
-        geometry: OsmGeometry.POINT,
       });
     });
   });

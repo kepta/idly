@@ -1,5 +1,5 @@
 // not safe for any object
-export function compareShallow(tagsA: any, tagsB: any): boolean {
+export function compareTags(tagsA: any, tagsB: any): boolean {
   if (tagsA === tagsB) {
     return true;
   }

@@ -1,5 +1,5 @@
-import { compareShallow } from './compareShallow';
-import { Node } from './structures';
+import { Node } from '../structures';
+import { compareTags } from './compareTags';
 
 export function compareNode(node: Node, compareWith: Node): boolean {
   if (node === compareWith) {
@@ -17,11 +17,11 @@ export function compareNode(node: Node, compareWith: Node): boolean {
     return false;
   }
 
-  if (!compareShallow(node.tags, compareWith.tags)) {
+  if (!compareTags(node.tags, compareWith.tags)) {
     return false;
   }
 
-  if (!compareShallow(node.attributes, compareWith.attributes)) {
+  if (!compareTags(node.attributes, compareWith.attributes)) {
     return false;
   }
 

@@ -1,13 +1,13 @@
-import { deepFreeze } from '../misc/deepFreeze';
-import { attributesGen } from '../osm/attributesGen';
-import { Attributes, EntityId, EntityType, Tags, Way } from '../osm/structures';
+import { deepFreeze } from '../../misc/deepFreeze';
+import { Attributes, EntityId, EntityType, Tags, Way } from '../structures';
+import { attributesFactory } from './attributesFactory';
 import { tagsFactory } from './tagsFactory';
 
 export function wayFactory(
   {
     id,
     tags = tagsFactory(),
-    attributes = attributesGen(),
+    attributes = attributesFactory(),
     nodes = [],
   }: {
     id: EntityId;
@@ -15,16 +15,16 @@ export function wayFactory(
     attributes?: Attributes;
     nodes?: EntityId[] | ReadonlyArray<EntityId>;
   },
-  freeze = true,
+  freeze = true
 ): Way {
   return deepFreeze<Way>(
     {
-      attributes: attributesGen(attributes),
+      attributes: attributesFactory(attributes),
       id,
       nodes,
       tags: tagsFactory(tags),
       type: EntityType.WAY,
     },
-    freeze,
+    freeze
   );
 }

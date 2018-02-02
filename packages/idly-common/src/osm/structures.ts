@@ -1,14 +1,8 @@
-import { Map as ImMap, Set as ImSet } from 'immutable';
-
 export type Entity = Node | Way | Relation;
 export type Entities = Set<Node | Way | Relation>;
 export type EntityId = string;
 export type NodeId = string;
 export type WayId = string;
-
-export type ParentWays = ImMap<NodeId, ImSet<WayId> | undefined>;
-// Table used to map id -> entity
-export type EntityTable = ImMap<EntityId, Entity | undefined>;
 
 export interface Tags {
   [key: string]: string;

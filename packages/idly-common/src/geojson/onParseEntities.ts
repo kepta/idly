@@ -1,11 +1,8 @@
 import { Set as ImSet } from 'immutable';
 
-import {
-  EntityTable,
-  EntityType,
-  FeaturePropsTable,
-  ParentWays,
-} from '../osm/structures';
+import { EntityTable, ParentWays } from '../osm/immutableStructures';
+import { EntityType, FeaturePropsTable } from '../osm/structures';
+
 import { nodePropertiesGen } from './nodeProps';
 import { wayPropertiesGen } from './wayProps';
 
@@ -24,7 +21,7 @@ function nameSpaceKeys(name: string, obj: { [index: string]: string }) {
  */
 export function onParseEntities(
   entityTable: EntityTable,
-  parentWays: ParentWays,
+  parentWays: ParentWays
 ): FeaturePropsTable {
   // @TOFIX cleanup, I think this function is one of the bottlenecks we have
   const fProps: FeaturePropsTable = new Map();
@@ -38,7 +35,7 @@ export function onParseEntities(
       // @TOFIX why do we need to send the entire parentWays lol.
       const x = nameSpaceKeys(
         PLUGIN_NAME,
-        nodePropertiesGen(entity, parentWays.get(entity.id) || blankImSet),
+        nodePropertiesGen(entity, parentWays.get(entity.id) || blankImSet)
       );
       fProps.set(id, x);
     }

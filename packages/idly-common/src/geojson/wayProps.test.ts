@@ -1,5 +1,5 @@
-import { tagsFactory } from '../osm/tagsFactory';
-import { wayFactory } from '../osm/wayFactory';
+import { tagsFactory } from '../osm/entityFactory/tagsFactory';
+import { wayFactory } from '../osm/entityFactory/wayFactory';
 import { wayPropertiesGen } from './wayProps';
 
 describe('wayCombiner', () => {
