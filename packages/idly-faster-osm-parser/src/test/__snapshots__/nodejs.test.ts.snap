@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`node and regular parity should work for BIG_XML1 1`] = `1491`;
+
+exports[`node and regular parity should work for BIG_XML2 1`] = `3070`;
+
+exports[`node and regular parity should work for BIG_XML3 1`] = `3599`;
+
+exports[`node and regular parity should work for NODE_XML1 1`] = `20`;
+
+exports[`node and regular parity should work for WAY_XML1 1`] = `1`;
+
+exports[`node and regular parity should work for XML1 1`] = `2`;
+
+exports[`node and regular parity should work for XML2 1`] = `1`;
+
+exports[`node and regular parity should work for XML3 1`] = `5`;
+
+exports[`node and regular parity should work for XML5 1`] = `76`;
+
+exports[`node and regular parity should work for XML7 1`] = `53`;
+
+exports[`node and regular parity should work for XML8 1`] = `345`;
+
+exports[`node and regular parity should work for XML9 1`] = `1936`;

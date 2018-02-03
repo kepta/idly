@@ -1,7 +1,9 @@
-import { genLngLat } from 'idly-common/lib/osm/genLngLat';
-import { nodeFactory } from 'idly-common/lib/osm/nodeFactory';
-import { relationFactory } from 'idly-common/lib/osm/relationFactory';
-import { relationMemberGen } from 'idly-common/lib/osm/relationMemberGen';
+import { lngLatFactory } from 'idly-common/lib/geo/lngLatFactory';
+import { nodeFactory } from 'idly-common/lib/osm/entityFactory/nodeFactory';
+import { relationFactory } from 'idly-common/lib/osm/entityFactory/relationFactory';
+import { wayFactory } from 'idly-common/lib/osm/entityFactory/wayFactory';
+
+import { relationMemberFactory } from 'idly-common/lib/osm/relationMemberFactory';
 import {
   Entity,
   LngLat,
@@ -10,13 +12,12 @@ import {
   RelationMember,
   Way,
 } from 'idly-common/lib/osm/structures';
-import { wayFactory } from 'idly-common/lib/osm/wayFactory';
 
 /**
  * Converts the osm xml to an array of Entity,
  * This implementation is a port from iD.
  */
-export function legacyParser(xml: Document): Entity[] {
+export function iDParser(xml: Document): Entity[] {
   if (!xml || !xml.childNodes) {
     return [];
   }
@@ -56,12 +57,12 @@ function getMembers(obj: any): RelationMember[] {
   for (let i = 0; i < len; i++) {
     const attrs = elems[i].attributes;
     members.push(
-      relationMemberGen({
+      relationMemberFactory({
         id:
           attrs.getNamedItem('type').value[0] + attrs.getNamedItem('ref').value,
         role: attrs.getNamedItem('role').value,
         type: attrs.getNamedItem('type').value,
-      }),
+      })
     );
   }
   return members;
@@ -91,7 +92,7 @@ function getTags(obj: any): { [index: string]: string } {
 function getLoc(attrs: NamedNodeMap): LngLat {
   const lon = attrs.getNamedItem('lon') && attrs.getNamedItem('lon').value;
   const lat = attrs.getNamedItem('lat') && attrs.getNamedItem('lat').value;
-  return genLngLat([parseFloat(lon), parseFloat(lat)]);
+  return lngLatFactory([parseFloat(lon), parseFloat(lat)]);
 }
 
 function nodeData(obj: Node): OSMNode {
@@ -118,7 +119,7 @@ function nodeData(obj: Node): OSMNode {
       loc: getLoc(attrs),
       tags: getTags(obj),
     },
-    false,
+    false
   );
 }
 
@@ -146,7 +147,7 @@ function relationData(obj: Node): Relation {
       members: getMembers(obj),
       tags: getTags(obj),
     },
-    false,
+    false
   );
 }
 
@@ -174,6 +175,6 @@ function wayData(obj: Node): Way {
       nodes: getNodes(obj),
       tags: getTags(obj),
     },
-    false,
+    false
   );
 }
