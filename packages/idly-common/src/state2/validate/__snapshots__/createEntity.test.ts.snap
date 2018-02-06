@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createEntity should create 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": "dummy-changeset",
+    "timestamp": "dummy-timestamp",
+    "uid": "dummy-uid",
+    "user": "dummy-user",
+    "version": "dummy-version",
+    "visible": "dummy-visible",
+  },
+  "id": "n-1",
+  "loc": Object {
+    "lat": 0,
+    "lon": 0,
+  },
+  "tags": Object {},
+  "type": "node",
+}
+`;
+
+exports[`createEntity should throw when no id 1`] = `"Entity does not have a valid id"`;
+
+exports[`createEntity should throw when only id & tag is provided 1`] = `"Invalid node"`;
+
+exports[`createEntity should throw when only id is provided 1`] = `"Entity type is unknown"`;
+
+exports[`createEntity should throw when wrong id 1`] = `"Invalid node"`;
+
+exports[`createEntity should throw when wrong id 2`] = `"Invalid node"`;
+
+exports[`createEntity should throw with empty object 1`] = `"Entity does not have a valid id"`;
+
+exports[`createEntity should throw with wrong strings 1`] = `"Entity does not have a valid id"`;
+
+exports[`createNode should create node 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": "dummy-changeset",
+    "timestamp": "dummy-timestamp",
+    "uid": "dummy-uid",
+    "user": "dummy-user",
+    "version": "dummy-version",
+    "visible": "dummy-visible",
+  },
+  "id": "n-1",
+  "loc": Object {
+    "lat": 0,
+    "lon": 0,
+  },
+  "tags": Object {},
+  "type": "node",
+}
+`;
+
+exports[`createNode should not create other entities 1`] = `"Entity must be node"`;
+
+exports[`createRelation should create relation 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": "dummy-changeset",
+    "timestamp": "dummy-timestamp",
+    "uid": "dummy-uid",
+    "user": "dummy-user",
+    "version": "dummy-version",
+    "visible": "dummy-visible",
+  },
+  "id": "r-1",
+  "members": Array [
+    Object {
+      "id": "n-1",
+    },
+  ],
+  "tags": Object {},
+  "type": "relation",
+}
+`;
+
+exports[`createRelation should not create other entities 1`] = `"Entity must be relation"`;
+
+exports[`createRelation should throw wrong members 1`] = `"Invalid Relation"`;
+
+exports[`createWay should check for valid nodes 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": "dummy-changeset",
+    "timestamp": "dummy-timestamp",
+    "uid": "dummy-uid",
+    "user": "dummy-user",
+    "version": "dummy-version",
+    "visible": "dummy-visible",
+  },
+  "id": "w-1",
+  "nodes": Array [
+    "n-1",
+  ],
+  "tags": Object {},
+  "type": "way",
+}
+`;
+
+exports[`createWay should create way 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": "dummy-changeset",
+    "timestamp": "dummy-timestamp",
+    "uid": "dummy-uid",
+    "user": "dummy-user",
+    "version": "dummy-version",
+    "visible": "dummy-visible",
+  },
+  "id": "w-1",
+  "nodes": Array [],
+  "tags": Object {},
+  "type": "way",
+}
+`;
+
+exports[`createWay should not create other entities 1`] = `"Entity must be way"`;
+
+exports[`createWay should throw for invalid nodes 1`] = `"Invalid Way"`;

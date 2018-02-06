@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adds everything correctly 1`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+      "w1",
+    },
+  },
+  "n2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "w2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "r1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1",
+      "members": Array [
+        Object {
+          "id": "n4",
+          "ref": "n4",
+        },
+        Object {
+          "id": "w2",
+          "ref": "w2",
+        },
+      ],
+      "tags": Object {},
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n4" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`adds everything correctly 2`] = `
+Object {
+  "entity": Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "parentRelations": Set {},
+  "parentWays": Set {
+    "w2",
+    "w1",
+  },
+}
+`;

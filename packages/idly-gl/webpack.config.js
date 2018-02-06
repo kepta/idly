@@ -14,7 +14,7 @@ module.exports = {
     filename: 'idly-gl.js',
     path: __dirname + '/dist',
     library: 'idlygl',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
 
   // Enable sourcemaps for debugging webpack's output.
@@ -23,33 +23,29 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-    // alias: {
-    //   immutable: path.resolve('../node_modules/immutable'),
-    //   '@turf/helpers': path.resolve('../node_modules/@turf/helpers')
-    // }
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
   node: {
-    fs: 'empty'
+    fs: 'empty',
   },
 
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
   },
   plugins: [
     new DuplicatePackageCheckerPlugin({
       // Also show module that is requiring each duplicate package
       verbose: true,
       // Emit errors instead of warnings
-      emitError: false
+      emitError: false,
     }),
 
     new CircularDependencyPlugin({
       // exclude detection of files based on a RegExp
       exclude: /a\.js|node_modules/,
       // add errors to webpack instead of warnings
-      failOnError: true
-    })
+      failOnError: true,
+    }),
     // new DashboardPlugin()
     // new BundleAnalyzerPlugin()
   ],
@@ -64,13 +60,13 @@ module.exports = {
         test: /\.worker\.ts$/,
         use: {
           loader: 'worker-loader',
-          options: { inline: true, fallback: false }
-        }
+          options: { inline: true, fallback: false },
+        },
       },
       {
         test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
-      }
-    ]
-  }
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
+    ],
+  },
 };

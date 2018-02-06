@@ -29,20 +29,13 @@ export function xmlLineToObj(r: string, lastObj: any, opts: Options) {
     return;
   }
   if (line.startsWith('<member')) {
-    if (opts.useRef) {
-      attributesObj.ref = prependEntityChar(
-        attributesObj.ref,
-        attributesObj.type,
-        opts.prependEntityChar
-      );
-    } else {
-      attributesObj.id = prependEntityChar(
-        attributesObj.ref,
-        attributesObj.type,
-        opts.prependEntityChar
-      );
-      delete attributesObj.ref;
-    }
+    attributesObj.id = prependEntityChar(
+      attributesObj.ref,
+      attributesObj.type,
+      opts.prependEntityChar
+    );
+    attributesObj.ref = attributesObj.id;
+
     lastObj.pointer.members.push(attributesObj);
     return;
   }

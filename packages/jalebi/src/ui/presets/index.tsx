@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { all, presetMatch } from 'idly-common/lib/geojson/presetMatch';
+import { all, presetMatch } from 'idly-common/lib/geojson';
 import { Leaf } from 'idly-common/lib/state/graph/Leaf';
 import { en } from '../../translations/en';
 

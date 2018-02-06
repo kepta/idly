@@ -58,8 +58,10 @@ function getMembers(obj: any): RelationMember[] {
     const attrs = elems[i].attributes;
     members.push(
       relationMemberFactory({
-        id:
-          attrs.getNamedItem('type').value[0] + attrs.getNamedItem('ref').value,
+        id: (attrs.getNamedItem('type').value[0] +
+          attrs.getNamedItem('ref').value) as string,
+        ref: (attrs.getNamedItem('type').value[0] +
+          attrs.getNamedItem('ref').value) as string,
         role: attrs.getNamedItem('role').value,
         type: attrs.getNamedItem('type').value,
       })

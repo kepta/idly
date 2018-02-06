@@ -63,10 +63,11 @@ export interface Attributes {
 }
 
 // id & ref are the same thing
-// it exists for backward compatibility with iD
+// id exists for backward compatibility with iD
+// we are using ref
 export interface RelationMember {
-  readonly id?: string;
-  readonly ref?: string;
+  readonly id: string;
+  readonly ref: string;
   readonly type?: string;
   readonly role?: string;
 }

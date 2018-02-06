@@ -1,7 +1,7 @@
 import layers from '../layers';
 import shadows from '../shadows';
 
-import { BBox } from 'idly-common/lib/geo/bbox';
+import { BBox } from 'idly-common/lib/geo';
 import debounce from 'lodash-es/debounce';
 import { addSource } from '../helper/addSource';
 import {

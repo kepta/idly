@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for state2/helper.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">state2</a> helper.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">78.95% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>30/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>6/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">63.64% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>25/30</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">115x</span>
+<span class="cline-any cline-yes">136x</span>
+<span class="cline-any cline-yes">42x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">73x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">260x</span>
+<span class="cline-any cline-yes">160x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const setFind = &lt;A&gt;(foo: ((s: A) =&gt; boolean), set: Set&lt;A&gt;) =&gt; {
+  for (const z of set) {
+    if (foo(z)) {
+      return z;
+    }
+  }
+  return;
+};
+&nbsp;
+export const setSome = &lt;A&gt;(foo: ((s: A) =&gt; boolean), set: Set&lt;A&gt;) =&gt; {
+  for (const z of set) {
+    if (foo(z)) {
+      return true;
+    }
+  }
+  return false;
+};
+&nbsp;
+export const setFilter = &lt;T&gt;(foo: ((s: T) =&gt; boolean), a: Set&lt;T&gt;) =&gt;
+  new Set([...a].filter(foo));
+&nbsp;
+export const setInt<span class="fstat-no" title="function not covered" >er</span>sect = &lt;<span class="cstat-no" title="statement not covered" >T&gt;(a: Set&lt;T&gt;, b: Set&lt;T</span>&gt;) =&gt;
+  setFilter(x =&gt; b.has(x), a);
+&nbsp;
+export const setCreate = &lt;T&gt;(a: Iterable&lt;T&gt;) =&gt; new Set(a);
+&nbsp;
+export const setUnion = &lt;T&gt;(a: Set&lt;T&gt;, b: Set&lt;T&gt;) =&gt; new Set&lt;T&gt;([...a, ...b]);
+&nbsp;
+export const mapFilterKeys = &lt;K, V&gt;(
+  foo: ((v: V, k: K) =&gt; boolean),
+  map: Map&lt;K, V&gt;
+): K[] =&gt; {<span class="fstat-no" title="function not covered" ></span>
+  const filter = []<span class="cstat-no" title="statement not covered" >;</span>
+  fo<span class="cstat-no" title="statement not covered" >r (const [k, v] of map) {</span>
+    if (<span class="cstat-no" title="statement not covered" >foo(v, k)) {</span>
+      filter<span class="cstat-no" title="statement not covered" >.push(k);</span>
+    }
+  }
+  re<span class="cstat-no" title="statement not covered" >turn filter;</span>
+};
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+export const mapFil<span class="fstat-no" title="function not covered" >te</span>rValues = &lt;K,<span class="cstat-no" title="statement not covered" > V&gt;(</span>
+  foo: ((v: V, k: K) =&gt; boolean),
+  map: Map&lt;K, V&gt;
+): V[] =&gt; {
+  const filter = [];
+  for (const [k, v] of map) {
+    if (foo(v, k)) {
+      filter.push(v);
+    }
+  }
+  return filter;
+};
+&nbsp;
+export const last = &lt;T&gt;(r: T[]) =&gt; r[r.length - 1];
+&nbsp;
+export const isVirgin = (indexOrId: string) =&gt; indexOrId.indexOf('#') === -1;
+&nbsp;
+// export class Box&lt;T&gt; {
+//   public static of&lt;T&gt;(a: T) {
+//     return new Box(a);
+//   }
+//   private value: T;
+//   constructor(a: T) {
+//     this.value = a;
+//   }
+&nbsp;
+//   public map(fn: ((a: T, e: string) =&gt; T)) {
+&nbsp;
+//   }
+// }
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 04 2018 09:46:27 GMT-0500 (EST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

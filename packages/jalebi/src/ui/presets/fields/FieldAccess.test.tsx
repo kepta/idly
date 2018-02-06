@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { all } from 'idly-common/lib/geojson/presetMatch';
+import { all } from 'idly-common/lib/geojson';
 import { FieldAccess } from './FieldAccess';
 
 describe('Field Access', () => {
