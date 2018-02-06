@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
+    "target": "es2015",
     "module": "commonjs"
   },
   "exclude": [
