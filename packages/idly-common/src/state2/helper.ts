@@ -69,7 +69,7 @@ export const iterableFlattenToArray = <T>(
 export const iterableFlattenToSet = <T>(
   a: Iterable<Iterable<T>> | IterableIterator<IterableIterator<T>>
 ) => {
-  const result = setCreate();
+  const result = setCreate<T>();
   for (const i of a) {
     for (const j of i) {
       result.add(j);

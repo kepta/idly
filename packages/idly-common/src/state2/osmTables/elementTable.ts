@@ -34,6 +34,9 @@ function initializeElements(t: ElementTable, entity: Entity[]) {
 /**
  * This function expect the elementTable's row to have
  * already been created for each entities in the param.
+ * @TOFIX It could be possible that relation (maybe way) children
+ * are not present. How do we fix that? How Should we handle when the
+ * missing child comes back?
  */
 function parentCalculate(elementTable: Table<Element>, entities: Entity[]) {
   entities.reduce((prev, parentEntity) => {
@@ -44,13 +47,14 @@ function parentCalculate(elementTable: Table<Element>, entities: Entity[]) {
         (tableGet(prev, id) as Element).parentWays.add(parentEntity.id)
       );
     } else if (parentEntity.type === EntityType.RELATION) {
-      parentEntity.members.forEach(mem =>
+      parentEntity.members.forEach(mem => {
         // @NOTE we dont go deep when talking about parentRelations
         // it is just 1 level to reduce complexity.
-        (tableGet(prev, mem.ref) as Element).parentRelations.add(
-          parentEntity.id
-        )
-      );
+        const entity = tableGet(prev, mem.ref);
+        if (entity) {
+          entity.parentRelations.add(parentEntity.id);
+        }
+      });
     }
     return prev;
   }, elementTable);

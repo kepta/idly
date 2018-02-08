@@ -1,6 +1,6 @@
 import { Identity as I } from 'monet';
 import { mapFilterValuesIntoArray, setAddIterable, setCreate } from '../helper';
-import { Table, tableGet, tableRemove, tableUpdate } from '../table';
+import { Table, tableGet, tableRemove, tableUpdate } from '../table/regular';
 
 export type OneToManyTable<T> = Table<Set<T>>;
 export const oneToManyTableCreate = <T>(): OneToManyTable<T> => new Map();

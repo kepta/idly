@@ -7,11 +7,7 @@ import {
 import { Entity } from '../../osm/structures';
 import { setCreate } from '../helper';
 import { addEntryToLog, Log, logCreate } from '../log/index';
-import {
-  Element,
-  elementTableBulkAdd,
-  elementTableCreate,
-} from './elementTable';
+import { elementTableBulkAdd, elementTableCreate } from './elementTable';
 import { quadkeysTableAdd, quadkeysTableCreate } from './quadkeysTable';
 import { State } from './state';
 
@@ -21,15 +17,15 @@ const mapFromObj = <T>(o: any = {}): Map<string, T> =>
     return prev;
   }, new Map());
 
-const dummyElement = (
-  entity: Entity,
-  parentWays = setCreate<string>(),
-  parentRelations = setCreate<string>()
-): Element => ({
-  entity,
-  parentRelations,
-  parentWays,
-});
+// const dummyElement = (
+//   entity: Entity,
+//   parentWays = setCreate<string>(),
+//   parentRelations = setCreate<string>()
+// ): Element => ({
+//   entity,
+//   parentRelations,
+//   parentWays,
+// });
 
 const dummyElementT = (e: Entity[]) =>
   R.tap(t => elementTableBulkAdd(t, e), elementTableCreate());

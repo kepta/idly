@@ -72,7 +72,7 @@ export const quadkeysTableFlatten = (t: QuadkeysTable) =>
 export const quadkeysTableFindVirginIds = (
   t: QuadkeysTable,
   quadkeys: string[]
-) =>
+): Set<string> =>
   quadkeys.some(q => q === '')
     ? setCreate()
     : iterableFlattenToSet(

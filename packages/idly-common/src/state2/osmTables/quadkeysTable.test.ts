@@ -1,12 +1,12 @@
 import { setCreate } from '../helper';
+import { tableGet } from '../table/regular';
 import {
   ancestorProperFind,
   QuadkeysTable,
   quadkeysTableAdd,
-  removeAllDescendants,
   quadkeysTableFindVirginIds,
+  removeAllDescendants,
 } from './quadkeysTable';
-import { tableGet } from '../table/regular';
 
 const mapFromObj = (o: any): QuadkeysTable =>
   Object.keys(o).reduce((prev, k) => {

@@ -3,11 +3,11 @@ import {
   addEntryToLog,
   doesLogContain,
   doesLogHaveNewerOrCurrentVersion,
-  logVirginIdsCurrentlyModified,
   getAllLatestIndexes,
   getLatestVersion,
   Log,
   logRecreate,
+  logVirginIdsCurrentlyModified,
 } from './index';
 
 const createAndAdd = (ids: string[]) => (log: Log) =>

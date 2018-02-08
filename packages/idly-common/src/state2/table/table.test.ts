@@ -7,9 +7,9 @@ import { iterableFlattenToSet } from '../helper';
 import { tableBulkAdd, tableBulkRemove, tableCreate, tableGet } from '../table';
 import {
   OneToManyTable,
-  oneToManyTableUpdateIndex,
   oneToManyTableCreate,
   oneToManyTableFilter,
+  oneToManyTableUpdateIndex,
 } from './oneToMany';
 
 const smallDataset = (freeze: boolean = false): Array<[string, Entity]> =>
@@ -176,7 +176,6 @@ describe('oneToManyTable', () => {
 
   it('multiple quadkeys', () => {
     const table = oneToManyTableCreate<string>();
-    const dataset = smallDataset();
 
     oneToManyTableUpdateIndex(
       table,
