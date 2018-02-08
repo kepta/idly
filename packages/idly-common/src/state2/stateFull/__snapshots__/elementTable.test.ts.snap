@@ -1,0 +1,798 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addVirgin should add 1`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "n2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n4" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`addVirgin should add 2`] = `
+Map {
+  "123" => Set {
+    "n1",
+    "n2",
+    "w1",
+  },
+  "121" => Set {
+    "n3",
+    "n4",
+  },
+}
+`;
+
+exports[`addVirgin should add 3`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "n2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n4" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n1#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1#0",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n2#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2#0",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`addVirgin should add 4`] = `
+Map {
+  "123" => Set {
+    "n1",
+    "n2",
+    "w1",
+  },
+  "121" => Set {
+    "n3",
+    "n4",
+  },
+  "" => Set {
+    "n1#0",
+    "n2#0",
+  },
+}
+`;
+
+exports[`addVirgin should add 5`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+      "w2",
+    },
+  },
+  "n2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "n4" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+  "n1#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1#0",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n2#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2#0",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "w2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+  "r1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1",
+      "members": Array [
+        Object {
+          "id": "n4",
+          "ref": "n4",
+        },
+        Object {
+          "id": "w2",
+          "ref": "w2",
+        },
+      ],
+      "tags": Object {},
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`addVirgin should add 6`] = `
+Map {
+  "123" => Set {
+    "n1",
+    "n2",
+    "w1",
+  },
+  "121" => Set {
+    "n3",
+    "n4",
+  },
+  "" => Set {
+    "n1#0",
+    "n2#0",
+  },
+  "33" => Set {
+    "w2",
+    "r1",
+  },
+}
+`;
+
+exports[`addVirgin should add 7`] = `
+Array [
+  "n1",
+  "n2",
+  "w1",
+  "n3",
+  "n4",
+  "n1#0",
+  "n2#0",
+  "w2",
+  "r1",
+  "n3#0",
+  "n1#1",
+  "r1#0",
+]
+`;
+
+exports[`addVirgin should add 8`] = `
+Map {
+  "123" => Set {
+    "n1",
+    "n2",
+    "w1",
+  },
+  "121" => Set {
+    "n3",
+    "n4",
+  },
+  "" => Set {
+    "n1#0",
+    "n2#0",
+    "n3#0",
+    "n1#1",
+    "r1#0",
+  },
+  "33" => Set {
+    "w2",
+    "r1",
+  },
+}
+`;
+
+exports[`addVirgin should add 9`] = `
+Set {
+  "n3#0",
+  "n1#1",
+  "r1#0",
+  "n2#0",
+}
+`;
+
+exports[`addVirgin should add 10`] = `
+Set {
+  "w2",
+  "n3#0",
+  "n1#1",
+  "r1#0",
+  "n2#0",
+}
+`;
+
+exports[`addVirgin should add 11`] = `
+Set {
+  "n4",
+  "n3#0",
+  "n1#1",
+  "r1#0",
+  "n2#0",
+}
+`;
+
+exports[`addVirgin should add 12`] = `
+Array [
+  "n1",
+  "n2",
+  "w1",
+  "n3",
+  "n4",
+  "n1#0",
+  "n2#0",
+  "w2",
+  "r1",
+  "n3#0",
+  "n1#1",
+  "r1#0",
+  "r1#1",
+]
+`;
+
+exports[`basic additions adds everything correctly 1`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+      "w1",
+    },
+  },
+  "n2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "w2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "r1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1",
+      "members": Array [
+        Object {
+          "id": "n4",
+          "ref": "n4",
+        },
+        Object {
+          "id": "w2",
+          "ref": "w2",
+        },
+      ],
+      "tags": Object {},
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n4" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`stateAddModifieds should throw error when log and modified entities dont match 1`] = `"log and modifiedEntities dont match"`;
+
+exports[`stateAddModifieds should throw error when log and modified entities dont match 2`] = `"log and modifiedEntities dont match"`;

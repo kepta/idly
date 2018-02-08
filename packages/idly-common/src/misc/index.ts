@@ -5,3 +5,4 @@ export { isImmutableSet } from './isImmutableSet';
 export { sortObjectKeys } from './sortObjectKeys';
 export { weakCache, weakCache2 } from './weakCache';
 export { unescape } from './unescape';
+export { tileToQuadkey } from './tileToQuadkey';

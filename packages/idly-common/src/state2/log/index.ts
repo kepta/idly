@@ -18,14 +18,14 @@ export const validId = (str: string) => str.indexOf('#') === 0;
 
 export const validIndex = (str: string) => !validId(str);
 
-export const logVirginIdsCurrentlyModified = weakCache((log: Log) =>
+export const logGetModifiedIds = weakCache((log: Log) =>
   log.reduce((prev: Set<string>, cur) => {
     cur.forEach(index => prev.add(getId(index)));
     return prev;
   }, setCreate())
 );
 
-export const getAllLatestIndexes = weakCache(
+export const logGetLatestIndexes = weakCache(
   (log: Log) =>
     new Set(
       log

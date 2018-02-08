@@ -69,6 +69,7 @@ export const quadkeysTableCreateFrom = (t: QuadkeysTable, quadkey: string) =>
 export const quadkeysTableFlatten = (t: QuadkeysTable) =>
   iterableFlattenToSet(tableValues(t));
 
+// Finds the virginIds assuming all modified Ids stay in '' quadkey
 export const quadkeysTableFindVirginIds = (
   t: QuadkeysTable,
   quadkeys: string[]

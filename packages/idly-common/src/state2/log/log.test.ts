@@ -3,11 +3,11 @@ import {
   addEntryToLog,
   doesLogContain,
   doesLogHaveNewerOrCurrentVersion,
-  getAllLatestIndexes,
   getLatestVersion,
   Log,
+  logGetLatestIndexes,
+  logGetModifiedIds,
   logRecreate,
-  logVirginIdsCurrentlyModified,
 } from './index';
 
 const createAndAdd = (ids: string[]) => (log: Log) =>
@@ -178,14 +178,10 @@ describe('getAllIds', () => {
     setCreate(['4#0', '5#0'])
   );
   test('basic', () => {
-    expect(logVirginIdsCurrentlyModified(log)).toEqual(
-      new Set(['2', '3', '5', '4'])
-    );
+    expect(logGetModifiedIds(log)).toEqual(new Set(['2', '3', '5', '4']));
   });
   test('weak caches', () => {
-    expect(logVirginIdsCurrentlyModified(log)).toBe(
-      logVirginIdsCurrentlyModified(log)
-    );
+    expect(logGetModifiedIds(log)).toBe(logGetModifiedIds(log));
   });
 });
 
@@ -198,13 +194,11 @@ describe('getAllLatestIndexes', () => {
     setCreate(['4#0', '5#0'])
   );
   test('basic', () => {
-    expect(getAllLatestIndexes(log)).toEqual(
+    expect(logGetLatestIndexes(log)).toEqual(
       setCreate(['2#4', '3#2', '5#0', '4#0'])
     );
   });
   test('weak caches', () => {
-    expect(logVirginIdsCurrentlyModified(log)).toBe(
-      logVirginIdsCurrentlyModified(log)
-    );
+    expect(logGetModifiedIds(log)).toBe(logGetModifiedIds(log));
   });
 });

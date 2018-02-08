@@ -1,18 +1,7 @@
-import { Entity } from '../../osm/structures';
-import {
-  getAllLatestIndexes,
-  Log,
-  logCreate,
-  logVirginIdsCurrentlyModified,
-} from '../log';
+import { Log, logGetLatestIndexes, logGetModifiedIds } from '../log';
 import { Table } from '../table';
-import { tableFilter } from '../table/regular';
-import {
-  Element,
-  ElementTable,
-  elementTableBulkAdd,
-  elementTableCreate,
-} from './elementTable';
+import { tableAdd, tableFilter } from '../table/regular';
+
 import {
   QuadkeysTable,
   quadkeysTableAdd,
@@ -22,66 +11,28 @@ import {
   quadkeysTableFlatten,
 } from './quadkeysTable';
 
-// TOFIX _elementTable & _quadkeysTable
-// ref will change when going to a new state
-// we need to put deep inside an object
-// also write a test for this
-export class State {
-  public static create(
-    { elementTable, quadkeysTable, log } = {
-      elementTable: elementTableCreate(),
-      log: logCreate(),
-      quadkeysTable: quadkeysTableCreate(),
-    }
+export class State<T> {
+  public static create<T>(
+    elementTable: Table<T> = new Map(),
+    quadkeysTable = quadkeysTableCreate()
   ) {
-    return new State(elementTable, quadkeysTable, log);
+    return new State<T>(elementTable, quadkeysTable);
   }
 
-  private readonly log: Log;
-
   // tslint:disable-next-line:variable-name
-  private _elementTable: Table<Element>;
+  private _elementTable: Table<T>;
   // tslint:disable-next-line:variable-name
   private _quadkeysTable: QuadkeysTable;
 
-  private constructor(
-    elementTable: ElementTable,
-    quadkeysTable: QuadkeysTable,
-    log: Log
-  ) {
+  private constructor(elementTable: Table<T>, quadkeysTable: QuadkeysTable) {
     this._elementTable = elementTable;
     this._quadkeysTable = quadkeysTable;
-    this.log = log;
   }
   public getElementTable() {
     return this._elementTable;
   }
   public getQuadkeysTable() {
     return this._quadkeysTable;
-  }
-  public fork(newLog: Log, modifiedEntities: Entity[]) {
-    if (newLog === this.log || newLog.length === 0) {
-      return this;
-    }
-    // check if modified entities tally with latest log
-    const latestEntry = newLog[0];
-
-    if (
-      latestEntry.size !== modifiedEntities.length ||
-      modifiedEntities.some(r => !latestEntry.has(r.id))
-    ) {
-      throw new Error('log and modifiedEntities dont match');
-    }
-
-    modifiedEntities.forEach(e => {
-      if (this._elementTable.has(e.id)) {
-        throw new Error(`Modified entity ${e.id} already exists in table`);
-      }
-    });
-
-    this.addVirgin(modifiedEntities, '');
-
-    return new State(this._elementTable, this._quadkeysTable, newLog);
   }
 
   public getElement(id: string) {
@@ -92,31 +43,24 @@ export class State {
     return this._quadkeysTable.get(quadkey);
   }
 
-  public getLog() {
-    return this.log;
+  public add(getId: (t: T) => string, elements: T[], quadkey: string) {
+    elements.forEach(e => tableAdd(this._elementTable, getId(e), e));
+    quadkeysTableAdd(this._quadkeysTable, elements.map(getId), quadkey);
   }
 
-  public addVirgin(entities: Entity[], quadkey: string) {
-    elementTableBulkAdd(this._elementTable, entities);
-
-    quadkeysTableAdd(this._quadkeysTable, entities.map(r => r.id), quadkey);
-  }
-
-  public getVisible(quadkeys: string[]) {
+  public getVisible(quadkeys: string[], log: Log) {
     const insideQuadkeys = quadkeysTableFindVirginIds(
       this._quadkeysTable,
       quadkeys
     );
 
-    const toRemoveIds = logVirginIdsCurrentlyModified(this.log);
+    const toRemoveIds = logGetModifiedIds(log);
 
     for (const id of toRemoveIds) {
       insideQuadkeys.delete(id);
     }
 
-    const latestIndexes = getAllLatestIndexes(this.log);
-
-    for (const id of latestIndexes) {
+    for (const id of logGetLatestIndexes(log)) {
       insideQuadkeys.add(id);
     }
 

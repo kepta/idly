@@ -1,6 +1,7 @@
 export {
   entityToGeoJson,
   getCoordsFromTable,
+  entityToGeoJsonNew,
   nodeCombiner,
   wayCombiner,
   wayToLineString,

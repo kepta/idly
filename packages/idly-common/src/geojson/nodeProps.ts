@@ -13,6 +13,13 @@ export const nodePropertiesGen = weakCache2(
   }
 );
 
+export const nodePropertiesGenNew = (node: Node, parentWay: Set<string>) => {
+  return applyNodeMarkup(
+    parentWay.size === 0 ? OsmGeometry.POINT : OsmGeometry.VERTEX,
+    node.tags
+  );
+};
+
 export const applyNodeMarkup = (
   geometry: NodeGeometry,
   tags: Tags
