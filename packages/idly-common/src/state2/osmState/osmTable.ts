@@ -1,7 +1,7 @@
 import { Entity, EntityType } from '../../osm/structures';
 import { setCreate } from '../helper';
 import { Log } from '../log';
-import { State } from '../osmTables/state';
+import { State } from '../state/state';
 import { Table } from '../table';
 import { tableGet } from '../table/regular';
 
@@ -13,7 +13,7 @@ export interface OsmElement {
 
 export type OsmTable = Table<OsmElement>;
 
-export const OsmStateCreate = (): State<OsmElement> => State.create();
+export const osmStateCreate = (): State<OsmElement> => State.create();
 
 export function osmStateAddVirgins(
   state: State<OsmElement>,
@@ -25,7 +25,7 @@ export function osmStateAddVirgins(
   unsafeParentCalculate(state.getElementTable(), osmElements);
 }
 
-export function OsmStateAddModifieds(
+export function osmStateAddModifieds(
   state: State<OsmElement>,
   newLog: Log,
   modifiedEntities: Entity[]

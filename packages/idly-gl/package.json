@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "idly-common": "^1.3.2",
+    "idly-faster-osm-parser": "^1.3.2",
     "idly-worker": "^1.3.2",
     "lodash-es": "^4.17.4",
     "promise-worker": "^1.1.1"

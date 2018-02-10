@@ -1,12 +1,17 @@
 import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 
-import { entityToGeoJson, onParseEntities } from 'idly-common/lib/geojson';
+import {
+  entityToGeoJson,
+  entityToGeoJsonNew,
+  onParseEntities,
+} from 'idly-common/lib/geojson';
 import {
   EntityTable,
   ParentWays,
 } from 'idly-common/lib/osm/immutableStructures';
 import { FeaturePropsTable } from 'idly-common/lib/osm/structures';
 
+import { OsmTable } from 'idly-common/lib/state2/osmTable/osmTable';
 import { calculateParentWays } from '../misc/calculateParentWays';
 
 export type PluginComputeProps = (
@@ -40,4 +45,10 @@ export function entityToFeature(
     }
     return entityToGeoJson(entityTable, props);
   };
+}
+
+export function entityToFeatureNew(
+  osmTable: OsmTable
+): Array<Feature<Point | Polygon | LineString>> {
+  return entityToGeoJsonNew(osmTable);
 }

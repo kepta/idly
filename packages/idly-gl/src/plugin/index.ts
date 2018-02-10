@@ -1,23 +1,26 @@
 import layers from '../layers';
 import shadows from '../shadows';
 
-import { BBox } from 'idly-common/lib/geo';
+import { BBox, bboxToTiles, mercator } from 'idly-common/lib/geo';
+import { tileToQuadkey, cancelablePromise } from 'idly-common/lib/misc';
+
 import debounce from 'lodash-es/debounce';
 import { addSource } from '../helper/addSource';
-import {
-  workerFetchMap,
-  workerGetEntities,
-  workerSetOsmTiles,
-} from './worker/index';
+import { workerGetQuadkeys, worker } from './worker/index';
+import parser from 'idly-faster-osm-parser';
 
 const BASE_SOURCE = 'idly-gl-base-src-1';
 const ACTIVE_SOURCE = 'idly-gl-active-src-1';
 const SHADOW_SOURCE = 'idly-gl-shadow-src-1';
 
+const cache = new Map();
+
 export class IdlyGlPlugin {
   private map: any;
   private data: any;
   private container: any;
+  private prom: any;
+  private prom2: any;
   private selectedId: string | undefined;
   // constructor() {}
 
@@ -93,18 +96,35 @@ export class IdlyGlPlugin {
       lonLat.getEast(),
       lonLat.getNorth(),
     ];
-    workerSetOsmTiles({ bbox, zoom }).then(() => {
-      workerFetchMap({
-        bbox,
-        zoom,
-      }).then(fc => {
-        this.data = fc;
-        this.map.getSource(BASE_SOURCE).setData(fc);
+
+    this.prom && this.prom.cancel();
+
+    this.prom = cancelablePromise(
+      Promise.all(
+        bboxToTiles(bbox, zoom)
+          // .filter(t => cache.has(tileToQuadkey(t)))
+          .map(t =>
+            fetchTileXml(t.x, t.y, t.z).then(r => [tileToQuadkey(t), parser(r)])
+          )
+      )
+    );
+
+    this.prom.promise.then(arrays => {
+      this.prom2 && this.prom2.cancel();
+
+      this.prom2 = cancelablePromise(
+        workerGetQuadkeys(
+          arrays.map(e => ({
+            quadkey: e[0],
+            entities: e[1],
+          }))
+        )
+      );
+
+      this.prom2.promise.then(fcs => {
+        this.map.getSource(BASE_SOURCE).setData(fcs);
       });
     });
-    // workerGetBbox({ bbox }).then(fc => {
-    //   this.map.getSource(SOURCE_1).setData(fc);
-    // });
   };
   public onClick = (e: any) => {
     const bbox = bboxify(e, 3);
@@ -122,25 +142,25 @@ export class IdlyGlPlugin {
     if (!this.selectedId) {
       return;
     }
-    const shrub = await workerGetEntities({
-      entityIds: [this.selectedId],
-    });
+    // const shrub = await workerGetEntities({
+    //   entityIds: [this.selectedId],
+    // });
 
-    const leaf = shrub.getDependant(this.selectedId);
+    // const leaf = shrub.getDependant(this.selectedId);
 
-    if (!leaf) {
-      return;
-    }
+    // if (!leaf) {
+    //   return;
+    // }
 
-    const d = {
-      type: 'FeatureCollection',
-      features: [
-        this.data.features.find(
-          (f: any) => f.properties.id === this.selectedId
-        ),
-      ],
-    };
-    this.map.getSource(SHADOW_SOURCE).setData(d);
+    // const d = {
+    //   type: 'FeatureCollection',
+    //   features: [
+    //     this.data.features.find(
+    //       (f: any) => f.properties.id === this.selectedId
+    //     ),
+    //   ],
+    // };
+    // this.map.getSource(SHADOW_SOURCE).setData(d);
   };
 
   public onIdDeselect = () => {
@@ -157,4 +177,20 @@ function bboxify(e: any, factor: number) {
     [e.point.x - factor, e.point.y - factor],
     [e.point.x + factor, e.point.y + factor],
   ];
+}
+
+export async function fetchTileXml(
+  x: number,
+  y: number,
+  zoom: number
+): Promise<string> {
+  const bboxStr = mercator.bbox(x, y, zoom).join(',');
+  const response = await fetch(
+    `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`
+  );
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  const text = await response.text();
+  return text;
 }

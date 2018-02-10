@@ -7,10 +7,10 @@ import { setCreate } from '../helper';
 import { addEntryToLog, Log, logCreate } from '../log';
 import {
   OsmElement,
-  OsmStateCreate,
-  OsmStateAddModifieds,
+  osmStateAddModifieds,
   osmStateAddVirgins,
-} from './elementTable';
+  osmStateCreate,
+} from './osmTable';
 
 const n1 = nodeFactory({
   id: 'n1',
@@ -51,7 +51,7 @@ const dummyElement = (
 
 describe('basic additions', () => {
   it('adds entities', () => {
-    const state = OsmStateCreate();
+    const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2], '');
 
     expect(state.getElementTable()).toEqual(
@@ -60,7 +60,7 @@ describe('basic additions', () => {
   });
 
   it('adds parentways', () => {
-    const state = OsmStateCreate();
+    const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2], '');
     osmStateAddVirgins(state, [w1], '');
     expect(state.getElementTable()).toEqual(
@@ -73,7 +73,7 @@ describe('basic additions', () => {
   });
 
   it('adds everything correctly', () => {
-    const state = OsmStateCreate();
+    const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2, w2, w1, n3, r1, n4], '');
     expect(state.getElementTable()).toMatchSnapshot();
   });
@@ -82,7 +82,7 @@ describe('basic additions', () => {
 describe('addVirgin', () => {
   it('should add', () => {
     const baseSetup = () => {
-      const s = OsmStateCreate();
+      const s = osmStateCreate();
       osmStateAddVirgins(s, [n1, n2, w1], '123');
       return s;
     };
@@ -107,7 +107,7 @@ describe('addVirgin', () => {
       log1
     );
 
-    OsmStateAddModifieds(state1, log2, [n1Hash0, n2Hash0]);
+    osmStateAddModifieds(state1, log2, [n1Hash0, n2Hash0]);
 
     expect(state1.getElementTable()).toMatchSnapshot();
     expect(state1.getQuadkeysTable()).toMatchSnapshot();
@@ -133,7 +133,7 @@ describe('addVirgin', () => {
       setCreate([n3Hash0, n1Hash1, r1Hash0].map(r => r.id))
     )(log2);
 
-    OsmStateAddModifieds(state1, log3, [n3Hash0, n1Hash1, r1Hash0]);
+    osmStateAddModifieds(state1, log3, [n3Hash0, n1Hash1, r1Hash0]);
 
     expect([...state1.getElementTable().keys()]).toMatchSnapshot();
     expect(state1.getQuadkeysTable()).toMatchSnapshot();
@@ -150,7 +150,7 @@ describe('addVirgin', () => {
 
     const log4 = addEntryToLog(setCreate([r1Hash1].map(r => r.id)))(log3);
 
-    OsmStateAddModifieds(state1, log4, [r1Hash1]);
+    osmStateAddModifieds(state1, log4, [r1Hash1]);
 
     expect([...state1.getElementTable().keys()]).toMatchSnapshot();
 
@@ -160,17 +160,17 @@ describe('addVirgin', () => {
 
 describe('stateAddModifieds', () => {
   it('should stay same when empty log is passed', () => {
-    const state = OsmStateCreate();
+    const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2, w1], '123');
 
     expect(state).toEqual(
-      R.tap(s => osmStateAddVirgins(s, [n1, n2, w1], '123'), OsmStateCreate())
+      R.tap(s => osmStateAddVirgins(s, [n1, n2, w1], '123'), osmStateCreate())
     );
   });
 
   it('should do a simple stateAddModifieds', () => {
     const baseSetup = () => {
-      const s = OsmStateCreate();
+      const s = osmStateCreate();
       osmStateAddVirgins(s, [n1, n2, w1], '123');
       osmStateAddVirgins(s, [n3], '12210');
       return s;
@@ -186,7 +186,7 @@ describe('stateAddModifieds', () => {
 
     const log2: Log = addEntryToLog(setCreate([n1Hash0.id]))(log1);
 
-    OsmStateAddModifieds(state, log2, [n1Hash0]);
+    osmStateAddModifieds(state, log2, [n1Hash0]);
 
     expect(state).toEqual(
       R.tap(s => osmStateAddVirgins(s, [n1Hash0], ''), baseSetup())
@@ -195,7 +195,7 @@ describe('stateAddModifieds', () => {
 
   it('should throw error when log and modified entities dont match', () => {
     const baseSetup = () => {
-      const s = OsmStateCreate();
+      const s = osmStateCreate();
       osmStateAddVirgins(s, [n1, n2, w1], '123');
       return s;
     };
@@ -216,12 +216,12 @@ describe('stateAddModifieds', () => {
 
     const log2 = addEntryToLog(setCreate([n1Hash0.id, w1Hash0.id]))(log1);
     expect(() =>
-      OsmStateAddModifieds(state, log2, [n1Hash0, n2Hash0])
+      osmStateAddModifieds(state, log2, [n1Hash0, n2Hash0])
     ).toThrowErrorMatchingSnapshot();
 
     const log3 = addEntryToLog(setCreate([n1Hash0.id, w1Hash0.id]))(log1);
     expect(() =>
-      OsmStateAddModifieds(state, log3, [n1Hash0])
+      osmStateAddModifieds(state, log3, [n1Hash0])
     ).toThrowErrorMatchingSnapshot();
   });
 });

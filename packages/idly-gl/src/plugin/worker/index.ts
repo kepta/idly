@@ -11,6 +11,9 @@ import { GetMap } from 'idly-worker/lib/operations/getMap/type';
 import { Operation } from 'idly-worker/lib/operations/operationsTypes';
 import { setOsmTiles } from 'idly-worker/lib/operations/setOsmTiles/main';
 
+import { getQuadkey } from 'idly-worker/lib/operations/getQuadkeys/main';
+import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkeys/type';
+
 import * as MyWorker from './worker.worker';
 
 // tslint:disable-next-line:no-var-requires
@@ -20,20 +23,24 @@ export const worker: Worker = new MyWorker();
 
 export const promiseWorker = new PromiseWorker(worker);
 
-export const workerFetchMap: Operation<GetMap> = getMap(promiseWorker);
-
-export const workerSetOsmTiles = setOsmTiles(promiseWorker);
-
-export const workerGetEntities: Operation<GetEntities> = getEntities(
+export const workerGetQuadkeys: Operation<GetQuadkey> = getQuadkey(
   promiseWorker
 );
 
-export const workerGetBbox: Operation<GetBbox> = getBbox(promiseWorker);
+// export const workerFetchMap: Operation<GetMap> = getMap(promiseWorker);
 
-export const workerGetFeaturesOfEntityIds: Operation<
-  GetFeaturesOfEntityIds
-> = getFeaturesOfEntityIds(promiseWorker);
+// export const workerSetOsmTiles = setOsmTiles(promiseWorker);
 
-export const workerGetFeaturesOfShrub: Operation<
-  GetFeaturesOfShrub
-> = getFeaturesOfShrub(promiseWorker);
+// export const workerGetEntities: Operation<GetEntities> = getEntities(
+//   promiseWorker
+// );
+
+// export const workerGetBbox: Operation<GetBbox> = getBbox(promiseWorker);
+
+// export const workerGetFeaturesOfEntityIds: Operation<
+//   GetFeaturesOfEntityIds
+// > = getFeaturesOfEntityIds(promiseWorker);
+
+// export const workerGetFeaturesOfShrub: Operation<
+//   GetFeaturesOfShrub
+// > = getFeaturesOfShrub(promiseWorker);

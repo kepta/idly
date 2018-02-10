@@ -9,6 +9,7 @@ import { workerGetEntities } from './getEntities/worker';
 import { workerGetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/worker';
 import { workerGetFeaturesOfShrub } from './getFeaturesOfShrub/worker';
 import { workerGetMap } from './getMap/worker';
+import { workerGetQuadkey } from './getQuadkeys/worker';
 import {
   GetActions,
   GetActionTypes,
@@ -34,19 +35,21 @@ function getStateController(
     // or should i?
     // case WorkerGetStateActions.FetchMap:
     //   return workerFetchMap(state)(message.request);
-    case GetActions.GetMap:
-      return workerGetMap(state)(message.request);
+    case GetActions.GetQuadkey:
+      return workerGetQuadkey(state)(message.request);
+    // case GetActions.GetMap:
+    //   return workerGetMap(state)(message.request);
 
-    case GetActions.GetEntities:
-      return workerGetEntities(state)(message.request);
+    // case GetActions.GetEntities:
+    //   return workerGetEntities(state)(message.request);
 
-    case GetActions.GetFeaturesOfEntityIds:
-      return workerGetFeaturesOfEntityIds(state)(message.request);
+    // case GetActions.GetFeaturesOfEntityIds:
+    //   return workerGetFeaturesOfEntityIds(state)(message.request);
 
-    case GetActions.getFeaturesOfShrub:
-      return workerGetFeaturesOfShrub(state)(message.request);
-    case GetActions.GetBbox:
-      return workerGetBbox(state)(message.request);
+    // case GetActions.getFeaturesOfShrub:
+    //   return workerGetFeaturesOfShrub(state)(message.request);
+    // case GetActions.GetBbox:
+    //   return workerGetBbox(state)(message.request);
     default: {
       console.error('no get handler for', message.type);
       return Promise.resolve(message.type);

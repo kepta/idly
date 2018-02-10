@@ -11,6 +11,7 @@ import { GetEntities } from './getEntities/type';
 import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/type';
 import { GetFeaturesOfShrub } from './getFeaturesOfShrub/type';
 import { GetMap } from './getMap/type';
+import { GetQuadkey } from './getQuadkeys/type';
 import { WorkerSetOsmTiles } from './setOsmTiles/type';
 
 export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
@@ -58,6 +59,7 @@ export enum GetActions {
   GetDefault = 'GET_DEFAULT',
   GetMap = 'GET_MAP',
   GetBbox = 'GET_BBOX',
+  GetQuadkey = 'GET_QUADKEY',
 }
 
 export interface DefaultGetCase {
@@ -72,6 +74,7 @@ export type GetActionTypes =
   | GetFeaturesOfShrub
   | GetMap
   | GetBbox
+  | GetQuadkey
   | DefaultGetCase;
 
 /**

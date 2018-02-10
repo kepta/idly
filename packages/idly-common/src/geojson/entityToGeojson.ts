@@ -8,7 +8,11 @@ import {
 } from '@turf/helpers';
 import { EntityTable } from '../osm/immutableStructures';
 import { Entity, EntityType, Node, OsmGeometry, Way } from '../osm/structures';
-import { Element, ElementTable } from '../state2/osmTables/elementTable';
+import { OsmElement } from '../state2/osmState';
+import { OsmTable } from '../state2/osmState/osmTable';
+import { nodePropertiesGenNew } from './nodeProps';
+import { nameSpaceKeys, PLUGIN_NAME } from './onParseEntities';
+import { wayPropertiesGen } from './wayProps';
 
 // tslint:disable:no-expression-statement object-literal-key-quotes
 export function entityToGeoJson(
@@ -32,26 +36,42 @@ export function entityToGeoJson(
   return arr;
 }
 
-export function entityToGeoJsonNew(
-  elementTable: ElementTable,
-  computedProps: any
-): Array<Feature<Point | Polygon | LineString>> {
-  const arr: Array<Feature<Point | Polygon | LineString>> = [];
-  elementTable.forEach(({ entity }, id) => {
-    if (!entity) {
-      return;
+export const entityToGeoJsonNew = (
+  elementTable: OsmTable
+): Array<Feature<Point | Polygon | LineString>> => {
+  const result: Array<Feature<Point | Polygon | LineString>> = [];
+  for (const [, element] of elementTable) {
+    if (element.entity.type === EntityType.NODE) {
+      result.push(
+        nodeCombiner(element.entity, entityFeatureProperties(element))
+      );
+    } else if (element.entity.type === EntityType.WAY) {
+      result.push(
+        wayCombinerNew(
+          element.entity,
+          elementTable,
+          entityFeatureProperties(element)
+        )
+      );
     }
-    if (entity.type === EntityType.NODE) {
-      arr.push(nodeCombiner(entity, computedProps.get(id)));
-    } else if (entity.type === EntityType.WAY) {
-      arr.push(wayCombinerNew(entity, elementTable, computedProps.get(id)));
-    } else if (entity.type === EntityType.RELATION) {
-      // @TOFIX
-    }
-  });
+  }
+  return result;
+};
 
-  return arr;
-}
+export const entityFeatureProperties = (element: OsmElement): any => {
+  if (!element) {
+    throw new Error('No element supplied !');
+  }
+
+  if (element.entity.type === EntityType.NODE) {
+    return nameSpaceKeys(
+      PLUGIN_NAME,
+      nodePropertiesGenNew(element.entity, element.parentWays)
+    );
+  } else if (element.entity.type === EntityType.WAY) {
+    return nameSpaceKeys(PLUGIN_NAME, wayPropertiesGen(element.entity));
+  }
+};
 
 export function nodeCombiner(node: Node, existingProps: {}): Feature<Point> {
   return {
@@ -95,7 +115,7 @@ export function wayCombiner(
 
 export function wayCombinerNew(
   way: Way,
-  table: ElementTable,
+  table: OsmTable,
   existingProps: {
     readonly 'osm_basic--geometry': OsmGeometry;
     readonly [key: string]: string;
@@ -118,15 +138,16 @@ export function wayCombinerNew(
   };
 }
 export function getCoordsFromTableNew(
-  table: ElementTable,
+  table: OsmTable,
   nodes: Way['nodes']
 ): number[][] {
   return nodes.map(n => {
-    if (!table.has(n)) {
+    const node = table.get(n);
+
+    if (!node) {
       throw new Error('node not found ' + n);
     }
-    const node = (table.get(n) as Element).entity as Node;
-    return [node.loc.lon, node.loc.lat];
+    return [(node.entity as Node).loc.lon, (node.entity as Node).loc.lat];
   });
 }
 

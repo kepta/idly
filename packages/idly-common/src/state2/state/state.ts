@@ -43,7 +43,15 @@ export class State<T> {
     return this._quadkeysTable.get(quadkey);
   }
 
+  public has(quadkey: string) {
+    return this._quadkeysTable.has(quadkey);
+  }
+
   public add(getId: (t: T) => string, elements: T[], quadkey: string) {
+    if (this.has(quadkey)) {
+      console.warn('quadkey ' + quadkey + ' already exists, NOOP');
+      return;
+    }
     elements.forEach(e => tableAdd(this._elementTable, getId(e), e));
     quadkeysTableAdd(this._quadkeysTable, elements.map(getId), quadkey);
   }

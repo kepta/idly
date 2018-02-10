@@ -1,17 +1,12 @@
-import * as R from 'ramda';
-import {
-  nodeFactory,
-  relationFactory,
-  wayFactory,
-} from '../../osm/entityFactory/index';
+import { nodeFactory, wayFactory } from '../../osm/entityFactory/index';
 import { setCreate } from '../helper';
 import { addEntryToLog, logCreate } from '../log/index';
 
 import {
   OsmElement,
-  OsmStateAddModifieds,
+  osmStateAddModifieds,
   osmStateAddVirgins,
-} from '../stateFull/elementTable';
+} from '../osmState/osmTable';
 import { State } from './state';
 
 const mapFromObj = <T>(o: any = {}): Map<string, T> =>
@@ -35,16 +30,6 @@ const n4 = nodeFactory({
 const w1 = wayFactory({
   id: 'w1',
   nodes: ['n1', 'n2'],
-});
-
-const w2 = wayFactory({
-  id: 'w2',
-  nodes: ['n1', 'n3'],
-});
-
-const r1 = relationFactory({
-  id: 'r1',
-  members: [{ id: 'n4', ref: 'n4' }, { id: 'w2', ref: 'w2' }],
 });
 
 describe('constructing state and basic tests', () => {
@@ -90,7 +75,7 @@ describe('getVisible', () => {
       setCreate([n1Hash0, n2Hash0, w1Hash0].map(r => r.id))
     )(log1);
 
-    OsmStateAddModifieds(state, log2, [n1Hash0, n2Hash0, w1Hash0]);
+    osmStateAddModifieds(state, log2, [n1Hash0, n2Hash0, w1Hash0]);
 
     expect(state.getVisible(['123'], log2)).toEqual(
       setCreate([n2Hash0, w1Hash0, n1Hash0].map(e => e.id))
