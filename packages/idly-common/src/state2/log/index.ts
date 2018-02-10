@@ -8,30 +8,32 @@ import { setCreate, setFind, setIntersect, setSome } from '../helper';
  * modified entities are id#version where version [0, infinity) (0 is inclusive)
  */
 
-export type Index = string;
+export type ModifiedId = string;
 
 export type Log = ReadonlyArray<Entry>;
 
 export type Entry = ReadonlySet<string>;
 
-export const validId = (str: string) => str.indexOf('#') === 0;
+export const validVirginId = (str: string) => str.indexOf('#') === 0;
 
-export const validIndex = (str: string) => !validId(str);
+export const validModifiedId = (str: string) => !validVirginId(str);
 
-export const logGetModifiedIds = weakCache((log: Log) =>
+export const logGetVirginIdsOfModifiedIds = weakCache((log: Log) =>
   log.reduce((prev: Set<string>, cur) => {
-    cur.forEach(index => prev.add(getId(index)));
+    cur.forEach(index => prev.add(modifiedIdGetVirginId(index)));
     return prev;
   }, setCreate())
 );
 
-export const logGetLatestIndexes = weakCache(
+export const logGetLatestModifiedIds = weakCache(
   (log: Log) =>
     new Set(
       log
         .reduce((prev, cur) => {
           cur.forEach(
-            index => !prev.has(getId(index)) && prev.set(getId(index), index)
+            index =>
+              !prev.has(modifiedIdGetVirginId(index)) &&
+              prev.set(modifiedIdGetVirginId(index), index)
           );
           return prev;
         }, new Map<string, string>())
@@ -44,7 +46,7 @@ export const logRecreate = (...entries: Entry[]) =>
     .slice(0)
     .reverse()
     .reduce((l, e) => {
-      const newLog = addEntryToLog(e)(l);
+      const newLog = logAddEntry(e)(l);
       if (l === newLog) {
         throw new Error('malformed entries');
       }
@@ -56,37 +58,39 @@ export const logCreate = (): Log => Object.freeze([]);
 export const doesLogContain = (entry: Entry) => (log: Log) =>
   log.some(e => setIntersect(entry, e).size > 0);
 
-export const addEntryToLog = (entry: Entry) => (log: Log) =>
+export const logAddEntry = (entry: Entry) => (log: Log) =>
   setSome(index => doesLogHaveNewerOrCurrentVersion(index)(log), entry)
     ? log
     : Object.freeze([entry, ...log]);
 
 export const doesLogHaveNewerOrCurrentVersion = (index: string) => (log: Log) =>
-  getLatestVersion(index)(log) >= getVersion(index);
+  logGetLatestVersion(index)(log) >= modifiedIdGetVersion(index);
 
-export const getVersion = (index: Index) => parseInt(parseIndex(index)[1], 10);
+export const modifiedIdGetVersion = (index: ModifiedId) =>
+  parseInt(modifiedIdParse(index)[1], 10);
 
-export const getLatestVersion = (id: string) => (log: Log) => {
-  const finder = findInEntry(getId(id));
+export const logGetLatestVersion = (id: string) => (log: Log) => {
+  const finder = entryFindModifiedId(modifiedIdGetVirginId(id));
   let index;
   for (const entry of log) {
     index = finder(entry);
     if (index) {
-      return getVersion(index);
+      return modifiedIdGetVersion(index);
     }
   }
   return -1;
 };
 
-export const genIndex = (id: string) => (log: Log) =>
-  `${getId(id)}#${getLatestVersion(id)(log) + 1}`;
+export const logGenerateNextModifiedId = (id: string) => (log: Log) =>
+  `${modifiedIdGetVirginId(id)}#${logGetLatestVersion(id)(log) + 1}`;
 
-export const findInEntry = (indexOrId: string) => (entry: Entry) =>
-  setFind(i => getId(i) === indexOrId, entry);
+export const entryFindModifiedId = (indexOrId: string) => (entry: Entry) =>
+  setFind(i => modifiedIdGetVirginId(i) === indexOrId, entry);
 
-export const getId = (index: Index) => parseIndex(index)[0];
+export const modifiedIdGetVirginId = (index: ModifiedId) =>
+  modifiedIdParse(index)[0];
 
-const parseIndex = (index: Index) => index.split('#');
+const modifiedIdParse = (index: ModifiedId) => index.split('#');
 
-export const incrVersion = (index: Index) =>
-  `${getId(index)}#${getVersion(index) + 1}`;
+export const modifiedIdIncrement = (index: ModifiedId) =>
+  `${modifiedIdGetVirginId(index)}#${modifiedIdGetVersion(index) + 1}`;

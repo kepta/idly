@@ -1,4 +1,8 @@
-import { Log, logGetLatestIndexes, logGetModifiedIds } from '../log';
+import {
+  Log,
+  logGetLatestModifiedIds,
+  logGetVirginIdsOfModifiedIds,
+} from '../log';
 import { Table } from '../table';
 import { tableAdd, tableFilter } from '../table/regular';
 
@@ -48,10 +52,6 @@ export class State<T> {
   }
 
   public add(getId: (t: T) => string, elements: T[], quadkey: string) {
-    if (this.has(quadkey)) {
-      console.warn('quadkey ' + quadkey + ' already exists, NOOP');
-      return;
-    }
     elements.forEach(e => tableAdd(this._elementTable, getId(e), e));
     quadkeysTableAdd(this._quadkeysTable, elements.map(getId), quadkey);
   }
@@ -62,13 +62,13 @@ export class State<T> {
       quadkeys
     );
 
-    const toRemoveIds = logGetModifiedIds(log);
+    const toRemoveIds = logGetVirginIdsOfModifiedIds(log);
 
     for (const id of toRemoveIds) {
       insideQuadkeys.delete(id);
     }
 
-    for (const id of logGetLatestIndexes(log)) {
+    for (const id of logGetLatestModifiedIds(log)) {
       insideQuadkeys.add(id);
     }
 

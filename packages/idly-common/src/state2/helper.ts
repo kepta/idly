@@ -51,6 +51,8 @@ export const setDifference = <T>(
 
 export const setCreate = <T>(a: Iterable<T> = []) => new Set<T>(a);
 
+export const setBlankCreate = <T>() => new Set<T>();
+
 export const readonlySetCreate = <T>(a: Iterable<T> = []): ReadonlySet<T> =>
   new Set<T>(a);
 

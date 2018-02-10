@@ -1,6 +1,6 @@
 import { nodeFactory, wayFactory } from '../../osm/entityFactory/index';
 import { setCreate } from '../helper';
-import { addEntryToLog, logCreate } from '../log/index';
+import { logAddEntry, logCreate } from '../log/index';
 
 import {
   OsmElement,
@@ -71,7 +71,7 @@ describe('getVisible', () => {
       nodes: [n1Hash0.id, n2Hash0.id],
     });
 
-    const log2 = addEntryToLog(
+    const log2 = logAddEntry(
       setCreate([n1Hash0, n2Hash0, w1Hash0].map(r => r.id))
     )(log1);
 
@@ -94,3 +94,5 @@ describe('getVisible', () => {
     );
   });
 });
+
+describe('Test with sample osm file', () => {});

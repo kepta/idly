@@ -1,17 +1,17 @@
 import { setCreate } from '../helper';
 import {
-  addEntryToLog,
   doesLogContain,
   doesLogHaveNewerOrCurrentVersion,
-  getLatestVersion,
   Log,
-  logGetLatestIndexes,
-  logGetModifiedIds,
+  logAddEntry,
+  logGetLatestModifiedIds,
+  logGetLatestVersion,
+  logGetVirginIdsOfModifiedIds,
   logRecreate,
 } from './index';
 
 const createAndAdd = (ids: string[]) => (log: Log) =>
-  addEntryToLog(setCreate(ids))(log);
+  logAddEntry(setCreate(ids))(log);
 
 describe('doesLogContain', () => {
   test('basic', () => {
@@ -85,8 +85,8 @@ describe('doesLogHasNewerOrExistingVersion', () => {
 
 describe('addEntryToLog', () => {
   test('add  empty', () => {
-    expect(addEntryToLog(setCreate())([])).toEqual([setCreate()]);
-    expect(addEntryToLog(setCreate(['3#1']))([])).toEqual([setCreate(['3#1'])]);
+    expect(logAddEntry(setCreate())([])).toEqual([setCreate()]);
+    expect(logAddEntry(setCreate(['3#1']))([])).toEqual([setCreate(['3#1'])]);
   });
   test("doesn't add already existing", () => {
     const log = logRecreate(setCreate(['2#0']), setCreate(['3#0']));
@@ -124,9 +124,9 @@ describe('getLatestVersion', () => {
       setCreate(['2#1']),
       setCreate(['4#0'])
     );
-    expect(getLatestVersion('4#0')(log)).toEqual(0);
-    expect(getLatestVersion('2')(log)).toEqual(4);
-    expect(getLatestVersion('3')(log)).toEqual(2);
+    expect(logGetLatestVersion('4#0')(log)).toEqual(0);
+    expect(logGetLatestVersion('2')(log)).toEqual(4);
+    expect(logGetLatestVersion('3')(log)).toEqual(2);
   });
 
   test('get version of index that doesnt exist', () => {
@@ -135,7 +135,7 @@ describe('getLatestVersion', () => {
       setCreate(['3#2', '2#1']),
       setCreate(['2#0'])
     );
-    expect(getLatestVersion('4#1')(log)).toEqual(-1);
+    expect(logGetLatestVersion('4#1')(log)).toEqual(-1);
   });
 
   test('get version of index that doesnt exist', () => {
@@ -144,7 +144,7 @@ describe('getLatestVersion', () => {
       setCreate(['3#2', '2#1']),
       setCreate(['2#0', '3#0'])
     );
-    expect(getLatestVersion('2#1')(log)).toEqual(2);
+    expect(logGetLatestVersion('2#1')(log)).toEqual(2);
   });
 
   test('get version of index which has a newer version in log', () => {
@@ -153,8 +153,8 @@ describe('getLatestVersion', () => {
       setCreate(['3#2', '2#1']),
       setCreate(['2#0'])
     );
-    expect(getLatestVersion('2#1')(log)).toEqual(2);
-    expect(getLatestVersion('2#0')(log)).toEqual(2);
+    expect(logGetLatestVersion('2#1')(log)).toEqual(2);
+    expect(logGetLatestVersion('2#0')(log)).toEqual(2);
   });
 
   test('get version when version doesnt exist', () => {
@@ -164,8 +164,8 @@ describe('getLatestVersion', () => {
       setCreate(['3#1', '2#3']),
       setCreate(['3#0', '2#0'])
     );
-    expect(getLatestVersion('3')(log)).toEqual(1);
-    expect(getLatestVersion('2')(log)).toEqual(4);
+    expect(logGetLatestVersion('3')(log)).toEqual(1);
+    expect(logGetLatestVersion('2')(log)).toEqual(4);
   });
 });
 
@@ -178,10 +178,14 @@ describe('getAllIds', () => {
     setCreate(['4#0', '5#0'])
   );
   test('basic', () => {
-    expect(logGetModifiedIds(log)).toEqual(new Set(['2', '3', '5', '4']));
+    expect(logGetVirginIdsOfModifiedIds(log)).toEqual(
+      new Set(['2', '3', '5', '4'])
+    );
   });
   test('weak caches', () => {
-    expect(logGetModifiedIds(log)).toBe(logGetModifiedIds(log));
+    expect(logGetVirginIdsOfModifiedIds(log)).toBe(
+      logGetVirginIdsOfModifiedIds(log)
+    );
   });
 });
 
@@ -194,11 +198,13 @@ describe('getAllLatestIndexes', () => {
     setCreate(['4#0', '5#0'])
   );
   test('basic', () => {
-    expect(logGetLatestIndexes(log)).toEqual(
+    expect(logGetLatestModifiedIds(log)).toEqual(
       setCreate(['2#4', '3#2', '5#0', '4#0'])
     );
   });
   test('weak caches', () => {
-    expect(logGetModifiedIds(log)).toBe(logGetModifiedIds(log));
+    expect(logGetVirginIdsOfModifiedIds(log)).toBe(
+      logGetVirginIdsOfModifiedIds(log)
+    );
   });
 });

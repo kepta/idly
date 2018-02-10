@@ -43,13 +43,13 @@ export const tableMap = <T, Z>(f: (v: T, k: string) => Z, t: Table<T>) => {
 
 export const tableReduce = <T, Z>(
   f: (prev: Z, cur: T, key: string) => Z,
-  base: Z,
-  t: Table<T>
+  initValue: Z,
+  reduceFrom: Table<T>
 ) => {
-  for (const [k, v] of t) {
-    base = f(base, v, k);
+  for (const [k, v] of reduceFrom) {
+    initValue = f(initValue, v, k);
   }
-  return base;
+  return initValue;
 };
 
 export const tableValues = <T>(t: Table<T>) => t.values();

@@ -13,29 +13,25 @@ export const oneToManyTableRemove = <T>(
 export const oneToManyTableRemoveIndex = <T>(
   table: OneToManyTable<T>,
   index: string,
-  val: T
-) =>
+  value: T
+): boolean | undefined =>
   I(tableGet(table, index))
-    .map(s => s && s.delete(val))
+    .map(s => s && s.delete(value))
     .get();
 
-export const oneToManyTableAddIndex = <T>(
+export const oneToManyTableInsert = <T>(
   table: OneToManyTable<T>,
   index: string,
-  val: T
-) =>
-  I((s = setCreate()) => s.add(val))
-    .map(f => tableUpdate(f, table, index))
-    .get();
+  value: T
+): OneToManyTable<T> =>
+  tableUpdate((s = setCreate()) => s.add(value), table, index);
 
 export const oneToManyTableUpdateIndex = <T>(
   table: OneToManyTable<T>,
   index: string,
-  val: T[]
-) =>
-  I((s = setCreate()) => setAddIterable(s, val))
-    .map(f => tableUpdate(f, table, index))
-    .get();
+  value: T[]
+): OneToManyTable<T> =>
+  tableUpdate((s = setCreate()) => setAddIterable(s, value), table, index);
 
 export const oneToManyTableFilter = <T>(
   foo: ((v: Set<T>, k: string) => boolean),

@@ -1,6 +1,6 @@
 export {
   OneToManyTable,
-  oneToManyTableAddIndex,
+  oneToManyTableInsert,
   oneToManyTableUpdateIndex,
   oneToManyTableCreate,
   oneToManyTableFilter,
