@@ -52,6 +52,7 @@ export const WAY_XML1 = `
   <tag k="source" v="MSF Survey"/>
  </way>
  </osm>`;
+
 export const NODE_XML1 = `
 <osm version="0.6" generator="CGImap 0.6.0 (2742 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
  <bounds minlat="34.5291871" minlon="74.1741943" maxlat="34.5337124" maxlon="74.1796875"/>

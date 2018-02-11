@@ -11,6 +11,7 @@ import {
   osmStateAddModifieds,
   osmStateAddVirgins,
   osmStateCreate,
+  osmStateGetVisible,
   OsmTable,
   osmTableApplyParentRelations,
   osmTableApplyParentWays,
@@ -127,8 +128,8 @@ describe('basic additions', () => {
   });
 });
 
-describe('addVirgin', () => {
-  it('should add', () => {
+describe('osmStateGetVisible', () => {
+  describe('series of operations', () => {
     const baseSetup = () => {
       const s = osmStateCreate();
       osmStateAddVirgins(s, [n1, n2, w1], '123');
@@ -183,14 +184,21 @@ describe('addVirgin', () => {
 
     osmStateAddModifieds(state1, log3, [n3Hash0, n1Hash1, r1Hash0]);
 
-    expect([...state1.getElementTable().keys()]).toMatchSnapshot();
+    expect(state1.getElementTable()).toMatchSnapshot();
     expect(state1.getQuadkeysTable()).toMatchSnapshot();
 
-    expect(state1.getVisible([''], log3)).toMatchSnapshot();
+    it('should add related entities not in the quadkey', () => {
+      expect(osmStateGetVisible(state1, ['33'], log3).get('n1')).toEqual(
+        dummyElement(n1, setCreate(['w1', 'w2']))
+      );
+      expect(osmStateGetVisible(state1, ['33'], log3).get('n3')).toEqual(
+        dummyElement(n3, setCreate(['w2']))
+      );
+    });
 
-    expect(state1.getVisible(['33'], log3)).toMatchSnapshot();
-
-    expect(state1.getVisible(['121'], log3)).toMatchSnapshot();
+    expect(osmStateGetVisible(state1, [''], log3).keys()).toMatchSnapshot();
+    expect(osmStateGetVisible(state1, ['33'], log3)).toMatchSnapshot();
+    expect(osmStateGetVisible(state1, ['121'], log3)).toMatchSnapshot();
 
     const r1Hash1 = relationFactory({
       id: 'r1#1',
@@ -202,7 +210,7 @@ describe('addVirgin', () => {
 
     expect([...state1.getElementTable().keys()]).toMatchSnapshot();
 
-    expect(state1.getVisible(['33'], log4).has(r1Hash1.id)).toBe(true);
+    expect(osmStateGetVisible(state1, ['33'], log4).has(r1Hash1.id)).toBe(true);
   });
 });
 
@@ -341,7 +349,8 @@ describe('parentWaysCalculate', () => {
     const startObj = {
       n1: dummyElement(n1, setCreate(['w2'])),
       n2: dummyElement(n2, setCreate(['w80', 'w81'])),
-      n3: dummyElement(n3, setCreate(['w2'])),
+      n3: dummyElement(n3),
+      n4: dummyElement(n4),
       r1: dummyElement(r1),
       w2: dummyElement(w2),
     };
@@ -366,6 +375,29 @@ describe('parentWaysCalculate', () => {
       expect(n3Ref).toBe(tableGet(osmTable, 'n3'));
     });
 
+    it('should not change ref if the same way is applied again', () => {
+      const n1Ref2 = tableGet(osmTable, 'n1');
+      const n2Ref2 = tableGet(osmTable, 'n2');
+
+      const anotherWay = wayFactory({
+        id: 'w101',
+        nodes: [n3.id, n4.id],
+      });
+
+      osmTableApplyParentWays(
+        osmTable,
+        parentWaysTableCreate([n1, way, anotherWay, w2, n3])
+      );
+      expect(n1Ref2).toBe(tableGet(osmTable, 'n1'));
+      expect(n2Ref2).toBe(tableGet(osmTable, 'n2'));
+      expect(tableGet(osmTable, 'n4')).toEqual(
+        dummyElement(n4, setCreate(['w101']))
+      );
+      expect(tableGet(osmTable, 'n3')).toEqual(
+        dummyElement(n3, setCreate(['w2', 'w101']))
+      );
+    });
+
     expect(osmTable).toEqual(
       mapFromObj({
         ...startObj,
@@ -377,7 +409,7 @@ describe('parentWaysCalculate', () => {
 });
 
 describe('parent relations', () => {
-  it('should make parent relations table', () => {
+  it('should create parentRelations table', () => {
     expect(
       parentRelationsTableCreate([
         wayFactory({
@@ -443,7 +475,7 @@ describe('parent relations', () => {
     );
   });
 
-  it('should apply parent relations', () => {
+  it('should apply parent relations table', () => {
     const osmTable: OsmTable = mapFromObj({
       n1: dummyElement(n1),
       n4: dummyElement(n4),
@@ -463,7 +495,7 @@ describe('parent relations', () => {
     );
   });
 
-  describe('should update the ref of elements', () => {
+  describe('should update the reference of elements when element is modified', () => {
     const osmTable: OsmTable = mapFromObj({
       n1: dummyElement(n1),
       n4: dummyElement(n4),
@@ -483,10 +515,13 @@ describe('parent relations', () => {
 
     w2Ref = tableGet(osmTable, 'w2');
 
-    it('should not change ref when same operation is repeated', () => {
-      osmTableApplyParentRelations(osmTable, parentRelationsTableCreate([r1]));
+    it('should not change ref when same relation is repeated', () => {
+      osmTableApplyParentRelations(
+        osmTable,
+        parentRelationsTableCreate([r1, r2])
+      );
 
-      expect(tableGet(osmTable, 'w2')).not.toBe(w2Ref);
+      expect(tableGet(osmTable, 'w2')).toBe(w2Ref);
       expect(tableGet(osmTable, 'w2')).toEqual(w2Ref);
     });
   });

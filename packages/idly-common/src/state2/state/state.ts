@@ -1,17 +1,12 @@
-import {
-  Log,
-  logGetLatestModifiedIds,
-  logGetVirginIdsOfModifiedIds,
-} from '../log';
 import { Table } from '../table';
-import { tableAdd, tableFilter } from '../table/regular';
+import { tableAdd, tableCreate, tableHas } from '../table/regular';
 
 import {
   QuadkeysTable,
   quadkeysTableAdd,
   quadkeysTableCreate,
   quadkeysTableCreateFrom,
-  quadkeysTableFindVirginIds,
+  quadkeysTableFindRelated,
   quadkeysTableFlatten,
 } from './quadkeysTable';
 
@@ -51,46 +46,36 @@ export class State<T> {
     return this._quadkeysTable.has(quadkey);
   }
 
+  // a single element can be on multiple quadkeys, but
+  // changing an existing element is disallowed
   public add(getId: (t: T) => string, elements: T[], quadkey: string) {
-    elements.forEach(e => tableAdd(this._elementTable, getId(e), e));
+    elements.forEach(
+      e =>
+        tableHas(this._elementTable, getId(e)) ||
+        tableAdd(this._elementTable, getId(e), e)
+    );
     quadkeysTableAdd(this._quadkeysTable, elements.map(getId), quadkey);
   }
 
-  public getVisible(quadkeys: string[], log: Log) {
-    const insideQuadkeys = quadkeysTableFindVirginIds(
-      this._quadkeysTable,
-      quadkeys
-    );
-
-    const toRemoveIds = logGetVirginIdsOfModifiedIds(log);
-
-    for (const id of toRemoveIds) {
-      insideQuadkeys.delete(id);
-    }
-
-    for (const id of logGetLatestModifiedIds(log)) {
-      insideQuadkeys.add(id);
-    }
-
-    return insideQuadkeys;
+  public getQuadkey(quadkey: string) {
+    return this._quadkeysTable.get(quadkey);
+  }
+  public getVisible(quadkeys: string[]) {
+    return quadkeysTableFindRelated(this._quadkeysTable, quadkeys);
   }
 
   public shred(quadkey: string) {
-    // To test we dont remove '' key
-    const shreddedQuadkeyTable = quadkeysTableCreateFrom(
+    const newElementTable = tableCreate<T>();
+
+    const newQuadkeysTable = quadkeysTableCreateFrom(
       this._quadkeysTable,
       quadkey
     );
 
-    // gets all indexes
-    const shreddedIndexes = quadkeysTableFlatten(shreddedQuadkeyTable);
-
-    const shreddedElementTable = tableFilter(
-      (_, id) => shreddedIndexes.has(id),
-      this._elementTable
+    quadkeysTableFlatten(newQuadkeysTable).forEach(k =>
+      newElementTable.set(k, this._elementTable.get(k) as T)
     );
 
-    this._elementTable = shreddedElementTable;
-    this._quadkeysTable = shreddedQuadkeyTable;
+    return State.create(newElementTable, newQuadkeysTable);
   }
 }

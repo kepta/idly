@@ -22,31 +22,27 @@ export type QuadkeysTable = OneToManyTable<string>;
 
 export function quadkeysTableAdd(
   t: QuadkeysTable,
-  entityIds: string[],
+  ids: string[],
   quadkey: string
 ) {
   if (ancestorProperFind(t, quadkey)) {
-    console.log(
-      'warning, ' +
-        quadkey +
-        'already has an ancestor =' +
-        ancestorProperFind(t, quadkey)
-    );
     return;
   }
 
-  // since root quadkey is root of all, we just
-  //  to append modifiedIds to the root quadkey
+  // Note: since '' quadkey is not a valid quadkey,
+  // but it is a subset of every string. It becomes
+  // a good place to search for everything.
+  // we let it be used as key store and only append
+  // to it
   if (quadkey === '') {
-    oneToManyTableUpdateIndex(t, quadkey, entityIds);
+    oneToManyTableUpdateIndex(t, quadkey, ids);
     return;
   }
 
   // removes any descendant in favour of the parent quadkey
-
   removeAllDescendants(t, quadkey);
 
-  tableAdd(t, quadkey, setCreate(entityIds));
+  tableAdd(t, quadkey, setCreate(ids));
 }
 
 export function removeAllDescendants(t: QuadkeysTable, quadkey: string) {
@@ -67,10 +63,9 @@ export const quadkeysTableCreateFrom = (t: QuadkeysTable, quadkey: string) =>
   mapFilter((_, k) => isQuadkeyRelated(quadkey, k), t);
 
 export const quadkeysTableFlatten = (t: QuadkeysTable) =>
-  iterableFlattenToSet(tableValues(t));
+  iterableFlattenToSet<string>(tableValues(t));
 
-// Finds the virginIds assuming all modified Ids stay in '' quadkey
-export const quadkeysTableFindVirginIds = (
+export const quadkeysTableFindRelated = (
   t: QuadkeysTable,
   quadkeys: string[]
 ): Set<string> =>

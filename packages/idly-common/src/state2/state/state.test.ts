@@ -1,12 +1,8 @@
 import { nodeFactory, wayFactory } from '../../osm/entityFactory/index';
+import { relationFactory } from '../../osm/entityFactory/relationFactory';
+import { Entity } from '../../osm/structures';
 import { setCreate } from '../helper';
-import { logAddEntry, logCreate } from '../log/index';
-
-import {
-  OsmElement,
-  osmStateAddModifieds,
-  osmStateAddVirgins,
-} from '../osmState/osmTable';
+import { logCreate } from '../log/index';
 import { State } from './state';
 
 const mapFromObj = <T>(o: any = {}): Map<string, T> =>
@@ -27,11 +23,57 @@ const n3 = nodeFactory({
 const n4 = nodeFactory({
   id: 'n4',
 });
+const n5 = nodeFactory({
+  id: 'n5',
+});
+
+const n6 = nodeFactory({
+  id: 'n6',
+});
+
+const n7 = nodeFactory({
+  id: 'n7',
+});
+
 const w1 = wayFactory({
   id: 'w1',
   nodes: ['n1', 'n2'],
 });
 
+const w2 = wayFactory({
+  id: 'w2',
+  nodes: ['n1', 'n3'],
+});
+
+const w3 = wayFactory({
+  id: 'w3',
+  nodes: ['n3', 'n4', 'n5'],
+});
+
+const r1 = relationFactory({
+  id: 'r1',
+  members: [{ id: 'n4', ref: 'n4' }, { id: 'w2', ref: 'w2' }],
+});
+
+const r2 = relationFactory({
+  id: 'r2',
+  members: [
+    { id: 'w1', ref: 'w1' },
+    { id: 'w3', ref: 'w3' },
+    { id: 'n6', ref: 'n6' },
+  ],
+});
+
+const r3 = relationFactory({
+  id: 'r3',
+  members: [
+    { id: 'r1', ref: 'r1' },
+    { id: 'w2', ref: 'w2' },
+    { id: 'n1', ref: 'n1' },
+  ],
+});
+
+const getId = (r: any) => r.id;
 describe('constructing state and basic tests', () => {
   it('should create', () => {
     expect(State.create()).toEqual({
@@ -40,25 +82,19 @@ describe('constructing state and basic tests', () => {
     });
   });
   it('should create with given values', () => {
-    const state = State.create<OsmElement>();
-    osmStateAddVirgins(state, [n1, n2, w1], '123');
+    const state = State.create<Entity>();
+    state.add(getId, [n1, n2, w1], '123');
     expect(state).toMatchSnapshot();
   });
 });
 
 describe('getVisible', () => {
-  it('should get ids', () => {
-    const baseSetup = () => {
-      const s = State.create<OsmElement>();
-      osmStateAddVirgins(s, [n1, n2, w1], '123');
-      return s;
-    };
+  describe('should get ids', () => {
+    const state = State.create<Entity>();
+    state.add(getId, [n1, n2, w1], '123');
 
-    const log1 = logCreate();
-
-    const state = baseSetup();
-    osmStateAddVirgins(state, [n3], '121');
-    osmStateAddVirgins(state, [n4], '130');
+    state.add(getId, [n3], '121');
+    state.add(getId, [n4], '130');
 
     const n1Hash0 = nodeFactory({
       id: 'n1#0',
@@ -71,28 +107,118 @@ describe('getVisible', () => {
       nodes: [n1Hash0.id, n2Hash0.id],
     });
 
-    const log2 = logAddEntry(
-      setCreate([n1Hash0, n2Hash0, w1Hash0].map(r => r.id))
-    )(log1);
+    state.add(getId, [n1Hash0, n2Hash0, w1Hash0], '');
 
-    osmStateAddModifieds(state, log2, [n1Hash0, n2Hash0, w1Hash0]);
-
-    expect(state.getVisible(['123'], log2)).toEqual(
+    expect(state.getQuadkey('')).toEqual(
       setCreate([n2Hash0, w1Hash0, n1Hash0].map(e => e.id))
     );
 
-    expect(state.getVisible(['121'], log2)).toEqual(
-      setCreate([n2Hash0, w1Hash0, n1Hash0, n3].map(e => e.id))
+    expect(state.getVisible(['121'])).toEqual(setCreate([n3].map(e => e.id)));
+
+    expect(state.getVisible(['130'])).toEqual(setCreate([n4].map(e => e.id)));
+
+    expect(state.getVisible(['1'])).toEqual(
+      setCreate([n1, n2, n3, n4, w1].map(e => e.id))
     );
 
-    expect(state.getVisible(['130'], log2)).toEqual(
-      setCreate([n2Hash0, w1Hash0, n1Hash0, n4].map(e => e.id))
-    );
+    it('repeating state.add shouldnt affect', () => {
+      state.add(getId, [n1Hash0, n2Hash0, w1Hash0], '');
+      expect(state.getQuadkey('')).toEqual(
+        setCreate([n2Hash0, w1Hash0, n1Hash0].map(e => e.id))
+      );
+      state.add(getId, [n3], '121');
+      expect(state.getVisible(['121'])).toEqual(setCreate([n3].map(e => e.id)));
+      state.getVisible([]);
+    });
+  });
 
-    expect(state.getVisible(['1'], log2)).toEqual(
-      setCreate([n2Hash0, w1Hash0, n1Hash0, n3, n4].map(e => e.id))
-    );
+  describe('should handle ids belonging to multiple quadkeys', () => {
+    const state = State.create<Entity>();
+    state.add(t => t.id, [n1, n2], '123');
+    state.add(t => t.id, [w1], '122');
+
+    expect(state.getVisible(['123'])).toEqual(setCreate(['n1', 'n2']));
+    expect(state.getVisible(['122'])).toEqual(setCreate(['w1']));
+    it('should not insert quadkey whose parent already exists', () => {
+      state.add(t => t.id, [n3], '1234');
+      expect(state.getVisible(['1234'])).toEqual(setCreate(['n1', 'n2']));
+      expect(state.getElement('n3')).toEqual(n3);
+    });
   });
 });
 
-describe('Test with sample osm file', () => {});
+describe('add', () => {
+  it('doesnt overwrite existing elements', () => {
+    const state = State.create<Entity>();
+    state.add(r => r.id, [n1, n2, w1], '123');
+
+    const n1Other = nodeFactory({
+      id: 'n1',
+    });
+
+    expect(n1Other).not.toBe(n1);
+
+    state.add(r => r.id, [n1Other], '12');
+
+    expect(state.getElement('n1')).toBe(n1);
+  });
+});
+
+describe('shred', () => {
+  it('shouldnt change existing state', () => {
+    const state = State.create<Entity>();
+    state.add(t => t.id, [n1, n2], '12301201');
+    state.add(t => t.id, [w1], '12101200');
+    state.add(t => t.id, [w1, w2], '110231121');
+    state.add(t => t.id, [w3, r2], '100231121');
+    // console.log(JSON.stringify(state));
+    state.shred('12');
+
+    expect(state).toEqual(
+      (s => {
+        s.add(t => t.id, [n1, n2], '12301201');
+        s.add(t => t.id, [w1], '12101200');
+        s.add(t => t.id, [w1, w2], '110231121');
+        s.add(t => t.id, [w3, r2], '100231121');
+        return s;
+      })(State.create<Entity>())
+    );
+    state.shred('');
+    expect(state).toEqual(
+      (s => {
+        s.add(t => t.id, [n1, n2], '12301201');
+        s.add(t => t.id, [w1], '12101200');
+        s.add(t => t.id, [w1, w2], '110231121');
+        s.add(t => t.id, [w3, r2], '100231121');
+        return s;
+      })(State.create<Entity>())
+    );
+
+    expect(state.shred('100')).toMatchSnapshot();
+  });
+  it('should loose weight', () => {
+    let state = State.create<Entity>();
+    state.add(t => t.id, [n1, n2], '12301201');
+    state.add(t => t.id, [w1], '12101200');
+    state.add(t => t.id, [w1, w2], '110231121');
+    state.add(t => t.id, [w3, r2], '100231121');
+    state.add(t => t.id, [w3, r2], '100131121');
+    state.add(t => t.id, [n5, n6, r2], '131');
+
+    state = state.shred('100');
+
+    expect(state).toEqual(
+      (s => {
+        s.add(t => t.id, [w3, r2], '100231121');
+        s.add(t => t.id, [w3, r2], '100131121');
+        return s;
+      })(State.create<Entity>())
+    );
+
+    state.add(t => t.id, [w3, r2], '100131121');
+    state.add(t => t.id, [w1], '12101200');
+    state.add(t => t.id, [n5, n6, r2], '131');
+
+    expect(state.shred('1')).toEqual(state);
+  });
+});

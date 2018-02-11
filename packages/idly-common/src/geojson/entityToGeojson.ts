@@ -35,26 +35,35 @@ export function entityToGeoJson(
 
   return arr;
 }
+const cache = new WeakMap<any, any>();
 
 export const entityToGeoJsonNew = (
   elementTable: OsmTable
 ): Array<Feature<Point | Polygon | LineString>> => {
+  let count = 0;
   const result: Array<Feature<Point | Polygon | LineString>> = [];
   for (const [, element] of elementTable) {
-    if (element.entity.type === EntityType.NODE) {
-      result.push(
-        nodeCombiner(element.entity, entityFeatureProperties(element))
-      );
-    } else if (element.entity.type === EntityType.WAY) {
-      result.push(
-        wayCombinerNew(
-          element.entity,
-          elementTable,
-          entityFeatureProperties(element)
-        )
-      );
+    let r = cache.get(element);
+    if (r) {
+      result.push(r);
+      count++;
+      continue;
     }
+    if (element.entity.type === EntityType.NODE) {
+      r = nodeCombiner(element.entity, entityFeatureProperties(element));
+    } else if (element.entity.type === EntityType.WAY) {
+      r = wayCombinerNew(
+        element.entity,
+        elementTable,
+        entityFeatureProperties(element)
+      );
+    } else {
+      continue;
+    }
+    result.push(r);
+    cache.set(element, r);
   }
+  console.log('Size ', elementTable.size, ' cached ', count);
   return result;
 };
 

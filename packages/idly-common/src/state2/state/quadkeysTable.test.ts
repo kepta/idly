@@ -4,7 +4,7 @@ import {
   ancestorProperFind,
   QuadkeysTable,
   quadkeysTableAdd,
-  quadkeysTableFindVirginIds,
+  quadkeysTableFindRelated,
   removeAllDescendants,
 } from './quadkeysTable';
 
@@ -183,7 +183,7 @@ describe('quadkeysTableAdd', () => {
       '01': setCreate(['n1']),
       '02': setCreate(['n2']),
     });
-    quadkeysTableAdd(t, ['n3', 'n1'], '020');
+    quadkeysTableAdd(t, ['n3', 'n1', 'n4'], '020');
     expect(t).toEqual(
       dummyQuadkeyT({
         '01': setCreate(['n1']),
@@ -246,7 +246,7 @@ describe('quadkeysTableFindVirginIds', () => {
       '21': setCreate(['n2']),
       '3': setCreate(['n3']),
     });
-    expect(quadkeysTableFindVirginIds(t, [''])).toEqual(setCreate());
+    expect(quadkeysTableFindRelated(t, [''])).toEqual(setCreate());
     expect(tableGet(t, '')).toEqual(setCreate(['n1#0']));
   });
 
@@ -257,10 +257,10 @@ describe('quadkeysTableFindVirginIds', () => {
       '210': setCreate(['r1', 'n6']),
       '212': setCreate(['r2', 'n7']),
     });
-    expect(quadkeysTableFindVirginIds(t, ['21'])).toEqual(
+    expect(quadkeysTableFindRelated(t, ['21'])).toEqual(
       setCreate(['r1', 'n6', 'r2', 'n7'])
     );
-    expect(quadkeysTableFindVirginIds(t, ['12'])).toEqual(
+    expect(quadkeysTableFindRelated(t, ['12'])).toEqual(
       setCreate(['n1', 'n2', 'n5', 'n4', 'n3'])
     );
   });

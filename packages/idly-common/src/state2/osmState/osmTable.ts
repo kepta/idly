@@ -1,6 +1,10 @@
 import { Entity, EntityType, Relation, Way } from '../../osm/structures';
-import { setCreate, setUnion } from '../helper';
-import { Log } from '../log';
+import { setCreate, setEqual, setSome, setUnion } from '../helper';
+import {
+  Log,
+  logGetLatestModifiedIds,
+  logGetVirginIdsOfModifiedIds,
+} from '../log';
 import { State } from '../state/state';
 import {
   OneToManyTable,
@@ -26,7 +30,7 @@ export interface OsmElementWay {
 
 export type OsmTable = Table<OsmElement>;
 
-export const osmStateCreate = (): State<OsmElement> => State.create();
+export const osmStateCreate = (): Stsrate<OsmElement> => State.create();
 
 export function osmStateAddVirgins(
   state: State<OsmElement>,
@@ -36,6 +40,7 @@ export function osmStateAddVirgins(
   const osmElements = initializeElements(entities);
 
   // adding to element table is necessary for the next functions
+  // const table = state.getElementTable();
   state.add(e => e.entity.id, osmElements, quadkey);
 
   osmTableApplyParentWays(
@@ -74,6 +79,61 @@ export function osmStateAddModifieds(
   osmStateAddVirgins(state, modifiedEntities, '');
 }
 
+export const osmStateGetVisible = (
+  state: State<OsmElement>,
+  quadkeys: string[],
+  log: Log
+): OsmTable => {
+  const visibleIds = state.getVisible(quadkeys);
+
+  const toRemoveIds = logGetVirginIdsOfModifiedIds(log);
+
+  for (const id of toRemoveIds) {
+    visibleIds.delete(id);
+  }
+
+  for (const id of logGetLatestModifiedIds(log)) {
+    visibleIds.add(id);
+  }
+
+  // return visibleIds;
+  const table = state.getElementTable();
+  const result: OsmTable = new Map();
+
+  for (const id of visibleIds) {
+    const e = table.get(id) as OsmElement;
+
+    if (e.entity.type === EntityType.WAY) {
+      e.entity.nodes.forEach(n => {
+        result.set(n, table.get(n) as OsmElement);
+      });
+    } else if (e.entity.type === EntityType.RELATION) {
+      // TODO
+    }
+    result.set(id, e);
+  }
+  return result;
+};
+
+// PROBLEM, whenever we shred, we might
+// loose virgin enttities reference by modfied Entities
+// for eg w1#1 might refer to n1 in a different quadkey
+// but when you remove all all non visible quadkeys
+// n1 will get removed and causing problem. As a solution
+// I was thinking of finding all the quadkeys indirectly referenced
+// modififed entities and keeping them alive.
+// To test we dont remove '' key
+// const shreddedQuadkeyTable = quadkeysTableCreateFrom(
+//   this._quadkeysTable,
+//   quadkey
+// );
+export function osmStateShred(
+  state: State<OsmElement>,
+  quadkey: string,
+  log: Log
+) {
+  const newState = state.shred(quadkey);
+}
 /**
  * WARNING this and osmTableApplyParentRelations  modifies osmTable
  * This function expect the osmTable's row to have
@@ -81,6 +141,11 @@ export function osmStateAddModifieds(
  * @TOFIX It could be possible that relation (maybe way) children
  * are not present. How do we fix that? How Should we handle when the
  * missing child comes back?
+ *
+ * From the OSM docs:
+ * All ways that reference at least one node that is inside a given bounding box,
+ *  any relations that reference them [the ways], and any nodes outside the bounding
+ *  box that the ways may reference.
  */
 export function osmTableApplyParentWays(
   osmTable: OsmTable,
@@ -91,15 +156,18 @@ export function osmTableApplyParentWays(
     if (!element) {
       throw new Error('couldnt find the element in table' + id);
     }
-    tableAdd(
-      osmTable,
-      element.entity.id,
-      osmElementFork(
-        element.entity,
-        setUnion(element.parentWays, parents),
-        element.parentRelations
-      )
-    );
+
+    if (setSome(i => !element.parentWays.has(i), parents) && parents.size > 0) {
+      tableAdd(
+        osmTable,
+        element.entity.id,
+        osmElementFork(
+          element.entity,
+          setUnion(element.parentWays, parents),
+          element.parentRelations
+        )
+      );
+    }
   }
 }
 
@@ -112,6 +180,11 @@ export function osmTableApplyParentRelations(
     if (!element) {
       continue;
     }
+
+    if (setEqual(parents, element.parentRelations)) {
+      continue;
+    }
+
     tableAdd(
       osmTable,
       element.entity.id,
