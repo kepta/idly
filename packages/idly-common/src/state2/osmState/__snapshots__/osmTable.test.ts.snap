@@ -3,113 +3,89 @@
 exports[` 1`] = `
 Map {
   "n1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "n2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
+    "id": "n2",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "w1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": Object {},
-      "type": "way",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "w1",
+    "nodes": Array [
+      "n1",
+      "n2",
+    ],
+    "tags": Object {},
+    "type": "way",
   },
   "n3" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n3",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n4" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n4",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n4",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
 }
 `;
@@ -131,155 +107,123 @@ Map {
 exports[` 3`] = `
 Map {
   "n1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "n2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
+    "id": "n2",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "w1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": Object {},
-      "type": "way",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "w1",
+    "nodes": Array [
+      "n1",
+      "n2",
+    ],
+    "tags": Object {},
+    "type": "way",
   },
   "n3" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n3",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n4" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n4",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n4",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n1#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n1#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n2#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n2#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
 }
 `;
@@ -305,210 +249,163 @@ Map {
 exports[` 5`] = `
 Map {
   "n1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
-      "w2",
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "n2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
+    "id": "n2",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "w1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": Object {},
-      "type": "way",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "w1",
+    "nodes": Array [
+      "n1",
+      "n2",
+    ],
+    "tags": Object {},
+    "type": "way",
   },
   "n3" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w2",
+    "id": "n3",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "n4" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n4",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {
-      "r1",
+    "id": "n4",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
-    "parentWays": Set {},
+    "tags": Object {},
+    "type": "node",
   },
   "n1#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n1#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n2#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n2#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "w2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w2",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": Object {},
-      "type": "way",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {
-      "r1",
-    },
-    "parentWays": Set {},
+    "id": "w2",
+    "nodes": Array [
+      "n1",
+      "n3",
+    ],
+    "tags": Object {},
+    "type": "way",
   },
   "r1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "r1",
-      "members": Array [
-        Object {
-          "id": "n4",
-          "ref": "n4",
-        },
-        Object {
-          "id": "w2",
-          "ref": "w2",
-        },
-      ],
-      "tags": Object {},
-      "type": "relation",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "r1",
+    "members": Array [
+      Object {
+        "id": "n4",
+        "ref": "n4",
+      },
+      Object {
+        "id": "w2",
+        "ref": "w2",
+      },
+    ],
+    "tags": Object {},
+    "type": "relation",
   },
 }
 `;
@@ -538,270 +435,211 @@ Map {
 exports[` 7`] = `
 Map {
   "n1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
-      "w2",
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "n2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w1",
+    "id": "n2",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "w1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": Object {},
-      "type": "way",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "w1",
+    "nodes": Array [
+      "n1",
+      "n2",
+    ],
+    "tags": Object {},
+    "type": "way",
   },
   "n3" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w2",
+    "id": "n3",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
+    "tags": Object {},
+    "type": "node",
   },
   "n4" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n4",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {
-      "r1",
+    "id": "n4",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
     },
-    "parentWays": Set {},
+    "tags": Object {},
+    "type": "node",
   },
   "n1#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n1#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n2#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n2#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "w2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w2",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": Object {},
-      "type": "way",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {
-      "r1",
-    },
-    "parentWays": Set {},
+    "id": "w2",
+    "nodes": Array [
+      "n1",
+      "n3",
+    ],
+    "tags": Object {},
+    "type": "way",
   },
   "r1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "r1",
-      "members": Array [
-        Object {
-          "id": "n4",
-          "ref": "n4",
-        },
-        Object {
-          "id": "w2",
-          "ref": "w2",
-        },
-      ],
-      "tags": Object {},
-      "type": "relation",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "r1",
+    "members": Array [
+      Object {
+        "id": "n4",
+        "ref": "n4",
+      },
+      Object {
+        "id": "w2",
+        "ref": "w2",
+      },
+    ],
+    "tags": Object {},
+    "type": "relation",
   },
   "n3#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n3#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "n1#1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n1#1",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "n1#1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
   },
   "r1#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "r1#0",
-      "members": Array [],
-      "tags": Object {},
-      "type": "relation",
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
     },
-    "parentRelations": Set {},
-    "parentWays": Set {},
+    "id": "r1#0",
+    "members": Array [],
+    "tags": Object {},
+    "type": "relation",
   },
 }
 `;
@@ -855,7 +693,6 @@ Map {
     },
     "parentRelations": Set {},
     "parentWays": Set {
-      "w1",
       "w2",
     },
   },
@@ -900,9 +737,7 @@ Map {
       "tags": Object {},
       "type": "way",
     },
-    "parentRelations": Set {
-      "r1",
-    },
+    "parentRelations": Set {},
     "parentWays": Set {},
   },
   "n3#0" => Object {
@@ -1009,9 +844,7 @@ Map {
       "tags": Object {},
       "type": "node",
     },
-    "parentRelations": Set {
-      "r1",
-    },
+    "parentRelations": Set {},
     "parentWays": Set {},
   },
   "n3#0" => Object {
@@ -1165,73 +998,6 @@ Map {
       "w1",
     },
   },
-  "w2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w2",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": Object {},
-      "type": "way",
-    },
-    "parentRelations": Set {
-      "r1",
-    },
-    "parentWays": Set {},
-  },
-  "w1" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w1",
-      "nodes": Array [
-        "n1",
-        "n2",
-      ],
-      "tags": Object {},
-      "type": "way",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {},
-  },
-  "n3" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w2",
-    },
-  },
   "r1" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1280,6 +1046,73 @@ Map {
     "parentRelations": Set {
       "r1",
     },
+    "parentWays": Set {},
+  },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "w2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
     "parentWays": Set {},
   },
 }

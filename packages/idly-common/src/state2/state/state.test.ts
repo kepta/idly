@@ -79,6 +79,7 @@ describe('constructing state and basic tests', () => {
     expect(State.create()).toEqual({
       _elementTable: mapFromObj(),
       _quadkeysTable: mapFromObj(),
+      _metaTable: mapFromObj(),
     });
   });
   it('should create with given values', () => {
@@ -164,61 +165,62 @@ describe('add', () => {
   });
 });
 
-describe('shred', () => {
-  it('shouldnt change existing state', () => {
-    const state = State.create<Entity>();
-    state.add(t => t.id, [n1, n2], '12301201');
-    state.add(t => t.id, [w1], '12101200');
-    state.add(t => t.id, [w1, w2], '110231121');
-    state.add(t => t.id, [w3, r2], '100231121');
-    // console.log(JSON.stringify(state));
-    state.shred('12');
+// describe('shred', () => {
+//   it('shouldnt change existing state', () => {
+//     const state = State.create<Entity>();
+//     state.add(t => t.id, [n1, n2], '12301201');
+//     state.add(t => t.id, [w1], '12101200');
+//     state.add(t => t.id, [w1, w2], '110231121');
+//     state.add(t => t.id, [w3, r2], '100231121');
+//     // console.log(JSON.stringify(state));
+//     state.shred('12');
 
-    expect(state).toEqual(
-      (s => {
-        s.add(t => t.id, [n1, n2], '12301201');
-        s.add(t => t.id, [w1], '12101200');
-        s.add(t => t.id, [w1, w2], '110231121');
-        s.add(t => t.id, [w3, r2], '100231121');
-        return s;
-      })(State.create<Entity>())
-    );
-    state.shred('');
-    expect(state).toEqual(
-      (s => {
-        s.add(t => t.id, [n1, n2], '12301201');
-        s.add(t => t.id, [w1], '12101200');
-        s.add(t => t.id, [w1, w2], '110231121');
-        s.add(t => t.id, [w3, r2], '100231121');
-        return s;
-      })(State.create<Entity>())
-    );
+//     expect(state).toEqual(
+//       (s => {
+//         s.add(t => t.id, [n1, n2], '12301201');
+//         s.add(t => t.id, [w1], '12101200');
+//         s.add(t => t.id, [w1, w2], '110231121');
+//         s.add(t => t.id, [w3, r2], '100231121');
+//         return s;
+//       })(State.create<Entity>())
+//     );
+//     state.shred('');
+//     expect(state).toEqual(
+//       (s => {
+//         s.add(t => t.id, [n1, n2], '12301201');
+//         s.add(t => t.id, [w1], '12101200');
+//         s.add(t => t.id, [w1, w2], '110231121');
+//         s.add(t => t.id, [w3, r2], '100231121');
+//         return s;
+//       })(State.create<Entity>())
+//     );
 
-    expect(state.shred('100')).toMatchSnapshot();
-  });
-  it('should loose weight', () => {
-    let state = State.create<Entity>();
-    state.add(t => t.id, [n1, n2], '12301201');
-    state.add(t => t.id, [w1], '12101200');
-    state.add(t => t.id, [w1, w2], '110231121');
-    state.add(t => t.id, [w3, r2], '100231121');
-    state.add(t => t.id, [w3, r2], '100131121');
-    state.add(t => t.id, [n5, n6, r2], '131');
+//     expect(state.shred('100')).toMatchSnapshot();
+//   });
+//   it('should loose weight', () => {
+//     let state = State.create<Entity>();
+//     state.add(t => t.id, [n1, n2], '12301201');
+//     state.add(t => t.id, [w1], '12101200');
+//     state.add(t => t.id, [n3], '');
+//     state.add(t => t.id, [w1, w2], '110231121');
+//     state.add(t => t.id, [w3, r2], '100231121');
+//     state.add(t => t.id, [w3, r2], '100131121');
+//     state.add(t => t.id, [n5, n6, r2], '131');
 
-    state = state.shred('100');
+//     state = state.shred('100');
 
-    expect(state).toEqual(
-      (s => {
-        s.add(t => t.id, [w3, r2], '100231121');
-        s.add(t => t.id, [w3, r2], '100131121');
-        return s;
-      })(State.create<Entity>())
-    );
+//     expect(state).toEqual(
+//       (s => {
+//         s.add(t => t.id, [w3, r2], '100231121');
+//         s.add(t => t.id, [w3, r2], '100131121');
+//         return s;
+//       })(State.create<Entity>())
+//     );
 
-    state.add(t => t.id, [w3, r2], '100131121');
-    state.add(t => t.id, [w1], '12101200');
-    state.add(t => t.id, [n5, n6, r2], '131');
+//     state.add(t => t.id, [w3, r2], '100131121');
+//     state.add(t => t.id, [w1], '12101200');
+//     state.add(t => t.id, [n5, n6, r2], '131');
 
-    expect(state.shred('1')).toEqual(state);
-  });
-});
+//     expect(state.shred('1')).toEqual(state);
+//   });
+// });

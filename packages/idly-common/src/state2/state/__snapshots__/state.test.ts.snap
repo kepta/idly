@@ -55,69 +55,12 @@ State {
       "type": "way",
     },
   },
+  "_metaTable": Map {},
   "_quadkeysTable": Map {
     "123" => Set {
       "n1",
       "n2",
       "w1",
-    },
-  },
-}
-`;
-
-exports[`shred shouldnt change existing state 1`] = `
-State {
-  "_elementTable": Map {
-    "w3" => Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w3",
-      "nodes": Array [
-        "n3",
-        "n4",
-        "n5",
-      ],
-      "tags": Object {},
-      "type": "way",
-    },
-    "r2" => Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "r2",
-      "members": Array [
-        Object {
-          "id": "w1",
-          "ref": "w1",
-        },
-        Object {
-          "id": "w3",
-          "ref": "w3",
-        },
-        Object {
-          "id": "n6",
-          "ref": "n6",
-        },
-      ],
-      "tags": Object {},
-      "type": "relation",
-    },
-  },
-  "_quadkeysTable": Map {
-    "100231121" => Set {
-      "w3",
-      "r2",
     },
   },
 }

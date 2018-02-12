@@ -22,12 +22,12 @@ export const setFind = <T>(
   return;
 };
 
-export const setEqual = <T>(as: Set<T>, bs: Set<T>) => {
-  if (as.size !== bs.size) {
+export const setEqual = <T>(setA: Set<T>, setB: Set<T>) => {
+  if (setA.size !== setB.size) {
     return false;
   }
-  for (const a of as) {
-    if (!bs.has(a)) {
+  for (const a of setA) {
+    if (!setB.has(a)) {
       return false;
     }
   }
@@ -82,7 +82,7 @@ export const iterableFlattenToArray = <T>(
 
 export const iterableFlattenToSet = <T>(
   a: Iterable<Iterable<T>> | IterableIterator<IterableIterator<T>>
-) => {
+): Set<T> => {
   const result = setCreate<T>();
   for (const i of a) {
     for (const j of i) {

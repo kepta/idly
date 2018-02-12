@@ -14,11 +14,11 @@ const layers = [
   ...rail,
   ...waterway,
   ...areaLabels,
-  ...line,
+  // ...line,
   ...lineLabel,
   ...pointsWithLabels,
-  ...pointsWithoutLabels
-];
+  ...pointsWithoutLabels,
+].sort((a, b) => a.priority - b.priority);
 export default layers;
 
 if (layers.some(r => !(r.priority < 10 && r.priority >= 0))) {

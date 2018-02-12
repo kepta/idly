@@ -1,17 +1,8 @@
-import { Leaf } from 'idly-common/lib/state/graph/Leaf';
 import * as React from 'react';
 import { Map } from './map/index';
 import { Presets } from './presets';
 export class App extends React.PureComponent {
   public render() {
-    if (leaf) {
-      return (
-        <div>
-          <Presets feature={feat} leaf={leaf} />
-          <Map />
-        </div>
-      );
-    }
     return null;
   }
 }
@@ -21,8 +12,8 @@ const feat = {
     type: 'LineString',
     coordinates: [
       [-74.00884620845318, 40.71380563464672],
-      [-74.01008605957031, 40.71436421368358]
-    ]
+      [-74.01008605957031, 40.71436421368358],
+    ],
   },
   type: 'Feature',
   properties: {
@@ -31,7 +22,7 @@ const feat = {
     'osm_basic--geometry': 'line',
     'osm_basic--tagsClass': 'tag-highway',
     'osm_basic--tagsClassType': 'tag-highway-secondary',
-    "id": 'w222299272'
+    id: 'w222299272',
   },
   layer: {
     id: 'idly-gl-base-src-1-LineLabelLayer',
@@ -46,19 +37,12 @@ const feat = {
       'text-transform': 'uppercase',
       'text-letter-spacing': 0.05,
       'text-optional': true,
-      'text-allow-overlap': false
+      'text-allow-overlap': false,
     },
     paint: {
       'text-halo-color': '#ffffff',
       'text-halo-width': 1.5,
-      'text-halo-blur': 0.5
-    }
-  }
+      'text-halo-blur': 0.5,
+    },
+  },
 };
-
-const leaf = Leaf.fromString(
-  window.atob(
-    // tslint:disable-next-line:max-line-length
-    'WyJ7XCJhdHRyaWJ1dGVzXCI6e1wiY2hhbmdlc2V0XCI6XCI1MjkwMDgzOFwiLFwidGltZXN0YW1wXCI6XCIyMDE3LTEwLTEzVDE2OjM0OjMyWlwiLFwidWlkXCI6XCI0MDIyNjY0XCIsXCJ1c2VyXCI6XCJQYXVsaXNoXCIsXCJ2ZXJzaW9uXCI6XCI0XCIsXCJ2aXNpYmxlXCI6XCJ0cnVlXCJ9LFwiaWRcIjpcIncyMjIyOTkyNzJcIixcIm5vZGVzXCI6W1wibjQyNDI5NTYyXCIsXCJuNDI0Mjk1NjNcIl0sXCJ0YWdzXCI6e1wiaGd2XCI6XCJkZXN0aW5hdGlvblwiLFwiaGlnaHdheVwiOlwic2Vjb25kYXJ5XCIsXCJtYXhzcGVlZFwiOlwiMjUgbXBoXCIsXCJuYW1lXCI6XCJNdXJyYXkgU3RyZWV0XCIsXCJvbmV3YXlcIjpcInllc1wiLFwidGlnZXI6Y2ZjY1wiOlwiQTQxXCIsXCJ0aWdlcjpjb3VudHlcIjpcIk5ldyBZb3JrLCBOWVwiLFwidGlnZXI6bmFtZV9iYXNlXCI6XCJNdXJyYXlcIixcInRpZ2VyOm5hbWVfdHlwZVwiOlwiU3RcIixcInRpZ2VyOnJldmlld2VkXCI6XCJub1wifSxcInR5cGVcIjpcIndheVwifSJd'
-  )
-);

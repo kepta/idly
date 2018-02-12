@@ -33,7 +33,7 @@ export function quadkeysTableAdd(
   // but it is a subset of every string. It becomes
   // a good place to search for everything.
   // we let it be used as key store and only append
-  // to it
+  // to it.
   if (quadkey === '') {
     oneToManyTableUpdateIndex(t, quadkey, ids);
     return;
@@ -55,12 +55,8 @@ export function removeAllDescendants(t: QuadkeysTable, quadkey: string) {
 
 export const quadkeysTableCreate = (): QuadkeysTable => oneToManyTableCreate();
 
-// @TOFIX with our removeAllDescendants here I think we will always have
-// a flat system of quadkeys so this function can simplified to just returning
-// a Map with a single quakey & the '' key. But we need to make sure we dont
-// add a descendant, because removeAllDescendants will not remove any parent.
-export const quadkeysTableCreateFrom = (t: QuadkeysTable, quadkey: string) =>
-  mapFilter((_, k) => isQuadkeyRelated(quadkey, k), t);
+export const quadkeysTableCreateFrom = (t: QuadkeysTable, quadkeys: [string]) =>
+  mapFilter((_, k) => quadkeys.indexOf(k) > -1, t);
 
 export const quadkeysTableFlatten = (t: QuadkeysTable) =>
   iterableFlattenToSet<string>(tableValues(t));

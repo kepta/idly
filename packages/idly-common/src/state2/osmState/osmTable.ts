@@ -2,59 +2,37 @@ import { Entity, EntityType, Relation, Way } from '../../osm/structures';
 import { setCreate, setEqual, setSome, setUnion } from '../helper';
 import {
   Log,
+  logGetEverything,
   logGetLatestModifiedIds,
   logGetVirginIdsOfModifiedIds,
 } from '../log';
 import { State } from '../state/state';
-import {
-  OneToManyTable,
-  oneToManyTableCreate,
-  oneToManyTableInsert,
-  Table,
-} from '../table';
-import { tableAdd, tableGet } from '../table/regular';
+import { OneToManyTable, Table, tableCopy } from '../table';
+import { Derived, DerivedTable, updateDerivedValues } from './computedValues';
 
-export interface OsmElement {
-  readonly entity: Entity;
-  readonly parentRelations: Set<string>;
-  readonly parentWays: Set<string>;
-}
+/**
+ * @NOTE parentWays might not exist in the table, this is due to shredding.
+ */
+export type OsmElement = Entity;
+
 export type ParentWaysTable = OneToManyTable<string>;
 export type ParentRelationsTable = OneToManyTable<string>;
 
-export interface OsmElementWay {
-  readonly entity: Way;
-  readonly parentRelations: Set<string>;
-  readonly parentWays: Set<string>;
-}
-
 export type OsmTable = Table<OsmElement>;
 
-export const osmStateCreate = (): Stsrate<OsmElement> => State.create();
+export const osmStateCreate = (): State<Entity, Derived> =>
+  State.create<Entity, Derived>();
 
 export function osmStateAddVirgins(
-  state: State<OsmElement>,
+  state: State<Entity>,
   entities: Entity[],
   quadkey: string
 ) {
-  const osmElements = initializeElements(entities);
-
-  // adding to element table is necessary for the next functions
-  // const table = state.getElementTable();
-  state.add(e => e.entity.id, osmElements, quadkey);
-
-  osmTableApplyParentWays(
-    state.getElementTable(),
-    parentWaysTableCreate(entities)
-  );
-  osmTableApplyParentRelations(
-    state.getElementTable(),
-    parentRelationsTableCreate(entities)
-  );
+  state.add(e => e.id, entities, quadkey);
 }
 
 export function osmStateAddModifieds(
-  state: State<OsmElement>,
+  state: State<Entity>,
   newLog: Log,
   modifiedEntities: Entity[]
 ) {
@@ -76,14 +54,15 @@ export function osmStateAddModifieds(
       throw new Error(`Modified ${e.id} already exists in table`);
     }
   });
+
   osmStateAddVirgins(state, modifiedEntities, '');
 }
 
 export const osmStateGetVisible = (
-  state: State<OsmElement>,
+  state: State<Entity>,
   quadkeys: string[],
   log: Log
-): OsmTable => {
+): DerivedTable => {
   const visibleIds = state.getVisible(quadkeys);
 
   const toRemoveIds = logGetVirginIdsOfModifiedIds(log);
@@ -98,21 +77,23 @@ export const osmStateGetVisible = (
 
   // return visibleIds;
   const table = state.getElementTable();
+
   const result: OsmTable = new Map();
 
   for (const id of visibleIds) {
-    const e = table.get(id) as OsmElement;
+    const e = table.get(id) as Entity;
 
-    if (e.entity.type === EntityType.WAY) {
-      e.entity.nodes.forEach(n => {
+    if (e.type === EntityType.WAY) {
+      e.nodes.forEach(n => {
         result.set(n, table.get(n) as OsmElement);
       });
-    } else if (e.entity.type === EntityType.RELATION) {
+    } else if (e.type === EntityType.RELATION) {
       // TODO
     }
     result.set(id, e);
   }
-  return result;
+
+  return updateDerivedValues(result, state.getMetaTable());
 };
 
 // PROBLEM, whenever we shred, we might
@@ -127,13 +108,70 @@ export const osmStateGetVisible = (
 //   this._quadkeysTable,
 //   quadkey
 // );
-export function osmStateShred(
-  state: State<OsmElement>,
-  quadkey: string,
-  log: Log
-) {
-  const newState = state.shred(quadkey);
+
+// following a very strict way
+// 1. When shredding, shred everything but the bare minimum
+//    to render the modified ids, which exactly
+//    [nodes, ways, nodesOfWays, relations].
+//     ? to keep things sane we need to recompute parentWays for all
+//       modified entitite?? should we or not think?
+//    - relations dont get any members as they cannot be rendered
+//    - if a relation member was modified, it will be treated as an individual
+//        and would get the same rules again
+//    - to render ways we need node ids, so modified ways will get all of the nodesOfWays
+///      for eg. if a tag was added, hypothetically we dont even need the nodes, but to
+//       visualize we need the nodes, hence we will also add the nodes.
+//    - all the modified nodes will be kept and everything (including all parents) would
+//       be removed. If a parent did exist, it will get added automatically whenever virgin data comes
+//       if a modified parent exists it will also get added, whenever the modified entities
+///      are applied to state.
+export const osmStateShred = (prevState: State<OsmElement>, log: Log) => {
+  const newState = osmStateCreate();
+
+  const allModifiedIds = logGetEverything(log);
+
+  const relatedIds = osmTableGetRelatedElements(
+    allModifiedIds,
+    prevState.getElementTable()
+  );
+  osmTableCopyRow(
+    prevState.getElementTable(),
+    newState.getElementTable(),
+    allModifiedIds
+  );
+
+  osmTableCopyRow(
+    prevState.getElementTable(),
+    newState.getElementTable(),
+    relatedIds
+  );
+
+  newState.getQuadkeysTable().set('', allModifiedIds);
+
+  return newState;
+};
+
+function osmTableCopyRow(src: OsmTable, dest: OsmTable, ids: Set<string>) {
+  for (const id of ids) {
+    tableCopy(src, dest, id);
+  }
 }
+
+const osmTableGetRelatedElements = (ids: Set<string>, table: OsmTable) => {
+  const result = setCreate<string>();
+  for (const id of ids) {
+    const element = table.get(id);
+    if (!element) {
+      continue;
+    }
+    if (element.type === EntityType.WAY) {
+      element.nodes.forEach(n => result.add(n));
+    } else if (element.type === EntityType.RELATION) {
+      element.members.forEach(m => result.add(m.id));
+    }
+  }
+  return result;
+};
 /**
  * WARNING this and osmTableApplyParentRelations  modifies osmTable
  * This function expect the osmTable's row to have
@@ -147,109 +185,3 @@ export function osmStateShred(
  *  any relations that reference them [the ways], and any nodes outside the bounding
  *  box that the ways may reference.
  */
-export function osmTableApplyParentWays(
-  osmTable: OsmTable,
-  parentWaysTable: ParentWaysTable
-) {
-  for (const [id, parents] of parentWaysTable) {
-    const element = tableGet(osmTable, id);
-    if (!element) {
-      throw new Error('couldnt find the element in table' + id);
-    }
-
-    if (setSome(i => !element.parentWays.has(i), parents) && parents.size > 0) {
-      tableAdd(
-        osmTable,
-        element.entity.id,
-        osmElementFork(
-          element.entity,
-          setUnion(element.parentWays, parents),
-          element.parentRelations
-        )
-      );
-    }
-  }
-}
-
-export function osmTableApplyParentRelations(
-  osmTable: OsmTable,
-  parentRelationsTable: ParentRelationsTable
-) {
-  for (const [id, parents] of parentRelationsTable) {
-    const element = tableGet(osmTable, id);
-    if (!element) {
-      continue;
-    }
-
-    if (setEqual(parents, element.parentRelations)) {
-      continue;
-    }
-
-    tableAdd(
-      osmTable,
-      element.entity.id,
-      osmElementFork(
-        element.entity,
-        element.parentWays,
-        setUnion(element.parentRelations, parents)
-      )
-    );
-  }
-}
-
-const initializeElements = (entities: Entity[]): OsmElement[] =>
-  entities.map(e => osmElementFork(e));
-
-const osmElementFork = (
-  entity: Entity,
-  parentWays: Set<string> = setCreate<string>(),
-  parentRelations: Set<string> = setCreate<string>()
-): OsmElement => ({
-  entity,
-  parentRelations,
-  parentWays,
-});
-
-export type ParentRelationsTableCreate = (
-  entities: Entity[]
-) => ParentRelationsTable;
-
-export const parentRelationsTableCreate: ParentRelationsTableCreate = entities => {
-  const memebersReduce = (
-    relation: Relation,
-    parentWays: ParentWaysTable
-  ): ParentWaysTable =>
-    relation.members.reduce(
-      (pWays, member) => oneToManyTableInsert(pWays, member.id, relation.id),
-      parentWays
-    );
-
-  return entities.reduce(
-    (parentWays, entity) =>
-      entity.type !== EntityType.RELATION
-        ? parentWays
-        : memebersReduce(entity, parentWays),
-    oneToManyTableCreate<string>()
-  );
-};
-
-export type ParentWaysTableCreate = (entities: Entity[]) => ParentWaysTable;
-
-export const parentWaysTableCreate: ParentWaysTableCreate = entities => {
-  const nodesReduce = (
-    way: Way,
-    parentWays: ParentWaysTable
-  ): ParentWaysTable =>
-    way.nodes.reduce(
-      (pWays, nodeId) => oneToManyTableInsert(pWays, nodeId, way.id),
-      parentWays
-    );
-
-  return entities.reduce(
-    (parentWays, entity) =>
-      entity.type !== EntityType.WAY
-        ? parentWays
-        : nodesReduce(entity, parentWays),
-    oneToManyTableCreate<string>()
-  );
-};

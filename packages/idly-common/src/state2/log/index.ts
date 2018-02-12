@@ -1,5 +1,11 @@
 import { weakCache } from '../../misc/weakCache';
-import { setCreate, setFind, setIntersect, setSome } from '../helper';
+import {
+  setCreate,
+  setFind,
+  setIntersect,
+  setSome,
+  iterableFlattenToSet,
+} from '../helper';
 /**
  * The log is used as [...modifiedEntries, virginOsmEntries]
  * the pointer to virginOsmEntries resolves to EntityTable
@@ -39,6 +45,10 @@ export const logGetLatestModifiedIds = weakCache(
         }, new Map<string, string>())
         .values()
     )
+);
+
+export const logGetEverything = weakCache((log: Log) =>
+  iterableFlattenToSet<string>(log)
 );
 
 export const logRecreate = (...entries: Entry[]) =>

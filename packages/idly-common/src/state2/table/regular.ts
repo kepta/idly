@@ -4,6 +4,9 @@ export const tableCreate = <T>(): Table<T> => new Map<string, T>();
 
 export const tableAdd = <T>(t: Table<T>, k: string, e: T) => t.set(k, e);
 
+export const tableCopy = <T>(src: Table<T>, dest: Table<T>, k: string) =>
+  tableAdd(dest, k, tableGet(src, k));
+
 export const tableBulkAdd = <T>(
   t: Table<T>,
   it: IterableIterator<[string, T]> | Iterable<[string, T]>

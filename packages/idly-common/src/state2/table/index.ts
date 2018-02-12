@@ -26,4 +26,5 @@ export {
   tableReduce,
   tableFindKey,
   tableForEach,
+  tableCopy,
 } from './regular';

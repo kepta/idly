@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+Object {
+  "entity": Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "parentRelations": Set {},
+  "parentWays": Set {},
+}
+`;
+
+exports[`computed values it creates even when entity doesnt exist 1`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w1",
+    },
+  },
+  "r1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1",
+      "members": Array [
+        Object {
+          "id": "n4",
+          "ref": "n4",
+        },
+        Object {
+          "id": "w2",
+          "ref": "w2",
+        },
+      ],
+      "tags": Object {},
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "w1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`computed values should mark parents correctly 1`] = `
+Object {
+  "n1": Set {
+    "w1",
+    "w2",
+  },
+  "n2": Set {
+    "w1",
+  },
+  "n3": Set {
+    "w2",
+    "w3",
+  },
+  "n4": Set {
+    "w3",
+  },
+  "n5": Set {
+    "w3",
+  },
+  "n6": Set {},
+  "n7": Set {},
+  "r1": Set {},
+  "r2": Set {},
+  "r3": Set {},
+  "w1": Set {},
+  "w2": Set {},
+  "w3": Set {},
+}
+`;
+
+exports[`computed values should mark parents correctly 2`] = `
+Object {
+  "n1": Set {
+    "r3",
+  },
+  "n2": Set {},
+  "n3": Set {},
+  "n4": Set {
+    "r1",
+  },
+  "n5": Set {},
+  "n6": Set {
+    "r2",
+  },
+  "n7": Set {},
+  "r1": Set {
+    "r3",
+  },
+  "r2": Set {},
+  "r3": Set {},
+  "w1": Set {
+    "r2",
+  },
+  "w2": Set {
+    "r1",
+    "r3",
+  },
+  "w3": Set {
+    "r2",
+  },
+}
+`;
+
+exports[`computed values should remove entity if not found in the new table  1`] = `
+Object {
+  "n1": Set {
+    "w2",
+  },
+  "n5": Set {
+    "w3",
+  },
+  "r1": Set {},
+  "r55": Set {},
+  "w2": Set {},
+  "w3": Set {},
+}
+`;
+
+exports[`computed values should remove entity if not found in the new table  2`] = `
+Object {
+  "n1": Set {
+    "r55",
+  },
+  "n5": Set {
+    "r55",
+  },
+  "r1": Set {
+    "r55",
+  },
+  "r55": Set {},
+  "w2": Set {
+    "r1",
+    "r55",
+  },
+  "w3": Set {
+    "r55",
+  },
+}
+`;

@@ -15,5 +15,16 @@ export default [
   ...secondary,
   ...tertiary,
   ...trunk,
-  ...unclassified
-];
+  ...unclassified,
+].map(r => {
+  r.layer.paint['line-width'] = [
+    'interpolate',
+    ['exponential', 2],
+    ['zoom'],
+    14,
+    4,
+    20,
+    12,
+  ];
+  return r;
+});

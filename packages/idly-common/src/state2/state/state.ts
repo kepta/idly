@@ -5,30 +5,39 @@ import {
   QuadkeysTable,
   quadkeysTableAdd,
   quadkeysTableCreate,
-  quadkeysTableCreateFrom,
   quadkeysTableFindRelated,
-  quadkeysTableFlatten,
 } from './quadkeysTable';
 
-export class State<T> {
-  public static create<T>(
+export class State<T, M = any> {
+  public static create<T, M = T>(
     elementTable: Table<T> = new Map(),
-    quadkeysTable = quadkeysTableCreate()
+    quadkeysTable = quadkeysTableCreate(),
+    metaTable: Table<M> = new Map()
   ) {
-    return new State<T>(elementTable, quadkeysTable);
+    return new State<T, M>(elementTable, quadkeysTable, metaTable);
   }
 
   // tslint:disable-next-line:variable-name
   private _elementTable: Table<T>;
   // tslint:disable-next-line:variable-name
   private _quadkeysTable: QuadkeysTable;
+  // tslint:disable-next-line:variable-name
+  private _metaTable = new Map<string, M>();
 
-  private constructor(elementTable: Table<T>, quadkeysTable: QuadkeysTable) {
+  private constructor(
+    elementTable: Table<T>,
+    quadkeysTable: QuadkeysTable,
+    metaTable: Table<M>
+  ) {
     this._elementTable = elementTable;
     this._quadkeysTable = quadkeysTable;
+    this._metaTable = metaTable;
   }
   public getElementTable() {
     return this._elementTable;
+  }
+  public getMetaTable() {
+    return this._metaTable;
   }
   public getQuadkeysTable() {
     return this._quadkeysTable;
@@ -38,7 +47,7 @@ export class State<T> {
     return this._elementTable.get(id);
   }
 
-  public getIdByQuadkey(quadkey: string) {
+  public getIdsByQuadkey(quadkey: string) {
     return this._quadkeysTable.get(quadkey);
   }
 
@@ -60,22 +69,8 @@ export class State<T> {
   public getQuadkey(quadkey: string) {
     return this._quadkeysTable.get(quadkey);
   }
+
   public getVisible(quadkeys: string[]) {
     return quadkeysTableFindRelated(this._quadkeysTable, quadkeys);
-  }
-
-  public shred(quadkey: string) {
-    const newElementTable = tableCreate<T>();
-
-    const newQuadkeysTable = quadkeysTableCreateFrom(
-      this._quadkeysTable,
-      quadkey
-    );
-
-    quadkeysTableFlatten(newQuadkeysTable).forEach(k =>
-      newElementTable.set(k, this._elementTable.get(k) as T)
-    );
-
-    return State.create(newElementTable, newQuadkeysTable);
   }
 }

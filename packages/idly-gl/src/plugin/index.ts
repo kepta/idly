@@ -2,18 +2,16 @@ import layers from '../layers';
 import shadows from '../shadows';
 
 import { BBox, bboxToTiles, mercator } from 'idly-common/lib/geo';
-import { tileToQuadkey, cancelablePromise } from 'idly-common/lib/misc';
+import { cancelablePromise, tileToQuadkey } from 'idly-common/lib/misc';
 
+import parser from 'idly-faster-osm-parser';
 import debounce from 'lodash-es/debounce';
 import { addSource } from '../helper/addSource';
-import { workerGetQuadkeys, worker } from './worker/index';
-import parser from 'idly-faster-osm-parser';
+import { worker, workerGetQuadkeys } from './worker/index';
 
 const BASE_SOURCE = 'idly-gl-base-src-1';
 const ACTIVE_SOURCE = 'idly-gl-active-src-1';
 const SHADOW_SOURCE = 'idly-gl-shadow-src-1';
-
-const cache = new Map();
 
 export class IdlyGlPlugin {
   private map: any;
@@ -104,7 +102,7 @@ export class IdlyGlPlugin {
         bboxToTiles(bbox, zoom)
           // .filter(t => cache.has(tileToQuadkey(t)))
           .map(t =>
-            fetchTileXml(t.x, t.y, t.z).then(r => [tileToQuadkey(t), parser(r)])
+            fetchTileXml(t.x, t.y, t.z).then(r => [tileToQuadkey(t), r])
           )
       )
     );
@@ -179,18 +177,24 @@ function bboxify(e: any, factor: number) {
   ];
 }
 
+const cache: any = new Map();
+
 export async function fetchTileXml(
   x: number,
   y: number,
   zoom: number
-): Promise<string> {
+): Promise<any> {
   const bboxStr = mercator.bbox(x, y, zoom).join(',');
+  if (cache.has(bboxStr)) {
+    return cache.get(bboxStr);
+  }
   const response = await fetch(
     `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`
   );
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const text = await response.text();
-  return text;
+  const entities = parser(await response.text());
+  cache.set(bboxStr, entities);
+  return entities;
 }

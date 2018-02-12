@@ -10,12 +10,20 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#CF2081',
         'line-opacity': 1,
-        'line-width': 10
+        'line-width': [
+          'interpolate',
+          ['exponential', 2],
+          ['zoom'],
+          14,
+          4,
+          20,
+          12,
+        ],
       },
       filter: [
         'all',
@@ -26,9 +34,48 @@ export default [
           /**
            * @TOFIX iD uses a mix of x_link and x-link.
            */
-          'tag-highway-motorway_link'
-        ]
-      ]
-    }
-  }
+          'tag-highway-motorway_link',
+        ],
+      ],
+    },
+  },
+  {
+    selectable: false,
+    priority: 1,
+    layer: {
+      id: 'highwayMotorwayCase',
+      type: 'line',
+      source: undefined,
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round',
+      },
+      paint: {
+        'line-color': '#000',
+        'line-opacity': 1,
+
+        'line-width': [
+          'interpolate',
+          ['exponential', 2],
+          ['zoom'],
+          14,
+          6,
+          20,
+          18,
+        ],
+      },
+      filter: [
+        'all',
+        [
+          'in',
+          `${PLUGIN_NAME}--tagsClassType`,
+          'tag-highway-motorway',
+          /**
+           * @TOFIX iD uses a mix of x_link and x-link.
+           */
+          'tag-highway-motorway_link',
+        ],
+      ],
+    },
+  },
 ];
