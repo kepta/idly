@@ -1,6 +1,6 @@
 {
   "name": "jalebi",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "An xperiment editor",
   "main": "index.js",
   "scripts": {
@@ -47,7 +47,7 @@
     "@types/react": "^16.0.34",
     "@types/react-dom": "^16.0.3",
     "@types/react-test-renderer": "^16.0.0",
-    "idly-gl": "^1.3.3",
+    "idly-gl": "^1.3.4",
     "mapbox-gl": "^0.44.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
