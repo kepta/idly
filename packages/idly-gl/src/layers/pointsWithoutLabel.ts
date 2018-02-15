@@ -13,7 +13,7 @@ export default [
       paint: {
         'circle-radius': 6,
         'circle-color': '#eeeeee',
-        'circle-stroke-width': 0.5
+        'circle-stroke-width': 0.5,
       },
       filter: [
         'all',
@@ -22,8 +22,8 @@ export default [
         /**
          * @REVISIT this vertex problem
          */
-        ['!in', `${PLUGIN_NAME}--geometry`, 'vertex'] // OsmGeometry.VERTEX
-      ]
-    }
-  }
+        ['!in', `${PLUGIN_NAME}--geometry`, 'vertex'], // OsmGeometry.VERTEX
+      ],
+    },
+  },
 ];

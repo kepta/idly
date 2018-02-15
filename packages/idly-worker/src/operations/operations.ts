@@ -18,6 +18,8 @@ import {
   WorkerState,
 } from './operationsTypes';
 import { workerSetOsmTiles } from './setOsmTiles/worker';
+import { workerSetMovePointEntry } from './setMovePointEntry/worker';
+import { workerGetMoveNode } from './getMoveNode/worker';
 
 const DEFAULT_STATE: WorkerState = {
   entityTable: entityTableGen(),
@@ -37,6 +39,8 @@ function getStateController(
     //   return workerFetchMap(state)(message.request);
     case GetActions.GetQuadkey:
       return workerGetQuadkey(state)(message.request);
+    case GetActions.GetMoveNode:
+      return workerGetMoveNode(state)(message.request);
     // case GetActions.GetMap:
     //   return workerGetMap(state)(message.request);
 
@@ -64,6 +68,9 @@ function setStateController(
   switch (message.type) {
     case WorkerSetStateActions.SetOsmTiles: {
       return workerSetOsmTiles(state)(message.request);
+    }
+    case WorkerSetStateActions.SetMovePointEntry: {
+      return workerSetMovePointEntry(state)(message.request);
     }
     default: {
       return Promise.resolve(state);

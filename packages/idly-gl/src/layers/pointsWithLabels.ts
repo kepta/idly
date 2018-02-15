@@ -20,21 +20,21 @@ export default [
         'text-offset': [0, 1.5],
         'text-optional': true,
         'text-anchor': 'top',
-        'text-allow-overlap': false
+        'text-allow-overlap': false,
       },
       paint: {
         'text-halo-color': '#ffffff',
         'text-halo-width': 1.5,
-        'text-halo-blur': 0.5
+        'text-halo-blur': 0.5,
       },
       filter: [
         'all',
         ['has', `${PLUGIN_NAME}--icon`],
         ['==', '$type', 'Point'],
-        ['!in', `${PLUGIN_NAME}--geometry`, 'vertex'] // OsmGeometry.VERTEX
-      ]
-    }
-  }
+        ['!in', `${PLUGIN_NAME}--geometry`, 'vertex'], // OsmGeometry.VERTEX
+      ],
+    },
+  },
   // {
   //   selectable: true,
   //   priority: 3,

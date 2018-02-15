@@ -3,6 +3,7 @@ import areaLabels from './areaLabels';
 import highway from './highway';
 import line from './line';
 import lineLabel from './lineLabel';
+import pointsDraggable from './pointsDraggable';
 import pointsWithLabels from './pointsWithLabels';
 import pointsWithoutLabels from './pointsWithoutLabel';
 import rail from './rail';
@@ -18,6 +19,7 @@ const layers = [
   ...lineLabel,
   ...pointsWithLabels,
   ...pointsWithoutLabels,
+  ...pointsDraggable,
 ].sort((a, b) => a.priority - b.priority);
 export default layers;
 

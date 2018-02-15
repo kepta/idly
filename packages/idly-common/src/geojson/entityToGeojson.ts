@@ -8,8 +8,7 @@ import {
 } from '@turf/helpers';
 import { EntityTable } from '../osm/immutableStructures';
 import { Entity, EntityType, Node, OsmGeometry, Way } from '../osm/structures';
-import { OsmElement } from '../state2/osmState';
-import { OsmTable } from '../state2/osmState/osmTable';
+import { Derived, DerivedTable } from '../state2/osmState/derivedTable';
 import { nodePropertiesGenNew } from './nodeProps';
 import { nameSpaceKeys, PLUGIN_NAME } from './onParseEntities';
 import { wayPropertiesGen } from './wayProps';
@@ -38,7 +37,7 @@ export function entityToGeoJson(
 const cache = new WeakMap<any, any>();
 
 export const entityToGeoJsonNew = (
-  elementTable: OsmTable
+  elementTable: DerivedTable
 ): Array<Feature<Point | Polygon | LineString>> => {
   let count = 0;
   const result: Array<Feature<Point | Polygon | LineString>> = [];
@@ -67,7 +66,7 @@ export const entityToGeoJsonNew = (
   return result;
 };
 
-export const entityFeatureProperties = (element: OsmElement): any => {
+export const entityFeatureProperties = (element: Derived): any => {
   if (!element) {
     throw new Error('No element supplied !');
   }
@@ -124,7 +123,7 @@ export function wayCombiner(
 
 export function wayCombinerNew(
   way: Way,
-  table: OsmTable,
+  table: DerivedTable,
   existingProps: {
     readonly 'osm_basic--geometry': OsmGeometry;
     readonly [key: string]: string;
@@ -147,7 +146,7 @@ export function wayCombinerNew(
   };
 }
 export function getCoordsFromTableNew(
-  table: OsmTable,
+  table: DerivedTable,
   nodes: Way['nodes']
 ): number[][] {
   return nodes.map(n => {

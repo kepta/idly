@@ -20,8 +20,9 @@ osm.osmStateAddModifieds(state, l, [n2]);
 
 function addToLog(...entities) {
   let set = new Set(entities.map(r => r.id));
-  self.l = log.logAddEntry(entry)(self.l);
+  self.l = log.logAddEntry(set)(self.l);
 }
+
 function modify(id, foo) {
   const entity = state.getElement(id);
   return {

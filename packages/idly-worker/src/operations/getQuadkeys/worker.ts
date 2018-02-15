@@ -1,16 +1,12 @@
 import { featureCollection } from '@turf/helpers';
-import { entityToGeoJsonNew } from 'idly-common/lib/geojson';
-import { EntityType } from 'idly-common/lib/osm/structures';
+import { entityToGeoJsonNew } from 'idly-osm-to-geojson/lib/entityToGeojson';
 import {
-  OsmElement,
+  OsmState,
   osmStateAddVirgins,
   osmStateCreate,
   osmStateGetVisible,
   osmStateShred,
-} from 'idly-common/lib/state2/osmState';
-import * as osmState from 'idly-common/lib/state2/osmState';
-import * as log from 'idly-common/lib/state2/log';
-import { State } from 'idly-common/lib/state2/state/state';
+} from 'idly-state/lib/osmState';
 import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetQuadkey } from './type';
 
@@ -24,31 +20,31 @@ export function workerGetQuadkey(
     count++;
     console.log('count = ', count);
 
-    const qState: State<OsmElement> = (state as any)._state || osmStateCreate();
+    const qState: OsmState = (state as any)._state || osmStateCreate();
 
     (state as any)._state = qState;
     self.state = qState;
-    self.log = log;
-    self.osm = osmState;
+    // self.log = log;
+    // self.osm = osmState;
     arr.forEach(({ entities, quadkey }) => {
-      osmStateAddVirgins(qState, entities, quadkey);
+      if (!qState[0].has(quadkey)) {
+        osmStateAddVirgins(qState, entities, quadkey);
+      }
     });
     console.time('features');
-    self.visible = osmStateGetVisible(
-      qState,
-      arr.map(r => r.quadkey),
-      self.l || []
-    );
+    self.visible = osmStateGetVisible(qState, arr.map(r => r.quadkey));
     const features = entityToGeoJsonNew(self.visible);
     console.timeEnd('features');
-    console.log('rendering', self.l || []);
-    console.time('featuresC');
+
     const toReturn: GetQuadkey['response'] = featureCollection(features);
 
-    console.timeEnd('featuresC');
-
-    if (count % 5 === 0) {
-      (state as any)._state = osmStateShred(qState, self.l || []);
+    if (qState[0].getElementTable().size >= 12000) {
+      console.log(
+        'size reached high',
+        qState[0].getElementTable().size,
+        'shredding'
+      );
+      (state as any)._state = osmStateShred(qState);
     }
     return JSON.stringify(toReturn);
   };

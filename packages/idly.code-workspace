@@ -14,10 +14,16 @@
 		},
 		{
 			"path": "jalebi"
+		},
+		{
+			"path": "idly-state"
+		},
+		{
+			"path": "idly-osm-to-geojson"
 		}
 	],
 	"settings": {
-		"workbench.editor.labelFormat": "medium"
+		"workbench.editor.labelFormat": "medium",
+		"editor.formatOnSave": true
 	}
-
 }

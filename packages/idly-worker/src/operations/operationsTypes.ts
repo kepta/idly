@@ -12,7 +12,9 @@ import { GetFeaturesOfEntityIds } from './getFeaturesOfEntityIds/type';
 import { GetFeaturesOfShrub } from './getFeaturesOfShrub/type';
 import { GetMap } from './getMap/type';
 import { GetQuadkey } from './getQuadkeys/type';
+import { WorkerSetMovePointEntry } from './setMovePointEntry/type';
 import { WorkerSetOsmTiles } from './setOsmTiles/type';
+import { GetMoveNode } from './getMoveNode/type';
 
 export type TilesDataTable = ImMap<string, Promise<TileData> | undefined>;
 
@@ -60,6 +62,7 @@ export enum GetActions {
   GetMap = 'GET_MAP',
   GetBbox = 'GET_BBOX',
   GetQuadkey = 'GET_QUADKEY',
+  GetMoveNode = 'GET_MOVENODE',
 }
 
 export interface DefaultGetCase {
@@ -75,6 +78,7 @@ export type GetActionTypes =
   | GetMap
   | GetBbox
   | GetQuadkey
+  | GetMoveNode
   | DefaultGetCase;
 
 /**
@@ -90,6 +94,7 @@ export enum WorkerSetStateActions {
   SetOsmTiles = 'SET_OSM_TILES',
   SetHideEntities = 'SET_HIDE_ENTITIES',
   SetDefault = 'SET_DEFAULT',
+  SetMovePointEntry = 'SET_MOVE_POINT_ENTRY',
 }
 
 export interface DefaultSetCase {
@@ -97,6 +102,9 @@ export interface DefaultSetCase {
   readonly request: any;
 }
 
-export type WorkerSetStateActionsType = WorkerSetOsmTiles | DefaultSetCase;
+export type WorkerSetStateActionsType =
+  | WorkerSetOsmTiles
+  | WorkerSetMovePointEntry
+  | DefaultSetCase;
 
 export type WorkerSetResponse = string;
