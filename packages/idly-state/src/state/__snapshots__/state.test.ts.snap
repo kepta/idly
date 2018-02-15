@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`constructing state and basic tests should create with given values 1`] = `
+State {
+  "_elementTable": Map {
+    "n1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n2" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "w1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+  },
+  "_metaTable": Map {},
+  "_quadkeysTable": Map {
+    "123" => Set {
+      "n1",
+      "n2",
+      "w1",
+    },
+  },
+}
+`;
