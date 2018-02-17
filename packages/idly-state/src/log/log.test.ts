@@ -4,9 +4,9 @@ import {
   doesLogHaveNewerOrCurrentVersion,
   Log,
   logAddEntry,
+  logGetBaseIds,
   logGetCurrentIds,
   logGetLatestVersion,
-  logGetBaseIds,
   logRecreate,
 } from './index';
 

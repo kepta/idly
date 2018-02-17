@@ -1,8 +1,16 @@
 import { Identity as I } from 'monet';
 import { mapFilterValuesIntoArray, setAddIterable, setCreate } from '../helper';
-import { Table, tableGet, tableRemove, tableUpdate } from '../table/regular';
+import {
+  ReadonlyTable,
+  Table,
+  tableGet,
+  tableRemove,
+  tableUpdate,
+} from '../table/regular';
 
 export type OneToManyTable<T> = Table<Set<T>>;
+export type ReadonlyOneToManyTable<T> = ReadonlyTable<ReadonlySet<T>>;
+
 export const oneToManyTableCreate = <T>(): OneToManyTable<T> => new Map();
 
 export const oneToManyTableRemove = <T>(

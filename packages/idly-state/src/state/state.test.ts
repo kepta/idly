@@ -2,7 +2,6 @@ import {
   nodeFactory,
   wayFactory,
 } from 'idly-common/lib/osm/entityFactory/index';
-import { relationFactory } from 'idly-common/lib/osm/entityFactory/relationFactory';
 import { Entity } from 'idly-common/lib/osm/structures';
 import { setCreate } from '../helper';
 import { State } from './state';
@@ -25,54 +24,10 @@ const n3 = nodeFactory({
 const n4 = nodeFactory({
   id: 'n4',
 });
-const n5 = nodeFactory({
-  id: 'n5',
-});
-
-const n6 = nodeFactory({
-  id: 'n6',
-});
-
-const n7 = nodeFactory({
-  id: 'n7',
-});
 
 const w1 = wayFactory({
   id: 'w1',
   nodes: ['n1', 'n2'],
-});
-
-const w2 = wayFactory({
-  id: 'w2',
-  nodes: ['n1', 'n3'],
-});
-
-const w3 = wayFactory({
-  id: 'w3',
-  nodes: ['n3', 'n4', 'n5'],
-});
-
-const r1 = relationFactory({
-  id: 'r1',
-  members: [{ id: 'n4', ref: 'n4' }, { id: 'w2', ref: 'w2' }],
-});
-
-const r2 = relationFactory({
-  id: 'r2',
-  members: [
-    { id: 'w1', ref: 'w1' },
-    { id: 'w3', ref: 'w3' },
-    { id: 'n6', ref: 'n6' },
-  ],
-});
-
-const r3 = relationFactory({
-  id: 'r3',
-  members: [
-    { id: 'r1', ref: 'r1' },
-    { id: 'w2', ref: 'w2' },
-    { id: 'n1', ref: 'n1' },
-  ],
 });
 
 const getId = (r: any) => r.id;
@@ -80,8 +35,8 @@ describe('constructing state and basic tests', () => {
   it('should create', () => {
     expect(State.create()).toEqual({
       _elementTable: mapFromObj(),
-      _quadkeysTable: mapFromObj(),
       _metaTable: mapFromObj(),
+      _quadkeysTable: mapFromObj(),
     });
   });
   it('should create with given values', () => {

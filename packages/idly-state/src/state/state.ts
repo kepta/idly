@@ -1,4 +1,4 @@
-import { Table } from '../table';
+import { ReadonlyTable, Table } from '../table';
 import { tableAdd, tableHas } from '../table/regular';
 
 import {
@@ -6,6 +6,7 @@ import {
   quadkeysTableAdd,
   quadkeysTableCreate,
   quadkeysTableFindRelated,
+  ReadonlyQuadkeysTable,
 } from './quadkeysTable';
 
 export class State<T, M = any> {
@@ -33,13 +34,16 @@ export class State<T, M = any> {
     this._quadkeysTable = quadkeysTable;
     this._metaTable = metaTable;
   }
-  public getElementTable() {
+  // the main information related to id
+  public getElementTable(): ReadonlyTable<T> {
     return this._elementTable;
   }
+  // to store any misc information related to id
   public getMetaTable() {
     return this._metaTable;
   }
-  public getQuadkeysTable() {
+  // storing geolocation
+  public getQuadkeysTable(): ReadonlyQuadkeysTable {
     return this._quadkeysTable;
   }
 
@@ -47,17 +51,17 @@ export class State<T, M = any> {
     return this._elementTable.get(id);
   }
 
-  public getIdsByQuadkey(quadkey: string) {
+  public getIdsByQuadkey(quadkey: string): ReadonlySet<string> | undefined {
     return this._quadkeysTable.get(quadkey);
   }
 
-  public has(quadkey: string) {
+  public hasQuadkey(quadkey: string) {
     return this._quadkeysTable.has(quadkey);
   }
 
   // a single element can be on multiple quadkeys, but
   // changing an existing element is disallowed
-  public add(getId: (t: T) => string, elements: T[], quadkey: string) {
+  public add(getId: (t: T) => string, elements: T[], quadkey: string): void {
     elements.forEach(
       e =>
         tableHas(getId(e), this._elementTable) ||
@@ -66,11 +70,11 @@ export class State<T, M = any> {
     quadkeysTableAdd(this._quadkeysTable, elements.map(getId), quadkey);
   }
 
-  public getQuadkey(quadkey: string) {
+  public getQuadkey(quadkey: string): ReadonlySet<string> | undefined {
     return this._quadkeysTable.get(quadkey);
   }
 
-  public getVisible(quadkeys: string[]) {
+  public getVisible(quadkeys: string[]): ReadonlySet<string> {
     return quadkeysTableFindRelated(this._quadkeysTable, quadkeys);
   }
 }

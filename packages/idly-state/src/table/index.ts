@@ -27,4 +27,5 @@ export {
   tableFindKey,
   tableForEach,
   tableCopy,
+  ReadonlyTable,
 } from './regular';

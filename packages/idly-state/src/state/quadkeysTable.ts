@@ -8,9 +8,11 @@ import {
   tableForEach,
   tableRemove,
 } from '../table';
+import { ReadonlyOneToManyTable } from '../table/oneToMany';
 import { tableAdd, tableValues } from '../table/regular';
 
 export type QuadkeysTable = OneToManyTable<string>;
+export type ReadonlyQuadkeysTable = ReadonlyOneToManyTable<string>;
 
 /**
  * All the modifiedIds are stored in the
@@ -39,6 +41,7 @@ export function quadkeysTableAdd(
     return;
   }
 
+  // TOFIX we wanna remove this
   // removes any descendant in favour of the parent quadkey
   removeAllDescendants(t, quadkey);
 
@@ -53,7 +56,9 @@ export function removeAllDescendants(t: QuadkeysTable, quadkey: string) {
   }, t);
 }
 
-export const quadkeysTableCreate = (): QuadkeysTable => oneToManyTableCreate();
+export const quadkeysTableCreate = (
+  q = oneToManyTableCreate<string>()
+): QuadkeysTable => q;
 
 export const quadkeysTableCreateFrom = (t: QuadkeysTable, quadkeys: [string]) =>
   mapFilter((_, k) => quadkeys.indexOf(k) > -1, t);
@@ -64,7 +69,7 @@ export const quadkeysTableFlatten = (t: QuadkeysTable) =>
 export const quadkeysTableFindRelated = (
   t: QuadkeysTable,
   quadkeys: string[]
-): Set<string> =>
+): ReadonlySet<string> =>
   quadkeys.some(q => q === '')
     ? setCreate()
     : iterableFlattenToSet(

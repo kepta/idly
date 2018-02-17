@@ -1,4 +1,5 @@
 export type Table<T> = Map<string, T>;
+export type ReadonlyTable<T> = ReadonlyMap<string, T>;
 
 export const tableCreate = <T>(): Table<T> => new Map<string, T>();
 

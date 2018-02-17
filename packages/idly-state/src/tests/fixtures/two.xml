@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.6.0 (13972 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="40.7613009" minlon="-73.9764404" maxlat="40.7618210" maxlon="-73.9757538"/>
+ <node id="419363837" visible="true" version="1" changeset="1500261" timestamp="2009-06-12T21:55:29Z" user="cityracks" uid="134892" lat="40.7615560" lon="-73.9764173">
+  <tag k="amenity" v="bicycle_parking"/>
+  <tag k="capacity" v="10"/>
+  <tag k="cityracks.housenum" v="33"/>
+  <tag k="cityracks.large" v="2"/>
+  <tag k="cityracks.rackid" v="2562"/>
+  <tag k="cityracks.small" v="0"/>
+  <tag k="cityracks.street" v="W 54th St"/>
+ </node>
+ <node id="1332514696" visible="true" version="3" changeset="22169200" timestamp="2014-05-06T15:45:13Z" user="ediyes" uid="1240849" lat="40.7611952" lon="-73.9759739"/>
+ <node id="1332514702" visible="true" version="3" changeset="22169200" timestamp="2014-05-06T15:45:13Z" user="ediyes" uid="1240849" lat="40.7609567" lon="-73.9761453"/>
+ <node id="1595140628" visible="true" version="3" changeset="22169200" timestamp="2014-05-06T15:45:13Z" user="ediyes" uid="1240849" lat="40.7611418" lon="-73.9765824"/>
+ <node id="1613545751" visible="true" version="3" changeset="22424014" timestamp="2014-05-19T14:19:40Z" user="robgeb" uid="336460" lat="40.7611021" lon="-73.9760405"/>
+ <node id="1613545752" visible="true" version="3" changeset="22424014" timestamp="2014-05-19T14:19:40Z" user="robgeb" uid="336460" lat="40.7611608" lon="-73.9759980"/>
+ <node id="2708095615" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:30Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615269" lon="-73.9762549">
+  <tag k="addr:housenumber" v="11"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+ </node>
+ <node id="2708095664" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615078" lon="-73.9762100">
+  <tag k="addr:housenumber" v="9"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+ </node>
+ <node id="2708095671" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7611826" lon="-73.9754798"/>
+ <node id="2708095673" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614141" lon="-73.9760298"/>
+ <node id="2708095675" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614209" lon="-73.9753062"/>
+ <node id="2708095677" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614384" lon="-73.9755207"/>
+ <node id="2708095679" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614466" lon="-73.9761070"/>
+ <node id="2708095683" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614781" lon="-73.9756151"/>
+ <node id="2708095685" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614806" lon="-73.9761877"/>
+ <node id="2708095687" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614860" lon="-73.9754610"/>
+ <node id="2708095689" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614902" lon="-73.9761807"/>
+ <node id="2708095691" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7614941" lon="-73.9754802"/>
+ <node id="2708095693" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:32Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615338" lon="-73.9755746"/>
+ <node id="2708095694" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615563" lon="-73.9763376"/>
+ <node id="2708095695" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615640" lon="-73.9756813"/>
+ <node id="2708095696" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615744" lon="-73.9757060"/>
+ <node id="2708095697" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615753" lon="-73.9756731"/>
+ <node id="2708095698" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7615900" lon="-73.9764177"/>
+ <node id="2708095701" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616092" lon="-73.9756806"/>
+ <node id="2708095702" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616231" lon="-73.9764965"/>
+ <node id="2708095703" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616289" lon="-73.9764923"/>
+ <node id="2708095704" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616308" lon="-73.9760595"/>
+ <node id="2708095705" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616322" lon="-73.9756983"/>
+ <node id="2708095706" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616327" lon="-73.9765498"/>
+ <node id="2708095707" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616331" lon="-73.9765538"/>
+ <node id="2708095708" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616334" lon="-73.9765417"/>
+ <node id="2708095709" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616339" lon="-73.9758699"/>
+ <node id="2708095710" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616346" lon="-73.9765379"/>
+ <node id="2708095711" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616356" lon="-73.9765612"/>
+ <node id="2708095712" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616369" lon="-73.9760739"/>
+ <node id="2708095713" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616384" lon="-73.9765315"/>
+ <node id="2708095714" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616399" lon="-73.9765670"/>
+ <node id="2708095715" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616426" lon="-73.9765691"/>
+ <node id="2708095717" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616436" lon="-73.9765272"/>
+ <node id="2708095718" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616466" lon="-73.9765707"/>
+ <node id="2708095719" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616517" lon="-73.9765712"/>
+ <node id="2708095720" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616560" lon="-73.9757550"/>
+ <node id="2708095721" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616576" lon="-73.9765689"/>
+ <node id="2708095722" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616578" lon="-73.9766098"/>
+ <node id="2708095723" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616582" lon="-73.9766014"/>
+ <node id="2708095724" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616593" lon="-73.9765974"/>
+ <node id="2708095725" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616598" lon="-73.9766177"/>
+ <node id="2708095726" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616602" lon="-73.9765668"/>
+ <node id="2708095727" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616616" lon="-73.9766212"/>
+ <node id="2708095729" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616630" lon="-73.9765906"/>
+ <node id="2708095730" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616662" lon="-73.9761437"/>
+ <node id="2708095731" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616663" lon="-73.9759471"/>
+ <node id="2708095732" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616665" lon="-73.9766265"/>
+ <node id="2708095733" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616684" lon="-73.9765861"/>
+ <node id="2708095734" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:33Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616726" lon="-73.9766291"/>
+ <node id="2708095736" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616789" lon="-73.9766285"/>
+ <node id="2708095737" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616791" lon="-73.9760046"/>
+ <node id="2708095738" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616842" lon="-73.9759341"/>
+ <node id="2708095739" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616847" lon="-73.9766248"/>
+ <node id="2708095740" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7616855" lon="-73.9760198"/>
+ <node id="2708095741" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617005" lon="-73.9762327"/>
+ <node id="2708095742" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617058" lon="-73.9759852"/>
+ <node id="2708095744" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617214" lon="-73.9756077"/>
+ <node id="2708095745" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617233" lon="-73.9759056"/>
+ <node id="2708095746" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617249" lon="-73.9761010"/>
+ <node id="2708095747" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617299" lon="-73.9767812"/>
+ <node id="2708095748" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617303" lon="-73.9767729"/>
+ <node id="2708095749" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617317" lon="-73.9762100"/>
+ <node id="2708095750" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617319" lon="-73.9767892"/>
+ <node id="2708095751" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617330" lon="-73.9767652"/>
+ <node id="2708095752" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617342" lon="-73.9763128"/>
+ <node id="2708095753" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617360" lon="-73.9767957"/>
+ <node id="2708095754" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617376" lon="-73.9767595"/>
+ <node id="2708095755" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617386" lon="-73.9762263"/>
+ <node id="2708095756" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617405" lon="-73.9767575"/>
+ <node id="2708095757" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617416" lon="-73.9767997"/>
+ <node id="2708095758" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617479" lon="-73.9768007"/>
+ <node id="2708095759" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617506" lon="-73.9759706"/>
+ <node id="2708095760" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617535" lon="-73.9756841"/>
+ <node id="2708095761" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617541" lon="-73.9767986"/>
+ <node id="2708095762" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617543" lon="-73.9768344"/>
+ <node id="2708095763" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617546" lon="-73.9768425"/>
+ <node id="2708095764" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617549" lon="-73.9768304"/>
+ <node id="2708095765" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617555" lon="-73.9764001"/>
+ <node id="2708095766" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617569" lon="-73.9767965"/>
+ <node id="2708095767" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617571" lon="-73.9768499"/>
+ <node id="2708095768" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617577" lon="-73.9768232"/>
+ <node id="2708095769" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617598" lon="-73.9768202"/>
+ <node id="2708095770" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617614" lon="-73.9768557"/>
+ <node id="2708095771" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617616" lon="-73.9761882"/>
+ <node id="2708095772" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617641" lon="-73.9768578"/>
+ <node id="2708095773" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617651" lon="-73.9768159"/>
+ <node id="2708095775" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617669" lon="-73.9763905"/>
+ <node id="2708095776" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:34Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617673" lon="-73.9763915"/>
+ <node id="2708095777" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617676" lon="-73.9760110"/>
+ <node id="2708095778" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617701" lon="-73.9768599"/>
+ <node id="2708095779" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617762" lon="-73.9768591"/>
+ <node id="2708095780" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617817" lon="-73.9768556"/>
+ <node id="2708095782" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617885" lon="-73.9760608"/>
+ <node id="2708095783" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617932" lon="-73.9764898"/>
+ <node id="2708095784" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7617961" lon="-73.9768898"/>
+ <node id="2708095787" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618042" lon="-73.9760981"/>
+ <node id="2708095788" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618052" lon="-73.9760974"/>
+ <node id="2708095790" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618140" lon="-73.9759772"/>
+ <node id="2708095791" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618213" lon="-73.9761355"/>
+ <node id="2708095792" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618243" lon="-73.9760016"/>
+ <node id="2708095793" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618295" lon="-73.9755290"/>
+ <node id="2708095794" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618302" lon="-73.9764629"/>
+ <node id="2708095795" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618350" lon="-73.9760270"/>
+ <node id="2708095797" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618489" lon="-73.9763308"/>
+ <node id="2708095799" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618681" lon="-73.9761015"/>
+ <node id="2708095801" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618754" lon="-73.9768321"/>
+ <node id="2708095802" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618779" lon="-73.9761249"/>
+ <node id="2708095804" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618859" lon="-73.9767067"/>
+ <node id="2708095807" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7618935" lon="-73.9756810"/>
+ <node id="2708095809" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7619218" lon="-73.9766805"/>
+ <node id="2708095810" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7619238" lon="-73.9767968"/>
+ <node id="2708095812" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7619259" lon="-73.9757582"/>
+ <node id="2708095817" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7619533" lon="-73.9758231"/>
+ <node id="2708095821" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7619805" lon="-73.9758879"/>
+ <node id="2708095827" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:35Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7620069" lon="-73.9759506"/>
+ <node id="2708095829" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:36Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7620328" lon="-73.9760122"/>
+ <node id="2708095839" visible="true" version="2" changeset="44950408" timestamp="2017-01-06T11:29:47Z" user="robgeb" uid="336460" lat="40.7620716" lon="-73.9761687"/>
+ <node id="2708095847" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:36Z" user="lxbarth_nycbuildings" uid="1764427" lat="40.7620923" lon="-73.9761536"/>
+ <node id="2827292919" visible="true" version="2" changeset="22169200" timestamp="2014-05-06T15:45:15Z" user="ediyes" uid="1240849" lat="40.7611044" lon="-73.9765000"/>
+ <node id="2827292923" visible="true" version="1" changeset="22049399" timestamp="2014-04-30T18:43:43Z" user="Rub21_nycbuildings" uid="1781294" lat="40.7611592" lon="-73.9765139"/>
+ <node id="2827292924" visible="true" version="1" changeset="22049399" timestamp="2014-04-30T18:43:43Z" user="Rub21_nycbuildings" uid="1781294" lat="40.7611771" lon="-73.9765570"/>
+ <node id="2827292928" visible="true" version="1" changeset="22049399" timestamp="2014-04-30T18:43:43Z" user="Rub21_nycbuildings" uid="1781294" lat="40.7613597" lon="-73.9763698"/>
+ <node id="2827292934" visible="true" version="1" changeset="22049399" timestamp="2014-04-30T18:43:44Z" user="Rub21_nycbuildings" uid="1781294" lat="40.7616190" lon="-73.9769666"/>
+ <node id="2868513592" visible="true" version="1" changeset="22424014" timestamp="2014-05-19T14:19:39Z" user="robgeb" uid="336460" lat="40.7610027" lon="-73.9761125"/>
+ <node id="4592413448" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7617274" lon="-73.9762351"/>
+ <node id="4592413449" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7617653" lon="-73.9762069"/>
+ <node id="4592413450" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7617866" lon="-73.9763762"/>
+ <node id="4592413451" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7618036" lon="-73.9761790"/>
+ <node id="4592413452" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7618181" lon="-73.9761684"/>
+ <node id="4592413453" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7618248" lon="-73.9763483"/>
+ <node id="4592413454" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7618631" lon="-73.9763205"/>
+ <node id="4592413455" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7618777" lon="-73.9763099"/>
+ <node id="4592413456" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7619038" lon="-73.9761064"/>
+ <node id="4592413457" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7619178" lon="-73.9760959"/>
+ <node id="4592413458" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7619563" lon="-73.9760679"/>
+ <node id="4592413459" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7619632" lon="-73.9762476"/>
+ <node id="4592413460" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7619773" lon="-73.9762373"/>
+ <node id="4592413461" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7619945" lon="-73.9760400"/>
+ <node id="4592413462" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7620158" lon="-73.9762093"/>
+ <node id="4592413463" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460" lat="40.7620541" lon="-73.9761815"/>
+ <way id="265149192" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:45Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095709"/>
+  <nd ref="2708095731"/>
+  <nd ref="2708095738"/>
+  <nd ref="2708095745"/>
+  <nd ref="2708095812"/>
+  <nd ref="2708095807"/>
+  <nd ref="2708095709"/>
+  <tag k="addr:housenumber" v="10"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 55th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="19.8"/>
+  <tag k="nycdoitt:bin" v="1034802"/>
+ </way>
+ <way id="265149195" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:46Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095745"/>
+  <nd ref="2708095759"/>
+  <nd ref="2708095817"/>
+  <nd ref="2708095812"/>
+  <nd ref="2708095745"/>
+  <tag k="addr:housenumber" v="12"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 55th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="22.8"/>
+  <tag k="nycdoitt:bin" v="1034803"/>
+ </way>
+ <way id="265149198" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:46Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095694"/>
+  <nd ref="2708095698"/>
+  <nd ref="2708095752"/>
+  <nd ref="2708095741"/>
+  <nd ref="2708095694"/>
+  <tag k="addr:housenumber" v="13"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="24.6"/>
+  <tag k="nycdoitt:bin" v="1034796"/>
+ </way>
+ <way id="265149199" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:46Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095759"/>
+  <nd ref="2708095777"/>
+  <nd ref="2708095790"/>
+  <nd ref="2708095792"/>
+  <nd ref="2708095821"/>
+  <nd ref="2708095817"/>
+  <nd ref="2708095759"/>
+  <tag k="addr:housenumber" v="14"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 55th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="22.6"/>
+  <tag k="nycdoitt:bin" v="1034804"/>
+ </way>
+ <way id="265149201" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:46Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095752"/>
+  <nd ref="2708095698"/>
+  <nd ref="2708095702"/>
+  <nd ref="2708095703"/>
+  <nd ref="2708095765"/>
+  <nd ref="2708095776"/>
+  <nd ref="2708095775"/>
+  <nd ref="2708095752"/>
+  <tag k="addr:housenumber" v="15"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="19.5"/>
+  <tag k="nycdoitt:bin" v="1034795"/>
+ </way>
+ <way id="265149204" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:47Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095792"/>
+  <nd ref="2708095795"/>
+  <nd ref="2708095782"/>
+  <nd ref="2708095787"/>
+  <nd ref="2708095788"/>
+  <nd ref="2708095827"/>
+  <nd ref="2708095821"/>
+  <nd ref="2708095792"/>
+  <tag k="addr:housenumber" v="16"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 55th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="22.9"/>
+  <tag k="nycdoitt:bin" v="1034805"/>
+ </way>
+ <way id="265149207" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:47Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095703"/>
+  <nd ref="2708095717"/>
+  <nd ref="2708095713"/>
+  <nd ref="2708095710"/>
+  <nd ref="2708095708"/>
+  <nd ref="2708095706"/>
+  <nd ref="2708095707"/>
+  <nd ref="2708095711"/>
+  <nd ref="2708095714"/>
+  <nd ref="2708095715"/>
+  <nd ref="2708095718"/>
+  <nd ref="2708095719"/>
+  <nd ref="2708095721"/>
+  <nd ref="2708095726"/>
+  <nd ref="2708095733"/>
+  <nd ref="2708095729"/>
+  <nd ref="2708095724"/>
+  <nd ref="2708095723"/>
+  <nd ref="2708095722"/>
+  <nd ref="2708095725"/>
+  <nd ref="2708095727"/>
+  <nd ref="2708095732"/>
+  <nd ref="2708095734"/>
+  <nd ref="2708095736"/>
+  <nd ref="2708095739"/>
+  <nd ref="2708095756"/>
+  <nd ref="2708095754"/>
+  <nd ref="2708095751"/>
+  <nd ref="2708095748"/>
+  <nd ref="2708095747"/>
+  <nd ref="2708095750"/>
+  <nd ref="2708095753"/>
+  <nd ref="2708095757"/>
+  <nd ref="2708095758"/>
+  <nd ref="2708095761"/>
+  <nd ref="2708095766"/>
+  <nd ref="2708095773"/>
+  <nd ref="2708095769"/>
+  <nd ref="2708095768"/>
+  <nd ref="2708095764"/>
+  <nd ref="2708095762"/>
+  <nd ref="2708095763"/>
+  <nd ref="2708095767"/>
+  <nd ref="2708095770"/>
+  <nd ref="2708095772"/>
+  <nd ref="2708095778"/>
+  <nd ref="2708095779"/>
+  <nd ref="2708095780"/>
+  <nd ref="2708095784"/>
+  <nd ref="2708095801"/>
+  <nd ref="2708095810"/>
+  <nd ref="2708095804"/>
+  <nd ref="2708095809"/>
+  <nd ref="2708095794"/>
+  <nd ref="2708095783"/>
+  <nd ref="2708095765"/>
+  <nd ref="2708095703"/>
+  <tag k="addr:housenumber" v="17"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="41.6"/>
+  <tag k="nycdoitt:bin" v="1080440"/>
+ </way>
+ <way id="265149209" visible="true" version="2" changeset="44950408" timestamp="2017-01-06T11:29:46Z" user="robgeb" uid="336460">
+  <nd ref="2708095788"/>
+  <nd ref="2708095791"/>
+  <nd ref="2708095799"/>
+  <nd ref="2708095802"/>
+  <nd ref="4592413456"/>
+  <nd ref="4592413457"/>
+  <nd ref="4592413458"/>
+  <nd ref="4592413461"/>
+  <nd ref="2708095829"/>
+  <nd ref="2708095827"/>
+  <nd ref="2708095788"/>
+  <tag k="addr:housenumber" v="18"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 55th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="19.4"/>
+  <tag k="nycdoitt:bin" v="1034806"/>
+ </way>
+ <way id="265149213" visible="true" version="2" changeset="44950408" timestamp="2017-01-06T11:29:47Z" user="robgeb" uid="336460">
+  <nd ref="2708095755"/>
+  <nd ref="2708095749"/>
+  <nd ref="2708095741"/>
+  <nd ref="2708095752"/>
+  <nd ref="2708095775"/>
+  <nd ref="4592413450"/>
+  <nd ref="4592413453"/>
+  <nd ref="2708095797"/>
+  <nd ref="4592413454"/>
+  <nd ref="4592413455"/>
+  <nd ref="4592413459"/>
+  <nd ref="4592413460"/>
+  <nd ref="4592413462"/>
+  <nd ref="4592413463"/>
+  <nd ref="2708095839"/>
+  <nd ref="2708095847"/>
+  <nd ref="2708095829"/>
+  <nd ref="4592413461"/>
+  <nd ref="4592413458"/>
+  <nd ref="4592413457"/>
+  <nd ref="4592413456"/>
+  <nd ref="2708095802"/>
+  <nd ref="4592413452"/>
+  <nd ref="4592413451"/>
+  <nd ref="4592413449"/>
+  <nd ref="2708095755"/>
+  <tag k="addr:city" v="New York"/>
+  <tag k="addr:housenumber" v="20"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 55th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="nycdoitt:bin" v="1034807"/>
+ </way>
+ <way id="265149262" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:54Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095673"/>
+  <nd ref="2708095679"/>
+  <nd ref="2708095731"/>
+  <nd ref="2708095709"/>
+  <nd ref="2708095673"/>
+  <tag k="addr:housenumber" v="5"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="26.4"/>
+  <tag k="nycdoitt:bin" v="1034799"/>
+ </way>
+ <way id="265149279" visible="true" version="2" changeset="53670294" timestamp="2017-11-10T15:53:20Z" user="daniel_solow" uid="1954307">
+  <nd ref="2708095679"/>
+  <nd ref="2708095685"/>
+  <nd ref="2708095689"/>
+  <nd ref="2708095712"/>
+  <nd ref="2708095704"/>
+  <nd ref="2708095740"/>
+  <nd ref="2708095737"/>
+  <nd ref="2708095742"/>
+  <nd ref="2708095738"/>
+  <nd ref="2708095731"/>
+  <nd ref="2708095679"/>
+  <tag k="addr:city" v="New York"/>
+  <tag k="addr:housenumber" v="7"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:state" v="NY"/>
+  <tag k="addr:street" v="West 54th Street"/>
+  <tag k="architect" v="John H. Duncan"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="22.4"/>
+  <tag k="name" v="Lehman Art House"/>
+  <tag k="nycdoitt:bin" v="1034798"/>
+ </way>
+ <way id="265149286" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:58Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095744"/>
+  <nd ref="2708095760"/>
+  <nd ref="2708095720"/>
+  <nd ref="2708095705"/>
+  <nd ref="2708095701"/>
+  <nd ref="2708095696"/>
+  <nd ref="2708095695"/>
+  <nd ref="2708095697"/>
+  <nd ref="2708095693"/>
+  <nd ref="2708095683"/>
+  <nd ref="2708095677"/>
+  <nd ref="2708095691"/>
+  <nd ref="2708095687"/>
+  <nd ref="2708095675"/>
+  <nd ref="2708095671"/>
+  <nd ref="2708095673"/>
+  <nd ref="2708095709"/>
+  <nd ref="2708095807"/>
+  <nd ref="2708095793"/>
+  <nd ref="2708095744"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="45.9"/>
+  <tag k="nycdoitt:bin" v="1034800"/>
+ </way>
+ <way id="265149291" visible="true" version="1" changeset="20999114" timestamp="2014-03-09T04:22:58Z" user="lxbarth_nycbuildings" uid="1764427">
+  <nd ref="2708095689"/>
+  <nd ref="2708095694"/>
+  <nd ref="2708095741"/>
+  <nd ref="2708095749"/>
+  <nd ref="2708095771"/>
+  <nd ref="2708095746"/>
+  <nd ref="2708095730"/>
+  <nd ref="2708095712"/>
+  <nd ref="2708095689"/>
+  <tag k="building" v="yes"/>
+  <tag k="height" v="25.3"/>
+  <tag k="nycdoitt:bin" v="1034797"/>
+ </way>
+ <way id="278346550" visible="true" version="3" changeset="22424014" timestamp="2014-05-19T14:19:39Z" user="robgeb" uid="336460">
+  <nd ref="2827292919"/>
+  <nd ref="1595140628"/>
+  <nd ref="2827292924"/>
+  <nd ref="2827292923"/>
+  <nd ref="2827292928"/>
+  <nd ref="1332514696"/>
+  <nd ref="1613545752"/>
+  <nd ref="1613545751"/>
+  <nd ref="2868513592"/>
+  <nd ref="1332514702"/>
+  <nd ref="2827292919"/>
+  <tag k="addr:housenumber" v="4"/>
+  <tag k="addr:postcode" v="10019"/>
+  <tag k="addr:street" v="West 54th Street"/>
+  <tag k="building" v="yes"/>
+  <tag k="building:colour" v="#5A5F65"/>
+  <tag k="building:part" v="yes"/>
+  <tag k="height" v="25"/>
+  <tag k="nycdoitt:bin" v="1081127"/>
+  <tag k="roof:material" v="concrete"/>
+  <tag k="roof:shape" v="flat"/>
+ </way>
+ <way id="282907126" visible="true" version="1" changeset="22424014" timestamp="2014-05-19T14:17:59Z" user="robgeb" uid="336460">
+  <nd ref="2827292934"/>
+  <nd ref="2827292928"/>
+  <tag k="barrier" v="wall"/>
+  <tag k="height" v="5"/>
+ </way>
+ <way id="464085862" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:45Z" user="robgeb" uid="336460">
+  <nd ref="4592413462"/>
+  <nd ref="4592413458"/>
+  <nd ref="4592413457"/>
+  <nd ref="4592413456"/>
+  <nd ref="2708095802"/>
+  <nd ref="4592413452"/>
+  <nd ref="4592413449"/>
+  <nd ref="4592413453"/>
+  <nd ref="2708095797"/>
+  <nd ref="4592413454"/>
+  <nd ref="4592413455"/>
+  <nd ref="4592413459"/>
+  <nd ref="4592413460"/>
+  <nd ref="4592413462"/>
+  <tag k="building:colour" v="#C5A98B"/>
+  <tag k="building:levels" v="13"/>
+  <tag k="building:part" v="yes"/>
+  <tag k="height" v="44.6"/>
+  <tag k="roof:material" v="concrete"/>
+  <tag k="roof:shape" v="flat"/>
+ </way>
+ <way id="464085864" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:46Z" user="robgeb" uid="336460">
+  <nd ref="4592413459"/>
+  <nd ref="4592413456"/>
+  <nd ref="2708095802"/>
+  <nd ref="4592413452"/>
+  <nd ref="4592413455"/>
+  <nd ref="4592413459"/>
+  <tag k="building:colour" v="#C5A98B"/>
+  <tag k="building:part" v="yes"/>
+  <tag k="height" v="54.3"/>
+  <tag k="min_height" v="48"/>
+  <tag k="roof:colour" v="#A6BDA6"/>
+  <tag k="roof:height" v="6.3"/>
+  <tag k="roof:material" v="copper"/>
+  <tag k="roof:orientation" v="along"/>
+  <tag k="roof:shape" v="round"/>
+ </way>
+ <way id="464085865" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:46Z" user="robgeb" uid="336460">
+  <nd ref="4592413453"/>
+  <nd ref="4592413449"/>
+  <nd ref="2708095755"/>
+  <nd ref="4592413448"/>
+  <nd ref="4592413450"/>
+  <nd ref="4592413453"/>
+  <tag k="building:colour" v="#C5A98B"/>
+  <tag k="building:levels" v="12"/>
+  <tag k="building:part" v="yes"/>
+  <tag k="height" v="41.1"/>
+  <tag k="roof:material" v="concrete"/>
+  <tag k="roof:shape" v="flat"/>
+ </way>
+ <way id="464085867" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:46Z" user="robgeb" uid="336460">
+  <nd ref="4592413450"/>
+  <nd ref="2708095775"/>
+  <nd ref="2708095752"/>
+  <nd ref="2708095741"/>
+  <nd ref="2708095749"/>
+  <nd ref="2708095755"/>
+  <nd ref="4592413448"/>
+  <nd ref="4592413450"/>
+  <tag k="building:colour" v="#C5A98B"/>
+  <tag k="building:levels" v="6"/>
+  <tag k="building:part" v="yes"/>
+  <tag k="height" v="20.6"/>
+  <tag k="roof:material" v="concrete"/>
+  <tag k="roof:shape" v="flat"/>
+ </way>
+ <way id="464085868" visible="true" version="1" changeset="44950408" timestamp="2017-01-06T11:29:46Z" user="robgeb" uid="336460">
+  <nd ref="4592413460"/>
+  <nd ref="4592413459"/>
+  <nd ref="4592413455"/>
+  <nd ref="4592413454"/>
+  <nd ref="4592413451"/>
+  <nd ref="4592413452"/>
+  <nd ref="2708095802"/>
+  <nd ref="4592413456"/>
+  <nd ref="4592413457"/>
+  <nd ref="4592413460"/>
+  <tag k="building:colour" v="#C5A98B"/>
+  <tag k="building:levels" v="14"/>
+  <tag k="building:part" v="yes"/>
+  <tag k="height" v="48"/>
+  <tag k="min_height" v="44.6"/>
+  <tag k="roof:material" v="concrete"/>
+  <tag k="roof:shape" v="flat"/>
+ </way>
+</osm>

@@ -1,18 +1,18 @@
-import * as R from 'ramda';
 import { nodeFactory } from 'idly-common/lib/osm/entityFactory/nodeFactory';
 import { relationFactory } from 'idly-common/lib/osm/entityFactory/relationFactory';
 import { wayFactory } from 'idly-common/lib/osm/entityFactory/wayFactory';
 import { Entity } from 'idly-common/lib/osm/structures';
+import * as R from 'ramda';
 
 import { setCreate } from '../helper';
 import {
   osmStateAddModifieds,
   osmStateAddVirgins,
   osmStateCreate,
-  osmStateGetVisible,
-  osmStateGetNextId,
-  osmStateShred,
   osmStateGetEntity,
+  osmStateGetNextId,
+  osmStateGetVisible,
+  osmStateShred,
 } from './index';
 const mapFromObj = (o: any): Map<string, any> =>
   Object.keys(o).reduce((prev, k) => {
@@ -31,9 +31,9 @@ const n3 = nodeFactory({
 const n4 = nodeFactory({
   id: 'n4',
 });
-const n5 = nodeFactory({
-  id: 'n5',
-});
+// const n5 = nodeFactory({
+//   id: 'n5',
+// });
 
 // const n6 = nodeFactory({
 //   id: 'n6',
@@ -53,33 +53,33 @@ const w2 = wayFactory({
   nodes: ['n1', 'n3'],
 });
 
-const w3 = wayFactory({
-  id: 'w3',
-  nodes: ['n3', 'n4', 'n5'],
-});
+// const w3 = wayFactory({
+//   id: 'w3',
+//   nodes: ['n3', 'n4', 'n5'],
+// });
 
 const r1 = relationFactory({
   id: 'r1',
   members: [{ id: 'n4', ref: 'n4' }, { id: 'w2', ref: 'w2' }],
 });
 
-const r2 = relationFactory({
-  id: 'r2',
-  members: [
-    { id: 'w1', ref: 'w1' },
-    { id: 'w3', ref: 'w3' },
-    { id: 'n6', ref: 'n6' },
-  ],
-});
+// const r2 = relationFactory({
+//   id: 'r2',
+//   members: [
+//     { id: 'w1', ref: 'w1' },
+//     { id: 'w3', ref: 'w3' },
+//     { id: 'n6', ref: 'n6' },
+//   ],
+// });
 
-const r3 = relationFactory({
-  id: 'r3',
-  members: [
-    { id: 'r1', ref: 'r1' },
-    { id: 'w2', ref: 'w2' },
-    { id: 'n1', ref: 'n1' },
-  ],
-});
+// const r3 = relationFactory({
+//   id: 'r3',
+//   members: [
+//     { id: 'r1', ref: 'r1' },
+//     { id: 'w2', ref: 'w2' },
+//     { id: 'n1', ref: 'n1' },
+//   ],
+// });
 
 const dummyElement = (
   entity: Entity,
@@ -91,8 +91,8 @@ const dummyElement = (
   parentWays,
 });
 
-describe('basic additions', () => {
-  it('adds entities', () => {
+describe('Adds virgin entities', () => {
+  it('should handle empty quadkey', () => {
     const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2], '');
 
@@ -101,10 +101,11 @@ describe('basic additions', () => {
     );
   });
 
-  it('adds parentways', () => {
+  it('should handle sibbling quadkeys, 1', () => {
     const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2], '13');
     osmStateAddVirgins(state, [w1], '12');
+
     expect(osmStateGetVisible(state, ['1'])).toEqual(
       new Map([
         ['n1', dummyElement(n1, setCreate(['w1']))],
@@ -114,7 +115,7 @@ describe('basic additions', () => {
     );
   });
 
-  it('adds everything correctly', () => {
+  it('should handle sibbling quadkeys, 2', () => {
     const state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2, r1, n4], '123');
     osmStateAddVirgins(state, [n3, w2, n1, w1, n4], '121');
@@ -123,78 +124,69 @@ describe('basic additions', () => {
   });
 });
 
-describe('osmStateGetVisible', () => {
-  describe('series of operations', () => {
-    const baseSetup = () => {
-      const s = osmStateCreate();
-      osmStateAddVirgins(s, [n1, n2, w1], '123');
-      return s;
-    };
+describe('Get the visible entities', () => {
+  describe('series of modified entities addition', () => {
+    let state = osmStateCreate();
 
-    const state1 = baseSetup();
+    it('should add virgins at different quadkeys', () => {
+      osmStateAddVirgins(state, [n1, n2, w1], '123');
 
-    const n1Hash0 = nodeFactory({
-      id: 'n1#0',
+      osmStateAddVirgins(state, [n3, n4], '121');
+
+      expect(state).toMatchSnapshot();
     });
 
-    const n2Hash0 = nodeFactory({
-      id: 'n2#0',
+    it('should add modifieds', () => {
+      const n1Hash0 = nodeFactory({
+        id: 'n1#0',
+      });
+
+      const n2Hash0 = nodeFactory({
+        id: 'n2#0',
+      });
+      state = osmStateAddModifieds(state, [n1Hash0, n2Hash0]);
+
+      osmStateAddVirgins(state, [w2, r1], '33');
+
+      expect(state).toMatchSnapshot();
     });
-
-    osmStateAddVirgins(state1, [n3, n4], '121');
-
-    expect(state1[0].getElementTable()).toMatchSnapshot();
-    expect(state1[0].getQuadkeysTable()).toMatchSnapshot();
-
-    const state2 = osmStateAddModifieds(state1, [n1Hash0, n2Hash0]);
-
-    expect(state2[0].getElementTable()).toMatchSnapshot();
-    expect(state2[0].getQuadkeysTable()).toMatchSnapshot();
-
-    osmStateAddVirgins(state2, [w2, r1], '33');
-
-    expect(state2[0].getElementTable()).toMatchSnapshot();
-    expect(state2[0].getQuadkeysTable()).toMatchSnapshot();
-
-    const n3Hash0 = nodeFactory({
-      id: 'n3#0',
-    });
-
-    const n1Hash1 = nodeFactory({
-      id: 'n1#1',
-    });
-
-    const r1Hash0 = relationFactory({
-      id: 'r1#0',
-    });
-
-    const state3 = osmStateAddModifieds(state2, [n3Hash0, n1Hash1, r1Hash0]);
-
-    expect(state3[0].getElementTable()).toMatchSnapshot();
-    expect(state3[0].getQuadkeysTable()).toMatchSnapshot();
 
     it('should add related entities not in the quadkey', () => {
-      expect(
-        (osmStateGetVisible(state3, ['33']) as any).get('n1').parentWays
-      ).toEqual(setCreate(['w2']));
-      expect(osmStateGetVisible(state3, ['33']).get('n3')).toEqual(
-        dummyElement(n3, setCreate(['w2']))
-      );
+      const n3Hash0 = nodeFactory({
+        id: 'n3#0',
+      });
+      const n1Hash1 = nodeFactory({
+        id: 'n1#1',
+      });
+      const r1Hash0 = relationFactory({
+        id: 'r1#0',
+      });
+
+      state = osmStateAddModifieds(state, [n3Hash0, n1Hash1, r1Hash0]);
+
+      const nn1: any = osmStateGetVisible(state, ['33']).get('n1');
+      expect(nn1.parentWays).toEqual(setCreate(['w2']));
+      expect(nn1.parentRelations).toEqual(setCreate());
+
+      const nn3: any = osmStateGetVisible(state, ['33']).get('n3');
+      expect(nn3.parentWays).toEqual(setCreate(['w2']));
+      expect(nn3.parentRelations).toEqual(setCreate());
     });
 
-    expect(osmStateGetVisible(state3, ['']).keys()).toMatchSnapshot();
-    expect(osmStateGetVisible(state3, ['33'])).toMatchSnapshot();
-    expect(osmStateGetVisible(state3, ['121'])).toMatchSnapshot();
-
-    const r1Hash1 = relationFactory({
-      id: 'r1#1',
+    it('should get correct visibles of different quadkeys', () => {
+      expect(osmStateGetVisible(state, ['']).keys()).toMatchSnapshot();
+      expect(osmStateGetVisible(state, ['33'])).toMatchSnapshot();
+      expect(osmStateGetVisible(state, ['121'])).toMatchSnapshot();
     });
 
-    const state4 = osmStateAddModifieds(state3, [r1Hash1]);
-
-    expect([...state4[0].getElementTable().keys()]).toMatchSnapshot();
-
-    expect(osmStateGetVisible(state4, ['33']).has(r1Hash1.id)).toBe(true);
+    it('should add a modified relation', () => {
+      const r1Hash1 = relationFactory({
+        id: 'r1#1',
+      });
+      const state4 = osmStateAddModifieds(state, [r1Hash1]);
+      expect(osmStateGetVisible(state4, ['33']).has(r1Hash1.id)).toBe(true);
+      expect(state4).toMatchSnapshot();
+    });
   });
 });
 
@@ -226,27 +218,6 @@ describe('stateAddModifieds', () => {
 
     expect(state2).toEqual(osmStateAddModifieds(baseSetup(), [n1Hash0]));
   });
-
-  it('should throw error when log and modified entities dont match', () => {
-    const baseSetup = () => {
-      const s = osmStateCreate();
-      osmStateAddVirgins(s, [n1, n2, w1], '123');
-      return s;
-    };
-
-    const state = baseSetup();
-    const n1Hash0 = nodeFactory({
-      id: 'n1#0',
-    });
-    const n2Hash0 = nodeFactory({
-      id: 'n2#0',
-    });
-
-    const w1Hash0 = wayFactory({
-      id: 'w1#0',
-      nodes: [n1Hash0.id, n2Hash0.id],
-    });
-  });
 });
 
 describe('osmStateGetNextId', () => {
@@ -255,6 +226,7 @@ describe('osmStateGetNextId', () => {
     osmStateAddVirgins(s, [n1, n2, w1], '123');
     return s;
   };
+
   it('should generate id', () => {
     let state = baseSetup();
     const n1Hash0 = nodeFactory({
@@ -300,6 +272,7 @@ describe('osmStateGetNextId', () => {
     expect(osmStateGetNextId(state1, 'n1#-1')).toBe('n1#1');
     expect(osmStateGetNextId(state1, 'n1#2')).toBe('n1#1');
   });
+
   it('handles branched states', () => {
     const baseState = baseSetup();
 
@@ -394,10 +367,11 @@ describe('osmStateShred', () => {
       })
     );
 
-    expect([...state[0].getElementTable().keys()]).toEqual(['n1', 'n1#0']);
+    expect([...state[0].getElementTable().keys()]).toEqual(['n1#0', 'n1']);
     expect(osmStateGetVisible(state, ['', '123']).size).toBe(1);
     expect(osmStateGetVisible(state, ['', '123'])).toMatchSnapshot();
   });
+
   it('should not delete nodes of modified ways', () => {
     let state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2, n3, w1, n4], '123');
@@ -422,6 +396,7 @@ describe('osmStateShred', () => {
   it('should not delete nodes of nonlatest modified ways', () => {
     let state = osmStateCreate();
     osmStateAddVirgins(state, [n1, n2, n3, w1, n4], '123');
+
     const w1Hash0 = wayFactory({
       id: 'w1#0',
       nodes: ['n3', 'n4'],
@@ -436,6 +411,23 @@ describe('osmStateShred', () => {
     expect(osmStateGetEntity(state, 'n4')).toBe(n4);
     expect(osmStateGetEntity(state, 'w1')).toBe(w1);
     expect(osmStateGetEntity(state, 'w1#0')).toBe(w1Hash0);
+
+    expect(osmStateGetVisible(state, ['', '123'])).toMatchSnapshot();
+
+    const w1Hash1 = wayFactory({
+      id: 'w1#1',
+      nodes: ['n1'],
+    });
+
+    state = osmStateAddModifieds(state, [w1Hash1]);
+    state = osmStateShred(state);
+    expect(osmStateGetEntity(state, 'n1')).toBe(n1);
+    expect(osmStateGetEntity(state, 'n2')).toBe(n2);
+    expect(osmStateGetEntity(state, 'n3')).toBe(n3);
+    expect(osmStateGetEntity(state, 'n4')).toBe(n4);
+    expect(osmStateGetEntity(state, 'w1')).toBe(w1);
+    expect(osmStateGetEntity(state, 'w1#0')).toBe(w1Hash0);
+    expect(osmStateGetEntity(state, 'w1#1')).toBe(w1Hash1);
 
     expect(osmStateGetVisible(state, ['', '123'])).toMatchSnapshot();
   });

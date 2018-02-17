@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts node to feat nodeCombiner should add computed Props 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      0,
+      0,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {
+    "h": 3,
+    "id": "n-1",
+    "test": "1234",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`converts node to feat nodeCombiner should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      0,
+      0,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {
+    "id": "n-1",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`converts node to feat nodeCombiner should behave... 2`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      15,
+      10,
+    ],
+    "type": "Point",
+  },
+  "id": "n-1",
+  "properties": Object {
+    "id": "n-1",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`way.test getNodesFromGraph should get nodes correctly 1`] = `
+Array [
+  Array [
+    1,
+    2,
+  ],
+]
+`;
+
+exports[`way.test getNodesFromGraph should work when multiple nodes are there ingraph 1`] = `
+Array [
+  Array [
+    3,
+    4,
+  ],
+]
+`;
+
+exports[`way.test getNodesFromGraph should work when multiple nodes are there ingraph 2`] = `
+Array [
+  Array [
+    1,
+    2,
+  ],
+  Array [
+    3,
+    4,
+  ],
+]
+`;
+
+exports[`way.test wayCombiner should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      Array [
+        1,
+        2,
+      ],
+      Array [
+        1,
+        4,
+      ],
+    ],
+    "type": "LineString",
+  },
+  "id": "w1",
+  "properties": Object {
+    "@idly-geometry": "line",
+    "id": "w1",
+  },
+  "type": "Feature",
+}
+`;
+
+exports[`way.test wayToLineString should behave... 1`] = `
+Object {
+  "geometry": Object {
+    "coordinates": Array [
+      Array [
+        Array [
+          1,
+          2,
+        ],
+        Array [
+          2,
+          3,
+        ],
+        Array [
+          3,
+          0,
+        ],
+        Array [
+          1,
+          2,
+        ],
+      ],
+    ],
+    "type": "Polygon",
+  },
+  "properties": Object {},
+  "type": "Feature",
+}
+`;

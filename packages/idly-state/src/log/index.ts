@@ -30,14 +30,15 @@ export const validModifiedId = (str: string) => !validVirginId(str);
  * baseId - the virginId that that relevant id descended from
  */
 
-export const logGetBaseIds = weakCache((log: Log) =>
-  log.reduce((prev: Set<string>, cur) => {
-    cur.forEach(index => prev.add(modifiedIdGetBaseId(index)));
-    return prev;
-  }, setCreate())
+export const logGetBaseIds: (log: Log) => ReadonlySet<string> = weakCache(
+  (log: Log) =>
+    log.reduce((prev: Set<string>, cur) => {
+      cur.forEach(index => prev.add(modifiedIdGetBaseId(index)));
+      return prev;
+    }, setCreate())
 );
 
-export const logGetCurrentIds = weakCache(
+export const logGetCurrentIds: (log: Log) => ReadonlySet<string> = weakCache(
   (log: Log) =>
     new Set(
       log
@@ -53,8 +54,8 @@ export const logGetCurrentIds = weakCache(
     )
 );
 
-export const logGetEveryId = weakCache((log: Log) =>
-  iterableFlattenToSet<string>(log)
+export const logGetEveryId: (log: Log) => ReadonlySet<string> = weakCache(
+  (log: Log) => iterableFlattenToSet<string>(log)
 );
 
 export const logRecreate = (...entries: Entry[]) =>

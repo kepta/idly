@@ -1,7 +1,6 @@
 {
-    "extends": "../../tslint.json",
-    "rules": {
-      "object-literal-sort-keys": true,
-    }
+  "extends": "../../tslint.json",
+  "rules": {
+    "object-literal-sort-keys": true
   }
-  
+}

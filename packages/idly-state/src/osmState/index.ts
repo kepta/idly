@@ -4,12 +4,13 @@ import {
   Relation,
   Way,
 } from 'idly-common/lib/osm/structures';
-
+import { Identity } from 'monet';
 import {
   isNotVirgin,
   isVirgin,
   setAddIterable,
   setBulkDelete,
+  setClone,
   setCreate,
 } from '../helper';
 import {
@@ -23,21 +24,25 @@ import {
   modifiedIdGetBaseId,
 } from '../log';
 import { State } from '../state/state';
-import { Table } from '../table';
-import { tableBulkCopy } from '../table/regular';
+import { ReadonlyTable } from '../table/regular';
 import { Derived, DerivedTable, derivedTableUpdate } from './derivedTable';
 
-export type OsmTable = Table<Entity>;
+export type OsmTable = ReadonlyTable<Entity>;
 
 export type OsmState = [State<Entity, Derived>, Log];
 
-export const osmStateCreate: () => OsmState = (): OsmState => [
-  State.create<Entity, Derived>(),
-  logCreate(),
-];
+export type OsmStateCreateType = (
+  state?: State<Entity, Derived>,
+  log?: Log
+) => OsmState;
+
+export const osmStateCreate: OsmStateCreateType = (
+  state = State.create<Entity, Derived>(),
+  log = logCreate()
+): OsmState => [state, log];
 
 export function osmStateAddVirgins(
-  [state]: OsmState,
+  [state, _]: OsmState,
   entities: Entity[],
   quadkey: string
 ): void {
@@ -109,33 +114,28 @@ export type OsmStateGetVisible = (
 export const osmStateGetVisible: OsmStateGetVisible = (
   [state, log],
   quadkeys
-) => {
-  const visibleIds = setAddIterable(
-    logGetCurrentIds(log),
-    setBulkDelete(logGetBaseIds(log), state.getVisible(quadkeys))
-  );
+) =>
+  Identity(setClone(state.getVisible(quadkeys)))
+    .map(visible => setBulkDelete(logGetBaseIds(log), visible))
+    .map(visible => setAddIterable(logGetCurrentIds(log), visible))
+    .map(visible => expandIdsAndRelated(visible, state.getElementTable()))
+    .map(entityTable => derivedTableUpdate(entityTable, state.getMetaTable()))
+    .get();
 
-  return derivedTableUpdate(
-    expandVisibleIds(visibleIds, state.getElementTable()),
-    state.getMetaTable()
-  );
-};
+const expandIdsAndRelated = (ids: Set<string>, table: OsmTable) => {
+  const result = new Map();
 
-const expandVisibleIds = (visibleIds: Set<string>, table: OsmTable) => {
-  const result: OsmTable = new Map();
-
-  for (const id of visibleIds) {
+  for (const id of ids) {
     const e = table.get(id) as Entity;
     result.set(id, e);
-
     if (e.type === EntityType.WAY) {
       e.nodes.forEach(n => {
         result.set(n, table.get(n) as Entity);
       });
     } else if (e.type === EntityType.RELATION) {
-      e.members.forEach(n => {
-        // table.has(n.id) && result.set(n.id, table.get(n.id) as Entity);
-      });
+      // e.members.forEach(n => {
+      // table.has(n.id) && result.set(n.id, table.get(n.id) as Entity);
+      // });
     }
   }
 
@@ -159,28 +159,14 @@ const expandVisibleIds = (visibleIds: Set<string>, table: OsmTable) => {
 export type OsmStateShredType = ([state, log]: OsmState) => OsmState;
 
 export const osmStateShred: OsmStateShredType = ([state, log]) => {
-  const [newState] = osmStateCreate();
-  const virginIdsToSave = logGetBaseIds(log);
+  const newState = Identity(setClone(logGetEveryId(log)))
+    .map(idsToSave => setAddIterable(logGetBaseIds(log), idsToSave))
+    .map(idsToSave => expandIdsAndRelated(idsToSave, state.getElementTable()))
+    .map(entityTable => State.create(entityTable))
+    .get();
 
-  const idsToSave = setCreate<string>();
-
-  for (const [index, entity] of state.getElementTable()) {
-    if (isVirgin(index) && !virginIdsToSave.has(index)) {
-      continue;
-    }
-
-    idsToSave.add(index);
-
-    if (entity.type === EntityType.WAY) {
-      entity.nodes.forEach(n => idsToSave.add(n));
-    } else if (entity.type === EntityType.RELATION) {
-      entity.members.forEach(m => idsToSave.add(m.id));
-    }
-  }
-
-  tableBulkCopy(idsToSave, state.getElementTable(), newState.getElementTable());
-
-  newState.getQuadkeysTable().set('', logGetEveryId(log));
+  // @TOFIX reliance on ''
+  newState.getQuadkeysTable().set('', setClone(logGetEveryId(log)));
 
   return [newState, log];
 };

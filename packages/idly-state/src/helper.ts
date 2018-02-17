@@ -65,6 +65,8 @@ export const setCreate = <T>(a: Iterable<T> = []) => new Set<T>(a);
 
 export const setBlankCreate = <T>() => new Set<T>();
 
+export const setClone = <T>(s: ReadonlySet<T>) => new Set<T>([...s]);
+
 export const setBulkDelete = <T>(
   a: Iterable<T> | IterableIterator<T>,
   set: Set<T>
