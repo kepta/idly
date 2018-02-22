@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 import { areaPaintStyle } from './helper';
 
 export default [
@@ -25,7 +25,7 @@ export default [
          * @REVISIT buildings or any small really look ugly with that gl offset artifact
          *  going for a fill layer for now.
          */
-        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building'],
+        ['!=', `${IDLY_NS}tagsClass`, 'tag-building'],
       ],
     },
   },
@@ -44,7 +44,7 @@ export default [
       filter: [
         'all',
         ['==', '$type', 'Polygon'],
-        ['!=', `${PLUGIN_NAME}--tagsClass`, 'tag-building'],
+        ['!=', `${IDLY_NS}tagsClass`, 'tag-building'],
       ],
     },
   },

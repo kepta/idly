@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 
 export default [
   {
@@ -10,17 +10,17 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#dcd9b9',
         'line-opacity': 0.85,
-        'line-width': 8
+        'line-width': 8,
       },
       filter: [
         'all',
-        ['in', `${PLUGIN_NAME}--tagsClassType`, 'tag-highway-unclassified']
-      ]
-    }
-  }
+        ['in', `${IDLY_NS}tagsClassType`, 'tag-highway-unclassified'],
+      ],
+    },
+  },
 ];

@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../constants';
+import { IDLY_NS } from '../constants';
 
 export default [
   {
@@ -10,9 +10,9 @@ export default [
       type: 'symbol',
       source: undefined,
       layout: {
-        'icon-image': `{${PLUGIN_NAME}--icon}-15`,
+        'icon-image': `{${IDLY_NS}icon}-15`,
         'icon-allow-overlap': true,
-        'text-field': `{${PLUGIN_NAME}--name}`,
+        'text-field': `{${IDLY_NS}name}`,
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
         'text-size': 12,
         'text-transform': 'uppercase',
@@ -29,9 +29,9 @@ export default [
       },
       filter: [
         'all',
-        ['has', `${PLUGIN_NAME}--icon`],
+        ['has', `${IDLY_NS}icon`],
         ['==', '$type', 'Point'],
-        ['!in', `${PLUGIN_NAME}--geometry`, 'vertex'], // OsmGeometry.VERTEX
+        ['!in', `${IDLY_NS}geometry`, 'vertex'], // OsmGeometry.VERTEX
       ],
     },
   },

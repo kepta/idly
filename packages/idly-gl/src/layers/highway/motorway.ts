@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 
 export default [
   {
@@ -29,7 +29,7 @@ export default [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-motorway',
           /**
            * @TOFIX iD uses a mix of x_link and x-link.
@@ -68,7 +68,7 @@ export default [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-motorway',
           /**
            * @TOFIX iD uses a mix of x_link and x-link.

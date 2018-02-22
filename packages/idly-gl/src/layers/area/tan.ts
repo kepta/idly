@@ -1,11 +1,11 @@
 // tag-landuse-farmyard
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 import { areaPaintStyle } from './helper';
 
 const filter = [
   'all',
   ['==', '$type', 'Polygon'],
-  ['in', `${PLUGIN_NAME}--tagsClassType`, 'tag-landuse-farmyard']
+  ['in', `${IDLY_NS}tagsClassType`, 'tag-landuse-farmyard'],
 ];
 
 export default [
@@ -18,15 +18,15 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#f5dcba',
         'line-width': 2,
-        'line-opacity': 1
+        'line-opacity': 1,
       },
-      filter
-    }
+      filter,
+    },
   },
   {
     selectable: false,
@@ -37,10 +37,10 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: { ...areaPaintStyle, 'line-color': '#f5dcba' },
-      filter
-    }
-  }
+      filter,
+    },
+  },
 ];

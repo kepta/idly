@@ -1,1 +1,1 @@
-export const PLUGIN_NAME = 'osm_basic';
+export const IDLY_NS = '@idly-';

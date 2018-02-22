@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 import { areaPaintStyle } from './helper';
 
 const filter = [
@@ -9,17 +9,17 @@ const filter = [
     /**
      * @TOFIX doesnt work for a way, I guess a !area, with tag natural=coastline
      */
-    ['in', `${PLUGIN_NAME}--tagsClass`, 'tag-natural', 'tag-landuse'],
+    ['in', `${IDLY_NS}tagsClass`, 'tag-natural', 'tag-landuse'],
     [
       'in',
-      `${PLUGIN_NAME}--tagsClassType`,
+      `${IDLY_NS}tagsClassType`,
       'tag-leisure-nature_reserve',
       'tag-leisure-pitch',
       'tag-leisure-park',
       'tag-landuse-forest',
-      'tag-natural-wetland'
-    ]
-  ]
+      'tag-natural-wetland',
+    ],
+  ],
 ];
 
 export default [
@@ -37,15 +37,15 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#8cd05f',
         'line-width': 2,
-        'line-opacity': 1
+        'line-opacity': 1,
       },
-      filter
-    }
+      filter,
+    },
   },
   {
     selectable: false,
@@ -56,10 +56,10 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: { ...areaPaintStyle, 'line-color': '#8cd05f' },
-      filter
-    }
-  }
+      filter,
+    },
+  },
 ];

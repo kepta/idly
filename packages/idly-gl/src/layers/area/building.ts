@@ -1,13 +1,13 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 
 const filter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
     'any',
-    ['==', `${PLUGIN_NAME}--tagsClassType`, 'tag-amenity-shelter'],
-    ['==', `${PLUGIN_NAME}--tagsClass`, 'tag-building']
-  ]
+    ['==', `${IDLY_NS}tagsClassType`, 'tag-amenity-shelter'],
+    ['==', `${IDLY_NS}tagsClass`, 'tag-building'],
+  ],
 ];
 
 export default [
@@ -21,15 +21,15 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#e06e5f',
-        'line-width': 2,
-        'line-opacity': 1
+        'line-width': 1,
+        'line-opacity': 1,
       },
-      filter
-    }
+      filter,
+    },
   },
   {
     selectable: false,
@@ -40,9 +40,9 @@ export default [
       source: undefined,
       paint: {
         'fill-opacity': 0.2,
-        'fill-color': '#e06e5f'
+        'fill-color': '#e06e5f',
       },
-      filter
-    }
-  }
+      filter,
+    },
+  },
 ];

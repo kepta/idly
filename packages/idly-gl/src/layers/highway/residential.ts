@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 
 export default [
   {
@@ -10,23 +10,23 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#FFF',
         'line-opacity': 0.85,
-        'line-width': 10
+        'line-width': 10,
       },
       filter: [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-residential',
           'tag-highway-residential_link',
-          'tag-highway-service'
-        ]
-      ]
-    }
-  }
+          'tag-highway-service',
+        ],
+      ],
+    },
+  },
 ];

@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../constants';
+import { IDLY_NS } from '../constants';
 
 export default [
   {
@@ -17,12 +17,12 @@ export default [
       },
       filter: [
         'all',
-        ['!has', `${PLUGIN_NAME}--icon`],
+        ['!has', `${IDLY_NS}icon`],
         ['==', '$type', 'Point'],
         /**
          * @REVISIT this vertex problem
          */
-        ['!in', `${PLUGIN_NAME}--geometry`, 'vertex'], // OsmGeometry.VERTEX
+        ['!in', `${IDLY_NS}geometry`, 'vertex'], // OsmGeometry.VERTEX
       ],
     },
   },

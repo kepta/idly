@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 
 export default [
   {
@@ -10,18 +10,15 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#c5b59f',
         'line-opacity': 1,
-        'line-width': 8
+        'line-width': 8,
       },
-      filter: [
-        'all',
-        ['in', `${PLUGIN_NAME}--tagsClassType`, 'tag-highway-track']
-      ]
-    }
+      filter: ['all', ['in', `${IDLY_NS}tagsClassType`, 'tag-highway-track']],
+    },
   },
   {
     selectable: true,
@@ -32,25 +29,25 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#c5b59f',
         'line-opacity': 0.7,
-        'line-width': 5
+        'line-width': 5,
       },
       filter: [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-path',
           'tag-highway-footway',
           'tag-highway-bridleway',
-          'tag-highway-cycleway'
-        ]
-      ]
-    }
+          'tag-highway-cycleway',
+        ],
+      ],
+    },
   },
   {
     selectable: false,
@@ -61,28 +58,28 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#FFF',
         'line-opacity': 1,
         'line-width': {
           base: 1,
-          stops: [[8, 3], [12, 5]]
+          stops: [[8, 3], [12, 5]],
         },
-        'line-dasharray': [0.4, 2]
+        'line-dasharray': [0.4, 2],
       },
       filter: [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-path',
           'tag-highway-footway',
           'tag-highway-bridleway',
-          'tag-highway-cycleway'
-        ]
-      ]
-    }
-  }
+          'tag-highway-cycleway',
+        ],
+      ],
+    },
+  },
 ];

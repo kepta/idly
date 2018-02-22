@@ -1,4 +1,4 @@
-import { PLUGIN_NAME } from '../../constants';
+import { IDLY_NS } from '../../constants';
 
 export default [
   {
@@ -10,23 +10,23 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#FFF9B3',
         'line-opacity': 0.85,
-        'line-width': 9
+        'line-width': 9,
       },
       filter: [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-tertiary',
-          'tag-highway-tertiary_link'
-        ]
-      ]
-    }
+          'tag-highway-tertiary_link',
+        ],
+      ],
+    },
   },
   {
     selectable: true,
@@ -37,22 +37,22 @@ export default [
       source: undefined,
       layout: {
         'line-join': 'round',
-        'line-cap': 'round'
+        'line-cap': 'round',
       },
       paint: {
         'line-color': '#70372f',
         'line-opacity': 1,
-        'line-width': 10
+        'line-width': 10,
       },
       filter: [
         'all',
         [
           'in',
-          `${PLUGIN_NAME}--tagsClassType`,
+          `${IDLY_NS}tagsClassType`,
           'tag-highway-tertiary',
-          'tag-highway-tertiary_link'
-        ]
-      ]
-    }
-  }
+          'tag-highway-tertiary_link',
+        ],
+      ],
+    },
+  },
 ];
