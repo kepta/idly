@@ -5,7 +5,7 @@ export type NodeId = string;
 export type WayId = string;
 
 export interface Tags {
-  [key: string]: string;
+  readonly [key: string]: string;
 }
 
 export type FeaturePropsTable = Map<EntityId, FeatureProps>;

@@ -1,3 +1,3 @@
 ### Mission
 
-Convert Osm Entities to Geojson with extra sugary props :)
+Convert Osm Entities into the best Geojson with extra props toppings :)

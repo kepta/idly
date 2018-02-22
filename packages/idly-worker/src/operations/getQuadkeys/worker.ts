@@ -1,5 +1,5 @@
 import { featureCollection } from '@turf/helpers';
-import { entityToGeoJsonNew } from 'idly-osm-to-geojson/lib/entityToGeojson';
+import { entityToGeoJson } from 'idly-osm-to-geojson';
 import {
   OsmState,
   osmStateAddVirgins,
@@ -27,13 +27,14 @@ export function workerGetQuadkey(
     // self.log = log;
     // self.osm = osmState;
     arr.forEach(({ entities, quadkey }) => {
-      if (!qState[0].has(quadkey)) {
+      if (!qState[0].hasQuadkey(quadkey)) {
         osmStateAddVirgins(qState, entities, quadkey);
       }
     });
     console.time('features');
     self.visible = osmStateGetVisible(qState, arr.map(r => r.quadkey));
-    const features = entityToGeoJsonNew(self.visible);
+
+    const features = entityToGeoJson(self.visible);
     console.timeEnd('features');
 
     const toReturn: GetQuadkey['response'] = featureCollection(features);

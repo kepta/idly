@@ -18,7 +18,6 @@ export {
   tableCreate,
   tableFilter,
   tableFindValue,
-  TableFindValueType,
   tableGet,
   tableHas,
   tableMap,

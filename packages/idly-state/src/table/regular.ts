@@ -40,6 +40,7 @@ export const tableBulkRemove = <T>(
   }
   return t;
 };
+
 export const tableBulkGet = <T>(k: string[], t: Table<T>) =>
   k.map(i => tableGet<T>(i, t));
 

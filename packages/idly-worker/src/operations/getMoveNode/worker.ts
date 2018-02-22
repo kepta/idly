@@ -1,6 +1,6 @@
 import { featureCollection } from '@turf/helpers';
 import { Entity } from 'idly-common/lib/osm/structures';
-import { entityToGeoJsonNew } from 'idly-osm-to-geojson/lib/entityToGeojson';
+import { entityToGeoJson } from 'idly-osm-to-geojson';
 import {
   entryFindRelatedToNode,
   OsmState,
@@ -45,7 +45,7 @@ export function workerGetMoveNode(
     // self.osm = osmState;
     console.time('features');
     self.visible = osmStateGetVisible(qState, param.quadkeys);
-    const features = entityToGeoJsonNew(self.visible);
+    const features = entityToGeoJson(self.visible);
 
     console.timeEnd('features');
 

@@ -1,4 +1,5 @@
 module.exports = {
+  mapCoverage: true,
   globals: {
     'ts-jest': {
       skipBabel: true,
