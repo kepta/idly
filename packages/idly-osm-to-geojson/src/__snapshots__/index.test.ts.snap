@@ -3042,6 +3042,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "East 54th Street",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -3050,6 +3051,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3058,6 +3060,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3066,6 +3069,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3074,6 +3078,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3082,6 +3087,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3090,6 +3096,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3098,6 +3105,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3106,6 +3114,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3114,6 +3123,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3122,6 +3132,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3130,6 +3141,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "Finland House",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3138,6 +3150,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3146,6 +3159,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3154,6 +3168,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3162,6 +3177,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3170,6 +3186,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3178,6 +3195,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "510 Madison",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3186,6 +3204,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "park",
+    "@idly-isOneway": false,
     "@idly-name": "Paley Park",
     "@idly-tagsClass": "tag-leisure",
     "@idly-tagsClassType": "tag-leisure-park",
@@ -3194,6 +3213,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "Du Mont Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3202,6 +3222,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Harper & Row Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -3210,6 +3231,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3218,6 +3240,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3226,6 +3249,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3234,6 +3258,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3242,6 +3267,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3250,6 +3276,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3258,6 +3285,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3266,6 +3294,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3274,6 +3303,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3282,6 +3312,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3290,6 +3321,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3298,6 +3330,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3306,6 +3339,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3314,6 +3348,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3322,6 +3357,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "527 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3330,6 +3366,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "520 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -3338,6 +3375,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3346,6 +3384,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -3354,6 +3393,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3362,6 +3402,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3370,6 +3411,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3378,6 +3420,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3386,6 +3429,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3394,6 +3438,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3402,6 +3447,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3410,6 +3456,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3418,6 +3465,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3426,6 +3474,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3434,6 +3483,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3442,6 +3492,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3450,6 +3501,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3458,6 +3510,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3466,6 +3519,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -3474,6 +3528,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -3482,6 +3537,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -3490,6 +3546,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "East 54th Street",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -4710,6 +4767,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4718,6 +4776,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "commercial",
+    "@idly-isOneway": false,
     "@idly-name": "Dillon, Read & Company Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4726,6 +4785,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4734,6 +4794,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4742,6 +4803,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4750,6 +4812,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4758,6 +4821,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4766,6 +4830,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4774,6 +4839,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4782,6 +4848,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4790,6 +4857,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4798,6 +4866,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4806,6 +4875,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Heron Tower",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -4814,6 +4884,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Park Avenue Place",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -4822,6 +4893,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "540 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -4830,6 +4902,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "410 Park Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4838,6 +4911,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "400 Park Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4846,6 +4920,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -4854,6 +4929,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4862,6 +4938,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4870,6 +4947,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4878,6 +4956,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4886,6 +4965,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4894,6 +4974,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4902,6 +4983,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4910,6 +4992,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4918,6 +5001,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4926,6 +5010,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4934,6 +5019,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4942,6 +5028,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4950,6 +5037,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4958,6 +5046,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4966,6 +5055,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4974,6 +5064,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4982,6 +5073,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4990,6 +5082,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -4998,6 +5091,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5006,6 +5100,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5014,6 +5109,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5022,6 +5118,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5030,6 +5127,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5038,6 +5136,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5046,6 +5145,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5054,6 +5154,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5062,6 +5163,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5070,6 +5172,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5078,6 +5181,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5086,6 +5190,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5094,6 +5199,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5102,6 +5208,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5110,6 +5217,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5118,6 +5226,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5126,6 +5235,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5134,6 +5244,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5142,6 +5253,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5150,6 +5262,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5158,6 +5271,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5166,6 +5280,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5174,6 +5289,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5182,6 +5298,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5190,6 +5307,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5198,6 +5316,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5206,6 +5325,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5214,6 +5334,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5222,6 +5343,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5230,6 +5352,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5238,6 +5361,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5246,6 +5370,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5254,6 +5379,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5262,6 +5388,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5270,6 +5397,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5278,6 +5406,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5286,6 +5415,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5294,6 +5424,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -5302,6 +5433,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -5310,6 +5442,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "poi-foot",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-pedestrian",
@@ -6853,6 +6986,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "East 54th Street",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -6861,6 +6995,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6869,6 +7004,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6877,6 +7013,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6885,6 +7022,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6893,6 +7031,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6901,6 +7040,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6909,6 +7049,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6917,6 +7058,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6925,6 +7067,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6933,6 +7076,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6941,6 +7085,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "Finland House",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -6949,6 +7094,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6957,6 +7103,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6965,6 +7112,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6973,6 +7121,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6981,6 +7130,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -6989,6 +7139,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "510 Madison",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -6997,6 +7148,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "park",
+    "@idly-isOneway": false,
     "@idly-name": "Paley Park",
     "@idly-tagsClass": "tag-leisure",
     "@idly-tagsClassType": "tag-leisure-park",
@@ -7005,6 +7157,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "Du Mont Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7013,6 +7166,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Harper & Row Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -7021,6 +7175,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7029,6 +7184,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7037,6 +7193,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7045,6 +7202,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7053,6 +7211,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7061,6 +7220,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7069,6 +7229,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7077,6 +7238,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7085,6 +7247,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7093,6 +7256,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7101,6 +7265,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7109,6 +7274,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7117,6 +7283,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7125,6 +7292,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7133,6 +7301,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "527 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7141,6 +7310,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "520 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -7149,6 +7319,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7157,6 +7328,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -7165,6 +7337,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7173,6 +7346,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7181,6 +7355,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7189,6 +7364,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7197,6 +7373,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7205,6 +7382,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7213,6 +7391,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7221,6 +7400,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7229,6 +7409,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7237,6 +7418,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7245,6 +7427,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7253,6 +7436,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7261,6 +7445,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7269,6 +7454,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7277,6 +7463,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -7285,6 +7472,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -7293,6 +7481,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -7301,6 +7490,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "East 54th Street",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -8844,6 +9034,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "East 54th Street",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -8852,6 +9043,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8860,6 +9052,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8868,6 +9061,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8876,6 +9070,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8884,6 +9079,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8892,6 +9088,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8900,6 +9097,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8908,6 +9106,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8916,6 +9115,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8924,6 +9124,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8932,6 +9133,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "Finland House",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -8940,6 +9142,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8948,6 +9151,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8956,6 +9160,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8964,6 +9169,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8972,6 +9178,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -8980,6 +9187,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "510 Madison",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -8988,6 +9196,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "park",
+    "@idly-isOneway": false,
     "@idly-name": "Paley Park",
     "@idly-tagsClass": "tag-leisure",
     "@idly-tagsClassType": "tag-leisure-park",
@@ -8996,6 +9205,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "Du Mont Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9004,6 +9214,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Harper & Row Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -9012,6 +9223,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9020,6 +9232,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9028,6 +9241,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9036,6 +9250,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9044,6 +9259,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9052,6 +9268,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9060,6 +9277,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9068,6 +9286,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9076,6 +9295,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9084,6 +9304,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9092,6 +9313,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9100,6 +9322,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9108,6 +9331,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9116,6 +9340,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9124,6 +9349,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "527 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9132,6 +9358,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "520 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -9140,6 +9367,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9148,6 +9376,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -9156,6 +9385,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9164,6 +9394,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9172,6 +9403,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9180,6 +9412,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9188,6 +9421,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9196,6 +9430,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9204,6 +9439,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9212,6 +9448,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9220,6 +9457,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9228,6 +9466,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9236,6 +9475,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9244,6 +9484,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9252,6 +9493,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9260,6 +9502,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9268,6 +9511,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -9276,6 +9520,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -9284,6 +9529,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -9292,6 +9538,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "East 54th Street",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -10512,6 +10759,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10520,6 +10768,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "commercial",
+    "@idly-isOneway": false,
     "@idly-name": "Dillon, Read & Company Building",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10528,6 +10777,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10536,6 +10786,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10544,6 +10795,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10552,6 +10804,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10560,6 +10813,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10568,6 +10822,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10576,6 +10831,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10584,6 +10840,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10592,6 +10849,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10600,6 +10858,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10608,6 +10867,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Heron Tower",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -10616,6 +10876,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "Park Avenue Place",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -10624,6 +10885,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "suitcase",
+    "@idly-isOneway": false,
     "@idly-name": "540 Madison Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-commercial",
@@ -10632,6 +10894,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "410 Park Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10640,6 +10903,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": "400 Park Avenue",
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10648,6 +10912,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "home",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-building",
     "@idly-tagsClassType": "tag-building-yes",
@@ -10656,6 +10921,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10664,6 +10930,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10672,6 +10939,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10680,6 +10948,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10688,6 +10957,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10696,6 +10966,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10704,6 +10975,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10712,6 +10984,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10720,6 +10993,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10728,6 +11002,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10736,6 +11011,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10744,6 +11020,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10752,6 +11029,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10760,6 +11038,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10768,6 +11047,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10776,6 +11056,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10784,6 +11065,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10792,6 +11074,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10800,6 +11083,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10808,6 +11092,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10816,6 +11101,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10824,6 +11110,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10832,6 +11119,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10840,6 +11128,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10848,6 +11137,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10856,6 +11146,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10864,6 +11155,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10872,6 +11164,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10880,6 +11173,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10888,6 +11182,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10896,6 +11191,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10904,6 +11200,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10912,6 +11209,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10920,6 +11218,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10928,6 +11227,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10936,6 +11236,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10944,6 +11245,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10952,6 +11254,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10960,6 +11263,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10968,6 +11272,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10976,6 +11281,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10984,6 +11290,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -10992,6 +11299,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11000,6 +11308,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11008,6 +11317,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11016,6 +11326,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11024,6 +11335,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11032,6 +11344,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11040,6 +11353,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11048,6 +11362,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11056,6 +11371,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11064,6 +11380,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11072,6 +11389,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11080,6 +11398,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11088,6 +11407,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11096,6 +11416,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": undefined,
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "",
     "@idly-tagsClassType": undefined,
@@ -11104,6 +11425,7 @@ Array [
   Object {
     "@idly-geometry": "line",
     "@idly-icon": "highway-secondary",
+    "@idly-isOneway": true,
     "@idly-name": "Madison Avenue",
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-secondary",
@@ -11112,6 +11434,7 @@ Array [
   Object {
     "@idly-geometry": "area",
     "@idly-icon": "poi-foot",
+    "@idly-isOneway": false,
     "@idly-name": undefined,
     "@idly-tagsClass": "tag-highway",
     "@idly-tagsClassType": "tag-highway-pedestrian",

@@ -3,6 +3,7 @@ import { weakCache } from 'idly-common/lib/misc/weakCache';
 import { isArea } from 'idly-common/lib/osm/isArea';
 import { OsmGeometry, Way } from 'idly-common/lib/osm/structures';
 import { tagClassesPrimary } from 'idly-common/lib/tagClasses/tagClasses';
+import { isOneway } from './isOneway';
 
 const tagClassesPrimaryCache = weakCache(tagClassesPrimary);
 
@@ -13,6 +14,7 @@ export const wayPropertiesGen = weakCache((way: Way) => {
   return {
     '@idly-geometry': geometry,
     '@idly-icon': match && match.icon,
+    '@idly-isOneway': isOneway(way.tags),
     '@idly-name': way.tags.name || way.tags.ref,
     '@idly-tagsClass': tagsClass,
     '@idly-tagsClassType': tagsClassType,
