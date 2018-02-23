@@ -1,0 +1,869 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`highway layers snapshot check the structure 1`] = `
+Array [
+  "FallbackLineLayer",
+  "highwayMotorway",
+  "highwayMotorwayCasing",
+  "highwayTrack",
+  "highwayTrackCasing",
+  "highwayNarrow",
+  "highwayNarrowCasing",
+  "highwayPrimary",
+  "highwayPrimaryCasing",
+  "highwayResidential",
+  "highwayResidentialCasing",
+  "highwaySecondary",
+  "highwaySecondaryCasing",
+  "highwayTertiary",
+  "highwayTertiaryCasing",
+  "highwayTrunk",
+  "highwayTrunkCasing",
+  "highwayUnclassified",
+  "highwayUnclassifiedCasing",
+]
+`;
+
+exports[`highway layers snapshot checks layer 1`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "LineString",
+      ],
+    ],
+    "id": "FallbackLineLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#eee",
+      "line-width": 2,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.5,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 2`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-motorway",
+        "tag-highway-motorway_link",
+      ],
+    ],
+    "id": "highwayMotorway",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#CF2081",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 3`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-motorway",
+        "tag-highway-motorway_link",
+      ],
+    ],
+    "id": "highwayMotorwayCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 4`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-track",
+      ],
+    ],
+    "id": "highwayTrack",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#c5b59f",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 5`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-track",
+      ],
+    ],
+    "id": "highwayTrackCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 6`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-path",
+        "tag-highway-footway",
+        "tag-highway-bridleway",
+        "tag-highway-cycleway",
+      ],
+    ],
+    "id": "highwayNarrow",
+    "layout": Object {
+      "line-cap": "square",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#c5b59f",
+      "line-dasharray": Array [
+        1,
+        1,
+      ],
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 7`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-path",
+        "tag-highway-footway",
+        "tag-highway-bridleway",
+        "tag-highway-cycleway",
+      ],
+    ],
+    "id": "highwayNarrowCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 8`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-primary",
+        "tag-highway-primary_link",
+      ],
+    ],
+    "id": "highwayPrimary",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#F99806",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 9`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-primary",
+        "tag-highway-primary_link",
+      ],
+    ],
+    "id": "highwayPrimaryCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 10`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-residential",
+        "tag-highway-residential_link",
+        "tag-highway-service",
+      ],
+    ],
+    "id": "highwayResidential",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#FFF",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 11`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-residential",
+        "tag-highway-residential_link",
+        "tag-highway-service",
+      ],
+    ],
+    "id": "highwayResidentialCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 12`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-secondary",
+        "tag-highway-secondary_link",
+      ],
+    ],
+    "id": "highwaySecondary",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#F3F312",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 13`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-secondary",
+        "tag-highway-secondary_link",
+      ],
+    ],
+    "id": "highwaySecondaryCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 14`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-tertiary",
+        "tag-highway-tertiary_link",
+      ],
+    ],
+    "id": "highwayTertiary",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#FFF9B3",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 15`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-tertiary",
+        "tag-highway-tertiary_link",
+      ],
+    ],
+    "id": "highwayTertiaryCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 16`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-trunk",
+        "tag-highway-trunk_link",
+      ],
+    ],
+    "id": "highwayTrunk",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#DD2F22",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 17`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-trunk",
+        "tag-highway-trunk_link",
+      ],
+    ],
+    "id": "highwayTrunkCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;
+
+exports[`highway layers snapshot checks layer 18`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-unclassified",
+      ],
+    ],
+    "id": "highwayUnclassified",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#dcd9b9",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        4,
+        18,
+        10,
+        20,
+        12,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 3,
+  "selectable": true,
+}
+`;
+
+exports[`highway layers snapshot checks layer 19`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-highway-unclassified",
+      ],
+    ],
+    "id": "highwayUnclassifiedCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#000",
+      "line-opacity": 1,
+      "line-width": Array [
+        "interpolate",
+        Array [
+          "exponential",
+          2,
+        ],
+        Array [
+          "zoom",
+        ],
+        14,
+        6,
+        18,
+        12,
+        20,
+        16,
+      ],
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.75,
+  "selectable": false,
+}
+`;

@@ -1,31 +1,44 @@
 import { IDLY_NS } from '../../constants';
+import { HIGHWAY } from '../priorities';
+import { highwayCaseTemplate, highwayTemplate } from './highway.template';
+const filter = [
+  'all',
+  [
+    'in',
+    `${IDLY_NS}tagsClassType`,
+    'tag-highway-secondary',
+    'tag-highway-secondary_link',
+  ],
+];
 
 export default [
   {
     selectable: true,
-    priority: 2,
+    priority: HIGHWAY.ZERO,
     layer: {
       id: 'highwaySecondary',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayTemplate.layer.layout,
       paint: {
+        ...highwayTemplate.layer.paint,
         'line-color': '#F3F312',
-        'line-opacity': 1,
-        'line-width': 10,
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-secondary',
-          'tag-highway-secondary_link',
-        ],
-      ],
+      filter,
+    },
+  },
+  {
+    selectable: false,
+    priority: HIGHWAY.MINUS_1,
+    layer: {
+      id: 'highwaySecondaryCasing',
+      type: 'line',
+      source: undefined,
+      layout: highwayCaseTemplate.layer.layout,
+      paint: {
+        ...highwayCaseTemplate.layer.paint,
+      },
+      filter,
     },
   },
 ];

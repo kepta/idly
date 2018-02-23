@@ -7,12 +7,7 @@ import { cancelablePromise, tileToQuadkey } from 'idly-common/lib/misc';
 import parser from 'idly-faster-osm-parser';
 import debounce from 'lodash-es/debounce';
 import { addSource } from '../helper/addSource';
-import {
-  worker,
-  workerGetMoveNode,
-  workerGetQuadkeys,
-  workerSetMovePointEntry,
-} from './worker/index';
+import { workerGetMoveNode, workerGetQuadkeys } from './worker/index';
 
 const BASE_SOURCE = 'idly-gl-base-src-1';
 const ACTIVE_SOURCE = 'idly-gl-active-src-1';
@@ -25,6 +20,7 @@ export class IdlyGlPlugin {
   private prom: any;
   private prom2: any;
   private selectedId: string | undefined;
+  private fcData: { features: [] };
   // constructor() {}
 
   public onAdd(map: any) {
@@ -35,13 +31,16 @@ export class IdlyGlPlugin {
       this.map.on('load', () => this.init());
     }
     this.container = document.createElement('div');
+
     return this.container;
   }
 
   public init() {
     this.map.on('click', this.onClick);
     this.map.on('mousemove', this.onHover);
-
+    window.getEntity = id => {
+      return this.fcData.features.find(r => r.id === id);
+    };
     this.map.addSource(BASE_SOURCE, {
       type: 'geojson',
       data: {
@@ -164,6 +163,7 @@ export class IdlyGlPlugin {
       );
 
       this.prom2.promise.then(fcs => {
+        this.fcData = fcs;
         this.map.getSource(BASE_SOURCE).setData(fcs);
       });
     });

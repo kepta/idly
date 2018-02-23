@@ -1,9 +1,10 @@
 import { IDLY_NS } from '../../constants';
+import { RAIL } from '../priorities';
 
 export default [
   {
     selectable: true,
-    priority: 2,
+    priority: RAIL.ZERO,
     layer: {
       id: 'railway',
       type: 'line',
@@ -22,7 +23,7 @@ export default [
   },
   {
     selectable: true,
-    priority: 2.5,
+    priority: RAIL.MINUS_1,
     layer: {
       id: 'railwayCasing',
       type: 'line',

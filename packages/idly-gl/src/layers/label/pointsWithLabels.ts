@@ -1,9 +1,10 @@
-import { IDLY_NS } from '../constants';
+import { IDLY_NS } from '../../constants';
+import { LABEL } from '../priorities';
 
 export default [
   {
     selectable: true,
-    priority: 3,
+    priority: LABEL.PLUS_2,
     layer: {
       minzoom: 17,
       id: 'PointsWithLabelsLayer',
@@ -30,27 +31,8 @@ export default [
       filter: [
         'all',
         ['has', `${IDLY_NS}icon`],
-        ['==', '$type', 'Point'],
         ['!in', `${IDLY_NS}geometry`, 'vertex'], // OsmGeometry.VERTEX
       ],
     },
   },
-  // {
-  //   selectable: true,
-  //   priority: 3,
-  //   layer: {
-  //     type: 'circle',
-  //     id: 'PointsWithLabelsLayerCircle',
-  //     source: undefined,
-  //     paint: {
-  //       // make circles larger as the user zooms from z12 to z22
-  //       'circle-radius': {
-  //         base: 5.75,
-  //         stops: [[12, 2], [22, 180]]
-  //       },
-  //       // color circles by ethnicity, using data-driven styles
-  //       'circle-color': '#000'
-  //     }
-  //   }
-  // }
 ];

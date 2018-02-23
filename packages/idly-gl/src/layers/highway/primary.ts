@@ -1,74 +1,44 @@
 import { IDLY_NS } from '../../constants';
+import { HIGHWAY } from '../priorities';
+import { highwayCaseTemplate, highwayTemplate } from './highway.template';
+const filter = [
+  'all',
+  [
+    'in',
+    `${IDLY_NS}tagsClassType`,
+    'tag-highway-primary',
+    'tag-highway-primary_link',
+  ],
+];
 
 export default [
   {
     selectable: true,
-    priority: 2,
+    priority: HIGHWAY.ZERO,
     layer: {
       id: 'highwayPrimary',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayTemplate.layer.layout,
       paint: {
+        ...highwayTemplate.layer.paint,
         'line-color': '#F99806',
-        'line-opacity': 1,
-        'line-width': [
-          'interpolate',
-          ['exponential', 2],
-          ['zoom'],
-          14,
-          4,
-          20,
-          12,
-        ],
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-primary',
-          'tag-highway-primary_link',
-        ],
-      ],
+      filter,
     },
   },
   {
     selectable: false,
-    priority: 1.9,
+    priority: HIGHWAY.MINUS_1,
     layer: {
       id: 'highwayPrimaryCasing',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayCaseTemplate.layer.layout,
       paint: {
-        'line-color': '#000',
-        'line-opacity': 1,
-        'line-width': [
-          'interpolate',
-          ['exponential', 2],
-          ['zoom'],
-          14,
-          6,
-          20,
-          18,
-        ],
+        ...highwayCaseTemplate.layer.paint,
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-primary',
-          'tag-highway-primary_link',
-        ],
-      ],
+      filter,
     },
   },
 ];

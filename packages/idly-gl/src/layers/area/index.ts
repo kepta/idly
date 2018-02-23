@@ -1,4 +1,5 @@
-import area from './area';
+import { AREA } from '../priorities';
+import area from './areaFallback';
 import blue from './blue';
 import building from './building';
 import gold from './gold';
@@ -21,5 +22,5 @@ export default [
   ...orange,
   ...pink,
   ...tan,
-  ...yellow
+  ...yellow,
 ];

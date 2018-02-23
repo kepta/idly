@@ -1,7 +1,8 @@
 import { IDLY_NS } from '../../constants';
-import { areaPaintStyle } from './helper';
+import { AREA } from '../priorities';
+import { areaCasingTemplate, areaTemplate } from './area.template';
 
-const filter = [
+export const goldFilter = [
   'all',
   ['==', '$type', 'Polygon'],
   /**
@@ -19,36 +20,29 @@ const filter = [
 export default [
   {
     selectable: false,
-    priority: 1,
+    priority: AREA.ZERO,
     layer: {
       id: 'areaGoldLayer',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: areaTemplate.layer.layout,
       paint: {
+        ...areaTemplate.layer.paint,
         'line-color': '#c4bd19',
-        'line-width': 2,
-        'line-opacity': 1,
       },
-      filter,
+      filter: goldFilter,
     },
   },
   {
     selectable: false,
-    priority: 1,
+    priority: AREA.ZERO,
     layer: {
       id: 'areaGoldLayerCasing',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
-      paint: { ...areaPaintStyle, 'line-color': '#c4bd19' },
-      filter,
+      layout: areaCasingTemplate.layer.layout,
+      paint: { ...areaCasingTemplate.layer.paint, 'line-color': '#c4bd19' },
+      filter: goldFilter,
     },
   },
 ];

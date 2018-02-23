@@ -1,7 +1,8 @@
 import { IDLY_NS } from '../../constants';
-import { areaPaintStyle } from './helper';
+import { AREA } from '../priorities';
+import { areaCasingTemplate, areaTemplate } from './area.template';
 
-const filter = [
+export const blueFilter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
@@ -20,36 +21,29 @@ const filter = [
 export default [
   {
     selectable: false,
-    priority: 1,
+    priority: AREA.ZERO,
     layer: {
       id: 'areaBlueLayer',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: areaTemplate.layer.layout,
       paint: {
+        ...areaTemplate.layer.paint,
         'line-color': '#77d3de',
-        'line-width': 2,
-        'line-opacity': 1,
       },
-      filter,
+      filter: blueFilter,
     },
   },
   {
     selectable: false,
-    priority: 1,
+    priority: AREA.ZERO,
     layer: {
       id: 'areaBlueLayerCasing',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
-      paint: { ...areaPaintStyle, 'line-color': '#77d3de' },
-      filter,
+      layout: areaCasingTemplate.layer.layout,
+      paint: { ...areaCasingTemplate.layer.paint, 'line-color': '#77d3de' },
+      filter: blueFilter,
     },
   },
 ];

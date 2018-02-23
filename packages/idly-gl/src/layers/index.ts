@@ -1,26 +1,30 @@
 import area from './area';
-import areaLabels from './areaLabels';
 import highway from './highway';
-import line from './line';
-import lineLabel from './lineLabel';
-import pointsDraggable from './pointsDraggable';
-import pointsWithLabels from './pointsWithLabels';
-import pointsWithoutLabels from './pointsWithoutLabel';
+import pointsDraggable from './interactive/pointsDraggable';
+import areaLabels from './label/areaLabels';
+import lineLabel from './label/lineLabel';
+import pointsWithLabels from './label/pointsWithLabels';
+import extrusion from './nonInteractive/extrusion';
+import onewayArrows from './nonInteractive/onewayArrows';
+import pointsWithoutLabels from './point/points';
+import * as priority from './priorities';
 import rail from './rail';
 import waterway from './waterway';
 
 const layers = [
   ...area,
+  ...extrusion,
   ...highway,
   ...rail,
   ...waterway,
   ...areaLabels,
-  // ...line,
+  ...onewayArrows,
   ...lineLabel,
   ...pointsWithLabels,
   ...pointsWithoutLabels,
   ...pointsDraggable,
 ].sort((a, b) => a.priority - b.priority);
+
 export default layers;
 
 if (layers.some(r => !(r.priority < 10 && r.priority >= 0))) {

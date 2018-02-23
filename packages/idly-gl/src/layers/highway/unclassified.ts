@@ -1,26 +1,40 @@
 import { IDLY_NS } from '../../constants';
+import { HIGHWAY } from '../priorities';
+import { highwayCaseTemplate, highwayTemplate } from './highway.template';
+
+const filter = [
+  'all',
+  ['in', `${IDLY_NS}tagsClassType`, 'tag-highway-unclassified'],
+];
 
 export default [
   {
     selectable: true,
-    priority: 2,
+    priority: HIGHWAY.ZERO,
     layer: {
       id: 'highwayUnclassified',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayTemplate.layer.layout,
       paint: {
+        ...highwayTemplate.layer.paint,
         'line-color': '#dcd9b9',
-        'line-opacity': 0.85,
-        'line-width': 8,
       },
-      filter: [
-        'all',
-        ['in', `${IDLY_NS}tagsClassType`, 'tag-highway-unclassified'],
-      ],
+      filter,
+    },
+  },
+  {
+    selectable: false,
+    priority: HIGHWAY.MINUS_1,
+    layer: {
+      id: 'highwayUnclassifiedCasing',
+      type: 'line',
+      source: undefined,
+      layout: highwayCaseTemplate.layer.layout,
+      paint: {
+        ...highwayCaseTemplate.layer.paint,
+      },
+      filter,
     },
   },
 ];

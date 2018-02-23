@@ -1,85 +1,50 @@
 import { IDLY_NS } from '../../constants';
+import { HIGHWAY } from '../priorities';
+import { highwayCaseTemplate, highwayTemplate } from './highway.template';
+const filter = [
+  'all',
+  [
+    'in',
+    `${IDLY_NS}tagsClassType`,
+    'tag-highway-path',
+    'tag-highway-footway',
+    'tag-highway-bridleway',
+    'tag-highway-cycleway',
+  ],
+];
 
 export default [
   {
     selectable: true,
-    priority: 2,
-    layer: {
-      id: 'highwayTrack',
-      type: 'line',
-      source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
-      paint: {
-        'line-color': '#c5b59f',
-        'line-opacity': 1,
-        'line-width': 8,
-      },
-      filter: ['all', ['in', `${IDLY_NS}tagsClassType`, 'tag-highway-track']],
-    },
-  },
-  {
-    selectable: true,
-    priority: 2,
+    priority: HIGHWAY.ZERO,
     layer: {
       id: 'highwayNarrow',
       type: 'line',
       source: undefined,
       layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
+        ...highwayTemplate.layer.layout,
+        'line-cap': 'square',
       },
       paint: {
+        ...highwayTemplate.layer.paint,
         'line-color': '#c5b59f',
-        'line-opacity': 0.7,
-        'line-width': 5,
+        'line-dasharray': [1, 1],
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-path',
-          'tag-highway-footway',
-          'tag-highway-bridleway',
-          'tag-highway-cycleway',
-        ],
-      ],
+      filter,
     },
   },
   {
     selectable: false,
-    priority: 2.5,
+    priority: HIGHWAY.MINUS_1,
     layer: {
       id: 'highwayNarrowCasing',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayCaseTemplate.layer.layout,
       paint: {
-        'line-color': '#FFF',
-        'line-opacity': 1,
-        'line-width': {
-          base: 1,
-          stops: [[8, 3], [12, 5]],
-        },
-        'line-dasharray': [0.4, 2],
+        ...highwayCaseTemplate.layer.paint,
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-path',
-          'tag-highway-footway',
-          'tag-highway-bridleway',
-          'tag-highway-cycleway',
-        ],
-      ],
+      filter,
     },
   },
 ];

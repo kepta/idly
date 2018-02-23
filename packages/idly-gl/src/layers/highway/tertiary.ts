@@ -1,58 +1,46 @@
 import { IDLY_NS } from '../../constants';
+import { HIGHWAY } from '../priorities';
+import { highwayCaseTemplate, highwayTemplate } from './highway.template';
 
+const filter = [
+  'all',
+  [
+    'in',
+    `${IDLY_NS}tagsClassType`,
+    'tag-highway-tertiary',
+    'tag-highway-tertiary_link',
+  ],
+];
 export default [
   {
     selectable: true,
-    priority: 2,
+    priority: HIGHWAY.ZERO,
+
     layer: {
       id: 'highwayTertiary',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayTemplate.layer.layout,
       paint: {
+        ...highwayTemplate.layer.paint,
         'line-color': '#FFF9B3',
-        'line-opacity': 0.85,
-        'line-width': 9,
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-tertiary',
-          'tag-highway-tertiary_link',
-        ],
-      ],
+      filter,
     },
   },
   {
-    selectable: true,
-    priority: 2,
+    selectable: false,
+    priority: HIGHWAY.MINUS_1,
+
     layer: {
       id: 'highwayTertiaryCasing',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: highwayCaseTemplate.layer.layout,
       paint: {
-        'line-color': '#70372f',
-        'line-opacity': 1,
-        'line-width': 10,
+        ...highwayCaseTemplate.layer.paint,
       },
-      filter: [
-        'all',
-        [
-          'in',
-          `${IDLY_NS}tagsClassType`,
-          'tag-highway-tertiary',
-          'tag-highway-tertiary_link',
-        ],
-      ],
+      filter,
     },
   },
 ];

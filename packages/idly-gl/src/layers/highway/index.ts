@@ -1,14 +1,19 @@
+import { HIGHWAY } from '../priorities';
+import fallbackLine from './fallbackLine';
 import motorway from './motorway';
 import narrow from './narrow';
 import primary from './primary';
 import residential from './residential';
 import secondary from './secondary';
 import tertiary from './tertiary';
+import track from './track';
 import trunk from './trunk';
 import unclassified from './unclassified';
 
 export default [
+  ...fallbackLine,
   ...motorway,
+  ...track,
   ...narrow,
   ...primary,
   ...residential,
@@ -16,15 +21,4 @@ export default [
   ...tertiary,
   ...trunk,
   ...unclassified,
-].map(r => {
-  r.layer.paint['line-width'] = [
-    'interpolate',
-    ['exponential', 2],
-    ['zoom'],
-    14,
-    4,
-    20,
-    12,
-  ];
-  return r;
-});
+];

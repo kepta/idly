@@ -1,11 +1,11 @@
 import { IDLY_NS } from '../../constants';
+import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
-import { areaPaintStyle } from './helper';
 
 export default [
   {
     selectable: false,
-    priority: 0.1,
+    priority: AREA.MINUS_1,
     layer: {
       id: 'AreaFallbackLayer',
       type: 'line',
@@ -25,13 +25,16 @@ export default [
   },
   {
     selectable: false,
-    priority: 0.1,
+    priority: AREA.MINUS_2,
     layer: {
       id: 'AreaFallbackLayerCasing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,
-      paint: areaCasingTemplate.layer.paint,
+      paint: {
+        'line-color': 'white',
+        'line-width': 1,
+      },
       filter: [
         'all',
         ['==', '$type', 'Polygon'],

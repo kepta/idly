@@ -1,18 +1,22 @@
-import { IDLY_NS } from '../constants';
+import { IDLY_NS } from '../../constants';
+import { LABEL } from '../priorities';
 
 export default [
   {
     selectable: false,
-    priority: 5,
+    priority: LABEL.ZERO,
     layer: {
-      id: 'LineLabelLayer',
+      id: 'AreaLabelsLayer',
       type: 'symbol',
       source: undefined,
       layout: {
-        'symbol-placement': 'line',
+        'symbol-placement': 'point',
+        'icon-image': `{${IDLY_NS}icon}-12`,
+        'icon-allow-overlap': true,
+        'icon-offset': [0, 2],
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
         'text-field': `{${IDLY_NS}name}`, // part 2 of this is how to do it
-        'text-size': 12,
+        'text-size': 9,
         'text-transform': 'uppercase',
         'text-letter-spacing': 0.05,
         'text-optional': true,
@@ -20,10 +24,10 @@ export default [
       },
       paint: {
         'text-halo-color': '#ffffff',
-        'text-halo-width': 3.5,
-        'text-halo-blur': 0.3,
+        'text-halo-width': 1.5,
+        'text-halo-blur': 0.5,
       },
-      filter: ['all', ['==', '$type', 'LineString']],
+      filter: ['all', ['==', '$type', 'Polygon']],
     },
   },
 ];

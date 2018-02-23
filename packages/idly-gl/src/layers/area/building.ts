@@ -1,6 +1,8 @@
 import { IDLY_NS } from '../../constants';
+import { AREA } from '../priorities';
+import { areaTemplate } from './area.template';
 
-const filter = [
+export const buildingFilter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
@@ -13,27 +15,23 @@ const filter = [
 export default [
   {
     selectable: false,
-    priority: 2,
+    priority: AREA.PLUS_1,
     layer: {
       id: 'areaBuildingLayer',
       minzoom: 17,
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: areaTemplate.layer.layout,
       paint: {
+        ...areaTemplate.layer.paint,
         'line-color': '#e06e5f',
-        'line-width': 1,
-        'line-opacity': 1,
       },
-      filter,
+      filter: buildingFilter,
     },
   },
   {
     selectable: false,
-    priority: 1,
+    priority: AREA.PLUS_1,
     layer: {
       id: 'areaBuildingLayerFill',
       type: 'fill',
@@ -42,7 +40,7 @@ export default [
         'fill-opacity': 0.2,
         'fill-color': '#e06e5f',
       },
-      filter,
+      filter: buildingFilter,
     },
   },
 ];

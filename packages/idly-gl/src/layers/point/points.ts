@@ -1,9 +1,10 @@
-import { IDLY_NS } from '../constants';
+import { IDLY_NS } from '../../constants';
+import { POINT } from '../priorities';
 
 export default [
   {
     selectable: true,
-    priority: 3,
+    priority: POINT.ZERO,
     layer: {
       minzoom: 17,
       id: 'PointsWithoutLabelsLayer',
@@ -19,9 +20,6 @@ export default [
         'all',
         ['!has', `${IDLY_NS}icon`],
         ['==', '$type', 'Point'],
-        /**
-         * @REVISIT this vertex problem
-         */
         ['!in', `${IDLY_NS}geometry`, 'vertex'], // OsmGeometry.VERTEX
       ],
     },

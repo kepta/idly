@@ -1,7 +1,16 @@
 import { IDLY_NS } from '../../constants';
-import { areaPaintStyle } from './helper';
+import { AREA } from '../priorities';
+import { areaCasingTemplate, areaTemplate } from './area.template';
+import { blueFilter } from './blue';
+import { goldFilter } from './gold';
+import { grayFilter } from './gray';
+import { lightGreenFilter } from './lightGreen';
+import { orangeFilter } from './orange';
+import { pinkFilter } from './pink';
+import { tanFilter } from './tan';
+import { yellowFilter } from './yellow';
 
-const filter = [
+export const greenFilter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
@@ -20,12 +29,20 @@ const filter = [
       'tag-natural-wetland',
     ],
   ],
+  ['none', goldFilter],
+  ['none', blueFilter],
+  ['none', grayFilter],
+  ['none', yellowFilter],
+  ['none', lightGreenFilter],
+  ['none', orangeFilter],
+  ['none', pinkFilter],
+  ['none', tanFilter],
 ];
 
 export default [
   {
     selectable: false,
-    priority: 0.9,
+    priority: AREA.ZERO,
     layer: {
       /**
        * @TOFIX due to tag-landuse .
@@ -35,31 +52,24 @@ export default [
       id: 'areaGreenLayer',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
+      layout: areaTemplate.layer.layout,
       paint: {
+        ...areaTemplate.layer.paint,
         'line-color': '#8cd05f',
-        'line-width': 2,
-        'line-opacity': 1,
       },
-      filter,
+      filter: greenFilter,
     },
   },
   {
     selectable: false,
-    priority: 0.9,
+    priority: AREA.ZERO,
     layer: {
       id: 'areaGreenLayerCasing',
       type: 'line',
       source: undefined,
-      layout: {
-        'line-join': 'round',
-        'line-cap': 'round',
-      },
-      paint: { ...areaPaintStyle, 'line-color': '#8cd05f' },
-      filter,
+      layout: areaCasingTemplate.layer.layout,
+      paint: { ...areaCasingTemplate.layer.paint, 'line-color': '#8cd05f' },
+      filter: greenFilter,
     },
   },
 ];

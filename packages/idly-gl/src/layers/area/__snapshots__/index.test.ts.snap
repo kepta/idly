@@ -1,0 +1,1638 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`area layers snapshot check the structure 1`] = `
+Array [
+  "AreaFallbackLayer",
+  "AreaFallbackLayerCasing",
+  "areaBlueLayer",
+  "areaBlueLayerCasing",
+  "areaBuildingLayer",
+  "areaBuildingLayerFill",
+  "areaGoldLayer",
+  "areaGoldLayerCasing",
+  "areaGrayLayer",
+  "areaGrayLayerCasing",
+  "areaGreenLayer",
+  "areaGreenLayerCasing",
+  "areaLightGreenLayer",
+  "areaLightGreenLayerCasing",
+  "areaOrangeLayer",
+  "areaOrangeLayerCasing",
+  "areaPinkLayer",
+  "areaPinkLayerCasing",
+  "areaTanLayer",
+  "areaTanLayerCasing",
+  "areaYellowLayer",
+  "areaYellowLayerCasing",
+]
+`;
+
+exports[`area layers snapshot checks layer 1`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "!=",
+        "@idly-tagsClass",
+        "tag-building",
+      ],
+    ],
+    "id": "AreaFallbackLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#fff",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 1.75,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 2`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "!=",
+        "@idly-tagsClass",
+        "tag-building",
+      ],
+    ],
+    "id": "AreaFallbackLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "white",
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 1.5,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 3`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-amenity-swimming_pool",
+        "tag-leisure-swimming_pool",
+        "tag-natural-water",
+        "tag-landuse-aquaculture",
+        "tag-landuse-basin",
+        "tag-landuse-harbour",
+        "tag-landuse-reservoir",
+      ],
+    ],
+    "id": "areaBlueLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#77d3de",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 4`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-amenity-swimming_pool",
+        "tag-leisure-swimming_pool",
+        "tag-natural-water",
+        "tag-landuse-aquaculture",
+        "tag-landuse-basin",
+        "tag-landuse-harbour",
+        "tag-landuse-reservoir",
+      ],
+    ],
+    "id": "areaBlueLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#77d3de",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 5`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "any",
+        Array [
+          "==",
+          "@idly-tagsClassType",
+          "tag-amenity-shelter",
+        ],
+        Array [
+          "==",
+          "@idly-tagsClass",
+          "tag-building",
+        ],
+      ],
+    ],
+    "id": "areaBuildingLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "minzoom": 17,
+    "paint": Object {
+      "line-color": "#e06e5f",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2.25,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 6`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "any",
+        Array [
+          "==",
+          "@idly-tagsClassType",
+          "tag-amenity-shelter",
+        ],
+        Array [
+          "==",
+          "@idly-tagsClass",
+          "tag-building",
+        ],
+      ],
+    ],
+    "id": "areaBuildingLayerFill",
+    "paint": Object {
+      "fill-color": "#e06e5f",
+      "fill-opacity": 0.2,
+    },
+    "source": undefined,
+    "type": "fill",
+  },
+  "priority": 2.25,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 7`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-residential",
+        "tag-landuse-construction",
+      ],
+    ],
+    "id": "areaGoldLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#c4bd19",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 8`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-residential",
+        "tag-landuse-construction",
+      ],
+    ],
+    "id": "areaGoldLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#c4bd19",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 9`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-amenity-parking",
+        "tag-leisure-pitch.tag-sport-basketball",
+        "tag-leisure-pitch.tag-sport-skateboard",
+        "tag-natural-bare_rock",
+        "tag-natural-scree",
+        "tag-landuse-railway",
+        "tag-landuse-quarry",
+        "tag-natural-cave_entrance",
+        "tag-natural-glacier",
+      ],
+    ],
+    "id": "areaGrayLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#bbb",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 10`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-amenity-parking",
+        "tag-leisure-pitch.tag-sport-basketball",
+        "tag-leisure-pitch.tag-sport-skateboard",
+        "tag-natural-bare_rock",
+        "tag-natural-scree",
+        "tag-landuse-railway",
+        "tag-landuse-quarry",
+        "tag-natural-cave_entrance",
+        "tag-natural-glacier",
+      ],
+    ],
+    "id": "areaGrayLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#bbb",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 11`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "any",
+        Array [
+          "in",
+          "@idly-tagsClass",
+          "tag-natural",
+          "tag-landuse",
+        ],
+        Array [
+          "in",
+          "@idly-tagsClassType",
+          "tag-leisure-nature_reserve",
+          "tag-leisure-pitch",
+          "tag-leisure-park",
+          "tag-landuse-forest",
+          "tag-natural-wetland",
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-residential",
+            "tag-landuse-construction",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-amenity-swimming_pool",
+            "tag-leisure-swimming_pool",
+            "tag-natural-water",
+            "tag-landuse-aquaculture",
+            "tag-landuse-basin",
+            "tag-landuse-harbour",
+            "tag-landuse-reservoir",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-amenity-parking",
+            "tag-leisure-pitch.tag-sport-basketball",
+            "tag-leisure-pitch.tag-sport-skateboard",
+            "tag-natural-bare_rock",
+            "tag-natural-scree",
+            "tag-landuse-railway",
+            "tag-landuse-quarry",
+            "tag-natural-cave_entrance",
+            "tag-natural-glacier",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-sport-beachvolleyball",
+            "tag-natural-beach",
+            "tag-natural-sand",
+            "tag-natural-scrub",
+            "tag-amenity-childcare",
+            "tag-amenity-kindergarten",
+            "tag-amenity-school",
+            "tag-amenity-college",
+            "tag-amenity-university",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-cemetery",
+            "tag-landuse-orchard",
+            "tag-landuse-meadow",
+            "tag-landuse-farm",
+            "tag-landuse-farmland",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-retail",
+            "tag-landuse-commercial",
+            "tag-landuse-landfill",
+            "tag-military",
+            "tag-landuse-military",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-industrial",
+            "tag-power-plant",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-farmyard",
+          ],
+        ],
+      ],
+    ],
+    "id": "areaGreenLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#8cd05f",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 12`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "any",
+        Array [
+          "in",
+          "@idly-tagsClass",
+          "tag-natural",
+          "tag-landuse",
+        ],
+        Array [
+          "in",
+          "@idly-tagsClassType",
+          "tag-leisure-nature_reserve",
+          "tag-leisure-pitch",
+          "tag-leisure-park",
+          "tag-landuse-forest",
+          "tag-natural-wetland",
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-residential",
+            "tag-landuse-construction",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-amenity-swimming_pool",
+            "tag-leisure-swimming_pool",
+            "tag-natural-water",
+            "tag-landuse-aquaculture",
+            "tag-landuse-basin",
+            "tag-landuse-harbour",
+            "tag-landuse-reservoir",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-amenity-parking",
+            "tag-leisure-pitch.tag-sport-basketball",
+            "tag-leisure-pitch.tag-sport-skateboard",
+            "tag-natural-bare_rock",
+            "tag-natural-scree",
+            "tag-landuse-railway",
+            "tag-landuse-quarry",
+            "tag-natural-cave_entrance",
+            "tag-natural-glacier",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-sport-beachvolleyball",
+            "tag-natural-beach",
+            "tag-natural-sand",
+            "tag-natural-scrub",
+            "tag-amenity-childcare",
+            "tag-amenity-kindergarten",
+            "tag-amenity-school",
+            "tag-amenity-college",
+            "tag-amenity-university",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-cemetery",
+            "tag-landuse-orchard",
+            "tag-landuse-meadow",
+            "tag-landuse-farm",
+            "tag-landuse-farmland",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-retail",
+            "tag-landuse-commercial",
+            "tag-landuse-landfill",
+            "tag-military",
+            "tag-landuse-military",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-industrial",
+            "tag-power-plant",
+          ],
+        ],
+      ],
+      Array [
+        "none",
+        Array [
+          "all",
+          Array [
+            "==",
+            "$type",
+            "Polygon",
+          ],
+          Array [
+            "in",
+            "@idly-tagsClassType",
+            "tag-landuse-farmyard",
+          ],
+        ],
+      ],
+    ],
+    "id": "areaGreenLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#8cd05f",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 13`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-cemetery",
+        "tag-landuse-orchard",
+        "tag-landuse-meadow",
+        "tag-landuse-farm",
+        "tag-landuse-farmland",
+      ],
+    ],
+    "id": "areaLightGreenLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#c7d3a0",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 14`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-cemetery",
+        "tag-landuse-orchard",
+        "tag-landuse-meadow",
+        "tag-landuse-farm",
+        "tag-landuse-farmland",
+      ],
+    ],
+    "id": "areaLightGreenLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#c7d3a0",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 15`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-retail",
+        "tag-landuse-commercial",
+        "tag-landuse-landfill",
+        "tag-military",
+        "tag-landuse-military",
+      ],
+    ],
+    "id": "areaOrangeLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#d6881a",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 16`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-retail",
+        "tag-landuse-commercial",
+        "tag-landuse-landfill",
+        "tag-military",
+        "tag-landuse-military",
+      ],
+    ],
+    "id": "areaOrangeLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#d6881a",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 17`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-industrial",
+        "tag-power-plant",
+      ],
+    ],
+    "id": "areaPinkLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#e4a4f5",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 18`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-industrial",
+        "tag-power-plant",
+      ],
+    ],
+    "id": "areaPinkLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#e4a4f5",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 19`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-farmyard",
+      ],
+    ],
+    "id": "areaTanLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#f5dcba",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 20`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-landuse-farmyard",
+      ],
+    ],
+    "id": "areaTanLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#f5dcba",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 21`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-sport-beachvolleyball",
+        "tag-natural-beach",
+        "tag-natural-sand",
+        "tag-natural-scrub",
+        "tag-amenity-childcare",
+        "tag-amenity-kindergarten",
+        "tag-amenity-school",
+        "tag-amenity-college",
+        "tag-amenity-university",
+      ],
+    ],
+    "id": "areaYellowLayer",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#ffff94",
+      "line-opacity": 1,
+      "line-width": 1,
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;
+
+exports[`area layers snapshot checks layer 22`] = `
+Object {
+  "layer": Object {
+    "filter": Array [
+      "all",
+      Array [
+        "==",
+        "$type",
+        "Polygon",
+      ],
+      Array [
+        "in",
+        "@idly-tagsClassType",
+        "tag-sport-beachvolleyball",
+        "tag-natural-beach",
+        "tag-natural-sand",
+        "tag-natural-scrub",
+        "tag-amenity-childcare",
+        "tag-amenity-kindergarten",
+        "tag-amenity-school",
+        "tag-amenity-college",
+        "tag-amenity-university",
+      ],
+    ],
+    "id": "areaYellowLayerCasing",
+    "layout": Object {
+      "line-cap": "round",
+      "line-join": "round",
+    },
+    "paint": Object {
+      "line-color": "#ffff94",
+      "line-offset": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            1,
+          ],
+          Array [
+            18,
+            4,
+          ],
+          Array [
+            22,
+            21,
+          ],
+        ],
+      },
+      "line-opacity": Object {
+        "base": 0.2,
+        "stops": Array [
+          Array [
+            16,
+            0.6,
+          ],
+          Array [
+            18,
+            0.3,
+          ],
+          Array [
+            22,
+            0.4,
+          ],
+        ],
+      },
+      "line-width": Object {
+        "base": 4,
+        "stops": Array [
+          Array [
+            16,
+            2,
+          ],
+          Array [
+            18,
+            8,
+          ],
+          Array [
+            22,
+            40,
+          ],
+        ],
+      },
+    },
+    "source": undefined,
+    "type": "line",
+  },
+  "priority": 2,
+  "selectable": false,
+}
+`;

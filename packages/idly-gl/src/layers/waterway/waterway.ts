@@ -1,9 +1,10 @@
 import { IDLY_NS } from '../../constants';
+import { WATERWAY } from '../priorities';
 
 export default [
   {
     selectable: true,
-    priority: 2,
+    priority: WATERWAY.ZERO,
     layer: {
       id: 'waterway',
       type: 'line',

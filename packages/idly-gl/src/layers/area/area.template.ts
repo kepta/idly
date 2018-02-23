@@ -1,6 +1,7 @@
+import { AREA } from '../priorities';
+
 export const areaTemplate: {
   selectable: false;
-  priority: 1;
   layer: {
     id: undefined;
     type: 'line';
@@ -11,14 +12,13 @@ export const areaTemplate: {
     };
     paint: {
       'line-color': '#fff';
-      'line-width': 2;
+      'line-width': 1;
       'line-opacity': 1;
     };
     filter: undefined;
   };
 } = {
   selectable: false,
-  priority: 1,
   layer: {
     id: undefined,
     type: 'line',
@@ -29,7 +29,7 @@ export const areaTemplate: {
     },
     paint: {
       'line-color': '#fff',
-      'line-width': 2,
+      'line-width': 1,
       'line-opacity': 1,
     },
     filter: undefined,
@@ -38,7 +38,6 @@ export const areaTemplate: {
 
 export const areaCasingTemplate: {
   selectable: false;
-  priority: 1;
   layer: {
     id: undefined;
     type: 'line';
@@ -51,7 +50,7 @@ export const areaCasingTemplate: {
       'line-color': '#fff';
       'line-width': {
         base: 4;
-        stops: [[16, 4], [18, 40], [22, 20]];
+        stops: [[16, 4], [18, 18], [22, 20]];
       };
       'line-opacity': {
         base: 0.2;
@@ -59,18 +58,17 @@ export const areaCasingTemplate: {
       };
       'line-offset': {
         base: 4;
-        stops: [[16, 4], [18, 16], [22, 12]];
+        stops: [[16, 4], [18, 4], [22, 6]];
       };
       'line-blur': {
         base: 2;
-        stops: [[16, 4], [18, 8], [22, 12]];
+        stops: [[16, 0], [18, 0], [22, 0]];
       };
     };
     filter: undefined;
   };
 } = {
   selectable: false,
-  priority: 1,
   layer: {
     id: undefined,
     type: 'line',
@@ -83,7 +81,7 @@ export const areaCasingTemplate: {
       'line-color': '#fff',
       'line-width': {
         base: 4,
-        stops: [[16, 4], [18, 40], [22, 20]],
+        stops: [[16, 2], [18, 8], [22, 40]],
       },
       'line-opacity': {
         base: 0.2,
@@ -91,11 +89,7 @@ export const areaCasingTemplate: {
       },
       'line-offset': {
         base: 4,
-        stops: [[16, 4], [18, 16], [22, 12]],
-      },
-      'line-blur': {
-        base: 2,
-        stops: [[16, 4], [18, 8], [22, 12]],
+        stops: [[16, 1], [18, 4], [22, 21]],
       },
     },
     filter: undefined,
