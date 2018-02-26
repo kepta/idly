@@ -11,7 +11,7 @@ export const wayPropertiesGen = weakCache((way: Way) => {
   const geometry = isArea(way) ? OsmGeometry.AREA : OsmGeometry.LINE;
   const [tagsClass, tagsClassType] = tagClassesPrimaryCache(way.tags);
   const match = presetMatch(way.tags, geometry); // presetsMatcherCached(geometry)(way.tags);
-  return {
+  const result = {
     '@idly-geometry': geometry,
     '@idly-icon': match && match.icon,
     '@idly-isOneway': isOneway(way.tags),
@@ -19,4 +19,9 @@ export const wayPropertiesGen = weakCache((way: Way) => {
     '@idly-tagsClass': tagsClass,
     '@idly-tagsClassType': tagsClassType,
   };
+  if (way.tags.height) {
+    result['@idly-height'] = parseInt(way.tags.height, 10);
+    result['@idly-min_height'] = parseInt(way.tags['min_height'], 10);
+  }
+  return result;
 });

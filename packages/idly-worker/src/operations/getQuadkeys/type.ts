@@ -4,11 +4,9 @@ import { GetActions } from '../operationsTypes';
 
 export interface GetQuadkey {
   readonly type: GetActions.GetQuadkey;
-  readonly request: [
-    {
-      readonly quadkey: string;
-      readonly entities: Entity[];
-    }
-  ];
+  readonly request: Array<{
+    readonly quadkey: string;
+    readonly entities: Entity[];
+  }>;
   readonly response: FeatureCollection<any>;
 }

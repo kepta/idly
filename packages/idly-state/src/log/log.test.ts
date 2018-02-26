@@ -8,6 +8,7 @@ import {
   logGetCurrentIds,
   logGetLatestVersion,
   logRecreate,
+  logRewrite,
 } from './index';
 
 const createAndAdd = (ids: string[]) => (log: Log) =>
@@ -166,6 +167,97 @@ describe('getLatestVersion', () => {
     );
     expect(logGetLatestVersion('3')(log)).toEqual(1);
     expect(logGetLatestVersion('2')(log)).toEqual(4);
+  });
+});
+
+describe('logRewrite', () => {
+  const log = logRecreate(
+    setCreate(['2#4']),
+    setCreate(['3#2', '2#3']),
+    setCreate(['3#0', '2#2']),
+    setCreate(['2#1']),
+    setCreate(['4#0'])
+  );
+  it('work for many entries', () => {
+    expect(logRewrite(log, '5', setCreate(['2']))).toEqual(
+      logRecreate(
+        setCreate(['2#4', '5#3']),
+        setCreate(['3#2', '2#3', '5#2']),
+        setCreate(['3#0', '2#2', '5#1']),
+        setCreate(['2#1', '5#0']),
+        setCreate(['4#0'])
+      )
+    );
+  });
+
+  it('work when on only one entry', () => {
+    expect(logRewrite(log, '5', setCreate(['4']))).toEqual(
+      logRecreate(
+        setCreate(['2#4']),
+        setCreate(['3#2', '2#3']),
+        setCreate(['3#0', '2#2']),
+        setCreate(['2#1']),
+        setCreate(['4#0', '5#0'])
+      )
+    );
+  });
+
+  it('work with the most recent entry', () => {
+    const l = logRecreate(
+      setCreate(['5#0']),
+      setCreate(['2#4']),
+      setCreate(['3#2', '2#3']),
+      setCreate(['3#0', '2#2']),
+      setCreate(['2#1']),
+      setCreate(['4#0'])
+    );
+    expect(logRewrite(l, '6', setCreate(['5']))).toEqual(
+      logRecreate(
+        setCreate(['5#0', '6#0']),
+        setCreate(['2#4']),
+        setCreate(['3#2', '2#3']),
+        setCreate(['3#0', '2#2']),
+        setCreate(['2#1']),
+        setCreate(['4#0'])
+      )
+    );
+  });
+
+  it('works with the multiple baseids ', () => {
+    const l = logRecreate(
+      setCreate(['5#0']),
+      setCreate(['2#4']),
+      setCreate(['3#2', '2#3']),
+      setCreate(['3#0', '2#2']),
+      setCreate(['2#1']),
+      setCreate(['4#0'])
+    );
+    expect(logRewrite(l, '6', setCreate(['5', '3']))).toEqual(
+      logRecreate(
+        setCreate(['5#0', '6#2']),
+        setCreate(['2#4']),
+        setCreate(['3#2', '2#3', '6#1']),
+        setCreate(['3#0', '2#2', '6#0']),
+        setCreate(['2#1']),
+        setCreate(['4#0'])
+      )
+    );
+  });
+  it('works with empty log', () => {
+    const l = logRecreate();
+    expect(logRewrite(l, '6', setCreate(['5', '3']))).toEqual(logRecreate());
+  });
+
+  it('works with no base ids are found', () => {
+    const l = logRecreate(
+      setCreate(['5#0']),
+      setCreate(['2#4']),
+      setCreate(['3#2', '2#3']),
+      setCreate(['3#0', '2#2']),
+      setCreate(['2#1']),
+      setCreate(['4#0'])
+    );
+    expect(logRewrite(l, '6', setCreate(['9', '13']))).toEqual(l);
   });
 });
 

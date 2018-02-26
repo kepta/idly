@@ -12,7 +12,7 @@ import { GetQuadkey } from './type';
 
 /** Worker Thread */
 let count = 0;
-
+const MAX_SIZE = 50000;
 export function workerGetQuadkey(
   state: WorkerState
 ): WorkerOperation<GetQuadkey> {
@@ -39,7 +39,7 @@ export function workerGetQuadkey(
 
     const toReturn: GetQuadkey['response'] = featureCollection(features);
 
-    if (qState[0].getElementTable().size >= 12000) {
+    if (qState[0].getElementTable().size >= MAX_SIZE) {
       console.log(
         'size reached high',
         qState[0].getElementTable().size,

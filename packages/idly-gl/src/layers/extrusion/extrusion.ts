@@ -1,12 +1,13 @@
 import { IDLY_NS } from '../../constants';
-import { NON_INTERACTIVE } from '../priorities';
+import { EXTRUSION } from '../priorities';
 
 export default [
   {
     selectable: false,
-    priority: NON_INTERACTIVE.ZERO,
+    hide: true,
+    priority: EXTRUSION.ZERO,
     layer: {
-      id: 'nonInteractiveExtrusion',
+      id: 'extrusionExtrusion',
       type: 'fill-extrusion',
       source: undefined,
       paint: {
@@ -23,7 +24,7 @@ export default [
         // Get fill-extrusion-base from the source 'base_height' property.
 
         // Make extrusions slightly opaque for see through indoor walls.
-        'fill-extrusion-opacity': 0.9,
+        'fill-extrusion-opacity': 0.7,
       },
       filter: [
         'all',

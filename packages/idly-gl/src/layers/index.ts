@@ -1,10 +1,10 @@
 import area from './area';
+import extrusion from './extrusion/extrusion';
 import highway from './highway';
 import pointsDraggable from './interactive/pointsDraggable';
 import areaLabels from './label/areaLabels';
 import lineLabel from './label/lineLabel';
 import pointsWithLabels from './label/pointsWithLabels';
-import extrusion from './nonInteractive/extrusion';
 import onewayArrows from './nonInteractive/onewayArrows';
 import pointsWithoutLabels from './point/points';
 import * as priority from './priorities';
@@ -23,7 +23,9 @@ const layers = [
   ...pointsWithLabels,
   ...pointsWithoutLabels,
   ...pointsDraggable,
-].sort((a, b) => a.priority - b.priority);
+]
+  .filter(r => !r.hide)
+  .sort((a, b) => a.priority - b.priority);
 
 export default layers;
 

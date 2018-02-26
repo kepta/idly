@@ -26,7 +26,7 @@ import {
 import { State } from '../state/state';
 import { ReadonlyTable } from '../table/regular';
 import { Derived, DerivedTable, derivedTableUpdate } from './derivedTable';
-
+// http://localhost:8080/#18.73/40.7269/-74.00153 this just loads king st
 export type OsmTable = ReadonlyTable<Entity>;
 
 export type OsmState = [State<Entity, Derived>, Log];
@@ -171,6 +171,8 @@ export const osmStateShred: OsmStateShredType = ([state, log]) => {
   return [newState, log];
 };
 
+// NOTE: this has a dependedency on the osmMetatable
+// if osmMetatable hasnt been executed this would fail
 export type EntryFindRelatedToNodeType = (
   [state, log]: OsmState,
   nodeId: string,

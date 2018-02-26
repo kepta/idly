@@ -1,6 +1,7 @@
 import { nodeFactory, wayFactory } from 'idly-common/lib/osm/entityFactory';
-import { EntityType, Way } from 'idly-common/lib/osm/structures';
+import { EntityType, Node, Way } from 'idly-common/lib/osm/structures';
 import {
+  entryFindRelatedToNode,
   OsmState,
   osmStateAddModifieds,
   osmStateAddVirgins,
@@ -237,6 +238,72 @@ describe('from xml to final rendering', () => {
           osmStateGetNextId(osmState, 'n2708095906')
         );
       }
+    });
+  });
+
+  describe('a new virgin way getting added which is also a parent of existing modified node', () => {
+    // console.log(
+    //   derivedTableToJs(osmStateGetVisible(osmState, ['123']))
+    //     .sort((a: any, b: any) => {
+    //       return a[1].parentWays.length - b[1].parentWays.length;
+    //     })
+    //     .map(r => [r[0], r[1].parentWays])
+    //     .reverse()
+    // );
+    it('modifying the node with many parentWays', () => {
+      const virginEntities = () => parseFixture('one.xml');
+      const osmState = osmStateCreate();
+      osmStateAddVirgins(osmState, virginEntities(), '123');
+
+      const nodeId = 'n2657347573';
+      const node = virginEntities().find(r => r.id === nodeId) as Node;
+      // console.log(virginEntities().find(r => r.id === node));
+      const parentWays = virginEntities().filter(
+        r => r.type === 'way' && r.nodes.indexOf('n2657347573') > -1
+      );
+
+      const nodeHash0 = {
+        ...node,
+        id: osmStateGetNextId(osmState, node.id),
+        loc: {
+          lat: 12,
+          lon: 25,
+        },
+      };
+      osmStateGetVisible(osmState, ['123']);
+
+      expect(nodeHash0.id).toBe(`n2657347573#0`);
+
+      expect(
+        entryFindRelatedToNode(osmState, nodeHash0.id, node.id).map(r => r.id)
+      ).toEqual(parentWays.map(r => r.id + '#0'));
+
+      const newOsmState = osmStateAddModifieds(osmState, [
+        ...entryFindRelatedToNode(osmState, nodeHash0.id, node.id),
+        nodeHash0,
+      ]);
+
+      osmStateGetVisible(newOsmState, ['123']);
+
+      expect([
+        ...osmStateGetVisible(newOsmState, ['123']).get(nodeHash0.id)
+          .parentWays,
+      ]).toEqual(parentWays.map(r => r.id + '#0'));
+
+      osmStateAddVirgins(
+        osmState,
+        [
+          wayFactory({
+            id: 'w1',
+            nodes: ['n2657347573'],
+          }),
+        ],
+        '122'
+      );
+
+      expect([
+        ...osmStateGetVisible(newOsmState, ['12']).get(node.id).parentWays,
+      ]).toBe(undefined);
     });
   });
 });

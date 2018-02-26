@@ -9,7 +9,7 @@ const path = require('path');
 const srcpath = path.resolve(__dirname, 'src/');
 
 module.exports = {
-  entry: './src/plugin/index.ts',
+  entry: './src/index.ts',
   output: {
     filename: 'idly-gl.js',
     path: __dirname + '/dist',

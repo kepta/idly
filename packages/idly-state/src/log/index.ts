@@ -27,7 +27,7 @@ export const validModifiedId = (str: string) => !validVirginId(str);
  * modifiedId - is `virginId#version` eg, n121#121, r12#11
  * version - the part after hash # eg, for 12#0 version is 0.
  * currentId - is the most recent modifiedId in the log
- * baseId - the virginId that that relevant id descended from
+ * baseId - the virginId that  relevant id descended from
  */
 
 export const logGetBaseIds: (log: Log) => ReadonlySet<string> = weakCache(
@@ -57,6 +57,29 @@ export const logGetCurrentIds: (log: Log) => ReadonlySet<string> = weakCache(
 export const logGetEveryId: (log: Log) => ReadonlySet<string> = weakCache(
   (log: Log) => iterableFlattenToSet<string>(log)
 );
+
+/**
+ * This function takes a virginId and automatically adds new versions of
+ * it in all entries which has atleast one of the provided baseIds.
+ * Useful when you have a way which is a parent of modified ID and you want
+ * to make it appear this guy always existed.
+ * @param virginId - The virginId that you want to exist since starting
+ * @param baseIds - The baseIds which give cue to where viriginId would be modified
+ */
+export const logRewrite = (log: Log, virginId: string, baseIds: Set<string>) =>
+  log
+    .slice(0)
+    .reverse()
+    .reduce((l, e) => {
+      let newEntryArray = [...e];
+      if (newEntryArray.map(modifiedIdGetBaseId).find(id => baseIds.has(id))) {
+        newEntryArray = [
+          ...newEntryArray,
+          logGenerateNextModifiedId(virginId)(l),
+        ];
+      }
+      return logAddEntry(setCreate(newEntryArray))(l);
+    }, logCreate());
 
 export const logRecreate = (...entries: Entry[]) =>
   entries

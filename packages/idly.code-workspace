@@ -24,6 +24,14 @@
 	],
 	"settings": {
 		"workbench.editor.labelFormat": "medium",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": true,
+		"cSpell.words": [
+			"Quadkey",
+			"bbox",
+			"bboxify",
+			"minzoom",
+			"oneway",
+			"selectable"
+		],
 	}
 }

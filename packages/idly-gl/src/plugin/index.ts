@@ -3,10 +3,11 @@ import shadows from '../shadows';
 
 import { BBox, bboxToTiles, mercator } from 'idly-common/lib/geo';
 import { cancelablePromise, tileToQuadkey } from 'idly-common/lib/misc';
+import { filter } from 'rxjs/operators/filter';
 
 import parser from 'idly-faster-osm-parser';
 import debounce from 'lodash-es/debounce';
-import { addSource } from '../helper/addSource';
+import { addSource } from '../helper';
 import { workerGetMoveNode, workerGetQuadkeys } from './worker/index';
 
 const BASE_SOURCE = 'idly-gl-base-src-1';
@@ -64,13 +65,6 @@ export class IdlyGlPlugin {
         features: [],
       },
     });
-
-    shadows
-      .map(r => {
-        return { ...r, priority: r.priority + 10 };
-      })
-      .map(r => addSource(r.layer, SHADOW_SOURCE))
-      .forEach(l => this.map.addLayer(l));
 
     layers
       .map(r => addSource(r.layer, BASE_SOURCE))
