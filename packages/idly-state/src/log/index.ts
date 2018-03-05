@@ -33,7 +33,7 @@ export const validModifiedId = (str: string) => !validVirginId(str);
 export const logGetBaseIds: (log: Log) => ReadonlySet<string> = weakCache(
   (log: Log) =>
     log.reduce((prev: Set<string>, cur) => {
-      cur.forEach(index => prev.add(modifiedIdGetBaseId(index)));
+      cur.forEach(index => prev.add(baseId(index)));
       return prev;
     }, setCreate())
 );
@@ -44,9 +44,7 @@ export const logGetCurrentIds: (log: Log) => ReadonlySet<string> = weakCache(
       log
         .reduce((prev, entry) => {
           entry.forEach(
-            index =>
-              !prev.has(modifiedIdGetBaseId(index)) &&
-              prev.set(modifiedIdGetBaseId(index), index)
+            index => !prev.has(baseId(index)) && prev.set(baseId(index), index)
           );
           return prev;
         }, new Map<string, string>())
@@ -72,7 +70,7 @@ export const logRewrite = (log: Log, virginId: string, baseIds: Set<string>) =>
     .reverse()
     .reduce((l, e) => {
       let newEntryArray = [...e];
-      if (newEntryArray.map(modifiedIdGetBaseId).find(id => baseIds.has(id))) {
+      if (newEntryArray.map(baseId).find(id => baseIds.has(id))) {
         newEntryArray = [
           ...newEntryArray,
           logGenerateNextModifiedId(virginId)(l),
@@ -110,7 +108,7 @@ export const modifiedIdGetVersion = (index: ModifiedId) =>
   parseInt(modifiedIdParse(index)[1], 10);
 
 export const logGetLatestVersion = (id: string) => (log: Log) => {
-  const finder = entryFindModifiedId(modifiedIdGetBaseId(id));
+  const finder = entryFindModifiedId(baseId(id));
   let index;
   for (const entry of log) {
     index = finder(entry);
@@ -122,15 +120,14 @@ export const logGetLatestVersion = (id: string) => (log: Log) => {
 };
 
 export const logGenerateNextModifiedId = (id: string) => (log: Log) =>
-  `${modifiedIdGetBaseId(id)}#${logGetLatestVersion(id)(log) + 1}`;
+  `${baseId(id)}#${logGetLatestVersion(id)(log) + 1}`;
 
 export const entryFindModifiedId = (indexOrId: string) => (entry: Entry) =>
-  setFind(i => modifiedIdGetBaseId(i) === indexOrId, entry);
+  setFind(i => baseId(i) === indexOrId, entry);
 
-export const modifiedIdGetBaseId = (index: ModifiedId) =>
-  modifiedIdParse(index)[0];
+export const baseId = (index: ModifiedId) => modifiedIdParse(index)[0];
 
 const modifiedIdParse = (index: ModifiedId) => index.split('#');
 
 export const modifiedIdIncrement = (index: ModifiedId) =>
-  `${modifiedIdGetBaseId(index)}#${modifiedIdGetVersion(index) + 1}`;
+  `${baseId(index)}#${modifiedIdGetVersion(index) + 1}`;

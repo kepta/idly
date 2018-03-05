@@ -1,226 +1,239 @@
 import {
   Entity,
   EntityType,
+  LngLat,
   Relation,
   Way,
 } from 'idly-common/lib/osm/structures';
-import { Identity } from 'monet';
+import { stateGenNextId } from '..';
+import { nodeMove } from '../editing/operations/nodeMove';
+import { isNotVirgin, setCreate, setDifference, setUnion } from '../helper';
 import {
-  isNotVirgin,
-  isVirgin,
-  setAddIterable,
-  setBulkDelete,
-  setClone,
-  setCreate,
-} from '../helper';
-import {
+  baseId,
   Log,
   logAddEntry,
-  logCreate,
   logGetBaseIds,
-  logGetCurrentIds,
   logGetEveryId,
   logGetLatestVersion,
-  modifiedIdGetBaseId,
 } from '../log';
-import { State } from '../state/state';
-import { ReadonlyTable } from '../table/regular';
-import { Derived, DerivedTable, derivedTableUpdate } from './derivedTable';
+import { VirginState } from '../state/state';
+import { entitiesExpandToBaseAndRelated } from '../stateHelpers';
+import { genNextId } from '../stateHelpers/genNextId';
+import { ReadonlyTable, tableAdd, Table } from '../table/regular';
+import { OsmState } from '../type';
+import { DerivedTable } from './derivedTable';
+
 // http://localhost:8080/#18.73/40.7269/-74.00153 this just loads king st
 export type OsmTable = ReadonlyTable<Entity>;
+// export type VirginTable = ReadonlyTable<Entity>;
+export type ChangedTable = ReadonlyTable<Entity>;
 
-export type OsmState = [State<Entity, Derived>, Log];
+// tofix make sure you only use readonly and readonly safe operators
 
-export type OsmStateCreateType = (
-  state?: State<Entity, Derived>,
-  log?: Log
-) => OsmState;
+// export function addVirgins(
+//   state: OsmState,
+//   entities: Entity[],
+//   quadkey: string
+// ): OsmState {
+// if (entities.some(r => isNotVirgin(r.id))) {
+//   throw new Error('only virgin entities can be added');
+// }
+// const isParentOfModified: Array<[Way, string[]]> = [];
+// for (const e of entities) {
+//   if (e.type === EntityType.NODE || state.changedTable.has(e.id)) {
+//     continue;
+//   }
+//   if (e.type === EntityType.WAY) {
+//     const foundNodes = e.nodes.filter(n => state.changedTable.has(n));
+//     if (foundNodes.length > 0) {
+//       isParentOfModified.push([e, foundNodes]);
+//     }
+//   }
+// }
+// const getBaseIds = e => [...e].map(r => modifiedIdGetBaseId(r));
+// let log = state.log;
+// let changedTable = state.changedTable;
+// if (isParentOfModified.length > 0) {
+//   changedTable = new Map(changedTable);
+//   isParentOfModified.forEach(([entity, foundNodes]) => {
+//     log = logRewrite(log, entity.id, new Set(foundNodes));
+//     log
+//       .slice(0)
+//       .reverse()
+//       .map(e => [...e])
+//       .map(ids => [
+//         ids[ids.map(modifiedIdGetBaseId).indexOf(entity.id)],
+//         ids.filter(i => entity.nodes.indexOf(modifiedIdGetBaseId(i)) > -1),
+//       ])
+//       .filter(([id]) => id)
+//       .forEach(([id, modifiedNodeIds]) => {
+//         const newWay = {
+//           ...entity,
+//           id,
+//           nodes: entity.nodes.map(r => {
+//             if (modifiedNodeIds.find(mN => modifiedIdGetBaseId(mN) === r)) {
+//               return modifiedNodeIds.find(
+//                 mN => modifiedIdGetBaseId(mN) === r
+//               );
+//             }
+//             return r;
+//           }),
+//         };
+//         changedTable.set(newWay.id, newWay);
+//         if (!changedTable.has(entity.id)) {
+//           changedTable.set(entity.id, entity);
+//         }
+//       });
+//   });
+// }
+// }
 
-export const osmStateCreate: OsmStateCreateType = (
-  state = State.create<Entity, Derived>(),
-  log = logCreate()
-): OsmState => [state, log];
+function debugOsmStateGetEntity(state: OsmState, id: string) {
+  const logEveryId = logGetEveryId(state.log);
 
-export function osmStateAddVirgins(
-  [state, _]: OsmState,
-  entities: Entity[],
-  quadkey: string
-): void {
-  if (entities.some(r => isNotVirgin(r.id))) {
-    throw new Error('only virgin entities can be added');
+  if (
+    (logEveryId.has(id) && !state.changedTable.has(id)) ||
+    (!logEveryId.has(id) && state.changedTable.has(id) && isNotVirgin(id))
+  ) {
+    throw new Error('state and log have gone incosistent for ' + id);
   }
-  state.add(e => e.id, entities, quadkey);
+}
+
+export function changedTableGetEntity(
+  changedTable: ReadonlyTable<Entity>,
+  log: Log,
+  id: string
+): Entity | undefined {
+  return changedTable.get(id);
 }
 
 export type OsmStateGetEntityType = (
-  [state, log]: OsmState,
+  state: OsmState,
   id: string
 ) => Entity | undefined;
 
-export const osmStateGetEntity: OsmStateGetEntityType = ([state, log], id) =>
-  isVirgin(id) || logGetEveryId(log).has(id) ? state.getElement(id) : undefined;
+// @TOFIX Delete it after you take care of shit below
+export const osmStateGetEntity: OsmStateGetEntityType = (state, id) => {
+  debugOsmStateGetEntity(state, id);
 
-export type OsmStateGetNextIdType = (
-  [state, log]: OsmState,
-  id: string
-) => string;
-
-export const osmStateGetNextId: OsmStateGetNextIdType = ([state, log], id) => {
-  const virginId = modifiedIdGetBaseId(id);
-  const genId = (version: number) => `${virginId}#${version}`;
-
-  let nextVersion = logGetLatestVersion(id)(log) + 1;
-
-  while (state.getElement(genId(nextVersion))) {
-    nextVersion++;
-  }
-
-  return genId(nextVersion);
+  return state.changedTable.get(id) || state.virgin.elements.get(id);
 };
 
-export type OsmStateAddModifiedsType = (
-  [state, log]: OsmState,
+export type OsmStateGetNextIdType = (log: Log, id: string) => string;
+
+export const getLatestId: OsmStateGetNextIdType = (log, id) => {
+  const virginId = baseId(id);
+  const genId = (version: number) => `${virginId}#${version}`;
+  const c = logGetLatestVersion(id)(log);
+  if (c === -1) {
+    return id;
+  }
+
+  return genId(c);
+};
+
+function debugChangedTableAddModifiedEntities(
+  table: ChangedTable,
+  virginTable: OsmState['virgin'],
   modifiedEntities: Entity[]
-) => OsmState;
-
-export const osmStateAddModifieds: OsmStateAddModifiedsType = (
-  [state, log],
-  modifiedEntities
-) => {
-  const all = logGetEveryId(log);
-
+) {
   modifiedEntities.forEach(e => {
-    if (state.getElement(e.id) || all.has(e.id)) {
-      throw new Error(`Modified ${e.id} already exists in table`);
+    const id = baseId(e.id);
+    if (!table.has(id)) {
+      if (!virginTable.elements.get(id)) {
+        throw new Error('virgin table doesnt have ' + id);
+      }
+    }
+  });
+}
+
+export function changedTableAddModifiedEntities(
+  changedTable: ChangedTable,
+  virginTable: OsmState['virgin'],
+  modifiedEntities: Entity[]
+): Table<Entity> {
+  debugChangedTableAddModifiedEntities(
+    changedTable,
+    virginTable,
+    modifiedEntities
+  );
+
+  const newCTable = new Map(changedTable);
+
+  modifiedEntities = entitiesExpandToBaseAndRelated(
+    modifiedEntities,
+    virginTable.elements
+  );
+
+  modifiedEntities.forEach(r => {
+    const e = newCTable.get(r.id);
+    if (!e) {
+      tableAdd(r, r.id, newCTable);
     }
   });
 
-  const newLog = logAddEntry(setCreate(modifiedEntities.map(r => r.id)))(log);
-
-  if (newLog === log) {
-    throw new Error(`Modified ids already exists in log`);
-  }
-
-  state.add(e => e.id, modifiedEntities, '');
-
-  return [state, newLog];
-};
-
-export type OsmStateGetVisible = (
-  [state, log]: OsmState,
-  quadkeys: string[]
-) => DerivedTable;
-
-export const osmStateGetVisible: OsmStateGetVisible = (
-  [state, log],
-  quadkeys
-) =>
-  Identity(setClone(state.getVisible(quadkeys)))
-    .map(visible => setBulkDelete(logGetBaseIds(log), visible))
-    .map(visible => setAddIterable(logGetCurrentIds(log), visible))
-    .map(visible => expandIdsAndRelated(visible, state.getElementTable()))
-    .map(entityTable => derivedTableUpdate(entityTable, state.getMetaTable()))
-    .get();
-
-const expandIdsAndRelated = (ids: Set<string>, table: OsmTable) => {
-  const result = new Map();
-
-  for (const id of ids) {
-    const e = table.get(id) as Entity;
-    result.set(id, e);
-    if (e.type === EntityType.WAY) {
-      e.nodes.forEach(n => {
-        result.set(n, table.get(n) as Entity);
-      });
-    } else if (e.type === EntityType.RELATION) {
-      // e.members.forEach(n => {
-      // table.has(n.id) && result.set(n.id, table.get(n.id) as Entity);
-      // });
-    }
-  }
-
-  return result;
-};
-// following a very strict way
-// 1. When shredding, shred everything but the bare minimum
-//    to render the modified ids, which is exactly
-//    [nodes, ways, nodesOfWays, relations].
-//    - relations dont get any members as they cannot be rendered
-//    - if a relation member was modified, it will be treated as an individual
-//        and would get the same rules again
-//    - to render ways we need node ids, so modified ways will get all of the nodesOfWays
-///      for eg. if a tag was added, hypothetically we dont even need the nodes, but to
-//       visualize we need the nodes, hence we will also add the nodes.
-//    - all the modified nodes will be kept and everything (including all parents) would
-//       be removed. If a parent did exist, it will get added automatically whenever virgin data comes
-//       if a modified parent exists it will also get added, whenever the modified entities
-///      are applied to state.
-
-export type OsmStateShredType = ([state, log]: OsmState) => OsmState;
-
-export const osmStateShred: OsmStateShredType = ([state, log]) => {
-  const newState = Identity(setClone(logGetEveryId(log)))
-    .map(idsToSave => setAddIterable(logGetBaseIds(log), idsToSave))
-    .map(idsToSave => expandIdsAndRelated(idsToSave, state.getElementTable()))
-    .map(entityTable => State.create(entityTable))
-    .get();
-
-  // @TOFIX reliance on ''
-  newState.getQuadkeysTable().set('', setClone(logGetEveryId(log)));
-
-  return [newState, log];
-};
+  return newCTable;
+}
 
 // NOTE: this has a dependedency on the osmMetatable
 // if osmMetatable hasnt been executed this would fail
 export type EntryFindRelatedToNodeType = (
-  [state, log]: OsmState,
-  nodeId: string,
-  prevNodeId: string
+  state: OsmState,
+  prevNodeId: string,
+  loc: LngLat
 ) => Entity[];
 export const entryFindRelatedToNode: EntryFindRelatedToNodeType = (
-  [state, log],
-  nodeId,
-  prevNodeId
+  state,
+  prevNodeId,
+  loc
 ) => {
-  const prev = state.getMetaTable().get(prevNodeId);
+  prevNodeId = getLatestId(state.log, prevNodeId);
+  const prev = state.derivedTable.get(prevNodeId);
+
   if (!prev) {
-    throw new Error('couldnt create entry as no derived values found' + nodeId);
+    throw new Error(
+      'couldnt create entry as no derived values found' + prevNodeId
+    );
   }
-  const modifieds: Entity[] = [];
-  prev.parentWays.forEach(way => {
-    const nWay: Way = JSON.parse(
-      JSON.stringify(osmStateGetEntity([state, log], way))
-    );
-    if (!nWay.nodes.find(n => n === prevNodeId)) {
-      throw new Error(
-        'node not found in claimed way ' + prevNodeId + ' ' + nWay.id
-      );
+
+  const pWays = prev.parentWays;
+
+  const pWaysTable = new Map<string, Way[]>([
+    [prevNodeId, expandIds(prev.parentWays, state.derivedTable) as any],
+  ]);
+
+  const pRelTable = new Map<string, Relation[]>([
+    [prevNodeId, expandIds(prev.parentRelations, state.derivedTable) as any],
+  ]);
+
+  for (const wayId of pWays) {
+    const d = state.derivedTable.get(wayId);
+    if (!d) {
+      throw new Error('couldnt find direcieed table ' + wayId);
     }
 
-    modifieds.push({
-      ...nWay,
-      id: osmStateGetNextId([state, log], nWay.id),
-      nodes: nWay.nodes.map(n => (n === prevNodeId ? nodeId : n)),
-    });
-  });
-  prev.parentRelations.forEach(rel => {
-    const nRel: Relation = JSON.parse(
-      JSON.stringify(osmStateGetEntity([state, log], rel))
-    );
+    pRelTable.set(wayId, expandIds(
+      d.parentRelations,
+      state.derivedTable
+    ) as any);
+  }
 
-    if (!nRel.members.find(n => n.id === prevNodeId)) {
-      throw new Error(
-        'node not found in claimed relation ' + prevNodeId + ' ' + nRel.id
-      );
-    }
-    modifieds.push({
-      ...nRel,
-      id: osmStateGetNextId([state, log], nRel.id),
-      members: nRel.members.map(
-        n => (n.id === prevNodeId ? { ...n, id: nodeId, ref: nodeId } : n)
-      ),
-    });
-  });
-  return modifieds;
+  return nodeMove(prev.entity as any, loc, pWaysTable, pRelTable, (e: Entity) =>
+    stateGenNextId(state, e.id)
+  );
 };
+
+function expandIds(
+  ids: IterableIterator<string> | Iterable<string>,
+  table: DerivedTable
+): Entity[] {
+  const res = [];
+  for (const id of ids) {
+    const e = table.get(id);
+    if (!e) {
+      throw new Error('id not found!');
+    }
+    res.push(e.entity);
+  }
+  return res;
+}

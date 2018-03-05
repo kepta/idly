@@ -30,6 +30,7 @@
 			"bbox",
 			"bboxify",
 			"minzoom",
+			"mousehover",
 			"oneway",
 			"selectable"
 		],

@@ -20,7 +20,7 @@ export const derivedCreate: DerivedCreateType = entity => ({
 // 1. Add expanded nodes to ways, this will remove dependency on table
 //     note than nodes of ways is a derived data for ways and not table
 //     in this file we derive everything and then compare, deriving nodes
-///     everytime wont be agood idea
+///     everytime wont be a good idea
 
 export type DerivedTableUpdateType = (
   entityTable: Map<string, Entity>,
@@ -31,17 +31,17 @@ export const derivedTableUpdate: DerivedTableUpdateType = (
   entityTable,
   derivedTable = new Map()
 ) => {
-  const intermediateTable = deriveParents(entityTable);
+  const newTable = deriveParents(entityTable);
 
-  intermediateTable.forEach((val, id) => {
+  newTable.forEach((newVal, id) => {
     const prevVal = derivedTable.get(id);
 
-    return isEqual(val, prevVal)
-      ? intermediateTable.set(id, prevVal as Derived)
-      : derivedTable.set(id, val);
+    return isEqual(newVal, prevVal)
+      ? newTable.set(id, prevVal as Derived) // puts the prevVal in newTable to preserve the instance for === caching
+      : derivedTable.set(id, newVal);
   });
 
-  return intermediateTable;
+  return newTable;
 };
 
 export type DeriveParentsType = (
@@ -54,19 +54,19 @@ export const deriveParents: DeriveParentsType = entityTable => {
     derivedTable.set(entity.id, derivedCreate(entity))
   );
 
-  derivedTable.forEach(comput => {
-    if (comput.entity.type === EntityType.WAY) {
-      comput.entity.nodes.forEach(nodeId => {
+  derivedTable.forEach(compute => {
+    if (compute.entity.type === EntityType.WAY) {
+      compute.entity.nodes.forEach(nodeId => {
         const val = derivedTable.get(nodeId);
         if (val) {
-          val.parentWays.add(comput.entity.id);
+          val.parentWays.add(compute.entity.id);
         }
       });
-    } else if (comput.entity.type === EntityType.RELATION) {
-      comput.entity.members.forEach(({ id }) => {
+    } else if (compute.entity.type === EntityType.RELATION) {
+      compute.entity.members.forEach(({ id }) => {
         const entityComp = derivedTable.get(id);
         if (entityComp) {
-          entityComp.parentRelations.add(comput.entity.id);
+          entityComp.parentRelations.add(compute.entity.id);
         }
       });
     }

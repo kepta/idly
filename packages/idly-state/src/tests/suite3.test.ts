@@ -1,8 +1,4 @@
-import {
-  osmStateAddVirgins,
-  osmStateCreate,
-  osmStateGetVisible,
-} from '../osmState';
+import { stateAddVirgins, stateCreate, stateGetVisibles } from '../index';
 import { parseFixture } from './helpers';
 
 const mapToKeys = <T>(map: Map<string, T> | ReadonlyMap<string, T>) => [
@@ -12,14 +8,14 @@ const mapToKeys = <T>(map: Map<string, T> | ReadonlyMap<string, T>) => [
 describe('from xml to final rendering', () => {
   const virginEntities = parseFixture('three.xml');
 
-  const osmState = osmStateCreate();
+  const osmState = stateCreate();
 
-  osmStateAddVirgins(osmState, virginEntities, '3');
+  stateAddVirgins(osmState, virginEntities, '3');
 
   let visible1;
 
   it('get visible', () => {
-    visible1 = osmStateGetVisible(osmState, ['3']);
+    visible1 = stateGetVisibles(osmState, ['3']);
     expect(mapToKeys(visible1)).toMatchSnapshot();
     expect(
       [...visible1].map(([k, o]) => ['parentRelations', k, o.parentRelations])

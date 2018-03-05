@@ -3,10 +3,11 @@ export type ReadonlyTable<T> = ReadonlyMap<string, T>;
 
 export const tableCreate = <T>(): Table<T> => new Map<string, T>();
 
-export const tableAdd = <T>(v: T, k: string, t: Table<T>) => t.set(k, v);
+export const tableAdd = <T>(val: T, key: string, table: Table<T>) =>
+  table.set(key, val);
 
-export const tableCopy = <T>(k: string, src: Table<T>, dest: Table<T>) =>
-  tableAdd(tableGet(k, src), k, dest);
+export const tableCopy = <T>(key: string, src: Table<T>, dest: Table<T>) =>
+  tableAdd(tableGet(key, src), key, dest);
 
 export const tableBulkCopy = <T>(
   indexes: Iterable<string> | IterableIterator<string>,

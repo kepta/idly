@@ -1,80 +1,48 @@
-import { ReadonlyTable, Table } from '../table';
-import { tableAdd, tableHas } from '../table/regular';
+import { Table, tableBulkAdd } from '../table';
 
+import { iterableFlattenToSet } from '../helper';
 import {
   QuadkeysTable,
   quadkeysTableAdd,
   quadkeysTableCreate,
-  quadkeysTableFindRelated,
-  ReadonlyQuadkeysTable,
+  quadkeysTableGet,
 } from './quadkeysTable';
 
-export class State<T, M = any> {
-  public static create<T, M = T>(
-    elementTable: Table<T> = new Map(),
-    quadkeysTable = quadkeysTableCreate(),
-    metaTable: Table<M> = new Map()
-  ) {
-    return new State<T, M>(elementTable, quadkeysTable, metaTable);
-  }
+export interface VirginState<T extends { id: string }> {
+  readonly quadkeysTable: QuadkeysTable;
+  readonly elements: Table<T>;
+}
 
-  // tslint:disable-next-line:variable-name
-  private _elementTable: Table<T>;
-  // tslint:disable-next-line:variable-name
-  private _quadkeysTable: QuadkeysTable;
-  // tslint:disable-next-line:variable-name
-  private _metaTable = new Map<string, M>();
+export function virginStateCreate<T extends { id: string }>(
+  elements: Table<T> = new Map(),
+  quadkeysTable = quadkeysTableCreate()
+): VirginState<T> {
+  return {
+    elements,
+    quadkeysTable,
+  };
+}
 
-  private constructor(
-    elementTable: Table<T>,
-    quadkeysTable: QuadkeysTable,
-    metaTable: Table<M>
-  ) {
-    this._elementTable = elementTable;
-    this._quadkeysTable = quadkeysTable;
-    this._metaTable = metaTable;
-  }
-  // the main information related to id
-  public getElementTable(): ReadonlyTable<T> {
-    return this._elementTable;
-  }
-  // to store any misc information related to id
-  public getMetaTable() {
-    return this._metaTable;
-  }
-  // storing geolocation
-  public getQuadkeysTable(): ReadonlyQuadkeysTable {
-    return this._quadkeysTable;
-  }
+export function getQuadkey(quadkeysTable: QuadkeysTable, quadkey: string) {
+  return quadkeysTable.get(quadkey);
+}
 
-  public getElement(id: string) {
-    return this._elementTable.get(id);
-  }
+export function addVirginElements<T extends { id: string }>(
+  elements: T[],
+  quadkey: string,
+  state: VirginState<T>
+) {
+  tableBulkAdd(elements.map((r: T): [string, T] => [r.id, r]), state.elements);
+  quadkeysTableAdd(state.quadkeysTable, elements.map(r => r.id), quadkey);
+}
 
-  public getIdsByQuadkey(quadkey: string): ReadonlySet<string> | undefined {
-    return this._quadkeysTable.get(quadkey);
-  }
-
-  public hasQuadkey(quadkey: string) {
-    return this._quadkeysTable.has(quadkey);
-  }
-
-  // a single element can be on multiple quadkeys, but
-  // changing an existing element is disallowed
-  public add(getId: (t: T) => string, elements: T[], quadkey: string): void {
-    elements.forEach(
-      e =>
-        tableHas(getId(e), this._elementTable) ||
-        tableAdd(e, getId(e), this._elementTable)
-    );
-    quadkeysTableAdd(this._quadkeysTable, elements.map(getId), quadkey);
-  }
-
-  public getQuadkey(quadkey: string): ReadonlySet<string> | undefined {
-    return this._quadkeysTable.get(quadkey);
-  }
-
-  public getVisible(quadkeys: string[]): ReadonlySet<string> {
-    return quadkeysTableFindRelated(this._quadkeysTable, quadkeys);
-  }
+export function virginGetInQuadkeys(
+  quadkeysTable: QuadkeysTable,
+  quadkeys: string[]
+): ReadonlySet<string> {
+  return iterableFlattenToSet(
+    quadkeys
+      .map(q => quadkeysTableGet(quadkeysTable, q))
+      .filter((r): r is ReadonlySet<string> => !!r)
+  );
 }

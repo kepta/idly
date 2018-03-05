@@ -1,11 +1,12 @@
 import { setCreate } from '../helper';
 import { tableGet } from '../table/regular';
 import {
-  ancestorProperFind,
+  ancestorFind,
   QuadkeysTable,
   quadkeysTableAdd,
   quadkeysTableFindRelated,
-  removeAllDescendants,
+  quadkeysTableGet,
+  quadkeysTableRemoveAllDescendants,
 } from './quadkeysTable';
 
 const mapFromObj = (o: any): QuadkeysTable =>
@@ -16,11 +17,62 @@ const mapFromObj = (o: any): QuadkeysTable =>
 
 const dummyQuadkeyT = (obj: any) => mapFromObj(obj);
 // tslint:disable:object-literal-key-quotes
+describe('get quadkeys', () => {
+  it('should get quadkey', () => {
+    const table = mapFromObj({
+      '210': setCreate(['a']),
+      '212': setCreate(['b']),
+    });
+    expect(quadkeysTableGet(table, '210')).toEqual(setCreate(['a']));
+    expect(quadkeysTableGet(table, '212')).toEqual(setCreate(['b']));
+  });
+  it('should get quadkey if all 4 direct children exist', () => {
+    const table = mapFromObj({
+      '210': setCreate(['a']),
+      '211': setCreate(['b']),
+      '212': setCreate(['c']),
+      '213': setCreate(['d']),
+    });
+    expect(quadkeysTableGet(table, '21')).toEqual(
+      setCreate(['a', 'b', 'c', 'd'])
+    );
+  });
+  it('should fail if any child is missing', () => {
+    const table = mapFromObj({
+      '210': setCreate(['a']),
+      '211': setCreate(['b']),
+      '213': setCreate(['d']),
+    });
+    expect(quadkeysTableGet(table, '21')).toBe(undefined);
+  });
+  it('should  work if child is missing but parent is there', () => {
+    const table = mapFromObj({
+      '21': setCreate(['z']),
+      '210': setCreate(['a']),
+      '211': setCreate(['b']),
+      '213': setCreate(['d']),
+    });
+    expect(quadkeysTableGet(table, '21')).toEqual(setCreate(['z']));
+  });
+  it('should get undefined for quadkeys bigger than QUADKEY_MAX_SIZE', () => {
+    const table = mapFromObj({
+      '121313212121212121212121212121313212121212121212121212': setCreate([
+        'z',
+      ]),
+      '210': setCreate(['a']),
+      '211': setCreate(['b']),
+      '213': setCreate(['d']),
+    });
+    expect(quadkeysTableGet(table, '121313212121212121212121212')).toEqual(
+      undefined
+    );
+  });
+});
 
 describe('removeAllDescendants', () => {
   const parse = (obj: any, r: any) => {
     const t = mapFromObj(obj);
-    removeAllDescendants(t, r);
+    quadkeysTableRemoveAllDescendants(t, r);
     return [...t.keys()].sort();
   };
 
@@ -123,13 +175,13 @@ describe('findAncestor', () => {
       '21301': setCreate(),
       '3123': setCreate(),
     });
-    expect(ancestorProperFind(table, '2120121201')).toEqual('212');
+    expect(ancestorFind(table, '2120121201')).toEqual('212');
   });
   it('should not return empty string as ancestor', () => {
     const table = mapFromObj({
       '': setCreate(),
     });
-    expect(ancestorProperFind(table, '2120121201')).toEqual(undefined);
+    expect(ancestorFind(table, '2120121201')).toEqual(undefined);
   });
 });
 
@@ -149,7 +201,7 @@ describe('quadkeysTableAdd', () => {
     );
   });
 
-  it('should remove any descendant', () => {
+  it('should not remove any descendant on adding', () => {
     const t = dummyQuadkeyT({
       '01': setCreate(['n1']),
       '21': setCreate(['n2']),
@@ -158,6 +210,7 @@ describe('quadkeysTableAdd', () => {
     expect(t).toEqual(
       dummyQuadkeyT({
         '0': setCreate(['n3', 'n1']),
+        '01': setCreate(['n1']),
         '21': setCreate(['n2']),
       })
     );
@@ -178,7 +231,7 @@ describe('quadkeysTableAdd', () => {
     );
   });
 
-  it('should not change anything if ancestor exists', () => {
+  it('should add if ancestor exists', () => {
     const t = dummyQuadkeyT({
       '01': setCreate(['n1']),
       '02': setCreate(['n2']),
@@ -188,6 +241,7 @@ describe('quadkeysTableAdd', () => {
       dummyQuadkeyT({
         '01': setCreate(['n1']),
         '02': setCreate(['n2']),
+        '020': setCreate(['n3', 'n1', 'n4']),
       })
     );
   });

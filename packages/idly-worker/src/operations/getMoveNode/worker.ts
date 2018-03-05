@@ -1,16 +1,14 @@
 import { featureCollection } from '@turf/helpers';
 import { Entity } from 'idly-common/lib/osm/structures';
 import { entityToGeoJson } from 'idly-osm-to-geojson';
+import { entryFindRelatedToNode } from 'idly-state/lib/osmState';
+
 import {
-  entryFindRelatedToNode,
-  OsmState,
-  osmStateAddModifieds,
-  osmStateCreate,
-  osmStateGetEntity,
-  osmStateGetNextId,
-  osmStateGetVisible,
-  osmStateShred,
-} from 'idly-state/lib/osmState';
+  stateAddChanged,
+  stateGenNextId,
+  stateGetEntity,
+  stateGetVisibles,
+} from 'idly-state/lib/index';
 
 import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetMoveNode } from './type';
@@ -21,44 +19,40 @@ export function workerGetMoveNode(
   state: WorkerState
 ): WorkerOperation<GetMoveNode> {
   return async param => {
-    let qState: OsmState = (state as any)._state || osmStateCreate();
+    console.time('workerGetMoveNode');
+
+    let qState = state.osmState;
+    console.log(state.osmState.log);
     if (param.id) {
-      const newEntity: Entity = {
-        ...osmStateGetEntity(qState, param.id),
-        id: osmStateGetNextId(qState, param.id),
-        loc: {
+      // const newEntity: Entity = {
+      //   ...stateGetEntity(qState, param.id),
+      //   id: stateGenNextId(qState, param.id),
+      //   loc: {
+      //     lat: param.loc.lat,
+      //     lon: param.loc.lng,
+      //   },
+      // };
+
+      qState = stateAddChanged(qState, [
+        ...entryFindRelatedToNode(qState, param.id, {
           lat: param.loc.lat,
           lon: param.loc.lng,
-        },
-      };
-
-      qState = osmStateAddModifieds(qState, [
-        ...entryFindRelatedToNode(qState, newEntity.id, param.id),
-        newEntity,
+        }),
       ]);
     }
 
-    (state as any)._state = qState;
+    self.history[self.history.length - 1].move = qState;
 
-    self.state = qState;
-    // self.log = log;
-    // self.osm = osmState;
-    console.time('features');
-    self.visible = osmStateGetVisible(qState, param.quadkeys);
-    const features = entityToGeoJson(self.visible);
+    const features = entityToGeoJson(stateGetVisibles(qState, param.quadkeys));
 
-    console.timeEnd('features');
+    console.timeEnd('workerGetMoveNode');
 
-    const toReturn: GetMoveNode['response'] = featureCollection(features);
-
-    if (qState[0].getElementTable().size >= 12000) {
-      console.log(
-        'size reached high',
-        qState[0].getElementTable().size,
-        'shredding'
-      );
-      (state as any)._state = osmStateShred(qState);
-    }
-    return JSON.stringify(toReturn);
+    return {
+      response: featureCollection(features),
+      state: {
+        ...state,
+        osmState: qState,
+      },
+    };
   };
 }

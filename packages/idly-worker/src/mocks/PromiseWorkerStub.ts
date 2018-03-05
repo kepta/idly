@@ -1,11 +1,11 @@
-import { operations } from '../operations/operations';
-import { GetActionTypes } from '../operations/operationsTypes';
+import { operations } from '../index';
+import { OperationTypes } from '../operations/operationsTypes';
 import { pluginsStub } from './pluginsStub';
 
 export class PromiseWorkerStub {
   /* tslint:disable */
-  public _workerCb: (message: GetActionTypes) => Promise<any>;
-  registerPromiseWorker(workerCb: (message: GetActionTypes) => Promise<any>) {
+  public _workerCb: (message: OperationTypes) => Promise<any>;
+  registerPromiseWorker(workerCb: (message: OperationTypes) => Promise<any>) {
     this._workerCb = workerCb;
   }
   /* tslint:enable */
@@ -13,7 +13,7 @@ export class PromiseWorkerStub {
     readonly request: any;
     readonly type: string;
   }): Promise<any> {
-    const t: GetActionTypes = JSON.parse(JSON.stringify(data));
+    const t: OperationTypes = JSON.parse(JSON.stringify(data));
     if (!t.type) {
       throw new Error('need type');
     }

@@ -15,31 +15,18 @@ import { merge } from 'rxjs/operators/merge';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
-import { mergeMap } from 'rxjs/operators/mergeMap';
+import { addSource, hideVersion } from './helpers/helper';
+import layers from './layers';
+import { workerGetMoveNode } from './plugin/worker';
 import {
-  glObservable,
-  makeClick$,
   makeDrag$,
-  makeMousedown$,
+  makeHover$,
   makeMouseenter$,
   makeMouseleave$,
-  makeMousemove$,
-  makeMouseup$,
   makeNearestNode$,
   makeQuadkey$,
   makeSelected$,
-  makeIsNearNode$,
-} from './glStreams';
-import {
-  addSource,
-  bboxify,
-  blankFC,
-  getNameSpacedLayerId,
-  hideVersion,
-} from './helper';
-import layers from './layers';
-import pointsDraggable from './layers/interactive/pointsDraggable';
-import { workerGetMoveNode } from './plugin/worker';
+} from './streams';
 
 export interface Options {
   good: boolean;
@@ -48,6 +35,7 @@ export interface Options {
 const BASE_SOURCE = 'idly-gl-base-src';
 const DRAGGABLE_SOURCE = 'idly-gl-drag';
 const DRAGGABLE_POINT = 'drag-point';
+
 export class IdlyGlPlugin {
   private opts: Options;
 
@@ -82,36 +70,39 @@ export class IdlyGlPlugin {
   private init() {
     this.addStyling();
 
-    makeQuadkey$(this.map).forEach(([quadkeys, fc]) => {
-      this.lastQuadkey = quadkeys;
-      this.renderMap(fc);
-    });
-
     const pointAdder = addSinglePoint(this.map);
+    const canvas = this.map.getCanvasContainer();
 
-    const nearestNode$ = makeNearestNode$(this.map, 6).pipe(
+    const nearestNode$ = makeNearestNode$(this.map, 8).pipe(
       rxMap(f => ({
         id: f && hideVersion(f.properties.id),
         coords: f && f.geometry.coordinates,
       }))
     );
 
-    makeIsNearNode$(this.map, 10).forEach(r => {
-      if (r) {
-        this.map.dragPan.disable();
-      } else {
-        this.map.dragPan.enable();
-      }
-    });
+    const quadkey$ = makeQuadkey$(this.map);
 
-    nearestNode$.forEach(r => {
-      pointAdder('nearest-node', r.coords);
-    });
+    const mouseenterSelectedNode$ = makeMouseenter$(
+      this.map,
+      `idly-layer-selected-node`
+    );
 
-    const selectedId$ = makeSelected$(
+    const mouseleaveSelectedNode$ = makeMouseleave$(
+      this.map,
+      `idly-layer-selected-node`
+    );
+
+    const mousehoverSelectedNode$ = makeHover$(
+      this.map,
+      `idly-layer-selected-node`,
+      mouseenterSelectedNode$,
+      mouseleaveSelectedNode$
+    );
+
+    const selectedPoint$ = makeSelected$(
       this.map,
       (f: any) => f.properties.id && f.geometry.type === 'Point',
-      6
+      8
     ).pipe(
       rxMap(f => ({
         id: f && hideVersion(f.properties.id),
@@ -119,7 +110,44 @@ export class IdlyGlPlugin {
       }))
     );
 
-    makeDrag$(this.map, selectedId$, 6).forEach(({ selectedId, drag$ }) => {
+    const dragSelectedNode$ = makeDrag$(
+      this.map,
+      `idly-layer-selected-node`,
+      8,
+      mousehoverSelectedNode$
+    ).pipe(withLatestFrom(selectedPoint$));
+
+    quadkey$.forEach(([quadkeys, fc]) => {
+      this.lastQuadkey = quadkeys;
+      this.renderMap(fc);
+    });
+
+    mouseenterSelectedNode$.forEach(() => {
+      canvas.style.cursor = 'move';
+      this.map.dragPan.disable();
+    });
+
+    mouseleaveSelectedNode$.forEach(() => {
+      canvas.style.cursor = '';
+      this.map.dragPan.enable();
+    });
+
+    selectedPoint$.forEach(r => {
+      pointAdder('selected-node', r.coords, {
+        paint: {
+          'circle-radius': 8,
+          'circle-color': '#3bb2d0',
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#000',
+        },
+      });
+    });
+
+    nearestNode$.forEach(r => {
+      pointAdder('nearest-node', r.coords);
+    });
+
+    dragSelectedNode$.forEach(([drag$, selected]) => {
       drag$.forEach(p => {
         if (!p) {
           return;
@@ -132,23 +160,12 @@ export class IdlyGlPlugin {
           return;
         }
         workerGetMoveNode({
-          id: selectedId,
+          id: selected.id,
           quadkeys: this.lastQuadkey,
           loc: p.lngLat,
         }).then(r => {
           this.map.getSource(BASE_SOURCE).setData(r);
         });
-      });
-    });
-
-    selectedId$.forEach(r => {
-      pointAdder('selected-node', r.coords, {
-        paint: {
-          'circle-radius': 6,
-          'circle-color': '#3bb2d0',
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#000',
-        },
       });
     });
   }
@@ -207,7 +224,7 @@ function addSinglePoint(glMap: any) {
         type: 'circle',
         minzoom: 18.5,
         paint: {
-          'circle-radius': 6,
+          'circle-radius': 8,
           'circle-color': '#fff',
           'circle-stroke-width': 3,
           'circle-stroke-color': '#000',

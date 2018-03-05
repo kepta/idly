@@ -1,17 +1,19 @@
-import { setChannelBuilder } from '../../misc/channelBuilder';
-import { WorkerSetStateActions } from '../operationsTypes';
-import { WorkerSetMovePointEntry } from './type';
+import { parseResponse } from '../../misc/channelBuilder';
+import { MainOperation, OperationKinds } from '../operationsTypes';
+import { SetMovePointEntry } from './type';
 
-/** Main Thread */
-/**
- *
- * @param connector
- */
-export function setMovePointEntry(
-  connector: any
-): (req: WorkerSetMovePointEntry['request']) => Promise<string> {
-  const setChannel = setChannelBuilder<WorkerSetMovePointEntry>(connector)(
-    WorkerSetStateActions.SetMovePointEntry
-  );
-  return request => setChannel(request);
-}
+// export function setMovePointEntry(
+//   connector: any
+// ): MainOperation<SetMovePointEntry> {
+//   const setChannel = getChannelBuilder<SetMovePointEntry>(connector)(
+//     OperationKinds.SetMovePointEntry
+//   );
+//   return async request => {
+//     await setChannel(request);
+//   };
+// }
+
+export const setMovePointEntry: (
+  con: any
+) => MainOperation<SetMovePointEntry> = (connector: any) =>
+  parseResponse(connector, OperationKinds.SetMovePointEntry);

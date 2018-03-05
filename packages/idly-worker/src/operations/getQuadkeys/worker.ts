@@ -1,52 +1,50 @@
 import { featureCollection } from '@turf/helpers';
 import { entityToGeoJson } from 'idly-osm-to-geojson';
-import {
-  OsmState,
-  osmStateAddVirgins,
-  osmStateCreate,
-  osmStateGetVisible,
-  osmStateShred,
-} from 'idly-state/lib/osmState';
+import { stateGetVisibles, stateShred } from 'idly-state/lib/index';
+
+import { stateAddVirgins } from 'idly-state/lib/index';
 import { WorkerOperation, WorkerState } from '../operationsTypes';
 import { GetQuadkey } from './type';
 
 /** Worker Thread */
-let count = 0;
-const MAX_SIZE = 50000;
+const count = 0;
+const MAX_SIZE = 25000;
+
 export function workerGetQuadkey(
   state: WorkerState
 ): WorkerOperation<GetQuadkey> {
   return async arr => {
-    count++;
-    console.log('count = ', count);
+    console.time('workerGetQuadkey');
 
-    const qState: OsmState = (state as any)._state || osmStateCreate();
+    let qState = state.osmState;
 
-    (state as any)._state = qState;
-    self.state = qState;
-    // self.log = log;
-    // self.osm = osmState;
     arr.forEach(({ entities, quadkey }) => {
-      if (!qState[0].hasQuadkey(quadkey)) {
-        osmStateAddVirgins(qState, entities, quadkey);
+      if (!qState.virgin.quadkeysTable.has(quadkey)) {
+        qState = stateAddVirgins(qState, entities, quadkey);
       }
     });
-    console.time('features');
-    self.visible = osmStateGetVisible(qState, arr.map(r => r.quadkey));
+    const vis = stateGetVisibles(qState, arr.map(r => r.quadkey));
+    const features = entityToGeoJson(vis);
 
-    const features = entityToGeoJson(self.visible);
-    console.timeEnd('features');
+    self.history[self.history.length - 1].visible = vis;
 
-    const toReturn: GetQuadkey['response'] = featureCollection(features);
-
-    if (qState[0].getElementTable().size >= MAX_SIZE) {
+    if (qState.virgin.elements.size >= MAX_SIZE) {
       console.log(
         'size reached high',
-        qState[0].getElementTable().size,
+        qState.virgin.elements.size,
         'shredding'
       );
-      (state as any)._state = osmStateShred(qState);
+      qState = stateShred(qState);
     }
-    return JSON.stringify(toReturn);
+
+    console.timeEnd('features');
+
+    return {
+      response: featureCollection(features),
+      state: {
+        ...state,
+        osmState: qState,
+      },
+    };
   };
 }

@@ -49,6 +49,52 @@ Map {
       "w1",
     },
   },
+  "n3" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "n4" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {
+      "r1",
+    },
+    "parentWays": Set {},
+  },
   "r1" => Object {
     "entity": Object {
       "attributes": Object {
@@ -76,75 +122,6 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
-  "n4" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n4",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
-    },
-    "parentRelations": Set {
-      "r1",
-    },
-    "parentWays": Set {},
-  },
-  "n3" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n3",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w2",
-    },
-  },
-  "w2" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w2",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": Object {},
-      "type": "way",
-    },
-    "parentRelations": Set {
-      "r1",
-    },
-    "parentWays": Set {},
-  },
   "w1" => Object {
     "entity": Object {
       "attributes": Object {
@@ -166,770 +143,6 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
-}
-`;
-
-exports[`Get the visible entities series of modified entities addition should add a modified relation 1`] = `
-Array [
-  State {
-    "_elementTable": Map {
-      "n1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n1",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n2" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n2",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "w1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "w1",
-        "nodes": Array [
-          "n1",
-          "n2",
-        ],
-        "tags": Object {},
-        "type": "way",
-      },
-      "n3" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n3",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n4" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n4",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n1#0" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n1#0",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n2#0" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n2#0",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "w2" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "w2",
-        "nodes": Array [
-          "n1",
-          "n3",
-        ],
-        "tags": Object {},
-        "type": "way",
-      },
-      "r1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "r1",
-        "members": Array [
-          Object {
-            "id": "n4",
-            "ref": "n4",
-          },
-          Object {
-            "id": "w2",
-            "ref": "w2",
-          },
-        ],
-        "tags": Object {},
-        "type": "relation",
-      },
-      "n3#0" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n3#0",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n1#1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n1#1",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "r1#0" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "r1#0",
-        "members": Array [],
-        "tags": Object {},
-        "type": "relation",
-      },
-      "r1#1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "r1#1",
-        "members": Array [],
-        "tags": Object {},
-        "type": "relation",
-      },
-    },
-    "_metaTable": Map {
-      "w2" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "w2",
-          "nodes": Array [
-            "n1",
-            "n3",
-          ],
-          "tags": Object {},
-          "type": "way",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-      "n1" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "n1",
-          "loc": Object {
-            "lat": 0,
-            "lon": 0,
-          },
-          "tags": Object {},
-          "type": "node",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {
-          "w2",
-        },
-      },
-      "n3" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "n3",
-          "loc": Object {
-            "lat": 0,
-            "lon": 0,
-          },
-          "tags": Object {},
-          "type": "node",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {
-          "w2",
-        },
-      },
-      "n3#0" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "n3#0",
-          "loc": Object {
-            "lat": 0,
-            "lon": 0,
-          },
-          "tags": Object {},
-          "type": "node",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-      "n1#1" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "n1#1",
-          "loc": Object {
-            "lat": 0,
-            "lon": 0,
-          },
-          "tags": Object {},
-          "type": "node",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-      "r1#0" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "r1#0",
-          "members": Array [],
-          "tags": Object {},
-          "type": "relation",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-      "n2#0" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "n2#0",
-          "loc": Object {
-            "lat": 0,
-            "lon": 0,
-          },
-          "tags": Object {},
-          "type": "node",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-      "n4" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "n4",
-          "loc": Object {
-            "lat": 0,
-            "lon": 0,
-          },
-          "tags": Object {},
-          "type": "node",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-      "r1#1" => Object {
-        "entity": Object {
-          "attributes": Object {
-            "changeset": undefined,
-            "timestamp": undefined,
-            "uid": undefined,
-            "user": undefined,
-            "version": undefined,
-            "visible": undefined,
-          },
-          "id": "r1#1",
-          "members": Array [],
-          "tags": Object {},
-          "type": "relation",
-        },
-        "parentRelations": Set {},
-        "parentWays": Set {},
-      },
-    },
-    "_quadkeysTable": Map {
-      "123" => Set {
-        "n1",
-        "n2",
-        "w1",
-      },
-      "121" => Set {
-        "n3",
-        "n4",
-      },
-      "" => Set {
-        "n1#0",
-        "n2#0",
-        "n3#0",
-        "n1#1",
-        "r1#0",
-        "r1#1",
-      },
-      "33" => Set {
-        "w2",
-        "r1",
-      },
-    },
-  },
-  Array [
-    Set {
-      "r1#1",
-    },
-    Set {
-      "n3#0",
-      "n1#1",
-      "r1#0",
-    },
-    Set {
-      "n1#0",
-      "n2#0",
-    },
-  ],
-]
-`;
-
-exports[`Get the visible entities series of modified entities addition should add modifieds 1`] = `
-Array [
-  State {
-    "_elementTable": Map {
-      "n1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n1",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n2" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n2",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "w1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "w1",
-        "nodes": Array [
-          "n1",
-          "n2",
-        ],
-        "tags": Object {},
-        "type": "way",
-      },
-      "n3" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n3",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n4" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n4",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n1#0" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n1#0",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n2#0" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n2#0",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "w2" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "w2",
-        "nodes": Array [
-          "n1",
-          "n3",
-        ],
-        "tags": Object {},
-        "type": "way",
-      },
-      "r1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "r1",
-        "members": Array [
-          Object {
-            "id": "n4",
-            "ref": "n4",
-          },
-          Object {
-            "id": "w2",
-            "ref": "w2",
-          },
-        ],
-        "tags": Object {},
-        "type": "relation",
-      },
-    },
-    "_metaTable": Map {},
-    "_quadkeysTable": Map {
-      "123" => Set {
-        "n1",
-        "n2",
-        "w1",
-      },
-      "121" => Set {
-        "n3",
-        "n4",
-      },
-      "" => Set {
-        "n1#0",
-        "n2#0",
-      },
-      "33" => Set {
-        "w2",
-        "r1",
-      },
-    },
-  },
-  Array [
-    Set {
-      "n1#0",
-      "n2#0",
-    },
-  ],
-]
-`;
-
-exports[`Get the visible entities series of modified entities addition should add virgins at different quadkeys 1`] = `
-Array [
-  State {
-    "_elementTable": Map {
-      "n1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n1",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n2" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n2",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "w1" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "w1",
-        "nodes": Array [
-          "n1",
-          "n2",
-        ],
-        "tags": Object {},
-        "type": "way",
-      },
-      "n3" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n3",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-      "n4" => Object {
-        "attributes": Object {
-          "changeset": undefined,
-          "timestamp": undefined,
-          "uid": undefined,
-          "user": undefined,
-          "version": undefined,
-          "visible": undefined,
-        },
-        "id": "n4",
-        "loc": Object {
-          "lat": 0,
-          "lon": 0,
-        },
-        "tags": Object {},
-        "type": "node",
-      },
-    },
-    "_metaTable": Map {},
-    "_quadkeysTable": Map {
-      "123" => Set {
-        "n1",
-        "n2",
-        "w1",
-      },
-      "121" => Set {
-        "n3",
-        "n4",
-      },
-    },
-  },
-  Array [],
-]
-`;
-
-exports[`Get the visible entities series of modified entities addition should get correct visibles of different quadkeys 1`] = `Object {}`;
-
-exports[`Get the visible entities series of modified entities addition should get correct visibles of different quadkeys 2`] = `
-Map {
   "w2" => Object {
     "entity": Object {
       "attributes": Object {
@@ -948,9 +161,389 @@ Map {
       "tags": Object {},
       "type": "way",
     },
-    "parentRelations": Set {},
+    "parentRelations": Set {
+      "r1",
+    },
     "parentWays": Set {},
   },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add a modified relation 1`] = `
+Array [
+  Set {
+    "r1#1",
+  },
+  Set {
+    "n3#0",
+    "n1#1",
+    "r1#0",
+  },
+  Set {
+    "n1#0",
+    "n2#0",
+  },
+]
+`;
+
+exports[`Get the visible entities series of modified entities addition should add a modified relation 2`] = `
+Map {
+  "n1" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1#0" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1#1" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1#1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n2" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n2",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n2#0" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n2#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n3" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n3",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n3#0" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n3#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n4" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n4",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "r1" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "r1",
+    "members": Array [
+      Object {
+        "id": "n4",
+        "ref": "n4",
+      },
+      Object {
+        "id": "w2",
+        "ref": "w2",
+      },
+    ],
+    "tags": Object {},
+    "type": "relation",
+  },
+  "r1#0" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "r1#0",
+    "members": Array [],
+    "tags": Object {},
+    "type": "relation",
+  },
+  "r1#1" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "r1#1",
+    "members": Array [],
+    "tags": Object {},
+    "type": "relation",
+  },
+  "w2" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "w2",
+    "nodes": Array [
+      "n1",
+      "n3",
+    ],
+    "tags": Object {},
+    "type": "way",
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add a modified relation 3`] = `
+Object {
+  "elements": Map {
+    "n1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n2" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "w1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "n3" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n4" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "w2" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "r1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1",
+      "members": Array [
+        Object {
+          "id": "n4",
+          "ref": "n4",
+        },
+        Object {
+          "id": "w2",
+          "ref": "w2",
+        },
+      ],
+      "tags": Object {},
+      "type": "relation",
+    },
+  },
+  "quadkeysTable": Map {
+    "123" => Set {
+      "n1",
+      "n2",
+      "w1",
+    },
+    "121" => Set {
+      "n3",
+      "n4",
+    },
+    "33" => Set {
+      "w2",
+      "r1",
+    },
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add a modified relation 4`] = `
+Map {
   "n1" => Object {
     "entity": Object {
       "attributes": Object {
@@ -974,6 +567,48 @@ Map {
       "w2",
     },
   },
+  "n1#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1#1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n2#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2#0",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
   "n3" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1018,7 +653,7 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
-  "n1#1" => Object {
+  "n4" => Object {
     "entity": Object {
       "attributes": Object {
         "changeset": undefined,
@@ -1028,7 +663,7 @@ Map {
         "version": undefined,
         "visible": undefined,
       },
-      "id": "n1#1",
+      "id": "n4",
       "loc": Object {
         "lat": 0,
         "lon": 0,
@@ -1057,6 +692,436 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
+  "r1#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1#1",
+      "members": Array [],
+      "tags": Object {},
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "w2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add modifieds 1`] = `
+Array [
+  Set {
+    "n1#0",
+    "n2#0",
+  },
+]
+`;
+
+exports[`Get the visible entities series of modified entities addition should add modifieds 2`] = `
+Map {
+  "n1" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1#0" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n1#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n2" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n2",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n2#0" => Object {
+    "attributes": Object {
+      "changeset": undefined,
+      "timestamp": undefined,
+      "uid": undefined,
+      "user": undefined,
+      "version": undefined,
+      "visible": undefined,
+    },
+    "id": "n2#0",
+    "loc": Object {
+      "lat": 0,
+      "lon": 0,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add modifieds 3`] = `
+Object {
+  "elements": Map {
+    "n1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n2" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "w1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "n3" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n4" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "w2" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "r1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1",
+      "members": Array [
+        Object {
+          "id": "n4",
+          "ref": "n4",
+        },
+        Object {
+          "id": "w2",
+          "ref": "w2",
+        },
+      ],
+      "tags": Object {},
+      "type": "relation",
+    },
+  },
+  "quadkeysTable": Map {
+    "123" => Set {
+      "n1",
+      "n2",
+      "w1",
+    },
+    "121" => Set {
+      "n3",
+      "n4",
+    },
+    "33" => Set {
+      "w2",
+      "r1",
+    },
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add modifieds 4`] = `Map {}`;
+
+exports[`Get the visible entities series of modified entities addition should add virgins at different quadkeys 1`] = `Array []`;
+
+exports[`Get the visible entities series of modified entities addition should add virgins at different quadkeys 2`] = `Map {}`;
+
+exports[`Get the visible entities series of modified entities addition should add virgins at different quadkeys 3`] = `
+Object {
+  "elements": Map {
+    "n1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n2" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "w1" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1",
+      "nodes": Array [
+        "n1",
+        "n2",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "n3" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "n4" => Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n4",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+  },
+  "quadkeysTable": Map {
+    "123" => Set {
+      "n1",
+      "n2",
+      "w1",
+    },
+    "121" => Set {
+      "n3",
+      "n4",
+    },
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should add virgins at different quadkeys 4`] = `Map {}`;
+
+exports[`Get the visible entities series of modified entities addition should get correct visibles of different quadkeys 1`] = `Object {}`;
+
+exports[`Get the visible entities series of modified entities addition should get correct visibles of different quadkeys 2`] = `
+Map {
+  "n1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "n1#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1#1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
   "n2#0" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1078,12 +1143,7 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
-}
-`;
-
-exports[`Get the visible entities series of modified entities addition should get correct visibles of different quadkeys 3`] = `
-Map {
-  "n4" => Object {
+  "n3" => Object {
     "entity": Object {
       "attributes": Object {
         "changeset": undefined,
@@ -1093,7 +1153,116 @@ Map {
         "version": undefined,
         "visible": undefined,
       },
-      "id": "n4",
+      "id": "n3",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w2",
+    },
+  },
+  "n3#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n3#0",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "r1#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "r1#0",
+      "members": Array [],
+      "tags": Object {},
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "w2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w2",
+      "nodes": Array [
+        "n1",
+        "n3",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`Get the visible entities series of modified entities addition should get correct visibles of different quadkeys 3`] = `
+Map {
+  "n1#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n1#1",
+      "loc": Object {
+        "lat": 0,
+        "lon": 0,
+      },
+      "tags": Object {},
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "n2#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "n2#0",
       "loc": Object {
         "lat": 0,
         "lon": 0,
@@ -1125,7 +1294,7 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
-  "n1#1" => Object {
+  "n4" => Object {
     "entity": Object {
       "attributes": Object {
         "changeset": undefined,
@@ -1135,7 +1304,7 @@ Map {
         "version": undefined,
         "visible": undefined,
       },
-      "id": "n1#1",
+      "id": "n4",
       "loc": Object {
         "lat": 0,
         "lon": 0,
@@ -1160,27 +1329,6 @@ Map {
       "members": Array [],
       "tags": Object {},
       "type": "relation",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {},
-  },
-  "n2#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "n2#0",
-      "loc": Object {
-        "lat": 0,
-        "lon": 0,
-      },
-      "tags": Object {},
-      "type": "node",
     },
     "parentRelations": Set {},
     "parentWays": Set {},
@@ -1216,27 +1364,6 @@ Map {
 
 exports[`osmStateShred should not delete nodes of modified ways 1`] = `
 Map {
-  "w1#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": undefined,
-        "timestamp": undefined,
-        "uid": undefined,
-        "user": undefined,
-        "version": undefined,
-        "visible": undefined,
-      },
-      "id": "w1#0",
-      "nodes": Array [
-        "n1",
-        "n3",
-      ],
-      "tags": Object {},
-      "type": "way",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {},
-  },
   "n1" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1283,11 +1410,6 @@ Map {
       "w1#0",
     },
   },
-}
-`;
-
-exports[`osmStateShred should not delete nodes of nonlatest modified ways 1`] = `
-Map {
   "w1#0" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1300,8 +1422,8 @@ Map {
       },
       "id": "w1#0",
       "nodes": Array [
+        "n1",
         "n3",
-        "n4",
       ],
       "tags": Object {},
       "type": "way",
@@ -1309,6 +1431,11 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
+}
+`;
+
+exports[`osmStateShred should not delete nodes of nonlatest modified ways 1`] = `
+Map {
   "n3" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1355,12 +1482,7 @@ Map {
       "w1#0",
     },
   },
-}
-`;
-
-exports[`osmStateShred should not delete nodes of nonlatest modified ways 2`] = `
-Map {
-  "w1#1" => Object {
+  "w1#0" => Object {
     "entity": Object {
       "attributes": Object {
         "changeset": undefined,
@@ -1370,9 +1492,10 @@ Map {
         "version": undefined,
         "visible": undefined,
       },
-      "id": "w1#1",
+      "id": "w1#0",
       "nodes": Array [
-        "n1",
+        "n3",
+        "n4",
       ],
       "tags": Object {},
       "type": "way",
@@ -1380,6 +1503,11 @@ Map {
     "parentRelations": Set {},
     "parentWays": Set {},
   },
+}
+`;
+
+exports[`osmStateShred should not delete nodes of nonlatest modified ways 2`] = `
+Map {
   "n1" => Object {
     "entity": Object {
       "attributes": Object {
@@ -1402,6 +1530,26 @@ Map {
     "parentWays": Set {
       "w1#1",
     },
+  },
+  "w1#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": undefined,
+        "timestamp": undefined,
+        "uid": undefined,
+        "user": undefined,
+        "version": undefined,
+        "visible": undefined,
+      },
+      "id": "w1#1",
+      "nodes": Array [
+        "n1",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
   },
 }
 `;

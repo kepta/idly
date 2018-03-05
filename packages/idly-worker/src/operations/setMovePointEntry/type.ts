@@ -1,11 +1,10 @@
-import { BBox } from '@turf/helpers';
-
 import { Entity } from 'idly-common/lib/osm/structures';
-import { WorkerSetStateActions } from '../operationsTypes';
+import { OperationKinds } from '../operationsTypes';
 
-export interface WorkerSetMovePointEntry {
-  readonly type: WorkerSetStateActions.SetMovePointEntry;
+export interface SetMovePointEntry {
+  readonly type: OperationKinds.SetMovePointEntry;
   readonly request: {
     readonly entity: Entity;
   };
+  readonly response: void;
 }

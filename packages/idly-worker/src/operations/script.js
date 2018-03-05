@@ -24,7 +24,7 @@ function addToLog(...entities) {
 }
 
 function modify(id, foo) {
-  const entity = state.getElement(id);
+  const entity = state.elements.get(id);
   return {
     ...entity,
     id: self.log.logGenerateNextModifiedId(entity.id)(self.l),

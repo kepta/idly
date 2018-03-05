@@ -1,13 +1,4 @@
 export {
-  entityToGeoJson,
-  getCoordsFromTable,
-  entityToGeoJsonNew,
-  nodeCombiner,
-  wayCombiner,
-  wayToLineString,
-} from './entityToGeojson';
-
-export {
   applyNodeMarkup,
   DEFAULT_NODE_ICON,
   nodePropertiesGen,

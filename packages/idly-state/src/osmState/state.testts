@@ -27,7 +27,7 @@ describe('addVirginEntities', () => {
   });
   it('should add entities', () => {
     const data = biglDataset();
-    const state = State.create();
+    const state = virginStateCreate();
     entityTableAddVirginEntities(state.entityTable, data.slice(0, 1e5), '2');
     getEntitiesInQuadkey(state, '2');
   });
@@ -52,7 +52,7 @@ describe('removeVirginEntities', () => {
 
 describe('getEntitiesInQuadkey', () => {
   it('should get get quadkey data', () => {
-    const state = State.create();
+    const state =virginStateCreate();
     const data = smallDataset();
     const count = 6;
     entityTableAddVirginEntities(
@@ -138,7 +138,7 @@ describe('defaultChecks', () => {
 
 describe('commitModifiedEntities', () => {
   const setup = (quadkey = '32220') => {
-    const state = State.create();
+    const state =virginStateCreate();
     const data = smallDataset();
     entityTableAddVirginEntities(state.entityTable, data, quadkey);
     return { table: state.entityTable, log: state.log, state, data };

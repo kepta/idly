@@ -7,7 +7,7 @@ import { filter } from 'rxjs/operators/filter';
 
 import parser from 'idly-faster-osm-parser';
 import debounce from 'lodash-es/debounce';
-import { addSource } from '../helper';
+import { addSource } from '../helpers/helper';
 import { workerGetMoveNode, workerGetQuadkeys } from './worker/index';
 
 const BASE_SOURCE = 'idly-gl-base-src-1';

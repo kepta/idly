@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`move a node with less dependencies 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": undefined,
+    "timestamp": undefined,
+    "uid": undefined,
+    "user": undefined,
+    "version": undefined,
+    "visible": undefined,
+  },
+  "id": "w1#0",
+  "nodes": Array [
+    "n1#0",
+    "n2",
+  ],
+  "tags": Object {},
+  "type": "way",
+}
+`;
+
+exports[`move a node with less dependencies 2`] = `
+Object {
+  "attributes": Object {
+    "changeset": undefined,
+    "timestamp": undefined,
+    "uid": undefined,
+    "user": undefined,
+    "version": undefined,
+    "visible": undefined,
+  },
+  "id": "w2#0",
+  "nodes": Array [
+    "n1#0",
+    "n3",
+  ],
+  "tags": Object {},
+  "type": "way",
+}
+`;
+
+exports[`move a node with less dependencies 3`] = `
+Object {
+  "attributes": Object {
+    "changeset": undefined,
+    "timestamp": undefined,
+    "uid": undefined,
+    "user": undefined,
+    "version": undefined,
+    "visible": undefined,
+  },
+  "id": "r2#0",
+  "members": Array [
+    Object {
+      "id": "w1#0",
+      "ref": "w1#0",
+    },
+    Object {
+      "id": "w3",
+      "ref": "w3",
+    },
+    Object {
+      "id": "n4",
+      "ref": "n4",
+    },
+    Object {
+      "id": "n6",
+      "ref": "n6",
+    },
+  ],
+  "tags": Object {},
+  "type": "relation",
+}
+`;

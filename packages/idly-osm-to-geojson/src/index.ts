@@ -20,10 +20,12 @@ export const _internalCache = new WeakMap<any, any>();
 export const entityToGeoJson = (
   table: DerivedTable
 ): Array<Feature<Point | Polygon | LineString>> => {
+  let count = 0;
   const result: Array<Feature<Point | Polygon | LineString>> = [];
   for (const [, element] of table) {
     let r = _internalCache.get(element);
     if (r) {
+      count++;
       result.push(r);
       continue;
     }
@@ -37,5 +39,6 @@ export const entityToGeoJson = (
     result.push(r);
     _internalCache.set(element, r);
   }
+  console.log('cache', count, 'sizze', table.size);
   return result;
 };
