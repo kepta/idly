@@ -3,9 +3,10 @@ import {
   relationFactory,
   wayFactory,
 } from 'idly-common/lib/osm/entityFactory';
-import { simpleIdIncr } from '../../helpers/tests/util';
-import { nodeMove } from '../nodeMove';
 import { Relation } from 'idly-common/lib/osm/structures';
+
+import { simpleIdIncr } from '../../pure/tests/util';
+import { nodeMoveOp } from '../nodeMove';
 
 const mapFromObj = (o: any): Map<string, any> =>
   Object.keys(o).reduce((prev, k) => {
@@ -16,25 +17,9 @@ const mapFromObj = (o: any): Map<string, any> =>
 const n1 = nodeFactory({
   id: 'n1',
 });
-const n2 = nodeFactory({
-  id: 'n2',
-});
-const n3 = nodeFactory({
-  id: 'n3',
-});
+
 const n4 = nodeFactory({
   id: 'n4',
-});
-const n5 = nodeFactory({
-  id: 'n5',
-});
-
-const n6 = nodeFactory({
-  id: 'n6',
-});
-
-const n7 = nodeFactory({
-  id: 'n7',
 });
 
 const w1 = wayFactory({
@@ -69,19 +54,17 @@ const r2 = relationFactory({
 
 test('move a node with less dependencies', () => {
   const prevNode = n1;
-  const newEntities = nodeMove(
-    prevNode,
-    { lat: 5, lon: 10 },
-    mapFromObj({
-      n1: [w1, w2],
-    }),
-    mapFromObj({
+  const newEntities = nodeMoveOp({
+    idGen: simpleIdIncr,
+    newLoc: { lat: 5, lon: 10 },
+    parentRelationsLookup: mapFromObj({
       n1: [],
       w1: [r2],
       w2: [r1],
     }),
-    simpleIdIncr
-  );
+    parentWays: [w1, w2],
+    prevNode,
+  });
 
   expect(newEntities.map(r => r.id)).toEqual([
     'n1#0',
@@ -98,19 +81,17 @@ test('move a node with less dependencies', () => {
 
 test('move a node where the node and parentWay share a common relation', () => {
   const prevNode = n4;
-  const newEntities = nodeMove(
-    prevNode,
-    { lat: 5, lon: 10 },
-    mapFromObj({
-      n4: [w3],
-    }),
-    mapFromObj({
+  const newEntities = nodeMoveOp({
+    idGen: simpleIdIncr,
+    newLoc: { lat: 5, lon: 10 },
+    parentRelationsLookup: mapFromObj({
       garbage: [],
       n4: [r1, r2],
       w3: [r2],
     }),
-    simpleIdIncr
-  );
+    parentWays: [w3],
+    prevNode,
+  });
 
   expect(newEntities.map(r => r.id)).toEqual(['n4#0', 'w3#0', 'r1#0', 'r2#0']);
   expect(

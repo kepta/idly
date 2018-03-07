@@ -9,8 +9,8 @@ import {
   stateGetVisibles,
   stateShred,
 } from '../index';
-import { DerivedTable } from '../osmState/derivedTable';
-import { getQuadkey } from '../state/state';
+import { DerivedTable } from '../state/derivedTable/index';
+import { quadkeyGet } from '../state/virgin/index';
 import { expectStable } from './expectStable';
 import { parseFixture } from './helpers';
 
@@ -36,7 +36,7 @@ describe('from xml to final rendering', () => {
     expect(osmState.virgin.elements.size).toBe(121);
     expect(mapToKeys(osmState.virgin.elements)).toMatchSnapshot();
     expect(osmState.derivedTable).toMatchSnapshot();
-    expect(getQuadkey(osmState.virgin.quadkeysTable, '1')).toMatchSnapshot();
+    expect(quadkeyGet(osmState.virgin.quadkeysTable, '1')).toMatchSnapshot();
     expect(osmState.log).toMatchSnapshot();
   });
 
@@ -79,8 +79,8 @@ describe('from xml to final rendering', () => {
 
     const nnnn = stateShred(newState);
 
-    // console.log('nnnn.changedTable.has', nnnn.changedTable.has('n2708095696'));
-    expectStable(nnnn.changedTable).toMatchSnapshot();
+    // console.log('nnnn.modified.has', nnnn.modified.has('n2708095696'));
+    expectStable(nnnn.modified).toMatchSnapshot();
     expect([nnnn.virgin, nnnn.log]).toMatchSnapshot();
   });
 
@@ -141,7 +141,7 @@ describe('from xml to final rendering', () => {
     });
 
     it('should not modify old', () => {
-      expect(osmState.changedTable.get('n2708095924#3')).toBe(undefined);
+      expect(osmState.modified.get('n2708095924#3')).toBe(undefined);
     });
   });
 });

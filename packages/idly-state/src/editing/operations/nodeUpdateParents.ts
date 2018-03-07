@@ -1,27 +1,23 @@
-import {
-  Entity,
-  EntityType,
-  Node,
-  Relation,
-  Way,
-} from 'idly-common/lib/osm/structures';
-import { iterableFlattenToArray } from '../../helper';
-import { Table } from '../../table';
-import { entityUpdateParentRelations } from '../helpers/entityUpdateParentRelations';
-import { nodeUpdateParentWays } from '../helpers/nodeUpdateParentWays';
-import { sureGet } from './sureGet';
-import { wayUpdateParents } from './wayUpdateParents';
+import { Entity, Node, Relation, Way } from 'idly-common/lib/osm/structures';
 
-export function nodeUpdateParents(
-  prevNode: Node,
-  newNode: Node,
-  parentWaysTable: Table<Way[]>,
-  parentRelationsTable: Table<Relation[]>,
-  idGen: (e: Entity) => string
-): Entity[] {
-  const parentWays = sureGet(prevNode.id, parentWaysTable);
-  const parentRelations = sureGet(prevNode.id, parentRelationsTable);
+import { Table } from '../../dataStructures/table';
+import { sureGet } from '../misc/sureGet';
+import { entityUpdateParentRelations } from '../pure/entityUpdateParentRelations';
+import { nodeUpdateParentWays } from '../pure/nodeUpdateParentWays';
 
+export function nodeUpdateParents({
+  prevNode,
+  newNode,
+  parentWays,
+  parentRelationsLookup,
+  idGen,
+}: {
+  prevNode: Node;
+  newNode: Node;
+  parentWays: Way[];
+  parentRelationsLookup: Table<Relation[]>;
+  idGen: (e: Entity) => string;
+}): Entity[] {
   const updatedWays = nodeUpdateParentWays(
     prevNode,
     newNode,
@@ -29,35 +25,37 @@ export function nodeUpdateParents(
     idGen
   );
 
+  /** Updating relations */
   const entitiesPair = [
     [prevNode, newNode],
     ...parentWays.map((w, i): [Way, Way] => [w, updatedWays[i]]),
   ];
 
   const relationsLookup = new Map<string, Relation>();
-  // flatten parent relation
-  for (const relationArray of parentRelationsTable.values()) {
+
+  for (const relationArray of parentRelationsLookup.values()) {
     for (const rel of relationArray) {
       relationsLookup.set(rel.id, rel);
     }
   }
 
   const relationIdsUsed = new Set();
-  for (const [prevEntity, newEntity] of entitiesPair) {
-    const actualParentR = sureGet(prevEntity.id, parentRelationsTable);
 
-    // put the updated parent relations in this
-    // so that if some other entity refers to that
-    // same relation, it uses the modified relation
-    // instead of creating a fresh and loosing any prev updates
-    const updatedParentRelations = actualParentR.map(
-      r => relationsLookup.get(r.id) as Relation
+  /**
+   * We would want to keep the updated relation
+   * around so that we can reuse it for any other entity
+   * which can then resuse it and not erase any modification
+   * to that relation.
+   */
+  for (const [prevEntity, newEntity] of entitiesPair) {
+    const parentRelationIds = sureGet(prevEntity.id, parentRelationsLookup).map(
+      r => r.id
     );
 
-    // goal is to reuse the same original id but keep
-    // changing the actual relation so that
-    // multiple node / way sharing the same relation
-    // update that relation only.
+    const updatedParentRelations = parentRelationIds.map(
+      rId => relationsLookup.get(rId) as Relation
+    );
+
     const newRelations = entityUpdateParentRelations(
       prevEntity,
       newEntity,
@@ -67,7 +65,9 @@ export function nodeUpdateParents(
 
     newRelations.forEach((r, i) => {
       relationIdsUsed.add(r.id);
-      relationsLookup.set(actualParentR[i].id, r);
+      // we would continue using the original id of relation
+      // as any entity might be asking
+      relationsLookup.set(parentRelationIds[i], r);
     });
   }
 

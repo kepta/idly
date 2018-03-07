@@ -1,20 +1,16 @@
-import {
-  Entity,
-  EntityType,
-  Relation,
-  Way,
-} from 'idly-common/lib/osm/structures';
-import { Table } from '../../table';
-import { entityUpdateParentRelations } from '../helpers/entityUpdateParentRelations';
-import { sureGet } from './sureGet';
+import { Entity, Relation, Way } from 'idly-common/lib/osm/structures';
+import { entityUpdateParentRelations } from '../pure/entityUpdateParentRelations';
 
-export function wayUpdateParents(
-  prevWay: Way,
-  newWay: Way,
-  parentRelationsTable: Table<Relation[]>,
-  idGen: (e: Entity) => string
-): ReadonlyArray<Relation> {
-  const parentRelations = sureGet(prevWay.id, parentRelationsTable);
-
+export function wayUpdateParents({
+  prevWay,
+  newWay,
+  parentRelations,
+  idGen,
+}: {
+  prevWay: Way;
+  newWay: Way;
+  parentRelations: Relation[];
+  idGen: (e: Entity) => string;
+}): ReadonlyArray<Relation> {
   return entityUpdateParentRelations(prevWay, newWay, parentRelations, idGen);
 }

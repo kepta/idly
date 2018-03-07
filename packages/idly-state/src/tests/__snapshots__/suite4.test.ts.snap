@@ -995,29 +995,6 @@ Map {
     },
     "type": "node",
   },
-  "w375673046" => Object {
-    "attributes": Object {
-      "changeset": "34692040",
-      "timestamp": "2015-10-17T11:41:26Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "w375673046",
-    "nodes": Array [
-      "n3790180120",
-      "n3790180119",
-      "n3790180116",
-      "n3790180118",
-      "n3790180120",
-    ],
-    "tags": Object {
-      "amenity": "fountain",
-      "landuse": "basin",
-    },
-    "type": "way",
-  },
   "n596775900#0" => Object {
     "attributes": Object {
       "changeset": "56395675",
@@ -2505,29 +2482,6 @@ Map {
     },
     "type": "node",
   },
-  "w375673046" => Object {
-    "attributes": Object {
-      "changeset": "34692040",
-      "timestamp": "2015-10-17T11:41:26Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "w375673046",
-    "nodes": Array [
-      "n3790180120",
-      "n3790180119",
-      "n3790180116",
-      "n3790180118",
-      "n3790180120",
-    ],
-    "tags": Object {
-      "amenity": "fountain",
-      "landuse": "basin",
-    },
-    "type": "way",
-  },
 }
 `;
 
@@ -3706,29 +3660,6 @@ Map {
       "highway": "traffic_signals",
     },
     "type": "node",
-  },
-  "w375673046" => Object {
-    "attributes": Object {
-      "changeset": "34692040",
-      "timestamp": "2015-10-17T11:41:26Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "w375673046",
-    "nodes": Array [
-      "n3790180120",
-      "n3790180119",
-      "n3790180116",
-      "n3790180118",
-      "n3790180120",
-    ],
-    "tags": Object {
-      "amenity": "fountain",
-      "landuse": "basin",
-    },
-    "type": "way",
   },
   "n596775900#0" => Object {
     "attributes": Object {

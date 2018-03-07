@@ -1,4 +1,3 @@
-import { relationFactory, wayFactory } from 'idly-common/lib/osm/entityFactory';
 import {
   Entity,
   LngLat,
@@ -6,28 +5,32 @@ import {
   Relation,
   Way,
 } from 'idly-common/lib/osm/structures';
-import { Table } from '../../table';
-import { nodeUpdate } from '../helpers/nodeUpdate';
-import { nodeUpdateParentWays } from '../helpers/nodeUpdateParentWays';
-import { wayUpdateNodeId } from '../helpers/wayUpdateNodeId';
+import { Table } from '../../dataStructures/table';
+import { nodeUpdate } from '../pure/nodeUpdate';
 import { nodeUpdateParents } from './nodeUpdateParents';
 
-export function nodeMove(
-  prevNode: Node,
-  newLoc: LngLat,
-  parentWaysTable: Table<Way[]>,
-  parentRelationsTable: Table<Relation[]>,
-  idGen: (e: Entity) => string
-): Entity[] {
+export function nodeMoveOp({
+  prevNode,
+  newLoc,
+  parentWays,
+  parentRelationsLookup,
+  idGen,
+}: {
+  prevNode: Node;
+  newLoc: LngLat;
+  parentWays: Way[];
+  parentRelationsLookup: Table<Relation[]>;
+  idGen: (e: Entity) => string;
+}): Entity[] {
   const newNode = nodeUpdate({ loc: newLoc, id: idGen(prevNode) }, prevNode);
   return [
     newNode,
-    ...nodeUpdateParents(
-      prevNode,
+    ...nodeUpdateParents({
+      idGen,
       newNode,
-      parentWaysTable,
-      parentRelationsTable,
-      idGen
-    ),
+      parentRelationsLookup,
+      parentWays,
+      prevNode,
+    }),
   ];
 }

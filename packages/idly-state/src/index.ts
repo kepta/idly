@@ -1,32 +1,54 @@
 import { Entity } from 'idly-common/lib/osm/structures';
 import { Identity } from 'monet';
-import { genNextId } from './stateHelpers/genNextId';
-import { setAddIterable, setBulkDelete, setClone, setCreate } from './helper';
-import { logAddEntry, logCreate, logGetBaseIds, logGetCurrentIds } from './log';
 import {
-  changedTableAddModifiedEntities,
-  changedTableGetEntity,
-} from './osmState';
-import { DerivedTable, derivedTableUpdate } from './osmState/derivedTable';
+  logAddEntry,
+  logCreate,
+  logGetBaseIds,
+  logGetCurrentIds,
+} from './dataStructures/log';
 import {
-  addVirginElements,
+  setAddIterable,
+  setBulkDelete,
+  setClone,
+  setCreate,
+} from './dataStructures/set';
+import { modifiedAddModifiedEntitiesAndRelated } from './state/modified';
+import { DerivedTable, derivedTableUpdate } from './state/derivedTable/index';
+import {
+  virginAddElements,
   virginGetInQuadkeys,
   VirginState,
   virginStateCreate,
-} from './state/state';
-import { getEntitiesAndRelated } from './stateHelpers';
+} from './state/virgin/index';
+import { consistencyChecker } from './stateHelpers/consistencyChecker';
+import { genNextId } from './stateHelpers/genNextId';
+import { getEntity } from './stateHelpers/getEntity';
+import { getRenderableEntities } from './stateHelpers/osmState';
 import { OsmState } from './type';
+
+/**
+ * Rules of the osm game
+ * 1. If a way is given all nodes inside it are also supplied, (NOT YET DISPROVEN)
+ * 2. If a relation comes, the members may not be supplied (PROVEN)
+ * 3. If a node exists, its parentWays & parentRelations are non deterministic.
+ *     You can come close but will never knw for sure
+ *
+ * Our habbits
+ * 1. We dont let the relation itself be modified unless its fully avaialble
+ * 2. Relation as modification as a byproduct of one of its members is okay
+ * 3. Even if relation is r3#1 (ie modified) we cannot let it modify unless its fully downloaded
+ */
 
 export function stateCreate(
   virgin: VirginState<Entity> = virginStateCreate(),
-  changedTable = new Map(),
+  modified = new Map(),
   derivedTable = new Map(),
   log = logCreate()
 ): OsmState {
   return {
-    changedTable,
     derivedTable,
     log,
+    modified,
     virgin,
   };
 }
@@ -35,28 +57,21 @@ export function stateGetEntity(
   state: OsmState,
   id: string
 ): Entity | undefined {
-  return (
-    changedTableGetEntity(state.changedTable, state.log, id) ||
-    state.virgin.elements.get(id)
-  );
+  consistencyChecker(state);
+  return getEntity(id, state);
 }
 
 export function stateGetVisibles(
   state: OsmState,
   quadkeys: string[]
 ): DerivedTable {
+  consistencyChecker(state);
   return Identity(
     setClone(virginGetInQuadkeys(state.virgin.quadkeysTable, quadkeys))
   )
     .map(visibleIds => setBulkDelete(logGetBaseIds(state.log), visibleIds))
     .map(visibleIds => setAddIterable(logGetCurrentIds(state.log), visibleIds))
-    .map(visibleIds =>
-      getEntitiesAndRelated(
-        visibleIds,
-        state.changedTable,
-        state.virgin.elements
-      )
-    )
+    .map(visibleIds => getRenderableEntities(visibleIds, state))
     .map(entityTable => derivedTableUpdate(entityTable, state.derivedTable))
     .get();
 }
@@ -66,21 +81,27 @@ export function stateAddVirgins(
   entities: Entity[],
   quadkey: string
 ) {
+  // entities = entities.filter(r => r.type !== 'relation');
+  consistencyChecker(state);
   // fix this imperative piece of shit
-  addVirginElements(entities, quadkey, state.virgin);
+  virginAddElements(entities, quadkey, state.virgin);
   return state;
 }
 
 export function stateAddChanged(state: OsmState, entities: Entity[]): OsmState {
-  return {
+  consistencyChecker(state);
+
+  const newState = {
     ...state,
-    changedTable: changedTableAddModifiedEntities(
-      state.changedTable,
+    log: logAddEntry(setCreate(entities.map(r => r.id)))(state.log),
+    modified: modifiedAddModifiedEntitiesAndRelated(
+      state.modified,
       state.virgin,
       entities
     ),
-    log: logAddEntry(setCreate(entities.map(r => r.id)))(state.log),
   };
+  consistencyChecker(newState);
+  return newState;
 }
 
 /**
@@ -100,14 +121,19 @@ export function stateAddChanged(state: OsmState, entities: Entity[]): OsmState {
  *    are applied to state.
  */
 export function stateShred(state: OsmState): OsmState {
-  return stateCreate(
+  consistencyChecker(state);
+
+  const newState = stateCreate(
     undefined,
-    new Map(state.changedTable),
+    new Map(state.modified),
     undefined,
     state.log
   );
+
+  consistencyChecker(newState);
+  return newState;
 }
 
 export function stateGenNextId(state: OsmState, id: string) {
-  return genNextId(id, state);
+  return genNextId(state, id);
 }
