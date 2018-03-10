@@ -1,3 +1,4 @@
+import { IDLY_NS } from '../../constants';
 import { HIGHWAY } from '../priorities';
 
 export default [
@@ -16,7 +17,7 @@ export default [
         'line-color': '#eee',
         'line-width': 2,
       },
-      filter: ['all', ['==', '$type', 'LineString']],
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line']],
     },
   },
 ];

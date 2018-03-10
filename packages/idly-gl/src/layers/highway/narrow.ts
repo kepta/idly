@@ -29,7 +29,7 @@ const highblue = [
         'line-dasharray': [3, 3],
         'line-width': makeLineWidth(0.35),
       },
-      secBlueFilter,
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], secBlueFilter],
     },
   },
   {
@@ -44,7 +44,7 @@ const highblue = [
         ...highwayCaseTemplate.layer.paint,
         'line-width': makeLineWidth(0.45),
       },
-      secBlueFilter,
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], secBlueFilter],
     },
   },
 ];
@@ -79,7 +79,7 @@ const highgreen = [
         'line-dasharray': [3, 3],
         'line-width': makeLineWidth(0.35),
       },
-      secGreenFilter,
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], secGreenFilter],
     },
   },
   {
@@ -94,21 +94,17 @@ const highgreen = [
         ...highwayCaseTemplate.layer.paint,
         'line-width': makeLineWidth(0.45),
       },
-      secGreenFilter,
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], secGreenFilter],
     },
   },
 ];
 
 const filter = [
-  'all',
-  ['==', '$type', 'LineString'],
-  [
-    'in',
-    `${IDLY_NS}tag-highway`,
-    'tag-highway-path',
-    'tag-highway-footway',
-    'tag-highway-bridleway',
-  ],
+  'in',
+  `${IDLY_NS}tag-highway`,
+  'tag-highway-path',
+  'tag-highway-footway',
+  'tag-highway-bridleway',
 ];
 
 export default [
@@ -129,7 +125,7 @@ export default [
         'line-dasharray': [3, 3],
         'line-width': makeLineWidth(0.35),
       },
-      filter,
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], filter],
     },
   },
   {
@@ -144,9 +140,9 @@ export default [
         ...highwayCaseTemplate.layer.paint,
         'line-width': makeLineWidth(0.45),
       },
-      filter,
+      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], filter],
     },
   },
-  // ...highblue,
-  // ...highgreen,
+  ...highblue,
+  ...highgreen,
 ];

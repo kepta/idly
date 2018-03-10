@@ -17,7 +17,7 @@ export default [
       },
       filter: [
         'all',
-        ['==', '$type', 'Polygon'],
+        ['==', `${IDLY_NS}geometry`, 'area'],
         /**
          * @REVISIT buildings or any small really look ugly with that gl offset artifact
          *  going for a fill layer for now.
@@ -40,7 +40,8 @@ export default [
       },
       filter: [
         'all',
-        ['==', '$type', 'Polygon'],
+        // ['==', '$type', 'Polygon'],
+        ['==', `${IDLY_NS}geometry`, 'area'],
         ['!has', `${IDLY_NS}tag-building`],
       ],
     },

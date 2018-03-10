@@ -24,7 +24,7 @@ export default [
       paint: {
         ...highwayTemplate.layer.paint,
         'line-color': '#dcd9b9',
-        'line-width': makeLineWidth(0.5),
+        'line-width': makeLineWidth(0.7),
       },
       filter,
     },
@@ -39,7 +39,7 @@ export default [
       layout: highwayCaseTemplate.layer.layout,
       paint: {
         ...highwayCaseTemplate.layer.paint,
-        'line-width': makeLineWidth(0.7),
+        'line-width': makeLineWidth(0.9),
       },
       filter,
     },
