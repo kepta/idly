@@ -4,7 +4,10 @@ import bboxPolygon from '@turf/bbox-polygon';
 import { FeatureCollection } from '@turf/helpers';
 import { BBox, mercator, Tile } from 'idly-common/lib/geo';
 import parser from 'idly-faster-osm-parser';
-const rsp = `<?xml version="1.0" encoding="UTF-8"?>
+import { Entity } from 'idly-common/lib/osm/structures';
+const rsp =
+  undefined &&
+  `<?xml version="1.0" encoding="UTF-8"?>
 <osm version="0.6" generator="CGImap 0.6.0 (14413 thorn-02.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
  <bounds minlat="40.7587004" minlon="-73.9730072" maxlat="40.7592205" maxlon="-73.9723206"/>
  <node id="42432834" visible="true" version="11" changeset="56395675" timestamp="2018-02-15T20:18:49Z" user="ALE!" uid="40023" lat="40.7615712" lon="-73.9706553">
@@ -358,7 +361,14 @@ export function tilesFilterSmall(
       },
       { sum: 0, tiles: [] as Tile[] }
     );
-  console.log('orig', tiles.length);
+  console.log(
+    'thresh',
+    minimumOverlap,
+    'orig',
+    tiles.length,
+    'removed',
+    tiles.length - final.tiles.length
+  );
   console.log(final);
   return final.tiles;
 }
@@ -377,7 +387,7 @@ export async function fetchTileXml(
   y: number,
   zoom: number
 ): Promise<any> {
-  return parser(rsp);
+  // return parser(rsp);
   const bboxStr = mercator.bbox(x, y, zoom).join(',');
   if (cache.has(bboxStr)) {
     return cache.get(bboxStr);
@@ -389,6 +399,7 @@ export async function fetchTileXml(
     throw new Error(response.statusText);
   }
   const entities = parser(rsp || (await response.text()));
+  checkWay(entities);
   cache.set(bboxStr, entities);
   return entities;
 }
@@ -420,4 +431,20 @@ export function tapLog<T>(fn: T) {
     console.log('Log-- output', result);
     return result;
   };
+}
+
+// RELATIONS DONT SUPPLY THE FULL THING WOW!
+function checkWay(en: Entity[]) {
+  var x: Map<string, Entity> = new Map();
+  en.forEach(e => x.set(e.id, e));
+
+  for (const [id, e] of x) {
+    if (e.type === 'way') {
+      e.nodes.forEach(r => {
+        if (!x.has(r)) {
+          throw new Error(` ${e.id} doesnt have ${r}`);
+        }
+      });
+    }
+  }
 }

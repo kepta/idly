@@ -15,6 +15,9 @@ import {
 } from 'idly-common/lib/osm/structures';
 import { nodePropertiesGen } from './nodeProps';
 import { wayPropertiesGen } from './wayProps';
+// throws error at this poly gin
+// https://www.openstreetmap.org/way/231777928#map=19/-27.21685/153.03079
+// http://preview.ideditor.com/master/#background=Bing&disable_features=boundaries&id=w231777928&map=19.00/-27.21685/153.03090
 
 export interface Derived {
   readonly entity: Entity;
@@ -62,7 +65,6 @@ export function wayCombiner(
     readonly [key: string]: string;
   }
 ): Feature<Polygon | LineString> {
-  // @REVISIT this osm_basic injection, sems hacks
   const existingGeometry = existingProps['@idly-geometry'];
   if (!existingGeometry) {
     throw new Error('geometry not found in existing props');

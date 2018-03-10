@@ -22,10 +22,13 @@ export const oneToManyTableRemoveIndex = <T>(
   table: OneToManyTable<T>,
   index: string,
   value: T
-): boolean | undefined =>
-  I(tableGet(index, table))
-    .map(s => s && s.delete(value))
-    .get();
+): boolean | undefined => {
+  const s = tableGet(index, table);
+  if (s) {
+    return s.delete(value);
+  }
+  return;
+};
 
 export const oneToManyTableInsert = <T>(
   table: OneToManyTable<T>,

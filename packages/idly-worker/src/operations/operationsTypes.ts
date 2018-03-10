@@ -1,4 +1,4 @@
-import { OsmState } from 'idly-state/lib/osmState';
+import { OsmState } from 'idly-state/lib/type';
 import { GetMoveNode } from './getMoveNode/type';
 import { GetQuadkey } from './getQuadkeys/type';
 import { SetMovePointEntry } from './setMovePointEntry/type';

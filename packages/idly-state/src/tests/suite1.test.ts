@@ -1,7 +1,7 @@
 import { nodeFactory, wayFactory } from 'idly-common/lib/osm/entityFactory';
 import { Entity, EntityType, Node, Way } from 'idly-common/lib/osm/structures';
 import {
-  stateAddChanged,
+  stateAddModified,
   stateAddVirgins,
   stateCreate,
   stateGenNextId,
@@ -72,7 +72,7 @@ describe('from xml to final rendering', () => {
       nodes: newNodes.map((r: Node) => r.id),
     } as Way);
 
-    const newState = stateAddChanged(osmState, [newWay, ...newNodes]);
+    const newState = stateAddModified(osmState, [newWay, ...newNodes]);
 
     expect(stateGetEntity(newState, newWay.id)).toBe(newWay);
     expect(stateGetEntity(newState, newNodes[1].id) === newNodes[1]).toBe(true);
@@ -106,7 +106,7 @@ describe('from xml to final rendering', () => {
           tags: { m: 'nodified' },
         }),
       ];
-      const newState = stateAddChanged(
+      const newState = stateAddModified(
         modifiedStates[modifiedStates.length - 1],
         newNodes
       );

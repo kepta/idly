@@ -179,7 +179,7 @@ describe('logRewrite', () => {
     setCreate(['4#0'])
   );
   it('work for many entries', () => {
-    expect(logRewrite(log, '5', setCreate(['2']))).toEqual(
+    expect(logRewrite(log, '5', ['2'])).toEqual(
       logRecreate(
         setCreate(['2#4', '5#3']),
         setCreate(['3#2', '2#3', '5#2']),
@@ -191,7 +191,7 @@ describe('logRewrite', () => {
   });
 
   it('work when on only one entry', () => {
-    expect(logRewrite(log, '5', setCreate(['4']))).toEqual(
+    expect(logRewrite(log, '5', ['4'])).toEqual(
       logRecreate(
         setCreate(['2#4']),
         setCreate(['3#2', '2#3']),
@@ -211,7 +211,7 @@ describe('logRewrite', () => {
       setCreate(['2#1']),
       setCreate(['4#0'])
     );
-    expect(logRewrite(l, '6', setCreate(['5']))).toEqual(
+    expect(logRewrite(l, '6', ['5'])).toEqual(
       logRecreate(
         setCreate(['5#0', '6#0']),
         setCreate(['2#4']),
@@ -232,7 +232,7 @@ describe('logRewrite', () => {
       setCreate(['2#1']),
       setCreate(['4#0'])
     );
-    expect(logRewrite(l, '6', setCreate(['5', '3']))).toEqual(
+    expect(logRewrite(l, '6', ['5', '3'])).toEqual(
       logRecreate(
         setCreate(['5#0', '6#2']),
         setCreate(['2#4']),
@@ -245,7 +245,7 @@ describe('logRewrite', () => {
   });
   it('works with empty log', () => {
     const l = logRecreate();
-    expect(logRewrite(l, '6', setCreate(['5', '3']))).toEqual(logRecreate());
+    expect(logRewrite(l, '6', ['5', '3'])).toEqual(logRecreate());
   });
 
   it('works with no base ids are found', () => {
@@ -257,7 +257,7 @@ describe('logRewrite', () => {
       setCreate(['2#1']),
       setCreate(['4#0'])
     );
-    expect(logRewrite(l, '6', setCreate(['9', '13']))).toEqual(l);
+    expect(logRewrite(l, '6', ['9', '13'])).toEqual(l);
   });
 });
 

@@ -1,16 +1,1348 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`from xml to final rendering get visible  1`] = `
+exports[`move nodeB then A then B has the correct state 1`] = `
+Map {
+  "n42436703#0" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "12",
+      "visible": true,
+    },
+    "id": "n42436703#0",
+    "loc": Object {
+      "lat": 40.75902241791539,
+      "lon": -73.9724320178147,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "w109287832#0" => Object {
+    "attributes": Object {
+      "changeset": "36897742",
+      "timestamp": "2016-01-30T12:58:57Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "6",
+      "visible": true,
+    },
+    "id": "w109287832#0",
+    "nodes": Array [
+      "n1251582234",
+      "n1251582245",
+      "n1251582250",
+      "n1251582259",
+      "n1587561270",
+      "n1587561272",
+      "n3790180117",
+      "n42436703#0",
+      "n3977886227",
+      "n42452875",
+      "n3790180111",
+      "n3790180110",
+      "n1587561266",
+      "n1251582288",
+      "n1251582309",
+      "n1251582320",
+      "n1251582234",
+    ],
+    "tags": Object {},
+    "type": "way",
+  },
+  "w458180192#0" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w458180192#0",
+    "nodes": Array [
+      "n42436705",
+      "n3790180117",
+      "n42436703#0",
+      "n596775900",
+      "n42436701",
+    ],
+    "tags": Object {
+      "hgv": "destination",
+      "highway": "secondary",
+      "name": "East 53rd Street",
+      "note": "thru street",
+      "oneway": "yes",
+      "tiger:cfcc": "A41",
+      "tiger:county": "New York, NY",
+      "tiger:name_base": "53rd",
+      "tiger:name_direction_prefix": "E",
+      "tiger:name_type": "St",
+    },
+    "type": "way",
+  },
+  "w497165756#0" => Object {
+    "attributes": Object {
+      "changeset": "49133926",
+      "timestamp": "2017-05-31T12:08:35Z",
+      "uid": "3029661",
+      "user": "saikabhi",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "w497165756#0",
+    "nodes": Array [
+      "n100522741",
+      "n100522728",
+      "n42448811",
+      "n42438886",
+      "n3977886195",
+      "n42459098",
+      "n3977886199",
+      "n42440456",
+      "n42452875",
+      "n3977886227",
+      "n42436703#0",
+      "n3977886231",
+      "n42456611",
+      "n42448338",
+      "n42443613",
+      "n42432834",
+    ],
+    "tags": Object {
+      "hgv": "no",
+      "highway": "secondary",
+      "lanes": "3",
+      "name": "Park Avenue",
+      "oneway": "yes",
+      "tiger:cfcc": "A41",
+      "tiger:county": "New York, NY",
+      "tiger:name_base": "Park",
+      "tiger:name_type": "Ave",
+      "tiger:zip_left": "10037",
+      "tiger:zip_right": "10035",
+      "wikidata": "Q109711",
+      "wikipedia": "en:Park Avenue",
+    },
+    "type": "way",
+  },
+  "r5594260#0" => Object {
+    "attributes": Object {
+      "changeset": "34692040",
+      "timestamp": "2015-10-17T11:41:26Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "r5594260#0",
+    "members": Array [
+      Object {
+        "id": "w109287832#0",
+        "ref": "w109287832#0",
+        "role": "outer",
+        "type": "way",
+      },
+      Object {
+        "id": "w375673046",
+        "ref": "w375673046",
+        "role": "inner",
+        "type": "way",
+      },
+      Object {
+        "id": "w375673047",
+        "ref": "w375673047",
+        "role": "inner",
+        "type": "way",
+      },
+    ],
+    "tags": Object {
+      "highway": "pedestrian",
+      "name": "Seagram Building Plaza",
+      "type": "multipolygon",
+    },
+    "type": "relation",
+  },
+  "r6247413#0" => Object {
+    "attributes": Object {
+      "changeset": "44223590",
+      "timestamp": "2016-12-07T00:52:27Z",
+      "uid": "4928856",
+      "user": "zz_top",
+      "version": "3",
+      "visible": true,
+    },
+    "id": "r6247413#0",
+    "members": Array [
+      Object {
+        "id": "w458180192#0",
+        "ref": "w458180192#0",
+        "role": "from",
+        "type": "way",
+      },
+      Object {
+        "id": "w420281339",
+        "ref": "w420281339",
+        "role": "to",
+        "type": "way",
+      },
+      Object {
+        "id": "n42436701",
+        "ref": "n42436701",
+        "role": "via",
+        "type": "node",
+      },
+    ],
+    "tags": Object {
+      "restriction:conditional": "no_right_turn @ (Mo-Fr 10:00-18:00)",
+      "type": "restriction",
+    },
+    "type": "relation",
+  },
+  "n42436703" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "12",
+      "visible": true,
+    },
+    "id": "n42436703",
+    "loc": Object {
+      "lat": 40.7590168,
+      "lon": -73.9725124,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "w109287832" => Object {
+    "attributes": Object {
+      "changeset": "36897742",
+      "timestamp": "2016-01-30T12:58:57Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "6",
+      "visible": true,
+    },
+    "id": "w109287832",
+    "nodes": Array [
+      "n1251582234",
+      "n1251582245",
+      "n1251582250",
+      "n1251582259",
+      "n1587561270",
+      "n1587561272",
+      "n3790180117",
+      "n42436703",
+      "n3977886227",
+      "n42452875",
+      "n3790180111",
+      "n3790180110",
+      "n1587561266",
+      "n1251582288",
+      "n1251582309",
+      "n1251582320",
+      "n1251582234",
+    ],
+    "tags": Object {},
+    "type": "way",
+  },
+  "w458180192" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "w458180192",
+    "nodes": Array [
+      "n42436705",
+      "n3790180117",
+      "n42436703",
+      "n596775900",
+      "n42436701",
+    ],
+    "tags": Object {
+      "hgv": "destination",
+      "highway": "secondary",
+      "name": "East 53rd Street",
+      "note": "thru street",
+      "oneway": "yes",
+      "tiger:cfcc": "A41",
+      "tiger:county": "New York, NY",
+      "tiger:name_base": "53rd",
+      "tiger:name_direction_prefix": "E",
+      "tiger:name_type": "St",
+    },
+    "type": "way",
+  },
+  "w497165756" => Object {
+    "attributes": Object {
+      "changeset": "49133926",
+      "timestamp": "2017-05-31T12:08:35Z",
+      "uid": "3029661",
+      "user": "saikabhi",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "w497165756",
+    "nodes": Array [
+      "n100522741",
+      "n100522728",
+      "n42448811",
+      "n42438886",
+      "n3977886195",
+      "n42459098",
+      "n3977886199",
+      "n42440456",
+      "n42452875",
+      "n3977886227",
+      "n42436703",
+      "n3977886231",
+      "n42456611",
+      "n42448338",
+      "n42443613",
+      "n42432834",
+    ],
+    "tags": Object {
+      "hgv": "no",
+      "highway": "secondary",
+      "lanes": "3",
+      "name": "Park Avenue",
+      "oneway": "yes",
+      "tiger:cfcc": "A41",
+      "tiger:county": "New York, NY",
+      "tiger:name_base": "Park",
+      "tiger:name_type": "Ave",
+      "tiger:zip_left": "10037",
+      "tiger:zip_right": "10035",
+      "wikidata": "Q109711",
+      "wikipedia": "en:Park Avenue",
+    },
+    "type": "way",
+  },
+  "r5594260" => Object {
+    "attributes": Object {
+      "changeset": "34692040",
+      "timestamp": "2015-10-17T11:41:26Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "1",
+      "visible": true,
+    },
+    "id": "r5594260",
+    "members": Array [
+      Object {
+        "id": "w109287832",
+        "ref": "w109287832",
+        "role": "outer",
+        "type": "way",
+      },
+      Object {
+        "id": "w375673046",
+        "ref": "w375673046",
+        "role": "inner",
+        "type": "way",
+      },
+      Object {
+        "id": "w375673047",
+        "ref": "w375673047",
+        "role": "inner",
+        "type": "way",
+      },
+    ],
+    "tags": Object {
+      "highway": "pedestrian",
+      "name": "Seagram Building Plaza",
+      "type": "multipolygon",
+    },
+    "type": "relation",
+  },
+  "r6247413" => Object {
+    "attributes": Object {
+      "changeset": "44223590",
+      "timestamp": "2016-12-07T00:52:27Z",
+      "uid": "4928856",
+      "user": "zz_top",
+      "version": "3",
+      "visible": true,
+    },
+    "id": "r6247413",
+    "members": Array [
+      Object {
+        "id": "w458180192",
+        "ref": "w458180192",
+        "role": "from",
+        "type": "way",
+      },
+      Object {
+        "id": "w420281339",
+        "ref": "w420281339",
+        "role": "to",
+        "type": "way",
+      },
+      Object {
+        "id": "n42436701",
+        "ref": "n42436701",
+        "role": "via",
+        "type": "node",
+      },
+    ],
+    "tags": Object {
+      "restriction:conditional": "no_right_turn @ (Mo-Fr 10:00-18:00)",
+      "type": "restriction",
+    },
+    "type": "relation",
+  },
+  "n1251582234" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582234",
+    "loc": Object {
+      "lat": 40.7583471,
+      "lon": -73.9724421,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1251582245" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582245",
+    "loc": Object {
+      "lat": 40.7586868,
+      "lon": -73.9721939,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1251582250" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582250",
+    "loc": Object {
+      "lat": 40.7585733,
+      "lon": -73.9719231,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1251582259" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582259",
+    "loc": Object {
+      "lat": 40.7585025,
+      "lon": -73.9719748,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1587561270" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "3",
+      "visible": true,
+    },
+    "id": "n1587561270",
+    "loc": Object {
+      "lat": 40.7584659,
+      "lon": -73.9718875,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1587561272" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:07Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n1587561272",
+    "loc": Object {
+      "lat": 40.7586012,
+      "lon": -73.9717887,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n3790180117" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "3",
+      "visible": true,
+    },
+    "id": "n3790180117",
+    "loc": Object {
+      "lat": 40.7586848,
+      "lon": -73.9717261,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n3977886227" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886227",
+    "loc": Object {
+      "lat": 40.7589638,
+      "lon": -73.9725509,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  "n42452875" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "12",
+      "visible": true,
+    },
+    "id": "n42452875",
+    "loc": Object {
+      "lat": 40.7583874,
+      "lon": -73.97297,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n3790180111" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3790180111",
+    "loc": Object {
+      "lat": 40.7582931,
+      "lon": -73.9727464,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n3790180110" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n3790180110",
+    "loc": Object {
+      "lat": 40.7580579,
+      "lon": -73.972189,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1587561266" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n1587561266",
+    "loc": Object {
+      "lat": 40.7581311,
+      "lon": -73.9721317,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1251582288" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582288",
+    "loc": Object {
+      "lat": 40.7582595,
+      "lon": -73.9720379,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1251582309" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582309",
+    "loc": Object {
+      "lat": 40.7582972,
+      "lon": -73.9721279,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n1251582320" => Object {
+    "attributes": Object {
+      "changeset": "35324063",
+      "timestamp": "2015-11-15T10:16:06Z",
+      "uid": "336460",
+      "user": "robgeb",
+      "version": "4",
+      "visible": true,
+    },
+    "id": "n1251582320",
+    "loc": Object {
+      "lat": 40.7582346,
+      "lon": -73.9721736,
+    },
+    "tags": Object {},
+    "type": "node",
+  },
+  "n42436705" => Object {
+    "attributes": Object {
+      "changeset": "15966137",
+      "timestamp": "2013-05-03T21:26:12Z",
+      "uid": "753896",
+      "user": "Avi Flamholz",
+      "version": "5",
+      "visible": true,
+    },
+    "id": "n42436705",
+    "loc": Object {
+      "lat": 40.7583747,
+      "lon": -73.9709918,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n596775900" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "5",
+      "visible": true,
+    },
+    "id": "n596775900",
+    "loc": Object {
+      "lat": 40.7591042,
+      "lon": -73.9727194,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n42436701" => Object {
+    "attributes": Object {
+      "changeset": "12113203",
+      "timestamp": "2012-07-04T18:03:17Z",
+      "uid": "703728",
+      "user": "NJ Engineer",
+      "version": "5",
+      "visible": true,
+    },
+    "id": "n42436701",
+    "loc": Object {
+      "lat": 40.7597393,
+      "lon": -73.9742235,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n100522741" => Object {
+    "attributes": Object {
+      "changeset": "35410723",
+      "timestamp": "2015-11-18T16:08:55Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "8",
+      "visible": true,
+    },
+    "id": "n100522741",
+    "loc": Object {
+      "lat": 40.7546344,
+      "lon": -73.9756983,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n100522728" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "10",
+      "visible": true,
+    },
+    "id": "n100522728",
+    "loc": Object {
+      "lat": 40.7552643,
+      "lon": -73.9752404,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n42448811" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "16",
+      "visible": true,
+    },
+    "id": "n42448811",
+    "loc": Object {
+      "lat": 40.755886,
+      "lon": -73.9747884,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n42438886" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "10",
+      "visible": true,
+    },
+    "id": "n42438886",
+    "loc": Object {
+      "lat": 40.756516,
+      "lon": -73.9743304,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n3977886195" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886195",
+    "loc": Object {
+      "lat": 40.7570924,
+      "lon": -73.9739114,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  "n42459098" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "10",
+      "visible": true,
+    },
+    "id": "n42459098",
+    "loc": Object {
+      "lat": 40.7571346,
+      "lon": -73.9738807,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n3977886199" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886199",
+    "loc": Object {
+      "lat": 40.7571979,
+      "lon": -73.9738348,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  "n42440456" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42440456",
+    "loc": Object {
+      "lat": 40.7577641,
+      "lon": -73.9734231,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n3977886231" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886231",
+    "loc": Object {
+      "lat": 40.7590838,
+      "lon": -73.9724637,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  "n42456611" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42456611",
+    "loc": Object {
+      "lat": 40.7596398,
+      "lon": -73.9720595,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n42448338" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42448338",
+    "loc": Object {
+      "lat": 40.7602692,
+      "lon": -73.9716019,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n42443613" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42443613",
+    "loc": Object {
+      "lat": 40.760902,
+      "lon": -73.9711418,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  "n42432834" => Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42432834",
+    "loc": Object {
+      "lat": 40.7615712,
+      "lon": -73.9706553,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+}
+`;
+
+exports[`move nodeB then A then B has the correct state 2`] = `
 Array [
-  "n42436703",
-  "n596775900",
-  "w458180192",
-  "w497165753",
-  "w497165756",
+  Set {
+    "n42436703#0",
+    "w109287832#0",
+    "w458180192#0",
+    "w497165756#0",
+    "r5594260#0",
+    "r6247413#0",
+  },
 ]
 `;
 
-exports[`from xml to final rendering move nodeA 1`] = `
+exports[`move nodeB then A then B has the correct state 3`] = `
+Set {
+  "n42436703#0",
+  "n596775900",
+  "r5594260#0",
+  "r6247413#0",
+  "r7297408",
+  "w109287832#0",
+  "w458180192#0",
+  "w497165753",
+  "w497165756#0",
+}
+`;
+
+exports[`move nodeB then A then B has the correct state 4`] = `
+Map {
+  "n42436703#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "56395675",
+        "timestamp": "2018-02-15T20:18:49Z",
+        "uid": "40023",
+        "user": "ALE!",
+        "version": "12",
+        "visible": true,
+      },
+      "id": "n42436703#0",
+      "loc": Object {
+        "lat": 40.75902241791539,
+        "lon": -73.9724320178147,
+      },
+      "tags": Object {
+        "highway": "traffic_signals",
+      },
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w109287832#0",
+      "w458180192#0",
+      "w497165756#0",
+    },
+  },
+  "n596775900" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "56395675",
+        "timestamp": "2018-02-15T20:18:50Z",
+        "uid": "40023",
+        "user": "ALE!",
+        "version": "5",
+        "visible": true,
+      },
+      "id": "n596775900",
+      "loc": Object {
+        "lat": 40.7591042,
+        "lon": -73.9727194,
+      },
+      "tags": Object {
+        "highway": "traffic_signals",
+      },
+      "type": "node",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {
+      "w497165753",
+      "w458180192#0",
+    },
+  },
+  "r5594260#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "34692040",
+        "timestamp": "2015-10-17T11:41:26Z",
+        "uid": "336460",
+        "user": "robgeb",
+        "version": "1",
+        "visible": true,
+      },
+      "id": "r5594260#0",
+      "members": Array [
+        Object {
+          "id": "w109287832#0",
+          "ref": "w109287832#0",
+          "role": "outer",
+          "type": "way",
+        },
+        Object {
+          "id": "w375673046",
+          "ref": "w375673046",
+          "role": "inner",
+          "type": "way",
+        },
+        Object {
+          "id": "w375673047",
+          "ref": "w375673047",
+          "role": "inner",
+          "type": "way",
+        },
+      ],
+      "tags": Object {
+        "highway": "pedestrian",
+        "name": "Seagram Building Plaza",
+        "type": "multipolygon",
+      },
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "r6247413#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "44223590",
+        "timestamp": "2016-12-07T00:52:27Z",
+        "uid": "4928856",
+        "user": "zz_top",
+        "version": "3",
+        "visible": true,
+      },
+      "id": "r6247413#0",
+      "members": Array [
+        Object {
+          "id": "w458180192#0",
+          "ref": "w458180192#0",
+          "role": "from",
+          "type": "way",
+        },
+        Object {
+          "id": "w420281339",
+          "ref": "w420281339",
+          "role": "to",
+          "type": "way",
+        },
+        Object {
+          "id": "n42436701",
+          "ref": "n42436701",
+          "role": "via",
+          "type": "node",
+        },
+      ],
+      "tags": Object {
+        "restriction:conditional": "no_right_turn @ (Mo-Fr 10:00-18:00)",
+        "type": "restriction",
+      },
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "r7297408" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "49133926",
+        "timestamp": "2017-05-31T12:08:36Z",
+        "uid": "3029661",
+        "user": "saikabhi",
+        "version": "1",
+        "visible": true,
+      },
+      "id": "r7297408",
+      "members": Array [
+        Object {
+          "id": "w388696206",
+          "ref": "w388696206",
+          "role": "from",
+          "type": "way",
+        },
+        Object {
+          "id": "w497165753",
+          "ref": "w497165753",
+          "role": "to",
+          "type": "way",
+        },
+        Object {
+          "id": "n596775935",
+          "ref": "n596775935",
+          "role": "via",
+          "type": "node",
+        },
+      ],
+      "tags": Object {
+        "restriction": "no_right_turn",
+        "type": "restriction",
+      },
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "w109287832#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "36897742",
+        "timestamp": "2016-01-30T12:58:57Z",
+        "uid": "336460",
+        "user": "robgeb",
+        "version": "6",
+        "visible": true,
+      },
+      "id": "w109287832#0",
+      "nodes": Array [
+        "n1251582234",
+        "n1251582245",
+        "n1251582250",
+        "n1251582259",
+        "n1587561270",
+        "n1587561272",
+        "n3790180117",
+        "n42436703#0",
+        "n3977886227",
+        "n42452875",
+        "n3790180111",
+        "n3790180110",
+        "n1587561266",
+        "n1251582288",
+        "n1251582309",
+        "n1251582320",
+        "n1251582234",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r5594260#0",
+    },
+    "parentWays": Set {},
+  },
+  "w458180192#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "56395675",
+        "timestamp": "2018-02-15T20:18:50Z",
+        "uid": "40023",
+        "user": "ALE!",
+        "version": "2",
+        "visible": true,
+      },
+      "id": "w458180192#0",
+      "nodes": Array [
+        "n42436705",
+        "n3790180117",
+        "n42436703#0",
+        "n596775900",
+        "n42436701",
+      ],
+      "tags": Object {
+        "hgv": "destination",
+        "highway": "secondary",
+        "name": "East 53rd Street",
+        "note": "thru street",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "New York, NY",
+        "tiger:name_base": "53rd",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St",
+      },
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r6247413#0",
+    },
+    "parentWays": Set {},
+  },
+  "w497165753" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "49133926",
+        "timestamp": "2017-05-31T12:08:35Z",
+        "uid": "3029661",
+        "user": "saikabhi",
+        "version": "1",
+        "visible": true,
+      },
+      "id": "w497165753",
+      "nodes": Array [
+        "n596775935",
+        "n596775951",
+        "n596775907",
+        "n596775919",
+        "n3977886235",
+        "n596775900",
+        "n3977886228",
+        "n596775914",
+        "n596775876",
+        "n3977886201",
+        "n596775870",
+        "n3977886197",
+        "n596775867",
+        "n596775882",
+        "n42457476",
+        "n596775840",
+      ],
+      "tags": Object {
+        "hgv": "no",
+        "highway": "secondary",
+        "name": "Park Avenue",
+        "oneway": "yes",
+        "wikidata": "Q109711",
+        "wikipedia": "en:Park Avenue",
+      },
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r7297408",
+    },
+    "parentWays": Set {},
+  },
+  "w497165756#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "49133926",
+        "timestamp": "2017-05-31T12:08:35Z",
+        "uid": "3029661",
+        "user": "saikabhi",
+        "version": "1",
+        "visible": true,
+      },
+      "id": "w497165756#0",
+      "nodes": Array [
+        "n100522741",
+        "n100522728",
+        "n42448811",
+        "n42438886",
+        "n3977886195",
+        "n42459098",
+        "n3977886199",
+        "n42440456",
+        "n42452875",
+        "n3977886227",
+        "n42436703#0",
+        "n3977886231",
+        "n42456611",
+        "n42448338",
+        "n42443613",
+        "n42432834",
+      ],
+      "tags": Object {
+        "hgv": "no",
+        "highway": "secondary",
+        "lanes": "3",
+        "name": "Park Avenue",
+        "oneway": "yes",
+        "tiger:cfcc": "A41",
+        "tiger:county": "New York, NY",
+        "tiger:name_base": "Park",
+        "tiger:name_type": "Ave",
+        "tiger:zip_left": "10037",
+        "tiger:zip_right": "10035",
+        "wikidata": "Q109711",
+        "wikipedia": "en:Park Avenue",
+      },
+      "type": "way",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+}
+`;
+
+exports[`move nodeB then A then B move nodeA 1`] = `
 Array [
   Set {
     "n596775900#0",
@@ -30,7 +1362,7 @@ Array [
 ]
 `;
 
-exports[`from xml to final rendering move nodeA 2`] = `
+exports[`move nodeB then A then B move nodeA 2`] = `
 Map {
   "n42436703#0" => Object {
     "attributes": Object {
@@ -1517,1186 +2849,7 @@ Map {
 }
 `;
 
-exports[`from xml to final rendering move nodeB  1`] = `
-Map {
-  "n42436703#0" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "12",
-      "visible": true,
-    },
-    "id": "n42436703#0",
-    "loc": Object {
-      "lat": 40.75902241791539,
-      "lon": -73.9724320178147,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "w109287832#0" => Object {
-    "attributes": Object {
-      "changeset": "36897742",
-      "timestamp": "2016-01-30T12:58:57Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "6",
-      "visible": true,
-    },
-    "id": "w109287832#0",
-    "nodes": Array [
-      "n1251582234",
-      "n1251582245",
-      "n1251582250",
-      "n1251582259",
-      "n1587561270",
-      "n1587561272",
-      "n3790180117",
-      "n42436703#0",
-      "n3977886227",
-      "n42452875",
-      "n3790180111",
-      "n3790180110",
-      "n1587561266",
-      "n1251582288",
-      "n1251582309",
-      "n1251582320",
-      "n1251582234",
-    ],
-    "tags": Object {},
-    "type": "way",
-  },
-  "w458180192#0" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "w458180192#0",
-    "nodes": Array [
-      "n42436705",
-      "n3790180117",
-      "n42436703#0",
-      "n596775900",
-      "n42436701",
-    ],
-    "tags": Object {
-      "hgv": "destination",
-      "highway": "secondary",
-      "name": "East 53rd Street",
-      "note": "thru street",
-      "oneway": "yes",
-      "tiger:cfcc": "A41",
-      "tiger:county": "New York, NY",
-      "tiger:name_base": "53rd",
-      "tiger:name_direction_prefix": "E",
-      "tiger:name_type": "St",
-    },
-    "type": "way",
-  },
-  "w497165756#0" => Object {
-    "attributes": Object {
-      "changeset": "49133926",
-      "timestamp": "2017-05-31T12:08:35Z",
-      "uid": "3029661",
-      "user": "saikabhi",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "w497165756#0",
-    "nodes": Array [
-      "n100522741",
-      "n100522728",
-      "n42448811",
-      "n42438886",
-      "n3977886195",
-      "n42459098",
-      "n3977886199",
-      "n42440456",
-      "n42452875",
-      "n3977886227",
-      "n42436703#0",
-      "n3977886231",
-      "n42456611",
-      "n42448338",
-      "n42443613",
-      "n42432834",
-    ],
-    "tags": Object {
-      "hgv": "no",
-      "highway": "secondary",
-      "lanes": "3",
-      "name": "Park Avenue",
-      "oneway": "yes",
-      "tiger:cfcc": "A41",
-      "tiger:county": "New York, NY",
-      "tiger:name_base": "Park",
-      "tiger:name_type": "Ave",
-      "tiger:zip_left": "10037",
-      "tiger:zip_right": "10035",
-      "wikidata": "Q109711",
-      "wikipedia": "en:Park Avenue",
-    },
-    "type": "way",
-  },
-  "r5594260#0" => Object {
-    "attributes": Object {
-      "changeset": "34692040",
-      "timestamp": "2015-10-17T11:41:26Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "r5594260#0",
-    "members": Array [
-      Object {
-        "id": "w109287832#0",
-        "ref": "w109287832#0",
-        "role": "outer",
-        "type": "way",
-      },
-      Object {
-        "id": "w375673046",
-        "ref": "w375673046",
-        "role": "inner",
-        "type": "way",
-      },
-      Object {
-        "id": "w375673047",
-        "ref": "w375673047",
-        "role": "inner",
-        "type": "way",
-      },
-    ],
-    "tags": Object {
-      "highway": "pedestrian",
-      "name": "Seagram Building Plaza",
-      "type": "multipolygon",
-    },
-    "type": "relation",
-  },
-  "r6247413#0" => Object {
-    "attributes": Object {
-      "changeset": "44223590",
-      "timestamp": "2016-12-07T00:52:27Z",
-      "uid": "4928856",
-      "user": "zz_top",
-      "version": "3",
-      "visible": true,
-    },
-    "id": "r6247413#0",
-    "members": Array [
-      Object {
-        "id": "w458180192#0",
-        "ref": "w458180192#0",
-        "role": "from",
-        "type": "way",
-      },
-      Object {
-        "id": "w420281339",
-        "ref": "w420281339",
-        "role": "to",
-        "type": "way",
-      },
-      Object {
-        "id": "n42436701",
-        "ref": "n42436701",
-        "role": "via",
-        "type": "node",
-      },
-    ],
-    "tags": Object {
-      "restriction:conditional": "no_right_turn @ (Mo-Fr 10:00-18:00)",
-      "type": "restriction",
-    },
-    "type": "relation",
-  },
-  "n42436703" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "12",
-      "visible": true,
-    },
-    "id": "n42436703",
-    "loc": Object {
-      "lat": 40.7590168,
-      "lon": -73.9725124,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "w109287832" => Object {
-    "attributes": Object {
-      "changeset": "36897742",
-      "timestamp": "2016-01-30T12:58:57Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "6",
-      "visible": true,
-    },
-    "id": "w109287832",
-    "nodes": Array [
-      "n1251582234",
-      "n1251582245",
-      "n1251582250",
-      "n1251582259",
-      "n1587561270",
-      "n1587561272",
-      "n3790180117",
-      "n42436703",
-      "n3977886227",
-      "n42452875",
-      "n3790180111",
-      "n3790180110",
-      "n1587561266",
-      "n1251582288",
-      "n1251582309",
-      "n1251582320",
-      "n1251582234",
-    ],
-    "tags": Object {},
-    "type": "way",
-  },
-  "w458180192" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "w458180192",
-    "nodes": Array [
-      "n42436705",
-      "n3790180117",
-      "n42436703",
-      "n596775900",
-      "n42436701",
-    ],
-    "tags": Object {
-      "hgv": "destination",
-      "highway": "secondary",
-      "name": "East 53rd Street",
-      "note": "thru street",
-      "oneway": "yes",
-      "tiger:cfcc": "A41",
-      "tiger:county": "New York, NY",
-      "tiger:name_base": "53rd",
-      "tiger:name_direction_prefix": "E",
-      "tiger:name_type": "St",
-    },
-    "type": "way",
-  },
-  "w497165756" => Object {
-    "attributes": Object {
-      "changeset": "49133926",
-      "timestamp": "2017-05-31T12:08:35Z",
-      "uid": "3029661",
-      "user": "saikabhi",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "w497165756",
-    "nodes": Array [
-      "n100522741",
-      "n100522728",
-      "n42448811",
-      "n42438886",
-      "n3977886195",
-      "n42459098",
-      "n3977886199",
-      "n42440456",
-      "n42452875",
-      "n3977886227",
-      "n42436703",
-      "n3977886231",
-      "n42456611",
-      "n42448338",
-      "n42443613",
-      "n42432834",
-    ],
-    "tags": Object {
-      "hgv": "no",
-      "highway": "secondary",
-      "lanes": "3",
-      "name": "Park Avenue",
-      "oneway": "yes",
-      "tiger:cfcc": "A41",
-      "tiger:county": "New York, NY",
-      "tiger:name_base": "Park",
-      "tiger:name_type": "Ave",
-      "tiger:zip_left": "10037",
-      "tiger:zip_right": "10035",
-      "wikidata": "Q109711",
-      "wikipedia": "en:Park Avenue",
-    },
-    "type": "way",
-  },
-  "r5594260" => Object {
-    "attributes": Object {
-      "changeset": "34692040",
-      "timestamp": "2015-10-17T11:41:26Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "1",
-      "visible": true,
-    },
-    "id": "r5594260",
-    "members": Array [
-      Object {
-        "id": "w109287832",
-        "ref": "w109287832",
-        "role": "outer",
-        "type": "way",
-      },
-      Object {
-        "id": "w375673046",
-        "ref": "w375673046",
-        "role": "inner",
-        "type": "way",
-      },
-      Object {
-        "id": "w375673047",
-        "ref": "w375673047",
-        "role": "inner",
-        "type": "way",
-      },
-    ],
-    "tags": Object {
-      "highway": "pedestrian",
-      "name": "Seagram Building Plaza",
-      "type": "multipolygon",
-    },
-    "type": "relation",
-  },
-  "r6247413" => Object {
-    "attributes": Object {
-      "changeset": "44223590",
-      "timestamp": "2016-12-07T00:52:27Z",
-      "uid": "4928856",
-      "user": "zz_top",
-      "version": "3",
-      "visible": true,
-    },
-    "id": "r6247413",
-    "members": Array [
-      Object {
-        "id": "w458180192",
-        "ref": "w458180192",
-        "role": "from",
-        "type": "way",
-      },
-      Object {
-        "id": "w420281339",
-        "ref": "w420281339",
-        "role": "to",
-        "type": "way",
-      },
-      Object {
-        "id": "n42436701",
-        "ref": "n42436701",
-        "role": "via",
-        "type": "node",
-      },
-    ],
-    "tags": Object {
-      "restriction:conditional": "no_right_turn @ (Mo-Fr 10:00-18:00)",
-      "type": "restriction",
-    },
-    "type": "relation",
-  },
-  "n1251582234" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582234",
-    "loc": Object {
-      "lat": 40.7583471,
-      "lon": -73.9724421,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1251582245" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582245",
-    "loc": Object {
-      "lat": 40.7586868,
-      "lon": -73.9721939,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1251582250" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582250",
-    "loc": Object {
-      "lat": 40.7585733,
-      "lon": -73.9719231,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1251582259" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582259",
-    "loc": Object {
-      "lat": 40.7585025,
-      "lon": -73.9719748,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1587561270" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "3",
-      "visible": true,
-    },
-    "id": "n1587561270",
-    "loc": Object {
-      "lat": 40.7584659,
-      "lon": -73.9718875,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1587561272" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:07Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n1587561272",
-    "loc": Object {
-      "lat": 40.7586012,
-      "lon": -73.9717887,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n3790180117" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "3",
-      "visible": true,
-    },
-    "id": "n3790180117",
-    "loc": Object {
-      "lat": 40.7586848,
-      "lon": -73.9717261,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n3977886227" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n3977886227",
-    "loc": Object {
-      "lat": 40.7589638,
-      "lon": -73.9725509,
-    },
-    "tags": Object {
-      "highway": "crossing",
-    },
-    "type": "node",
-  },
-  "n42452875" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "12",
-      "visible": true,
-    },
-    "id": "n42452875",
-    "loc": Object {
-      "lat": 40.7583874,
-      "lon": -73.97297,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n3790180111" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n3790180111",
-    "loc": Object {
-      "lat": 40.7582931,
-      "lon": -73.9727464,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n3790180110" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n3790180110",
-    "loc": Object {
-      "lat": 40.7580579,
-      "lon": -73.972189,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1587561266" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n1587561266",
-    "loc": Object {
-      "lat": 40.7581311,
-      "lon": -73.9721317,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1251582288" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582288",
-    "loc": Object {
-      "lat": 40.7582595,
-      "lon": -73.9720379,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1251582309" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582309",
-    "loc": Object {
-      "lat": 40.7582972,
-      "lon": -73.9721279,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n1251582320" => Object {
-    "attributes": Object {
-      "changeset": "35324063",
-      "timestamp": "2015-11-15T10:16:06Z",
-      "uid": "336460",
-      "user": "robgeb",
-      "version": "4",
-      "visible": true,
-    },
-    "id": "n1251582320",
-    "loc": Object {
-      "lat": 40.7582346,
-      "lon": -73.9721736,
-    },
-    "tags": Object {},
-    "type": "node",
-  },
-  "n42436705" => Object {
-    "attributes": Object {
-      "changeset": "15966137",
-      "timestamp": "2013-05-03T21:26:12Z",
-      "uid": "753896",
-      "user": "Avi Flamholz",
-      "version": "5",
-      "visible": true,
-    },
-    "id": "n42436705",
-    "loc": Object {
-      "lat": 40.7583747,
-      "lon": -73.9709918,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n596775900" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "5",
-      "visible": true,
-    },
-    "id": "n596775900",
-    "loc": Object {
-      "lat": 40.7591042,
-      "lon": -73.9727194,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n42436701" => Object {
-    "attributes": Object {
-      "changeset": "12113203",
-      "timestamp": "2012-07-04T18:03:17Z",
-      "uid": "703728",
-      "user": "NJ Engineer",
-      "version": "5",
-      "visible": true,
-    },
-    "id": "n42436701",
-    "loc": Object {
-      "lat": 40.7597393,
-      "lon": -73.9742235,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n100522741" => Object {
-    "attributes": Object {
-      "changeset": "35410723",
-      "timestamp": "2015-11-18T16:08:55Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "8",
-      "visible": true,
-    },
-    "id": "n100522741",
-    "loc": Object {
-      "lat": 40.7546344,
-      "lon": -73.9756983,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n100522728" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "10",
-      "visible": true,
-    },
-    "id": "n100522728",
-    "loc": Object {
-      "lat": 40.7552643,
-      "lon": -73.9752404,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n42448811" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "16",
-      "visible": true,
-    },
-    "id": "n42448811",
-    "loc": Object {
-      "lat": 40.755886,
-      "lon": -73.9747884,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n42438886" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "10",
-      "visible": true,
-    },
-    "id": "n42438886",
-    "loc": Object {
-      "lat": 40.756516,
-      "lon": -73.9743304,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n3977886195" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n3977886195",
-    "loc": Object {
-      "lat": 40.7570924,
-      "lon": -73.9739114,
-    },
-    "tags": Object {
-      "highway": "crossing",
-    },
-    "type": "node",
-  },
-  "n42459098" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "10",
-      "visible": true,
-    },
-    "id": "n42459098",
-    "loc": Object {
-      "lat": 40.7571346,
-      "lon": -73.9738807,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n3977886199" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n3977886199",
-    "loc": Object {
-      "lat": 40.7571979,
-      "lon": -73.9738348,
-    },
-    "tags": Object {
-      "highway": "crossing",
-    },
-    "type": "node",
-  },
-  "n42440456" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "11",
-      "visible": true,
-    },
-    "id": "n42440456",
-    "loc": Object {
-      "lat": 40.7577641,
-      "lon": -73.9734231,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n3977886231" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:50Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "2",
-      "visible": true,
-    },
-    "id": "n3977886231",
-    "loc": Object {
-      "lat": 40.7590838,
-      "lon": -73.9724637,
-    },
-    "tags": Object {
-      "highway": "crossing",
-    },
-    "type": "node",
-  },
-  "n42456611" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "11",
-      "visible": true,
-    },
-    "id": "n42456611",
-    "loc": Object {
-      "lat": 40.7596398,
-      "lon": -73.9720595,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n42448338" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "11",
-      "visible": true,
-    },
-    "id": "n42448338",
-    "loc": Object {
-      "lat": 40.7602692,
-      "lon": -73.9716019,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n42443613" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "11",
-      "visible": true,
-    },
-    "id": "n42443613",
-    "loc": Object {
-      "lat": 40.760902,
-      "lon": -73.9711418,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-  "n42432834" => Object {
-    "attributes": Object {
-      "changeset": "56395675",
-      "timestamp": "2018-02-15T20:18:49Z",
-      "uid": "40023",
-      "user": "ALE!",
-      "version": "11",
-      "visible": true,
-    },
-    "id": "n42432834",
-    "loc": Object {
-      "lat": 40.7615712,
-      "lon": -73.9706553,
-    },
-    "tags": Object {
-      "highway": "traffic_signals",
-    },
-    "type": "node",
-  },
-}
-`;
-
-exports[`from xml to final rendering move nodeB  2`] = `
-Array [
-  Set {
-    "n42436703#0",
-    "w109287832#0",
-    "w458180192#0",
-    "w497165756#0",
-    "r5594260#0",
-    "r6247413#0",
-  },
-]
-`;
-
-exports[`from xml to final rendering move nodeB  3`] = `
-Array [
-  "n596775900",
-  "w497165753",
-  "n42436703#0",
-  "w458180192#0",
-  "w497165756#0",
-]
-`;
-
-exports[`from xml to final rendering move nodeB  4`] = `
-Map {
-  "n42436703#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": "56395675",
-        "timestamp": "2018-02-15T20:18:49Z",
-        "uid": "40023",
-        "user": "ALE!",
-        "version": "12",
-        "visible": true,
-      },
-      "id": "n42436703#0",
-      "loc": Object {
-        "lat": 40.75902241791539,
-        "lon": -73.9724320178147,
-      },
-      "tags": Object {
-        "highway": "traffic_signals",
-      },
-      "type": "node",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w109287832#0",
-      "w458180192#0",
-      "w497165756#0",
-    },
-  },
-  "n596775900" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": "56395675",
-        "timestamp": "2018-02-15T20:18:50Z",
-        "uid": "40023",
-        "user": "ALE!",
-        "version": "5",
-        "visible": true,
-      },
-      "id": "n596775900",
-      "loc": Object {
-        "lat": 40.7591042,
-        "lon": -73.9727194,
-      },
-      "tags": Object {
-        "highway": "traffic_signals",
-      },
-      "type": "node",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {
-      "w497165753",
-      "w458180192#0",
-    },
-  },
-  "w458180192#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": "56395675",
-        "timestamp": "2018-02-15T20:18:50Z",
-        "uid": "40023",
-        "user": "ALE!",
-        "version": "2",
-        "visible": true,
-      },
-      "id": "w458180192#0",
-      "nodes": Array [
-        "n42436705",
-        "n3790180117",
-        "n42436703#0",
-        "n596775900",
-        "n42436701",
-      ],
-      "tags": Object {
-        "hgv": "destination",
-        "highway": "secondary",
-        "name": "East 53rd Street",
-        "note": "thru street",
-        "oneway": "yes",
-        "tiger:cfcc": "A41",
-        "tiger:county": "New York, NY",
-        "tiger:name_base": "53rd",
-        "tiger:name_direction_prefix": "E",
-        "tiger:name_type": "St",
-      },
-      "type": "way",
-    },
-    "parentRelations": Set {
-      "r6247413#0",
-    },
-    "parentWays": Set {},
-  },
-  "w497165753" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": "49133926",
-        "timestamp": "2017-05-31T12:08:35Z",
-        "uid": "3029661",
-        "user": "saikabhi",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "w497165753",
-      "nodes": Array [
-        "n596775935",
-        "n596775951",
-        "n596775907",
-        "n596775919",
-        "n3977886235",
-        "n596775900",
-        "n3977886228",
-        "n596775914",
-        "n596775876",
-        "n3977886201",
-        "n596775870",
-        "n3977886197",
-        "n596775867",
-        "n596775882",
-        "n42457476",
-        "n596775840",
-      ],
-      "tags": Object {
-        "hgv": "no",
-        "highway": "secondary",
-        "name": "Park Avenue",
-        "oneway": "yes",
-        "wikidata": "Q109711",
-        "wikipedia": "en:Park Avenue",
-      },
-      "type": "way",
-    },
-    "parentRelations": Set {
-      "r7297408",
-    },
-    "parentWays": Set {},
-  },
-  "w497165756#0" => Object {
-    "entity": Object {
-      "attributes": Object {
-        "changeset": "49133926",
-        "timestamp": "2017-05-31T12:08:35Z",
-        "uid": "3029661",
-        "user": "saikabhi",
-        "version": "1",
-        "visible": true,
-      },
-      "id": "w497165756#0",
-      "nodes": Array [
-        "n100522741",
-        "n100522728",
-        "n42448811",
-        "n42438886",
-        "n3977886195",
-        "n42459098",
-        "n3977886199",
-        "n42440456",
-        "n42452875",
-        "n3977886227",
-        "n42436703#0",
-        "n3977886231",
-        "n42456611",
-        "n42448338",
-        "n42443613",
-        "n42432834",
-      ],
-      "tags": Object {
-        "hgv": "no",
-        "highway": "secondary",
-        "lanes": "3",
-        "name": "Park Avenue",
-        "oneway": "yes",
-        "tiger:cfcc": "A41",
-        "tiger:county": "New York, NY",
-        "tiger:name_base": "Park",
-        "tiger:name_type": "Ave",
-        "tiger:zip_left": "10037",
-        "tiger:zip_right": "10035",
-        "wikidata": "Q109711",
-        "wikipedia": "en:Park Avenue",
-      },
-      "type": "way",
-    },
-    "parentRelations": Set {},
-    "parentWays": Set {},
-  },
-}
-`;
-
-exports[`from xml to final rendering move nodeB 1`] = `
+exports[`move nodeB then A then B move nodeB 1`] = `
 Map {
   "n42436703#0" => Object {
     "attributes": Object {
@@ -4383,7 +4536,7 @@ Map {
 }
 `;
 
-exports[`from xml to final rendering move nodeB 2`] = `
+exports[`move nodeB then A then B move nodeB 2`] = `
 Array [
   Set {
     "n42436703#1",
@@ -4411,17 +4564,21 @@ Array [
 ]
 `;
 
-exports[`from xml to final rendering move nodeB 3`] = `
-Array [
+exports[`move nodeB then A then B move nodeB 3`] = `
+Set {
   "n42436703#1",
-  "w458180192#2",
   "n596775900#0",
-  "w497165756#1",
+  "r5594260#1",
+  "r6247413#2",
+  "r7297408#0",
+  "w109287832#1",
+  "w458180192#2",
   "w497165753#0",
-]
+  "w497165756#1",
+}
 `;
 
-exports[`from xml to final rendering move nodeB 4`] = `
+exports[`move nodeB then A then B move nodeB 4`] = `
 Map {
   "n42436703#1" => Object {
     "entity": Object {
@@ -4475,6 +4632,165 @@ Map {
       "w458180192#2",
       "w497165753#0",
     },
+  },
+  "r5594260#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "34692040",
+        "timestamp": "2015-10-17T11:41:26Z",
+        "uid": "336460",
+        "user": "robgeb",
+        "version": "1",
+        "visible": true,
+      },
+      "id": "r5594260#1",
+      "members": Array [
+        Object {
+          "id": "w109287832#1",
+          "ref": "w109287832#1",
+          "role": "outer",
+          "type": "way",
+        },
+        Object {
+          "id": "w375673046",
+          "ref": "w375673046",
+          "role": "inner",
+          "type": "way",
+        },
+        Object {
+          "id": "w375673047",
+          "ref": "w375673047",
+          "role": "inner",
+          "type": "way",
+        },
+      ],
+      "tags": Object {
+        "highway": "pedestrian",
+        "name": "Seagram Building Plaza",
+        "type": "multipolygon",
+      },
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "r6247413#2" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "44223590",
+        "timestamp": "2016-12-07T00:52:27Z",
+        "uid": "4928856",
+        "user": "zz_top",
+        "version": "3",
+        "visible": true,
+      },
+      "id": "r6247413#2",
+      "members": Array [
+        Object {
+          "id": "w458180192#2",
+          "ref": "w458180192#2",
+          "role": "from",
+          "type": "way",
+        },
+        Object {
+          "id": "w420281339",
+          "ref": "w420281339",
+          "role": "to",
+          "type": "way",
+        },
+        Object {
+          "id": "n42436701",
+          "ref": "n42436701",
+          "role": "via",
+          "type": "node",
+        },
+      ],
+      "tags": Object {
+        "restriction:conditional": "no_right_turn @ (Mo-Fr 10:00-18:00)",
+        "type": "restriction",
+      },
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "r7297408#0" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "49133926",
+        "timestamp": "2017-05-31T12:08:36Z",
+        "uid": "3029661",
+        "user": "saikabhi",
+        "version": "1",
+        "visible": true,
+      },
+      "id": "r7297408#0",
+      "members": Array [
+        Object {
+          "id": "w388696206",
+          "ref": "w388696206",
+          "role": "from",
+          "type": "way",
+        },
+        Object {
+          "id": "w497165753#0",
+          "ref": "w497165753#0",
+          "role": "to",
+          "type": "way",
+        },
+        Object {
+          "id": "n596775935",
+          "ref": "n596775935",
+          "role": "via",
+          "type": "node",
+        },
+      ],
+      "tags": Object {
+        "restriction": "no_right_turn",
+        "type": "restriction",
+      },
+      "type": "relation",
+    },
+    "parentRelations": Set {},
+    "parentWays": Set {},
+  },
+  "w109287832#1" => Object {
+    "entity": Object {
+      "attributes": Object {
+        "changeset": "36897742",
+        "timestamp": "2016-01-30T12:58:57Z",
+        "uid": "336460",
+        "user": "robgeb",
+        "version": "6",
+        "visible": true,
+      },
+      "id": "w109287832#1",
+      "nodes": Array [
+        "n1251582234",
+        "n1251582245",
+        "n1251582250",
+        "n1251582259",
+        "n1587561270",
+        "n1587561272",
+        "n3790180117",
+        "n42436703#1",
+        "n3977886227",
+        "n42452875",
+        "n3790180111",
+        "n3790180110",
+        "n1587561266",
+        "n1251582288",
+        "n1251582309",
+        "n1251582320",
+        "n1251582234",
+      ],
+      "tags": Object {},
+      "type": "way",
+    },
+    "parentRelations": Set {
+      "r5594260#1",
+    },
+    "parentWays": Set {},
   },
   "w458180192#2" => Object {
     "entity": Object {
@@ -4607,4 +4923,361 @@ Map {
     "parentWays": Set {},
   },
 }
+`;
+
+exports[`reintroduce entities when initially only wayB exists and is modified should add  wayC properly 1`] = `
+Object {
+  "attributes": Object {
+    "changeset": "49133926",
+    "timestamp": "2017-05-31T12:08:35Z",
+    "uid": "3029661",
+    "user": "saikabhi",
+    "version": "1",
+    "visible": true,
+  },
+  "id": "w497165756#0",
+  "nodes": Array [
+    "n100522741",
+    "n100522728",
+    "n42448811",
+    "n42438886",
+    "n3977886195",
+    "n42459098",
+    "n3977886199",
+    "n42440456",
+    "n42452875",
+    "n3977886227",
+    "n42436703#0",
+    "n3977886231",
+    "n42456611",
+    "n42448338",
+    "n42443613",
+    "n42432834",
+  ],
+  "tags": Object {
+    "hgv": "no",
+    "highway": "secondary",
+    "lanes": "3",
+    "name": "Park Avenue",
+    "oneway": "yes",
+    "tiger:cfcc": "A41",
+    "tiger:county": "New York, NY",
+    "tiger:name_base": "Park",
+    "tiger:name_type": "Ave",
+    "tiger:zip_left": "10037",
+    "tiger:zip_right": "10035",
+    "wikidata": "Q109711",
+    "wikipedia": "en:Park Avenue",
+  },
+  "type": "way",
+}
+`;
+
+exports[`reintroduce entities when initially only wayB exists and is modified should add  wayC properly 2`] = `
+Array [
+  Object {
+    "attributes": Object {
+      "changeset": "35410723",
+      "timestamp": "2015-11-18T16:08:55Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "8",
+      "visible": true,
+    },
+    "id": "n100522741",
+    "loc": Object {
+      "lat": 40.7546344,
+      "lon": -73.9756983,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "10",
+      "visible": true,
+    },
+    "id": "n100522728",
+    "loc": Object {
+      "lat": 40.7552643,
+      "lon": -73.9752404,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "16",
+      "visible": true,
+    },
+    "id": "n42448811",
+    "loc": Object {
+      "lat": 40.755886,
+      "lon": -73.9747884,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "10",
+      "visible": true,
+    },
+    "id": "n42438886",
+    "loc": Object {
+      "lat": 40.756516,
+      "lon": -73.9743304,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886195",
+    "loc": Object {
+      "lat": 40.7570924,
+      "lon": -73.9739114,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "10",
+      "visible": true,
+    },
+    "id": "n42459098",
+    "loc": Object {
+      "lat": 40.7571346,
+      "lon": -73.9738807,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886199",
+    "loc": Object {
+      "lat": 40.7571979,
+      "lon": -73.9738348,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42440456",
+    "loc": Object {
+      "lat": 40.7577641,
+      "lon": -73.9734231,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "12",
+      "visible": true,
+    },
+    "id": "n42452875",
+    "loc": Object {
+      "lat": 40.7583874,
+      "lon": -73.97297,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886227",
+    "loc": Object {
+      "lat": 40.7589638,
+      "lon": -73.9725509,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "12",
+      "visible": true,
+    },
+    "id": "n42436703#0",
+    "loc": Object {
+      "lat": 40.75902241791539,
+      "lon": -73.9724320178147,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:50Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "2",
+      "visible": true,
+    },
+    "id": "n3977886231",
+    "loc": Object {
+      "lat": 40.7590838,
+      "lon": -73.9724637,
+    },
+    "tags": Object {
+      "highway": "crossing",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42456611",
+    "loc": Object {
+      "lat": 40.7596398,
+      "lon": -73.9720595,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42448338",
+    "loc": Object {
+      "lat": 40.7602692,
+      "lon": -73.9716019,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42443613",
+    "loc": Object {
+      "lat": 40.760902,
+      "lon": -73.9711418,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+  Object {
+    "attributes": Object {
+      "changeset": "56395675",
+      "timestamp": "2018-02-15T20:18:49Z",
+      "uid": "40023",
+      "user": "ALE!",
+      "version": "11",
+      "visible": true,
+    },
+    "id": "n42432834",
+    "loc": Object {
+      "lat": 40.7615712,
+      "lon": -73.9706553,
+    },
+    "tags": Object {
+      "highway": "traffic_signals",
+    },
+    "type": "node",
+  },
+]
 `;

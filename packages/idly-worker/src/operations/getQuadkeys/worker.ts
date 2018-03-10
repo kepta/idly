@@ -8,7 +8,7 @@ import { GetQuadkey } from './type';
 
 /** Worker Thread */
 const count = 0;
-const MAX_SIZE = 25000;
+const MAX_SIZE = 40000;
 
 export function workerGetQuadkey(
   state: WorkerState
@@ -17,17 +17,16 @@ export function workerGetQuadkey(
     console.time('workerGetQuadkey');
 
     let qState = state.osmState;
-
+    // if (!self.block) {
     arr.forEach(({ entities, quadkey }) => {
-      if (!qState.virgin.quadkeysTable.has(quadkey)) {
-        qState = stateAddVirgins(qState, entities, quadkey);
-      }
+      qState = stateAddVirgins(qState, entities, quadkey);
     });
+    // }
+    console.log('state nw', qState);
     const vis = stateGetVisibles(qState, arr.map(r => r.quadkey));
     const features = entityToGeoJson(vis);
 
     self.history[self.history.length - 1].visible = vis;
-
     if (qState.virgin.elements.size >= MAX_SIZE) {
       console.log(
         'size reached high',

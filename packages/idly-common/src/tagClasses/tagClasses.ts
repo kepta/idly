@@ -27,6 +27,7 @@ const statuses = [
   'razed',
   'demolished',
   'obliterated',
+  'intermittent',
 ];
 
 const secondaries = [
@@ -71,9 +72,9 @@ export const tagClassesPrimary = (tags: Tags) => {
 };
 
 export function tagClasses(tags: Tags) {
-  let classes = '';
   let primary;
   let status;
+  const result: Record<string, string> = {};
 
   let i;
   let key;
@@ -91,9 +92,10 @@ export function tagClasses(tags: Tags) {
     if (statuses.indexOf(value) !== -1) {
       // e.g. `railway=abandoned`
       status = value;
-      classes += ' tag-' + key;
+      result['tag-' + key] = 'tag-' + key;
     } else {
-      classes += ' tag-' + key + ' tag-' + key + '-' + value;
+      result['tag-' + key] = 'tag-' + key + '-' + value;
+      // classes += ' tag-' + key + ' tag-' + key + '-' + value;
     }
 
     break;
@@ -118,7 +120,8 @@ export function tagClasses(tags: Tags) {
         // e.g. `abandoned=railway`
         status = key;
         primary = value;
-        classes += ' tag-' + value;
+        // classes += ' tag-' + value;
+        result['tag-' + value] = 'tag-' + value;
       } // else ignore e.g.  `highway=path + abandoned=railway`
 
       if (status) {
@@ -128,7 +131,7 @@ export function tagClasses(tags: Tags) {
   }
 
   if (status) {
-    classes += ' tag-status tag-status-' + status;
+    result['tag-status'] = 'tag-status-' + status;
   }
 
   // add any secondary (structure) tags
@@ -138,7 +141,7 @@ export function tagClasses(tags: Tags) {
     if (!value || value === 'no') {
       continue;
     }
-    classes += ' tag-' + key + ' tag-' + key + '-' + value;
+    result['tag-' + key] = 'tag-' + key + '-' + value;
   }
 
   // For highways, look for surface tagging..
@@ -156,10 +159,11 @@ export function tagClasses(tags: Tags) {
       }
     }
     if (!paved) {
-      classes += ' tag-unpaved';
+      result['tag-unpaved'] = 'tag-unpaved';
+      // classes += ' tag-unpaved';
     }
   }
 
-  classes = classes.trim();
-  return classes;
+  // classes = classes.trim();
+  return result;
 }

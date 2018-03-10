@@ -14,9 +14,9 @@ export type Log = ReadonlyArray<Entry>;
 
 export type Entry = ReadonlySet<string>;
 
-export const validVirginId = (str: string) => str.indexOf('#') === 0;
+export const isVirginId = (str: string) => str.indexOf('#') === -1;
 
-export const validModifiedId = (str: string) => !validVirginId(str);
+export const isModifiedId = (str: string) => !isVirginId(str);
 
 /**
  * Key Terms
@@ -40,7 +40,7 @@ export const logGetBaseIds: (log: Log) => ReadonlySet<string> = weakCache(
 
 export const logGetCurrentIds: (log: Log) => ReadonlySet<string> = weakCache(
   (log: Log) =>
-    new Set(
+    setCreate(
       log
         .reduce((prev, entry) => {
           entry.forEach(
@@ -64,13 +64,14 @@ export const logGetEveryId: (log: Log) => ReadonlySet<string> = weakCache(
  * @param virginId - The virginId that you want to exist since starting
  * @param baseIds - The baseIds is the original id which modifiedId descended from
  */
-export const logRewrite = (log: Log, virginId: string, baseIds: Set<string>) =>
-  log
+export const logRewrite = (log: Log, virginId: string, entityIds: string[]) => {
+  const baseIds = new Set(entityIds.map(baseId));
+  return log
     .slice(0)
     .reverse()
     .reduce((l, e) => {
-      let newEntryArray = [...e];
-      if (newEntryArray.map(baseId).find(id => baseIds.has(id))) {
+      let newEntryArray: Iterable<string> = e;
+      if (setFind(id => baseIds.has(baseId(id)), e)) {
         newEntryArray = [
           ...newEntryArray,
           logGenerateNextModifiedId(virginId)(l),
@@ -78,7 +79,7 @@ export const logRewrite = (log: Log, virginId: string, baseIds: Set<string>) =>
       }
       return logAddEntry(setCreate(newEntryArray))(l);
     }, logCreate());
-
+};
 export const logRecreate = (...entries: Entry[]) =>
   entries
     .slice(0)
@@ -125,7 +126,8 @@ export const logGenerateNextModifiedId = (id: string) => (log: Log) =>
 export const entryFindModifiedId = (indexOrId: string) => (entry: Entry) =>
   setFind(i => baseId(i) === indexOrId, entry);
 
-export const baseId = (index: ModifiedId) => modifiedIdParse(index)[0];
+export const baseId = (index: ModifiedId) =>
+  index.substring(0, index.indexOf('#')) || index;
 
 const modifiedIdParse = (index: ModifiedId) => index.split('#');
 

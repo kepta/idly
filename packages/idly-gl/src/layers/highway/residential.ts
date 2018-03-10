@@ -1,15 +1,20 @@
 import { IDLY_NS } from '../../constants';
 import { HIGHWAY } from '../priorities';
-import { highwayCaseTemplate, highwayTemplate } from './highway.template';
+import {
+  highwayCaseTemplate,
+  highwayTemplate,
+  makeLineWidth,
+} from './highway.template';
 const filter = [
   'all',
   [
     'in',
-    `${IDLY_NS}tagsClassType`,
+    `${IDLY_NS}tag-highway`,
     'tag-highway-residential',
     'tag-highway-residential_link',
     'tag-highway-service',
   ],
+  ['!has', `${IDLY_NS}tag-service`],
 ];
 
 export default [
@@ -24,6 +29,7 @@ export default [
       paint: {
         ...highwayTemplate.layer.paint,
         'line-color': '#FFF',
+        'line-width': makeLineWidth(0.8),
       },
       filter,
     },
@@ -39,6 +45,7 @@ export default [
       layout: highwayCaseTemplate.layer.layout,
       paint: {
         ...highwayCaseTemplate.layer.paint,
+        'line-width': makeLineWidth(1),
       },
       filter,
     },

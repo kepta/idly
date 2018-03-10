@@ -146,8 +146,9 @@ export function makeQuadkey$(
         )
       )
     ),
-    switchMap(d =>
-      fromPromise(
+    switchMap(d => {
+      console.time('getQuadkey');
+      return fromPromise(
         Promise.all([
           d.map(e => e[0]),
           workerGetQuadkeys(
@@ -157,8 +158,8 @@ export function makeQuadkey$(
             }))
           ),
         ])
-      )
-    )
+      );
+    })
   );
 }
 
@@ -244,20 +245,19 @@ export function makeDrag$(
 
 const getTiles = (bbox: BBox, zoom: number) => {
   // actual zoom has 1 less for smaller quadkey
-  zoom = zoom + 1;
   const tiles = bboxToTiles(bbox, zoom);
   // for small screen devices
   if (tiles.length <= 4) {
     return tiles;
   }
-  let minimumOverlap = 2; //quadkey.OVERLAP.ABOVE_19;
-  // if (zoom < 17) {
-  //   minimumOverlap = quadkey.OVERLAP.LESS_THAN_17;
-  // } else if (zoom < 18) {
-  //   minimumOverlap = quadkey.OVERLAP.LESS_THAN_18;
-  // } else if (zoom < 19) {
-  //   minimumOverlap = quadkey.OVERLAP.LESS_THAN_19;
-  // }
-  console.log('over', minimumOverlap);
-  return [tilesFilterSmall(tiles, bbox, minimumOverlap)[0]];
+  let minimumOverlap = quadkey.OVERLAP.ABOVE_19;
+  if (zoom < 17) {
+    minimumOverlap = quadkey.OVERLAP.LESS_THAN_17;
+  } else if (zoom < 18) {
+    minimumOverlap = quadkey.OVERLAP.LESS_THAN_18;
+  } else if (zoom < 19) {
+    minimumOverlap = quadkey.OVERLAP.LESS_THAN_19;
+  }
+
+  return tilesFilterSmall(tiles, bbox, minimumOverlap); //[0]];
 };

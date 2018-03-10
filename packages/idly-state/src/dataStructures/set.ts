@@ -162,9 +162,6 @@ export const mapFilterValuesIntoArray = <K, V>(
 
 export const last = <T>(r: T[]) => r[r.length - 1];
 
-export const isVirgin = (indexOrId: string) => indexOrId.indexOf('#') === -1;
-export const isNotVirgin = (indexOrId: string) => !isVirgin(indexOrId);
-
 export const EitherCond = <T, K>(cond: boolean, left: T, right: K) =>
   cond ? Left<T, K>(left) : Right<T, K>(right);
 

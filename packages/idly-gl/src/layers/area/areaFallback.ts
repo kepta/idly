@@ -11,7 +11,10 @@ export default [
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
-      paint: areaTemplate.layer.paint,
+      paint: {
+        'line-color': 'white',
+        'line-width': 1,
+      },
       filter: [
         'all',
         ['==', '$type', 'Polygon'],
@@ -19,7 +22,7 @@ export default [
          * @REVISIT buildings or any small really look ugly with that gl offset artifact
          *  going for a fill layer for now.
          */
-        ['!=', `${IDLY_NS}tagsClass`, 'tag-building'],
+        ['!has', `${IDLY_NS}tag-building`],
       ],
     },
   },
@@ -38,7 +41,7 @@ export default [
       filter: [
         'all',
         ['==', '$type', 'Polygon'],
-        ['!=', `${IDLY_NS}tagsClass`, 'tag-building'],
+        ['!has', `${IDLY_NS}tag-building`],
       ],
     },
   },

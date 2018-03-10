@@ -1,16 +1,15 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-      "outDir": "lib",
-      "noEmitOnError": false
-    },
-    "exclude": [
-      "./lib/**/*",
-      "node_modules",
-      "build",
-      "scripts",
-      "webpack",
-      "jest"
-    ]
-  }
-  
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "lib",
+    "noEmitOnError": false
+  },
+  "exclude": [
+    "./lib/**/*",
+    "node_modules",
+    "build",
+    "scripts",
+    "webpack",
+    "jest"
+  ]
+}

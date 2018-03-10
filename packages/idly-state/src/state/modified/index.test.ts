@@ -7,7 +7,7 @@ import { Entity } from 'idly-common/lib/osm/structures';
 
 import { setCreate } from '../../dataStructures/set';
 import {
-  stateAddChanged,
+  stateAddModified,
   stateAddVirgins,
   stateCreate,
   stateGenNextId,
@@ -153,7 +153,7 @@ describe('Get the visible entities', () => {
         id: 'n2#0',
       });
 
-      state = stateAddChanged(state, [n1Hash0, n2Hash0]);
+      state = stateAddModified(state, [n1Hash0, n2Hash0]);
       stateAddVirgins(state, [w2, r1], '33');
 
       expectStable(state.log).toMatchSnapshot();
@@ -175,7 +175,7 @@ describe('Get the visible entities', () => {
 
       expect(state.modified.has('r1')).toBe(false);
 
-      state = stateAddChanged(state, [n3Hash0, n1Hash1, r1Hash0]);
+      state = stateAddModified(state, [n3Hash0, n1Hash1, r1Hash0]);
       // should not save any member of modified relation r1
       expect(state.modified.has('w2')).toBe(false);
       // should just add the base of relation
@@ -200,7 +200,7 @@ describe('Get the visible entities', () => {
       const r1Hash1 = relationFactory({
         id: 'r1#1',
       });
-      const state4 = stateAddChanged(state, [r1Hash1]);
+      const state4 = stateAddModified(state, [r1Hash1]);
       expectStable(stateGetVisibles(state4, ['33']).has(r1Hash1.id)).toBe(true);
       expectStable(stateGetVisibles(state4, ['33']).has(r1.id)).toBe(false);
 
@@ -259,9 +259,9 @@ describe('stateAddModifieds', () => {
       id: 'n1#0',
     });
 
-    const state2 = stateAddChanged(state, [n1Hash0]);
+    const state2 = stateAddModified(state, [n1Hash0]);
 
-    expectStable(state2).toEqual(stateAddChanged(baseSetup(), [n1Hash0]));
+    expectStable(state2).toEqual(stateAddModified(baseSetup(), [n1Hash0]));
   });
 
   it('saves the base version in modified of modified ids', () => {
@@ -277,7 +277,7 @@ describe('stateAddModifieds', () => {
     const n1Hash0 = nodeFactory({
       id: 'n1#0',
     });
-    const state2 = stateAddChanged(state, [n1Hash0]);
+    const state2 = stateAddModified(state, [n1Hash0]);
 
     expectStable(state2.modified.get('n1')).toEqual(n1);
     expectStable(state2.modified.has('n2')).toEqual(false);
@@ -300,7 +300,7 @@ describe('stateAddModifieds', () => {
     expect(state.modified.has('r2')).toBe(false);
     expect(state.modified.has('n6')).toBe(false);
 
-    state = stateAddChanged(state, [r2hash0]);
+    state = stateAddModified(state, [r2hash0]);
     expect(state.modified.has('r2#0')).toBe(true);
     expect(state.modified.has('r2')).toBe(true);
     expect(state.modified.has('w1')).toBe(false);
@@ -324,7 +324,7 @@ describe('osmStateGetNextId', () => {
       id: 'n1#0',
     });
 
-    state = stateAddChanged(state, [n1Hash0]);
+    state = stateAddModified(state, [n1Hash0]);
 
     expectStable(stateGenNextId(state, n1Hash0.id)).toBe('n1#1');
 
@@ -332,7 +332,7 @@ describe('osmStateGetNextId', () => {
       id: 'n1#1',
     });
 
-    state = stateAddChanged(state, [n1Hash1]);
+    state = stateAddModified(state, [n1Hash1]);
     expectStable(stateGenNextId(state, n1Hash1.id)).toBe('n1#2');
   });
 
@@ -343,7 +343,7 @@ describe('osmStateGetNextId', () => {
       id: 'n1#0',
     });
 
-    const state = stateAddChanged(baseState, [n1Hash0]);
+    const state = stateAddModified(baseState, [n1Hash0]);
 
     expectStable(stateGenNextId(baseState, n1.id)).toBe('n1#0');
 
@@ -356,7 +356,7 @@ describe('osmStateGetNextId', () => {
     const n1Hash0 = nodeFactory({
       id: 'n1#0',
     });
-    const state1 = stateAddChanged(baseState, [n1Hash0]);
+    const state1 = stateAddModified(baseState, [n1Hash0]);
     expectStable(stateGenNextId(state1, 'n1')).toBe('n1#1');
     expectStable(stateGenNextId(state1, 'n1#1')).toBe('n1#1');
     expectStable(stateGenNextId(state1, 'n1#100')).toBe('n1#1');
@@ -370,7 +370,7 @@ describe('osmStateGetNextId', () => {
     const n1Hash0 = nodeFactory({
       id: 'n1#0',
     });
-    const state1 = stateAddChanged(baseState, [n1Hash0]);
+    const state1 = stateAddModified(baseState, [n1Hash0]);
 
     const n2Hash0 = nodeFactory({
       id: 'n2#0',
@@ -381,7 +381,7 @@ describe('osmStateGetNextId', () => {
       id: stateGenNextId(state1, n1Hash0.id),
     };
 
-    const state2 = stateAddChanged(state1, [n1Hash1, n2Hash0]);
+    const state2 = stateAddModified(state1, [n1Hash1, n2Hash0]);
 
     expectStable(stateGenNextId(baseState, 'n1')).toBe('n1#0');
     expectStable(stateGenNextId(state1, 'n1')).toBe('n1#1');
@@ -403,35 +403,35 @@ describe('osmStateGetNextId', () => {
 
     stateAddVirgins(state, [n1, n2, w1], '123');
 
-    const branchedState1 = stateAddChanged(state, [n1Hash5]);
+    const branchedState1 = stateAddModified(state, [n1Hash5]);
 
     expectStable(stateGenNextId(branchedState1, 'n1#0')).toBe('n1#6');
 
-    const branchedState2 = stateAddChanged(state, [n1Hash3]);
+    const branchedState2 = stateAddModified(state, [n1Hash3]);
 
     expectStable(stateGenNextId(branchedState2, 'n1#0')).toBe('n1#4');
 
     expectStable(stateGenNextId(state, 'n1#0')).toBe('n1#0');
 
-    let branchedState3 = stateAddChanged(state, [
+    let branchedState3 = stateAddModified(state, [
       nodeFactory({ id: stateGenNextId(state, 'n1#0') }),
     ]);
 
     expectStable(stateGenNextId(branchedState3, 'n1#0')).toBe('n1#1');
 
-    branchedState3 = stateAddChanged(branchedState3, [
+    branchedState3 = stateAddModified(branchedState3, [
       nodeFactory({ id: stateGenNextId(branchedState3, 'n1#0') }),
     ]);
 
     expectStable(stateGenNextId(branchedState3, 'n1')).toBe('n1#2');
 
-    branchedState3 = stateAddChanged(branchedState3, [
+    branchedState3 = stateAddModified(branchedState3, [
       nodeFactory({ id: stateGenNextId(branchedState3, 'n1#0') }),
     ]);
 
     expectStable(stateGenNextId(branchedState3, 'n1')).toBe('n1#3');
 
-    branchedState3 = stateAddChanged(branchedState3, [
+    branchedState3 = stateAddModified(branchedState3, [
       nodeFactory({ id: stateGenNextId(branchedState3, 'n1#0') }),
     ]);
 
@@ -446,7 +446,7 @@ describe('osmStateShred', () => {
     const n1Hash0 = nodeFactory({
       id: 'n1#0',
     });
-    state = stateAddChanged(state, [n1Hash0]);
+    state = stateAddModified(state, [n1Hash0]);
 
     state = stateShred(state);
 
@@ -470,7 +470,7 @@ describe('osmStateShred', () => {
     });
 
     expectStable(stateGetEntity(state, 'n4')).toBe(n4);
-    state = stateAddChanged(state, [w1Hash0]);
+    state = stateAddModified(state, [w1Hash0]);
     state = stateShred(state);
     expectStable(stateGetEntity(state, 'n1')).toBe(n1);
     expectStable(stateGetEntity(state, 'n2')).toBe(n2);
@@ -489,7 +489,7 @@ describe('osmStateShred', () => {
       nodes: ['n3', 'n4'],
     });
 
-    state = stateAddChanged(state, [w1Hash0]);
+    state = stateAddModified(state, [w1Hash0]);
 
     state = stateShred(state);
     expectStable(stateGetEntity(state, 'n1')).toBe(n1);
@@ -506,7 +506,7 @@ describe('osmStateShred', () => {
       nodes: ['n1'],
     });
 
-    state = stateAddChanged(state, [w1Hash1]);
+    state = stateAddModified(state, [w1Hash1]);
     state = stateShred(state);
     expectStable(stateGetEntity(state, 'n1')).toBe(n1);
     expectStable(stateGetEntity(state, 'n2')).toBe(n2);

@@ -15,10 +15,20 @@ export default [
       },
       paint: {
         'line-color': '#77d3de',
-        'line-opacity': 0.85,
-        'line-width': 5,
+        'line-width': {
+          base: 4,
+          stops: [[16, 8], [18, 16], [22, 40]],
+        },
+        'line-opacity': {
+          base: 0.2,
+          stops: [[16, 0.6], [18, 0.3], [22, 0.4]],
+        },
+        'line-offset': {
+          base: 4,
+          stops: [[16, 4], [18, 8], [22, 21]],
+        },
       },
-      filter: ['all', ['in', `${IDLY_NS}tagsClass`, 'tag-waterway']],
+      filter: ['all', ['has', `${IDLY_NS}tag-waterway`]],
     },
   },
 ];

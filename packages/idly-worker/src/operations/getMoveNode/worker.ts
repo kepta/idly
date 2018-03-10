@@ -1,10 +1,10 @@
 import { featureCollection } from '@turf/helpers';
 import { Entity } from 'idly-common/lib/osm/structures';
 import { entityToGeoJson } from 'idly-osm-to-geojson';
-import { entryFindRelatedToNode } from 'idly-state/lib/osmState';
+import { nodeMove } from 'idly-state/lib/editing/nodeMove';
 
 import {
-  stateAddChanged,
+  stateAddModified,
   stateGenNextId,
   stateGetEntity,
   stateGetVisibles,
@@ -24,17 +24,8 @@ export function workerGetMoveNode(
     let qState = state.osmState;
     console.log(state.osmState.log);
     if (param.id) {
-      // const newEntity: Entity = {
-      //   ...stateGetEntity(qState, param.id),
-      //   id: stateGenNextId(qState, param.id),
-      //   loc: {
-      //     lat: param.loc.lat,
-      //     lon: param.loc.lng,
-      //   },
-      // };
-
-      qState = stateAddChanged(qState, [
-        ...entryFindRelatedToNode(qState, param.id, {
+      qState = stateAddModified(qState, [
+        ...nodeMove(qState, param.id, {
           lat: param.loc.lat,
           lon: param.loc.lng,
         }),

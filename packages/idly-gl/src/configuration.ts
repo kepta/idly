@@ -6,9 +6,9 @@ export const quadkey = {
   // quadkey overlap cutoff
   OVERLAP: {
     LESS_THAN_17: 0.55,
-    LESS_THAN_18: 0.8,
-    LESS_THAN_19: 1,
-    ABOVE_19: 1,
+    LESS_THAN_18: 0.7,
+    LESS_THAN_19: 0.5,
+    ABOVE_19: 0.5,
   },
 };
 

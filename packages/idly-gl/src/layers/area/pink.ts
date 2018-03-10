@@ -2,14 +2,19 @@ import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
 
+export const pinkLanduse = ['tag-landuse-industrial'];
 export const pinkFilter = [
   'all',
   ['==', '$type', 'Polygon'],
+
   [
-    'in',
-    `${IDLY_NS}tagsClassType`,
-    'tag-landuse-industrial',
-    'tag-power-plant',
+    'any',
+    ['==', `${IDLY_NS}tag-landuse`, pinkLanduse[0]],
+    ['==', `${IDLY_NS}tag-power`, 'tag-power-plant'],
+    // 'in',
+    // `${IDLY_NS}tagsClassType`,
+    // 'tag-landuse-industrial',
+    // 'tag-power-plant',
   ],
 ];
 

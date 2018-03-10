@@ -1,4 +1,4 @@
-import { Entity } from 'idly-common/lib/osm/structures';
+import { Entity, EntityType, Way } from 'idly-common/lib/osm/structures';
 import { Identity } from 'monet';
 import {
   logAddEntry,
@@ -12,8 +12,9 @@ import {
   setClone,
   setCreate,
 } from './dataStructures/set';
-import { modifiedAddModifiedEntitiesAndRelated } from './state/modified';
+import { logIntroduceEntity } from './editing/logIntroduceEntity';
 import { DerivedTable, derivedTableUpdate } from './state/derivedTable/index';
+import { modifiedAddModifiedEntitiesAndRelated } from './state/modified';
 import {
   virginAddElements,
   virginGetInQuadkeys,
@@ -61,6 +62,14 @@ export function stateGetEntity(
   return getEntity(id, state);
 }
 
+/**
+ *
+ * The derivedTable is making things pretty
+ * non functional, stateGetVisibles magically updates
+ * derivedTable, others cant access derivedTable without
+ * knowing. Maybe the solution is to add quadkey in the osmState
+ * so that anyone can compute derivedTable?
+ */
 export function stateGetVisibles(
   state: OsmState,
   quadkeys: string[]
@@ -76,6 +85,46 @@ export function stateGetVisibles(
     .get();
 }
 
+export function stateIntroduceEntities(state: OsmState, entities: Entity[]) {
+  console.time('int');
+  const mod = new Map(state.modified);
+  let allBaseIds = logGetBaseIds(state.log);
+  for (const e of entities) {
+    if (e.type === EntityType.NODE || state.modified.has(e.id)) {
+      continue;
+    }
+    if (e.type === EntityType.WAY) {
+      const foundNodes = e.nodes.filter(n => allBaseIds.has(n));
+      if (foundNodes.length > 0) {
+        // console.log('foundNodes: ', foundNodes, e.id);
+        const { log, updatedEntities } = logIntroduceEntity(
+          state,
+          e,
+          foundNodes
+        );
+        // fix me
+        if (updatedEntities.length > 0) {
+          mod.set(e.id, e);
+          e.nodes.forEach(n => {
+            mod.set(n, state.virgin.elements.get(n));
+          });
+          updatedEntities.forEach(e => mod.set(e.id, e));
+          // console.log(log, updatedEntities);
+          state = {
+            ...state,
+            log,
+            modified: mod,
+          };
+          allBaseIds = logGetBaseIds(state.log);
+        }
+      }
+    }
+  }
+  console.timeEnd('int');
+
+  return state;
+}
+
 export function stateAddVirgins(
   state: OsmState,
   entities: Entity[],
@@ -83,12 +132,18 @@ export function stateAddVirgins(
 ) {
   // entities = entities.filter(r => r.type !== 'relation');
   consistencyChecker(state);
+
   // fix this imperative piece of shit
   virginAddElements(entities, quadkey, state.virgin);
+  state = stateIntroduceEntities(state, entities);
+  consistencyChecker(state);
   return state;
 }
 
-export function stateAddChanged(state: OsmState, entities: Entity[]): OsmState {
+export function stateAddModified(
+  state: OsmState,
+  entities: Entity[]
+): OsmState {
   consistencyChecker(state);
 
   const newState = {

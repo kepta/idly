@@ -32,6 +32,9 @@ export function virginAddElements<T extends { id: string }>(
   quadkey: string,
   state: VirginState<T>
 ) {
+  if (state.quadkeysTable.has(quadkey)) {
+    return;
+  }
   tableBulkAdd(elements.map((r: T): [string, T] => [r.id, r]), state.elements);
   quadkeysTableAdd(state.quadkeysTable, elements.map(r => r.id), quadkey);
 }

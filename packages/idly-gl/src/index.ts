@@ -159,12 +159,14 @@ export class IdlyGlPlugin {
         if (!p) {
           return;
         }
+        console.time('moveNode');
         workerGetMoveNode({
           id: selected.id,
           quadkeys: this.lastQuadkey,
           loc: p.lngLat,
         }).then(r => {
           this.map.getSource(BASE_SOURCE).setData(r);
+          console.timeEnd('moveNode');
         });
       });
     });
@@ -185,7 +187,10 @@ export class IdlyGlPlugin {
   }
 
   private renderMap(fc: FeatureCollection<any, Properties>) {
+    window.result = fc.features;
+
     (this.map.getSource(BASE_SOURCE) as any).setData(fc);
+    console.timeEnd('getQuadkey');
   }
 }
 

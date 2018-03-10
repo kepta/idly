@@ -2,26 +2,34 @@ import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
 import { weakCache } from 'idly-common/lib/misc/weakCache';
 import { isArea } from 'idly-common/lib/osm/isArea';
 import { OsmGeometry, Way } from 'idly-common/lib/osm/structures';
-import { tagClassesPrimary } from 'idly-common/lib/tagClasses/tagClasses';
+import { tagClasses } from 'idly-common/lib/tagClasses/tagClasses';
 import { isOneway } from './isOneway';
-
-const tagClassesPrimaryCache = weakCache(tagClassesPrimary);
 
 export const wayPropertiesGen = weakCache((way: Way) => {
   const geometry = isArea(way) ? OsmGeometry.AREA : OsmGeometry.LINE;
-  const [tagsClass, tagsClassType] = tagClassesPrimaryCache(way.tags);
+  const allTagClasses = tagClasses(way.tags);
+
+  const trimmed = Object.keys(allTagClasses).reduce(
+    (prev, cur) => {
+      prev['@idly-' + cur] = allTagClasses[cur];
+      return prev;
+    },
+    {} as Record<string, string>
+  );
+
   const match = presetMatch(way.tags, geometry); // presetsMatcherCached(geometry)(way.tags);
-  const result = {
+  const result: { [index: string]: string | boolean | number } = {
     '@idly-geometry': geometry,
     '@idly-icon': match && match.icon,
     '@idly-isOneway': isOneway(way.tags),
     '@idly-name': way.tags.name || way.tags.ref,
-    '@idly-tagsClass': tagsClass,
-    '@idly-tagsClassType': tagsClassType,
+    ...trimmed,
   };
+
   if (way.tags.height) {
     result['@idly-height'] = parseInt(way.tags.height, 10);
-    result['@idly-min_height'] = parseInt(way.tags['min_height'], 10);
+    result['@idly-min_height'] = parseInt(way.tags.min_height, 10) || 0;
   }
+
   return result;
 });

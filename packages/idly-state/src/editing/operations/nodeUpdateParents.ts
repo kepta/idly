@@ -25,7 +25,6 @@ export function nodeUpdateParents({
     idGen
   );
 
-  /** Updating relations */
   const entitiesPair = [
     [prevNode, newNode],
     ...parentWays.map((w, i): [Way, Way] => [w, updatedWays[i]]),
@@ -66,7 +65,7 @@ export function nodeUpdateParents({
     newRelations.forEach((r, i) => {
       relationIdsUsed.add(r.id);
       // we would continue using the original id of relation
-      // as any entity might be asking
+      // as any entity might be asking for it
       relationsLookup.set(parentRelationIds[i], r);
     });
   }

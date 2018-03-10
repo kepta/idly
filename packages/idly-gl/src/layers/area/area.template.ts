@@ -12,7 +12,7 @@ export const areaTemplate: {
     };
     paint: {
       'line-color': '#fff';
-      'line-width': 1;
+      'line-width': 2;
       'line-opacity': 1;
     };
     filter: undefined;
@@ -81,7 +81,7 @@ export const areaCasingTemplate: {
       'line-color': '#fff',
       'line-width': {
         base: 4,
-        stops: [[16, 2], [18, 8], [22, 40]],
+        stops: [[16, 8], [18, 16], [22, 40]],
       },
       'line-opacity': {
         base: 0.2,
@@ -89,7 +89,7 @@ export const areaCasingTemplate: {
       },
       'line-offset': {
         base: 4,
-        stops: [[16, 1], [18, 4], [22, 21]],
+        stops: [[16, 4], [18, 8], [22, 21]],
       },
     },
     filter: undefined,

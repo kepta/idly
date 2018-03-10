@@ -1,8 +1,12 @@
 import { IDLY_NS } from '../../constants';
 import { HIGHWAY } from '../priorities';
-import { highwayCaseTemplate, highwayTemplate } from './highway.template';
+import {
+  highwayCaseTemplate,
+  highwayTemplate,
+  makeLineWidth,
+} from './highway.template';
 
-const filter = ['all', ['in', `${IDLY_NS}tagsClassType`, 'tag-highway-track']];
+const filter = ['all', ['in', `${IDLY_NS}tag-highway`, 'tag-highway-track']];
 
 export default [
   {
@@ -16,6 +20,7 @@ export default [
       paint: {
         ...highwayTemplate.layer.paint,
         'line-color': '#c5b59f',
+        'line-width': makeLineWidth(0.4),
       },
       filter,
     },
@@ -30,6 +35,7 @@ export default [
       layout: highwayCaseTemplate.layer.layout,
       paint: {
         ...highwayCaseTemplate.layer.paint,
+        'line-width': makeLineWidth(0.55),
       },
       filter,
     },

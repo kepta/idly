@@ -2,17 +2,26 @@ import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
 
+export const orangeLanduse = [
+  'tag-landuse-retail',
+  'tag-landuse-commercial',
+  'tag-landuse-landfill',
+  'tag-landuse-military',
+];
 export const orangeFilter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
-    'in',
-    `${IDLY_NS}tagsClassType`,
-    'tag-landuse-retail',
-    'tag-landuse-commercial',
-    'tag-landuse-landfill',
-    'tag-military',
-    'tag-landuse-military',
+    'any',
+    ['in', `${IDLY_NS}tag-landuse`, ...orangeLanduse],
+    ['has', `${IDLY_NS}tag-military`],
+    // 'in',
+    // `${IDLY_NS}tagsClassType`,
+    // 'tag-landuse-retail',
+    // 'tag-landuse-commercial',
+    // 'tag-landuse-landfill',
+    // 'tag-landuse-military',
+    // 'tag-military',
   ],
 ];
 

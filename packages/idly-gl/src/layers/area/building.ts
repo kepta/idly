@@ -7,8 +7,8 @@ export const buildingFilter = [
   ['==', '$type', 'Polygon'],
   [
     'any',
-    ['==', `${IDLY_NS}tagsClassType`, 'tag-amenity-shelter'],
-    ['==', `${IDLY_NS}tagsClass`, 'tag-building'],
+    ['==', `${IDLY_NS}tag-amenity`, 'tag-amenity-shelter'],
+    ['has', `${IDLY_NS}tag-building`],
   ],
 ];
 

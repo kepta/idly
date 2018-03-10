@@ -9,6 +9,7 @@ import { OsmState } from '../../type';
 import { entitiesUnionBaseAndNodesOfWays } from '../virgin/helpers';
 
 // http://localhost:8080/#18.73/40.7269/-74.00153 this just loads king st
+// http://localhost:8080/#18.54/40.70931/-74.01549/16
 // export type VirginTable = ReadonlyTable<Entity>;
 
 // tofix make sure you only use readonly and readonly safe operators

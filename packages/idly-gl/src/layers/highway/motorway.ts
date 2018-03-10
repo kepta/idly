@@ -1,12 +1,12 @@
 import { IDLY_NS } from '../../constants';
-import { highwayTemplate, highwayCaseTemplate } from './highway.template';
 import { HIGHWAY } from '../priorities';
+import { highwayCaseTemplate, highwayTemplate } from './highway.template';
 
 const filter = [
   'all',
   [
     'in',
-    `${IDLY_NS}tagsClassType`,
+    `${IDLY_NS}tag-highway`,
     'tag-highway-motorway',
     /**
      * @TOFIX iD uses a mix of x_link and x-link.

@@ -31,7 +31,7 @@ export const derivedTableUpdate: DerivedTableUpdateType = (
   entityTable,
   derivedTable = new Map()
 ) => {
-  const newTable = deriveParents(entityTable);
+  const newTable = derive(entityTable);
 
   newTable.forEach((newVal, id) => {
     const prevVal = derivedTable.get(id);
@@ -47,7 +47,7 @@ export const derivedTableUpdate: DerivedTableUpdateType = (
 export type DeriveParentsType = (
   entityTable: Map<string, Entity>
 ) => DerivedTable;
-export const deriveParents: DeriveParentsType = entityTable => {
+export const derive: DeriveParentsType = entityTable => {
   const derivedTable: Map<string, Derived> = new Map();
 
   entityTable.forEach(entity =>

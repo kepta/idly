@@ -1,4 +1,4 @@
-import { stateCreate } from 'idly-state/lib/index';
+import { stateCreate, stateShred } from 'idly-state/lib/index';
 import operations from './operations';
 import { OperationTypes, WorkerState } from './operations/operationsTypes';
 
@@ -26,11 +26,20 @@ export function workerRelay(
   let state = {
     ...(prevState || DEFAULT_STATE),
   };
+
   return async message => {
     self.history.push({ message });
     return getStateController(state, message)
       .then(r => {
         state = r.state;
+        self.state = state;
+        self.osmState = r.state.osmState;
+        self.message = r.message;
+        self.response = r.response;
+
+        self.makeBlock = () => (self.block = !self.block);
+        self.shrink = () =>
+          (self.state.osmState = stateShred(self.state.osmState));
         self.history[self.history.length - 1].response = r.response;
         return JSON.stringify(r.response);
       })

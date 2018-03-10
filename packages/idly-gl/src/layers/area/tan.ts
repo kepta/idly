@@ -3,10 +3,12 @@ import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
 
+export const tanLanduse = ['tag-landuse-farmyard'];
+
 export const tanFilter = [
   'all',
   ['==', '$type', 'Polygon'],
-  ['in', `${IDLY_NS}tagsClassType`, 'tag-landuse-farmyard'],
+  ['==', `${IDLY_NS}tag-landuse`, tanLanduse[0]],
 ];
 
 export default [

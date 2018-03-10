@@ -5,7 +5,7 @@ const filter = [
   'all',
   [
     'in',
-    `${IDLY_NS}tagsClassType`,
+    `${IDLY_NS}tag-highway`,
     'tag-highway-primary',
     'tag-highway-primary_link',
   ],

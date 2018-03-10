@@ -2,18 +2,17 @@ import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
 
+export const lightGreenLanduse = [
+  'tag-landuse-cemetery',
+  'tag-landuse-orchard',
+  'tag-landuse-meadow',
+  'tag-landuse-farm',
+  'tag-landuse-farmland',
+];
 export const lightGreenFilter = [
   'all',
   ['==', '$type', 'Polygon'],
-  [
-    'in',
-    `${IDLY_NS}tagsClassType`,
-    'tag-landuse-cemetery',
-    'tag-landuse-orchard',
-    'tag-landuse-meadow',
-    'tag-landuse-farm',
-    'tag-landuse-farmland',
-  ],
+  ['in', `${IDLY_NS}tag-landuse`, ...lightGreenLanduse],
 ];
 
 export default [

@@ -18,7 +18,7 @@ export default [
         'line-opacity': 0.85,
         'line-width': 5,
       },
-      filter: ['all', ['in', `${IDLY_NS}tagsClass`, 'tag-railway']],
+      filter: ['all', ['has', `${IDLY_NS}tag-railway`]],
     },
   },
   {
@@ -38,7 +38,7 @@ export default [
         'line-width': 3,
         'line-dasharray': [1, 4],
       },
-      filter: ['all', ['in', `${IDLY_NS}tagsClass`, 'tag-railway']],
+      filter: ['all', ['has', `${IDLY_NS}tag-railway`]],
     },
   },
 ];
