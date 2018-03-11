@@ -13,10 +13,19 @@ export function compareRelation(
     return false;
   }
 
-  if (
-    JSON.stringify(relation.members) !== JSON.stringify(compareWith.members)
-  ) {
-    return false;
+  for (let i = 0; i < relation.members.length; i++) {
+    if (relation.members[i].id !== compareWith.members[i].id) {
+      return false;
+    }
+    if (relation.members[i].role !== compareWith.members[i].role) {
+      return false;
+    }
+    if (relation.members[i].ref !== compareWith.members[i].ref) {
+      return false;
+    }
+    if (relation.members[i].type !== compareWith.members[i].type) {
+      return false;
+    }
   }
 
   if (!compareTags(relation.tags, compareWith.tags)) {

@@ -3,7 +3,7 @@ import { Tags } from '../osm/structures';
 
 // `highway` and `railway` are typically linear features, but there
 // are a few exceptions that should be treated as areas, even in the
-// absence of a proper `area=yes` or `areaKeys` tag.. see #4194
+// absence of a proper `area=yes` or `areaKeys` tag.. see iD/#4194
 const lineKeys: any = {
   highway: {
     rest_area: true,

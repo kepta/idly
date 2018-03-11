@@ -1,6 +1,8 @@
 import { osmPavedTags } from 'idly-data/lib/osmPavedTags';
 import { Tags } from '../osm/structures';
 
+// ref: https://github.com/openstreetmap/iD/blob/master/modules/svg/tag_classes.js
+
 const primaries = [
   'building',
   'highway',
@@ -160,10 +162,8 @@ export function tagClasses(tags: Tags) {
     }
     if (!paved) {
       result['tag-unpaved'] = 'tag-unpaved';
-      // classes += ' tag-unpaved';
     }
   }
 
-  // classes = classes.trim();
   return result;
 }

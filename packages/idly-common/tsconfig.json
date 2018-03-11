@@ -2,8 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",
-    "noEmitOnError": false,
-    "strictNullChecks": true
+    "noEmitOnError": true
   },
   "exclude": [
     "./lib/**/*",

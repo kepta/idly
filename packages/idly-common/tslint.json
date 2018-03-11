@@ -2,7 +2,7 @@
   "extends": "../../tslint.json",
   "rules": {
     "no-unsafe-any": false,
-    "no-console": false,
+    "no-console": true,
     "object-literal-sort-keys": true,
     "no-bitwise": false
   }
