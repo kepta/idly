@@ -10,7 +10,6 @@ import {
   stateGetVisibles,
 } from '../index';
 import { OsmState } from '../type';
-import { expectStable } from './expectStable';
 import { parseFixture } from './helpers';
 
 const set = setCreate;
@@ -233,7 +232,6 @@ describe('reintroduce entities when initially only wayB exists and is modified',
 
   it('should add  wayC properly', () => {
     const modifiedWayC = osmState.modified.get(`${wayC}#0`) as Way;
-    const origWayC = osmState.modified.get(wayC) as Way;
 
     expect(modifiedWayC.nodes).toContain(`${nodeB}#0`);
     expect(modifiedWayC.nodes).not.toContain(nodeB);

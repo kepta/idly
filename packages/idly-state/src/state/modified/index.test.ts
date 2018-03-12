@@ -215,11 +215,11 @@ describe('Get the visible entities', () => {
     const n1InVirgin = nodeFactory({ id: 'n1' });
     const n1InChanged = nodeFactory({ id: 'n1', tags: { k: 'k' } });
     const state: OsmState = {
+      derivedTable: new Map(),
+      log: [],
       modified: mapFromObj({
         n1: n1InChanged,
       }),
-      derivedTable: new Map(),
-      log: [],
       virgin: virginStateCreate(
         mapFromObj({
           n1: n1InVirgin,

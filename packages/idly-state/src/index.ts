@@ -1,4 +1,4 @@
-import { Entity, EntityType, Way } from 'idly-common/lib/osm/structures';
+import { Entity, EntityType, Node } from 'idly-common/lib/osm/structures';
 import { Identity } from 'monet';
 import {
   logAddEntry,
@@ -86,7 +86,6 @@ export function stateGetVisibles(
 }
 
 export function stateIntroduceEntities(state: OsmState, entities: Entity[]) {
-  console.time('int');
   const mod = new Map(state.modified);
   let allBaseIds = logGetBaseIds(state.log);
   for (const e of entities) {
@@ -106,10 +105,9 @@ export function stateIntroduceEntities(state: OsmState, entities: Entity[]) {
         if (updatedEntities.length > 0) {
           mod.set(e.id, e);
           e.nodes.forEach(n => {
-            mod.set(n, state.virgin.elements.get(n));
+            mod.set(n, state.virgin.elements.get(n) as Node);
           });
-          updatedEntities.forEach(e => mod.set(e.id, e));
-          // console.log(log, updatedEntities);
+          updatedEntities.forEach(uE => mod.set(uE.id, uE));
           state = {
             ...state,
             log,
@@ -120,7 +118,6 @@ export function stateIntroduceEntities(state: OsmState, entities: Entity[]) {
       }
     }
   }
-  console.timeEnd('int');
 
   return state;
 }

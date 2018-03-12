@@ -6,12 +6,12 @@ import {
   Way,
 } from 'idly-common/lib/osm/structures';
 import { baseId, Log, logRewrite } from '../dataStructures/log';
+import { setCreate, setFind } from '../dataStructures/set';
 import { getEntity } from '../stateHelpers/getEntity';
 import { getLatestId } from '../stateHelpers/getLatestId';
 import { OsmState } from '../type';
 import { relationUpdateMemberId } from './pure/relationUpdateMemberId';
 import { wayUpdateNodeId } from './pure/wayUpdateNodeId';
-import { setFilter, setFind, setCreate } from '../dataStructures/set';
 
 export function logIntroduceEntity(
   state: OsmState,

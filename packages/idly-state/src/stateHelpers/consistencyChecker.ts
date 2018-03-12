@@ -2,9 +2,11 @@ import { Entity, EntityType } from 'idly-common/lib/osm/structures';
 import { baseId, isModifiedId, isVirginId } from '../dataStructures/log';
 import { OsmState } from '../type';
 
+const workerS: any = self;
+
 export function consistencyChecker(state: OsmState) {
   // return;
-  self.consistencyState = state;
+  workerS.consistencyState = state;
   for (const e of state.modified) {
     recursiveCheck('modified ', state.modified, e[1]);
   }
@@ -29,8 +31,7 @@ function recursiveCheck(
   if (entity.type === EntityType.WAY) {
     for (const id of entity.nodes) {
       if (!recursiveCheck(label, table, table.get(id))) {
-        self.consistencyLast = table;
-        console.log(table);
+        workerS.consistencyLast = table;
         throw new Error(
           label + 'couldnt find id' + id + ' in way ' + entity.id
         );
@@ -54,18 +55,18 @@ function recursiveCheck(
   }
   if (entity.type === EntityType.RELATION && isModifiedId(entity.id)) {
     // we dont check for every (virgin) member of relation because of rule#2
-    // for (const member of entity.members) {
-    //   if (isVirginId(member.id)) {
-    //     continue;
-    //   }
-    //   if (!recursiveCheck(label, table, table.get(member.id))) {
-    //     throw new Error(
-    //       `relation ${entity.id} 's modified member ${
-    //         member.id
-    //       } doesnt exist in table`
-    //     );
-    //   }
-    // }
+    for (const member of entity.members) {
+      if (isVirginId(member.id)) {
+        continue;
+      }
+      if (!recursiveCheck(label, table, table.get(member.id))) {
+        throw new Error(
+          `relation ${entity.id} 's modified member ${
+            member.id
+          } doesn't exist in table`
+        );
+      }
+    }
   }
   return true;
 }

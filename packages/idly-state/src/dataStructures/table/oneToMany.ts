@@ -1,4 +1,3 @@
-import { Identity as I } from 'monet';
 import { mapFilterValuesIntoArray, setAddIterable, setCreate } from '../set';
 import {
   ReadonlyTable,
