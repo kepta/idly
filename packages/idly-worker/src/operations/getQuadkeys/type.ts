@@ -1,6 +1,6 @@
 import { FeatureCollection } from '@turf/helpers';
 import { Entity } from 'idly-common/lib/osm/structures';
-import { OperationKinds } from '../operationsTypes';
+import { OperationKinds } from '../types';
 
 export interface GetQuadkey {
   readonly type: OperationKinds.GetQuadkey;

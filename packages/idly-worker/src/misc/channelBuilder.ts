@@ -1,8 +1,5 @@
-import {
-  OperationKinds,
-  MainOperation,
-  OperationTypes,
-} from '../operations/operationsTypes';
+import { OperationKinds, OperationTypes } from '../operations/types';
+import { MainOperation } from '../operations/helpers';
 
 /**
  * A wrapper around `promiseWorker.postMessage` api
@@ -13,18 +10,16 @@ import {
 export function getChannelBuilder<T extends OperationTypes>(promiseWorker: {
   readonly postMessage: any;
 }): (type: T['type']) => (request: T['request']) => Promise<string> {
-  return type => {
-    return request => {
-      const toSend = {
-        request,
-        type,
-      };
-      return promiseWorker.postMessage(toSend).catch((e: Error) => {
-        // tslint:disable-next-line:no-console
-        console.log('Worker Error', e.message);
-        return Promise.reject(e.message);
-      });
+  return type => request => {
+    const toSend = {
+      request,
+      type,
     };
+    return promiseWorker.postMessage(toSend).catch((e: Error) => {
+      // tslint:disable-next-line:no-console
+      console.log('Worker Error', e.message);
+      return Promise.reject(e.message);
+    });
   };
 }
 

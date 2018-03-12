@@ -25,9 +25,8 @@
     "node-fetch": "^1.7.3",
     "ts-jest": "^22.0.1",
     "tslint": "^5.8.0",
-    "tslint-consistent-codestyle": "^1.6.0",
     "tslint-immutable": "^4.1.0",
-    "typescript": "^2.6.2",
+    "typescript": "2.7.2",
     "webpack": "^3.9.1"
   },
   "dependencies": {
@@ -38,7 +37,6 @@
     "@turf/helpers": "^5.1.5",
     "@turf/turf": "^5.1.5",
     "@types/xmldom": "^0.1.29",
-    "deep-diff": "^0.3.8",
     "idly-common": "^1.3.4",
     "idly-faster-osm-parser": "^1.3.4",
     "idly-osm-to-geojson": "^1.3.4",
@@ -47,7 +45,6 @@
     "lineclip": "^1.1.5",
     "lodash-es": "^4.17.4",
     "lodash.unescape": "^4.0.1",
-    "promise-worker": "^1.1.1",
     "xmldom": "^0.1.27"
   }
 }
