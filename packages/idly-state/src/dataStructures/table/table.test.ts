@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { deepFreeze } from 'idly-common/lib/misc/deepFreeze';
+import * as path from 'path';
 
 import { Entity } from 'idly-common/lib/osm/structures';
 
@@ -14,7 +15,7 @@ import {
 
 const smallDataset = (freeze: boolean = false): Array<[string, Entity]> =>
   fs
-    .readFileSync('./fixtures/mosm.jsonl', 'utf-8')
+    .readFileSync(path.join(__dirname, './mosm.jsonl'), 'utf-8')
     .split('\n')
     .map(r => JSON.parse(r) as any)
     .map(r => (freeze ? deepFreeze(r) : r))

@@ -1,10 +1,12 @@
 import * as fs from 'fs';
 import { EntityType } from 'idly-common/lib/osm/structures';
-import { _internalCache, entityToGeoJson } from './';
-import { Derived } from './entityToGeojson';
+import * as path from 'path';
+import { Derived } from '../entityToGeojson';
+import { _internalCache, entityToGeoJson } from '../index';
+
 const parse = (file: string) =>
   new Map<string, Derived>(
-    JSON.parse(fs.readFileSync('./fixture/' + file, 'utf-8'))
+    JSON.parse(fs.readFileSync(path.join(__dirname, 'fixture', file), 'utf-8'))
   );
 
 describe('derived table to geojson end to end', () => {

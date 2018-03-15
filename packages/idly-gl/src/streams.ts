@@ -9,7 +9,6 @@ import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { filter } from 'rxjs/operators/filter';
 import { map as rxMap } from 'rxjs/operators/map';
-import { mergeMap } from 'rxjs/operators/mergeMap';
 import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { takeUntil } from 'rxjs/operators/takeUntil';
@@ -18,20 +17,18 @@ import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 import { BBox, bboxToTiles } from 'idly-common/lib/geo';
 import { tileToQuadkey } from 'idly-common/lib/misc';
-import { Entity, EntityType } from 'idly-common/lib/osm/structures';
+import { Entity } from 'idly-common/lib/osm/structures';
 
 import { merge } from 'rxjs/observable/merge';
 import { mapInteraction, quadkey } from './configuration';
-import { IDLY_NS } from './constants';
 import {
   bboxify,
   distance,
   fetchTileXml,
-  hideVersion,
-  tapLog,
   tilesFilterSmall,
 } from './helpers/helper';
-import { workerGetQuadkeys } from './plugin/worker';
+import { workerOperations } from './plugin/worker2';
+// import { workerGetQuadkeys } from './plugin/worker';
 
 export function glObservable<T>(
   glMap: Map,
@@ -120,7 +117,7 @@ export function makeQuadkey$(
   return makeMoveend$(glMap).pipe(
     debounceTime(450),
     startWith('' as any),
-    rxMap(() => [glMap.getBounds(), glMap.getZoom() - 1]),
+    rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
     filter(([_, zoom]) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
     rxMap(([bounds, zoom]: any) =>
       getTiles(
@@ -148,10 +145,14 @@ export function makeQuadkey$(
     ),
     switchMap(d => {
       console.time('getQuadkey');
+      window.res = d.map(e => ({
+        quadkey: e[0],
+        entities: e[1],
+      }));
       return fromPromise(
         Promise.all([
           d.map(e => e[0]),
-          workerGetQuadkeys(
+          workerOperations.getQuadkeys(
             d.map(e => ({
               quadkey: e[0],
               entities: e[1],
@@ -245,12 +246,14 @@ export function makeDrag$(
 
 const getTiles = (bbox: BBox, zoom: number) => {
   // actual zoom has 1 less for smaller quadkey
-  const tiles = bboxToTiles(bbox, zoom);
+  console.log(zoom);
+  const tiles = bboxToTiles(bbox, zoom < 20 ? zoom - 1 : 19);
   // for small screen devices
   if (tiles.length <= 4) {
     return tiles;
   }
   let minimumOverlap = quadkey.OVERLAP.ABOVE_19;
+
   if (zoom < 17) {
     minimumOverlap = quadkey.OVERLAP.LESS_THAN_17;
   } else if (zoom < 18) {
@@ -259,5 +262,5 @@ const getTiles = (bbox: BBox, zoom: number) => {
     minimumOverlap = quadkey.OVERLAP.LESS_THAN_19;
   }
 
-  return tilesFilterSmall(tiles, bbox, minimumOverlap); //[0]];
+  return tilesFilterSmall(tiles, bbox, minimumOverlap);
 };

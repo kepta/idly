@@ -1,6 +1,9 @@
+const fs = require('fs');
+const path = require('path');
+const { promisify } = require('util');
 const ops = [['Get', 'Quadkey'], ['Get', 'MoveNode']];
 
-function createAllTypes() {
+function createAllTypes(ops) {
   const createImports = ([f, l]) =>
     `import { ${f + l} } from './${f.toLowerCase() + l}/type';`;
 
@@ -62,26 +65,69 @@ export interface ${f + l} {
 
 function workerFile([f, l]) {
   const t = `
-  import { WorkerOperation, WorkerState } from '../helpers';
-  import { ${f + l} } from './type';
-  
-  export function worker${f + l}(
-    state: WorkerState
-  ): WorkerOperation<${f + l}> {
-    return async {p1} => {
-      return {
-        response: p1 + p1,
-        state: {
-          ...state,
-          osmState: qState,
-        },
-      };
+import { WorkerOperation, WorkerState } from '../helpers';
+import { ${f + l} } from './type';
+
+export function worker${f + l}(
+state: WorkerState
+): WorkerOperation<${f + l}> {
+return async {p1} => {
+    return {
+    response: p1 + p1,
+    state: {
+        ...state,
+        osmState: qState,
+    },
     };
-  }
+};
+}
 `;
   return t;
 }
 
-console.log(createAllTypes());
-// console.log(ops.map(mainFile));
-console.log(ops.map(workerFile)[0]);
+function indexFile(ops) {
+  const createImports = ([f, l]) => `
+import { ${f.toLowerCase() + l} } from './operations/${f.toLowerCase() +
+    l}/main';
+import { ${f + l} } from './operations/${f.toLowerCase() + l}/type';`;
+
+  const t = `
+${ops.map(createImports).join('\n')}
+
+import { MainOperation } from './operations/helpers';
+
+export interface WorkerType {
+    ${ops
+      .map(([f, l]) => `${f.toLowerCase() + l}: MainOperation<${f + l}>;`)
+      .join('\n    ')}
+}
+
+export default function(promiseWorker: any): WorkerType {
+    return {
+        ${ops
+          .map(
+            ([f, l]) =>
+              `${f.toLowerCase() + l}: ${f.toLowerCase() + l}(promiseWorker)`
+          )
+          .join(',\n        ')}
+    };
+}
+`;
+  return t;
+}
+
+async function writeFile(path, data, overwrite) {
+  const stat = promisify(fs.stat);
+  const write = promisify(fs.writeFile);
+  const doesExists = await stat(path)
+    .then(e => true)
+    .catch(e => false);
+
+  if (doesExists && !overwrite) {
+    return;
+  }
+
+  return write(path, data, 'utf-8');
+}
+
+writeFile(path.join('./', 'src', 'bugs2.md'), 'hi', true);

@@ -1,4 +1,3 @@
-import { HIGHWAY } from '../priorities';
 import fallbackLine from './fallbackLine';
 import motorway from './motorway';
 import narrow from './narrow';

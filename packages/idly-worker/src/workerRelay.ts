@@ -1,7 +1,7 @@
 import { stateCreate } from 'idly-state/lib/index';
 import operations from './operations';
-import { OperationTypes } from './operations/types';
 import { WorkerState } from './operations/helpers';
+import { OperationTypes } from './operations/types';
 
 const DEFAULT_STATE: WorkerState = {
   osmState: stateCreate(),

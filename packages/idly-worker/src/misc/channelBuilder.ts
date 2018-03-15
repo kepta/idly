@@ -1,5 +1,5 @@
-import { OperationKinds, OperationTypes } from '../operations/types';
 import { MainOperation } from '../operations/helpers';
+import { OperationKinds, OperationTypes } from '../operations/types';
 
 /**
  * A wrapper around `promiseWorker.postMessage` api

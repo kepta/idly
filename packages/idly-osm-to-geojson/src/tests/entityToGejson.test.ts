@@ -10,7 +10,7 @@ import {
   nodeCombiner,
   wayCombiner,
   wayToLineString,
-} from './entityToGeojson';
+} from '../entityToGeojson';
 
 const n1 = nodeFactory({ id: 'n-1' });
 

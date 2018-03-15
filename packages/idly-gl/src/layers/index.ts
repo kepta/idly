@@ -7,7 +7,6 @@ import lineLabel from './label/lineLabel';
 import pointsWithLabels from './label/pointsWithLabels';
 import onewayArrows from './nonInteractive/onewayArrows';
 import pointsWithoutLabels from './point/points';
-import * as priority from './priorities';
 import rail from './rail';
 import waterway from './waterway';
 

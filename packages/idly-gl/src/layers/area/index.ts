@@ -1,4 +1,3 @@
-import { AREA } from '../priorities';
 import area from './areaFallback';
 import blue from './blue';
 import building from './building';

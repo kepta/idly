@@ -34,13 +34,12 @@ Object {
       "all",
       Array [
         "==",
-        "$type",
-        "Polygon",
+        "@idly-geometry",
+        "area",
       ],
       Array [
-        "!=",
-        "@idly-tagsClass",
-        "tag-building",
+        "!has",
+        "@idly-tag-building",
       ],
     ],
     "id": "AreaFallbackLayer",
@@ -49,8 +48,7 @@ Object {
       "line-join": "round",
     },
     "paint": Object {
-      "line-color": "#fff",
-      "line-opacity": 1,
+      "line-color": "white",
       "line-width": 1,
     },
     "source": undefined,
@@ -68,13 +66,12 @@ Object {
       "all",
       Array [
         "==",
-        "$type",
-        "Polygon",
+        "@idly-geometry",
+        "area",
       ],
       Array [
-        "!=",
-        "@idly-tagsClass",
-        "tag-building",
+        "!has",
+        "@idly-tag-building",
       ],
     ],
     "id": "AreaFallbackLayerCasing",
@@ -105,15 +102,30 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-amenity-swimming_pool",
-        "tag-leisure-swimming_pool",
-        "tag-natural-water",
-        "tag-landuse-aquaculture",
-        "tag-landuse-basin",
-        "tag-landuse-harbour",
-        "tag-landuse-reservoir",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-amenity",
+          "tag-amenity-swimming_pool",
+        ],
+        Array [
+          "==",
+          "@idly-tag-leisure",
+          "tag-amenity-swimming_pool",
+        ],
+        Array [
+          "==",
+          "@idly-tag-natural",
+          "tag-natural-water",
+        ],
+        Array [
+          "in",
+          "@idly-tag-landuse",
+          "tag-landuse-aquaculture",
+          "tag-landuse-basin",
+          "tag-landuse-harbour",
+          "tag-landuse-reservoir",
+        ],
       ],
     ],
     "id": "areaBlueLayer",
@@ -145,15 +157,30 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-amenity-swimming_pool",
-        "tag-leisure-swimming_pool",
-        "tag-natural-water",
-        "tag-landuse-aquaculture",
-        "tag-landuse-basin",
-        "tag-landuse-harbour",
-        "tag-landuse-reservoir",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-amenity",
+          "tag-amenity-swimming_pool",
+        ],
+        Array [
+          "==",
+          "@idly-tag-leisure",
+          "tag-amenity-swimming_pool",
+        ],
+        Array [
+          "==",
+          "@idly-tag-natural",
+          "tag-natural-water",
+        ],
+        Array [
+          "in",
+          "@idly-tag-landuse",
+          "tag-landuse-aquaculture",
+          "tag-landuse-basin",
+          "tag-landuse-harbour",
+          "tag-landuse-reservoir",
+        ],
       ],
     ],
     "id": "areaBlueLayerCasing",
@@ -168,11 +195,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -202,11 +229,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -237,13 +264,12 @@ Object {
         "any",
         Array [
           "==",
-          "@idly-tagsClassType",
+          "@idly-tag-amenity",
           "tag-amenity-shelter",
         ],
         Array [
-          "==",
-          "@idly-tagsClass",
-          "tag-building",
+          "has",
+          "@idly-tag-building",
         ],
       ],
     ],
@@ -280,13 +306,12 @@ Object {
         "any",
         Array [
           "==",
-          "@idly-tagsClassType",
+          "@idly-tag-amenity",
           "tag-amenity-shelter",
         ],
         Array [
-          "==",
-          "@idly-tagsClass",
-          "tag-building",
+          "has",
+          "@idly-tag-building",
         ],
       ],
     ],
@@ -315,7 +340,7 @@ Object {
       ],
       Array [
         "in",
-        "@idly-tagsClassType",
+        "@idly-tag-landuse",
         "tag-landuse-residential",
         "tag-landuse-construction",
       ],
@@ -350,7 +375,7 @@ Object {
       ],
       Array [
         "in",
-        "@idly-tagsClassType",
+        "@idly-tag-landuse",
         "tag-landuse-residential",
         "tag-landuse-construction",
       ],
@@ -367,11 +392,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -401,11 +426,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -433,17 +458,40 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-amenity-parking",
-        "tag-leisure-pitch.tag-sport-basketball",
-        "tag-leisure-pitch.tag-sport-skateboard",
-        "tag-natural-bare_rock",
-        "tag-natural-scree",
-        "tag-landuse-railway",
-        "tag-landuse-quarry",
-        "tag-natural-cave_entrance",
-        "tag-natural-glacier",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-amenity",
+          "tag-amenity-parking",
+        ],
+        Array [
+          "all",
+          Array [
+            "==",
+            "@idly-tag-leisure",
+            "tag-leisure-pitch",
+          ],
+          Array [
+            "in",
+            "@idly-tag-sport",
+            "tag-sport-basketball",
+            "tag-sport-skateboard",
+          ],
+        ],
+        Array [
+          "in",
+          "@idly-tag-landuse",
+          "tag-landuse-railway",
+          "tag-landuse-quarry",
+        ],
+        Array [
+          "in",
+          "@idly-tag-natural",
+          "tag-natural-bare_rock",
+          "tag-natural-scree",
+          "tag-natural-cave_entrance",
+          "tag-natural-glacier",
+        ],
       ],
     ],
     "id": "areaGrayLayer",
@@ -475,17 +523,40 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-amenity-parking",
-        "tag-leisure-pitch.tag-sport-basketball",
-        "tag-leisure-pitch.tag-sport-skateboard",
-        "tag-natural-bare_rock",
-        "tag-natural-scree",
-        "tag-landuse-railway",
-        "tag-landuse-quarry",
-        "tag-natural-cave_entrance",
-        "tag-natural-glacier",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-amenity",
+          "tag-amenity-parking",
+        ],
+        Array [
+          "all",
+          Array [
+            "==",
+            "@idly-tag-leisure",
+            "tag-leisure-pitch",
+          ],
+          Array [
+            "in",
+            "@idly-tag-sport",
+            "tag-sport-basketball",
+            "tag-sport-skateboard",
+          ],
+        ],
+        Array [
+          "in",
+          "@idly-tag-landuse",
+          "tag-landuse-railway",
+          "tag-landuse-quarry",
+        ],
+        Array [
+          "in",
+          "@idly-tag-natural",
+          "tag-natural-bare_rock",
+          "tag-natural-scree",
+          "tag-natural-cave_entrance",
+          "tag-natural-glacier",
+        ],
       ],
     ],
     "id": "areaGrayLayerCasing",
@@ -500,11 +571,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -534,11 +605,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -559,188 +630,74 @@ exports[`area layers snapshot checks layer 11`] = `
 Object {
   "layer": Object {
     "filter": Array [
-      "all",
+      "any",
       Array [
-        "==",
-        "$type",
-        "Polygon",
-      ],
-      Array [
-        "any",
+        "all",
         Array [
-          "in",
-          "@idly-tagsClass",
-          "tag-natural",
-          "tag-landuse",
+          "has",
+          "@idly-tag-natural",
         ],
         Array [
-          "in",
-          "@idly-tagsClassType",
-          "tag-leisure-nature_reserve",
+          "!in",
+          "@idly-tag-natural",
+          "tag-natural-beach",
+          "tag-natural-sand",
+          "tag-natural-scrub",
+          "tag-natural-water",
+          "tag-natural-bare_rock",
+          "tag-natural-scree",
+          "tag-natural-cave_entrance",
+          "tag-natural-glacier",
+        ],
+      ],
+      Array [
+        "all",
+        Array [
+          "has",
+          "@idly-tag-landuse",
+        ],
+        Array [
+          "!in",
+          "@idly-tag-landuse",
+          "tag-landuse-aquaculture",
+          "tag-landuse-basin",
+          "tag-landuse-harbour",
+          "tag-landuse-reservoir",
+          "tag-landuse-residential",
+          "tag-landuse-construction",
+          "tag-landuse-railway",
+          "tag-landuse-quarry",
+          "tag-landuse-cemetery",
+          "tag-landuse-orchard",
+          "tag-landuse-meadow",
+          "tag-landuse-farm",
+          "tag-landuse-farmland",
+          "tag-landuse-retail",
+          "tag-landuse-commercial",
+          "tag-landuse-landfill",
+          "tag-landuse-military",
+          "tag-landuse-industrial",
+          "tag-landuse-farmyard",
+        ],
+      ],
+      Array [
+        "in",
+        "@idly-tag-leisure",
+        "tag-leisure-nature_reserve",
+        "tag-leisure-park",
+      ],
+      Array [
+        "all",
+        Array [
+          "==",
+          "@idly-tag-leisure",
           "tag-leisure-pitch",
-          "tag-leisure-park",
-          "tag-landuse-forest",
-          "tag-natural-wetland",
         ],
-      ],
-      Array [
-        "none",
         Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-residential",
-            "tag-landuse-construction",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-amenity-swimming_pool",
-            "tag-leisure-swimming_pool",
-            "tag-natural-water",
-            "tag-landuse-aquaculture",
-            "tag-landuse-basin",
-            "tag-landuse-harbour",
-            "tag-landuse-reservoir",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-amenity-parking",
-            "tag-leisure-pitch.tag-sport-basketball",
-            "tag-leisure-pitch.tag-sport-skateboard",
-            "tag-natural-bare_rock",
-            "tag-natural-scree",
-            "tag-landuse-railway",
-            "tag-landuse-quarry",
-            "tag-natural-cave_entrance",
-            "tag-natural-glacier",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-sport-beachvolleyball",
-            "tag-natural-beach",
-            "tag-natural-sand",
-            "tag-natural-scrub",
-            "tag-amenity-childcare",
-            "tag-amenity-kindergarten",
-            "tag-amenity-school",
-            "tag-amenity-college",
-            "tag-amenity-university",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-cemetery",
-            "tag-landuse-orchard",
-            "tag-landuse-meadow",
-            "tag-landuse-farm",
-            "tag-landuse-farmland",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-retail",
-            "tag-landuse-commercial",
-            "tag-landuse-landfill",
-            "tag-military",
-            "tag-landuse-military",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-industrial",
-            "tag-power-plant",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-farmyard",
-          ],
+          "!in",
+          "@idly-tag-sport",
+          "tag-sport-basketball",
+          "tag-sport-skateboard",
         ],
       ],
     ],
@@ -766,188 +723,74 @@ exports[`area layers snapshot checks layer 12`] = `
 Object {
   "layer": Object {
     "filter": Array [
-      "all",
+      "any",
       Array [
-        "==",
-        "$type",
-        "Polygon",
-      ],
-      Array [
-        "any",
+        "all",
         Array [
-          "in",
-          "@idly-tagsClass",
-          "tag-natural",
-          "tag-landuse",
+          "has",
+          "@idly-tag-natural",
         ],
         Array [
-          "in",
-          "@idly-tagsClassType",
-          "tag-leisure-nature_reserve",
+          "!in",
+          "@idly-tag-natural",
+          "tag-natural-beach",
+          "tag-natural-sand",
+          "tag-natural-scrub",
+          "tag-natural-water",
+          "tag-natural-bare_rock",
+          "tag-natural-scree",
+          "tag-natural-cave_entrance",
+          "tag-natural-glacier",
+        ],
+      ],
+      Array [
+        "all",
+        Array [
+          "has",
+          "@idly-tag-landuse",
+        ],
+        Array [
+          "!in",
+          "@idly-tag-landuse",
+          "tag-landuse-aquaculture",
+          "tag-landuse-basin",
+          "tag-landuse-harbour",
+          "tag-landuse-reservoir",
+          "tag-landuse-residential",
+          "tag-landuse-construction",
+          "tag-landuse-railway",
+          "tag-landuse-quarry",
+          "tag-landuse-cemetery",
+          "tag-landuse-orchard",
+          "tag-landuse-meadow",
+          "tag-landuse-farm",
+          "tag-landuse-farmland",
+          "tag-landuse-retail",
+          "tag-landuse-commercial",
+          "tag-landuse-landfill",
+          "tag-landuse-military",
+          "tag-landuse-industrial",
+          "tag-landuse-farmyard",
+        ],
+      ],
+      Array [
+        "in",
+        "@idly-tag-leisure",
+        "tag-leisure-nature_reserve",
+        "tag-leisure-park",
+      ],
+      Array [
+        "all",
+        Array [
+          "==",
+          "@idly-tag-leisure",
           "tag-leisure-pitch",
-          "tag-leisure-park",
-          "tag-landuse-forest",
-          "tag-natural-wetland",
         ],
-      ],
-      Array [
-        "none",
         Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-residential",
-            "tag-landuse-construction",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-amenity-swimming_pool",
-            "tag-leisure-swimming_pool",
-            "tag-natural-water",
-            "tag-landuse-aquaculture",
-            "tag-landuse-basin",
-            "tag-landuse-harbour",
-            "tag-landuse-reservoir",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-amenity-parking",
-            "tag-leisure-pitch.tag-sport-basketball",
-            "tag-leisure-pitch.tag-sport-skateboard",
-            "tag-natural-bare_rock",
-            "tag-natural-scree",
-            "tag-landuse-railway",
-            "tag-landuse-quarry",
-            "tag-natural-cave_entrance",
-            "tag-natural-glacier",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-sport-beachvolleyball",
-            "tag-natural-beach",
-            "tag-natural-sand",
-            "tag-natural-scrub",
-            "tag-amenity-childcare",
-            "tag-amenity-kindergarten",
-            "tag-amenity-school",
-            "tag-amenity-college",
-            "tag-amenity-university",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-cemetery",
-            "tag-landuse-orchard",
-            "tag-landuse-meadow",
-            "tag-landuse-farm",
-            "tag-landuse-farmland",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-retail",
-            "tag-landuse-commercial",
-            "tag-landuse-landfill",
-            "tag-military",
-            "tag-landuse-military",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-industrial",
-            "tag-power-plant",
-          ],
-        ],
-      ],
-      Array [
-        "none",
-        Array [
-          "all",
-          Array [
-            "==",
-            "$type",
-            "Polygon",
-          ],
-          Array [
-            "in",
-            "@idly-tagsClassType",
-            "tag-landuse-farmyard",
-          ],
+          "!in",
+          "@idly-tag-sport",
+          "tag-sport-basketball",
+          "tag-sport-skateboard",
         ],
       ],
     ],
@@ -963,11 +806,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -997,11 +840,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -1030,7 +873,7 @@ Object {
       ],
       Array [
         "in",
-        "@idly-tagsClassType",
+        "@idly-tag-landuse",
         "tag-landuse-cemetery",
         "tag-landuse-orchard",
         "tag-landuse-meadow",
@@ -1068,7 +911,7 @@ Object {
       ],
       Array [
         "in",
-        "@idly-tagsClassType",
+        "@idly-tag-landuse",
         "tag-landuse-cemetery",
         "tag-landuse-orchard",
         "tag-landuse-meadow",
@@ -1088,11 +931,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -1122,11 +965,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -1154,13 +997,19 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-landuse-retail",
-        "tag-landuse-commercial",
-        "tag-landuse-landfill",
-        "tag-military",
-        "tag-landuse-military",
+        "any",
+        Array [
+          "in",
+          "@idly-tag-landuse",
+          "tag-landuse-retail",
+          "tag-landuse-commercial",
+          "tag-landuse-landfill",
+          "tag-landuse-military",
+        ],
+        Array [
+          "has",
+          "@idly-tag-military",
+        ],
       ],
     ],
     "id": "areaOrangeLayer",
@@ -1192,13 +1041,19 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-landuse-retail",
-        "tag-landuse-commercial",
-        "tag-landuse-landfill",
-        "tag-military",
-        "tag-landuse-military",
+        "any",
+        Array [
+          "in",
+          "@idly-tag-landuse",
+          "tag-landuse-retail",
+          "tag-landuse-commercial",
+          "tag-landuse-landfill",
+          "tag-landuse-military",
+        ],
+        Array [
+          "has",
+          "@idly-tag-military",
+        ],
       ],
     ],
     "id": "areaOrangeLayerCasing",
@@ -1213,11 +1068,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -1247,11 +1102,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -1279,10 +1134,17 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-landuse-industrial",
-        "tag-power-plant",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-landuse",
+          "tag-landuse-industrial",
+        ],
+        Array [
+          "==",
+          "@idly-tag-power",
+          "tag-power-plant",
+        ],
       ],
     ],
     "id": "areaPinkLayer",
@@ -1314,10 +1176,17 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-landuse-industrial",
-        "tag-power-plant",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-landuse",
+          "tag-landuse-industrial",
+        ],
+        Array [
+          "==",
+          "@idly-tag-power",
+          "tag-power-plant",
+        ],
       ],
     ],
     "id": "areaPinkLayerCasing",
@@ -1332,11 +1201,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -1366,11 +1235,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -1398,8 +1267,8 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
+        "==",
+        "@idly-tag-landuse",
         "tag-landuse-farmyard",
       ],
     ],
@@ -1432,8 +1301,8 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
+        "==",
+        "@idly-tag-landuse",
         "tag-landuse-farmyard",
       ],
     ],
@@ -1449,11 +1318,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -1483,11 +1352,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,
@@ -1515,17 +1384,28 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-sport-beachvolleyball",
-        "tag-natural-beach",
-        "tag-natural-sand",
-        "tag-natural-scrub",
-        "tag-amenity-childcare",
-        "tag-amenity-kindergarten",
-        "tag-amenity-school",
-        "tag-amenity-college",
-        "tag-amenity-university",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-sport",
+          "tag-sport-beachvolleyball",
+        ],
+        Array [
+          "in",
+          "@idly-tag-natural",
+          "tag-natural-beach",
+          "tag-natural-sand",
+          "tag-natural-scrub",
+        ],
+        Array [
+          "in",
+          "@idly-tag-amenity",
+          "tag-amenity-childcare",
+          "tag-amenity-kindergarten",
+          "tag-amenity-school",
+          "tag-amenity-college",
+          "tag-amenity-university",
+        ],
       ],
     ],
     "id": "areaYellowLayer",
@@ -1557,17 +1437,28 @@ Object {
         "Polygon",
       ],
       Array [
-        "in",
-        "@idly-tagsClassType",
-        "tag-sport-beachvolleyball",
-        "tag-natural-beach",
-        "tag-natural-sand",
-        "tag-natural-scrub",
-        "tag-amenity-childcare",
-        "tag-amenity-kindergarten",
-        "tag-amenity-school",
-        "tag-amenity-college",
-        "tag-amenity-university",
+        "any",
+        Array [
+          "==",
+          "@idly-tag-sport",
+          "tag-sport-beachvolleyball",
+        ],
+        Array [
+          "in",
+          "@idly-tag-natural",
+          "tag-natural-beach",
+          "tag-natural-sand",
+          "tag-natural-scrub",
+        ],
+        Array [
+          "in",
+          "@idly-tag-amenity",
+          "tag-amenity-childcare",
+          "tag-amenity-kindergarten",
+          "tag-amenity-school",
+          "tag-amenity-college",
+          "tag-amenity-university",
+        ],
       ],
     ],
     "id": "areaYellowLayerCasing",
@@ -1582,11 +1473,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            1,
+            4,
           ],
           Array [
             18,
-            4,
+            8,
           ],
           Array [
             22,
@@ -1616,11 +1507,11 @@ Object {
         "stops": Array [
           Array [
             16,
-            2,
+            8,
           ],
           Array [
             18,
-            8,
+            16,
           ],
           Array [
             22,

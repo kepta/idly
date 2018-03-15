@@ -1,47 +1,54 @@
 import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
-import { blueFilter, blueLanduse } from './blue';
-import { goldFilter, goldLanduse } from './gold';
-import { grayFilter, grayLanduse } from './gray';
-import { lightGreenFilter, lightGreenLanduse } from './lightGreen';
-import { orangeFilter, orangeLanduse } from './orange';
-import { pinkFilter, pinkLanduse } from './pink';
-import { tanFilter, tanLanduse } from './tan';
-import { yellowFilter } from './yellow';
+import { blueLanduse, blueNatural } from './blue';
+import { goldLanduse } from './gold';
+import { grayLanduse, grayNatural, graySport } from './gray';
+import { lightGreenLanduse } from './lightGreen';
+import { orangeLanduse } from './orange';
+import { pinkLanduse } from './pink';
+import { tanLanduse } from './tan';
+import { yellowNatural } from './yellow';
 
 export const greenFilter = [
-  'all',
-  ['==', '$type', 'Polygon'],
+  'any',
   [
-    'any',
-    /**
-     * @TOFIX doesnt work for a way, I guess a !area, with tag natural=coastline
-     */
-    // ['in', `${IDLY_NS}tagsClass`, 'tag-natural', 'tag-landuse'],
+    'all',
     ['has', `${IDLY_NS}tag-natural`],
     [
-      'all',
-      ['has', `${IDLY_NS}tag-landuse`],
-      [
-        '!in',
-        `${IDLY_NS}tag-landuse`,
-        ...blueLanduse,
-        ...goldLanduse,
-        ...grayLanduse,
-        ...lightGreenLanduse,
-        ...orangeLanduse,
-        ...pinkLanduse,
-        ...tanLanduse,
-      ],
+      '!in',
+      `${IDLY_NS}tag-natural`,
+      ...yellowNatural,
+      ...blueNatural,
+      ...grayNatural,
     ],
+  ],
+  [
+    'all',
+    ['has', `${IDLY_NS}tag-landuse`],
     [
-      'in',
-      `${IDLY_NS}tag-leisure`,
-      'tag-leisure-nature_reserve',
-      'tag-leisure-pitch',
-      'tag-leisure-park',
+      '!in',
+      `${IDLY_NS}tag-landuse`,
+      ...blueLanduse,
+      ...goldLanduse,
+      ...grayLanduse,
+      ...lightGreenLanduse,
+      ...orangeLanduse,
+      ...pinkLanduse,
+      ...tanLanduse,
     ],
+  ],
+  [
+    'in',
+    `${IDLY_NS}tag-leisure`,
+    'tag-leisure-nature_reserve',
+    'tag-leisure-park',
+  ],
+  [
+    // leisure park http://localhost:8080/#17.69/40.728129/-73.979866
+    'all',
+    ['==', `${IDLY_NS}tag-leisure`, 'tag-leisure-pitch'],
+    ['!in', `${IDLY_NS}tag-sport`, ...graySport],
   ],
 ];
 

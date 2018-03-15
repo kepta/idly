@@ -1,9 +1,7 @@
 import layers from '../layers';
-import shadows from '../shadows';
 
 import { BBox, bboxToTiles, mercator } from 'idly-common/lib/geo';
 import { cancelablePromise, tileToQuadkey } from 'idly-common/lib/misc';
-import { filter } from 'rxjs/operators/filter';
 
 import parser from 'idly-faster-osm-parser';
 import debounce from 'lodash-es/debounce';

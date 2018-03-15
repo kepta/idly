@@ -1,23 +1,14 @@
 import { FeatureCollection, Properties } from '@turf/helpers';
 import {
-  EventData,
   Map as GlMap,
-  MapMouseEvent,
-  MapTouchEvent,
 } from 'mapbox-gl/dist/mapbox-gl';
-import { combineLatest } from 'rxjs/observable/combineLatest';
-import { debounceTime } from 'rxjs/operators/debounceTime';
-import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
-import { filter } from 'rxjs/operators/filter';
 import { last } from 'rxjs/operators/last';
 import { map as rxMap } from 'rxjs/operators/map';
-import { merge } from 'rxjs/operators/merge';
-import { takeUntil } from 'rxjs/operators/takeUntil';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 import { addSource, hideVersion } from './helpers/helper';
 import layers from './layers';
-import { workerGetMoveNode } from './plugin/worker';
+import { workerOperations } from './plugin/worker2';
 import {
   makeDrag$,
   makeHover$,
@@ -27,7 +18,8 @@ import {
   makeQuadkey$,
   makeSelected$,
 } from './streams';
-
+import { PluginUi } from './ui';
+// import { PluginUi } from './ui';
 export interface Options {
   good: boolean;
 }
@@ -38,7 +30,7 @@ const DRAGGABLE_POINT = 'drag-point';
 
 export class IdlyGlPlugin {
   private opts: Options;
-
+  private ui!: PluginUi;
   private selectedId?: string;
   // @ts-ignore
   private lastQuadkey: any[];
@@ -63,7 +55,8 @@ export class IdlyGlPlugin {
     }
 
     this.container = document.createElement('div');
-
+    const config = { c: 'j' };
+    this.ui = new PluginUi(this.container);
     return this.container;
   }
 
@@ -75,7 +68,7 @@ export class IdlyGlPlugin {
 
     const nearestNode$ = makeNearestNode$(this.map, 8).pipe(
       rxMap(f => ({
-        id: f && hideVersion(f.properties.id),
+        id: f && f.properties.id,
         coords: f && f.geometry.coordinates,
       }))
     );
@@ -105,7 +98,7 @@ export class IdlyGlPlugin {
       8
     ).pipe(
       rxMap(f => ({
-        id: f && hideVersion(f.properties.id),
+        id: f && f.properties.id,
         coords: f && f.geometry.coordinates,
       }))
     );
@@ -133,6 +126,8 @@ export class IdlyGlPlugin {
     });
 
     selectedPoint$.forEach(r => {
+      this.ui.render(r.id);
+      this.selectedId = r.id;
       pointAdder('selected-node', r.coords, {
         paint: {
           'circle-radius': 8,
@@ -144,6 +139,11 @@ export class IdlyGlPlugin {
     });
 
     nearestNode$.forEach(r => {
+      if (!r.id) {
+        this.ui.render(this.selectedId);
+      } else {
+        this.ui.render(r.id);
+      }
       pointAdder('nearest-node', r.coords);
     });
 
@@ -160,14 +160,16 @@ export class IdlyGlPlugin {
           return;
         }
         console.time('moveNode');
-        workerGetMoveNode({
-          id: selected.id,
-          quadkeys: this.lastQuadkey,
-          loc: p.lngLat,
-        }).then(r => {
-          this.map.getSource(BASE_SOURCE).setData(r);
-          console.timeEnd('moveNode');
-        });
+        workerOperations
+          .getMoveNode({
+            id: hideVersion(selected.id),
+            quadkeys: this.lastQuadkey,
+            loc: p.lngLat,
+          })
+          .then(r => {
+            (this.map.getSource(BASE_SOURCE) as any).setData(r);
+            console.timeEnd('moveNode');
+          });
       });
     });
   }
@@ -187,7 +189,7 @@ export class IdlyGlPlugin {
   }
 
   private renderMap(fc: FeatureCollection<any, Properties>) {
-    window.result = fc.features;
+    (window as any).result = fc.features;
 
     (this.map.getSource(BASE_SOURCE) as any).setData(fc);
     console.timeEnd('getQuadkey');

@@ -11,6 +11,9 @@ const secBlueFilter = [
   ['==', `${IDLY_NS}tag-highway`, 'tag-highway-cycleway'],
 ];
 
+// TOFIX footpath part of area http://localhost:8080/#18.58/40.7309554/-73.9981163
+// should show green but doesn't
+
 const highblue = [
   {
     selectable: true,

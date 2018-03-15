@@ -1,5 +1,3 @@
-import { IDLY_NS } from '../../constants';
-import { HIGHWAY } from '../priorities';
 
 const lineWidth = [
   'interpolate',

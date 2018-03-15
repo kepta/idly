@@ -3,7 +3,7 @@ describe('highway layers snapshot', () => {
   const layerIds = highway.map(r => r.layer.id);
 
   it('check the structure', () => {
-    expect(highway).toHaveLength(19);
+    expect(highway).toHaveLength(25);
     expect(highway.map(r => r.layer.id)).toMatchSnapshot();
   });
 

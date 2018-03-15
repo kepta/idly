@@ -2,6 +2,7 @@ import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
 
+// cemetry http://localhost:8080/#19.41/40.7245054/-73.9887333
 export const lightGreenLanduse = [
   'tag-landuse-cemetery',
   'tag-landuse-orchard',

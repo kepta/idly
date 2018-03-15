@@ -7,8 +7,8 @@ export const quadkey = {
   OVERLAP: {
     LESS_THAN_17: 0.55,
     LESS_THAN_18: 0.7,
-    LESS_THAN_19: 0.5,
-    ABOVE_19: 0.5,
+    LESS_THAN_19: 0.9,
+    ABOVE_19: 0.98,
   },
 };
 

@@ -1,4 +1,4 @@
-import { INTERACTIVE, POINT } from '../priorities';
+import { INTERACTIVE } from '../priorities';
 
 export default [
   {

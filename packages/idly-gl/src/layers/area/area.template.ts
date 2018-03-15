@@ -1,4 +1,3 @@
-import { AREA } from '../priorities';
 
 export const areaTemplate: {
   selectable: false;

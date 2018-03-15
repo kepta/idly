@@ -1,20 +1,18 @@
 import { IDLY_NS } from '../../constants';
 import { AREA } from '../priorities';
 import { areaCasingTemplate, areaTemplate } from './area.template';
-
+export const yellowNatural = [
+  'tag-natural-beach',
+  'tag-natural-sand',
+  'tag-natural-scrub',
+];
 export const yellowFilter = [
   'all',
   ['==', '$type', 'Polygon'],
   [
     'any',
     ['==', `${IDLY_NS}tag-sport`, 'tag-sport-beachvolleyball'],
-    [
-      'in',
-      `${IDLY_NS}tag-natural`,
-      'tag-natural-beach',
-      'tag-natural-sand',
-      'tag-natural-scrub',
-    ],
+    ['in', `${IDLY_NS}tag-natural`, ...yellowNatural],
     [
       'in',
       `${IDLY_NS}tag-amenity`,

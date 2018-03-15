@@ -27,9 +27,11 @@
 		"editor.formatOnSave": true,
 		"cSpell.words": [
 			"Quadkey",
+			"TOFIX",
 			"Visibles",
 			"bbox",
 			"bboxify",
+			"changeset",
 			"landuse",
 			"minzoom",
 			"mousehover",

@@ -8,6 +8,8 @@ export const blueLanduse = [
   'tag-landuse-harbour',
   'tag-landuse-reservoir',
 ];
+// natural water pond http://localhost:8080/#21.58/40.7216128/-73.9894839
+export const blueNatural = ['tag-natural-water'];
 export const blueFilter = [
   'all',
   ['==', '$type', 'Polygon'],
@@ -15,20 +17,9 @@ export const blueFilter = [
     'any',
     ['==', `${IDLY_NS}tag-amenity`, 'tag-amenity-swimming_pool'],
     ['==', `${IDLY_NS}tag-leisure`, 'tag-amenity-swimming_pool'],
-    ['==', `${IDLY_NS}tag-natural`, 'tag-amenity-water'],
+    ['==', `${IDLY_NS}tag-natural`, blueNatural[0]],
     ['in', `${IDLY_NS}tag-landuse`, ...blueLanduse],
   ],
-  // [
-  //   'in',
-  //   `${IDLY_NS}tagsClassType`,
-  //   'tag-amenity-swimming_pool',
-  //   'tag-leisure-swimming_pool',
-  //   'tag-natural-water',
-  //   'tag-landuse-aquaculture',
-  //   'tag-landuse-basin',
-  //   'tag-landuse-harbour',
-  //   'tag-landuse-reservoir',
-  // ],
 ];
 
 export default [
