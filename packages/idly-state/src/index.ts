@@ -32,10 +32,11 @@ import { OsmState } from './type';
  * 1. If a way is given all nodes inside it are also supplied, (NOT YET DISPROVEN)
  * 2. If a relation comes, the members may not be supplied (PROVEN)
  * 3. If a node exists, its parentWays & parentRelations are non deterministic.
- *     You can come close but will never knw for sure
+ *    You can come close but will never knw for sure
+ * 4. We still modify a parent relation whose members may or may not exist if one of its
+ *    child is modified.
  *
  * Our habbits
- * 1. We dont let the relation itself be modified unless its fully avaialble
  * 2. Relation as modification as a byproduct of one of its members is okay
  * 3. Even if relation is r3#1 (ie modified) we cannot let it modify unless its fully downloaded
  */

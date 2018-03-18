@@ -30,7 +30,7 @@ export function logIntroduceEntity(
 
   const setChild = setCreate(baseChildrenIds);
 
-  const log2 = logRewrite(state.log, id, baseChildrenIds)
+  const updatedEntities = logRewrite(state.log, id, baseChildrenIds)
     .reduce((prev: Array<{ currentId: string; childIds: string[] }>, entry) => {
       const presentId = setFind(r => baseId(r) === id, entry);
       if (presentId) {
@@ -58,5 +58,5 @@ export function logIntroduceEntity(
       [entity] as Array<Way | Relation>
     );
 
-  return { log: newLog, updatedEntities: log2 };
+  return { log: newLog, updatedEntities };
 }

@@ -1,4 +1,4 @@
-import { Table, tableBulkAdd } from '../../dataStructures/table';
+import { Table, tableAdd } from '../../dataStructures/table';
 
 import { iterableFlattenToSet } from '../../dataStructures/set';
 import {
@@ -35,7 +35,12 @@ export function virginAddElements<T extends { id: string }>(
   if (state.quadkeysTable.has(quadkey)) {
     return;
   }
-  tableBulkAdd(elements.map((r: T): [string, T] => [r.id, r]), state.elements);
+
+  elements.forEach(e => {
+    if (!state.elements.has(e.id)) {
+      tableAdd(e, e.id, state.elements);
+    }
+  });
   quadkeysTableAdd(state.quadkeysTable, elements.map(r => r.id), quadkey);
 }
 
