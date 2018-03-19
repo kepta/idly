@@ -11,6 +11,7 @@ export default [
       source: undefined,
       layout: {
         'symbol-placement': 'line',
+        'symbol-spacing': 400,
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
         'text-field': `{${IDLY_NS}name}`, // part 2 of this is how to do it
         'text-size': 12,

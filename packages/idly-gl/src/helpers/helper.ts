@@ -3,7 +3,6 @@ import bboxClip from '@turf/bbox-clip';
 import bboxPolygon from '@turf/bbox-polygon';
 import { FeatureCollection } from '@turf/helpers';
 import { BBox, mercator, Tile } from 'idly-common/lib/geo';
-import { Entity } from 'idly-common/lib/osm/structures';
 import parser from 'idly-faster-osm-parser';
 
 export function addSource(layer: any, source: string) {
@@ -83,7 +82,6 @@ export async function fetchTileXml(
     throw new Error(response.statusText);
   }
   const entities = parser(await response.text());
-  checkWay(entities);
   cache.set(bboxStr, entities);
   return entities;
 }
@@ -115,20 +113,4 @@ export function tapLog<T>(fn: T) {
     console.log('Log-- output', result);
     return result;
   };
-}
-
-// RELATIONS DONT SUPPLY THE FULL THING WOW!
-function checkWay(en: Entity[]) {
-  const x: Map<string, Entity> = new Map();
-  en.forEach(e => x.set(e.id, e));
-
-  for (const [id, e] of x) {
-    if (e.type === 'way') {
-      e.nodes.forEach(r => {
-        if (!x.has(r)) {
-          throw new Error(` ${e.id} doesnt have ${r}`);
-        }
-      });
-    }
-  }
 }

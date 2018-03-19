@@ -33,10 +33,7 @@ export const entityFeatureProperties = (element: Derived): any => {
   }
 
   if (element.entity.type === EntityType.NODE) {
-    return nodePropertiesGen(
-      element.entity,
-      element.parentWays.size === 0 ? OsmGeometry.POINT : OsmGeometry.VERTEX
-    );
+    return nodePropertiesGen(element.entity, element.parentWays.size);
   } else if (element.entity.type === EntityType.WAY) {
     return wayPropertiesGen(element.entity);
   }

@@ -1,6 +1,6 @@
 import { stateCreate } from 'idly-state/lib';
 import { workerGetMoveNode } from '../getMoveNode/worker';
-import { workerGetQuadkey } from '../getQuadkeys/worker';
+import { workerGetQuadkey } from '../getQuadkey/worker';
 import { expectStableMap, readJSON } from './utils';
 
 test('output matches snapshot', async () => {

@@ -416,1535 +416,1535 @@ exports[`output matches snapshot 2`] = `
 Array [
   Array [
     "n1009227169",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1009227169\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1009227169\\"}",
   ],
   Array [
     "n1009227178",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1009227178\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1009227178\\"}",
   ],
   Array [
     "n1009227181",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1009227181\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1009227181\\"}",
   ],
   Array [
     "n1009227184",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1009227184\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1009227184\\"}",
   ],
   Array [
     "n1266332589",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1266332589\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1266332589\\"}",
   ],
   Array [
     "n1266332591",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1266332591\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1266332591\\"}",
   ],
   Array [
     "n1578228601",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1578228601\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1578228601\\"}",
   ],
   Array [
     "n1606835106",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835106\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835106\\"}",
   ],
   Array [
     "n1606835332",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835332\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835332\\"}",
   ],
   Array [
     "n1606835656",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835656\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835656\\"}",
   ],
   Array [
     "n1606835749",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835749\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835749\\"}",
   ],
   Array [
     "n1606835806",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835806\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835806\\"}",
   ],
   Array [
     "n1606835877",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835877\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835877\\"}",
   ],
   Array [
     "n1606835909",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835909\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835909\\"}",
   ],
   Array [
     "n1606835928",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835928\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835928\\"}",
   ],
   Array [
     "n1606835943",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835943\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835943\\"}",
   ],
   Array [
     "n1606835948",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835948\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835948\\"}",
   ],
   Array [
     "n1606835950",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1606835950\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1606835950\\"}",
   ],
   Array [
     "n1659929482",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929482\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929482\\"}",
   ],
   Array [
     "n1659929483",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929483\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929483\\"}",
   ],
   Array [
     "n1659929484",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929484\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929484\\"}",
   ],
   Array [
     "n1659929485",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929485\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929485\\"}",
   ],
   Array [
     "n1659929486",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929486\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929486\\"}",
   ],
   Array [
     "n1659929487",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929487\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929487\\"}",
   ],
   Array [
     "n1659929488",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1659929488\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1659929488\\"}",
   ],
   Array [
     "n1697937651",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1697937651\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1697937651\\"}",
   ],
   Array [
     "n1957239968",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239968\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239968\\"}",
   ],
   Array [
     "n1957239969",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239969\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239969\\"}",
   ],
   Array [
     "n1957239970",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239970\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239970\\"}",
   ],
   Array [
     "n1957239971",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239971\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239971\\"}",
   ],
   Array [
     "n1957239972",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239972\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239972\\"}",
   ],
   Array [
     "n1957239974",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239974\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239974\\"}",
   ],
   Array [
     "n1957239975",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239975\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239975\\"}",
   ],
   Array [
     "n1957239976",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239976\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239976\\"}",
   ],
   Array [
     "n1957239977",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n1957239977\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n1957239977\\"}",
   ],
   Array [
     "n2166027696",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2166027696\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2166027696\\"}",
   ],
   Array [
     "n2166027697",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2166027697\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2166027697\\"}",
   ],
   Array [
     "n2350521133",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521133\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521133\\"}",
   ],
   Array [
     "n2350521135",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521135\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521135\\"}",
   ],
   Array [
     "n2350521137",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521137\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521137\\"}",
   ],
   Array [
     "n2350521159",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521159\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521159\\"}",
   ],
   Array [
     "n2350521168",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521168\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521168\\"}",
   ],
   Array [
     "n2350521170",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521170\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521170\\"}",
   ],
   Array [
     "n2350521172",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521172\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521172\\"}",
   ],
   Array [
     "n2350521182",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521182\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521182\\"}",
   ],
   Array [
     "n2350521188",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521188\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521188\\"}",
   ],
   Array [
     "n2350521190",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521190\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521190\\"}",
   ],
   Array [
     "n2350521192",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521192\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521192\\"}",
   ],
   Array [
     "n2350521202",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521202\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521202\\"}",
   ],
   Array [
     "n2350521210",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521210\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521210\\"}",
   ],
   Array [
     "n2350521222",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521222\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521222\\"}",
   ],
   Array [
     "n2350521256",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521256\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521256\\"}",
   ],
   Array [
     "n2350521280",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521280\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521280\\"}",
   ],
   Array [
     "n2350521282",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521282\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521282\\"}",
   ],
   Array [
     "n2350521284",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521284\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521284\\"}",
   ],
   Array [
     "n2350521286",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521286\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521286\\"}",
   ],
   Array [
     "n2350521288",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521288\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521288\\"}",
   ],
   Array [
     "n2350521290",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521290\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521290\\"}",
   ],
   Array [
     "n2350521292",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521292\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521292\\"}",
   ],
   Array [
     "n2350521294",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521294\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521294\\"}",
   ],
   Array [
     "n2350521296",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521296\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521296\\"}",
   ],
   Array [
     "n2350521300",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521300\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521300\\"}",
   ],
   Array [
     "n2350521302",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521302\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521302\\"}",
   ],
   Array [
     "n2350521306",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521306\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521306\\"}",
   ],
   Array [
     "n2350521308",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521308\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521308\\"}",
   ],
   Array [
     "n2350521310",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521310\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521310\\"}",
   ],
   Array [
     "n2350521312",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521312\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521312\\"}",
   ],
   Array [
     "n2350521314",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521314\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521314\\"}",
   ],
   Array [
     "n2350521316",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2350521316\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2350521316\\"}",
   ],
   Array [
     "n2577650684",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2577650684\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2577650684\\"}",
   ],
   Array [
     "n2577650688",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2577650688\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2577650688\\"}",
   ],
   Array [
     "n2577650689",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n2577650689\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n2577650689\\"}",
   ],
   Array [
     "n274327317",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n274327317\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n274327317\\"}",
   ],
   Array [
     "n274327327",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n274327327\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n274327327\\"}",
   ],
   Array [
     "n3234801485",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3234801485\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3234801485\\"}",
   ],
   Array [
     "n3234801487",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3234801487\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3234801487\\"}",
   ],
   Array [
     "n3235777307",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235777307\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235777307\\"}",
   ],
   Array [
     "n3235777329",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235777329\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235777329\\"}",
   ],
   Array [
     "n3235777370",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235777370\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235777370\\"}",
   ],
   Array [
     "n3235777392",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235777392\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235777392\\"}",
   ],
   Array [
     "n3235777410",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235777410\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235777410\\"}",
   ],
   Array [
     "n3235777414",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235777414\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235777414\\"}",
   ],
   Array [
     "n3235797370",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235797370\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235797370\\"}",
   ],
   Array [
     "n3235903195",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235903195\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235903195\\"}",
   ],
   Array [
     "n3235903196",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3235903196\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3235903196\\"}",
   ],
   Array [
     "n3536479707",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3536479707\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3536479707\\"}",
   ],
   Array [
     "n3616468549",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3616468549\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3616468549\\"}",
   ],
   Array [
     "n3616468550",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3616468550\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3616468550\\"}",
   ],
   Array [
     "n3630219664",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3630219664\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3630219664\\"}",
   ],
   Array [
     "n3630219670",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3630219670\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3630219670\\"}",
   ],
   Array [
     "n3630219671",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3630219671\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3630219671\\"}",
   ],
   Array [
     "n3686061877",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3686061877\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3686061877\\"}",
   ],
   Array [
     "n3686061894",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3686061894\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3686061894\\"}",
   ],
   Array [
     "n3686061915",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3686061915\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3686061915\\"}",
   ],
   Array [
     "n370888098",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370888098\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370888098\\"}",
   ],
   Array [
     "n370888099",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370888099\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370888099\\"}",
   ],
   Array [
     "n370888100",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-junction\\",\\"id\\":\\"n370888100\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-junction\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370888100\\"}",
   ],
   Array [
     "n370888802",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370888802\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370888802\\"}",
   ],
   Array [
     "n370891816",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370891816\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370891816\\"}",
   ],
   Array [
     "n370891817",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370891817\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370891817\\"}",
   ],
   Array [
     "n370891818",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370891818\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370891818\\"}",
   ],
   Array [
     "n370891819",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370891819\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370891819\\"}",
   ],
   Array [
     "n370891820",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370891820\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370891820\\"}",
   ],
   Array [
     "n370891825",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370891825\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370891825\\"}",
   ],
   Array [
     "n370892861",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-junction\\",\\"id\\":\\"n370892861\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-junction\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370892861\\"}",
   ],
   Array [
     "n370901769",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n370901769\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n370901769\\"}",
   ],
   Array [
     "n387181480",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n387181480\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n387181480\\"}",
   ],
   Array [
     "n387181482",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n387181482\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n387181482\\"}",
   ],
   Array [
     "n3944685932",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685932\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685932\\"}",
   ],
   Array [
     "n3944685933",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685933\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685933\\"}",
   ],
   Array [
     "n3944685934",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685934\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685934\\"}",
   ],
   Array [
     "n3944685935",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685935\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685935\\"}",
   ],
   Array [
     "n3944685936",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685936\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685936\\"}",
   ],
   Array [
     "n3944685937",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685937\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685937\\"}",
   ],
   Array [
     "n3944685938",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685938\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685938\\"}",
   ],
   Array [
     "n3944685939",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685939\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685939\\"}",
   ],
   Array [
     "n3944685940",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685940\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685940\\"}",
   ],
   Array [
     "n3944685941",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685941\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685941\\"}",
   ],
   Array [
     "n3944685942",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685942\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685942\\"}",
   ],
   Array [
     "n3944685943",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685943\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685943\\"}",
   ],
   Array [
     "n3944685944",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685944\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685944\\"}",
   ],
   Array [
     "n3944685945",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685945\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685945\\"}",
   ],
   Array [
     "n3944685946",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685946\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685946\\"}",
   ],
   Array [
     "n3944685947",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685947\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685947\\"}",
   ],
   Array [
     "n3944685948",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685948\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685948\\"}",
   ],
   Array [
     "n3944685949",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685949\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685949\\"}",
   ],
   Array [
     "n3944685950",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685950\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685950\\"}",
   ],
   Array [
     "n3944685951",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685951\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685951\\"}",
   ],
   Array [
     "n3944685952",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685952\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685952\\"}",
   ],
   Array [
     "n3944685953",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685953\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685953\\"}",
   ],
   Array [
     "n3944685954",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685954\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685954\\"}",
   ],
   Array [
     "n3944685956",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944685956\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944685956\\"}",
   ],
   Array [
     "n3944686157",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686157\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686157\\"}",
   ],
   Array [
     "n3944686158",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686158\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686158\\"}",
   ],
   Array [
     "n3944686159",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686159\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686159\\"}",
   ],
   Array [
     "n3944686160",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686160\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686160\\"}",
   ],
   Array [
     "n3944686161",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686161\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686161\\"}",
   ],
   Array [
     "n3944686162",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686162\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686162\\"}",
   ],
   Array [
     "n3944686163",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686163\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686163\\"}",
   ],
   Array [
     "n3944686164",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686164\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686164\\"}",
   ],
   Array [
     "n3944686165",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686165\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686165\\"}",
   ],
   Array [
     "n3944686166",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686166\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686166\\"}",
   ],
   Array [
     "n3944686167",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686167\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686167\\"}",
   ],
   Array [
     "n3944686168",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686168\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686168\\"}",
   ],
   Array [
     "n3944686169",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686169\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686169\\"}",
   ],
   Array [
     "n3944686170",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686170\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686170\\"}",
   ],
   Array [
     "n3944686171",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686171\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686171\\"}",
   ],
   Array [
     "n3944686172",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686172\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686172\\"}",
   ],
   Array [
     "n3944686173",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686173\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686173\\"}",
   ],
   Array [
     "n3944686174",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686174\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686174\\"}",
   ],
   Array [
     "n3944686175",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686175\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686175\\"}",
   ],
   Array [
     "n3944686176",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686176\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686176\\"}",
   ],
   Array [
     "n3944686177",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686177\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686177\\"}",
   ],
   Array [
     "n3944686178",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686178\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686178\\"}",
   ],
   Array [
     "n3944686179",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686179\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686179\\"}",
   ],
   Array [
     "n3944686181",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686181\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686181\\"}",
   ],
   Array [
     "n3944686182",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686182\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686182\\"}",
   ],
   Array [
     "n3944686183",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686183\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686183\\"}",
   ],
   Array [
     "n3944686184",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686184\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686184\\"}",
   ],
   Array [
     "n3944686185",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686185\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686185\\"}",
   ],
   Array [
     "n3944686186",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686186\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686186\\"}",
   ],
   Array [
     "n3944686187",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686187\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686187\\"}",
   ],
   Array [
     "n3944686188",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686188\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686188\\"}",
   ],
   Array [
     "n3944686189",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686189\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686189\\"}",
   ],
   Array [
     "n3944686190",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686190\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686190\\"}",
   ],
   Array [
     "n3944686191",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686191\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686191\\"}",
   ],
   Array [
     "n3944686192",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686192\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686192\\"}",
   ],
   Array [
     "n3944686195",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686195\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686195\\"}",
   ],
   Array [
     "n3944686196",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686196\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686196\\"}",
   ],
   Array [
     "n3944686197",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686197\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686197\\"}",
   ],
   Array [
     "n3944686198",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686198\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686198\\"}",
   ],
   Array [
     "n3944686199",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686199\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686199\\"}",
   ],
   Array [
     "n3944686200",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686200\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686200\\"}",
   ],
   Array [
     "n3944686201",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686201\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686201\\"}",
   ],
   Array [
     "n3944686202",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686202\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686202\\"}",
   ],
   Array [
     "n3944686203",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686203\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686203\\"}",
   ],
   Array [
     "n3944686204",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686204\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686204\\"}",
   ],
   Array [
     "n3944686205",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686205\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686205\\"}",
   ],
   Array [
     "n3944686207",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686207\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686207\\"}",
   ],
   Array [
     "n3944686208",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686208\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686208\\"}",
   ],
   Array [
     "n3944686209",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686209\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686209\\"}",
   ],
   Array [
     "n3944686210",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686210\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686210\\"}",
   ],
   Array [
     "n3944686211",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686211\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686211\\"}",
   ],
   Array [
     "n3944686212",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686212\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686212\\"}",
   ],
   Array [
     "n3944686213",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686213\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686213\\"}",
   ],
   Array [
     "n3944686214",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686214\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686214\\"}",
   ],
   Array [
     "n3944686215",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686215\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686215\\"}",
   ],
   Array [
     "n3944686216",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686216\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686216\\"}",
   ],
   Array [
     "n3944686217",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686217\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686217\\"}",
   ],
   Array [
     "n3944686218",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686218\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686218\\"}",
   ],
   Array [
     "n3944686219",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686219\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686219\\"}",
   ],
   Array [
     "n3944686220",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686220\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686220\\"}",
   ],
   Array [
     "n3944686221",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686221\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686221\\"}",
   ],
   Array [
     "n3944686222",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686222\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686222\\"}",
   ],
   Array [
     "n3944686223",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686223\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686223\\"}",
   ],
   Array [
     "n3944686224",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686224\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686224\\"}",
   ],
   Array [
     "n3944686225",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686225\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686225\\"}",
   ],
   Array [
     "n3944686226",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686226\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686226\\"}",
   ],
   Array [
     "n3944686227",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686227\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686227\\"}",
   ],
   Array [
     "n3944686228",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686228\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686228\\"}",
   ],
   Array [
     "n3944686229",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686229\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686229\\"}",
   ],
   Array [
     "n3944686230",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686230\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686230\\"}",
   ],
   Array [
     "n3944686231",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686231\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686231\\"}",
   ],
   Array [
     "n3944686233",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686233\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686233\\"}",
   ],
   Array [
     "n3944686234",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n3944686234\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n3944686234\\"}",
   ],
   Array [
     "n4156797283",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4156797283\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4156797283\\"}",
   ],
   Array [
     "n4156797285",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4156797285\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4156797285\\"}",
   ],
   Array [
     "n4156798792",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4156798792\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4156798792\\"}",
   ],
   Array [
     "n4156798796",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4156798796\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4156798796\\"}",
   ],
   Array [
     "n4156798802",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4156798802\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4156798802\\"}",
   ],
   Array [
     "n4156798803",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4156798803\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4156798803\\"}",
   ],
   Array [
     "n4207774912",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4207774912\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4207774912\\"}",
   ],
   Array [
     "n4219850722",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4219850722\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4219850722\\"}",
   ],
   Array [
     "n42423039",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42423039\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42423039\\"}",
   ],
   Array [
     "n42423295",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-traffic-signals\\",\\"id\\":\\"n42423295\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-traffic-signals\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42423295\\"}",
   ],
   Array [
     "n42423296",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42423296\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42423296\\"}",
   ],
   Array [
     "n42423300",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42423300\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42423300\\"}",
   ],
   Array [
     "n42423307",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42423307\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42423307\\"}",
   ],
   Array [
     "n42424641",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42424641\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":true,\\"id\\":\\"n42424641\\"}",
   ],
   Array [
     "n42430973",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42430973\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42430973\\"}",
   ],
   Array [
     "n42437522",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42437522\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42437522\\"}",
   ],
   Array [
     "n4244397097",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4244397097\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4244397097\\"}",
   ],
   Array [
     "n42446424",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42446424\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42446424\\"}",
   ],
   Array [
     "n42450819",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450819\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450819\\"}",
   ],
   Array [
     "n42450820",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-junction\\",\\"id\\":\\"n42450820\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"poi-junction\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450820\\"}",
   ],
   Array [
     "n42450825",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450825\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450825\\"}",
   ],
   Array [
     "n42450829",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450829\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450829\\"}",
   ],
   Array [
     "n42450831",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450831\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450831\\"}",
   ],
   Array [
     "n42450833",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450833\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450833\\"}",
   ],
   Array [
     "n42450840",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450840\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450840\\"}",
   ],
   Array [
     "n42450845",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450845\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450845\\"}",
   ],
   Array [
     "n42450849",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42450849\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42450849\\"}",
   ],
   Array [
     "n42451503",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42451503\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42451503\\"}",
   ],
   Array [
     "n42451508",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42451508\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42451508\\"}",
   ],
   Array [
     "n42451513",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42451513\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42451513\\"}",
   ],
   Array [
     "n42451518",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42451518\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42451518\\"}",
   ],
   Array [
     "n42451523",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42451523\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42451523\\"}",
   ],
   Array [
     "n42452916",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42452916\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42452916\\"}",
   ],
   Array [
     "n42452936",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42452936\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":true,\\"id\\":\\"n42452936\\"}",
   ],
   Array [
     "n42457951",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457951\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457951\\"}",
   ],
   Array [
     "n42457953",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457953\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457953\\"}",
   ],
   Array [
     "n42457956",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457956\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457956\\"}",
   ],
   Array [
     "n42457958",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457958\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457958\\"}",
   ],
   Array [
     "n42457962",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457962\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457962\\"}",
   ],
   Array [
     "n42457964",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457964\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457964\\"}",
   ],
   Array [
     "n42457971",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n42457971\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n42457971\\"}",
   ],
   Array [
     "n4300940097",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300940097\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300940097\\"}",
   ],
   Array [
     "n4300945418",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300945418\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300945418\\"}",
   ],
   Array [
     "n4300992063",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300992063\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300992063\\"}",
   ],
   Array [
     "n4300992074",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300992074\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300992074\\"}",
   ],
   Array [
     "n4300992079",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300992079\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300992079\\"}",
   ],
   Array [
     "n4300992084",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300992084\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300992084\\"}",
   ],
   Array [
     "n4300994808",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994808\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994808\\"}",
   ],
   Array [
     "n4300994809",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994809\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994809\\"}",
   ],
   Array [
     "n4300994810",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994810\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994810\\"}",
   ],
   Array [
     "n4300994812",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994812\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994812\\"}",
   ],
   Array [
     "n4300994814",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994814\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994814\\"}",
   ],
   Array [
     "n4300994827",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994827\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994827\\"}",
   ],
   Array [
     "n4300994837",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994837\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994837\\"}",
   ],
   Array [
     "n4300994842",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994842\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994842\\"}",
   ],
   Array [
     "n4300994852",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994852\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994852\\"}",
   ],
   Array [
     "n4300994854",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994854\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994854\\"}",
   ],
   Array [
     "n4300994857",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994857\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994857\\"}",
   ],
   Array [
     "n4300994861",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994861\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994861\\"}",
   ],
   Array [
     "n4300994879",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994879\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":true,\\"id\\":\\"n4300994879\\"}",
   ],
   Array [
     "n4300994881",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994881\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994881\\"}",
   ],
   Array [
     "n4300994882",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994882\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994882\\"}",
   ],
   Array [
     "n4300994888",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994888\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994888\\"}",
   ],
   Array [
     "n4300994896",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994896\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994896\\"}",
   ],
   Array [
     "n4300994900",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4300994900\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4300994900\\"}",
   ],
   Array [
     "n4301308502",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4301308502\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4301308502\\"}",
   ],
   Array [
     "n436764904",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764904\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764904\\"}",
   ],
   Array [
     "n436764905",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764905\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764905\\"}",
   ],
   Array [
     "n436764910",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764910\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764910\\"}",
   ],
   Array [
     "n436764911",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764911\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764911\\"}",
   ],
   Array [
     "n436764912",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764912\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764912\\"}",
   ],
   Array [
     "n436764913",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764913\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764913\\"}",
   ],
   Array [
     "n436764914",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764914\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764914\\"}",
   ],
   Array [
     "n436764915",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764915\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764915\\"}",
   ],
   Array [
     "n436764916",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764916\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764916\\"}",
   ],
   Array [
     "n436764917",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764917\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764917\\"}",
   ],
   Array [
     "n436764918",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764918\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764918\\"}",
   ],
   Array [
     "n436764919",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764919\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764919\\"}",
   ],
   Array [
     "n436764920",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764920\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764920\\"}",
   ],
   Array [
     "n436764922",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764922\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764922\\"}",
   ],
   Array [
     "n436764924",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764924\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764924\\"}",
   ],
   Array [
     "n436764927",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764927\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764927\\"}",
   ],
   Array [
     "n436764933",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764933\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764933\\"}",
   ],
   Array [
     "n436764934",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764934\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764934\\"}",
   ],
   Array [
     "n436764937",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764937\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764937\\"}",
   ],
   Array [
     "n436764938",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764938\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764938\\"}",
   ],
   Array [
     "n436764942",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764942\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764942\\"}",
   ],
   Array [
     "n436764944",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764944\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764944\\"}",
   ],
   Array [
     "n436764945",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764945\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764945\\"}",
   ],
   Array [
     "n436764948",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764948\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764948\\"}",
   ],
   Array [
     "n436764949",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764949\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764949\\"}",
   ],
   Array [
     "n436764951",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764951\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764951\\"}",
   ],
   Array [
     "n436764952",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764952\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764952\\"}",
   ],
   Array [
     "n436764953",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764953\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764953\\"}",
   ],
   Array [
     "n436764954",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764954\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764954\\"}",
   ],
   Array [
     "n436764955",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764955\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764955\\"}",
   ],
   Array [
     "n436764956",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764956\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764956\\"}",
   ],
   Array [
     "n436764957",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764957\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764957\\"}",
   ],
   Array [
     "n436764958",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764958\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764958\\"}",
   ],
   Array [
     "n436764959",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764959\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764959\\"}",
   ],
   Array [
     "n436764961",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764961\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764961\\"}",
   ],
   Array [
     "n436764962",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764962\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764962\\"}",
   ],
   Array [
     "n436764963",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764963\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764963\\"}",
   ],
   Array [
     "n436764964",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436764964\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436764964\\"}",
   ],
   Array [
     "n436766073",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766073\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766073\\"}",
   ],
   Array [
     "n436766076",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766076\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766076\\"}",
   ],
   Array [
     "n436766078",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766078\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766078\\"}",
   ],
   Array [
     "n436766079",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766079\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766079\\"}",
   ],
   Array [
     "n436766080",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766080\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766080\\"}",
   ],
   Array [
     "n436766081",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766081\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766081\\"}",
   ],
   Array [
     "n436766082",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766082\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766082\\"}",
   ],
   Array [
     "n436766086",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766086\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766086\\"}",
   ],
   Array [
     "n436766087",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766087\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766087\\"}",
   ],
   Array [
     "n436766089",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766089\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766089\\"}",
   ],
   Array [
     "n436766090",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766090\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766090\\"}",
   ],
   Array [
     "n436766091",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766091\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766091\\"}",
   ],
   Array [
     "n436766093",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766093\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766093\\"}",
   ],
   Array [
     "n436766095",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766095\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766095\\"}",
   ],
   Array [
     "n436766097",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766097\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766097\\"}",
   ],
   Array [
     "n436766098",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766098\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766098\\"}",
   ],
   Array [
     "n436766099",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766099\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766099\\"}",
   ],
   Array [
     "n436766101",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766101\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766101\\"}",
   ],
   Array [
     "n436766103",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766103\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766103\\"}",
   ],
   Array [
     "n436766106",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766106\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766106\\"}",
   ],
   Array [
     "n436766108",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766108\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766108\\"}",
   ],
   Array [
     "n436766113",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766113\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766113\\"}",
   ],
   Array [
     "n436766116",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766116\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766116\\"}",
   ],
   Array [
     "n436766118",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766118\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766118\\"}",
   ],
   Array [
     "n436766120",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766120\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766120\\"}",
   ],
   Array [
     "n436766124",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766124\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766124\\"}",
   ],
   Array [
     "n436766127",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766127\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766127\\"}",
   ],
   Array [
     "n436766129",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n436766129\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n436766129\\"}",
   ],
   Array [
     "n4487598490",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4487598490\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4487598490\\"}",
   ],
   Array [
     "n4489003011",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4489003011\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4489003011\\"}",
   ],
   Array [
     "n4489003012",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4489003012\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4489003012\\"}",
   ],
   Array [
     "n4727104610",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4727104610\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4727104610\\"}",
   ],
   Array [
     "n4806870005",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4806870005\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4806870005\\"}",
   ],
   Array [
     "n486849239",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486849239\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486849239\\"}",
   ],
   Array [
     "n486859044",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486859044\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486859044\\"}",
   ],
   Array [
     "n486859046",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486859046\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486859046\\"}",
   ],
   Array [
     "n486859051",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486859051\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486859051\\"}",
   ],
   Array [
     "n486876220",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876220\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876220\\"}",
   ],
   Array [
     "n486876221",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876221\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876221\\"}",
   ],
   Array [
     "n486876222",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876222\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876222\\"}",
   ],
   Array [
     "n486876223",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876223\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876223\\"}",
   ],
   Array [
     "n486876465",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876465\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876465\\"}",
   ],
   Array [
     "n486876695",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876695\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876695\\"}",
   ],
   Array [
     "n486876696",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876696\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876696\\"}",
   ],
   Array [
     "n486876698",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876698\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876698\\"}",
   ],
   Array [
     "n486876700",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876700\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876700\\"}",
   ],
   Array [
     "n486876718",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n486876718\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n486876718\\"}",
   ],
   Array [
     "n4913172940",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4913172940\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4913172940\\"}",
   ],
   Array [
     "n4913172941",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n4913172941\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n4913172941\\"}",
   ],
   Array [
     "n5079840928",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5079840928\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5079840928\\"}",
   ],
   Array [
     "n5119807677",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5119807677\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5119807677\\"}",
   ],
   Array [
     "n5145531515",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5145531515\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5145531515\\"}",
   ],
   Array [
     "n5145531520",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5145531520\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5145531520\\"}",
   ],
   Array [
     "n5173624710",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173624710\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173624710\\"}",
   ],
   Array [
     "n5173624711",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173624711\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173624711\\"}",
   ],
   Array [
     "n5173624715",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173624715\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173624715\\"}",
   ],
   Array [
     "n5173624717",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173624717\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173624717\\"}",
   ],
   Array [
     "n5173624720",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173624720\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173624720\\"}",
   ],
   Array [
     "n5173625921",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173625921\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173625921\\"}",
   ],
   Array [
     "n5173625922",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5173625922\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5173625922\\"}",
   ],
   Array [
     "n5251345186",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5251345186\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5251345186\\"}",
   ],
   Array [
     "n5377706605",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5377706605\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5377706605\\"}",
   ],
   Array [
     "n5377706611",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n5377706611\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n5377706611\\"}",
   ],
   Array [
     "n592627483",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n592627483\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n592627483\\"}",
   ],
   Array [
     "n592627485",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n592627485\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n592627485\\"}",
   ],
   Array [
     "n592627490",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n592627490\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n592627490\\"}",
   ],
   Array [
     "n592627491",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n592627491\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n592627491\\"}",
   ],
   Array [
     "n592627492",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n592627492\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n592627492\\"}",
   ],
   Array [
     "n592627494",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n592627494\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n592627494\\"}",
   ],
   Array [
     "n598195025",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n598195025\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n598195025\\"}",
   ],
   Array [
     "n598195035",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n598195035\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n598195035\\"}",
   ],
   Array [
     "n598195051",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n598195051\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n598195051\\"}",
   ],
   Array [
     "n607922918",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n607922918\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n607922918\\"}",
   ],
   Array [
     "n607923982",
-    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"id\\":\\"n607923982\\"}",
+    "{\\"@idly-geometry\\":\\"vertex\\",\\"@idly-icon\\":\\"circle\\",\\"@idly-intersection\\":false,\\"id\\":\\"n607923982\\"}",
   ],
   Array [
     "w125527383",

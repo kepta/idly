@@ -6,6 +6,7 @@ import areaLabels from './label/areaLabels';
 import lineLabel from './label/lineLabel';
 import pointsWithLabels from './label/pointsWithLabels';
 import onewayArrows from './nonInteractive/onewayArrows';
+import intersections from './point/intersections';
 import pointsWithoutLabels from './point/points';
 import rail from './rail';
 import waterway from './waterway';
@@ -21,6 +22,7 @@ const layers = [
   ...lineLabel,
   ...pointsWithLabels,
   ...pointsWithoutLabels,
+  ...intersections,
   ...pointsDraggable,
 ]
   .filter(r => !r.hide)

@@ -31,11 +31,13 @@
 			"Visibles",
 			"bbox",
 			"bboxify",
+			"cancellable",
 			"changeset",
 			"landuse",
 			"minzoom",
 			"mousehover",
 			"oneway",
+			"preact",
 			"selectable"
 		],
 		"search.exclude": {

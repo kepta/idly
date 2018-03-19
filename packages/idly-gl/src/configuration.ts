@@ -16,3 +16,5 @@ export const mapInteraction = {
   // the distance for activating an interaction
   RADIUS: 6,
 };
+
+export const BASE_SOURCE = 'idly-gl-base-src';

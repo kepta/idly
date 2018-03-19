@@ -3,7 +3,7 @@ import { INTERACTIVE } from '../priorities';
 export default [
   {
     selectable: true,
-    hide: false,
+    hide: true,
     priority: INTERACTIVE.ZERO,
     layer: {
       minzoom: 18.5,
@@ -20,7 +20,7 @@ export default [
   },
   {
     selectable: true,
-    hide: false,
+    hide: true,
     priority: INTERACTIVE.MINUS_1,
     layer: {
       minzoom: 18.5,

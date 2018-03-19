@@ -17,10 +17,11 @@ import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 import { BBox, bboxToTiles } from 'idly-common/lib/geo';
 import { tileToQuadkey } from 'idly-common/lib/misc';
-import { Entity } from 'idly-common/lib/osm/structures';
+import { Entity, OsmGeometry } from 'idly-common/lib/osm/structures';
 
 import { merge } from 'rxjs/observable/merge';
 import { mapInteraction, quadkey } from './configuration';
+import { IDLY_NS } from './constants';
 import {
   bboxify,
   distance,
@@ -152,7 +153,7 @@ export function makeQuadkey$(
       return fromPromise(
         Promise.all([
           d.map(e => e[0]),
-          workerOperations.getQuadkeys(
+          workerOperations.getQuadkey(
             d.map(e => ({
               quadkey: e[0],
               entities: e[1],
@@ -161,6 +162,40 @@ export function makeQuadkey$(
         ])
       );
     })
+  );
+}
+
+export function makeQuadkey2$(
+  glMap: any
+): Observable<Array<{ quadkey: string; entities: Entity[] }>> {
+  return makeMoveend$(glMap).pipe(
+    debounceTime(450),
+    startWith('' as any),
+    rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
+    filter(([_, zoom]) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
+    rxMap(([bounds, zoom]: any) =>
+      getTiles(
+        [
+          bounds.getWest(),
+          bounds.getSouth(),
+          bounds.getEast(),
+          bounds.getNorth(),
+        ],
+        zoom
+      )
+    ),
+    switchMap(tiles =>
+      fromPromise(
+        Promise.all(
+          tiles.map(t =>
+            fetchTileXml(t.x, t.y, t.z).then(r => ({
+              quadkey: tileToQuadkey(t),
+              entities: r,
+            }))
+          )
+        )
+      )
+    )
   );
 }
 
@@ -226,6 +261,70 @@ export function makeNearestNode$(glMap: any, radius = mapInteraction.RADIUS) {
   );
 }
 
+export function makeNearestEntity$(glMap: any, radius = mapInteraction.RADIUS) {
+  return makeMousemove$(glMap).pipe(
+    throttleTime(50),
+    rxMap(e => {
+      const eCoords: [number, number] = [e.lngLat.lng, e.lngLat.lat];
+      return glMap
+        .queryRenderedFeatures(bboxify(e, radius))
+        .filter((f: any) => f.properties.id)
+        .sort((a: any, b: any) => {
+          if (a.geometry.type === 'Point' && b.geometry.type === 'Point') {
+            return (
+              distance(eCoords, a._geometry.coordinates) -
+              distance(eCoords, b._geometry.coordinates)
+            );
+          }
+          if (a.geometry.type === 'Point') {
+            return -1;
+          }
+          if (b.geometry.type === 'Point') {
+            return 1;
+          }
+          return a.properties.id.localeCompare(b.properties.id);
+        })[0];
+    }),
+    distinctUntilChanged(
+      (p, q) =>
+        p == null && p === q
+          ? true
+          : p && q && p.properties.id === q.properties.id
+    )
+  );
+}
+
+export function makeSelectEntity$(glMap: any, radius = 2) {
+  return makeClick$(glMap).pipe(
+    rxMap(
+      e =>
+        glMap
+          .queryRenderedFeatures(bboxify(e, radius))
+          .filter((f: any) => f.properties.id)
+          .sort((a: any, b: any) => {
+            if (a.geometry.type === 'Point') {
+              return -1;
+            }
+            if (b.geometry.type === 'Point') {
+              return 1;
+            }
+            if (a.properties[`${IDLY_NS}geometry`] === OsmGeometry.LINE) {
+              return -1;
+            }
+            if (b.properties[`${IDLY_NS}geometry`] === OsmGeometry.LINE) {
+              return 1;
+            }
+            return a.properties.id.localeCompare(b.properties.id);
+          })[0]
+    ),
+    distinctUntilChanged(
+      (p, q) =>
+        p == null && p === q
+          ? true
+          : p && q && p.properties.id === q.properties.id
+    )
+  );
+}
 export function makeDrag$(
   glMap: any,
   layer: string,

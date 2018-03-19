@@ -34,11 +34,12 @@ export const entityToGeoJson = (
     } else if (element.entity.type === EntityType.WAY) {
       r = wayCombiner(element.entity, table, entityFeatureProperties(element));
     } else {
+      // console.log(element.entity.tags.type, element);
       continue;
     }
     result.push(r);
     _internalCache.set(element, r);
   }
-  console.log('cache', count, 'sizze', table.size);
+  console.log('cache', count, 'size', table.size);
   return result;
 };
