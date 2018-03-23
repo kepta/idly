@@ -1,41 +1,32 @@
-import { Feature } from '@turf/helpers';
 import { OsmGeometry } from 'idly-common/lib/osm/structures';
-import { IDLY_NS } from '../constants';
-import { InteractiveGlElement } from '../helpers/InteractiveGlElement';
-import { makeClick$ } from '../streams';
+import { IDLY_NS } from '../../constants';
+import { ComponentUpdateType } from '../../helpers/CompX';
+import { GlComp } from '../../helpers/GlComp';
 
 export interface Props {
-  id?: string;
-  feature?: Feature<any>;
+  feature?: { id?: any; properties: any; geometry: any };
 }
-
-export class SelectEntity extends InteractiveGlElement<Props, any> {
-  protected glInstance: any;
-  protected state = {};
-
-  private onSelectEntity!: () => void;
-
-  constructor(
-    props: Props,
-    gl: any,
-    selectEntity: () => void,
-    beforeLayer?: string
-  ) {
-    super(props, 'select-layer', beforeLayer);
-    this.glInstance = gl;
-
-    this.onSelectEntity = selectEntity;
-
-    makeClick$(gl).forEach(this.onSelectEntity);
+export class Hover extends GlComp<Props, {}, any, any> {
+  constructor(props: Props, gl: any, beforeLayer?: string) {
+    super(props, {}, gl, 'hover-layer', beforeLayer);
+    this.mount();
   }
 
-  protected render() {
-    const feature = this.props.feature;
+  protected shouldComponentUpdate({
+    prev,
+    next,
+  }: ComponentUpdateType<Props, {}>) {
+    return prev.props.feature !== next.props.feature;
+  }
+
+  protected render(props: Props) {
+    const feature = props.feature;
+
     if (!feature || !feature.properties) {
       return null;
     }
     const geometry = feature.properties[`${IDLY_NS}geometry`];
-    const coord = feature.geometry.coordinates;
+    const coordinates = feature.geometry.coordinates;
 
     if (geometry === OsmGeometry.POINT) {
       return {
@@ -43,7 +34,7 @@ export class SelectEntity extends InteractiveGlElement<Props, any> {
           type: 'geojson',
           data: {
             type: 'Point',
-            coordinates: coord,
+            coordinates,
           },
         },
         layers: {
@@ -51,7 +42,7 @@ export class SelectEntity extends InteractiveGlElement<Props, any> {
             type: 'circle',
             paint: {
               'circle-radius': 16,
-              'circle-color': '#00f9ff',
+              'circle-color': '#fbb03b',
             },
           },
         },
@@ -62,15 +53,15 @@ export class SelectEntity extends InteractiveGlElement<Props, any> {
           type: 'geojson',
           data: {
             type: 'Polygon',
-            coordinates: coord,
+            coordinates,
           },
         },
         layers: {
           fill: {
             type: 'fill',
             paint: {
-              'fill-color': '#00f9ff',
-              'fill-outline-color': '#00f9ff',
+              'fill-color': '#fbb03b',
+              'fill-outline-color': '#fbb03b',
               'fill-opacity': 0.1,
             },
           },
@@ -83,7 +74,7 @@ export class SelectEntity extends InteractiveGlElement<Props, any> {
               'line-round-limit': 0.5,
             },
             paint: {
-              'line-color': '#00f9ff',
+              'line-color': '#fbb03b',
               'line-opacity': 0.8,
               'line-width': 12,
               'line-offset': -6,
@@ -97,7 +88,7 @@ export class SelectEntity extends InteractiveGlElement<Props, any> {
           type: 'geojson',
           data: {
             type: 'LineString',
-            coordinates: coord,
+            coordinates,
           },
         },
         layers: {
@@ -108,16 +99,13 @@ export class SelectEntity extends InteractiveGlElement<Props, any> {
               'line-join': 'round',
             },
             paint: {
-              'line-color': '#00f9ff',
+              'line-color': '#fbb03b',
               'line-width': 22,
             },
           },
         },
       };
     }
-  }
-
-  protected shouldComponentUpdate(nextProps: Props) {
-    return nextProps.id !== this.props.id;
+    return;
   }
 }

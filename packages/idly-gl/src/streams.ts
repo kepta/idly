@@ -1,4 +1,3 @@
-import { FeatureCollection, Properties } from '@turf/helpers';
 import { Map, MapMouseEvent, MapTouchEvent } from 'mapbox-gl/dist/mapbox-gl';
 import { Observable } from 'rxjs/Observable';
 import { fromEventPattern } from 'rxjs/observable/fromEventPattern';
@@ -28,8 +27,7 @@ import {
   fetchTileXml,
   tilesFilterSmall,
 } from './helpers/helper';
-import { workerOperations } from './plugin/worker2';
-// import { workerGetQuadkeys } from './plugin/worker';
+import { workerOperations } from './worker';
 
 export function glObservable<T>(
   glMap: Map,
@@ -112,16 +110,18 @@ export function makeMouseleave$(
   return glObservable(glMap, 'mouseleave', layer);
 }
 
-export function makeQuadkey$(
-  glMap: any
-): Observable<[string[], FeatureCollection<any, Properties>]> {
+const CHILD = ['0', '1', '2', '3'];
+
+const quadkeyGetChildren = (q: string) => CHILD.map(c => q + c);
+
+export function moveEndBbox$(glMap: any) {
   return makeMoveend$(glMap).pipe(
     debounceTime(450),
     startWith('' as any),
     rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
     filter(([_, zoom]) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
-    rxMap(([bounds, zoom]: any) =>
-      getTiles(
+    rxMap(([bounds, zoom]) => {
+      const quadkeys = getTiles(
         [
           bounds.getWest(),
           bounds.getSouth(),
@@ -129,43 +129,24 @@ export function makeQuadkey$(
           bounds.getNorth(),
         ],
         zoom
-      )
-    ),
-    switchMap(tiles =>
-      fromPromise(
-        Promise.all(
-          tiles.map(
-            t =>
-              fetchTileXml(t.x, t.y, t.z).then(r => [
-                tileToQuadkey(t),
-                r,
-              ]) as Promise<[string, Entity[]]>
-          )
-        )
-      )
-    ),
-    switchMap(d => {
-      console.time('getQuadkey');
-      window.res = d.map(e => ({
-        quadkey: e[0],
-        entities: e[1],
-      }));
-      return fromPromise(
-        Promise.all([
-          d.map(e => e[0]),
-          workerOperations.getQuadkey(
-            d.map(e => ({
-              quadkey: e[0],
-              entities: e[1],
-            }))
-          ),
-        ])
-      );
+      ).map(tileToQuadkey);
+
+      const qSet = new Set(quadkeys);
+      const result = new Set();
+      quadkeys.forEach(q => {
+        const parent = q.substr(0, q.length - 1);
+        if (quadkeyGetChildren(parent).every(c => qSet.has(c))) {
+          result.add(parent);
+        } else {
+          result.add(q);
+        }
+      });
+      return [...result];
     })
   );
 }
 
-export function makeQuadkey2$(
+export function getQuadkeys$(
   glMap: any
 ): Observable<Array<{ quadkey: string; entities: Entity[] }>> {
   return makeMoveend$(glMap).pipe(
@@ -199,6 +180,30 @@ export function makeQuadkey2$(
   );
 }
 
+export function makeLoadingQuadkeys$(glMap: any): Observable<string[]> {
+  return makeMoveend$(glMap).pipe(
+    debounceTime(600),
+    startWith('' as any),
+    rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
+    filter(
+      ([_, zoom]) => zoom > quadkey.ZOOM_MIN - 2 && zoom <= quadkey.ZOOM_MAX
+    ),
+    rxMap(([bounds, zoom]: any) => {
+      const tiles = bboxToTiles(
+        [
+          bounds.getWest(),
+          bounds.getSouth(),
+          bounds.getEast(),
+          bounds.getNorth(),
+        ],
+        zoom < quadkey.ZOOM_MIN ? quadkey.ZOOM_MIN : zoom + 2
+      );
+
+      return tiles.map(tileToQuadkey);
+    })
+  );
+}
+
 export function makeHover$(
   glMap: any,
   layer: string,
@@ -206,36 +211,6 @@ export function makeHover$(
   mouseleave$ = makeMouseleave$(glMap, layer)
 ): Observable<MapMouseEvent | MapTouchEvent> {
   return merge(mouseenter$, mouseleave$);
-}
-
-export function makeSelected$(
-  glMap: any,
-  findClause: (f: any) => boolean,
-  radius = 2
-) {
-  return makeClick$(glMap).pipe(
-    rxMap(e =>
-      glMap.queryRenderedFeatures(bboxify(e, radius)).find(findClause)
-    ),
-    distinctUntilChanged(
-      (p, q) =>
-        p == null && p === q
-          ? true
-          : p && q && p.properties.id === q.properties.id
-    )
-  );
-}
-
-export function makeIsNearNode$(glMap: any, radius = mapInteraction.RADIUS) {
-  return makeMousemove$(glMap).pipe(
-    debounceTime(80),
-    rxMap(e => {
-      const eCoords: [number, number] = [e.lngLat.lng, e.lngLat.lat];
-      return glMap
-        .queryRenderedFeatures(bboxify(e, radius))
-        .filter((f: any) => f.geometry.type === 'Point' && f.properties.id)[0];
-    })
-  );
 }
 
 export function makeNearestNode$(glMap: any, radius = mapInteraction.RADIUS) {
@@ -261,13 +236,20 @@ export function makeNearestNode$(glMap: any, radius = mapInteraction.RADIUS) {
   );
 }
 
-export function makeNearestEntity$(glMap: any, radius = mapInteraction.RADIUS) {
+export function makeNearestEntity$(
+  glMap: any,
+  layers: any[],
+  radius = mapInteraction.RADIUS
+) {
   return makeMousemove$(glMap).pipe(
     throttleTime(50),
     rxMap(e => {
       const eCoords: [number, number] = [e.lngLat.lng, e.lngLat.lat];
       return glMap
-        .queryRenderedFeatures(bboxify(e, radius))
+        .queryRenderedFeatures(bboxify(e, radius), {
+          layers,
+          filter: ['has', 'id'],
+        })
         .filter((f: any) => f.properties.id)
         .sort((a: any, b: any) => {
           if (a.geometry.type === 'Point' && b.geometry.type === 'Point') {
@@ -294,37 +276,6 @@ export function makeNearestEntity$(glMap: any, radius = mapInteraction.RADIUS) {
   );
 }
 
-export function makeSelectEntity$(glMap: any, radius = 2) {
-  return makeClick$(glMap).pipe(
-    rxMap(
-      e =>
-        glMap
-          .queryRenderedFeatures(bboxify(e, radius))
-          .filter((f: any) => f.properties.id)
-          .sort((a: any, b: any) => {
-            if (a.geometry.type === 'Point') {
-              return -1;
-            }
-            if (b.geometry.type === 'Point') {
-              return 1;
-            }
-            if (a.properties[`${IDLY_NS}geometry`] === OsmGeometry.LINE) {
-              return -1;
-            }
-            if (b.properties[`${IDLY_NS}geometry`] === OsmGeometry.LINE) {
-              return 1;
-            }
-            return a.properties.id.localeCompare(b.properties.id);
-          })[0]
-    ),
-    distinctUntilChanged(
-      (p, q) =>
-        p == null && p === q
-          ? true
-          : p && q && p.properties.id === q.properties.id
-    )
-  );
-}
 export function makeDrag$(
   glMap: any,
   layer: string,
@@ -337,17 +288,15 @@ export function makeDrag$(
   return mousedown$.pipe(
     withLatestFrom(mousehover$),
     filter(([_, event]) => event.type === 'mouseenter'),
-    rxMap(([_, selected]) =>
-      mousemove$.pipe(takeUntil(mouseup$), defaultIfEmpty())
-    )
+    rxMap(([_]) => mousemove$.pipe(takeUntil(mouseup$), defaultIfEmpty()))
   );
 }
 
 const getTiles = (bbox: BBox, zoom: number) => {
   // actual zoom has 1 less for smaller quadkey
-  console.log(zoom);
   const tiles = bboxToTiles(bbox, zoom < 20 ? zoom - 1 : 19);
   // for small screen devices
+
   if (tiles.length <= 4) {
     return tiles;
   }

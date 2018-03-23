@@ -1,6 +1,6 @@
 export const quadkey = {
   // the min zoom level to start fetching osm data
-  ZOOM_MIN: 15,
+  ZOOM_MIN: 16,
   // the max zoom level to stop fetching osm data
   ZOOM_MAX: 22,
   // quadkey overlap cutoff

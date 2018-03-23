@@ -1,48 +1,33 @@
-import { Feature } from '@turf/helpers';
 import { OsmGeometry } from 'idly-common/lib/osm/structures';
-import { IDLY_NS } from '../constants';
-import { InteractiveGlElement } from '../helpers/InteractiveGlElement';
-import { makeNearestEntity$ } from '../streams';
+import { IDLY_NS } from '../../constants';
+import { ComponentUpdateType } from '../../helpers/CompX';
+import { GlComp } from '../../helpers/GlComp';
 
 export interface Props {
-  hoverEntityId?: string;
-  feature?: Feature<any>;
+  feature?: { id?: any; properties: any; geometry: any };
 }
-export class NearestEntity extends InteractiveGlElement<Props, {}> {
-  protected glInstance: any;
-  protected state = {};
 
-  private onHoverEntity: (id?: string) => void;
+export class Select extends GlComp<Props, {}, any, any> {
+  constructor(props: Props, gl: any, beforeLayer?: string) {
+    super(props, {}, gl, 'select-layer', beforeLayer);
 
-  constructor(
-    props: Props,
-    gl: any,
-    onHoverEntity: (id?: string) => void,
-    beforeLayer?: string
-  ) {
-    super(props, 'hover-layer', beforeLayer);
-    this.glInstance = gl;
-    this.onHoverEntity = onHoverEntity;
-
-    makeNearestEntity$(gl).forEach(this.handleStream);
+    this.mount();
   }
 
-  protected handleStream = (f: any) => {
-    const id = f && f.properties.id;
-
-    this.onHoverEntity(id);
-  };
-
-  protected shouldComponentUpdate(nextProps: Props) {
-    return nextProps.hoverEntityId !== this.props.hoverEntityId;
+  protected shouldComponentUpdate({
+    prev,
+    next,
+  }: ComponentUpdateType<Props, {}>) {
+    return prev.props.feature !== next.props.feature;
   }
 
-  protected render() {
-    const feature = this.props.feature;
+  protected render(props: Props) {
+    const { feature } = props;
+
     if (!feature || !feature.properties) {
       return null;
     }
-    console.log('render');
+
     const geometry = feature.properties[`${IDLY_NS}geometry`];
     const coord = feature.geometry.coordinates;
 
@@ -60,7 +45,7 @@ export class NearestEntity extends InteractiveGlElement<Props, {}> {
             type: 'circle',
             paint: {
               'circle-radius': 16,
-              'circle-color': '#fbb03b',
+              'circle-color': '#00f9ff',
             },
           },
         },
@@ -78,8 +63,8 @@ export class NearestEntity extends InteractiveGlElement<Props, {}> {
           fill: {
             type: 'fill',
             paint: {
-              'fill-color': '#fbb03b',
-              'fill-outline-color': '#fbb03b',
+              'fill-color': '#00f9ff',
+              'fill-outline-color': '#00f9ff',
               'fill-opacity': 0.1,
             },
           },
@@ -92,7 +77,7 @@ export class NearestEntity extends InteractiveGlElement<Props, {}> {
               'line-round-limit': 0.5,
             },
             paint: {
-              'line-color': '#fbb03b',
+              'line-color': '#00f9ff',
               'line-opacity': 0.8,
               'line-width': 12,
               'line-offset': -6,
@@ -117,12 +102,13 @@ export class NearestEntity extends InteractiveGlElement<Props, {}> {
               'line-join': 'round',
             },
             paint: {
-              'line-color': '#fbb03b',
+              'line-color': '#00f9ff',
               'line-width': 22,
             },
           },
         },
       };
     }
+    return;
   }
 }

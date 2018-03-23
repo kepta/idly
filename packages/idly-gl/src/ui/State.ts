@@ -1,4 +1,6 @@
 import { Entity } from 'idly-common/lib/osm/structures';
+import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
+import { LayerOpacity } from '../helpers/layerOpacity';
 
 export const enum MainTabs {
   Tags = 'Tags',
@@ -17,11 +19,12 @@ export interface State {
     beforeLayer?: string;
   };
   map: {
+    loading: boolean;
     layers: any[]; // the gl layers
-    quadkeysData: Array<{
-      quadkey: string; // the current active quadkeys
-      entities: Entity[]; // virgin entities corresponding to the quadkey
-    }>;
+    quadkeys: string[]; // quadkeys in view
+    featureCollection?: GetQuadkey['response'];
+    beforeLayer?: string;
+    layerOpacity: LayerOpacity;
   };
   domContainer: Element;
   gl: any;
