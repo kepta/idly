@@ -18,16 +18,26 @@ export class IdlyGlPlugin {
   private subscription!: Subscription;
   private actions!: Actions;
   private umounted = false;
+
   constructor(config: Partial<State>) {
     this.config = config;
-    const l = layers.map(r => addSource(r.layer, BASE_SOURCE));
+    const l = layers
+      .filter(r => !r.hide)
+      .map(r => addSource(r.layer, BASE_SOURCE));
 
     const starter: State = {
       mainTab: {
         active: MainTabs.Tags,
       },
       tags: {},
-      selectEntity: { selectedId: '', beforeLayer: l[0].id },
+      selectEntity: {
+        selectedId: '',
+        beforeLayers: {
+          last: l[0].id,
+          middle: l[1].id,
+          top: l[2].id,
+        },
+      },
       map: {
         quadkeys: [],
         layers: l,

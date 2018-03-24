@@ -5,6 +5,7 @@ import {
   highwayTemplate,
   makeLineWidth,
 } from './highway.template';
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 
 const secBlueFilter = [
   'all',
@@ -143,7 +144,7 @@ export default [
         ...highwayCaseTemplate.layer.paint,
         'line-width': makeLineWidth(0.45),
       },
-      filter: ['all', ['==', `${IDLY_NS}geometry`, 'line'], filter],
+      filter: ['all', ['==', `${IDLY_NS}geometry`, OsmGeometry.LINE], filter],
     },
   },
   ...highblue,

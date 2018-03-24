@@ -3,6 +3,7 @@ import { derivedFcLookup } from '../../derived';
 import { Component } from '../../helpers/Component';
 import { workerOperations } from '../../worker';
 import { State } from '../State';
+import { Highlight } from './Highlight';
 import { Hover } from './Hover';
 import { Osm } from './Osm';
 import { Select } from './Select';
@@ -20,16 +21,22 @@ export class MapComp extends Component<Props, {}, any, any> {
   protected children: {
     readonly selectComp: Select;
     readonly hoverComp: Hover;
+    readonly highlightComp: Highlight;
     readonly osm: Osm;
     readonly unloadedTiles: UnloadedTiles;
   };
 
-  constructor(props: Props, gl: any, beforeLayer?: string) {
+  constructor(
+    props: Props,
+    gl: any,
+    beforeLayer: State['selectEntity']['beforeLayers']
+  ) {
     super(props, {});
 
     this.children = {
-      selectComp: new Select({}, gl, beforeLayer),
-      hoverComp: new Hover({}, gl, beforeLayer),
+      highlightComp: new Highlight({}, gl, beforeLayer.middle),
+      selectComp: new Select({}, gl, beforeLayer.top),
+      hoverComp: new Hover({}, gl, beforeLayer.top),
       unloadedTiles: new UnloadedTiles({ quadkeys: props.quadkeys }, gl),
       osm: new Osm({ layers: props.layers }, gl),
     };
@@ -42,7 +49,7 @@ export class MapComp extends Component<Props, {}, any, any> {
   ):
     | GetQuadkey['response']['features']
     | Promise<GetQuadkey['response']['features']> {
-    if (!id) {
+    if (!id || !this.props.fc) {
       return [];
     }
     const featureLookup = this.props.fc && derivedFcLookup(this.props.fc);
@@ -55,23 +62,27 @@ export class MapComp extends Component<Props, {}, any, any> {
       return [feature];
     }
 
-    return workerOperations.getEntity({ id }).then(r => {
-      if (r && featureLookup) {
-        return r.members
-          .map(e => featureLookup.get(e.id))
-          .filter(r => r && r.geometry);
-      }
-    });
+    return this.props.fc.features.filter(
+      r => r.properties && r.properties.id === id
+    );
   }
 
   protected render(props: Props) {
-    const hoverFeature = this.getFeature(props.hoverEntityId);
+    const hoverFeature =
+      props.selectedEntityId === props.hoverEntityId
+        ? undefined
+        : this.getFeature(props.hoverEntityId);
+
+    const selectedFeature = this.getFeature(props.selectedEntityId);
+
+    this.children.highlightComp.setProps({
+      features: props.selectedEntityId ? selectedFeature : hoverFeature,
+    });
+
+    // hack to render these after highlight
 
     this.children.hoverComp.setProps({
-      features:
-        props.selectedEntityId === props.hoverEntityId
-          ? undefined
-          : hoverFeature,
+      features: hoverFeature,
     });
 
     this.children.unloadedTiles.setProps({
@@ -79,7 +90,7 @@ export class MapComp extends Component<Props, {}, any, any> {
     });
 
     this.children.selectComp.setProps({
-      features: this.getFeature(props.selectedEntityId),
+      features: selectedFeature,
     });
 
     this.children.osm.setProps({

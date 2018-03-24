@@ -1,7 +1,8 @@
 import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
 
-export const Style: TemplateResult = html`
+export const Style = ``;
+export const style: TemplateResult = html`
 <style>
 .container {
     --bg-dark-color: #f3f3f3; --border-color: #cccccc; --darkest-color: #777; background-color: white;

@@ -1,3 +1,4 @@
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { IDLY_NS } from '../../constants';
 import { LABEL } from '../priorities';
 
@@ -25,7 +26,11 @@ export default [
         'text-halo-width': 3.5,
         'text-halo-blur': 0.3,
       },
-      filter: ['all', ['==', '$type', 'LineString']],
+      filter: [
+        'all',
+        ['==', '$type', 'LineString'],
+        ['==', `${IDLY_NS}geometry`, OsmGeometry.LINE],
+      ],
     },
   },
 ];

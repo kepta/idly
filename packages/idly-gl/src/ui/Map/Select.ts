@@ -2,6 +2,7 @@ import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { IDLY_NS } from '../../constants';
 import { ComponentUpdateType } from '../../helpers/Component';
 import { GlComp } from '../../helpers/GlComp';
+import { SELECT_WIDTH } from '../../configuration';
 
 export interface Props {
   features?:
@@ -42,7 +43,7 @@ export class Select extends GlComp<Props, {}, any, any> {
         circleo: {
           type: 'circle',
           paint: {
-            'circle-radius': 16,
+            'circle-radius': SELECT_WIDTH.point,
             'circle-color': '#00f9ff',
           },
           filter: ['==', '$type', 'Point'],
@@ -56,7 +57,7 @@ export class Select extends GlComp<Props, {}, any, any> {
           },
           filter: ['==', '$type', 'Polygon'],
         },
-        dash: {
+        area: {
           beforeLayer: undefined,
           type: 'line',
           layout: {
@@ -66,8 +67,8 @@ export class Select extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': '#00f9ff',
-            'line-opacity': 0.8,
-            'line-width': 12,
+            'line-opacity': 0.9,
+            'line-width': SELECT_WIDTH.area,
             'line-offset': -6,
           },
           filter: ['==', '$type', 'Polygon'],
@@ -80,7 +81,7 @@ export class Select extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': '#00f9ff',
-            'line-width': 22,
+            'line-width': SELECT_WIDTH.line,
           },
           filter: ['==', '$type', 'LineString'],
         },

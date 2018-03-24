@@ -40,7 +40,7 @@ export class UI extends Component<State, {}, any, void> {
           layers: props.map.layers,
         },
         glInstance,
-        props.selectEntity.beforeLayer
+        props.selectEntity.beforeLayers
       ),
     };
 
@@ -92,6 +92,7 @@ export class UI extends Component<State, {}, any, void> {
   }
 
   protected render(props: State) {
+    console.log('rendering ui');
     this.children.mapComp.setProps({
       hoverEntityId: props.selectEntity.hoverId,
       selectedEntityId: props.selectEntity.selectedId,
@@ -106,6 +107,7 @@ export class UI extends Component<State, {}, any, void> {
         selectEntity: props.selectEntity,
         mainTab: props.mainTab,
         layerOpacity: props.map.layerOpacity,
+        layers: props.map.layers,
         actions: this.actions,
       }),
       this.dom

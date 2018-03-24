@@ -134,6 +134,12 @@ export abstract class GlComp<
     if (this.safeGetLayer(id) || !data) {
       return;
     }
+
+    if (before && !this.safeGetLayer(before)) {
+      console.log('couldnt find before layer', before);
+      before = '';
+    }
+
     this.glInstance.addLayer(
       {
         ...data,

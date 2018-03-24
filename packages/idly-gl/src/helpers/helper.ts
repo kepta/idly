@@ -4,6 +4,7 @@ import bboxPolygon from '@turf/bbox-polygon';
 import { FeatureCollection } from '@turf/helpers';
 import { BBox, mercator, Tile } from 'idly-common/lib/geo';
 import parser from 'idly-faster-osm-parser';
+import { IDLY_NS } from '../constants';
 
 export function addSource(layer: any, source: string) {
   return {
@@ -12,8 +13,13 @@ export function addSource(layer: any, source: string) {
     id: getNameSpacedLayerId(layer.id, source),
   };
 }
+
 export function getNameSpacedLayerId(layerId: string, source: string) {
-  return source + '-' + layerId;
+  return source + IDLY_NS + layerId;
+}
+
+export function reverseGetNameSpacedLayerId(id: string) {
+  return id.split(IDLY_NS);
 }
 
 export function tilesFilterSmall(

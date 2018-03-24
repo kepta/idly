@@ -18,6 +18,8 @@ const LABEL_BASE = 7;
 const EXTRUSION_BASE = 8;
 const INTERACTIVE_BASE = 9;
 
+export const LOWEST_PRIORITY = 0;
+
 export enum WATERWAY {
   MINUS_3 = WATERWAY_BASE - HIGH,
   MINUS_2 = WATERWAY_BASE - MED,

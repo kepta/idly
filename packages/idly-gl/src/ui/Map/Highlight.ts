@@ -1,5 +1,5 @@
 import { OsmGeometry } from 'idly-common/lib/osm/structures';
-import { HOVER_WIDTH } from '../../configuration';
+import { HIGHLIGHT_WIDTH } from '../../configuration';
 import { IDLY_NS } from '../../constants';
 import { ComponentUpdateType } from '../../helpers/Component';
 import { GlComp } from '../../helpers/GlComp';
@@ -9,12 +9,16 @@ export interface Props {
     | Array<{ id?: any; properties: any; geometry: any }>
     | Promise<Array<{ id?: any; properties: any; geometry: any }>>;
 }
+const color = [
+  'case',
+  ['has', `${IDLY_NS}highlight`],
+  ['get', `${IDLY_NS}highlight`],
+  '#fbb03b',
+];
 
-const color = '#fbb03b';
-
-export class Hover extends GlComp<Props, {}, any, any> {
+export class Highlight extends GlComp<Props, {}, any, any> {
   constructor(props: Props, gl: any, beforeLayer?: string) {
-    super(props, {}, gl, 'hover-layer', beforeLayer);
+    super(props, {}, gl, 'highlight-layer', beforeLayer);
     this.mount();
   }
 
@@ -26,12 +30,18 @@ export class Hover extends GlComp<Props, {}, any, any> {
   }
 
   protected async render(props: Props) {
-    const features = props.features;
-
+    let features = props.features;
     if (!features) {
       return null;
     }
 
+    features = await features;
+
+    if (
+      features.some(r => !r.properties.hasOwnProperty(`${IDLY_NS}highlight`))
+    ) {
+      return null;
+    }
     return {
       source: {
         type: 'geojson',
@@ -44,8 +54,9 @@ export class Hover extends GlComp<Props, {}, any, any> {
         circle: {
           type: 'circle',
           paint: {
-            'circle-radius': HOVER_WIDTH.point,
+            'circle-radius': HIGHLIGHT_WIDTH.point,
             'circle-color': color,
+            'circle-opacity': 0.5,
           },
           filter: ['==', '$type', 'Point'],
         },
@@ -68,8 +79,8 @@ export class Hover extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': color,
-            'line-opacity': 0.8,
-            'line-width': HOVER_WIDTH.area,
+            'line-opacity': 0.3,
+            'line-width': HIGHLIGHT_WIDTH.area,
             'line-offset': -6,
           },
           filter: ['==', '$type', 'Polygon'],
@@ -82,7 +93,8 @@ export class Hover extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': color,
-            'line-width': HOVER_WIDTH.line,
+            'line-opacity': 0.8,
+            'line-width': HIGHLIGHT_WIDTH.line,
           },
           filter: ['==', '$type', 'LineString'],
         },

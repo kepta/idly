@@ -20,6 +20,7 @@ export class Actions {
     this.subject.next({
       ...this.store,
       selectEntity: {
+        ...this.store.selectEntity,
         selectedId: id || this.store.selectEntity.hoverId,
       },
     });

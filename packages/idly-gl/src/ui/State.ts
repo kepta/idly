@@ -6,6 +6,7 @@ export const enum MainTabs {
   Tags = 'Tags',
   Presets = 'Presets',
   Relations = 'Relations',
+  Layers = 'Layers',
 }
 
 export interface State {
@@ -16,7 +17,7 @@ export interface State {
   selectEntity: {
     hoverId?: string;
     selectedId?: string;
-    beforeLayer?: string;
+    beforeLayers: { top: string; middle: string; last: string };
   };
   map: {
     loading: boolean;

@@ -5,10 +5,12 @@ import pointsDraggable from './interactive/pointsDraggable';
 import areaLabels from './label/areaLabels';
 import lineLabel from './label/lineLabel';
 import pointsWithLabels from './label/pointsWithLabels';
+import placeholder from './misc/placeholder';
 import onewayArrows from './nonInteractive/onewayArrows';
 import intersections from './point/intersections';
 import pointsWithoutLabels from './point/points';
 import rail from './rail';
+import relations from './relations';
 import waterway from './waterway';
 
 const layers = [
@@ -24,9 +26,9 @@ const layers = [
   ...pointsWithoutLabels,
   ...intersections,
   ...pointsDraggable,
-]
-  .filter(r => !r.hide)
-  .sort((a, b) => a.priority - b.priority);
+  ...relations,
+  ...placeholder,
+].sort((a, b) => a.priority - b.priority);
 
 export default layers;
 

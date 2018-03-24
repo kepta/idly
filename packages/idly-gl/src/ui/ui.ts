@@ -1,9 +1,11 @@
 import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
+import { repeat } from 'lit-html/lib/repeat';
 import { LayerOpacity } from '../helpers/layerOpacity';
 import { workerOperations } from '../worker';
 import { Actions } from './Actions';
 import { Box, TabChildren, TabRow } from './helpers';
+import { LayerManager } from './LayerManager';
 import { MainTabs, State } from './State';
 import { Style } from './Style';
 
@@ -13,12 +15,14 @@ export const Ui = ({
   layerOpacity,
   loading,
   actions,
+  layers,
 }: {
   mainTab: State['mainTab'];
   selectEntity: State['selectEntity'];
   layerOpacity: LayerOpacity;
   loading: boolean;
   actions: Actions;
+  layers: any[];
 }): TemplateResult => {
   const tabs = {
     [MainTabs.Tags]: Box({
@@ -33,6 +37,7 @@ export const Ui = ({
         actions,
       }),
     }),
+    [MainTabs.Layers]: LayerManager(layers),
   };
 
   return html`
@@ -107,6 +112,7 @@ const Tags = async ({ id = '' }: { id?: string }) => {
 
   return html`
     <div class="tags-box">
+
       ${Object.keys(t).map(
         r =>
           html`
@@ -128,21 +134,25 @@ const Relations = async ({
   actions: Actions;
 }) => {
   const data = await workerOperations.getDerived({ id });
-  const t = data.derived ? data.derived.parentRelations : {};
+  const t: Record<string, string> = data.derived
+    ? data.derived.parentRelations
+    : {};
 
   return html`
     <div class="tags-box">
-      ${Object.keys(t).map(
-        r =>
-          html`
-            <div class="tags-item layout vertical" o>
-              <span class="tags-key">${r}</span>
-              <span class="tags-value" on-click=${(e: Event) => {
-                actions.modifySelectedId(t[r]);
-              }}>${t[r]}</span>
+    ${repeat(
+      Object.keys(t),
+      (item, index) =>
+        html`
+            <div class="tags-item layout vertical" >
+              <span class="tags-key">${t[item]}</span>
+              <span class="tags-value"
+                on-click=${(e: Event) => {
+                  actions.modifySelectedId(t[item]);
+                }}>${t[item]}</span>
             </div>
-          `
-      )}
+        `
+    )}
     </div>
   `;
 };

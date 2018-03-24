@@ -213,29 +213,6 @@ export function makeHover$(
   return merge(mouseenter$, mouseleave$);
 }
 
-export function makeNearestNode$(glMap: any, radius = mapInteraction.RADIUS) {
-  return makeMousemove$(glMap).pipe(
-    throttleTime(50),
-    rxMap(e => {
-      const eCoords: [number, number] = [e.lngLat.lng, e.lngLat.lat];
-      return glMap
-        .queryRenderedFeatures(bboxify(e, radius))
-        .filter((f: any) => f.geometry.type === 'Point' && f.properties.id)
-        .sort(
-          (a: any, b: any) =>
-            distance(eCoords, a._geometry.coordinates) -
-            distance(eCoords, b._geometry.coordinates)
-        )[0];
-    }),
-    distinctUntilChanged(
-      (p, q) =>
-        p == null && p === q
-          ? true
-          : p && q && p.properties.id === q.properties.id
-    )
-  );
-}
-
 export function makeNearestEntity$(
   glMap: any,
   layers: any[],
@@ -264,7 +241,7 @@ export function makeNearestEntity$(
           if (b.geometry.type === 'Point') {
             return 1;
           }
-          return a.properties.id.localeCompare(b.properties.id);
+          return b.properties.id.localeCompare(a.properties.id); // puts way above relation
         })[0];
     }),
     distinctUntilChanged(

@@ -14,7 +14,25 @@ export const quadkey = {
 
 export const mapInteraction = {
   // the distance for activating an interaction
-  RADIUS: 6,
+  RADIUS: 4,
 };
 
 export const BASE_SOURCE = 'idly-gl-base-src';
+
+export const SELECT_WIDTH = {
+  line: 30,
+  area: 12,
+  point: 16,
+};
+
+export const HOVER_WIDTH = {
+  line: 30,
+  area: 12,
+  point: 16,
+};
+
+export const HIGHLIGHT_WIDTH = {
+  line: 50,
+  area: 35,
+  point: 25,
+};
