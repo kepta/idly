@@ -1,9 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const { promisify } = require('util');
-const ops = [['Get', 'Quadkey'], ['Get', 'MoveNode'], ['Get', 'Entity']].sort(
-  (a, b) => (a[0] + a[1]).localeCompare(b[0] + b[1])
-);
+const ops = [
+  ['Get', 'Quadkey'],
+  ['Get', 'MoveNode'],
+  ['Get', 'Entity'],
+  ['Get', 'Derived'],
+].sort((a, b) => (a[0] + a[1]).localeCompare(b[0] + b[1]));
 function createAllTypes(ops) {
   const createImports = ([f, l]) =>
     `import { ${f + l} } from './${f.toLowerCase() + l}/type';`;
