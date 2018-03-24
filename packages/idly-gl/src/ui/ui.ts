@@ -2,6 +2,7 @@ import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
 import { LayerOpacity } from '../helpers/layerOpacity';
 import { workerOperations } from '../worker';
+import { Actions } from './Actions';
 import { Box, TabChildren, TabRow } from './helpers';
 import { MainTabs, State } from './State';
 import { Style } from './Style';
@@ -9,19 +10,16 @@ import { Style } from './Style';
 export const Ui = ({
   mainTab,
   selectEntity: { selectedId, hoverId },
-  changeMainTab,
-  modifyLayerOpacity,
   layerOpacity,
   loading,
+  actions,
 }: {
   mainTab: State['mainTab'];
   selectEntity: State['selectEntity'];
-  changeMainTab: (b: string) => void;
-  modifyLayerOpacity: () => void;
   layerOpacity: LayerOpacity;
   loading: boolean;
+  actions: Actions;
 }): TemplateResult => {
-  console.log(layerOpacity);
   const tabs = {
     [MainTabs.Tags]: Box({
       title: selectedId,
@@ -30,7 +28,10 @@ export const Ui = ({
     [MainTabs.Presets]: html`<span class="">Here lies the might presets </span>`,
     [MainTabs.Relations]: Box({
       title: selectedId,
-      children: Relations({ id: selectedId || hoverId }),
+      children: Relations({
+        id: selectedId || hoverId,
+        actions,
+      }),
     }),
   };
 
@@ -38,10 +39,10 @@ export const Ui = ({
   <div class="mapboxgl-ctrl">
     ${Style}
     <div class="container idly-gl layout vertical ">
-        ${IconBar({ loading, modifyLayerOpacity, layerOpacity })}
+        ${IconBar({ loading, actions, layerOpacity })}
           ${TabRow({
             active: mainTab.active,
-            onChange: changeMainTab,
+            onChange: actions.modifyMainTab,
             keys: Object.keys(tabs),
           })}
       ${TabChildren(tabs[mainTab.active])}
@@ -52,11 +53,11 @@ export const Ui = ({
 
 const IconBar = ({
   loading,
-  modifyLayerOpacity,
+  actions,
   layerOpacity,
 }: {
+  actions: Actions;
   loading: boolean;
-  modifyLayerOpacity: () => void;
   layerOpacity: LayerOpacity;
 }) => {
   let opacIcon;
@@ -91,12 +92,15 @@ const IconBar = ({
       `
         : undefined
     }
-    <span class="layout vertical center-center" on-click=${modifyLayerOpacity}>
+    <span class="layout vertical center-center" on-click=${
+      actions.modifyLayerOpacity
+    }>
       ${opacIcon}
     </span>
   </div>
   `;
 };
+
 const Tags = async ({ id = '' }: { id?: string }) => {
   const data = await workerOperations.getEntity({ id });
   const t = data ? data.tags : {};
@@ -116,7 +120,13 @@ const Tags = async ({ id = '' }: { id?: string }) => {
   `;
 };
 
-const Relations = async ({ id = '' }: { id?: string }) => {
+const Relations = async ({
+  id = '',
+  actions,
+}: {
+  id?: string;
+  actions: Actions;
+}) => {
   const data = await workerOperations.getDerived({ id });
   const t = data.derived ? data.derived.parentRelations : {};
 
@@ -125,9 +135,11 @@ const Relations = async ({ id = '' }: { id?: string }) => {
       ${Object.keys(t).map(
         r =>
           html`
-            <div class="tags-item layout vertical">
+            <div class="tags-item layout vertical" o>
               <span class="tags-key">${r}</span>
-              <span class="tags-value">${t[r]}</span>
+              <span class="tags-value" on-click=${(e: Event) => {
+                actions.modifySelectedId(t[r]);
+              }}>${t[r]}</span>
             </div>
           `
       )}

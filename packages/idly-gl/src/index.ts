@@ -1,19 +1,42 @@
 import { Map as GlMap } from 'mapbox-gl/dist/mapbox-gl';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscription } from 'rxjs/Subscription';
 import { BASE_SOURCE } from './configuration';
 import { addSource } from './helpers/helper';
+import { LayerOpacity } from './helpers/layerOpacity';
 import layers from './layers';
 import { UI } from './ui';
+import { Actions } from './ui/Actions';
 import { MainTabs, State } from './ui/State';
-import { LayerOpacity } from './helpers/layerOpacity';
 
 export class IdlyGlPlugin {
   public Plugin?: UI;
 
-  private container!: Element;
   private config: Partial<State>;
-
+  private container!: Element;
+  private store!: BehaviorSubject<State>;
+  private subscription!: Subscription;
+  private actions!: Actions;
+  private umounted = false;
   constructor(config: Partial<State>) {
     this.config = config;
+    const l = layers.map(r => addSource(r.layer, BASE_SOURCE));
+
+    const starter: State = {
+      mainTab: {
+        active: MainTabs.Tags,
+      },
+      tags: {},
+      selectEntity: { selectedId: '', beforeLayer: l[0].id },
+      map: {
+        quadkeys: [],
+        layers: l,
+        loading: false,
+        layerOpacity: LayerOpacity.High,
+      },
+      ...this.config,
+    };
+    this.store = new BehaviorSubject<State>(starter);
   }
 
   public onAdd(m: GlMap) {
@@ -30,6 +53,9 @@ export class IdlyGlPlugin {
   }
 
   public onRemove(m: GlMap) {
+    if (this.umounted) {
+      return;
+    }
     const div = this.container && this.container.parentNode;
     if (div) {
       div.removeChild(this.container);
@@ -37,31 +63,28 @@ export class IdlyGlPlugin {
     if (this.Plugin) {
       this.Plugin.componentWillUnMount();
     }
+    this.store.complete();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
     this.Plugin = undefined;
+    this.umounted = true;
   }
 
   private init(m: any) {
-    const l = layers.map(r => addSource(r.layer, BASE_SOURCE));
-    this.Plugin = new UI(
-      {
-        config: {
-          mainTab: {
-            active: MainTabs.Tags,
-          },
-          tags: {},
-          selectEntity: { selectedId: '', beforeLayer: l[0].id },
-          domContainer: this.container,
-          gl: m,
-          map: {
-            quadkeys: [],
-            layers: l,
-            loading: false,
-            layerOpacity: LayerOpacity.High,
-          },
-          ...this.config,
-        },
-      },
+    this.actions = new Actions(this.store);
+
+    const plugin = new UI(
+      this.store.getValue(),
+      this.actions,
+      this.container,
       m
     );
+
+    this.subscription = this.store.subscribe(val => {
+      plugin.setProps(val);
+    });
+
+    this.Plugin = plugin;
   }
 }

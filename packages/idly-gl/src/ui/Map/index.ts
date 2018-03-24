@@ -1,5 +1,7 @@
+import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
 import { derivedFcLookup } from '../../derived';
-import { Component } from '../../helpers/CompX';
+import { Component } from '../../helpers/Component';
+import { workerOperations } from '../../worker';
 import { State } from '../State';
 import { Hover } from './Hover';
 import { Osm } from './Osm';
@@ -35,14 +37,38 @@ export class MapComp extends Component<Props, {}, any, any> {
     this.mount();
   }
 
+  protected getFeature(
+    id?: string
+  ):
+    | GetQuadkey['response']['features']
+    | Promise<GetQuadkey['response']['features']> {
+    if (!id) {
+      return [];
+    }
+    const featureLookup = this.props.fc && derivedFcLookup(this.props.fc);
+
+    if (id.charAt(0) !== 'r') {
+      const feature = featureLookup && featureLookup.get(id);
+      if (!feature) {
+        return [];
+      }
+      return [feature];
+    }
+
+    return workerOperations.getEntity({ id }).then(r => {
+      if (r && featureLookup) {
+        return r.members
+          .map(e => featureLookup.get(e.id))
+          .filter(r => r && r.geometry);
+      }
+    });
+  }
+
   protected render(props: Props) {
-    const featureLookup = props.fc && derivedFcLookup(props.fc);
-    const hoverEntityId = props.hoverEntityId || '';
-    const selectedEntityId = props.selectedEntityId || '';
-    const hoverFeature = featureLookup && featureLookup.get(hoverEntityId);
+    const hoverFeature = this.getFeature(props.hoverEntityId);
 
     this.children.hoverComp.setProps({
-      feature:
+      features:
         props.selectedEntityId === props.hoverEntityId
           ? undefined
           : hoverFeature,
@@ -53,7 +79,7 @@ export class MapComp extends Component<Props, {}, any, any> {
     });
 
     this.children.selectComp.setProps({
-      feature: featureLookup && featureLookup.get(selectedEntityId),
+      features: this.getFeature(props.selectedEntityId),
     });
 
     this.children.osm.setProps({

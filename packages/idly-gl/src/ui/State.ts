@@ -26,6 +26,4 @@ export interface State {
     beforeLayer?: string;
     layerOpacity: LayerOpacity;
   };
-  domContainer: Element;
-  gl: any;
 }

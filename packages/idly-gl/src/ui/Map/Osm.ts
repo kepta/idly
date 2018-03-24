@@ -1,5 +1,5 @@
 import { BASE_SOURCE } from '../../configuration';
-import { Component, ComponentUpdateType } from '../../helpers/CompX';
+import { Component, ComponentUpdateType } from '../../helpers/Component';
 import { State } from '../State';
 import { OsmLayers } from './OsmLayers';
 

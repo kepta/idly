@@ -23,7 +23,7 @@ export default [
       layout: highwayTemplate.layer.layout,
       paint: {
         ...highwayTemplate.layer.paint,
-        'line-color': '#DD2F22',
+        'line-color': '#D54F1D',
       },
       filter,
     },

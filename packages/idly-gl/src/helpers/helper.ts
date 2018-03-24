@@ -114,3 +114,18 @@ export function tapLog<T>(fn: T) {
     return result;
   };
 }
+
+export function bindThis(target: any, key: any, { value: fn }: any) {
+  return {
+    configurable: true,
+    get() {
+      const value = fn.bind(this);
+      Object.defineProperty(this, key, {
+        value,
+        configurable: true,
+        writable: true,
+      });
+      return value;
+    },
+  };
+}

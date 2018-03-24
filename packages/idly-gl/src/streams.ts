@@ -16,7 +16,7 @@ import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 import { BBox, bboxToTiles } from 'idly-common/lib/geo';
 import { tileToQuadkey } from 'idly-common/lib/misc';
-import { Entity, OsmGeometry } from 'idly-common/lib/osm/structures';
+import { Entity } from 'idly-common/lib/osm/structures';
 
 import { merge } from 'rxjs/observable/merge';
 import { mapInteraction, quadkey } from './configuration';

@@ -1,4 +1,4 @@
-import { Component } from './CompX';
+import { Component } from './Component';
 
 export interface PRender {
   source:

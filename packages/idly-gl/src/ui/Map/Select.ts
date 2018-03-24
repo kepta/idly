@@ -1,10 +1,12 @@
 import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { IDLY_NS } from '../../constants';
-import { ComponentUpdateType } from '../../helpers/CompX';
+import { ComponentUpdateType } from '../../helpers/Component';
 import { GlComp } from '../../helpers/GlComp';
 
 export interface Props {
-  feature?: { id?: any; properties: any; geometry: any };
+  features?:
+    | Array<{ id?: any; properties: any; geometry: any }>
+    | Promise<Array<{ id?: any; properties: any; geometry: any }>>;
 }
 
 export class Select extends GlComp<Props, {}, any, any> {
@@ -18,97 +20,71 @@ export class Select extends GlComp<Props, {}, any, any> {
     prev,
     next,
   }: ComponentUpdateType<Props, {}>) {
-    return prev.props.feature !== next.props.feature;
+    return prev.props.features !== next.props.features;
   }
 
-  protected render(props: Props) {
-    const { feature } = props;
+  protected async render(props: Props) {
+    const { features } = props;
 
-    if (!feature || !feature.properties) {
+    if (!features) {
       return null;
     }
 
-    const geometry = feature.properties[`${IDLY_NS}geometry`];
-    const coord = feature.geometry.coordinates;
-
-    if (geometry === OsmGeometry.POINT) {
-      return {
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'Point',
-            coordinates: coord,
-          },
+    return {
+      source: {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: await features,
         },
-        layers: {
-          magical: {
-            type: 'circle',
-            paint: {
-              'circle-radius': 16,
-              'circle-color': '#00f9ff',
-            },
+      },
+      layers: {
+        circleo: {
+          type: 'circle',
+          paint: {
+            'circle-radius': 16,
+            'circle-color': '#00f9ff',
           },
+          filter: ['==', '$type', 'Point'],
         },
-      };
-    } else if (geometry === OsmGeometry.AREA) {
-      return {
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'Polygon',
-            coordinates: coord,
+        fill: {
+          type: 'fill',
+          paint: {
+            'fill-color': '#00f9ff',
+            'fill-outline-color': '#00f9ff',
+            'fill-opacity': 0.1,
           },
+          filter: ['==', '$type', 'Polygon'],
         },
-        layers: {
-          fill: {
-            type: 'fill',
-            paint: {
-              'fill-color': '#00f9ff',
-              'fill-outline-color': '#00f9ff',
-              'fill-opacity': 0.1,
-            },
+        dash: {
+          beforeLayer: undefined,
+          type: 'line',
+          layout: {
+            'line-cap': 'round',
+            'line-join': 'round',
+            'line-round-limit': 0.5,
           },
-          dash: {
-            beforeLayer: undefined,
-            type: 'line',
-            layout: {
-              'line-cap': 'round',
-              'line-join': 'round',
-              'line-round-limit': 0.5,
-            },
-            paint: {
-              'line-color': '#00f9ff',
-              'line-opacity': 0.8,
-              'line-width': 12,
-              'line-offset': -6,
-            },
+          paint: {
+            'line-color': '#00f9ff',
+            'line-opacity': 0.8,
+            'line-width': 12,
+            'line-offset': -6,
           },
+          filter: ['==', '$type', 'Polygon'],
         },
-      };
-    } else if (geometry === OsmGeometry.LINE) {
-      return {
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'LineString',
-            coordinates: coord,
+        selecto: {
+          type: 'line',
+          layout: {
+            'line-cap': 'round',
+            'line-join': 'round',
           },
-        },
-        layers: {
-          selecto: {
-            type: 'line',
-            layout: {
-              'line-cap': 'round',
-              'line-join': 'round',
-            },
-            paint: {
-              'line-color': '#00f9ff',
-              'line-width': 22,
-            },
+          paint: {
+            'line-color': '#00f9ff',
+            'line-width': 22,
           },
+          filter: ['==', '$type', 'LineString'],
         },
-      };
-    }
-    return;
+      },
+    };
   }
 }

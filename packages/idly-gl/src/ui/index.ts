@@ -6,14 +6,14 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
 import { derivedQuadkeyToFC } from '../derived';
-import { Component } from '../helpers/CompX';
-import { layerOpacity, LayerOpacity } from '../helpers/layerOpacity';
+import { Component } from '../helpers/Component';
 import { makeClick$, makeNearestEntity$, moveEndBbox$ } from '../streams';
+import { Actions } from './Actions';
 import { MapComp } from './Map/index';
 import { State } from './State';
 import { Ui } from './ui';
 
-export class UI extends Component<{ config: State }, State, any, void> {
+export class UI extends Component<State, {}, any, void> {
   protected children: {
     mapComp: MapComp;
   };
@@ -23,21 +23,24 @@ export class UI extends Component<{ config: State }, State, any, void> {
   };
 
   private streams: Subscription[];
+  private actions: Actions;
+  private dom: Element;
 
-  constructor(props: { config: State }, glInstance: any) {
-    super(props, props.config);
-
+  constructor(props: State, actions: Actions, dom: Element, glInstance: any) {
+    super(props, {});
+    this.actions = actions;
+    this.dom = dom;
     this.children = {
       mapComp: new MapComp(
         {
-          hoverEntityId: props.config.selectEntity.hoverId,
-          selectedEntityId: props.config.selectEntity.selectedId,
-          quadkeys: props.config.map.quadkeys,
-          fc: props.config.map.featureCollection,
-          layers: props.config.map.layers,
+          hoverEntityId: props.selectEntity.hoverId,
+          selectedEntityId: props.selectEntity.selectedId,
+          quadkeys: props.map.quadkeys,
+          fc: props.map.featureCollection,
+          layers: props.map.layers,
         },
-        props.config.gl,
-        props.config.selectEntity.beforeLayer
+        glInstance,
+        props.selectEntity.beforeLayer
       ),
     };
 
@@ -57,25 +60,23 @@ export class UI extends Component<{ config: State }, State, any, void> {
           distinctUntilChanged(),
           switchMap(quadkeys => fromPromise(derivedQuadkeyToFC(quadkeys)))
         )
-        .subscribe(r => this.modifyFC(r), e => console.error(e)),
+        .subscribe(r => this.actions.modifyFC(r), e => console.error(e)),
 
       moveEndBbox$(glInstance).subscribe(
-        r => this.modifyQuadkeys(r),
+        r => this.actions.modifyQuadkeys(r),
         e => console.error(e)
       ),
 
-      makeNearestEntity$(
-        glInstance,
-        props.config.map.layers.map(l => l.id)
-      ).subscribe(
+      makeNearestEntity$(glInstance, props.map.layers.map(l => l.id)).subscribe(
         f => {
-          this.modifyHoverId(f && f.properties.id);
+          this.actions.modifyHoverId(f && f.properties.id);
         },
         e => console.error(e)
       ),
 
-      makeClick$(glInstance).subscribe(this.modifySelectedId, e =>
-        console.error(e)
+      makeClick$(glInstance).subscribe(
+        () => this.actions.modifySelectedId(),
+        e => console.error(e)
       ),
     ];
   }
@@ -90,83 +91,26 @@ export class UI extends Component<{ config: State }, State, any, void> {
     Object.keys(subs).forEach(s => subs[s].unsubscribe());
   }
 
-  protected render(_: never, state: State) {
+  protected render(props: State) {
     this.children.mapComp.setProps({
-      hoverEntityId: state.selectEntity.hoverId,
-      selectedEntityId: state.selectEntity.selectedId,
-      quadkeys: state.map.quadkeys,
-      fc: state.map.featureCollection,
-      layers: state.map.layers,
+      hoverEntityId: props.selectEntity.hoverId,
+      selectedEntityId: props.selectEntity.selectedId,
+      quadkeys: props.map.quadkeys,
+      fc: props.map.featureCollection,
+      layers: props.map.layers,
     });
 
     render(
       Ui({
-        loading: state.map.loading,
-        changeMainTab: this.modifyMainTab,
-        modifyLayerOpacity: this.modifyLayerOpacity,
-        selectEntity: state.selectEntity,
-        mainTab: state.mainTab,
-        layerOpacity: state.map.layerOpacity,
+        loading: props.map.loading,
+        selectEntity: props.selectEntity,
+        mainTab: props.mainTab,
+        layerOpacity: props.map.layerOpacity,
+        actions: this.actions,
       }),
-      state.domContainer
+      this.dom
     );
 
-    this.subjects.mapFeatureCollection.next(state.map.quadkeys);
+    this.subjects.mapFeatureCollection.next(props.map.quadkeys);
   }
-
-  // actions
-  private modifySelectedId = () => {
-    this.setState({
-      selectEntity: {
-        ...this.state.selectEntity,
-        selectedId: this.state.selectEntity.hoverId,
-      },
-    });
-  };
-
-  private modifyHoverId = (id?: string) => {
-    this.setState({
-      selectEntity: { ...this.state.selectEntity, hoverId: id },
-    });
-  };
-
-  private modifyMainTab = (mainTab: any) => {
-    this.setState({ mainTab: { ...this.state.mainTab, active: mainTab } });
-  };
-
-  private modifyQuadkeys = (d: State['map']['quadkeys']) => {
-    if (d.every(q => this.state.map.quadkeys.indexOf(q) > -1)) {
-      return;
-    }
-    this.setState({ map: { ...this.state.map, quadkeys: d, loading: true } });
-  };
-
-  private modifyFC = (d: State['map']['featureCollection']) => {
-    this.setState({
-      map: { ...this.state.map, featureCollection: d, loading: false },
-    });
-  };
-  private modifyLayerOpacity = () => {
-    let next: LayerOpacity;
-    const current = this.state.map.layerOpacity;
-
-    if (current === LayerOpacity.High) {
-      next = LayerOpacity.Medium;
-    } else if (current === LayerOpacity.Medium) {
-      next = LayerOpacity.Low;
-    } else {
-      next = LayerOpacity.High;
-    }
-    this.setState({
-      map: {
-        ...this.state.map,
-        layerOpacity: next,
-        layers: layerOpacity(
-          next,
-          this.state.map.layerOpacity,
-          this.state.map.layers
-        ),
-      },
-    });
-  };
 }
