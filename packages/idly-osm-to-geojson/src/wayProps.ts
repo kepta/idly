@@ -1,5 +1,4 @@
 import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
-import { weakCache } from 'idly-common/lib/misc/weakCache';
 import { isArea } from 'idly-common/lib/osm/isArea';
 import { OsmGeometry, Way } from 'idly-common/lib/osm/structures';
 import { tagClasses } from 'idly-common/lib/tagClasses/tagClasses';
@@ -29,13 +28,10 @@ export const wayPropertiesGen = (way: Way) => {
   if (way.tags.height) {
     result['@idly-height'] = parseInt(way.tags.height, 10);
     result['@idly-min_height'] = parseInt(way.tags.min_height, 10) || 0;
-    if (
-      way.tags['building:colour'] &&
-      way.tags['building:colour'].length === 7
-    ) {
-      result['@idly-building-color'] = way.tags['building:colour'];
+    if (way.tags['building:colour'] || way.tags['building:color']) {
+      result['@idly-building-colour'] =
+        way.tags['building:colour'] || way.tags['building:color'];
     }
   }
-
   return result;
 };

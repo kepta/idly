@@ -3313,7 +3313,7 @@ Array [
     "id": "w5672954",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -3323,7 +3323,7 @@ Array [
     "id": "w260091266",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 164,
     "@idly-icon": undefined,
@@ -3333,7 +3333,7 @@ Array [
     "id": "w260091267",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -3343,7 +3343,7 @@ Array [
     "id": "w260091268",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 170,
     "@idly-icon": undefined,
@@ -3353,7 +3353,7 @@ Array [
     "id": "w260091269",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -3363,7 +3363,7 @@ Array [
     "id": "w260091270",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -3373,7 +3373,7 @@ Array [
     "id": "w260091271",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -3383,7 +3383,7 @@ Array [
     "id": "w260091273",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 170,
     "@idly-icon": undefined,
@@ -3393,7 +3393,7 @@ Array [
     "id": "w260091274",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -3403,7 +3403,7 @@ Array [
     "id": "w260091275",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -3448,7 +3448,7 @@ Array [
     "id": "w260246228",
   },
   Object {
-    "@idly-building-color": "#738589",
+    "@idly-building-colour": "#738589",
     "@idly-geometry": "line",
     "@idly-height": 20,
     "@idly-icon": undefined,
@@ -3458,7 +3458,7 @@ Array [
     "id": "w260248029",
   },
   Object {
-    "@idly-building-color": "#738589",
+    "@idly-building-colour": "#738589",
     "@idly-geometry": "line",
     "@idly-height": 131,
     "@idly-icon": undefined,
@@ -3492,6 +3492,7 @@ Array [
     "id": "w266010257",
   },
   Object {
+    "@idly-building-colour": "black",
     "@idly-geometry": "area",
     "@idly-height": 40,
     "@idly-icon": "suitcase",
@@ -3542,7 +3543,7 @@ Array [
     "id": "w266010314",
   },
   Object {
-    "@idly-building-color": "#9E9E9C",
+    "@idly-building-colour": "#9E9E9C",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -3553,7 +3554,7 @@ Array [
     "id": "w266010329",
   },
   Object {
-    "@idly-building-color": "#C4C4B8",
+    "@idly-building-colour": "#C4C4B8",
     "@idly-geometry": "area",
     "@idly-height": 25,
     "@idly-icon": "home",
@@ -3564,7 +3565,7 @@ Array [
     "id": "w266010330",
   },
   Object {
-    "@idly-building-color": "#796759",
+    "@idly-building-colour": "#796759",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -3679,7 +3680,7 @@ Array [
     "id": "w266010440",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 8,
     "@idly-icon": undefined,
@@ -3689,7 +3690,7 @@ Array [
     "id": "w266779927",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 107,
     "@idly-icon": undefined,
@@ -3699,7 +3700,7 @@ Array [
     "id": "w266787404",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 26,
     "@idly-icon": undefined,
@@ -3709,7 +3710,7 @@ Array [
     "id": "w266787419",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 89,
     "@idly-icon": undefined,
@@ -3719,7 +3720,7 @@ Array [
     "id": "w266787423",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 50,
     "@idly-icon": undefined,
@@ -3729,7 +3730,7 @@ Array [
     "id": "w266787424",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -3739,7 +3740,7 @@ Array [
     "id": "w266787425",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 59,
     "@idly-icon": undefined,
@@ -3749,7 +3750,7 @@ Array [
     "id": "w291737179",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 86,
     "@idly-icon": undefined,
@@ -3759,7 +3760,7 @@ Array [
     "id": "w291737183",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -3769,7 +3770,7 @@ Array [
     "id": "w291737184",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 83,
     "@idly-icon": undefined,
@@ -3779,7 +3780,7 @@ Array [
     "id": "w291737185",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 45,
     "@idly-icon": undefined,
@@ -3789,7 +3790,7 @@ Array [
     "id": "w291737187",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 32,
     "@idly-icon": undefined,
@@ -3808,7 +3809,7 @@ Array [
     "id": "w293711527",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 45,
     "@idly-icon": undefined,
@@ -3818,7 +3819,7 @@ Array [
     "id": "w293711528",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 37,
     "@idly-icon": undefined,
@@ -5276,7 +5277,7 @@ Array [
     "id": "w118476493",
   },
   Object {
-    "@idly-building-color": "#828E8C",
+    "@idly-building-colour": "#828E8C",
     "@idly-geometry": "area",
     "@idly-height": 110,
     "@idly-icon": "suitcase",
@@ -5287,7 +5288,7 @@ Array [
     "id": "w146109229",
   },
   Object {
-    "@idly-building-color": "#828E8C",
+    "@idly-building-colour": "#828E8C",
     "@idly-geometry": "line",
     "@idly-height": 141,
     "@idly-icon": undefined,
@@ -5297,7 +5298,7 @@ Array [
     "id": "w146109245",
   },
   Object {
-    "@idly-building-color": "#7A8A7D",
+    "@idly-building-colour": "#7A8A7D",
     "@idly-geometry": "line",
     "@idly-height": 93,
     "@idly-icon": undefined,
@@ -5307,7 +5308,7 @@ Array [
     "id": "w148241066",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 150,
     "@idly-icon": undefined,
@@ -5327,6 +5328,7 @@ Array [
     "id": "w266010319",
   },
   Object {
+    "@idly-building-colour": "beige",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -5448,7 +5450,7 @@ Array [
     "id": "w266787405",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 26,
     "@idly-icon": undefined,
@@ -5458,7 +5460,7 @@ Array [
     "id": "w266787406",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 50,
     "@idly-icon": undefined,
@@ -5468,7 +5470,7 @@ Array [
     "id": "w266787407",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 89,
     "@idly-icon": undefined,
@@ -5487,7 +5489,7 @@ Array [
     "id": "w266787409",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 40,
     "@idly-icon": undefined,
@@ -5497,7 +5499,7 @@ Array [
     "id": "w266787410",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -5597,7 +5599,7 @@ Array [
     "id": "w266787422",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 70,
     "@idly-icon": undefined,
@@ -5607,7 +5609,7 @@ Array [
     "id": "w291304769",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -5617,7 +5619,7 @@ Array [
     "id": "w291304770",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 64,
     "@idly-icon": undefined,
@@ -5627,7 +5629,7 @@ Array [
     "id": "w291304772",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 34,
     "@idly-icon": undefined,
@@ -5637,7 +5639,7 @@ Array [
     "id": "w291304774",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 46,
     "@idly-icon": undefined,
@@ -5647,7 +5649,7 @@ Array [
     "id": "w291304775",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 40,
     "@idly-icon": undefined,
@@ -5657,7 +5659,7 @@ Array [
     "id": "w291304776",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 40,
     "@idly-icon": undefined,
@@ -5667,7 +5669,7 @@ Array [
     "id": "w291304777",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -5677,7 +5679,7 @@ Array [
     "id": "w291304778",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 34,
     "@idly-icon": undefined,
@@ -5687,7 +5689,7 @@ Array [
     "id": "w291304779",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -5697,7 +5699,7 @@ Array [
     "id": "w291304780",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 46,
     "@idly-icon": undefined,
@@ -5707,7 +5709,7 @@ Array [
     "id": "w291304782",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 52,
     "@idly-icon": undefined,
@@ -5717,7 +5719,7 @@ Array [
     "id": "w291304783",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 52,
     "@idly-icon": undefined,
@@ -5727,7 +5729,7 @@ Array [
     "id": "w291304784",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 78,
     "@idly-icon": undefined,
@@ -5737,7 +5739,7 @@ Array [
     "id": "w291304785",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 64,
     "@idly-icon": undefined,
@@ -5747,7 +5749,7 @@ Array [
     "id": "w291304787",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 46,
     "@idly-icon": undefined,
@@ -5757,7 +5759,7 @@ Array [
     "id": "w291304788",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 52,
     "@idly-icon": undefined,
@@ -5767,7 +5769,7 @@ Array [
     "id": "w291304790",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 70,
     "@idly-icon": undefined,
@@ -5777,7 +5779,7 @@ Array [
     "id": "w291304791",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -5787,7 +5789,7 @@ Array [
     "id": "w291304792",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 64,
     "@idly-icon": undefined,
@@ -5797,7 +5799,7 @@ Array [
     "id": "w291304793",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 74,
     "@idly-icon": undefined,
@@ -5807,7 +5809,7 @@ Array [
     "id": "w291304794",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 80,
     "@idly-icon": undefined,
@@ -5817,7 +5819,7 @@ Array [
     "id": "w291304795",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 70,
     "@idly-icon": undefined,
@@ -5827,7 +5829,7 @@ Array [
     "id": "w291306697",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 90,
     "@idly-icon": undefined,
@@ -5837,7 +5839,7 @@ Array [
     "id": "w291306698",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 96,
     "@idly-icon": undefined,
@@ -5847,7 +5849,7 @@ Array [
     "id": "w291306699",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 96,
     "@idly-icon": undefined,
@@ -5857,7 +5859,7 @@ Array [
     "id": "w291306700",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 24,
     "@idly-icon": undefined,
@@ -5867,7 +5869,7 @@ Array [
     "id": "w291306701",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 22,
     "@idly-icon": undefined,
@@ -5877,7 +5879,7 @@ Array [
     "id": "w291308885",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 130,
     "@idly-icon": undefined,
@@ -5887,7 +5889,7 @@ Array [
     "id": "w291308887",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 130,
     "@idly-icon": undefined,
@@ -5897,7 +5899,7 @@ Array [
     "id": "w291308888",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 65,
     "@idly-icon": undefined,
@@ -5907,7 +5909,7 @@ Array [
     "id": "w291308890",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 35,
     "@idly-icon": undefined,
@@ -5926,7 +5928,7 @@ Array [
     "id": "w291308894",
   },
   Object {
-    "@idly-building-color": "#B5B2A1",
+    "@idly-building-colour": "#B5B2A1",
     "@idly-geometry": "line",
     "@idly-height": 141,
     "@idly-icon": undefined,
@@ -5936,7 +5938,7 @@ Array [
     "id": "w291308896",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 94,
     "@idly-icon": undefined,
@@ -5955,7 +5957,7 @@ Array [
     "id": "w291737180",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 83,
     "@idly-icon": undefined,
@@ -5965,7 +5967,7 @@ Array [
     "id": "w291737182",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 157,
     "@idly-icon": undefined,
@@ -5975,7 +5977,7 @@ Array [
     "id": "w291737186",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 123,
     "@idly-icon": undefined,
@@ -7825,7 +7827,7 @@ Array [
     "id": "w5672954",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -7835,7 +7837,7 @@ Array [
     "id": "w260091266",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 164,
     "@idly-icon": undefined,
@@ -7845,7 +7847,7 @@ Array [
     "id": "w260091267",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -7855,7 +7857,7 @@ Array [
     "id": "w260091268",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 170,
     "@idly-icon": undefined,
@@ -7865,7 +7867,7 @@ Array [
     "id": "w260091269",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -7875,7 +7877,7 @@ Array [
     "id": "w260091270",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -7885,7 +7887,7 @@ Array [
     "id": "w260091271",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -7895,7 +7897,7 @@ Array [
     "id": "w260091273",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 170,
     "@idly-icon": undefined,
@@ -7905,7 +7907,7 @@ Array [
     "id": "w260091274",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -7915,7 +7917,7 @@ Array [
     "id": "w260091275",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -7960,7 +7962,7 @@ Array [
     "id": "w260246228",
   },
   Object {
-    "@idly-building-color": "#738589",
+    "@idly-building-colour": "#738589",
     "@idly-geometry": "line",
     "@idly-height": 20,
     "@idly-icon": undefined,
@@ -7970,7 +7972,7 @@ Array [
     "id": "w260248029",
   },
   Object {
-    "@idly-building-color": "#738589",
+    "@idly-building-colour": "#738589",
     "@idly-geometry": "line",
     "@idly-height": 131,
     "@idly-icon": undefined,
@@ -8004,6 +8006,7 @@ Array [
     "id": "w266010257",
   },
   Object {
+    "@idly-building-colour": "black",
     "@idly-geometry": "area",
     "@idly-height": 40,
     "@idly-icon": "suitcase",
@@ -8054,7 +8057,7 @@ Array [
     "id": "w266010314",
   },
   Object {
-    "@idly-building-color": "#9E9E9C",
+    "@idly-building-colour": "#9E9E9C",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -8065,7 +8068,7 @@ Array [
     "id": "w266010329",
   },
   Object {
-    "@idly-building-color": "#C4C4B8",
+    "@idly-building-colour": "#C4C4B8",
     "@idly-geometry": "area",
     "@idly-height": 25,
     "@idly-icon": "home",
@@ -8076,7 +8079,7 @@ Array [
     "id": "w266010330",
   },
   Object {
-    "@idly-building-color": "#796759",
+    "@idly-building-colour": "#796759",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -8191,7 +8194,7 @@ Array [
     "id": "w266010440",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 8,
     "@idly-icon": undefined,
@@ -8201,7 +8204,7 @@ Array [
     "id": "w266779927",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 107,
     "@idly-icon": undefined,
@@ -8211,7 +8214,7 @@ Array [
     "id": "w266787404",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 26,
     "@idly-icon": undefined,
@@ -8221,7 +8224,7 @@ Array [
     "id": "w266787419",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 89,
     "@idly-icon": undefined,
@@ -8231,7 +8234,7 @@ Array [
     "id": "w266787423",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 50,
     "@idly-icon": undefined,
@@ -8241,7 +8244,7 @@ Array [
     "id": "w266787424",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -8251,7 +8254,7 @@ Array [
     "id": "w266787425",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 59,
     "@idly-icon": undefined,
@@ -8261,7 +8264,7 @@ Array [
     "id": "w291737179",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 86,
     "@idly-icon": undefined,
@@ -8271,7 +8274,7 @@ Array [
     "id": "w291737183",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -8281,7 +8284,7 @@ Array [
     "id": "w291737184",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 83,
     "@idly-icon": undefined,
@@ -8291,7 +8294,7 @@ Array [
     "id": "w291737185",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 45,
     "@idly-icon": undefined,
@@ -8301,7 +8304,7 @@ Array [
     "id": "w291737187",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 32,
     "@idly-icon": undefined,
@@ -8320,7 +8323,7 @@ Array [
     "id": "w293711527",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 45,
     "@idly-icon": undefined,
@@ -8330,7 +8333,7 @@ Array [
     "id": "w293711528",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 37,
     "@idly-icon": undefined,
@@ -10190,7 +10193,7 @@ Array [
     "id": "w5672954",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -10200,7 +10203,7 @@ Array [
     "id": "w260091266",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 164,
     "@idly-icon": undefined,
@@ -10210,7 +10213,7 @@ Array [
     "id": "w260091267",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -10220,7 +10223,7 @@ Array [
     "id": "w260091268",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 170,
     "@idly-icon": undefined,
@@ -10230,7 +10233,7 @@ Array [
     "id": "w260091269",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -10240,7 +10243,7 @@ Array [
     "id": "w260091270",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -10250,7 +10253,7 @@ Array [
     "id": "w260091271",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 176,
     "@idly-icon": undefined,
@@ -10260,7 +10263,7 @@ Array [
     "id": "w260091273",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 170,
     "@idly-icon": undefined,
@@ -10270,7 +10273,7 @@ Array [
     "id": "w260091274",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -10280,7 +10283,7 @@ Array [
     "id": "w260091275",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 60,
     "@idly-icon": undefined,
@@ -10325,7 +10328,7 @@ Array [
     "id": "w260246228",
   },
   Object {
-    "@idly-building-color": "#738589",
+    "@idly-building-colour": "#738589",
     "@idly-geometry": "line",
     "@idly-height": 20,
     "@idly-icon": undefined,
@@ -10335,7 +10338,7 @@ Array [
     "id": "w260248029",
   },
   Object {
-    "@idly-building-color": "#738589",
+    "@idly-building-colour": "#738589",
     "@idly-geometry": "line",
     "@idly-height": 131,
     "@idly-icon": undefined,
@@ -10369,6 +10372,7 @@ Array [
     "id": "w266010257",
   },
   Object {
+    "@idly-building-colour": "black",
     "@idly-geometry": "area",
     "@idly-height": 40,
     "@idly-icon": "suitcase",
@@ -10419,7 +10423,7 @@ Array [
     "id": "w266010314",
   },
   Object {
-    "@idly-building-color": "#9E9E9C",
+    "@idly-building-colour": "#9E9E9C",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -10430,7 +10434,7 @@ Array [
     "id": "w266010329",
   },
   Object {
-    "@idly-building-color": "#C4C4B8",
+    "@idly-building-colour": "#C4C4B8",
     "@idly-geometry": "area",
     "@idly-height": 25,
     "@idly-icon": "home",
@@ -10441,7 +10445,7 @@ Array [
     "id": "w266010330",
   },
   Object {
-    "@idly-building-color": "#796759",
+    "@idly-building-colour": "#796759",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -10556,7 +10560,7 @@ Array [
     "id": "w266010440",
   },
   Object {
-    "@idly-building-color": "#8B7355",
+    "@idly-building-colour": "#8B7355",
     "@idly-geometry": "line",
     "@idly-height": 8,
     "@idly-icon": undefined,
@@ -10566,7 +10570,7 @@ Array [
     "id": "w266779927",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 107,
     "@idly-icon": undefined,
@@ -10576,7 +10580,7 @@ Array [
     "id": "w266787404",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 26,
     "@idly-icon": undefined,
@@ -10586,7 +10590,7 @@ Array [
     "id": "w266787419",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 89,
     "@idly-icon": undefined,
@@ -10596,7 +10600,7 @@ Array [
     "id": "w266787423",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 50,
     "@idly-icon": undefined,
@@ -10606,7 +10610,7 @@ Array [
     "id": "w266787424",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -10616,7 +10620,7 @@ Array [
     "id": "w266787425",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 59,
     "@idly-icon": undefined,
@@ -10626,7 +10630,7 @@ Array [
     "id": "w291737179",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 86,
     "@idly-icon": undefined,
@@ -10636,7 +10640,7 @@ Array [
     "id": "w291737183",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -10646,7 +10650,7 @@ Array [
     "id": "w291737184",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 83,
     "@idly-icon": undefined,
@@ -10656,7 +10660,7 @@ Array [
     "id": "w291737185",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 45,
     "@idly-icon": undefined,
@@ -10666,7 +10670,7 @@ Array [
     "id": "w291737187",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 32,
     "@idly-icon": undefined,
@@ -10685,7 +10689,7 @@ Array [
     "id": "w293711527",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 45,
     "@idly-icon": undefined,
@@ -10695,7 +10699,7 @@ Array [
     "id": "w293711528",
   },
   Object {
-    "@idly-building-color": "#C3AF96",
+    "@idly-building-colour": "#C3AF96",
     "@idly-geometry": "line",
     "@idly-height": 37,
     "@idly-icon": undefined,
@@ -12153,7 +12157,7 @@ Array [
     "id": "w118476493",
   },
   Object {
-    "@idly-building-color": "#828E8C",
+    "@idly-building-colour": "#828E8C",
     "@idly-geometry": "area",
     "@idly-height": 110,
     "@idly-icon": "suitcase",
@@ -12164,7 +12168,7 @@ Array [
     "id": "w146109229",
   },
   Object {
-    "@idly-building-color": "#828E8C",
+    "@idly-building-colour": "#828E8C",
     "@idly-geometry": "line",
     "@idly-height": 141,
     "@idly-icon": undefined,
@@ -12174,7 +12178,7 @@ Array [
     "id": "w146109245",
   },
   Object {
-    "@idly-building-color": "#7A8A7D",
+    "@idly-building-colour": "#7A8A7D",
     "@idly-geometry": "line",
     "@idly-height": 93,
     "@idly-icon": undefined,
@@ -12184,7 +12188,7 @@ Array [
     "id": "w148241066",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 150,
     "@idly-icon": undefined,
@@ -12204,6 +12208,7 @@ Array [
     "id": "w266010319",
   },
   Object {
+    "@idly-building-colour": "beige",
     "@idly-geometry": "area",
     "@idly-height": 17,
     "@idly-icon": "home",
@@ -12325,7 +12330,7 @@ Array [
     "id": "w266787405",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 26,
     "@idly-icon": undefined,
@@ -12335,7 +12340,7 @@ Array [
     "id": "w266787406",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 50,
     "@idly-icon": undefined,
@@ -12345,7 +12350,7 @@ Array [
     "id": "w266787407",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 89,
     "@idly-icon": undefined,
@@ -12364,7 +12369,7 @@ Array [
     "id": "w266787409",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 40,
     "@idly-icon": undefined,
@@ -12374,7 +12379,7 @@ Array [
     "id": "w266787410",
   },
   Object {
-    "@idly-building-color": "#DAD7D0",
+    "@idly-building-colour": "#DAD7D0",
     "@idly-geometry": "line",
     "@idly-height": 71,
     "@idly-icon": undefined,
@@ -12474,7 +12479,7 @@ Array [
     "id": "w266787422",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 70,
     "@idly-icon": undefined,
@@ -12484,7 +12489,7 @@ Array [
     "id": "w291304769",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -12494,7 +12499,7 @@ Array [
     "id": "w291304770",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 64,
     "@idly-icon": undefined,
@@ -12504,7 +12509,7 @@ Array [
     "id": "w291304772",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 34,
     "@idly-icon": undefined,
@@ -12514,7 +12519,7 @@ Array [
     "id": "w291304774",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 46,
     "@idly-icon": undefined,
@@ -12524,7 +12529,7 @@ Array [
     "id": "w291304775",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 40,
     "@idly-icon": undefined,
@@ -12534,7 +12539,7 @@ Array [
     "id": "w291304776",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 40,
     "@idly-icon": undefined,
@@ -12544,7 +12549,7 @@ Array [
     "id": "w291304777",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -12554,7 +12559,7 @@ Array [
     "id": "w291304778",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 34,
     "@idly-icon": undefined,
@@ -12564,7 +12569,7 @@ Array [
     "id": "w291304779",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -12574,7 +12579,7 @@ Array [
     "id": "w291304780",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 46,
     "@idly-icon": undefined,
@@ -12584,7 +12589,7 @@ Array [
     "id": "w291304782",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 52,
     "@idly-icon": undefined,
@@ -12594,7 +12599,7 @@ Array [
     "id": "w291304783",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 52,
     "@idly-icon": undefined,
@@ -12604,7 +12609,7 @@ Array [
     "id": "w291304784",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 78,
     "@idly-icon": undefined,
@@ -12614,7 +12619,7 @@ Array [
     "id": "w291304785",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 64,
     "@idly-icon": undefined,
@@ -12624,7 +12629,7 @@ Array [
     "id": "w291304787",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 46,
     "@idly-icon": undefined,
@@ -12634,7 +12639,7 @@ Array [
     "id": "w291304788",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 52,
     "@idly-icon": undefined,
@@ -12644,7 +12649,7 @@ Array [
     "id": "w291304790",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 70,
     "@idly-icon": undefined,
@@ -12654,7 +12659,7 @@ Array [
     "id": "w291304791",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 58,
     "@idly-icon": undefined,
@@ -12664,7 +12669,7 @@ Array [
     "id": "w291304792",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 64,
     "@idly-icon": undefined,
@@ -12674,7 +12679,7 @@ Array [
     "id": "w291304793",
   },
   Object {
-    "@idly-building-color": "#A8A7A3",
+    "@idly-building-colour": "#A8A7A3",
     "@idly-geometry": "line",
     "@idly-height": 74,
     "@idly-icon": undefined,
@@ -12684,7 +12689,7 @@ Array [
     "id": "w291304794",
   },
   Object {
-    "@idly-building-color": "#58625F",
+    "@idly-building-colour": "#58625F",
     "@idly-geometry": "line",
     "@idly-height": 80,
     "@idly-icon": undefined,
@@ -12694,7 +12699,7 @@ Array [
     "id": "w291304795",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 70,
     "@idly-icon": undefined,
@@ -12704,7 +12709,7 @@ Array [
     "id": "w291306697",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 90,
     "@idly-icon": undefined,
@@ -12714,7 +12719,7 @@ Array [
     "id": "w291306698",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 96,
     "@idly-icon": undefined,
@@ -12724,7 +12729,7 @@ Array [
     "id": "w291306699",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 96,
     "@idly-icon": undefined,
@@ -12734,7 +12739,7 @@ Array [
     "id": "w291306700",
   },
   Object {
-    "@idly-building-color": "#838071",
+    "@idly-building-colour": "#838071",
     "@idly-geometry": "line",
     "@idly-height": 24,
     "@idly-icon": undefined,
@@ -12744,7 +12749,7 @@ Array [
     "id": "w291306701",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 22,
     "@idly-icon": undefined,
@@ -12754,7 +12759,7 @@ Array [
     "id": "w291308885",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 130,
     "@idly-icon": undefined,
@@ -12764,7 +12769,7 @@ Array [
     "id": "w291308887",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 130,
     "@idly-icon": undefined,
@@ -12774,7 +12779,7 @@ Array [
     "id": "w291308888",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 65,
     "@idly-icon": undefined,
@@ -12784,7 +12789,7 @@ Array [
     "id": "w291308890",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 35,
     "@idly-icon": undefined,
@@ -12803,7 +12808,7 @@ Array [
     "id": "w291308894",
   },
   Object {
-    "@idly-building-color": "#B5B2A1",
+    "@idly-building-colour": "#B5B2A1",
     "@idly-geometry": "line",
     "@idly-height": 141,
     "@idly-icon": undefined,
@@ -12813,7 +12818,7 @@ Array [
     "id": "w291308896",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 94,
     "@idly-icon": undefined,
@@ -12832,7 +12837,7 @@ Array [
     "id": "w291737180",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 83,
     "@idly-icon": undefined,
@@ -12842,7 +12847,7 @@ Array [
     "id": "w291737182",
   },
   Object {
-    "@idly-building-color": "#D1CBB7",
+    "@idly-building-colour": "#D1CBB7",
     "@idly-geometry": "line",
     "@idly-height": 157,
     "@idly-icon": undefined,
@@ -12852,7 +12857,7 @@ Array [
     "id": "w291737186",
   },
   Object {
-    "@idly-building-color": "#768B7A",
+    "@idly-building-colour": "#768B7A",
     "@idly-geometry": "line",
     "@idly-height": 123,
     "@idly-icon": undefined,
