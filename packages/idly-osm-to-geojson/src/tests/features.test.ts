@@ -48,12 +48,6 @@ describe('converts node to feat', () => {
   });
 });
 
-const way = wayFactory({
-  id: 'w1',
-  nodes: ['n1'],
-  tags: tagsFactory({ highway: 'residential' }),
-});
-
 describe('way.test', () => {
   describe('wayToLineString', () => {
     it('should throw error when no geometry provided', () => {

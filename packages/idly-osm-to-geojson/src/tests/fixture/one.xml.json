@@ -1,0 +1,3086 @@
+{
+  "@@idly@type": "Map",
+  "value": [
+    [
+      "n419360106",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "1500261",
+            "timestamp": "2009-06-12T21:51:01Z",
+            "uid": "134892",
+            "user": "cityracks",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n419360106",
+          "loc": { "lon": -73.9757498, "lat": 40.7619402 },
+          "tags": {
+            "amenity": "bicycle_parking",
+            "capacity": "2",
+            "cityracks.housenum": "24",
+            "cityracks.large": "0",
+            "cityracks.rackid": "153",
+            "cityracks.small": "1",
+            "cityracks.street": "W 55th St"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n419360261",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "1500261",
+            "timestamp": "2009-06-12T21:51:16Z",
+            "uid": "134892",
+            "user": "cityracks",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n419360261",
+          "loc": { "lon": -73.9757493, "lat": 40.7619401 },
+          "tags": {
+            "amenity": "bicycle_parking",
+            "capacity": "2",
+            "cityracks.housenum": "24",
+            "cityracks.large": "0",
+            "cityracks.rackid": "2559",
+            "cityracks.small": "1",
+            "cityracks.street": "W 55th St"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n1511944211",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:23:00Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1511944211",
+          "loc": { "lon": -73.9754752, "lat": 40.7623128 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w137883073"] }
+      }
+    ],
+    [
+      "n1511944213",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:23:00Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1511944213",
+          "loc": { "lon": -73.9746766, "lat": 40.7622754 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w137883073"] }
+      }
+    ],
+    [
+      "n1511944214",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:23:00Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1511944214",
+          "loc": { "lon": -73.9748471, "lat": 40.7620474 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w265149191"]
+        }
+      }
+    ],
+    [
+      "n1511944215",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n1511944215",
+          "loc": { "lon": -73.9752999, "lat": 40.762549 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w137883073"] }
+      }
+    ],
+    [
+      "n2657347569",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347569",
+          "loc": { "lon": -73.974942, "lat": 40.7620874 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w260257910", "w265149191", "w317057464"]
+        }
+      }
+    ],
+    [
+      "n2657347570",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347570",
+          "loc": { "lon": -73.9749762, "lat": 40.7621017 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": [
+            "w137883073",
+            "w260257909",
+            "w260257910",
+            "w265149191",
+            "w317057464"
+          ]
+        }
+      }
+    ],
+    [
+      "n2657347571",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347571",
+          "loc": { "lon": -73.9749239, "lat": 40.7621121 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910"]
+        }
+      }
+    ],
+    [
+      "n2657347572",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347572",
+          "loc": { "lon": -73.974958, "lat": 40.7621265 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w260257909"] }
+      }
+    ],
+    [
+      "n2657347573",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347573",
+          "loc": { "lon": -73.9752871, "lat": 40.7622324 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": [
+            "w137883073",
+            "w260257909",
+            "w260257910",
+            "w265149191",
+            "w317057464"
+          ]
+        }
+      }
+    ],
+    [
+      "n2657347574",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347574",
+          "loc": { "lon": -73.9753198, "lat": 40.7622462 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w260257910", "w265149191", "w317057464"]
+        }
+      }
+    ],
+    [
+      "n2657347575",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347575",
+          "loc": { "lon": -73.974821, "lat": 40.7622525 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910"]
+        }
+      }
+    ],
+    [
+      "n2657347576",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347576",
+          "loc": { "lon": -73.9752663, "lat": 40.7622608 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w260257909"] }
+      }
+    ],
+    [
+      "n2657347577",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347577",
+          "loc": { "lon": -73.9748541, "lat": 40.7622664 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w260257909"] }
+      }
+    ],
+    [
+      "n2657347578",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347578",
+          "loc": { "lon": -73.975299, "lat": 40.7622746 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347579",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347579",
+          "loc": { "lon": -73.9748011, "lat": 40.7622796 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w260257910"] }
+      }
+    ],
+    [
+      "n2657347580",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347580",
+          "loc": { "lon": -73.9748342, "lat": 40.7622936 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910"]
+        }
+      }
+    ],
+    [
+      "n2657347581",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347581",
+          "loc": { "lon": -73.9752718, "lat": 40.7623116 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910", "w260257911", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347582",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347582",
+          "loc": { "lon": -73.9754554, "lat": 40.7623403 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347583",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347583",
+          "loc": { "lon": -73.9754283, "lat": 40.7623774 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w260257911", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347584",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347584",
+          "loc": { "lon": -73.9752209, "lat": 40.7623811 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910", "w260257911", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347585",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347585",
+          "loc": { "lon": -73.9751609, "lat": 40.7624001 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w260257909"] }
+      }
+    ],
+    [
+      "n2657347586",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347586",
+          "loc": { "lon": -73.9751961, "lat": 40.7624149 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347587",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347587",
+          "loc": { "lon": -73.9751436, "lat": 40.7624236 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w260257909", "w260257910"]
+        }
+      }
+    ],
+    [
+      "n2657347588",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347588",
+          "loc": { "lon": -73.9751789, "lat": 40.7624384 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w260257910"] }
+      }
+    ],
+    [
+      "n2657347589",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347589",
+          "loc": { "lon": -73.9753774, "lat": 40.7624469 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w260257911", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2657347590",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:07Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n2657347590",
+          "loc": { "lon": -73.9753526, "lat": 40.7624807 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w260257912"]
+        }
+      }
+    ],
+    [
+      "n2708095636",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:31Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095636",
+          "loc": { "lon": -73.975622, "lat": 40.7618565 },
+          "tags": {
+            "addr:housenumber": "6",
+            "addr:postcode": "10019",
+            "addr:street": "West 55th Street"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2708095647",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:31Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095647",
+          "loc": { "lon": -73.9751297, "lat": 40.7618823 },
+          "tags": {
+            "addr:housenumber": "7",
+            "addr:postcode": "10019",
+            "addr:street": "West 55th Street"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2708095671",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095671",
+          "loc": { "lon": -73.9754798, "lat": 40.7611826 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095673",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095673",
+          "loc": { "lon": -73.9760298, "lat": 40.7614141 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095675",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095675",
+          "loc": { "lon": -73.9753062, "lat": 40.7614209 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095677",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095677",
+          "loc": { "lon": -73.9755207, "lat": 40.7614384 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095683",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095683",
+          "loc": { "lon": -73.9756151, "lat": 40.7614781 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095687",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095687",
+          "loc": { "lon": -73.975461, "lat": 40.761486 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095691",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095691",
+          "loc": { "lon": -73.9754802, "lat": 40.7614941 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095692",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095692",
+          "loc": { "lon": -73.9755434, "lat": 40.7615207 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149283"] }
+      }
+    ],
+    [
+      "n2708095693",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:32Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095693",
+          "loc": { "lon": -73.9755746, "lat": 40.7615338 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095695",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095695",
+          "loc": { "lon": -73.9756813, "lat": 40.761564 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095696",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095696",
+          "loc": { "lon": -73.975706, "lat": 40.7615744 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095697",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095697",
+          "loc": { "lon": -73.9756731, "lat": 40.7615753 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095699",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095699",
+          "loc": { "lon": -73.9756577, "lat": 40.7615996 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149283"] }
+      }
+    ],
+    [
+      "n2708095700",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095700",
+          "loc": { "lon": -73.975372, "lat": 40.7616082 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149283"] }
+      }
+    ],
+    [
+      "n2708095701",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095701",
+          "loc": { "lon": -73.9756806, "lat": 40.7616092 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095705",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095705",
+          "loc": { "lon": -73.9756983, "lat": 40.7616322 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095709",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095709",
+          "loc": { "lon": -73.9758699, "lat": 40.7616339 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149192", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095716",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095716",
+          "loc": { "lon": -73.9754545, "lat": 40.7616429 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149283"] }
+      }
+    ],
+    [
+      "n2708095720",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095720",
+          "loc": { "lon": -73.975755, "lat": 40.761656 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095728",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095728",
+          "loc": { "lon": -73.9751308, "lat": 40.7616619 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149283"] }
+      }
+    ],
+    [
+      "n2708095731",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:33Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095731",
+          "loc": { "lon": -73.9759471, "lat": 40.7616663 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149192"] }
+      }
+    ],
+    [
+      "n2708095738",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:34Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095738",
+          "loc": { "lon": -73.9759341, "lat": 40.7616842 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149192"] }
+      }
+    ],
+    [
+      "n2708095743",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:34Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095743",
+          "loc": { "lon": -73.9755781, "lat": 40.7617089 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149283"] }
+      }
+    ],
+    [
+      "n2708095744",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:34Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095744",
+          "loc": { "lon": -73.9756077, "lat": 40.7617214 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095745",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:34Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095745",
+          "loc": { "lon": -73.9759056, "lat": 40.7617233 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149192"] }
+      }
+    ],
+    [
+      "n2708095760",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:34Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095760",
+          "loc": { "lon": -73.9756841, "lat": 40.7617535 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149286"] }
+      }
+    ],
+    [
+      "n2708095789",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:10Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2708095789",
+          "loc": { "lon": -73.9750215, "lat": 40.7618081 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057469"]
+        }
+      }
+    ],
+    [
+      "n2708095793",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:35Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095793",
+          "loc": { "lon": -73.975529, "lat": 40.7618295 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149283", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095796",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:10Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2708095796",
+          "loc": { "lon": -73.9751079, "lat": 40.7618445 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057469"]
+        }
+      }
+    ],
+    [
+      "n2708095798",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:10Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2708095798",
+          "loc": { "lon": -73.9751006, "lat": 40.7618544 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057464", "w317057469"]
+        }
+      }
+    ],
+    [
+      "n2708095807",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:35Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095807",
+          "loc": { "lon": -73.975681, "lat": 40.7618935 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149192", "w265149286"]
+        }
+      }
+    ],
+    [
+      "n2708095812",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:35Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095812",
+          "loc": { "lon": -73.9757582, "lat": 40.7619259 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149192"] }
+      }
+    ],
+    [
+      "n2708095840",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:36Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095840",
+          "loc": { "lon": -73.9756516, "lat": 40.7620724 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095846",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:36Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095846",
+          "loc": { "lon": -73.975644, "lat": 40.7620829 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w265149202", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n2708095861",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:36Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095861",
+          "loc": { "lon": -73.9755812, "lat": 40.7621365 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n2708095863",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:36Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095863",
+          "loc": { "lon": -73.9755995, "lat": 40.7621442 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w265149202", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n2708095870",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:36Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095870",
+          "loc": { "lon": -73.9758917, "lat": 40.7621734 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095871",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095871",
+          "loc": { "lon": -73.975675, "lat": 40.762176 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095884",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095884",
+          "loc": { "lon": -73.9756645, "lat": 40.7621905 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095889",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095889",
+          "loc": { "lon": -73.9756303, "lat": 40.7622004 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095893",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095893",
+          "loc": { "lon": -73.9755313, "lat": 40.7622051 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057463", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n2708095895",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095895",
+          "loc": { "lon": -73.975348, "lat": 40.7622073 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057463", "w317057464", "w317057468"]
+        }
+      }
+    ],
+    [
+      "n2708095896",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095896",
+          "loc": { "lon": -73.975651, "lat": 40.7622091 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095899",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095899",
+          "loc": { "lon": -73.9755496, "lat": 40.7622128 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057463"]
+        }
+      }
+    ],
+    [
+      "n2708095900",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095900",
+          "loc": { "lon": -73.9757642, "lat": 40.7622136 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095906",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:37Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095906",
+          "loc": { "lon": -73.9755457, "lat": 40.7622181 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w265149202", "w317057463"]
+        }
+      }
+    ],
+    [
+      "n2708095924",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095924",
+          "loc": { "lon": -73.9756006, "lat": 40.7622412 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095925",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095925",
+          "loc": { "lon": -73.9757417, "lat": 40.7622446 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095926",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095926",
+          "loc": { "lon": -73.9758395, "lat": 40.7622453 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095932",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095932",
+          "loc": { "lon": -73.9757645, "lat": 40.7622542 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095938",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095938",
+          "loc": { "lon": -73.9755054, "lat": 40.7622735 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w265149202", "w317057463"]
+        }
+      }
+    ],
+    [
+      "n2708095943",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095943",
+          "loc": { "lon": -73.9757329, "lat": 40.7622976 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095948",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095948",
+          "loc": { "lon": -73.975785, "lat": 40.7623195 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n2708095963",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:38Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2708095963",
+          "loc": { "lon": -73.9757452, "lat": 40.7623742 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w265149202"] }
+      }
+    ],
+    [
+      "n3232790254",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790254",
+          "loc": { "lon": -73.9750497, "lat": 40.7618215 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790255",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790255",
+          "loc": { "lon": -73.9750076, "lat": 40.7618305 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790256",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790256",
+          "loc": { "lon": -73.9750786, "lat": 40.7618337 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790257",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790257",
+          "loc": { "lon": -73.9749915, "lat": 40.7618524 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790258",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790258",
+          "loc": { "lon": -73.9750898, "lat": 40.7618651 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790259",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790259",
+          "loc": { "lon": -73.9749733, "lat": 40.7618738 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057464", "w317057469"]
+        }
+      }
+    ],
+    [
+      "n3232790260",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790260",
+          "loc": { "lon": -73.975004, "lat": 40.7618838 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790561",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790561",
+          "loc": { "lon": -73.9750738, "lat": 40.761887 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790562",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790562",
+          "loc": { "lon": -73.9750329, "lat": 40.7618959 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057473"] }
+      }
+    ],
+    [
+      "n3232790563",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790563",
+          "loc": { "lon": -73.9750597, "lat": 40.7619102 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w317057464", "w317057469"]
+        }
+      }
+    ],
+    [
+      "n3232790564",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790564",
+          "loc": { "lon": -73.9748856, "lat": 40.7619944 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057464"]
+        }
+      }
+    ],
+    [
+      "n3232790565",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790565",
+          "loc": { "lon": -73.9754872, "lat": 40.7620169 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057464", "w317057467"]
+        }
+      }
+    ],
+    [
+      "n3232790570",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790570",
+          "loc": { "lon": -73.9749556, "lat": 40.7620236 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w317057464"] }
+      }
+    ],
+    [
+      "n3232790579",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790579",
+          "loc": { "lon": -73.9755488, "lat": 40.7620428 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057467", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n3232790586",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790586",
+          "loc": { "lon": -73.9749171, "lat": 40.7620766 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w137883073", "w265149191", "w317057464"]
+        }
+      }
+    ],
+    [
+      "n3232790587",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790587",
+          "loc": { "lon": -73.9754122, "lat": 40.7621195 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w317057463", "w317057464", "w317057467"]
+        }
+      }
+    ],
+    [
+      "n3232790588",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790588",
+          "loc": { "lon": -73.9754739, "lat": 40.7621453 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w317057463", "w317057467", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n3232790589",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790589",
+          "loc": { "lon": -73.9753919, "lat": 40.7621472 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w317057463", "w317057464", "w317057468"]
+        }
+      }
+    ],
+    [
+      "n3232790590",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790590",
+          "loc": { "lon": -73.9754536, "lat": 40.7621731 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w317057463", "w317057468", "w317057470"]
+        }
+      }
+    ],
+    [
+      "n3232790591",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3232790591",
+          "loc": { "lon": -73.9754097, "lat": 40.7622332 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w265149191", "w317057463", "w317057468"]
+        }
+      }
+    ],
+    [
+      "w137883073",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "43721431",
+            "timestamp": "2016-11-17T08:34:48Z",
+            "uid": "339581",
+            "user": "nyuriks",
+            "version": "6",
+            "visible": true
+          },
+          "id": "w137883073",
+          "nodes": [
+            "n1511944215",
+            "n2657347590",
+            "n2657347589",
+            "n2657347583",
+            "n2657347582",
+            "n1511944211",
+            "n2657347574",
+            "n2657347573",
+            "n2657347570",
+            "n2657347569",
+            "n3232790586",
+            "n1511944214",
+            "n1511944213",
+            "n1511944215"
+          ],
+          "tags": {
+            "addr:city": "New York",
+            "addr:housenumber": "712",
+            "addr:postcode": "10019",
+            "addr:state": "NY",
+            "addr:street": "5th Avenue",
+            "building": "yes",
+            "gnis:feature_id": "2083281",
+            "name": "712 Fifth Avenue",
+            "nycdoitt:bin": "1077363",
+            "start_date": "1991",
+            "wikidata": "Q2606176",
+            "wikipedia": "en:712 Fifth Avenue"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w260257909",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w260257909",
+          "nodes": [
+            "n2657347585",
+            "n2657347587",
+            "n2657347580",
+            "n2657347577",
+            "n2657347575",
+            "n2657347571",
+            "n2657347572",
+            "n2657347570",
+            "n2657347573",
+            "n2657347576",
+            "n2657347578",
+            "n2657347581",
+            "n2657347584",
+            "n2657347586",
+            "n2657347585"
+          ],
+          "tags": {
+            "building:colour": "#E4DFC2",
+            "building:levels": "53",
+            "building:material": "concrete",
+            "building:part": "yes",
+            "height": "198",
+            "min_height": "168",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w260257910",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "w260257910",
+          "nodes": [
+            "n2657347579",
+            "n2657347580",
+            "n2657347587",
+            "n2657347588",
+            "n2657347586",
+            "n2657347584",
+            "n2657347581",
+            "n2657347578",
+            "n2657347574",
+            "n2657347573",
+            "n2657347570",
+            "n2657347569",
+            "n2657347571",
+            "n2657347575",
+            "n2657347579"
+          ],
+          "tags": {
+            "building:colour": "#E4DFC2",
+            "building:material": "concrete",
+            "building:part": "yes",
+            "height": "168",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w260257911",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "w260257911",
+          "nodes": [
+            "n2657347584",
+            "n2657347589",
+            "n2657347583",
+            "n2657347581",
+            "n2657347584"
+          ],
+          "tags": {
+            "building:colour": "#E4DFC2",
+            "building:material": "concrete",
+            "building:part": "yes",
+            "height": "54",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w260257912",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22730129",
+            "timestamp": "2014-06-04T09:17:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w260257912",
+          "nodes": [
+            "n2657347586",
+            "n2657347590",
+            "n2657347589",
+            "n2657347583",
+            "n2657347582",
+            "n2657347578",
+            "n2657347581",
+            "n2657347584",
+            "n2657347586"
+          ],
+          "tags": {
+            "building:colour": "#E4DFC2",
+            "building:material": "concrete",
+            "building:part": "yes",
+            "height": "45",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w265149191",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "43721431",
+            "timestamp": "2016-11-17T08:36:24Z",
+            "uid": "339581",
+            "user": "nyuriks",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w265149191",
+          "nodes": [
+            "n2708095895",
+            "n2657347574",
+            "n2657347573",
+            "n2657347570",
+            "n2657347569",
+            "n3232790586",
+            "n1511944214",
+            "n3232790564",
+            "n3232790259",
+            "n2708095789",
+            "n2708095796",
+            "n2708095798",
+            "n3232790565",
+            "n3232790579",
+            "n2708095846",
+            "n2708095863",
+            "n2708095861",
+            "n2708095893",
+            "n2708095899",
+            "n2708095906",
+            "n2708095938",
+            "n3232790591",
+            "n2708095895"
+          ],
+          "tags": {
+            "addr:city": "New York",
+            "addr:housenumber": "7",
+            "addr:street": "West 55th Street",
+            "amenity": "place_of_worship",
+            "building": "church",
+            "denomination": "presbyterian",
+            "name": "Fifth Avenue Presbyterian Church",
+            "nycdoitt:bin": "1034827",
+            "religion": "christian",
+            "start_date": "1875",
+            "website": "http://fapc.org",
+            "wikidata": "Q3786725",
+            "wikipedia": "en:Fifth Avenue Presbyterian Church"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w265149192",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:45Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w265149192",
+          "nodes": [
+            "n2708095709",
+            "n2708095731",
+            "n2708095738",
+            "n2708095745",
+            "n2708095812",
+            "n2708095807",
+            "n2708095709"
+          ],
+          "tags": {
+            "addr:housenumber": "10",
+            "addr:postcode": "10019",
+            "addr:street": "West 55th Street",
+            "building": "yes",
+            "height": "19.8",
+            "nycdoitt:bin": "1034802"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w265149202",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:46Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w265149202",
+          "nodes": [
+            "n2708095906",
+            "n2708095924",
+            "n2708095889",
+            "n2708095896",
+            "n2708095884",
+            "n2708095871",
+            "n2708095863",
+            "n2708095846",
+            "n2708095840",
+            "n2708095870",
+            "n2708095926",
+            "n2708095900",
+            "n2708095925",
+            "n2708095932",
+            "n2708095943",
+            "n2708095948",
+            "n2708095963",
+            "n2708095938",
+            "n2708095906"
+          ],
+          "tags": {
+            "addr:housenumber": "15",
+            "addr:postcode": "10019",
+            "addr:street": "West 55th Street",
+            "building": "yes",
+            "height": "31.9",
+            "nycdoitt:bin": "1034826"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w265149283",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "52656111",
+            "timestamp": "2017-10-05T19:55:30Z",
+            "uid": "290680",
+            "user": "wheelmap_visitor",
+            "version": "3",
+            "visible": true
+          },
+          "id": "w265149283",
+          "nodes": [
+            "n2708095687",
+            "n2708095700",
+            "n2708095716",
+            "n2708095692",
+            "n2708095693",
+            "n2708095697",
+            "n2708095695",
+            "n2708095696",
+            "n2708095701",
+            "n2708095699",
+            "n2708095743",
+            "n2708095744",
+            "n2708095793",
+            "n2708095728",
+            "n2708095675",
+            "n2708095687"
+          ],
+          "tags": {
+            "addr:city": "New York",
+            "addr:street": "5th Avenue",
+            "building": "yes",
+            "building:levels": "21",
+            "height": "76",
+            "name": "The Peninsula New York",
+            "nycdoitt:bin": "1034801",
+            "start_date": "1905",
+            "tourism": "hotel",
+            "wheelchair": "limited",
+            "wikidata": "Q2413390",
+            "wikipedia": "en:The Peninsula New York"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w265149286",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20999114",
+            "timestamp": "2014-03-09T04:22:58Z",
+            "uid": "1764427",
+            "user": "lxbarth_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w265149286",
+          "nodes": [
+            "n2708095744",
+            "n2708095760",
+            "n2708095720",
+            "n2708095705",
+            "n2708095701",
+            "n2708095696",
+            "n2708095695",
+            "n2708095697",
+            "n2708095693",
+            "n2708095683",
+            "n2708095677",
+            "n2708095691",
+            "n2708095687",
+            "n2708095675",
+            "n2708095671",
+            "n2708095673",
+            "n2708095709",
+            "n2708095807",
+            "n2708095793",
+            "n2708095744"
+          ],
+          "tags": {
+            "building": "yes",
+            "height": "45.9",
+            "nycdoitt:bin": "1034800"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057463",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057463",
+          "nodes": [
+            "n3232790588",
+            "n3232790590",
+            "n2708095893",
+            "n2708095899",
+            "n2708095906",
+            "n2708095938",
+            "n3232790591",
+            "n2708095895",
+            "n3232790589",
+            "n3232790587",
+            "n3232790588"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "37",
+            "roof:colour": "#626C6E",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057464",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:08Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057464",
+          "nodes": [
+            "n3232790586",
+            "n2657347569",
+            "n2657347570",
+            "n2657347573",
+            "n2657347574",
+            "n2708095895",
+            "n3232790589",
+            "n3232790587",
+            "n3232790565",
+            "n2708095798",
+            "n3232790563",
+            "n3232790259",
+            "n3232790564",
+            "n3232790570",
+            "n3232790586"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "40",
+            "roof:colour": "#7C9285",
+            "roof:height": "15",
+            "roof:orientation": "along",
+            "roof:shape": "gabled"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057467",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:09Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057467",
+          "nodes": [
+            "n3232790565",
+            "n3232790587",
+            "n3232790588",
+            "n3232790579",
+            "n3232790565"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "40",
+            "roof:colour": "#626C6E",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057468",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:09Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057468",
+          "nodes": [
+            "n3232790590",
+            "n3232790589",
+            "n2708095895",
+            "n3232790591",
+            "n3232790590"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "44",
+            "min_height": "37",
+            "roof:colour": "#626C6E",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057469",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:09Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057469",
+          "nodes": [
+            "n2708095796",
+            "n2708095789",
+            "n3232790259",
+            "n3232790563",
+            "n2708095798",
+            "n2708095796"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "50",
+            "roof:colour": "#626C6E",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057470",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:09Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057470",
+          "nodes": [
+            "n3232790590",
+            "n2708095893",
+            "n2708095861",
+            "n2708095863",
+            "n2708095846",
+            "n3232790579",
+            "n3232790588",
+            "n3232790590"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "32",
+            "roof:colour": "#626C6E",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w317057473",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "27438314",
+            "timestamp": "2014-12-13T09:41:09Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w317057473",
+          "nodes": [
+            "n3232790562",
+            "n3232790561",
+            "n3232790258",
+            "n3232790256",
+            "n3232790254",
+            "n3232790255",
+            "n3232790257",
+            "n3232790260",
+            "n3232790562"
+          ],
+          "tags": {
+            "building:colour": "#A08F89",
+            "building:part": "yes",
+            "height": "87.2",
+            "min_height": "50",
+            "roof:colour": "#A08F89",
+            "roof:height": "35",
+            "roof:shape": "pyramidal"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ]
+  ]
+}

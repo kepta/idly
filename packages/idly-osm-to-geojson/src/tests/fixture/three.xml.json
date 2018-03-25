@@ -1,0 +1,4545 @@
+{
+  "@@idly@type": "Map",
+  "value": [
+    [
+      "n42430356",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "15200651",
+            "timestamp": "2013-02-28T18:55:46Z",
+            "uid": "564585",
+            "user": "wegavision",
+            "version": "6",
+            "visible": true
+          },
+          "id": "n42430356",
+          "loc": { "lon": -73.9808828, "lat": 40.7592744 },
+          "tags": { "highway": "traffic_signals" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w5670114"] }
+      }
+    ],
+    [
+      "n42432580",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "12110019",
+            "timestamp": "2012-07-04T12:26:08Z",
+            "uid": "703728",
+            "user": "NJ Engineer",
+            "version": "6",
+            "visible": true
+          },
+          "id": "n42432580",
+          "loc": { "lon": -73.977655, "lat": 40.757912 },
+          "tags": { "highway": "traffic_signals" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r5715415"] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w5670114"] }
+      }
+    ],
+    [
+      "n530736479",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21170857",
+            "timestamp": "2014-03-18T10:20:03Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "7",
+            "visible": true
+          },
+          "id": "n530736479",
+          "loc": { "lon": -73.9792061, "lat": 40.7578436 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n530736486",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21170857",
+            "timestamp": "2014-03-18T10:20:03Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "7",
+            "visible": true
+          },
+          "id": "n530736486",
+          "loc": { "lon": -73.9788912, "lat": 40.7582772 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n805764932",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n805764932",
+          "loc": { "lon": -73.9784451, "lat": 40.7582421 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w5670114", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n805764974",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20677442",
+            "timestamp": "2014-02-20T15:37:26Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n805764974",
+          "loc": { "lon": -73.9779902, "lat": 40.7588726 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n805764995",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n805764995",
+          "loc": { "lon": -73.9778527, "lat": 40.7596312 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n805764998",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:45:06Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n805764998",
+          "loc": { "lon": -73.9780866, "lat": 40.7597316 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n805765085",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "7",
+            "visible": true
+          },
+          "id": "n805765085",
+          "loc": { "lon": -73.9781717, "lat": 40.7586215 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315483", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n805765088",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36897742",
+            "timestamp": "2016-01-30T12:59:18Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "8",
+            "visible": true
+          },
+          "id": "n805765088",
+          "loc": { "lon": -73.9773768, "lat": 40.7582966 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n805765092",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36897742",
+            "timestamp": "2016-01-30T12:59:18Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "6",
+            "visible": true
+          },
+          "id": "n805765092",
+          "loc": { "lon": -73.9774778, "lat": 40.758158 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n805765098",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n805765098",
+          "loc": { "lon": -73.9782699, "lat": 40.7584844 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315482", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n807082598",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11542809",
+            "timestamp": "2012-05-08T19:28:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n807082598",
+          "loc": { "lon": -73.9784073, "lat": 40.7588247 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w66755319"] }
+      }
+    ],
+    [
+      "n807082601",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11542809",
+            "timestamp": "2012-05-08T19:28:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n807082601",
+          "loc": { "lon": -73.9786165, "lat": 40.7585379 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w66755319"] }
+      }
+    ],
+    [
+      "n807082602",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11542809",
+            "timestamp": "2012-05-08T19:28:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n807082602",
+          "loc": { "lon": -73.9784304, "lat": 40.7584601 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w66755319"] }
+      }
+    ],
+    [
+      "n807082604",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11542809",
+            "timestamp": "2012-05-08T19:28:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n807082604",
+          "loc": { "lon": -73.9782212, "lat": 40.7587468 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w66755319"] }
+      }
+    ],
+    [
+      "n1058296082",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n1058296082",
+          "loc": { "lon": -73.9777764, "lat": 40.7580567 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315481"]
+        }
+      }
+    ],
+    [
+      "n1058296139",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "6742148",
+            "timestamp": "2010-12-23T04:28:50Z",
+            "uid": "210173",
+            "user": "osmmaker",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n1058296139",
+          "loc": { "lon": -73.9784183, "lat": 40.7583286 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w91200910"] }
+      }
+    ],
+    [
+      "n1058296232",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n1058296232",
+          "loc": { "lon": -73.9780467, "lat": 40.7587947 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n1058296287",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "52973629",
+            "timestamp": "2017-10-16T07:17:26Z",
+            "uid": "4508879",
+            "user": "Pandule",
+            "version": "6",
+            "visible": true
+          },
+          "id": "n1058296287",
+          "loc": { "lon": -73.9780435, "lat": 40.758696 },
+          "tags": {
+            "addr:housenumber": "620",
+            "addr:postcode": "10020-2402",
+            "addr:street": "West 50th Street",
+            "name": "Lego Store",
+            "note": "before : Brookstone, Legos Store open since june 2010",
+            "old_name": "Brookstone",
+            "opening_hours": "Mo-Sa 10:00-20:00; Su 10:00-18:00",
+            "phone": "(212) 245-5973",
+            "shop": "toys",
+            "website":
+              "https://www.lego.com/en-us/stores/stores/us/rockefeller-center"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n1058296292",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "6742148",
+            "timestamp": "2010-12-23T04:28:56Z",
+            "uid": "210173",
+            "user": "osmmaker",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n1058296292",
+          "loc": { "lon": -73.9783746, "lat": 40.7583876 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w91200910"] }
+      }
+    ],
+    [
+      "n1058296393",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n1058296393",
+          "loc": { "lon": -73.9775532, "lat": 40.758367 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315483", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n1058296421",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1058296421",
+          "loc": { "lon": -73.977652, "lat": 40.7582302 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315482", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n1058296519",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1058296519",
+          "loc": { "lon": -73.9774288, "lat": 40.7585404 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w91200880"] }
+      }
+    ],
+    [
+      "n1058296759",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:40:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1058296759",
+          "loc": { "lon": -73.9783949, "lat": 40.7583112 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315481", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n1251540908",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n1251540908",
+          "loc": { "lon": -73.9779963, "lat": 40.7590501 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1251540942",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n1251540942",
+          "loc": { "lon": -73.9780071, "lat": 40.7595021 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1251540980",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n1251540980",
+          "loc": { "lon": -73.9780223, "lat": 40.7590145 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1251540990",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n1251540990",
+          "loc": { "lon": -73.9782572, "lat": 40.7591594 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1251541005",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21104890",
+            "timestamp": "2014-03-14T19:15:58Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n1251541005",
+          "loc": { "lon": -73.9786619, "lat": 40.7590376 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1251541068",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "10374085",
+            "timestamp": "2012-01-12T22:01:14Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n1251541068",
+          "loc": { "lon": -73.9789922, "lat": 40.7585852 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1587561281",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:23:31Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n1587561281",
+          "loc": { "lon": -73.9788656, "lat": 40.7587265 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1587561311",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:23:31Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "n1587561311",
+          "loc": { "lon": -73.978754, "lat": 40.7588774 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1711306741",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21170857",
+            "timestamp": "2014-03-18T10:20:03Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n1711306741",
+          "loc": { "lon": -73.9786165, "lat": 40.7581618 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1711306745",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21170857",
+            "timestamp": "2014-03-18T10:20:03Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n1711306745",
+          "loc": { "lon": -73.9788187, "lat": 40.7582461 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1711306746",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21170857",
+            "timestamp": "2014-03-18T10:20:03Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "n1711306746",
+          "loc": { "lon": -73.9786886, "lat": 40.7581915 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1711306749",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21104326",
+            "timestamp": "2014-03-14T18:40:41Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "4",
+            "visible": true
+          },
+          "id": "n1711306749",
+          "loc": { "lon": -73.979167, "lat": 40.7578948 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n1711332894",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11263715",
+            "timestamp": "2012-04-11T11:43:23Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n1711332894",
+          "loc": { "lon": -73.9777233, "lat": 40.7583121 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w159028631"] }
+      }
+    ],
+    [
+      "n1711332896",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11263715",
+            "timestamp": "2012-04-11T11:43:23Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n1711332896",
+          "loc": { "lon": -73.9782053, "lat": 40.7585133 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w159028631"] }
+      }
+    ],
+    [
+      "n1711332898",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11263715",
+            "timestamp": "2012-04-11T11:43:23Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n1711332898",
+          "loc": { "lon": -73.9781679, "lat": 40.7585647 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w159028631"] }
+      }
+    ],
+    [
+      "n1711332900",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "11263715",
+            "timestamp": "2012-04-11T11:43:23Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n1711332900",
+          "loc": { "lon": -73.9776859, "lat": 40.7583634 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w159028631"] }
+      }
+    ],
+    [
+      "n2689392302",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2689392302",
+          "loc": { "lon": -73.9779372, "lat": 40.7589523 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392304",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2689392304",
+          "loc": { "lon": -73.977922, "lat": 40.7589732 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392320",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689392320",
+          "loc": { "lon": -73.9782327, "lat": 40.759193 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392325",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:02Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689392325",
+          "loc": { "lon": -73.9782, "lat": 40.7592389 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392332",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:02Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689392332",
+          "loc": { "lon": -73.9780652, "lat": 40.7594235 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392333",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:02Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689392333",
+          "loc": { "lon": -73.9780319, "lat": 40.7594692 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392334",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:02Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689392334",
+          "loc": { "lon": -73.9779878, "lat": 40.7595293 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689392335",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:19:02Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689392335",
+          "loc": { "lon": -73.9779221, "lat": 40.7595422 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2689405225",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405225",
+          "loc": { "lon": -73.9777568, "lat": 40.7580839 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315481", "w263315484"]
+        }
+      }
+    ],
+    [
+      "n2689405227",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405227",
+          "loc": { "lon": -73.9776715, "lat": 40.7582029 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315482", "w263315484"]
+        }
+      }
+    ],
+    [
+      "n2689405229",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405229",
+          "loc": { "lon": -73.9780796, "lat": 40.7582167 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315476", "w263315481", "w263315484"]
+        }
+      }
+    ],
+    [
+      "n2689405231",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405231",
+          "loc": { "lon": -73.9780634, "lat": 40.7582393 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315476", "w263315479", "w263315484"]
+        }
+      }
+    ],
+    [
+      "n2689405233",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405233",
+          "loc": { "lon": -73.9780105, "lat": 40.7583131 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315478", "w263315479", "w263315484"]
+        }
+      }
+    ],
+    [
+      "n2689405235",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405235",
+          "loc": { "lon": -73.9779943, "lat": 40.7583357 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315478", "w263315482", "w263315484"]
+        }
+      }
+    ],
+    [
+      "n2689405237",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405237",
+          "loc": { "lon": -73.9783754, "lat": 40.7583384 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315476", "w263315481", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405239",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405239",
+          "loc": { "lon": -73.9783592, "lat": 40.758361 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315476", "w263315479", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405241",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405241",
+          "loc": { "lon": -73.9775337, "lat": 40.7583942 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315483", "w263315485"]
+        }
+      }
+    ],
+    [
+      "n2689405243",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405243",
+          "loc": { "lon": -73.9783057, "lat": 40.7584345 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315478", "w263315479", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405245",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405245",
+          "loc": { "lon": -73.9782894, "lat": 40.7584572 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200920", "w263315478", "w263315482", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405247",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405247",
+          "loc": { "lon": -73.9774483, "lat": 40.7585132 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315485"]
+        }
+      }
+    ],
+    [
+      "n2689405249",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405249",
+          "loc": { "lon": -73.9778564, "lat": 40.758527 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315474", "w263315483", "w263315485"]
+        }
+      }
+    ],
+    [
+      "n2689405263",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405263",
+          "loc": { "lon": -73.9778402, "lat": 40.7585495 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315474", "w263315477", "w263315485"]
+        }
+      }
+    ],
+    [
+      "n2689405265",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405265",
+          "loc": { "lon": -73.9777873, "lat": 40.7586233 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w263315477", "w263315485"]
+        }
+      }
+    ],
+    [
+      "n2689405267",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405267",
+          "loc": { "lon": -73.9777711, "lat": 40.758646 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w263315485"] }
+      }
+    ],
+    [
+      "n2689405269",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405269",
+          "loc": { "lon": -73.9781522, "lat": 40.7586487 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315474", "w263315483", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405271",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405271",
+          "loc": { "lon": -73.978136, "lat": 40.7586712 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315474", "w263315477", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405273",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405273",
+          "loc": { "lon": -73.9780825, "lat": 40.7587447 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w263315477", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2689405275",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "20765507",
+            "timestamp": "2014-02-25T08:39:59Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2689405275",
+          "loc": { "lon": -73.9780663, "lat": 40.7587674 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w91200880", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n2717542617",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:23Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717542617",
+          "loc": { "lon": -73.9780711, "lat": 40.7581986 },
+          "tags": {
+            "addr:housenumber": "1",
+            "addr:postcode": "10020",
+            "addr:street": "West 49th Street"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2717545561",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:55Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717545561",
+          "loc": { "lon": -73.9794024, "lat": 40.7579261 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717545752",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:56Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717545752",
+          "loc": { "lon": -73.9785876, "lat": 40.7582016 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717545830",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:57Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717545830",
+          "loc": { "lon": -73.9790543, "lat": 40.7584054 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717545919",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:58Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717545919",
+          "loc": { "lon": -73.9789038, "lat": 40.7586759 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717545925",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:58Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717545925",
+          "loc": { "lon": -73.9789227, "lat": 40.758684 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546000",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:59Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546000",
+          "loc": { "lon": -73.9787168, "lat": 40.7589294 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546002",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:19:59Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546002",
+          "loc": { "lon": -73.9787357, "lat": 40.7589375 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546101",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:20:01Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546101",
+          "loc": { "lon": -73.9784921, "lat": 40.7591753 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546128",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:20:01Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546128",
+          "loc": { "lon": -73.9783937, "lat": 40.7593107 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546130",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:20:01Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546130",
+          "loc": { "lon": -73.9784472, "lat": 40.7593331 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546155",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:20:01Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546155",
+          "loc": { "lon": -73.9782424, "lat": 40.7595191 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546168",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:20:01Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546168",
+          "loc": { "lon": -73.9782956, "lat": 40.7595415 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2717546189",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "21103955",
+            "timestamp": "2014-03-14T18:20:02Z",
+            "uid": "1781294",
+            "user": "Rub21_nycbuildings",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2717546189",
+          "loc": { "lon": -73.978143, "lat": 40.7596557 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2860161763",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22366004",
+            "timestamp": "2014-05-16T07:28:24Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2860161763",
+          "loc": { "lon": -73.9792811, "lat": 40.7580929 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2860161764",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22366004",
+            "timestamp": "2014-05-16T07:28:24Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2860161764",
+          "loc": { "lon": -73.9792668, "lat": 40.7581127 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2860161765",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22366004",
+            "timestamp": "2014-05-16T07:28:24Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2860161765",
+          "loc": { "lon": -73.9791909, "lat": 40.7582172 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2860161766",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22366004",
+            "timestamp": "2014-05-16T07:28:24Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n2860161766",
+          "loc": { "lon": -73.979175, "lat": 40.758239 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n2861665734",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665734",
+          "loc": { "lon": -73.978395, "lat": 40.7584303 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665735",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665735",
+          "loc": { "lon": -73.9784079, "lat": 40.7584359 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665736",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665736",
+          "loc": { "lon": -73.9783871, "lat": 40.7584411 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665737",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665737",
+          "loc": { "lon": -73.9784208, "lat": 40.7584416 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665738",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665738",
+          "loc": { "lon": -73.9784336, "lat": 40.7584473 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665739",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665739",
+          "loc": { "lon": -73.9783797, "lat": 40.7584512 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665740",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665740",
+          "loc": { "lon": -73.9784465, "lat": 40.7584529 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665741",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665741",
+          "loc": { "lon": -73.9784594, "lat": 40.7584586 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665742",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665742",
+          "loc": { "lon": -73.9783722, "lat": 40.7584613 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665743",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665743",
+          "loc": { "lon": -73.9784723, "lat": 40.7584642 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665744",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665744",
+          "loc": { "lon": -73.9784851, "lat": 40.7584699 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665745",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665745",
+          "loc": { "lon": -73.9783648, "lat": 40.7584714 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665746",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:52Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665746",
+          "loc": { "lon": -73.978498, "lat": 40.7584756 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665748",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665748",
+          "loc": { "lon": -73.9783574, "lat": 40.7584816 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665750",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665750",
+          "loc": { "lon": -73.97835, "lat": 40.7584917 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665753",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665753",
+          "loc": { "lon": -73.9783426, "lat": 40.7585018 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665756",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665756",
+          "loc": { "lon": -73.9783352, "lat": 40.7585119 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665776",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665776",
+          "loc": { "lon": -73.9782343, "lat": 40.7586504 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665778",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665778",
+          "loc": { "lon": -73.9782265, "lat": 40.7586604 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665780",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665780",
+          "loc": { "lon": -73.9782187, "lat": 40.7586703 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665782",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665782",
+          "loc": { "lon": -73.9782109, "lat": 40.7586802 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665784",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665784",
+          "loc": { "lon": -73.9782032, "lat": 40.7586902 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n2861665786",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22367256",
+            "timestamp": "2014-05-16T09:18:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n2861665786",
+          "loc": { "lon": -73.9781954, "lat": 40.7587001 },
+          "tags": { "height": "6", "man_made": "flagpole" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n3371304180",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:40:45Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3371304180",
+          "loc": { "lon": -73.9787512, "lat": 40.7584799 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w330177544"] }
+      }
+    ],
+    [
+      "n3371304181",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:40:45Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3371304181",
+          "loc": { "lon": -73.9784777, "lat": 40.7583665 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w330177544"] }
+      }
+    ],
+    [
+      "n3371304182",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:40:45Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3371304182",
+          "loc": { "lon": -73.9784507, "lat": 40.7584039 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w330177544"] }
+      }
+    ],
+    [
+      "n3371304183",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:40:45Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3371304183",
+          "loc": { "lon": -73.9787242, "lat": 40.7585173 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w330177544"] }
+      }
+    ],
+    [
+      "n3371304186",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:40:45Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3371304186",
+          "loc": { "lon": -73.9787227, "lat": 40.7584909 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w330177546"] }
+      }
+    ],
+    [
+      "n3371304187",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:40:45Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3371304187",
+          "loc": { "lon": -73.9784798, "lat": 40.7583927 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w330177546"] }
+      }
+    ],
+    [
+      "n3855009861",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:45:04Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3855009861",
+          "loc": { "lon": -73.9792604, "lat": 40.7577692 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n3855009862",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3855009862",
+          "loc": { "lon": -73.978595, "lat": 40.7591258 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n3855009863",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:45:05Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3855009863",
+          "loc": { "lon": -73.9794547, "lat": 40.757852 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n3855009864",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:53Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n3855009864",
+          "loc": { "lon": -73.9790527, "lat": 40.7584986 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": {
+          "@@idly@type": "Set",
+          "value": ["w5670114", "w382309333"]
+        }
+      }
+    ],
+    [
+      "n3855009865",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:45:05Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3855009865",
+          "loc": { "lon": -73.9785004, "lat": 40.758165 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n3955372901",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36682395",
+            "timestamp": "2016-01-19T15:51:30Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3955372901",
+          "loc": { "lon": -73.9777924, "lat": 40.7579694 },
+          "tags": { "highway": "crossing" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w5670114"] }
+      }
+    ],
+    [
+      "n3971196621",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36837907",
+            "timestamp": "2016-01-27T14:11:55Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3971196621",
+          "loc": { "lon": -73.9807496, "lat": 40.7592177 },
+          "tags": { "highway": "crossing" },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w5670114"] }
+      }
+    ],
+    [
+      "n3976005749",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:41Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3976005749",
+          "loc": { "lon": -73.9791049, "lat": 40.7584267 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n3976005750",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36880220",
+            "timestamp": "2016-01-29T14:14:41Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n3976005750",
+          "loc": { "lon": -73.9785419, "lat": 40.7591962 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n4350615593",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47884665",
+            "timestamp": "2017-04-17T20:32:29Z",
+            "uid": "24119",
+            "user": "Mauls",
+            "version": "2",
+            "visible": true
+          },
+          "id": "n4350615593",
+          "loc": { "lon": -73.978443, "lat": 40.758643 },
+          "tags": {
+            "addr:housenumber": "1",
+            "addr:street": "Rockefeller Plaza",
+            "name": "Dean & Deluca",
+            "shop": "confectionery"
+          },
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "n4549080328",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "44321390",
+            "timestamp": "2016-12-11T12:19:54Z",
+            "uid": "56986",
+            "user": "alice23",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n4549080328",
+          "loc": { "lon": -73.9794065, "lat": 40.7578315 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n4549080330",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "44321390",
+            "timestamp": "2016-12-11T12:19:54Z",
+            "uid": "56986",
+            "user": "alice23",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n4549080330",
+          "loc": { "lon": -73.9780132, "lat": 40.7597001 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w382309333"] }
+      }
+    ],
+    [
+      "n4782506033",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47560470",
+            "timestamp": "2017-04-08T08:39:34Z",
+            "uid": "670376",
+            "user": "Wolowitz",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n4782506033",
+          "loc": { "lon": -73.9780493, "lat": 40.7580767 },
+          "tags": {
+            "bus": "yes",
+            "name": "East 49th Street/5th Avenue",
+            "network": "NYC Transit",
+            "operator": "New York City Transit Authority",
+            "public_transport": "stop_position",
+            "ref": "402189",
+            "route_ref": "M50"
+          },
+          "type": "node"
+        },
+        "parentRelations": {
+          "@@idly@type": "Set",
+          "value": ["r2254126", "r7143277"]
+        },
+        "parentWays": { "@@idly@type": "Set", "value": ["w5670114"] }
+      }
+    ],
+    [
+      "n4799735130",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47884494",
+            "timestamp": "2017-04-17T20:25:52Z",
+            "uid": "24119",
+            "user": "Mauls",
+            "version": "1",
+            "visible": true
+          },
+          "id": "n4799735130",
+          "loc": { "lon": -73.9789441, "lat": 40.7584528 },
+          "tags": {},
+          "type": "node"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": ["w5670114"] }
+      }
+    ],
+    [
+      "w5670114",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "54184925",
+            "timestamp": "2017-11-29T18:20:59Z",
+            "uid": "94578",
+            "user": "andygol",
+            "version": "20",
+            "visible": true
+          },
+          "id": "w5670114",
+          "nodes": [
+            "n42432580",
+            "n3955372901",
+            "n4782506033",
+            "n805764932",
+            "n4799735130",
+            "n3855009864",
+            "n3971196621",
+            "n42430356"
+          ],
+          "tags": {
+            "hgv": "destination",
+            "highway": "secondary",
+            "name": "West 49th Street",
+            "note": "thru street",
+            "oneway": "yes",
+            "tiger:cfcc": "A41",
+            "tiger:county": "New York, NY",
+            "tiger:name_base": "49th",
+            "tiger:name_base_1": "49",
+            "tiger:name_direction_prefix": "W",
+            "tiger:name_direction_prefix_1": "W",
+            "tiger:name_type": "St",
+            "tiger:name_type_1": "St",
+            "tiger:reviewed": "no",
+            "tiger:zip_left": "10019",
+            "tiger:zip_right": "10019"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r2254126"] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w66755319",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "35536120",
+            "timestamp": "2015-11-23T18:35:08Z",
+            "uid": "40023",
+            "user": "ALE!",
+            "version": "7",
+            "visible": true
+          },
+          "id": "w66755319",
+          "nodes": [
+            "n807082598",
+            "n807082601",
+            "n807082602",
+            "n807082604",
+            "n807082598"
+          ],
+          "tags": {
+            "addr:city": "New York",
+            "addr:full": "Between 49th and 50th Streets and 5th and 6th Avenue",
+            "leisure": "ice_rink",
+            "name": "The Rink at Rockefeller Center",
+            "opening_hours": "Oct-Apr 08:30-00:00",
+            "opening_hours:url": "https://therinkatrockcenter.com/",
+            "seasonal": "yes",
+            "source": "Yahoo! areal imagery and local knowledge",
+            "sport": "ice_skating",
+            "tourism": "yes",
+            "website": "http://www.therinkatrockcenter.com"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r7164794"] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w91200880",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47884665",
+            "timestamp": "2017-04-17T20:35:19Z",
+            "uid": "24119",
+            "user": "Mauls",
+            "version": "8",
+            "visible": true
+          },
+          "id": "w91200880",
+          "nodes": [
+            "n1058296232",
+            "n1058296519",
+            "n2689405247",
+            "n2689405241",
+            "n1058296393",
+            "n805765085",
+            "n2689405269",
+            "n2689405271",
+            "n2689405273",
+            "n2689405275",
+            "n1058296232"
+          ],
+          "tags": {
+            "addr:city": "New York",
+            "addr:housename": "The British Empire Building",
+            "addr:housenumber": "620",
+            "addr:state": "NY",
+            "addr:street": "Fifth Avenue",
+            "building": "commercial",
+            "nycdoitt:bin": "1075692",
+            "source": "bing",
+            "start_date": "1932",
+            "wikidata": "Q2925720",
+            "wikipedia": "fr:British Empire Building"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w91200910",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "6742148",
+            "timestamp": "2010-12-23T04:29:18Z",
+            "uid": "210173",
+            "user": "osmmaker",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w91200910",
+          "nodes": ["n1058296292", "n1058296139"],
+          "tags": { "highway": "steps" },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w91200920",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47884665",
+            "timestamp": "2017-04-17T20:35:20Z",
+            "uid": "24119",
+            "user": "Mauls",
+            "version": "9",
+            "visible": true
+          },
+          "id": "w91200920",
+          "nodes": [
+            "n805765098",
+            "n1058296421",
+            "n2689405227",
+            "n2689405225",
+            "n1058296082",
+            "n1058296759",
+            "n2689405237",
+            "n2689405239",
+            "n2689405243",
+            "n2689405245",
+            "n805765098"
+          ],
+          "tags": {
+            "addr:city": "New York",
+            "addr:housename": "La Maison Française",
+            "addr:housenumber": "610",
+            "addr:state": "NY",
+            "addr:street": "Fifth Avenue",
+            "building": "commercial",
+            "ele": "21",
+            "gnis:feature_id": "2083266",
+            "nycdoitt:bin": "1082656",
+            "source": "bing",
+            "wikidata": "Q3210428",
+            "wikipedia": "fr:La Maison française (Rockefeller Center)"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w159028631",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "52422049",
+            "timestamp": "2017-09-27T18:18:24Z",
+            "uid": "364",
+            "user": "Edward",
+            "version": "2",
+            "visible": true
+          },
+          "id": "w159028631",
+          "nodes": [
+            "n1711332898",
+            "n1711332896",
+            "n1711332894",
+            "n1711332900",
+            "n1711332898"
+          ],
+          "tags": {
+            "ele": "21",
+            "gnis:feature_id": "2083265",
+            "leisure": "park",
+            "name": "Channel Gardens",
+            "wikidata": "Q34816322"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r7164794"] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315474",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315474",
+          "nodes": [
+            "n2689405269",
+            "n2689405271",
+            "n2689405263",
+            "n2689405249",
+            "n2689405269"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "30",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315476",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:05Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315476",
+          "nodes": [
+            "n2689405237",
+            "n2689405239",
+            "n2689405231",
+            "n2689405229",
+            "n2689405237"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "30",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315477",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315477",
+          "nodes": [
+            "n2689405265",
+            "n2689405273",
+            "n2689405271",
+            "n2689405263",
+            "n2689405265"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "35",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315478",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315478",
+          "nodes": [
+            "n2689405243",
+            "n2689405245",
+            "n2689405235",
+            "n2689405233",
+            "n2689405243"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "30",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315479",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315479",
+          "nodes": [
+            "n2689405233",
+            "n2689405243",
+            "n2689405239",
+            "n2689405231",
+            "n2689405233"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "35",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315481",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "5",
+            "visible": true
+          },
+          "id": "w263315481",
+          "nodes": [
+            "n1058296759",
+            "n2689405237",
+            "n2689405229",
+            "n2689405225",
+            "n1058296082",
+            "n1058296759"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "20",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315482",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315482",
+          "nodes": [
+            "n2689405245",
+            "n805765098",
+            "n1058296421",
+            "n2689405227",
+            "n2689405235",
+            "n2689405245"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "20",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315483",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:54:06Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "4",
+            "visible": true
+          },
+          "id": "w263315483",
+          "nodes": [
+            "n805765085",
+            "n2689405269",
+            "n2689405249",
+            "n2689405241",
+            "n1058296393",
+            "n805765085"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "20",
+            "roof:colour": "#956C66",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315484",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:56:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "w263315484",
+          "nodes": [
+            "n2689405225",
+            "n2689405227",
+            "n2689405235",
+            "n2689405233",
+            "n2689405231",
+            "n2689405229",
+            "n2689405225"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "25",
+            "roof:colour": "green",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w263315485",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "22424014",
+            "timestamp": "2014-05-19T13:56:54Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "3",
+            "visible": true
+          },
+          "id": "w263315485",
+          "nodes": [
+            "n2689405241",
+            "n2689405247",
+            "n2689405267",
+            "n2689405265",
+            "n2689405263",
+            "n2689405249",
+            "n2689405241"
+          ],
+          "tags": {
+            "building:colour": "#CAC3A9",
+            "building:part": "yes",
+            "height": "25",
+            "roof:colour": "green",
+            "roof:material": "concrete",
+            "roof:shape": "flat"
+          },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w330177544",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "29084789",
+            "timestamp": "2015-02-25T05:57:41Z",
+            "uid": "624003",
+            "user": "eugenebata",
+            "version": "1",
+            "visible": true
+          },
+          "id": "w330177544",
+          "nodes": [
+            "n3371304180",
+            "n3371304181",
+            "n3371304182",
+            "n3371304183",
+            "n3371304180"
+          ],
+          "tags": { "landuse": "grass" },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r7164794"] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w330177546",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "36897742",
+            "timestamp": "2016-01-30T12:59:01Z",
+            "uid": "336460",
+            "user": "robgeb",
+            "version": "2",
+            "visible": true
+          },
+          "id": "w330177546",
+          "nodes": ["n3371304186", "n3371304187"],
+          "tags": { "leaf_type": "broadleaved", "natural": "tree_row" },
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "w382309333",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47892593",
+            "timestamp": "2017-04-18T05:20:02Z",
+            "uid": "665748",
+            "user": "sebastic",
+            "version": "5",
+            "visible": true
+          },
+          "id": "w382309333",
+          "nodes": [
+            "n2717546101",
+            "n2717546128",
+            "n2717546130",
+            "n2717546168",
+            "n2717546155",
+            "n2717546189",
+            "n805764998",
+            "n4549080330",
+            "n805764995",
+            "n2689392335",
+            "n2689392334",
+            "n1251540942",
+            "n2689392333",
+            "n2689392332",
+            "n2689392325",
+            "n2689392320",
+            "n1251540990",
+            "n1251540908",
+            "n1251540980",
+            "n2689392304",
+            "n2689392302",
+            "n805764974",
+            "n1058296232",
+            "n2689405275",
+            "n2689405273",
+            "n2689405271",
+            "n2689405269",
+            "n805765085",
+            "n1058296393",
+            "n805765088",
+            "n805765092",
+            "n1058296421",
+            "n805765098",
+            "n2689405245",
+            "n2689405243",
+            "n2689405239",
+            "n2689405237",
+            "n1058296759",
+            "n805764932",
+            "n3855009865",
+            "n2717545752",
+            "n1711306741",
+            "n1711306746",
+            "n1711306745",
+            "n530736486",
+            "n1711306749",
+            "n530736479",
+            "n3855009861",
+            "n4549080328",
+            "n3855009863",
+            "n2717545561",
+            "n2860161763",
+            "n2860161764",
+            "n2860161765",
+            "n2860161766",
+            "n2717545830",
+            "n3976005749",
+            "n3855009864",
+            "n1251541068",
+            "n2717545925",
+            "n2717545919",
+            "n1587561281",
+            "n1587561311",
+            "n2717546000",
+            "n2717546002",
+            "n1251541005",
+            "n3855009862",
+            "n3976005750",
+            "n2717546101"
+          ],
+          "tags": {},
+          "type": "way"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r7164794"] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "r2254126",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "54001407",
+            "timestamp": "2017-11-22T13:20:46Z",
+            "uid": "1597155",
+            "user": "poornibadrinath",
+            "version": "32",
+            "visible": true
+          },
+          "id": "r2254126",
+          "members": [
+            {
+              "type": "node",
+              "ref": "n4782363328",
+              "role": "stop",
+              "id": "n4782363328"
+            },
+            {
+              "type": "node",
+              "ref": "n3720959930",
+              "role": "platform",
+              "id": "n3720959930"
+            },
+            {
+              "type": "node",
+              "ref": "n4782363326",
+              "role": "stop",
+              "id": "n4782363326"
+            },
+            {
+              "type": "node",
+              "ref": "n4782363327",
+              "role": "platform",
+              "id": "n4782363327"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404432",
+              "role": "stop",
+              "id": "n4782404432"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404433",
+              "role": "platform",
+              "id": "n4782404433"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404431",
+              "role": "platform",
+              "id": "n4782404431"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404430",
+              "role": "stop",
+              "id": "n4782404430"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404428",
+              "role": "platform",
+              "id": "n4782404428"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404429",
+              "role": "stop",
+              "id": "n4782404429"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404427",
+              "role": "stop",
+              "id": "n4782404427"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404426",
+              "role": "platform",
+              "id": "n4782404426"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404425",
+              "role": "stop",
+              "id": "n4782404425"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404424",
+              "role": "platform",
+              "id": "n4782404424"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404423",
+              "role": "stop",
+              "id": "n4782404423"
+            },
+            {
+              "type": "node",
+              "ref": "n4782404422",
+              "role": "platform",
+              "id": "n4782404422"
+            },
+            {
+              "type": "node",
+              "ref": "n4782363330",
+              "role": "platform",
+              "id": "n4782363330"
+            },
+            {
+              "type": "node",
+              "ref": "n4782363329",
+              "role": "stop",
+              "id": "n4782363329"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442668",
+              "role": "stop",
+              "id": "n4782442668"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442667",
+              "role": "platform",
+              "id": "n4782442667"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442665",
+              "role": "stop",
+              "id": "n4782442665"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442666",
+              "role": "platform",
+              "id": "n4782442666"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442664",
+              "role": "platform",
+              "id": "n4782442664"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442663",
+              "role": "stop",
+              "id": "n4782442663"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442661",
+              "role": "stop",
+              "id": "n4782442661"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442662",
+              "role": "platform",
+              "id": "n4782442662"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442659",
+              "role": "stop",
+              "id": "n4782442659"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442660",
+              "role": "platform",
+              "id": "n4782442660"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442658",
+              "role": "stop",
+              "id": "n4782442658"
+            },
+            {
+              "type": "node",
+              "ref": "n3573482140",
+              "role": "platform",
+              "id": "n3573482140"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442656",
+              "role": "platform",
+              "id": "n4782442656"
+            },
+            {
+              "type": "node",
+              "ref": "n4782442657",
+              "role": "stop",
+              "id": "n4782442657"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506041",
+              "role": "platform",
+              "id": "n4782506041"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506040",
+              "role": "stop",
+              "id": "n4782506040"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506038",
+              "role": "platform",
+              "id": "n4782506038"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506039",
+              "role": "stop",
+              "id": "n4782506039"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506037",
+              "role": "stop",
+              "id": "n4782506037"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506036",
+              "role": "platform",
+              "id": "n4782506036"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506035",
+              "role": "stop",
+              "id": "n4782506035"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506034",
+              "role": "platform",
+              "id": "n4782506034"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506032",
+              "role": "platform",
+              "id": "n4782506032"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506033",
+              "role": "stop",
+              "id": "n4782506033"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506030",
+              "role": "platform",
+              "id": "n4782506030"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506031",
+              "role": "stop",
+              "id": "n4782506031"
+            },
+            {
+              "type": "node",
+              "ref": "n4782363336",
+              "role": "platform",
+              "id": "n4782363336"
+            },
+            {
+              "type": "node",
+              "ref": "n4782363335",
+              "role": "stop",
+              "id": "n4782363335"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543131",
+              "role": "platform",
+              "id": "n4782543131"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543132",
+              "role": "stop",
+              "id": "n4782543132"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543129",
+              "role": "stop",
+              "id": "n4782543129"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543128",
+              "role": "platform",
+              "id": "n4782543128"
+            },
+            {
+              "type": "node",
+              "ref": "n3607161886",
+              "role": "platform",
+              "id": "n3607161886"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543127",
+              "role": "stop",
+              "id": "n4782543127"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543126",
+              "role": "platform",
+              "id": "n4782543126"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543125",
+              "role": "stop",
+              "id": "n4782543125"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543123",
+              "role": "platform",
+              "id": "n4782543123"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543124",
+              "role": "stop",
+              "id": "n4782543124"
+            },
+            {
+              "type": "node",
+              "ref": "n4782543122",
+              "role": "stop",
+              "id": "n4782543122"
+            },
+            {
+              "type": "node",
+              "ref": "n3720980431",
+              "role": "platform",
+              "id": "n3720980431"
+            },
+            {
+              "type": "node",
+              "ref": "n3679458105",
+              "role": "stop",
+              "id": "n3679458105"
+            },
+            {
+              "type": "way",
+              "ref": "w169383514",
+              "role": "",
+              "id": "w169383514"
+            },
+            {
+              "type": "way",
+              "ref": "w22937242",
+              "role": "",
+              "id": "w22937242"
+            },
+            { "type": "way", "ref": "w5673276", "role": "", "id": "w5673276" },
+            {
+              "type": "way",
+              "ref": "w420904838",
+              "role": "",
+              "id": "w420904838"
+            },
+            {
+              "type": "way",
+              "ref": "w505777313",
+              "role": "",
+              "id": "w505777313"
+            },
+            {
+              "type": "way",
+              "ref": "w505777310",
+              "role": "",
+              "id": "w505777310"
+            },
+            {
+              "type": "way",
+              "ref": "w169267539",
+              "role": "",
+              "id": "w169267539"
+            },
+            {
+              "type": "way",
+              "ref": "w421852038",
+              "role": "",
+              "id": "w421852038"
+            },
+            {
+              "type": "way",
+              "ref": "w481856150",
+              "role": "",
+              "id": "w481856150"
+            },
+            {
+              "type": "way",
+              "ref": "w421852041",
+              "role": "",
+              "id": "w421852041"
+            },
+            {
+              "type": "way",
+              "ref": "w194920158",
+              "role": "",
+              "id": "w194920158"
+            },
+            {
+              "type": "way",
+              "ref": "w420908137",
+              "role": "",
+              "id": "w420908137"
+            },
+            {
+              "type": "way",
+              "ref": "w420908138",
+              "role": "",
+              "id": "w420908138"
+            },
+            { "type": "way", "ref": "w5670867", "role": "", "id": "w5670867" },
+            { "type": "way", "ref": "w5673497", "role": "", "id": "w5673497" },
+            {
+              "type": "way",
+              "ref": "w441405436",
+              "role": "",
+              "id": "w441405436"
+            },
+            {
+              "type": "way",
+              "ref": "w511924978",
+              "role": "",
+              "id": "w511924978"
+            },
+            {
+              "type": "way",
+              "ref": "w458180188",
+              "role": "",
+              "id": "w458180188"
+            },
+            {
+              "type": "way",
+              "ref": "w46522003",
+              "role": "",
+              "id": "w46522003"
+            },
+            {
+              "type": "way",
+              "ref": "w169267541",
+              "role": "",
+              "id": "w169267541"
+            },
+            {
+              "type": "way",
+              "ref": "w169267540",
+              "role": "",
+              "id": "w169267540"
+            },
+            {
+              "type": "way",
+              "ref": "w169267536",
+              "role": "",
+              "id": "w169267536"
+            },
+            {
+              "type": "way",
+              "ref": "w169267544",
+              "role": "",
+              "id": "w169267544"
+            },
+            {
+              "type": "way",
+              "ref": "w46522002",
+              "role": "",
+              "id": "w46522002"
+            },
+            {
+              "type": "way",
+              "ref": "w458180186",
+              "role": "",
+              "id": "w458180186"
+            },
+            {
+              "type": "way",
+              "ref": "w458180184",
+              "role": "",
+              "id": "w458180184"
+            },
+            { "type": "way", "ref": "w5670114", "role": "", "id": "w5670114" },
+            {
+              "type": "way",
+              "ref": "w542258337",
+              "role": "",
+              "id": "w542258337"
+            },
+            {
+              "type": "way",
+              "ref": "w46443656",
+              "role": "",
+              "id": "w46443656"
+            },
+            {
+              "type": "way",
+              "ref": "w421852031",
+              "role": "",
+              "id": "w421852031"
+            },
+            {
+              "type": "way",
+              "ref": "w421852029",
+              "role": "",
+              "id": "w421852029"
+            },
+            {
+              "type": "way",
+              "ref": "w421852040",
+              "role": "",
+              "id": "w421852040"
+            },
+            {
+              "type": "way",
+              "ref": "w464847785",
+              "role": "",
+              "id": "w464847785"
+            },
+            {
+              "type": "way",
+              "ref": "w421852030",
+              "role": "",
+              "id": "w421852030"
+            },
+            {
+              "type": "way",
+              "ref": "w169269031",
+              "role": "",
+              "id": "w169269031"
+            },
+            {
+              "type": "way",
+              "ref": "w505777317",
+              "role": "",
+              "id": "w505777317"
+            }
+          ],
+          "tags": {
+            "description": "Local Crosstown Service",
+            "from": "East Midtown",
+            "name": "NYCB - M50",
+            "network": "NYC Transit",
+            "operator": "MTA",
+            "public_transport:version": "2",
+            "ref": "M50",
+            "route": "bus",
+            "to": "West Midtown",
+            "type": "route",
+            "via": "49th and 50th Streets",
+            "wikipedia": "en:M50 (New York City bus)"
+          },
+          "type": "relation"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": ["r2636378"] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "r2636378",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "32395616",
+            "timestamp": "2015-07-03T17:48:22Z",
+            "uid": "3033482",
+            "user": "ipc",
+            "version": "9",
+            "visible": true
+          },
+          "id": "r2636378",
+          "members": [
+            {
+              "type": "relation",
+              "ref": "r2636365",
+              "role": "route",
+              "id": "r2636365"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636371",
+              "role": "route",
+              "id": "r2636371"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636372",
+              "role": "route",
+              "id": "r2636372"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632937",
+              "role": "route",
+              "id": "r2632937"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632938",
+              "role": "route",
+              "id": "r2632938"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636375",
+              "role": "route",
+              "id": "r2636375"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632942",
+              "role": "route",
+              "id": "r2632942"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632958",
+              "role": "route",
+              "id": "r2632958"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636366",
+              "role": "route",
+              "id": "r2636366"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636370",
+              "role": "route",
+              "id": "r2636370"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624103",
+              "role": "route",
+              "id": "r2624103"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624104",
+              "role": "route",
+              "id": "r2624104"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632934",
+              "role": "route",
+              "id": "r2632934"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632935",
+              "role": "route",
+              "id": "r2632935"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624105",
+              "role": "route",
+              "id": "r2624105"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624106",
+              "role": "route",
+              "id": "r2624106"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624107",
+              "role": "route",
+              "id": "r2624107"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632936",
+              "role": "route",
+              "id": "r2632936"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624128",
+              "role": "route",
+              "id": "r2624128"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624129",
+              "role": "route",
+              "id": "r2624129"
+            },
+            {
+              "type": "relation",
+              "ref": "r2624150",
+              "role": "route",
+              "id": "r2624150"
+            },
+            {
+              "type": "relation",
+              "ref": "r2255524",
+              "role": "route",
+              "id": "r2255524"
+            },
+            {
+              "type": "relation",
+              "ref": "r2254126",
+              "role": "route",
+              "id": "r2254126"
+            },
+            {
+              "type": "relation",
+              "ref": "r2255494",
+              "role": "route",
+              "id": "r2255494"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636373",
+              "role": "route",
+              "id": "r2636373"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632939",
+              "role": "route",
+              "id": "r2632939"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632940",
+              "role": "route",
+              "id": "r2632940"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632941",
+              "role": "route",
+              "id": "r2632941"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636377",
+              "role": "route",
+              "id": "r2636377"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636367",
+              "role": "route",
+              "id": "r2636367"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636368",
+              "role": "route",
+              "id": "r2636368"
+            },
+            {
+              "type": "relation",
+              "ref": "r2636369",
+              "role": "route",
+              "id": "r2636369"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632957",
+              "role": "route",
+              "id": "r2632957"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632931",
+              "role": "route",
+              "id": "r2632931"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632932",
+              "role": "route",
+              "id": "r2632932"
+            },
+            {
+              "type": "relation",
+              "ref": "r2632933",
+              "role": "route",
+              "id": "r2632933"
+            },
+            {
+              "type": "node",
+              "ref": "n2724131830",
+              "role": "",
+              "id": "n2724131830"
+            }
+          ],
+          "tags": {
+            "name": "New York City Buses (Manhattan)",
+            "operator": "Metropolitan Transportation Authority",
+            "route_master": "bus",
+            "type": "route_master"
+          },
+          "type": "relation"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "r5715415",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "50715478",
+            "timestamp": "2017-07-31T10:02:45Z",
+            "uid": "6191639",
+            "user": "ioanam_telenav",
+            "version": "7",
+            "visible": true
+          },
+          "id": "r5715415",
+          "members": [
+            {
+              "type": "way",
+              "ref": "w458180184",
+              "role": "from",
+              "id": "w458180184"
+            },
+            {
+              "type": "node",
+              "ref": "n42432580",
+              "role": "via",
+              "id": "n42432580"
+            },
+            {
+              "type": "way",
+              "ref": "w384178816",
+              "role": "to",
+              "id": "w384178816"
+            }
+          ],
+          "tags": {
+            "restriction:conditional": "no_left_turn @ (Mo-Fr 10:00-18:00)",
+            "type": "restriction"
+          },
+          "type": "relation"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "r7143277",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47560470",
+            "timestamp": "2017-04-08T08:39:35Z",
+            "uid": "670376",
+            "user": "Wolowitz",
+            "version": "1",
+            "visible": true
+          },
+          "id": "r7143277",
+          "members": [
+            {
+              "type": "node",
+              "ref": "n4782506032",
+              "role": "platform",
+              "id": "n4782506032"
+            },
+            {
+              "type": "node",
+              "ref": "n4782506033",
+              "role": "stop",
+              "id": "n4782506033"
+            }
+          ],
+          "tags": {
+            "name": "East 49th Street/5th Avenue",
+            "public_transport": "stop_area",
+            "type": "public_transport"
+          },
+          "type": "relation"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ],
+    [
+      "r7164794",
+      {
+        "entity": {
+          "attributes": {
+            "changeset": "47892593",
+            "timestamp": "2017-04-18T05:20:02Z",
+            "uid": "665748",
+            "user": "sebastic",
+            "version": "2",
+            "visible": true
+          },
+          "id": "r7164794",
+          "members": [
+            {
+              "type": "way",
+              "ref": "w382309333",
+              "role": "outer",
+              "id": "w382309333"
+            },
+            {
+              "type": "way",
+              "ref": "w159028631",
+              "role": "inner",
+              "id": "w159028631"
+            },
+            {
+              "type": "way",
+              "ref": "w66755319",
+              "role": "inner",
+              "id": "w66755319"
+            },
+            {
+              "type": "way",
+              "ref": "w330177544",
+              "role": "inner",
+              "id": "w330177544"
+            },
+            {
+              "type": "way",
+              "ref": "w330177543",
+              "role": "inner",
+              "id": "w330177543"
+            }
+          ],
+          "tags": {
+            "access": "yes",
+            "bicycle": "dismount",
+            "foot": "yes",
+            "highway": "pedestrian",
+            "lit": "yes",
+            "motor_vehicle": "no",
+            "name": "Rockefeller Plaza",
+            "oneway": "no",
+            "type": "multipolygon"
+          },
+          "type": "relation"
+        },
+        "parentRelations": { "@@idly@type": "Set", "value": [] },
+        "parentWays": { "@@idly@type": "Set", "value": [] }
+      }
+    ]
+  ]
+}
