@@ -5,7 +5,7 @@ import { OsmGeometry, Way } from 'idly-common/lib/osm/structures';
 import { tagClasses } from 'idly-common/lib/tagClasses/tagClasses';
 import { isOneway } from './isOneway';
 
-export const wayPropertiesGen = weakCache((way: Way) => {
+export const wayPropertiesGen = (way: Way) => {
   const geometry = isArea(way) ? OsmGeometry.AREA : OsmGeometry.LINE;
   const allTagClasses = tagClasses(way.tags);
 
@@ -29,7 +29,13 @@ export const wayPropertiesGen = weakCache((way: Way) => {
   if (way.tags.height) {
     result['@idly-height'] = parseInt(way.tags.height, 10);
     result['@idly-min_height'] = parseInt(way.tags.min_height, 10) || 0;
+    if (
+      way.tags['building:colour'] &&
+      way.tags['building:colour'].length === 7
+    ) {
+      result['@idly-building-color'] = way.tags['building:colour'];
+    }
   }
 
   return result;
-});
+};
