@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import { EntityType } from 'idly-common/lib/osm/structures';
 import * as path from 'path';
-import { Derived } from '../entityToGeojson';
 import { _internalCache, entityToGeoJson } from '../index';
+import { Derived } from '../types';
 
 const parse = (file: string) =>
   new Map<string, Derived>(

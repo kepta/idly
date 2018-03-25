@@ -1,18 +1,20 @@
 import { Feature, LineString, Point, Polygon } from '@turf/helpers';
-import { EntityType, Relation } from 'idly-common/lib/osm/structures';
 import {
-  entityFeatureProperties,
-  nodeCombiner,
-  wayCombiner,
-} from './entityToGeojson';
-import { relationCombiner } from './relationCombiner';
-import { Derived } from './types';
+  Entity,
+  EntityType,
+  Node,
+  Relation,
+  Way,
+} from 'idly-common/lib/osm/structures';
 
-export type DerivedTable = Map<string, Derived>;
+import { nodeFeatures } from './nodeFeatures';
+import { relationFeatures } from './relationFeatures/index';
+import { Derived, DerivedTable } from './types';
+import { wayFeatures } from './wayFeatures';
 
 // tslint:disable-next-line:variable-name
 export const _internalCache = new WeakMap<
-  Derived,
+  Derived<Entity>,
   Feature<Point | Polygon | LineString>
 >();
 
@@ -21,7 +23,7 @@ export const entityToGeoJson = (
 ): Array<Feature<Point | Polygon | LineString>> => {
   let count = 0;
   const result: Array<Feature<Point | Polygon | LineString>> = [];
-  const rels: Derived[] = [];
+  const relationGeometries: Derived[] = [];
   for (const [, element] of table) {
     let r = _internalCache.get(element);
     if (r) {
@@ -30,19 +32,19 @@ export const entityToGeoJson = (
       continue;
     }
     if (element.entity.type === EntityType.NODE) {
-      r = nodeCombiner(element.entity, entityFeatureProperties(element));
+      r = nodeFeatures(element as Derived<Node>);
     } else if (element.entity.type === EntityType.WAY) {
-      r = wayCombiner(element.entity, table, entityFeatureProperties(element));
+      r = wayFeatures(element as Derived<Way>, table);
     } else {
-      rels.push(element);
+      relationGeometries.push(element);
       continue;
     }
     result.push(r);
     _internalCache.set(element, r);
   }
 
-  for (const rD of rels) {
-    const r = relationCombiner(rD.entity as Relation, table, _internalCache);
+  for (const rD of relationGeometries) {
+    const r = relationFeatures(rD.entity as Relation, table, _internalCache);
     if (r) {
       result.push(...r);
     }

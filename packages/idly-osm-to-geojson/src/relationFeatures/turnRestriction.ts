@@ -1,49 +1,32 @@
-import { Feature, LineString, Point, Polygon } from '@turf/helpers';
 import { Relation } from 'idly-common/lib/osm/structures';
 import { HighlightColor } from 'idly-common/lib/styling/highlight';
+import { RelevantGeometry } from '../types';
+import { EnsuredMemberType } from './helpers';
 
-import { Derived } from './types';
-
-export function relationCombiner(
+export function turnRestriction(
   relation: Relation,
-  table: Map<string, Derived>,
-  geometryTable: WeakMap<Derived, Feature<Point | Polygon | LineString>>
-) {
-  return turnRestriction(relation, table, geometryTable);
-}
-
-function turnRestriction(
-  relation: Relation,
-  table: Map<string, Derived>,
-  geometryTable: WeakMap<Derived, Feature<Point | Polygon | LineString>>
-) {
+  ensuredMembers: EnsuredMemberType[]
+): RelevantGeometry[] | undefined {
   if (!relation.tags.type || !relation.tags.type.startsWith('restriction')) {
     return;
   }
 
   const ROLE = ['from', 'via', 'to'];
-  const result: Array<Feature<Point | Polygon | LineString>> = [];
+  const result = [];
 
   const restrictiveToValue = makeToHighlightColor(relation.tags);
 
   for (const role of ROLE) {
-    const members = relation.members.filter(r => r.role === role).map(r => {
-      const d = table.get(r.id);
-      if (d) {
-        return geometryTable.get(d);
-      }
-      return;
-    });
+    const matchingMember = ensuredMembers.filter(
+      ({ member }) => member.role === role
+    );
 
-    if (members.length === 0) {
+    // each role needs to have a minimum of 1
+    if (matchingMember.length === 0) {
       return;
     }
 
-    for (const r of members) {
-      if (!r) {
-        return;
-      }
-
+    for (const { member, geometry } of matchingMember) {
       let highlightColor = HighlightColor.KIND_UNIMPORTANT;
 
       if (role === 'to' && restrictiveToValue === 'no') {
@@ -59,14 +42,14 @@ function turnRestriction(
       }
 
       result.push({
-        ...r,
+        ...geometry,
         properties: {
-          '@idly-geometry': r.properties && r.properties['@idly-geometry'],
+          '@idly-geometry':
+            geometry.properties && geometry.properties['@idly-geometry'],
           '@idly-highlight': highlightColor,
-          '@idly-member-id': r.properties && r.properties.id,
+          '@idly-member-id': member.id,
           '@idly-name': role,
           '@idly-turn-restriction': role,
-          // tslint:disable-next-line:object-literal-key-quotes
           id: relation.id,
         },
       });

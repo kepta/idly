@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`converts node to feat nodeCombiner should add computed Props 1`] = `
+exports[`converts node to feat should behave... 1`] = `
 Object {
   "geometry": Object {
     "coordinates": Array [
@@ -9,34 +9,19 @@ Object {
     ],
     "type": "Point",
   },
-  "id": "n-1",
+  "id": "n1",
   "properties": Object {
-    "h": 3,
-    "id": "n-1",
-    "test": "1234",
+    "@idly-geometry": "vertex",
+    "@idly-icon": "circle",
+    "@idly-intersection": false,
+    "@idly-name": undefined,
+    "id": "n1",
   },
   "type": "Feature",
 }
 `;
 
-exports[`converts node to feat nodeCombiner should behave... 1`] = `
-Object {
-  "geometry": Object {
-    "coordinates": Array [
-      0,
-      0,
-    ],
-    "type": "Point",
-  },
-  "id": "n-1",
-  "properties": Object {
-    "id": "n-1",
-  },
-  "type": "Feature",
-}
-`;
-
-exports[`converts node to feat nodeCombiner should behave... 2`] = `
+exports[`converts node to feat should behave... 2`] = `
 Object {
   "geometry": Object {
     "coordinates": Array [
@@ -45,46 +30,19 @@ Object {
     ],
     "type": "Point",
   },
-  "id": "n-1",
+  "id": "n1#0",
   "properties": Object {
-    "id": "n-1",
+    "@idly-geometry": "point",
+    "@idly-icon": "circle",
+    "@idly-intersection": false,
+    "@idly-name": undefined,
+    "id": "n1#0",
   },
   "type": "Feature",
 }
 `;
 
-exports[`way.test getNodesFromGraph should get nodes correctly 1`] = `
-Array [
-  Array [
-    1,
-    2,
-  ],
-]
-`;
-
-exports[`way.test getNodesFromGraph should work when multiple nodes are there ingraph 1`] = `
-Array [
-  Array [
-    3,
-    4,
-  ],
-]
-`;
-
-exports[`way.test getNodesFromGraph should work when multiple nodes are there ingraph 2`] = `
-Array [
-  Array [
-    1,
-    2,
-  ],
-  Array [
-    3,
-    4,
-  ],
-]
-`;
-
-exports[`way.test wayCombiner should behave... 1`] = `
+exports[`way.test wayFeatures should behave... 1`] = `
 Object {
   "geometry": Object {
     "coordinates": Array [
@@ -93,7 +51,7 @@ Object {
         2,
       ],
       Array [
-        1,
+        3,
         4,
       ],
     ],
@@ -102,6 +60,10 @@ Object {
   "id": "w1",
   "properties": Object {
     "@idly-geometry": "line",
+    "@idly-icon": "highway-residential",
+    "@idly-isOneway": false,
+    "@idly-name": undefined,
+    "@idly-tag-highway": "tag-highway-residential",
     "id": "w1",
   },
   "type": "Feature",
