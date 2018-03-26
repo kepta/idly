@@ -1,8 +1,7 @@
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
 import { derivedFcLookup } from '../../derived';
 import { Component } from '../../helpers/Component';
-import { workerOperations } from '../../worker';
-import { State } from '../State';
+import { DerivedStore, State } from '../State';
 import { Highlight } from './Highlight';
 import { Hover } from './Hover';
 import { Osm } from './Osm';
@@ -15,6 +14,7 @@ export interface Props {
   layers: State['map']['layers'];
   selectedEntityId?: string;
   hoverEntityId?: string;
+  dStore: DerivedStore;
 }
 
 export class MapComp extends Component<Props, {}, any, any> {
@@ -52,6 +52,8 @@ export class MapComp extends Component<Props, {}, any, any> {
     if (!id || !this.props.fc) {
       return [];
     }
+
+    // const featureLookup = this.props.dStore.fcLookup;
     const featureLookup = this.props.fc && derivedFcLookup(this.props.fc);
 
     if (id.charAt(0) !== 'r') {
@@ -78,8 +80,6 @@ export class MapComp extends Component<Props, {}, any, any> {
     this.children.highlightComp.setProps({
       features: props.selectedEntityId ? selectedFeature : hoverFeature,
     });
-
-    // hack to render these after highlight
 
     this.children.hoverComp.setProps({
       features: hoverFeature,

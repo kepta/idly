@@ -1,3 +1,5 @@
+import { BASE_SOURCE } from '../configuration';
+import { getNameSpacedLayerId } from '../helpers/helper';
 import area from './area';
 import extrusion from './extrusion/extrusion';
 import highway from './highway';
@@ -28,7 +30,16 @@ const layers = [
   ...pointsDraggable,
   ...relations,
   ...placeholder,
-].sort((a, b) => a.priority - b.priority);
+]
+  .sort((a, b) => a.priority - b.priority)
+  .map(l => ({
+    ...l,
+    layer: {
+      ...l.layer,
+      source: BASE_SOURCE,
+      id: getNameSpacedLayerId(l.layer.id, BASE_SOURCE),
+    },
+  }));
 
 export default layers;
 

@@ -23,19 +23,6 @@ export const yellowFilter = [
       'tag-amenity-university',
     ],
   ],
-  // [
-  //   'in',
-  //   `${IDLY_NS}tagsClassType`,
-  //   'tag-sport-beachvolleyball',
-  //   'tag-natural-beach',
-  //   'tag-natural-sand',
-  //   'tag-natural-scrub',
-  //   'tag-amenity-childcare',
-  //   'tag-amenity-kindergarten',
-  //   'tag-amenity-school',
-  //   'tag-amenity-college',
-  //   'tag-amenity-university',
-  // ],
 ];
 
 export default [
@@ -43,7 +30,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaYellowLayer',
+      id: 'area-yellow-layer',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -58,7 +45,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaYellowLayerCasing',
+      id: 'area-yellow-layer-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

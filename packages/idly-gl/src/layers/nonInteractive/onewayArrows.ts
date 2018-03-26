@@ -3,10 +3,11 @@ import { NON_INTERACTIVE } from '../priorities';
 
 export default [
   {
+    internal: true,
     selectable: false,
     priority: NON_INTERACTIVE.ZERO,
     layer: {
-      id: 'nonInteractiveOnewayArrow',
+      id: 'non-tnteractive-oneway-arrow',
       type: 'symbol',
       source: undefined,
       layout: {

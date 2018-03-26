@@ -1,8 +1,6 @@
-import { OsmGeometry } from 'idly-common/lib/osm/structures';
-import { IDLY_NS } from '../../constants';
+import { SELECT_WIDTH } from '../../configuration';
 import { ComponentUpdateType } from '../../helpers/Component';
 import { GlComp } from '../../helpers/GlComp';
-import { SELECT_WIDTH } from '../../configuration';
 
 export interface Props {
   features?:
@@ -25,9 +23,9 @@ export class Select extends GlComp<Props, {}, any, any> {
   }
 
   protected async render(props: Props) {
-    const { features } = props;
+    const features = await props.features;
 
-    if (!features) {
+    if (!features || features.length === 0) {
       return null;
     }
 

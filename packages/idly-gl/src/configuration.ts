@@ -1,3 +1,5 @@
+import { makeLineWidth } from './layers/highway/highway.template';
+
 export const quadkey = {
   // the min zoom level to start fetching osm data
   ZOOM_MIN: 16,
@@ -20,19 +22,19 @@ export const mapInteraction = {
 export const BASE_SOURCE = 'idly-gl-base-src';
 
 export const SELECT_WIDTH = {
-  line: 30,
+  line: makeLineWidth(2.5),
   area: 12,
   point: 16,
 };
 
 export const HOVER_WIDTH = {
-  line: 30,
+  line: makeLineWidth(2.5),
   area: 12,
   point: 16,
 };
 
 export const HIGHLIGHT_WIDTH = {
-  line: 50,
+  line: makeLineWidth(4),
   area: 35,
   point: 25,
 };

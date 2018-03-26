@@ -19,7 +19,7 @@ export function getNameSpacedLayerId(layerId: string, source: string) {
 }
 
 export function reverseGetNameSpacedLayerId(id: string) {
-  return id.split(IDLY_NS);
+  return id.split(IDLY_NS)[1];
 }
 
 export function tilesFilterSmall(
@@ -58,7 +58,6 @@ export function tilesFilterSmall(
     'removed',
     tiles.length - final.tiles.length
   );
-  console.log(final);
   return final.tiles;
 }
 

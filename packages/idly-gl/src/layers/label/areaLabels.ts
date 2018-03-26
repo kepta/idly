@@ -6,7 +6,7 @@ export default [
     selectable: false,
     priority: LABEL.ZERO,
     layer: {
-      id: 'AreaLabelsLayer',
+      id: 'label-area',
       type: 'symbol',
       source: undefined,
       layout: {

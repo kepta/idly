@@ -7,7 +7,7 @@ export default [
     priority: POINT.ZERO,
     layer: {
       minzoom: 17,
-      id: 'PointsWithoutLabelsLayer',
+      id: 'point-point',
       source: undefined,
       type: 'circle',
       layout: {},

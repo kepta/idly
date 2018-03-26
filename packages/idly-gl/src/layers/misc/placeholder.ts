@@ -1,12 +1,17 @@
-import { IDLY_NS } from '../../constants';
-import { HIGHWAY, WATERWAY } from '../priorities';
+import {
+  PlaceHolderLayer1,
+  PlaceHolderLayer2,
+  PlaceHolderLayer3,
+} from '../../constants';
+import { WATERWAY } from '../priorities';
 
 export default [
   {
+    internal: true,
     selectable: true,
     priority: WATERWAY.MINUS_1,
     layer: {
-      id: 'PlaceHolderLayer1',
+      id: PlaceHolderLayer1,
       source: undefined,
       type: 'line',
       layout: {},
@@ -15,10 +20,11 @@ export default [
     },
   },
   {
+    internal: true,
     selectable: true,
     priority: WATERWAY.MINUS_2,
     layer: {
-      id: 'PlaceHolderLayer2',
+      id: PlaceHolderLayer2,
       source: undefined,
       type: 'line',
       layout: {},
@@ -27,10 +33,11 @@ export default [
     },
   },
   {
+    internal: true,
     selectable: true,
     priority: WATERWAY.MINUS_3,
     layer: {
-      id: 'PlaceHolderLayer3',
+      id: PlaceHolderLayer3,
       source: undefined,
       type: 'line',
       layout: {

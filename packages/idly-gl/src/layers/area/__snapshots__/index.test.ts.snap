@@ -2,28 +2,28 @@
 
 exports[`area layers snapshot check the structure 1`] = `
 Array [
-  "AreaFallbackLayer",
-  "AreaFallbackLayerCasing",
-  "areaBlueLayer",
-  "areaBlueLayerCasing",
-  "areaBuildingLayer",
-  "areaBuildingLayerFill",
-  "areaGoldLayer",
-  "areaGoldLayerCasing",
-  "areaGrayLayer",
-  "areaGrayLayerCasing",
-  "areaGreenLayer",
-  "areaGreenLayerCasing",
-  "areaLightGreenLayer",
-  "areaLightGreenLayerCasing",
-  "areaOrangeLayer",
-  "areaOrangeLayerCasing",
-  "areaPinkLayer",
-  "areaPinkLayerCasing",
-  "areaTanLayer",
-  "areaTanLayerCasing",
-  "areaYellowLayer",
-  "areaYellowLayerCasing",
+  "area-fallback-layer",
+  "area-fallback-layer-casing",
+  "area-blue-layer",
+  "area-blue-layer-casing",
+  "area-building",
+  "area-building-fill",
+  "area-gold-layer",
+  "area-gold-layer-casing",
+  "area-gray-layer",
+  "area-gray-layer-casing",
+  "area-green-layer",
+  "area-green-layer-casing",
+  "area-light-green",
+  "area-light-green-casing",
+  "area-orange",
+  "area-orange-casing",
+  "area-pink",
+  "area-pink-casing",
+  "area-tan",
+  "area-tan-casing",
+  "area-yellow-layer",
+  "area-yellow-layer-casing",
 ]
 `;
 
@@ -42,7 +42,7 @@ Object {
         "@idly-tag-building",
       ],
     ],
-    "id": "AreaFallbackLayer",
+    "id": "area-fallback-layer",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -74,7 +74,7 @@ Object {
         "@idly-tag-building",
       ],
     ],
-    "id": "AreaFallbackLayerCasing",
+    "id": "area-fallback-layer-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -128,7 +128,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaBlueLayer",
+    "id": "area-blue-layer",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -183,7 +183,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaBlueLayerCasing",
+    "id": "area-blue-layer-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -273,7 +273,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaBuildingLayer",
+    "id": "area-building",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -315,7 +315,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaBuildingLayerFill",
+    "id": "area-building-fill",
     "paint": Object {
       "fill-color": "#e06e5f",
       "fill-opacity": 0.2,
@@ -345,7 +345,7 @@ Object {
         "tag-landuse-construction",
       ],
     ],
-    "id": "areaGoldLayer",
+    "id": "area-gold-layer",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -380,7 +380,7 @@ Object {
         "tag-landuse-construction",
       ],
     ],
-    "id": "areaGoldLayerCasing",
+    "id": "area-gold-layer-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -494,7 +494,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaGrayLayer",
+    "id": "area-gray-layer",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -559,7 +559,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaGrayLayerCasing",
+    "id": "area-gray-layer-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -701,7 +701,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaGreenLayer",
+    "id": "area-green-layer",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -794,7 +794,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaGreenLayerCasing",
+    "id": "area-green-layer-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -881,7 +881,7 @@ Object {
         "tag-landuse-farmland",
       ],
     ],
-    "id": "areaLightGreenLayer",
+    "id": "area-light-green",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -919,7 +919,7 @@ Object {
         "tag-landuse-farmland",
       ],
     ],
-    "id": "areaLightGreenLayerCasing",
+    "id": "area-light-green-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1012,7 +1012,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaOrangeLayer",
+    "id": "area-orange",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1056,7 +1056,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaOrangeLayerCasing",
+    "id": "area-orange-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1147,7 +1147,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaPinkLayer",
+    "id": "area-pink",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1189,7 +1189,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaPinkLayerCasing",
+    "id": "area-pink-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1272,7 +1272,7 @@ Object {
         "tag-landuse-farmyard",
       ],
     ],
-    "id": "areaTanLayer",
+    "id": "area-tan",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1306,7 +1306,7 @@ Object {
         "tag-landuse-farmyard",
       ],
     ],
-    "id": "areaTanLayerCasing",
+    "id": "area-tan-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1408,7 +1408,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaYellowLayer",
+    "id": "area-yellow-layer",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",
@@ -1461,7 +1461,7 @@ Object {
         ],
       ],
     ],
-    "id": "areaYellowLayerCasing",
+    "id": "area-yellow-layer-casing",
     "layout": Object {
       "line-cap": "round",
       "line-join": "round",

@@ -46,7 +46,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaGrayLayer',
+      id: 'area-gray-layer',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -61,7 +61,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaGrayLayerCasing',
+      id: 'area-gray-layer-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

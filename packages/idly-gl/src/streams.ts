@@ -1,33 +1,27 @@
+import { BBox, bboxToTiles } from 'idly-common/lib/geo';
+import { BBox } from 'idly-common/lib/geo';
+import { tileToQuadkey } from 'idly-common/lib/misc';
 import { Map, MapMouseEvent, MapTouchEvent } from 'mapbox-gl/dist/mapbox-gl';
 import { Observable } from 'rxjs/Observable';
 import { fromEventPattern } from 'rxjs/observable/fromEventPattern';
 import { FromEventPatternObservable } from 'rxjs/observable/FromEventPatternObservable';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { filter } from 'rxjs/operators/filter';
 import { map as rxMap } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
-import { switchMap } from 'rxjs/operators/switchMap';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { throttleTime } from 'rxjs/operators/throttleTime';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
-import { BBox, bboxToTiles } from 'idly-common/lib/geo';
-import { tileToQuadkey } from 'idly-common/lib/misc';
-import { Entity } from 'idly-common/lib/osm/structures';
-
 import { merge } from 'rxjs/observable/merge';
 import { mapInteraction, quadkey } from './configuration';
-import { IDLY_NS } from './constants';
 import {
   bboxify,
   distance,
-  fetchTileXml,
   tilesFilterSmall,
 } from './helpers/helper';
-import { workerOperations } from './worker';
 
 export function glObservable<T>(
   glMap: Map,
@@ -146,40 +140,6 @@ export function moveEndBbox$(glMap: any) {
   );
 }
 
-export function getQuadkeys$(
-  glMap: any
-): Observable<Array<{ quadkey: string; entities: Entity[] }>> {
-  return makeMoveend$(glMap).pipe(
-    debounceTime(450),
-    startWith('' as any),
-    rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
-    filter(([_, zoom]) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
-    rxMap(([bounds, zoom]: any) =>
-      getTiles(
-        [
-          bounds.getWest(),
-          bounds.getSouth(),
-          bounds.getEast(),
-          bounds.getNorth(),
-        ],
-        zoom
-      )
-    ),
-    switchMap(tiles =>
-      fromPromise(
-        Promise.all(
-          tiles.map(t =>
-            fetchTileXml(t.x, t.y, t.z).then(r => ({
-              quadkey: tileToQuadkey(t),
-              entities: r,
-            }))
-          )
-        )
-      )
-    )
-  );
-}
-
 export function makeLoadingQuadkeys$(glMap: any): Observable<string[]> {
   return makeMoveend$(glMap).pipe(
     debounceTime(600),
@@ -213,16 +173,23 @@ export function makeHover$(
   return merge(mouseenter$, mouseleave$);
 }
 
+const values: any = {
+  n: 3,
+  w: 2,
+  r: 1,
+};
+
 export function makeNearestEntity$(
   glMap: any,
-  layers: any[],
+  layerObs: Observable<any>,
   radius = mapInteraction.RADIUS
-) {
+): Observable<string[]> {
   return makeMousemove$(glMap).pipe(
     throttleTime(50),
-    rxMap(e => {
+    withLatestFrom(layerObs),
+    rxMap(([e, layers]) => {
       const eCoords: [number, number] = [e.lngLat.lng, e.lngLat.lat];
-      return glMap
+      const ids: string[] = glMap
         .queryRenderedFeatures(bboxify(e, radius), {
           layers,
           filter: ['has', 'id'],
@@ -235,21 +202,27 @@ export function makeNearestEntity$(
               distance(eCoords, b._geometry.coordinates)
             );
           }
-          if (a.geometry.type === 'Point') {
-            return -1;
-          }
-          if (b.geometry.type === 'Point') {
-            return 1;
-          }
-          return b.properties.id.localeCompare(a.properties.id); // puts way above relation
-        })[0];
+
+          return (
+            values[b.properties.id.charAt(0)] -
+            values[a.properties.id.charAt(0)]
+          );
+        })
+        .map(a => a.properties.id);
+
+      return [...new Set(ids)];
     }),
-    distinctUntilChanged(
-      (p, q) =>
-        p == null && p === q
-          ? true
-          : p && q && p.properties.id === q.properties.id
-    )
+    distinctUntilChanged((p, q) => {
+      if (p.length !== q.length) {
+        return false;
+      }
+      for (let i = 0; i < p.length; i++) {
+        if (p[i] !== q[i]) {
+          return false;
+        }
+      }
+      return true;
+    })
   );
 }
 
@@ -271,7 +244,7 @@ export function makeDrag$(
 
 const getTiles = (bbox: BBox, zoom: number) => {
   // actual zoom has 1 less for smaller quadkey
-  const tiles = bboxToTiles(bbox, zoom < 20 ? zoom - 1 : 19);
+  const tiles = bboxToTiles(bbox, zoom < 20 ? zoom - 1 : 20);
   // for small screen devices
 
   if (tiles.length <= 4) {

@@ -7,7 +7,7 @@ export default [
     hide: true,
     priority: EXTRUSION.ZERO,
     layer: {
-      id: 'extrusionExtrusion',
+      id: 'extrusion-3d',
       type: 'fill-extrusion',
       source: undefined,
       paint: {
@@ -15,8 +15,12 @@ export default [
         // https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions
 
         // Get the fill-extrusion-color from the source 'color' property.
-        'fill-extrusion-color': '#e06e5f',
-
+        'fill-extrusion-color': [
+          'case',
+          ['has', `${IDLY_NS}building-colour`],
+          ['get', `${IDLY_NS}building-colour`],
+          '#e06e5f',
+        ],
         // Get fill-extrusion-height from the source 'height' property.
         'fill-extrusion-height': ['get', `${IDLY_NS}height`],
 
@@ -24,7 +28,7 @@ export default [
         // Get fill-extrusion-base from the source 'base_height' property.
 
         // Make extrusions slightly opaque for see through indoor walls.
-        'fill-extrusion-opacity': 0.7,
+        'fill-extrusion-opacity': 0.8,
       },
       filter: [
         'all',

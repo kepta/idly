@@ -6,7 +6,7 @@ export default [
     selectable: true,
     priority: HIGHWAY.MINUS_2,
     layer: {
-      id: 'FallbackLineLayer',
+      id: 'highway-fallback-line',
       source: undefined,
       type: 'line',
       layout: {

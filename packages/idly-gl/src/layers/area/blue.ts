@@ -27,7 +27,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaBlueLayer',
+      id: 'area-blue-layer',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -42,7 +42,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaBlueLayerCasing',
+      id: 'area-blue-layer-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

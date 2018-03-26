@@ -9,12 +9,13 @@ export function layerOpacity(
   prevOp: LayerOpacity,
   layers: any[]
 ) {
-  return layers.map(l => {
-    let paint = l.paint;
+  return layers.map(layer => {
+    const l = layer.layer;
     if (!l.type) {
-      return l;
+      return layer;
     }
-    if (!paint) {
+    let paint = { ...l.paint };
+    if (!l.paint) {
       const keys = findOpacity(l.type);
       paint = {};
       for (const k of keys) {
@@ -42,8 +43,7 @@ export function layerOpacity(
       }
     }
 
-    l.paint = paint;
-    return l;
+    return { ...layer, layer: { ...layer.layer, paint } };
   });
 }
 

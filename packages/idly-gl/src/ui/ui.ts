@@ -24,21 +24,32 @@ export const Ui = ({
   actions: Actions;
   layers: any[];
 }): TemplateResult => {
-  const tabs = {
-    [MainTabs.Tags]: Box({
-      title: selectedId,
-      children: Tags({ id: selectedId || hoverId }),
-    }),
-    [MainTabs.Presets]: html`<span class="">Here lies the might presets </span>`,
-    [MainTabs.Relations]: Box({
-      title: selectedId,
-      children: Relations({
-        id: selectedId || hoverId,
-        actions,
-      }),
-    }),
-    [MainTabs.Layers]: LayerManager(layers),
-  };
+  let children;
+
+  switch (mainTab.active) {
+    case MainTabs.Tags: {
+      children = Box({
+        title: selectedId,
+        children: Tags({ id: selectedId || hoverId }),
+      });
+      break;
+    }
+
+    case MainTabs.Relations: {
+      children = Box({
+        title: selectedId,
+        children: Relations({
+          id: selectedId || hoverId,
+          actions,
+        }),
+      });
+      break;
+    }
+    case MainTabs.Layers: {
+      children = LayerManager(layers, actions);
+      break;
+    }
+  }
 
   return html`
   <div class="mapboxgl-ctrl">
@@ -48,9 +59,9 @@ export const Ui = ({
           ${TabRow({
             active: mainTab.active,
             onChange: actions.modifyMainTab,
-            keys: Object.keys(tabs),
+            keys: [MainTabs.Layers, MainTabs.Relations, MainTabs.Tags],
           })}
-      ${TabChildren(tabs[mainTab.active])}
+      ${TabChildren(children)}
     </div>
   </div>;
   `;
@@ -112,7 +123,6 @@ const Tags = async ({ id = '' }: { id?: string }) => {
 
   return html`
     <div class="tags-box">
-
       ${Object.keys(t).map(
         r =>
           html`
@@ -134,22 +144,20 @@ const Relations = async ({
   actions: Actions;
 }) => {
   const data = await workerOperations.getDerived({ id });
-  const t: Record<string, string> = data.derived
-    ? data.derived.parentRelations
-    : {};
+  const t: string[] = data.derived ? data.derived.parentRelations : [];
 
   return html`
     <div class="tags-box">
     ${repeat(
-      Object.keys(t),
-      (item, index) =>
+      t,
+      item =>
         html`
             <div class="tags-item layout vertical" >
-              <span class="tags-key">${t[item]}</span>
+              <span class="tags-key">${item}</span>
               <span class="tags-value"
-                on-click=${(e: Event) => {
-                  actions.modifySelectedId(t[item]);
-                }}>${t[item]}</span>
+                on-click=${(_: Event) => {
+                  actions.modifySelectedId(item);
+                }}>${item}</span>
             </div>
         `
     )}

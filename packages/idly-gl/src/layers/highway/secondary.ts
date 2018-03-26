@@ -20,7 +20,7 @@ export default [
     selectable: true,
     priority: HIGHWAY.ZERO,
     layer: {
-      id: 'highwaySecondary',
+      id: 'highway-secondary',
       type: 'line',
       source: undefined,
       layout: highwayTemplate.layer.layout,
@@ -36,7 +36,7 @@ export default [
     selectable: false,
     priority: HIGHWAY.MINUS_1,
     layer: {
-      id: 'highwaySecondaryCasing',
+      id: 'highway-secondary-casing',
       type: 'line',
       source: undefined,
       layout: highwayCaseTemplate.layer.layout,

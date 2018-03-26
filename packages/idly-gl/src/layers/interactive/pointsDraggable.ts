@@ -4,10 +4,11 @@ export default [
   {
     selectable: true,
     hide: true,
+    internal: true,
     priority: INTERACTIVE.ZERO,
     layer: {
       minzoom: 18.5,
-      id: 'PointsDraggableLayer',
+      id: 'interactive-points-draggable',
       source: undefined,
       type: 'circle',
       layout: {},
@@ -21,10 +22,11 @@ export default [
   {
     selectable: true,
     hide: true,
+    internal: true,
     priority: INTERACTIVE.MINUS_1,
     layer: {
       minzoom: 18.5,
-      id: 'PointsDraggableStrokeLayer',
+      id: 'interactive-points-draggable-stroke',
       source: undefined,
       type: 'circle',
       layout: {},

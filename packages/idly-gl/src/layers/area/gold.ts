@@ -21,7 +21,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaGoldLayer',
+      id: 'area-gold-layer',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -36,7 +36,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaGoldLayerCasing',
+      id: 'area-gold-layer-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

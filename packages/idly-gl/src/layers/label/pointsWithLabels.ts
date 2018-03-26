@@ -7,7 +7,7 @@ export default [
     priority: LABEL.PLUS_2,
     layer: {
       minzoom: 17,
-      id: 'PointsWithLabelsLayer',
+      id: 'label-points',
       type: 'symbol',
       source: undefined,
       layout: {

@@ -7,7 +7,7 @@ export default [
     selectable: false,
     priority: LABEL.PLUS_1,
     layer: {
-      id: 'LineLabelLayer',
+      id: 'label-highway',
       type: 'symbol',
       source: undefined,
       layout: {

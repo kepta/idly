@@ -21,7 +21,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaLightGreenLayer',
+      id: 'area-light-green',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -36,7 +36,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaLightGreenLayerCasing',
+      id: 'area-light-green-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

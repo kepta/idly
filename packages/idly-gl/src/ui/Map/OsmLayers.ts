@@ -1,3 +1,4 @@
+import { derivedVisibleLayers } from '../../derived';
 import { Component, ComponentUpdateType } from '../../helpers/Component';
 import { State } from '../State';
 
@@ -16,8 +17,12 @@ export class OsmLayers extends Component<Props, {}, any, any> {
     this.gl = gl;
     this.prevLayers = [];
 
+    const layers = derivedVisibleLayers(props.layers)
+      .sort((a, b) => a.priority - b.priority)
+      .map(r => r.layer);
+
     if (this.gl.getSource(this.sourceId)) {
-      props.layers.forEach(l => {
+      layers.forEach(l => {
         if (!this.gl.getLayer(l.id)) {
           this.gl.addLayer(l);
         }
@@ -46,7 +51,10 @@ export class OsmLayers extends Component<Props, {}, any, any> {
   }
 
   protected render(props: Props) {
-    console.log('updating LAYERS');
+    const layers = derivedVisibleLayers(props.layers)
+      .sort((a, b) => a.priority - b.priority)
+      .map(r => r.layer);
+
     if (this.gl.getSource(this.sourceId)) {
       this.prevLayers.forEach(l => {
         if (this.gl.getLayer(l.id)) {
@@ -54,13 +62,13 @@ export class OsmLayers extends Component<Props, {}, any, any> {
         }
       });
 
-      props.layers.forEach(l => {
+      layers.forEach(l => {
         if (!this.gl.getLayer(l.id)) {
           this.gl.addLayer(l);
         }
       });
 
-      this.prevLayers = props.layers;
+      this.prevLayers = layers;
     }
   }
 }

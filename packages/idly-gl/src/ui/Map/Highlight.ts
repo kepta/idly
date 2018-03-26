@@ -1,4 +1,3 @@
-import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { HIGHLIGHT_WIDTH } from '../../configuration';
 import { IDLY_NS } from '../../constants';
 import { ComponentUpdateType } from '../../helpers/Component';
@@ -38,6 +37,7 @@ export class Highlight extends GlComp<Props, {}, any, any> {
     features = await features;
 
     if (
+      features.length === 0 ||
       features.some(r => !r.properties.hasOwnProperty(`${IDLY_NS}highlight`))
     ) {
       return null;
@@ -93,7 +93,7 @@ export class Highlight extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': color,
-            'line-opacity': 0.8,
+            'line-opacity': 0.5,
             'line-width': HIGHLIGHT_WIDTH.line,
           },
           filter: ['==', '$type', 'LineString'],

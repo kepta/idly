@@ -7,7 +7,7 @@ export default [
     selectable: false,
     priority: AREA.MINUS_1,
     layer: {
-      id: 'AreaFallbackLayer',
+      id: 'area-fallback-layer',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -30,7 +30,7 @@ export default [
     selectable: false,
     priority: AREA.MINUS_2,
     layer: {
-      id: 'AreaFallbackLayerCasing',
+      id: 'area-fallback-layer-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

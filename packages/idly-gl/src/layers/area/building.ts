@@ -17,7 +17,7 @@ export default [
     selectable: false,
     priority: AREA.PLUS_1,
     layer: {
-      id: 'areaBuildingLayer',
+      id: 'area-building',
       minzoom: 17,
       type: 'line',
       source: undefined,
@@ -33,7 +33,7 @@ export default [
     selectable: false,
     priority: AREA.PLUS_1,
     layer: {
-      id: 'areaBuildingLayerFill',
+      id: 'area-building-fill',
       type: 'fill',
       source: undefined,
       paint: {

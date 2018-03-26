@@ -1,8 +1,11 @@
 import { Map as GlMap } from 'mapbox-gl/dist/mapbox-gl';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
-import { BASE_SOURCE } from './configuration';
-import { addSource } from './helpers/helper';
+import {
+  PlaceHolderLayer1,
+  PlaceHolderLayer2,
+  PlaceHolderLayer3,
+} from './constants';
 import { LayerOpacity } from './helpers/layerOpacity';
 import layers from './layers';
 import { UI } from './ui';
@@ -21,10 +24,15 @@ export class IdlyGlPlugin {
 
   constructor(config: Partial<State>) {
     this.config = config;
-    const l = layers
-      .filter(r => !r.hide)
-      .map(r => addSource(r.layer, BASE_SOURCE));
-
+    const placeHolderLayer1 = layers.find(l =>
+      l.layer.id.includes(PlaceHolderLayer1)
+    );
+    const placeHolderLayer2 = layers.find(l =>
+      l.layer.id.includes(PlaceHolderLayer2)
+    );
+    const placeHolderLayer3 = layers.find(l =>
+      l.layer.id.includes(PlaceHolderLayer3)
+    );
     const starter: State = {
       mainTab: {
         active: MainTabs.Tags,
@@ -33,19 +41,20 @@ export class IdlyGlPlugin {
       selectEntity: {
         selectedId: '',
         beforeLayers: {
-          last: l[0].id,
-          middle: l[1].id,
-          top: l[2].id,
+          last: placeHolderLayer3 ? placeHolderLayer3.layer.id : '',
+          middle: placeHolderLayer2 ? placeHolderLayer2.layer.id : '',
+          top: placeHolderLayer1 ? placeHolderLayer1.layer.id : '',
         },
       },
       map: {
         quadkeys: [],
-        layers: l,
+        layers,
         loading: false,
         layerOpacity: LayerOpacity.High,
       },
       ...this.config,
     };
+
     this.store = new BehaviorSubject<State>(starter);
   }
 

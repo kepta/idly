@@ -110,7 +110,6 @@ export abstract class GlComp<
         if (!layer) {
           return;
         }
-
         this.safeAddLayer(
           `${this.id}-${l}`,
           layer,
@@ -136,7 +135,6 @@ export abstract class GlComp<
     }
 
     if (before && !this.safeGetLayer(before)) {
-      console.log('couldnt find before layer', before);
       before = '';
     }
 

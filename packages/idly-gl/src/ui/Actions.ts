@@ -62,6 +62,27 @@ export class Actions {
   }
 
   @bindThis
+  public modifyLayerHide(id: any) {
+    if (!id) {
+      return;
+    }
+    const layers = this.store.map.layers.map(
+      l => (l.layer.id.includes(id) ? { ...l, hide: !l.hide } : l)
+    );
+
+    this.subject.next({
+      ...this.store,
+      map: { ...this.store.map, layers },
+    });
+  }
+
+  /**
+   * BUG: When doing modifyLayeropacity
+   * the placeholder layers are removed and added again
+   * hence all the stuff (hover, select..) in between these layers moves out (goes under)
+   */
+
+  @bindThis
   public modifyLayerOpacity() {
     let next: LayerOpacity;
     const current = this.store.map.layerOpacity;

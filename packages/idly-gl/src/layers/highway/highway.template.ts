@@ -1,4 +1,3 @@
-
 const lineWidth = [
   'interpolate',
   ['exponential', 2],

@@ -6,7 +6,7 @@ export default [
     selectable: true,
     priority: WATERWAY.ZERO,
     layer: {
-      id: 'waterway',
+      id: 'waterway-water',
       type: 'line',
       source: undefined,
       layout: {

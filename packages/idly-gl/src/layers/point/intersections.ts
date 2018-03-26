@@ -7,7 +7,7 @@ export default [
     priority: POINT.ZERO,
     layer: {
       minzoom: 17,
-      id: 'PointsIntersection',
+      id: 'point-intersection',
       source: undefined,
       type: 'circle',
       layout: {},

@@ -23,7 +23,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaPinkLayer',
+      id: 'area-pink',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -38,7 +38,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaPinkLayerCasing',
+      id: 'area-pink-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

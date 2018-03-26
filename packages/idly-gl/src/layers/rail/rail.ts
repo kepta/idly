@@ -6,7 +6,7 @@ export default [
     selectable: true,
     priority: RAIL.ZERO,
     layer: {
-      id: 'railway',
+      id: 'rail-rail',
       type: 'line',
       source: undefined,
       layout: {
@@ -25,7 +25,7 @@ export default [
     selectable: true,
     priority: RAIL.MINUS_1,
     layer: {
-      id: 'railwayCasing',
+      id: 'rail-rail-casing',
       type: 'line',
       source: undefined,
       layout: {

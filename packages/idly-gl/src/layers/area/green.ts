@@ -62,7 +62,7 @@ export default [
        *  need to standardized priority
        */
 
-      id: 'areaGreenLayer',
+      id: 'area-green-layer',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -77,7 +77,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaGreenLayerCasing',
+      id: 'area-green-layer-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

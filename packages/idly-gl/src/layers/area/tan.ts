@@ -16,7 +16,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaTanLayer',
+      id: 'area-tan',
       type: 'line',
       source: undefined,
       layout: areaTemplate.layer.layout,
@@ -31,7 +31,7 @@ export default [
     selectable: false,
     priority: AREA.ZERO,
     layer: {
-      id: 'areaTanLayerCasing',
+      id: 'area-tan-casing',
       type: 'line',
       source: undefined,
       layout: areaCasingTemplate.layer.layout,

@@ -17,17 +17,21 @@ export const derivedQuadkeysToEntities = weakCache((quadkeys: string[]) => {
 
 export const derivedQuadkeyToFC: (
   quadkeys: string[]
-) => Promise<GetQuadkey['response']> = weakCache((quadkeys: string[]) => {
+) => Promise<GetQuadkey['response']> = (quadkeys: string[]) => {
   return derivedQuadkeysToEntities(quadkeys).then(workerOperations.getQuadkey);
-});
+};
 
 export const derivedFcLookup: (
   fc: GetQuadkey['response']
-) => Map<string, GetQuadkey['response']['features'][0]> = weakCache(fc => {
-  return fc.features.reduce((pre: Map<string, any>, cur) => {
+) => Map<string, GetQuadkey['response']['features'][0]> = weakCache(fc =>
+  fc.features.reduce((pre: Map<string, any>, cur: any) => {
     if (cur.properties) {
       pre.set(cur.properties.id, cur);
     }
     return pre;
-  }, new Map());
-});
+  }, new Map())
+);
+
+export const derivedVisibleLayers = weakCache((layers: any[]) =>
+  layers.filter(r => !r.hide)
+);

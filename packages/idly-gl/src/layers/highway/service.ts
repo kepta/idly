@@ -17,7 +17,7 @@ export default [
     selectable: true,
     priority: HIGHWAY.PLUS_1,
     layer: {
-      id: 'highwayService',
+      id: 'highway-service',
       type: 'line',
       source: undefined,
       layout: highwayTemplate.layer.layout,
@@ -33,7 +33,7 @@ export default [
     selectable: false,
     priority: HIGHWAY.ZERO,
     layer: {
-      id: 'highwayServiceCasing',
+      id: 'highway-service-casing',
       type: 'line',
       source: undefined,
       layout: highwayCaseTemplate.layer.layout,

@@ -1,3 +1,4 @@
+import { OsmGeometry } from 'idly-common/lib/osm/structures';
 import { IDLY_NS } from '../../constants';
 import { HIGHWAY } from '../priorities';
 import {
@@ -5,7 +6,6 @@ import {
   highwayTemplate,
   makeLineWidth,
 } from './highway.template';
-import { OsmGeometry } from 'idly-common/lib/osm/structures';
 
 const secBlueFilter = [
   'all',
@@ -15,12 +15,12 @@ const secBlueFilter = [
 // TOFIX footpath part of area http://localhost:8080/#18.58/40.7309554/-73.9981163
 // should show green but doesn't
 
-const highblue = [
+const highwayBlue = [
   {
     selectable: true,
     priority: HIGHWAY.ZERO,
     layer: {
-      id: 'highblueNarrow',
+      id: 'highway-blue-narrow',
       type: 'line',
       source: undefined,
       layout: {
@@ -40,7 +40,7 @@ const highblue = [
     selectable: false,
     priority: HIGHWAY.MINUS_1,
     layer: {
-      id: 'highblueNarrowCasing',
+      id: 'highway-blue-narrow-casing',
       type: 'line',
       source: undefined,
       layout: highwayCaseTemplate.layer.layout,
@@ -65,12 +65,12 @@ const secGreenFilter = [
   ['has', `${IDLY_NS}tag-corridor`],
 ];
 
-const highgreen = [
+const highwayGreen = [
   {
     selectable: true,
     priority: HIGHWAY.ZERO,
     layer: {
-      id: 'highgreenNarrow',
+      id: 'highway-green-narrow',
       type: 'line',
       source: undefined,
       layout: {
@@ -90,7 +90,7 @@ const highgreen = [
     selectable: false,
     priority: HIGHWAY.MINUS_1,
     layer: {
-      id: 'highgreenNarrowCasing',
+      id: 'highway-green-narrow-casing',
       type: 'line',
       source: undefined,
       layout: highwayCaseTemplate.layer.layout,
@@ -116,7 +116,7 @@ export default [
     selectable: true,
     priority: HIGHWAY.ZERO,
     layer: {
-      id: 'highwayNarrow',
+      id: 'highway-narrow',
       type: 'line',
       source: undefined,
       layout: {
@@ -136,7 +136,7 @@ export default [
     selectable: false,
     priority: HIGHWAY.MINUS_1,
     layer: {
-      id: 'highwayNarrowCasing',
+      id: 'highway-narrow-casing',
       type: 'line',
       source: undefined,
       layout: highwayCaseTemplate.layer.layout,
@@ -147,6 +147,6 @@ export default [
       filter: ['all', ['==', `${IDLY_NS}geometry`, OsmGeometry.LINE], filter],
     },
   },
-  ...highblue,
-  ...highgreen,
+  ...highwayBlue,
+  ...highwayGreen,
 ];
