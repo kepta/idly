@@ -3,6 +3,7 @@ export type IFunc<T extends object, TResult> = (arg: T) => TResult;
 /**
  * takes a func<T,K> and returns func<T,K>
  * T must extend object.
+ * Tofix need to make sure T is not null | undefined
  */
 export function weakCache<T extends object, K>(fn: IFunc<T, K>): IFunc<T, K> {
   const cache = new WeakMap<T, K>();
