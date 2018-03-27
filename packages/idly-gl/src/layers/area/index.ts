@@ -1,3 +1,4 @@
+import { Layer } from '../types';
 import area from './areaFallback';
 import blue from './blue';
 import building from './building';
@@ -10,7 +11,7 @@ import pink from './pink';
 import tan from './tan';
 import yellow from './yellow';
 
-export default [
+const layers: Layer[] = [
   ...area,
   ...blue,
   ...building,
@@ -23,3 +24,5 @@ export default [
   ...tan,
   ...yellow,
 ];
+
+export default layers;

@@ -1,2 +1,6 @@
+import { Layer } from '../types';
 import waterway from './waterway';
-export default [...waterway];
+
+const layers: Layer[] = [...waterway];
+
+export default layers;

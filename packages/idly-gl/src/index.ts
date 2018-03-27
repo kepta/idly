@@ -1,6 +1,8 @@
-import { Map as GlMap } from 'mapbox-gl/dist/mapbox-gl';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
+import { map as rxMap } from 'rxjs/operators/map';
 import { Subscription } from 'rxjs/Subscription';
+import { App } from './App';
 import {
   PlaceHolderLayer1,
   PlaceHolderLayer2,
@@ -8,32 +10,37 @@ import {
 } from './constants';
 import { LayerOpacity } from './helpers/layerOpacity';
 import layers from './layers';
-import { UI } from './ui';
-import { Actions } from './ui/Actions';
-import { MainTabs, State } from './ui/State';
+import { Actions } from './store/Actions';
+import { MainTabs, Store } from './store/index';
+import { mapStreams } from './store/map.streams';
 
 export class IdlyGlPlugin {
-  public Plugin?: UI;
+  public Plugin?: App;
 
-  private config: Partial<State>;
+  private config: Partial<Store>;
   private container!: Element;
-  private store!: BehaviorSubject<State>;
-  private subscription!: Subscription;
+  private store!: BehaviorSubject<Store>;
+  private storeSubscription!: Subscription;
+  private mapStreams!: () => void;
   private actions!: Actions;
-  private umounted = false;
+  private unMounted = false;
 
-  constructor(config: Partial<State>) {
+  constructor(config: Partial<Store>) {
     this.config = config;
+
     const placeHolderLayer1 = layers.find(l =>
       l.layer.id.includes(PlaceHolderLayer1)
     );
+
     const placeHolderLayer2 = layers.find(l =>
       l.layer.id.includes(PlaceHolderLayer2)
     );
+
     const placeHolderLayer3 = layers.find(l =>
       l.layer.id.includes(PlaceHolderLayer3)
     );
-    const starter: State = {
+
+    const starter: Store = {
       mainTab: {
         active: MainTabs.Tags,
       },
@@ -51,14 +58,18 @@ export class IdlyGlPlugin {
         layers,
         loading: false,
         layerOpacity: LayerOpacity.High,
+        featureCollection: {
+          type: 'FeatureCollection',
+          features: [],
+        },
       },
       ...this.config,
     };
 
-    this.store = new BehaviorSubject<State>(starter);
+    this.store = new BehaviorSubject<Store>(starter);
   }
 
-  public onAdd(m: GlMap) {
+  public onAdd(m: any) {
     // @ts-ignore
     this.container = document.createElement('div');
 
@@ -71,8 +82,8 @@ export class IdlyGlPlugin {
     return this.container;
   }
 
-  public onRemove(m: GlMap) {
-    if (this.umounted) {
+  public onRemove() {
+    if (this.unMounted) {
       return;
     }
     const div = this.container && this.container.parentNode;
@@ -82,27 +93,34 @@ export class IdlyGlPlugin {
     if (this.Plugin) {
       this.Plugin.componentWillUnMount();
     }
+    this.mapStreams();
     this.store.complete();
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.storeSubscription) {
+      this.storeSubscription.unsubscribe();
     }
     this.Plugin = undefined;
-    this.umounted = true;
+    this.unMounted = true;
   }
 
   private init(m: any) {
     this.actions = new Actions(this.store);
 
-    const plugin = new UI(
+    const plugin = new App(
       this.store.getValue(),
       this.actions,
       this.container,
       m
     );
 
-    this.subscription = this.store.subscribe(val => {
+    this.storeSubscription = this.store.subscribe(val => {
       plugin.setProps(val);
     });
+
+    this.mapStreams = mapStreams(
+      this.store.pipe(rxMap(({ map }) => map), distinctUntilChanged()),
+      this.actions,
+      m
+    );
 
     this.Plugin = plugin;
   }

@@ -1,6 +1,6 @@
-import { SELECT_WIDTH } from '../../configuration';
-import { ComponentUpdateType } from '../../helpers/Component';
-import { GlComp } from '../../helpers/GlComp';
+import { SELECT_WIDTH } from '../configuration';
+import { ComponentUpdateType } from '../helpers/Component';
+import { GlComp } from '../helpers/GlComp';
 
 export interface Props {
   features?:

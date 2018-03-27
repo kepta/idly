@@ -1,15 +1,15 @@
-import { derivedVisibleLayers } from '../../derived';
-import { Component, ComponentUpdateType } from '../../helpers/Component';
-import { State } from '../State';
+import { Component, ComponentUpdateType } from '../helpers/Component';
+import { Store } from '../store/index';
+import { visibleGlLayers } from '../store/map.derived';
 
 export interface Props {
-  layers: State['map']['layers'];
+  layers: Store['map']['layers'];
 }
 
-export class OsmLayers extends Component<Props, {}, any, any> {
+export class OsmLayers extends Component<Props, {}> {
   private gl: any;
   private sourceId: string;
-  private prevLayers: State['map']['layers'];
+  private prevLayers: Store['map']['layers'];
 
   constructor(props: Props, gl: any, sourceId: string) {
     super(props, {});
@@ -17,12 +17,8 @@ export class OsmLayers extends Component<Props, {}, any, any> {
     this.gl = gl;
     this.prevLayers = [];
 
-    const layers = derivedVisibleLayers(props.layers)
-      .sort((a, b) => a.priority - b.priority)
-      .map(r => r.layer);
-
     if (this.gl.getSource(this.sourceId)) {
-      layers.forEach(l => {
+      this.getGlLayer(props.layers).forEach(l => {
         if (!this.gl.getLayer(l.id)) {
           this.gl.addLayer(l);
         }
@@ -35,9 +31,11 @@ export class OsmLayers extends Component<Props, {}, any, any> {
   public componentWillUnMount() {
     super.componentWillUnMount();
     if (this.gl.getSource(this.sourceId)) {
-      this.props.layers.forEach(l => {
+      this.getGlLayer(this.props.layers).forEach(l => {
         if (this.gl.getLayer(l.id)) {
           this.gl.removeLayer(l.id);
+        } else {
+          console.log('no layer found', l.id);
         }
       });
     }
@@ -51,24 +49,24 @@ export class OsmLayers extends Component<Props, {}, any, any> {
   }
 
   protected render(props: Props) {
-    const layers = derivedVisibleLayers(props.layers)
-      .sort((a, b) => a.priority - b.priority)
-      .map(r => r.layer);
-
     if (this.gl.getSource(this.sourceId)) {
       this.prevLayers.forEach(l => {
-        if (this.gl.getLayer(l.id)) {
-          this.gl.removeLayer(l.id);
+        if (this.gl.getLayer(l.layer.id)) {
+          this.gl.removeLayer(l.layer.id);
         }
       });
 
-      layers.forEach(l => {
+      this.getGlLayer(props.layers).forEach(l => {
         if (!this.gl.getLayer(l.id)) {
           this.gl.addLayer(l);
         }
       });
 
-      this.prevLayers = layers;
+      this.prevLayers = props.layers;
     }
   }
+
+  private getGlLayer = (layers: Props['layers']) => {
+    return visibleGlLayers(layers);
+  };
 }

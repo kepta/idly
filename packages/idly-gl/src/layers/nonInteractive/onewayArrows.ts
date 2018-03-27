@@ -7,7 +7,7 @@ export default [
     selectable: false,
     priority: NON_INTERACTIVE.ZERO,
     layer: {
-      id: 'non-tnteractive-oneway-arrow',
+      id: 'non-interactive-oneway-arrow',
       type: 'symbol',
       source: undefined,
       layout: {
@@ -20,6 +20,7 @@ export default [
         'icon-allow-overlap': true,
         'icon-ignore-placement': true,
       },
+      paint: {},
       filter: [
         'all',
         ['==', '$type', 'LineString'],

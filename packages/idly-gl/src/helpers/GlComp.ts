@@ -13,9 +13,9 @@ export interface PRender {
 export abstract class GlComp<
   Props,
   State,
-  C extends Record<string, Component<any, any, any, any>>,
+  ___,
   RenderType extends PRender
-> extends Component<Props, State, C, RenderType> {
+> extends Component<Props, State, any, any> {
   protected glInstance: any;
 
   private prevRender?: RenderType;

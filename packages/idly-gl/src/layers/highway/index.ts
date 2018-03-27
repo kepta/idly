@@ -10,7 +10,9 @@ import track from './track';
 import trunk from './trunk';
 import unclassified from './unclassified';
 
-export default [
+import { Layer } from '../types';
+
+const layers: Layer[] = [
   ...fallbackLine,
   ...motorway,
   ...track,
@@ -23,3 +25,5 @@ export default [
   ...trunk,
   ...unclassified,
 ];
+
+export default layers;

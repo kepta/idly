@@ -120,7 +120,7 @@ export function tapLog<T>(fn: T) {
   };
 }
 
-export function bindThis(target: any, key: any, { value: fn }: any) {
+export function bindThis(_: any, key: any, { value: fn }: any) {
   return {
     configurable: true,
     get() {

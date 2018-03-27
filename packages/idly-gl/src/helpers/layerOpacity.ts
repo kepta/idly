@@ -1,3 +1,5 @@
+import { Layer } from '../layers/types';
+
 export const enum LayerOpacity {
   High = 1,
   Medium = 0.7,
@@ -7,8 +9,8 @@ export const enum LayerOpacity {
 export function layerOpacity(
   newOp: LayerOpacity,
   prevOp: LayerOpacity,
-  layers: any[]
-) {
+  layers: Layer[]
+): Layer[] {
   return layers.map(layer => {
     const l = layer.layer;
     if (!l.type) {

@@ -3,8 +3,6 @@ import { IDLY_NS } from '../../constants';
 import { highwayTemplate, makeLineWidth } from '../highway/highway.template';
 import { LOWEST_PRIORITY } from '../priorities';
 
-const filter = ['all', ['has', `${IDLY_NS}turn-restriction`]];
-
 export default [
   {
     selectable: true,

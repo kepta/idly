@@ -1,18 +1,24 @@
-import { HOVER_WIDTH } from '../../configuration';
-import { ComponentUpdateType } from '../../helpers/Component';
-import { GlComp } from '../../helpers/GlComp';
+import { HighlightColor } from 'idly-common/lib/styling/highlight';
+import { HIGHLIGHT_WIDTH } from '../configuration';
+import { IDLY_NS } from '../constants';
+import { ComponentUpdateType } from '../helpers/Component';
+import { GlComp } from '../helpers/GlComp';
 
 export interface Props {
   features?:
     | Array<{ id?: any; properties: any; geometry: any }>
     | Promise<Array<{ id?: any; properties: any; geometry: any }>>;
 }
+const color = [
+  'case',
+  ['has', `${IDLY_NS}highlight`],
+  ['get', `${IDLY_NS}highlight`],
+  HighlightColor.KIND_HOVER,
+];
 
-const color = '#fbb03b';
-
-export class Hover extends GlComp<Props, {}, any, any> {
+export class Highlight extends GlComp<Props, {}, any, any> {
   constructor(props: Props, gl: any, beforeLayer?: string) {
-    super(props, {}, gl, 'hover-layer', beforeLayer);
+    super(props, {}, gl, 'highlight-layer', beforeLayer);
     this.mount();
   }
 
@@ -24,9 +30,19 @@ export class Hover extends GlComp<Props, {}, any, any> {
   }
 
   protected async render(props: Props) {
-    const features = await props.features;
+    let features = props.features;
+    if (!features) {
+      return null;
+    }
 
-    if (!features || features.length === 0) {
+    features = await features;
+
+    // Only works if feature provided extra
+    // styling for highlighting
+    if (
+      features.length === 0 ||
+      features.some(r => !r.properties.hasOwnProperty(`${IDLY_NS}highlight`))
+    ) {
       return null;
     }
 
@@ -42,8 +58,9 @@ export class Hover extends GlComp<Props, {}, any, any> {
         circle: {
           type: 'circle',
           paint: {
-            'circle-radius': HOVER_WIDTH.point,
+            'circle-radius': HIGHLIGHT_WIDTH.point,
             'circle-color': color,
+            'circle-opacity': 0.5,
           },
           filter: ['==', '$type', 'Point'],
         },
@@ -66,8 +83,8 @@ export class Hover extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': color,
-            'line-opacity': 0.8,
-            'line-width': HOVER_WIDTH.area,
+            'line-opacity': 0.3,
+            'line-width': HIGHLIGHT_WIDTH.area,
             'line-offset': -6,
           },
           filter: ['==', '$type', 'Polygon'],
@@ -80,7 +97,8 @@ export class Hover extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': color,
-            'line-width': HOVER_WIDTH.line,
+            'line-opacity': 0.5,
+            'line-width': HIGHLIGHT_WIDTH.line,
           },
           filter: ['==', '$type', 'LineString'],
         },

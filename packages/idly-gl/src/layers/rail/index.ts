@@ -1,3 +1,6 @@
+import { Layer } from '../types';
 import rail from './rail';
 
-export default [...rail];
+const layers: Layer[] = [...rail];
+
+export default layers;

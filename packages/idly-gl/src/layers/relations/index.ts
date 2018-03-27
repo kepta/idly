@@ -1,3 +1,5 @@
+import { Layer } from '../types';
 import turnRestrictions from './turnRestrictions';
 
-export default [...turnRestrictions];
+const layers: Layer[] = [...turnRestrictions];
+export default layers;

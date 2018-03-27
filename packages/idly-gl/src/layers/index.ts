@@ -1,33 +1,28 @@
 import { BASE_SOURCE } from '../configuration';
-import { getNameSpacedLayerId } from '../helpers/helper';
+import { getNameSpacedLayerId } from '../helpers/helpers';
 import area from './area';
-import extrusion from './extrusion/extrusion';
+import extrusion from './extrusion';
 import highway from './highway';
-import pointsDraggable from './interactive/pointsDraggable';
-import areaLabels from './label/areaLabels';
-import lineLabel from './label/lineLabel';
-import pointsWithLabels from './label/pointsWithLabels';
+import interactive from './interactive';
+import labels from './label';
 import placeholder from './misc/placeholder';
-import onewayArrows from './nonInteractive/onewayArrows';
-import intersections from './point/intersections';
-import pointsWithoutLabels from './point/points';
+import nonInteractive from './nonInteractive';
+import point from './point';
 import rail from './rail';
 import relations from './relations';
+import { Layer } from './types';
 import waterway from './waterway';
 
-const layers = [
+const layers: Layer[] = [
   ...area,
   ...extrusion,
   ...highway,
   ...rail,
   ...waterway,
-  ...areaLabels,
-  ...onewayArrows,
-  ...lineLabel,
-  ...pointsWithLabels,
-  ...pointsWithoutLabels,
-  ...intersections,
-  ...pointsDraggable,
+  ...nonInteractive,
+  ...labels,
+  ...point,
+  ...interactive,
   ...relations,
   ...placeholder,
 ]

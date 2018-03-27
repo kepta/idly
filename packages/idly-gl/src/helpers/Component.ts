@@ -7,18 +7,16 @@ export interface ComponentUpdateType<Props, State> {
   prev: { props: Props; state: State };
 }
 
-export abstract class Component<
-  Props,
-  State,
-  C extends Record<string, Component<any, any, any, any>>,
-  Render
-> {
+export abstract class Component<Props, State, _ = any, Render = void> {
   protected unmounted = false;
   protected props$: BehaviorSubject<Props>;
   protected state$: BehaviorSubject<State>;
-
   protected render$!: Subscription;
-  protected children?: C;
+
+  protected children?: Record<
+    string,
+    Component<any, any, any, any> | Subscription
+  >;
   private mounted?: boolean;
 
   constructor(props: Props, state: State) {
@@ -46,7 +44,13 @@ export abstract class Component<
     const children = this.children;
     if (children) {
       Object.keys(children).forEach(key => {
-        children[key].componentWillUnMount();
+        const child = children[key];
+        if (child instanceof Subscription) {
+          console.log('unmounting', key);
+          child.unsubscribe();
+          return;
+        }
+        child.componentWillUnMount();
       });
     }
 

@@ -1,17 +1,16 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { bindThis } from '../helpers/helper';
+import { bindThis } from '../helpers/helpers';
 import { LayerOpacity, layerOpacity } from '../helpers/layerOpacity';
-import { State } from './State';
+import { Store } from './index';
 
-// TODO lets move to redux
 export class Actions {
-  private subject: BehaviorSubject<State>;
+  private subject: BehaviorSubject<Store>;
 
-  constructor(subject: BehaviorSubject<State>) {
+  constructor(subject: BehaviorSubject<Store>) {
     this.subject = subject;
   }
 
-  get store(): State {
+  get store(): Store {
     return this.subject.getValue();
   }
 
@@ -43,7 +42,7 @@ export class Actions {
   }
 
   @bindThis
-  public modifyQuadkeys(d: State['map']['quadkeys']) {
+  public modifyQuadkeys(d: Store['map']['quadkeys']) {
     if (d.every(q => this.store.map.quadkeys.indexOf(q) > -1)) {
       return;
     }
@@ -54,7 +53,7 @@ export class Actions {
   }
 
   @bindThis
-  public modifyFC(d: State['map']['featureCollection']) {
+  public modifyFC(d: Store['map']['featureCollection']) {
     this.subject.next({
       ...this.store,
       map: { ...this.store.map, featureCollection: d, loading: false },
@@ -67,19 +66,27 @@ export class Actions {
       return;
     }
     const layers = this.store.map.layers.map(
+      // this includes the *-casing layers
       l => (l.layer.id.includes(id) ? { ...l, hide: !l.hide } : l)
     );
 
     this.subject.next({
       ...this.store,
+      selectEntity: {
+        ...this.store.selectEntity,
+        hoverId: undefined,
+        selectedId: undefined,
+      },
       map: { ...this.store.map, layers },
     });
   }
 
   /**
-   * BUG: When doing modifyLayeropacity
+   * BUG: When doing modifyLayeropacity & layerhide
    * the placeholder layers are removed and added again
    * hence all the stuff (hover, select..) in between these layers moves out (goes under)
+   *
+   * dirty fix remove any select ? hover
    */
 
   @bindThis
@@ -97,6 +104,11 @@ export class Actions {
 
     this.subject.next({
       ...this.store,
+      selectEntity: {
+        ...this.store.selectEntity,
+        hoverId: undefined,
+        selectedId: undefined,
+      },
       map: {
         ...this.store.map,
         layerOpacity: next,

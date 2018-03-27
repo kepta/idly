@@ -1,7 +1,7 @@
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
-import { derivedFcLookup } from '../../derived';
-import { Component } from '../../helpers/Component';
-import { DerivedStore, State } from '../State';
+import { Component } from '../helpers/Component';
+import { Store } from '../store/index';
+import { fcLookup } from '../store/worker.derived';
 import { Highlight } from './Highlight';
 import { Hover } from './Hover';
 import { Osm } from './Osm';
@@ -9,15 +9,14 @@ import { Select } from './Select';
 import { UnloadedTiles } from './UnloadedTiles';
 
 export interface Props {
-  quadkeys: State['map']['quadkeys'];
-  fc: State['map']['featureCollection'];
-  layers: State['map']['layers'];
+  quadkeys: Store['map']['quadkeys'];
+  fc: Store['map']['featureCollection'];
+  layers: Store['map']['layers'];
   selectedEntityId?: string;
   hoverEntityId?: string;
-  dStore: DerivedStore;
 }
 
-export class MapComp extends Component<Props, {}, any, any> {
+export class MapComp extends Component<Props, {}> {
   protected children: {
     readonly selectComp: Select;
     readonly hoverComp: Hover;
@@ -29,7 +28,7 @@ export class MapComp extends Component<Props, {}, any, any> {
   constructor(
     props: Props,
     gl: any,
-    beforeLayer: State['selectEntity']['beforeLayers']
+    beforeLayer: Store['selectEntity']['beforeLayers']
   ) {
     super(props, {});
 
@@ -38,7 +37,7 @@ export class MapComp extends Component<Props, {}, any, any> {
       selectComp: new Select({}, gl, beforeLayer.top),
       hoverComp: new Hover({}, gl, beforeLayer.top),
       unloadedTiles: new UnloadedTiles({ quadkeys: props.quadkeys }, gl),
-      osm: new Osm({ layers: props.layers }, gl),
+      osm: new Osm({ layers: props.layers, featureCollection: props.fc }, gl),
     };
 
     this.mount();
@@ -53,8 +52,7 @@ export class MapComp extends Component<Props, {}, any, any> {
       return [];
     }
 
-    // const featureLookup = this.props.dStore.fcLookup;
-    const featureLookup = this.props.fc && derivedFcLookup(this.props.fc);
+    const featureLookup = this.props.fc && fcLookup(this.props.fc);
 
     if (id.charAt(0) !== 'r') {
       const feature = featureLookup && featureLookup.get(id);

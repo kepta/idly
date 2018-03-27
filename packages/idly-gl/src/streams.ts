@@ -1,5 +1,4 @@
 import { BBox, bboxToTiles } from 'idly-common/lib/geo';
-import { BBox } from 'idly-common/lib/geo';
 import { tileToQuadkey } from 'idly-common/lib/misc';
 import { Map, MapMouseEvent, MapTouchEvent } from 'mapbox-gl/dist/mapbox-gl';
 import { Observable } from 'rxjs/Observable';
@@ -17,11 +16,7 @@ import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 
 import { merge } from 'rxjs/observable/merge';
 import { mapInteraction, quadkey } from './configuration';
-import {
-  bboxify,
-  distance,
-  tilesFilterSmall,
-} from './helpers/helper';
+import { bboxify, tilesFilterSmall } from './helpers/helpers';
 
 export function glObservable<T>(
   glMap: Map,
@@ -173,7 +168,7 @@ export function makeHover$(
   return merge(mouseenter$, mouseleave$);
 }
 
-const values: any = {
+const sortOrder: any = {
   n: 3,
   w: 2,
   r: 1,
@@ -188,7 +183,6 @@ export function makeNearestEntity$(
     throttleTime(50),
     withLatestFrom(layerObs),
     rxMap(([e, layers]) => {
-      const eCoords: [number, number] = [e.lngLat.lng, e.lngLat.lat];
       const ids: string[] = glMap
         .queryRenderedFeatures(bboxify(e, radius), {
           layers,
@@ -196,19 +190,12 @@ export function makeNearestEntity$(
         })
         .filter((f: any) => f.properties.id)
         .sort((a: any, b: any) => {
-          if (a.geometry.type === 'Point' && b.geometry.type === 'Point') {
-            return (
-              distance(eCoords, a._geometry.coordinates) -
-              distance(eCoords, b._geometry.coordinates)
-            );
-          }
-
           return (
-            values[b.properties.id.charAt(0)] -
-            values[a.properties.id.charAt(0)]
+            sortOrder[b.properties.id.charAt(0)] -
+            sortOrder[a.properties.id.charAt(0)]
           );
         })
-        .map(a => a.properties.id);
+        .map((a: any) => a.properties.id);
 
       return [...new Set(ids)];
     }),
@@ -229,7 +216,6 @@ export function makeNearestEntity$(
 export function makeDrag$(
   glMap: any,
   layer: string,
-  radius = mapInteraction.RADIUS,
   mousehover$ = makeHover$(glMap, layer),
   mousedown$ = makeMousedown$(glMap),
   mouseup$ = makeMouseup$(glMap),

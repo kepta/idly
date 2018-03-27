@@ -2,8 +2,8 @@ import bboxPolygon from '@turf/bbox-polygon';
 import { mercator } from 'idly-common/lib/geo';
 import { quadkeyToTile } from 'idly-common/lib/misc/quadkeyToTile';
 import { Subscription } from 'rxjs/Subscription';
-import { GlComp } from '../../helpers/GlComp';
-import { makeLoadingQuadkeys$ } from '../../streams';
+import { GlComp } from '../helpers/GlComp';
+import { makeLoadingQuadkeys$ } from '../streams';
 
 export interface Props {
   quadkeys: string[];
@@ -13,7 +13,7 @@ export interface State {
 }
 
 export class UnloadedTiles extends GlComp<Props, State, any, any> {
-  protected loadingQuadkeys$: Subscription;
+  protected loadingQuadkeys: Subscription;
 
   constructor(props: Props, gl: any) {
     super(
@@ -25,9 +25,7 @@ export class UnloadedTiles extends GlComp<Props, State, any, any> {
       'unloaded-layer'
     );
 
-    this.glInstance = gl;
-
-    this.loadingQuadkeys$ = makeLoadingQuadkeys$(gl).subscribe(q =>
+    this.loadingQuadkeys = makeLoadingQuadkeys$(gl).subscribe(q =>
       this.setState({ loadingQuadkeys: q })
     );
 
@@ -35,7 +33,7 @@ export class UnloadedTiles extends GlComp<Props, State, any, any> {
   }
 
   public componentWillUnMount() {
-    this.loadingQuadkeys$.unsubscribe();
+    this.loadingQuadkeys.unsubscribe();
     super.componentWillUnMount();
   }
 

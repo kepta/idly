@@ -1,20 +1,20 @@
-import { BASE_SOURCE } from '../../configuration';
-import { Component, ComponentUpdateType } from '../../helpers/Component';
-import { State } from '../State';
+import { BASE_SOURCE } from '../configuration';
+import { Component, ComponentUpdateType } from '../helpers/Component';
+import { Store } from '../store/index';
 import { OsmLayers } from './OsmLayers';
 
 export interface Props {
-  layers: State['map']['layers'];
-  featureCollection?: State['map']['featureCollection'];
+  layers: Store['map']['layers'];
+  featureCollection: Store['map']['featureCollection'];
 }
 
-export class Osm extends Component<Props, {}, any, any> {
+export class Osm extends Component<Props, {}> {
   protected children: {
-    osmLayerComp: Component<Props, {}, any, any>;
+    osmLayerComp: OsmLayers;
   };
 
   private gl: any;
-  private prevFc: State['map']['featureCollection'];
+  private prevFc: Store['map']['featureCollection'];
 
   constructor(props: Props, gl: any) {
     super(props, {});
@@ -30,6 +30,8 @@ export class Osm extends Component<Props, {}, any, any> {
         },
       });
     }
+
+    this.prevFc = props.featureCollection;
 
     this.children = {
       osmLayerComp: new OsmLayers({ layers: props.layers }, gl, BASE_SOURCE),
