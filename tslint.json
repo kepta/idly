@@ -12,7 +12,8 @@
     "trailing-comma": [false],
     "object-literal-sort-keys": [true],
     "interface-name": [false],
-    "semicolon": false
+    "semicolon": false,
+    "object-literal-key-quotes": false
   },
   "rulesDirectory": []
 }

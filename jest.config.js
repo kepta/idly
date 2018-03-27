@@ -19,4 +19,5 @@ module.exports = {
   },
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   moduleFileExtensions: ['ts', 'tsx', 'js'],
+  collectCoverageFrom: ['packages/**/*.ts', '!packages/**/*.d.ts'],
 };
