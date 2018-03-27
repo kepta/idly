@@ -44,10 +44,11 @@ export function iDParser(xml: Document): Entity[] {
  * @param attrs
  */
 function getVisible(attrs: NamedNodeMap): boolean {
-  return (
-    !attrs.getNamedItem('visible') ||
-    attrs.getNamedItem('visible').value !== 'false'
-  );
+  const item = attrs.getNamedItem('visible');
+  if (!item) {
+    return true;
+  }
+  return item.value !== 'false';
 }
 
 function getMembers(obj: any): RelationMember[] {
@@ -92,13 +93,16 @@ function getTags(obj: any): { [index: string]: string } {
 }
 
 function getLoc(attrs: NamedNodeMap): LngLat {
-  const lon = attrs.getNamedItem('lon') && attrs.getNamedItem('lon').value;
-  const lat = attrs.getNamedItem('lat') && attrs.getNamedItem('lat').value;
+  const attrLon = attrs.getNamedItem('lon');
+  const attrLat = attrs.getNamedItem('lat');
+
+  const lon = attrLon ? attrLon.value : '';
+  const lat = attrLat ? attrLat.value : '';
   return lngLatFactory([parseFloat(lon), parseFloat(lat)]);
 }
 
 function nodeData(obj: Node): OSMNode {
-  const attrs = obj.attributes;
+  const attrs = (obj as any).attributes;
   return nodeFactory(
     {
       attributes: {
@@ -126,7 +130,7 @@ function nodeData(obj: Node): OSMNode {
 }
 
 function relationData(obj: Node): Relation {
-  const attrs = obj.attributes;
+  const attrs = (obj as any).attributes;
   return relationFactory(
     {
       attributes: {
@@ -154,7 +158,7 @@ function relationData(obj: Node): Relation {
 }
 
 function wayData(obj: Node): Way {
-  const attrs = obj.attributes;
+  const attrs = (obj as any).attributes;
   return wayFactory(
     {
       attributes: {
