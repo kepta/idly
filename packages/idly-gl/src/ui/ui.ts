@@ -7,9 +7,9 @@ import { Actions } from '../store/Actions';
 import { MainTabs, Store } from '../store/index';
 import { workerOperations } from '../worker';
 import { Box, TabChildren, TabRow } from './helpers';
+import { IconBar } from './icons';
 import { LayerManager } from './LayerManager';
 import { Style } from './Style';
-import { IconBar } from './icons';
 
 export const Ui = ({
   mainTab,
@@ -57,7 +57,12 @@ export const Ui = ({
     <div class="mapboxgl-ctrl">
       ${Style}
       <div class="container idly-gl layout vertical ">
-          ${IconBar({ loading, actions, layerOpacity })}
+          ${IconBar({
+            loading,
+            actions,
+            layerOpacity,
+            entityId: selectedId || hoverId,
+          })}
             ${TabRow({
               active: mainTab.active,
               onChange: actions.modifyMainTab,

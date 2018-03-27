@@ -34,7 +34,7 @@ export class Select extends GlComp<Props, {}, any, any> {
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
-          features: await features,
+          features,
         },
       },
       layers: {

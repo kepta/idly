@@ -70,7 +70,8 @@ function LayerRow(item: Layer, actions: Actions) {
   `;
 }
 
-const defSwatch = '#eee';
+const defSwatch = '#888';
+
 function findColor(l: Layer) {
   const paint = l.layer.paint;
   if (!paint) {
@@ -88,6 +89,17 @@ function findColor(l: Layer) {
   for (const prop of colorProps) {
     if (paint[prop] && typeof paint[prop] === 'string') {
       return paint[prop];
+    }
+    if (Array.isArray(paint[prop])) {
+      for (const color of paint[prop]) {
+        if (
+          typeof color === 'string' &&
+          color.startsWith('#') &&
+          (color.length === 7 || color.length === 4)
+        ) {
+          return color;
+        }
+      }
     }
   }
 

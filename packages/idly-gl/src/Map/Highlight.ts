@@ -30,16 +30,12 @@ export class Highlight extends GlComp<Props, {}, any, any> {
   }
 
   protected async render(props: Props) {
-    let features = props.features;
-    if (!features) {
-      return null;
-    }
-
-    features = await features;
+    const features = await props.features;
 
     // Only works if feature provided extra
     // styling for highlighting
     if (
+      !features ||
       features.length === 0 ||
       features.some(r => !r.properties.hasOwnProperty(`${IDLY_NS}highlight`))
     ) {
@@ -51,7 +47,7 @@ export class Highlight extends GlComp<Props, {}, any, any> {
         type: 'geojson',
         data: {
           type: 'FeatureCollection',
-          features: await features,
+          features,
         },
       },
       layers: {

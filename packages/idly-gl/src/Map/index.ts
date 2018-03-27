@@ -7,6 +7,8 @@ import { Hover } from './Hover';
 import { Osm } from './Osm';
 import { Select } from './Select';
 import { UnloadedTiles } from './UnloadedTiles';
+import { workerOperations } from '../worker';
+import { Relation, EntityType } from 'idly-common/lib/osm/structures';
 
 export interface Props {
   quadkeys: Store['map']['quadkeys'];
@@ -62,9 +64,24 @@ export class MapComp extends Component<Props, {}> {
       return [feature];
     }
 
-    return this.props.fc.features.filter(
+    const relationFeatures = this.props.fc.features.filter(
       r => r.properties && r.properties.id === id
     );
+
+    if (relationFeatures.length > 0) {
+      return relationFeatures;
+    }
+
+    return workerOperations.getEntity({ id }).then(r => {
+      if (r && r.type === EntityType.RELATION && featureLookup) {
+        return r.members
+          .map(member => featureLookup.get(member.id))
+          .filter(
+            feature => feature && feature.geometry
+          ) as Store['map']['featureCollection']['features'];
+      }
+      return [];
+    });
   }
 
   protected render(props: Props) {
