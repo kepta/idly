@@ -51,13 +51,15 @@ export function LayerManager(
 
 function LayerRow(item: Layer, actions: Actions) {
   return html`
-    <span class="layer-row">
+    <span class="layer-row layout horizontal">
         <input type="checkbox"
             readonly
             id$=${item.layer.id}
             checked?="${!item.hide}"
             on-click=${() => actions.modifyLayerHide(item.layer.id)}
         >
+        <span class="swatch" style$=${'background-color:' +
+          findColor(item)}></span>
         <label style="text-transform: capitalize;" for$=${item.layer.id}>
           ${reverseGetNameSpacedLayerId(item.layer.id)
             .split('-')
@@ -66,4 +68,28 @@ function LayerRow(item: Layer, actions: Actions) {
         </label>
     </span>
   `;
+}
+
+const defSwatch = '#eee';
+function findColor(l: Layer) {
+  const paint = l.layer.paint;
+  if (!paint) {
+    return defSwatch;
+  }
+
+  const colorProps = [
+    'line-color',
+    'circle-color',
+    'fill-color',
+    'text-halo-color',
+    'fill-extrusion-color',
+  ];
+
+  for (const prop of colorProps) {
+    if (paint[prop] && typeof paint[prop] === 'string') {
+      return paint[prop];
+    }
+  }
+
+  return defSwatch;
 }

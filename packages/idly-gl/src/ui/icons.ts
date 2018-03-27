@@ -1,6 +1,49 @@
 import { html, TemplateResult } from 'lit-html';
+import { LayerOpacity } from '../helpers/layerOpacity';
+import { Actions } from '../store/Actions';
 
 // tslint:disable:max-line-length
+export const IconBar = ({
+  loading,
+  actions,
+  layerOpacity,
+}: {
+  actions: Actions;
+  loading: boolean;
+  layerOpacity: LayerOpacity;
+}) => {
+  let icon = Icon(LowOpacity, actions.modifyLayerOpacity);
+
+  if (layerOpacity === LayerOpacity.High) {
+    icon = Icon(HighOpacity, actions.modifyLayerOpacity);
+  } else if (layerOpacity === LayerOpacity.Medium) {
+    icon = Icon(MedOpacity, actions.modifyLayerOpacity);
+  }
+
+  return html`
+      <div class="icon-row layout horizontal start-justified">
+          ${icon}
+          ${Icon(html`iD`)}
+          ${Icon(html`OSM`)}
+        ${
+          !loading
+            ? Icon(html`
+                <div style="display:inline-block" class="loader" ></div>
+            `)
+            : undefined
+        }
+      </div>
+    `;
+};
+
+export const Icon = (
+  child: TemplateResult,
+  onClick?: (s: void) => void
+) => html`
+<span class="icon layout vertical center-center" on-click=${onClick}>
+${child}
+</span
+`;
 
 export const HighOpacity: TemplateResult = html`
     <svg class="svg-icon" viewBox="0 0 20 20">

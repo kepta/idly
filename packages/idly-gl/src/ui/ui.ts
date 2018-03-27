@@ -7,9 +7,9 @@ import { Actions } from '../store/Actions';
 import { MainTabs, Store } from '../store/index';
 import { workerOperations } from '../worker';
 import { Box, TabChildren, TabRow } from './helpers';
-import { HighOpacity, LowOpacity, MedOpacity } from './icons';
 import { LayerManager } from './LayerManager';
 import { Style } from './Style';
+import { IconBar } from './icons';
 
 export const Ui = ({
   mainTab,
@@ -68,43 +68,6 @@ export const Ui = ({
         </div>
       </div>
     </div>;
-  `;
-};
-
-const IconBar = ({
-  loading,
-  actions,
-  layerOpacity,
-}: {
-  actions: Actions;
-  loading: boolean;
-  layerOpacity: LayerOpacity;
-}) => {
-  let Icon = LowOpacity;
-
-  if (layerOpacity === LayerOpacity.High) {
-    Icon = HighOpacity;
-  } else if (layerOpacity === LayerOpacity.Medium) {
-    Icon = MedOpacity;
-  }
-
-  return html`
-    <div class="icon-row  layout horizontal around-justified">
-      ${
-        loading
-          ? html`
-            <div style="padding-top:2px">
-              <div style="display:inline-block" class="loader" ></div>
-            </div>
-          `
-          : undefined
-      }
-      <span class="layout vertical center-center" on-click=${
-        actions.modifyLayerOpacity
-      }>
-        ${Icon}
-      </span>
-    </div>
   `;
 };
 
