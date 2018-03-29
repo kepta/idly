@@ -1,4 +1,4 @@
-import { Derived } from 'idly-osm-to-geojson/lib';
+import { Derived } from 'idly-osm-to-geojson/lib/types';
 import { WorkerOperation, WorkerState } from '../helpers';
 import { GetDerived } from './type';
 

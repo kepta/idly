@@ -5,7 +5,8 @@ import { EnsuredMemberType } from './helpers';
 
 export function turnRestriction(
   relation: Relation,
-  ensuredMembers: EnsuredMemberType[]
+  ensuredMembers: EnsuredMemberType[],
+  displayName: string
 ): RelevantGeometry[] | undefined {
   if (!relation.tags.type || !relation.tags.type.startsWith('restriction')) {
     return;
@@ -49,6 +50,7 @@ export function turnRestriction(
           '@idly-highlight': highlightColor,
           '@idly-member-id': member.id,
           '@idly-name': role,
+          '@idly-preset-name': displayName || 'Turn Restriction',
           '@idly-turn-restriction': role,
           id: relation.id,
         },

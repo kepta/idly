@@ -69,12 +69,13 @@ const wayPropertiesGen = ({ tags, id }: Way, geometry: OsmGeometry) => {
     {} as Record<string, string>
   );
 
-  const match = presetMatch(tags, geometry); // presetsMatcherCached(geometry)(tags);
+  const match = presetMatch(tags, geometry);
   const result: Record<string, boolean | string | number> = {
     '@idly-geometry': geometry,
     '@idly-icon': match && match.icon,
     '@idly-isOneway': isOneway(tags),
     '@idly-name': tags.name || tags.ref,
+    '@idly-preset-name': match.name({}) || 'Way',
     ...trimmed,
     id,
   };

@@ -1,7 +1,4 @@
-import {
-  Feature,
-  Point,
-} from '@turf/helpers';
+import { Feature, Point } from '@turf/helpers';
 import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
 import { Node, OsmGeometry } from 'idly-common/lib/osm/structures';
 import { Derived } from '../types';
@@ -30,6 +27,7 @@ export const nodePropertiesGen = (element: Derived<Node>) => {
     '@idly-icon': (match && match.icon) || DEFAULT_NODE_ICON,
     '@idly-intersection': size > 2,
     '@idly-name': element.entity.tags.name,
+    '@idly-preset-name': match.name({}) || 'Node',
     id: element.entity.id,
   };
 };

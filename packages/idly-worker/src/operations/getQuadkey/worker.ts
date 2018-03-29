@@ -13,7 +13,6 @@ export function workerGetQuadkey(
   state: WorkerState
 ): WorkerOperation<GetQuadkey> {
   return async arr => {
-    console.group('workerGetQuadkey');
     console.log(arr.map(r => r.quadkey));
     console.time('workerGetQuadkey');
 
@@ -34,7 +33,6 @@ export function workerGetQuadkey(
     const features = entityToGeoJson(vis);
 
     console.timeEnd('workerGetQuadkey');
-    console.groupEnd();
     return {
       response: featureCollection(features),
       state: {
