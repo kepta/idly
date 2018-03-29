@@ -22,19 +22,19 @@ export const mapInteraction = {
 export const BASE_SOURCE = 'idly-gl-base-src';
 
 export const SELECT_WIDTH = {
-  line: makeLineWidth(2.5),
-  area: 12,
-  point: 16,
+  line: makeLineWidth(3),
+  area: 16,
+  point: 24,
 };
 
 export const HOVER_WIDTH = {
-  line: makeLineWidth(2.5),
-  area: 12,
-  point: 16,
+  line: makeLineWidth(4),
+  area: 20,
+  point: 30,
 };
 
 export const HIGHLIGHT_WIDTH = {
-  line: makeLineWidth(4),
-  area: 35,
-  point: 25,
+  line: makeLineWidth(6),
+  area: 25,
+  point: 36,
 };

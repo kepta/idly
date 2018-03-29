@@ -17,8 +17,13 @@ const color = [
 ];
 
 export class Highlight extends GlComp<Props, {}, any, any> {
-  constructor(props: Props, gl: any, beforeLayer?: string) {
-    super(props, {}, gl, 'highlight-layer', beforeLayer);
+  constructor(
+    props: Props,
+    gl: any,
+    beforeLayer?: string,
+    layername = Math.random() + ''
+  ) {
+    super(props, {}, gl, 'highlight-layer-' + layername, beforeLayer);
     this.mount();
   }
 

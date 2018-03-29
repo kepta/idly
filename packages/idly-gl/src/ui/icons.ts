@@ -8,11 +8,13 @@ export const IconBar = ({
   actions,
   layerOpacity,
   entityId,
+  presetName,
 }: {
   actions: Actions;
   loading: boolean;
   layerOpacity: LayerOpacity;
-  entityId: string;
+  entityId?: string;
+  presetName?: string;
 }) => {
   let icon = Icon(LowOpacity, actions.modifyLayerOpacity);
 
@@ -25,9 +27,10 @@ export const IconBar = ({
   return html`
       <div class="icon-row layout horizontal start-justified">
           ${icon}
-          ${osmLink(entityId)}
+          ${entityId ? Icon('|') : ''}
+          ${entityId ? osmLink(entityId) : osmLink('')}
         ${
-          !loading
+          loading
             ? Icon(html`
                 <div style="display:inline-block" class="loader" ></div>
             `)
@@ -59,7 +62,9 @@ function osmLink(id?: string) {
 
   const href = `https://openstreetmap.org/${type}/${id.substring(1)} `;
 
-  return Icon(html`<a target="_blank" class="link" href=${href}>OSM</a>`);
+  return html`<span style="" class="icon layout link vertical">
+        <a target="_blank"  class="layout vertical center-center" href=${href}>${id}</a>
+  </span>`;
 }
 
 export const HighOpacity: TemplateResult = html`
@@ -75,16 +80,28 @@ export const MedOpacity = html`
 `;
 
 export const LowOpacity = html`
-    <svg class="svg-icon" viewBox="0 0 20 20">
-       <path fill="none" d="M10,0.542c-5.224,0-9.458,4.234-9.458,9.458c0,5.223,4.235,9.459,9.458,9.459c5.224,0,9.458-4.236,9.458-9.459C19.459,4.776,15.225,0.542,10,0.542 M8.923,18.523C4.685,17.992,1.402,14.383,1.402,10c0-4.383,3.283-7.993,7.521-8.524C6.919,3.749,5.701,6.731,5.701,10C5.701,13.27,6.919,16.25,8.923,18.523"></path>
-    </svg>
+  <svg class="svg-icon" viewBox="0 0 20 20">
+      <path fill="none" d="M10,0.542c-5.224,0-9.458,4.234-9.458,9.458c0,5.223,4.235,9.459,9.458,9.459c5.224,0,9.458-4.236,9.458-9.459C19.459,4.776,15.225,0.542,10,0.542 M8.923,18.523C4.685,17.992,1.402,14.383,1.402,10c0-4.383,3.283-7.993,7.521-8.524C6.919,3.749,5.701,6.731,5.701,10C5.701,13.27,6.919,16.25,8.923,18.523"></path>
+  </svg>
+`;
+
+export const SelectIcon = html`
+  <svg class="svg-icon" viewBox="0 0 20 20">
+      <path d="M17.659,9.597h-1.224c-0.199-3.235-2.797-5.833-6.032-6.033V2.341c0-0.222-0.182-0.403-0.403-0.403S9.597,2.119,9.597,2.341v1.223c-3.235,0.2-5.833,2.798-6.033,6.033H2.341c-0.222,0-0.403,0.182-0.403,0.403s0.182,0.403,0.403,0.403h1.223c0.2,3.235,2.798,5.833,6.033,6.032v1.224c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403v-1.224c3.235-0.199,5.833-2.797,6.032-6.032h1.224c0.222,0,0.403-0.182,0.403-0.403S17.881,9.597,17.659,9.597 M14.435,10.403h1.193c-0.198,2.791-2.434,5.026-5.225,5.225v-1.193c0-0.222-0.182-0.403-0.403-0.403s-0.403,0.182-0.403,0.403v1.193c-2.792-0.198-5.027-2.434-5.224-5.225h1.193c0.222,0,0.403-0.182,0.403-0.403S5.787,9.597,5.565,9.597H4.373C4.57,6.805,6.805,4.57,9.597,4.373v1.193c0,0.222,0.182,0.403,0.403,0.403s0.403-0.182,0.403-0.403V4.373c2.791,0.197,5.026,2.433,5.225,5.224h-1.193c-0.222,0-0.403,0.182-0.403,0.403S14.213,10.403,14.435,10.403"></path>
+  </svg>
 `;
 
 export const Icon = (
-  child: TemplateResult,
+  child: TemplateResult | string,
   onClick?: (s: void) => void
 ) => html`
   <span class="icon layout vertical center-center" on-click=${onClick}>
     ${child}
   </span
 `;
+
+export const ButtonLink = (child: TemplateResult | string, href?: string) =>
+  html`<span class="link"><a target="_blank" href=${href}>${child}</a></span>`;
+
+export const Button = (child: TemplateResult | string, onClick?: () => void) =>
+  html`<span class="link"><a  on-click=${onClick}>${child}</a></span>`;

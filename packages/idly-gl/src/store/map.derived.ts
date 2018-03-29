@@ -28,10 +28,14 @@ export const visibleGlLayers: (
 
 export const fcLookup: (
   fc: MapStore['featureCollection']
-) => Map<string, MapStore['featureCollection']['features'][0]> = weakCache(fc =>
+) => Map<string, MapStore['featureCollection']['features']> = weakCache(fc =>
   fc.features.reduce((pre: Map<string, any>, cur: any) => {
     if (cur.properties) {
-      pre.set(cur.properties.id, cur);
+      if (pre.has(cur.properties.id)) {
+        pre.get(cur.properties.id).push(cur);
+      } else {
+        pre.set(cur.properties.id, [cur]);
+      }
     }
     return pre;
   }, new Map())

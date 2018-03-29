@@ -13,6 +13,7 @@ import layers from './layers';
 import { Actions } from './store/Actions';
 import { MainTabs, Store } from './store/index';
 import { mapStreams } from './store/map.streams';
+import { selectEntityStream } from './store/selectEntity.stream';
 
 export class IdlyGlPlugin {
   public Plugin?: App;
@@ -22,6 +23,7 @@ export class IdlyGlPlugin {
   private store!: BehaviorSubject<Store>;
   private storeSubscription!: Subscription;
   private mapStreams!: () => void;
+  private selectEntityStream!: () => void;
   private actions!: Actions;
   private unMounted = false;
 
@@ -42,7 +44,7 @@ export class IdlyGlPlugin {
 
     const starter: Store = {
       mainTab: {
-        active: MainTabs.Tags,
+        active: MainTabs.Info,
       },
       tags: {},
       selectEntity: {
@@ -94,6 +96,7 @@ export class IdlyGlPlugin {
       this.Plugin.componentWillUnMount();
     }
     this.mapStreams();
+    this.selectEntityStream();
     this.store.complete();
     if (this.storeSubscription) {
       this.storeSubscription.unsubscribe();
@@ -120,6 +123,14 @@ export class IdlyGlPlugin {
       this.store.pipe(rxMap(({ map }) => map), distinctUntilChanged()),
       this.actions,
       m
+    );
+
+    this.selectEntityStream = selectEntityStream(
+      this.store.pipe(
+        rxMap(({ selectEntity }) => selectEntity),
+        distinctUntilChanged()
+      ),
+      this.actions
     );
 
     this.Plugin = plugin;

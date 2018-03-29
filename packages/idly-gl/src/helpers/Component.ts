@@ -8,7 +8,6 @@ export interface ComponentUpdateType<Props, State> {
 }
 
 export abstract class Component<Props, State, _ = any, Render = void> {
-  protected unmounted = false;
   protected props$: BehaviorSubject<Props>;
   protected state$: BehaviorSubject<State>;
   protected render$!: Subscription;

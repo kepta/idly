@@ -1,7 +1,9 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { GetDerived } from '../../../idly-worker/lib/operations/getDerived/type';
 import { bindThis } from '../helpers/helpers';
 import { LayerOpacity, layerOpacity } from '../helpers/layerOpacity';
-import { Store } from './index';
+import { MainTabs, RecursiveRecord, Store } from './index';
+import { EntityType } from 'idly-common/lib/osm/structures';
 
 export class Actions {
   private subject: BehaviorSubject<Store>;
@@ -15,18 +17,24 @@ export class Actions {
   }
 
   @bindThis
-  public modifySelectedId(id?: string) {
+  public selectId(id = this.store.selectEntity.hoverId) {
+    if (id === this.store.selectEntity.selectedId) {
+      return;
+    }
     this.subject.next({
       ...this.store,
       selectEntity: {
         ...this.store.selectEntity,
-        selectedId: id || this.store.selectEntity.hoverId,
+        selectedId: id,
       },
     });
   }
 
   @bindThis
   public modifyHoverId(id?: string) {
+    if (id === this.store.selectEntity.hoverId) {
+      return;
+    }
     this.subject.next({
       ...this.store,
       selectEntity: { ...this.store.selectEntity, hoverId: id },
@@ -34,10 +42,156 @@ export class Actions {
   }
 
   @bindThis
-  public modifyMainTab(mainTab: any) {
+  public modifyMainTab(mainTab: MainTabs) {
     this.subject.next({
       ...this.store,
       mainTab: { ...this.store.mainTab, active: mainTab },
+    });
+  }
+
+  @bindThis
+  public addEntityTree(derived?: GetDerived['response']['derived']) {
+    if (!derived) {
+      return;
+    }
+
+    const parentWays: RecursiveRecord = derived.parentWays.reduce(
+      (prev, cur) => {
+        prev[cur] = cur;
+        return prev;
+      },
+      {} as RecursiveRecord
+    );
+
+    const parentRelations: RecursiveRecord = derived.parentRelations.reduce(
+      (prev, cur) => {
+        prev[cur] = cur;
+        return prev;
+      },
+      {} as RecursiveRecord
+    );
+    const entity = derived.entity;
+
+    let children: RecursiveRecord = {};
+    if (entity.type === EntityType.RELATION) {
+      children = entity.members.reduce(
+        (prev, cur) => {
+          prev[cur.id] = cur.id;
+          return prev;
+        },
+        {} as RecursiveRecord
+      );
+    } else if (entity.type === EntityType.WAY) {
+      children = entity.nodes.reduce(
+        (prev, cur) => {
+          prev[cur] = cur;
+          return prev;
+        },
+        {} as RecursiveRecord
+      );
+    }
+
+    this.subject.next({
+      ...this.store,
+      entityTree: {
+        parentRelations,
+        parentWays,
+        entity: derived.entity,
+        children,
+      },
+    });
+  }
+
+  public addEntityTreeExpand(
+    id?: string,
+    derived?: GetDerived['response']['derived'],
+    parent?: RecursiveRecord
+  ) {
+    const entityTree = this.store.entityTree;
+
+    if (!entityTree || !id || !parent || !parent[id]) {
+      return;
+    }
+    if (!derived) {
+      // signals not available
+      parent[id] = undefined;
+      this.subject.next({
+        ...this.store,
+        entityTree: {
+          ...entityTree,
+        },
+      });
+      return;
+    }
+
+    const parentWays: RecursiveRecord = derived.parentWays.reduce(
+      (prev, cur) => {
+        prev[cur] = cur;
+        return prev;
+      },
+      {} as RecursiveRecord
+    );
+
+    const parentRelations: RecursiveRecord = derived.parentRelations.reduce(
+      (prev, cur) => {
+        prev[cur] = cur;
+        return prev;
+      },
+      {} as RecursiveRecord
+    );
+
+    const entity = derived.entity;
+    let children: RecursiveRecord = {};
+    if (entity.type === EntityType.RELATION) {
+      children = entity.members.reduce(
+        (prev, cur) => {
+          prev[cur.id] = cur.id;
+          return prev;
+        },
+        {} as RecursiveRecord
+      );
+    } else if (entity.type === EntityType.WAY) {
+      children = entity.nodes.reduce(
+        (prev, cur) => {
+          prev[cur] = cur;
+          return prev;
+        },
+        {} as RecursiveRecord
+      );
+    }
+
+    parent[id] = {
+      children,
+      parentRelations,
+      parentWays,
+      entity: derived.entity,
+    };
+
+    this.subject.next({
+      ...this.store,
+      entityTree: {
+        ...entityTree,
+      },
+    });
+  }
+
+  public addEntityTreeCollapse(
+    derived: GetDerived['response']['derived'],
+    parent: RecursiveRecord
+  ) {
+    const entityTree = this.store.entityTree;
+
+    if (!entityTree || !derived || !parent || !parent[derived.entity.id]) {
+      return;
+    }
+
+    parent[derived.entity.id] = derived.entity.id;
+
+    this.subject.next({
+      ...this.store,
+      entityTree: {
+        ...entityTree,
+      },
     });
   }
 

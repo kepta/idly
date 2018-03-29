@@ -37,7 +37,6 @@ export class App extends Component<Store, {}, any, void> {
 
   protected render(props: Store) {
     (window as any).render = props;
-
     this.children.mapComp.setProps({
       hoverEntityId: props.selectEntity.hoverId,
       selectedEntityId: props.selectEntity.selectedId,
@@ -54,6 +53,8 @@ export class App extends Component<Store, {}, any, void> {
         layerOpacity: props.map.layerOpacity,
         layers: props.map.layers,
         actions: this.actions,
+        entityTree: props.entityTree,
+        fc: props.map.featureCollection,
       }),
       this.dom
     );

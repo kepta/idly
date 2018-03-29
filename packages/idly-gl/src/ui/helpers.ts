@@ -3,11 +3,11 @@ import { html } from 'lit-html/lib/lit-extended';
 
 export function TabRow<T extends string>({
   active,
-  onChange,
+  onChange = () => ({}),
   keys,
 }: {
   active: T;
-  onChange: (tab: T) => void;
+  onChange?: (tab: T) => void;
   keys: T[];
 }) {
   return html`
@@ -46,3 +46,28 @@ export const Box = ({
     <div class="children">${children}</div>
   </div>
   `;
+
+export function MiniWindow<T extends string>({
+  active,
+  child,
+}: {
+  active: T;
+  child: any;
+}) {
+  if (!child) {
+    return;
+  }
+  return html`
+  <div>
+    <div class="tab-row mini layout horizontal start-justified">
+      <span
+        class="layout layout tab-row-item p3x"
+      >
+        ${active}
+      </span>
+      <span class="layout flex-3"> </span>
+    </div>
+    ${TabChildren(child)}
+  </div>
+`;
+}

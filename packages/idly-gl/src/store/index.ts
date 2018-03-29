@@ -1,10 +1,14 @@
+import { Entity } from 'idly-common/lib/osm/structures';
+import { WorkerType } from 'idly-worker/lib';
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
+import { GetDerived } from '../../../idly-worker/lib/operations/getDerived/type';
 import { LayerOpacity } from '../helpers/layerOpacity';
 import { Layer } from '../layers/types';
 
 export const enum MainTabs {
+  Info = 'Info',
   Tags = 'Tags',
-  Relations = 'Relations',
+  Tree = 'Tree',
   Layers = 'Layers',
 }
 
@@ -26,4 +30,15 @@ export interface Store {
     beforeLayer?: string;
     layerOpacity: LayerOpacity;
   };
+  entityTree?: EntityExpanded;
+}
+export interface EntityExpanded {
+  entity: Entity;
+  parentWays: RecursiveRecord;
+  parentRelations: RecursiveRecord;
+  children: RecursiveRecord;
+}
+
+export interface RecursiveRecord {
+  [index: string]: string | EntityExpanded | undefined;
 }

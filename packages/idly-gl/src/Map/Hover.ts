@@ -11,8 +11,13 @@ export interface Props {
 const color = HighlightColor.KIND_HOVER;
 
 export class Hover extends GlComp<Props, {}, any, any> {
-  constructor(props: Props, gl: any, beforeLayer?: string) {
-    super(props, {}, gl, 'hover-layer', beforeLayer);
+  constructor(
+    props: Props,
+    gl: any,
+    beforeLayer?: string,
+    layername = Math.random() + ''
+  ) {
+    super(props, {}, gl, 'hover-layer-' + layername, beforeLayer);
     this.mount();
   }
 

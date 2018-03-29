@@ -6,18 +6,23 @@ import { Layer } from '../layers/types';
 import { Actions } from '../store/Actions';
 import { MainTabs, Store } from '../store/index';
 import { workerOperations } from '../worker';
-import { Box, TabChildren, TabRow } from './helpers';
+import { EntityInfo, findPresetName, entityTreeString } from './EntityInfo';
+import { EntityTree } from './EntityTree';
+import { Box, MiniWindow, TabChildren, TabRow } from './helpers';
 import { IconBar } from './icons';
 import { LayerManager } from './LayerManager';
+import { SelectedEntity } from './SelectedEntity';
 import { Style } from './Style';
 
 export const Ui = ({
   mainTab,
-  selectEntity: { selectedId, hoverId },
+  selectEntity: { selectedId, hoverId, beforeLayers },
   layerOpacity,
   loading,
   actions,
   layers,
+  entityTree,
+  fc,
 }: {
   mainTab: Store['mainTab'];
   selectEntity: Store['selectEntity'];
@@ -25,26 +30,45 @@ export const Ui = ({
   loading: boolean;
   actions: Actions;
   layers: Layer[];
+  entityTree: Store['entityTree'];
+  fc: Store['map']['featureCollection'];
 }): TemplateResult => {
   let children;
-
+  let miniWindow;
   switch (mainTab.active) {
     case MainTabs.Tags: {
-      children = Box({
-        title: selectedId,
-        children: Tags({ id: selectedId || hoverId }),
-      });
+      children = Tags({ id: selectedId || hoverId });
       break;
     }
-
-    case MainTabs.Relations: {
-      children = Box({
-        title: selectedId,
-        children: Relations({
-          id: selectedId || hoverId,
+    case MainTabs.Tree: {
+      children = html`
+      <div class="tab-content">
+        ${EntityTree({
+          selectedId,
+          hoverId,
+          entityTree,
           actions,
-        }),
-      });
+        })}
+      </div>
+      `;
+      miniWindow =
+        hoverId &&
+        hoverId !== selectedId &&
+        entityTree &&
+        entityTreeString(entityTree).includes(hoverId)
+          ? MiniWindow({
+              active: 'Peak',
+              child: EntityInfo({ actions, fc, id: hoverId }),
+            })
+          : null;
+      break;
+    }
+    case MainTabs.Info: {
+      children = html`
+      <div class="tab-content">
+        ${EntityInfo({ actions, fc, id: selectedId || hoverId })}
+      </div>
+      `;
       break;
     }
     case MainTabs.Layers: {
@@ -62,17 +86,22 @@ export const Ui = ({
             actions,
             layerOpacity,
             entityId: selectedId || hoverId,
+            presetName: selectedId && fc && findPresetName(selectedId, fc),
           })}
-            ${TabRow({
-              active: mainTab.active,
-              onChange: actions.modifyMainTab,
-              keys: [MainTabs.Layers, MainTabs.Relations, MainTabs.Tags],
-            })}
-        <div style="margin:0 6px;">
-        ${TabChildren(children)}
-        </div>
+          ${TabRow({
+            active: mainTab.active,
+            onChange: actions.modifyMainTab,
+            keys: [
+              MainTabs.Info,
+              MainTabs.Tags,
+              MainTabs.Tree,
+              MainTabs.Layers,
+            ],
+          })}
+         ${children}
+        ${miniWindow}
       </div>
-    </div>;
+    </div>
   `;
 };
 
@@ -81,45 +110,18 @@ const Tags = async ({ id = '' }: { id?: string }) => {
   const t = data ? data.tags : {};
 
   return html`
-    <div class="tags-box">
-      ${Object.keys(t).map(
-        r =>
-          html`
-            <div class="tags-item layout vertical">
-              <span class="tags-key title">${r}</span>
-              <span class="tags">${t[r]}</span>
-            </div>
-          `
-      )}
-    </div>
-  `;
-};
-
-const Relations = async ({
-  id = '',
-  actions,
-}: {
-  id?: string;
-  actions: Actions;
-}) => {
-  const data = await workerOperations.getDerived({ id });
-  const t: string[] = data.derived ? data.derived.parentRelations : [];
-
-  return html`
-    <div class="tags-box">
-    ${repeat(
-      t,
-      item =>
-        html`
-            <div class="tags-item layout vertical" >
-              <span class="tags-key">${item}</span>
-              <span class="tags-value"
-                on-click=${(_: Event) => {
-                  actions.modifySelectedId(item);
-                }}>${item}</span>
-            </div>
-        `
-    )}
+    <div class="tags tab-content">
+      <div class="tags-box">
+        ${Object.keys(t).map(
+          r =>
+            html`
+              <div class="tags-item layout vertical p3x">
+                <span class="tags-key title">${r}</span>
+                <span class="tags p3x">${t[r]}</span>
+              </div>
+            `
+        )}
+      </div>
     </div>
   `;
 };

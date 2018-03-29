@@ -24,6 +24,7 @@ export function LayerManager(
     );
 
   return html`
+  <div class="tab-content">
     <div class="layout vertical">
       ${repeat(
         Object.keys(categorize),
@@ -67,6 +68,7 @@ function LayerRow(item: Layer, actions: Actions) {
             .join(' ')}
         </label>
     </span>
+    </div>
   `;
 }
 

@@ -1,14 +1,14 @@
+import { EntityType, Relation } from 'idly-common/lib/osm/structures';
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
 import { Component } from '../helpers/Component';
 import { Store } from '../store/index';
-import { fcLookup } from '../store/worker.derived';
+import { fcLookup } from '../store/map.derived';
+import { workerOperations } from '../worker';
 import { Highlight } from './Highlight';
 import { Hover } from './Hover';
 import { Osm } from './Osm';
 import { Select } from './Select';
 import { UnloadedTiles } from './UnloadedTiles';
-import { workerOperations } from '../worker';
-import { Relation, EntityType } from 'idly-common/lib/osm/structures';
 
 export interface Props {
   quadkeys: Store['map']['quadkeys'];
@@ -22,7 +22,8 @@ export class MapComp extends Component<Props, {}> {
   protected children: {
     readonly selectComp: Select;
     readonly hoverComp: Hover;
-    readonly highlightComp: Highlight;
+    readonly highlightHoverComp: Highlight;
+    readonly highlightSelectComp: Highlight;
     readonly osm: Osm;
     readonly unloadedTiles: UnloadedTiles;
   };
@@ -35,9 +36,10 @@ export class MapComp extends Component<Props, {}> {
     super(props, {});
 
     this.children = {
-      highlightComp: new Highlight({}, gl, beforeLayer.middle),
+      highlightSelectComp: new Highlight({}, gl, beforeLayer.last, 'select'),
+      highlightHoverComp: new Highlight({}, gl, beforeLayer.last, 'hover'),
       selectComp: new Select({}, gl, beforeLayer.top),
-      hoverComp: new Hover({}, gl, beforeLayer.top),
+      hoverComp: new Hover({}, gl, beforeLayer.middle),
       unloadedTiles: new UnloadedTiles({ quadkeys: props.quadkeys }, gl),
       osm: new Osm({ layers: props.layers, featureCollection: props.fc }, gl),
     };
@@ -56,28 +58,34 @@ export class MapComp extends Component<Props, {}> {
 
     const featureLookup = this.props.fc && fcLookup(this.props.fc);
 
+    const feature = featureLookup && featureLookup.get(id);
+
     if (id.charAt(0) !== 'r') {
-      const feature = featureLookup && featureLookup.get(id);
       if (!feature) {
         return [];
       }
-      return [feature];
+      return feature;
     }
 
-    const relationFeatures = this.props.fc.features.filter(
-      r => r.properties && r.properties.id === id
-    );
-
-    if (relationFeatures.length > 0) {
-      return relationFeatures;
+    if (feature && feature.length > 0) {
+      return feature;
     }
 
     return workerOperations.getEntity({ id }).then(r => {
       if (r && r.type === EntityType.RELATION && featureLookup) {
         return r.members
-          .map(member => featureLookup.get(member.id))
+          .reduce(
+            (prev: Store['map']['featureCollection']['features'], member) => {
+              const features = featureLookup.get(member.id);
+              if (features) {
+                prev.push(...features);
+              }
+              return prev;
+            },
+            []
+          )
           .filter(
-            feature => feature && feature.geometry
+            f => f && f.geometry
           ) as Store['map']['featureCollection']['features'];
       }
       return [];
@@ -92,19 +100,23 @@ export class MapComp extends Component<Props, {}> {
 
     const selectedFeature = this.getFeature(props.selectedEntityId);
 
-    this.children.highlightComp.setProps({
-      features: props.selectedEntityId ? selectedFeature : hoverFeature,
-    });
-
     this.children.hoverComp.setProps({
       features: hoverFeature,
+    });
+
+    this.children.selectComp.setProps({
+      features: selectedFeature,
     });
 
     this.children.unloadedTiles.setProps({
       quadkeys: props.quadkeys,
     });
 
-    this.children.selectComp.setProps({
+    this.children.highlightHoverComp.setProps({
+      features: hoverFeature,
+    });
+
+    this.children.highlightSelectComp.setProps({
       features: selectedFeature,
     });
 

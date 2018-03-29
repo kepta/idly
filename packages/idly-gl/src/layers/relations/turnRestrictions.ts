@@ -17,7 +17,7 @@ export default [
         ...highwayTemplate.layer.paint,
         'line-color': HighlightColor.KIND_UNIMPORTANT,
         'line-opacity': 0.4,
-        'line-width': makeLineWidth(4),
+        'line-width': makeLineWidth(5.5),
       },
       filter: [
         'all',
@@ -36,7 +36,7 @@ export default [
       type: 'circle',
       layout: {},
       paint: {
-        'circle-radius': 15,
+        'circle-radius': 20,
         'circle-color': HighlightColor.KIND_UNIMPORTANT,
         'circle-opacity': 0.5,
       },

@@ -50,7 +50,7 @@ export function mapStreams(
       // prevent when multiple trs are presents and
       // the user is made to believe only one is there
       if (ids.length > 1 && ids.every(e => e.charAt(0) === 'r')) {
-        actions.modifyMainTab(MainTabs.Relations);
+        actions.modifyMainTab(MainTabs.Tree);
         return;
       }
       actions.modifyHoverId(ids[0]);
@@ -59,7 +59,7 @@ export function mapStreams(
   );
 
   const makeClick = makeClick$(gl).subscribe(
-    () => actions.modifySelectedId(),
+    () => actions.selectId(),
     e => console.error(e)
   );
 
