@@ -8,7 +8,7 @@ import { WATERWAY } from '../priorities';
 export default [
   {
     internal: true,
-    selectable: true,
+    selectable: false,
     priority: WATERWAY.MINUS_1,
     layer: {
       id: PlaceHolderLayer1,
@@ -21,7 +21,7 @@ export default [
   },
   {
     internal: true,
-    selectable: true,
+    selectable: false,
     priority: WATERWAY.MINUS_2,
     layer: {
       id: PlaceHolderLayer2,
@@ -34,7 +34,7 @@ export default [
   },
   {
     internal: true,
-    selectable: true,
+    selectable: false,
     priority: WATERWAY.MINUS_3,
     layer: {
       id: PlaceHolderLayer3,

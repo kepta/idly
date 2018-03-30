@@ -3,7 +3,7 @@ import { EXTRUSION } from '../priorities';
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     hide: true,
     priority: EXTRUSION.ZERO,
     layer: {

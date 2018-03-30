@@ -27,7 +27,7 @@ export const orangeFilter = [
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-orange',
@@ -42,7 +42,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-orange-casing',

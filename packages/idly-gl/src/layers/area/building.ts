@@ -14,7 +14,7 @@ export const buildingFilter = [
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.PLUS_1,
     layer: {
       id: 'area-building',
@@ -30,7 +30,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.PLUS_1,
     layer: {
       id: 'area-building-fill',

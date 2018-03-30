@@ -4,7 +4,7 @@ import { areaCasingTemplate, areaTemplate } from './area.template';
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.MINUS_1,
     layer: {
       id: 'area-fallback-layer',
@@ -27,7 +27,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.MINUS_2,
     layer: {
       id: 'area-fallback-layer-casing',

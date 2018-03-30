@@ -27,7 +27,7 @@ export const yellowFilter = [
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-yellow-layer',
@@ -42,7 +42,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-yellow-layer-casing',

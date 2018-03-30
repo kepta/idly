@@ -14,6 +14,7 @@ import { Actions } from './store/Actions';
 import { MainTabs, Store } from './store/index';
 import { mapStreams } from './store/map.streams';
 import { selectEntityStream } from './store/selectEntity.stream';
+import { debugMethods } from './helpers/debug';
 
 export class IdlyGlPlugin {
   public Plugin?: App;
@@ -106,7 +107,7 @@ export class IdlyGlPlugin {
   }
 
   private init(m: any) {
-    this.actions = new Actions(this.store);
+    this.actions = debugMethods(new Actions(this.store));
 
     const plugin = new App(
       this.store.getValue(),

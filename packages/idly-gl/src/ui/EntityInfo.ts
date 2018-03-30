@@ -5,8 +5,7 @@ import { EntityExpanded, MainTabs, Store } from '../store';
 import { Actions } from '../store/Actions';
 import { fcLookup } from '../store/map.derived';
 import { workerOperations } from '../worker';
-import { MiniWindow } from './helpers';
-import { Button, ButtonLink, Icon } from './icons';
+import { Button, ButtonLink } from './icons';
 
 export async function EntityInfo({
   id,

@@ -1,9 +1,9 @@
+import { EntityType } from 'idly-common/lib/osm/structures';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { GetDerived } from '../../../idly-worker/lib/operations/getDerived/type';
 import { bindThis } from '../helpers/helpers';
 import { LayerOpacity, layerOpacity } from '../helpers/layerOpacity';
 import { MainTabs, RecursiveRecord, Store } from './index';
-import { EntityType } from 'idly-common/lib/osm/structures';
 
 export class Actions {
   private subject: BehaviorSubject<Store>;
@@ -242,7 +242,6 @@ export class Actions {
    *
    * dirty fix remove any select ? hover
    */
-
   @bindThis
   public modifyLayerOpacity() {
     let next: LayerOpacity;

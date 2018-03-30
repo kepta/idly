@@ -13,7 +13,7 @@ export const tanFilter = [
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-tan',
@@ -28,7 +28,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-tan-casing',

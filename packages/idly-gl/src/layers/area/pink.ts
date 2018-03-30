@@ -20,7 +20,7 @@ export const pinkFilter = [
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-pink',
@@ -35,7 +35,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-pink-casing',

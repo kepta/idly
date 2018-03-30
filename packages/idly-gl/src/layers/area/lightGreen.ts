@@ -18,7 +18,7 @@ export const lightGreenFilter = [
 
 export default [
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-light-green',
@@ -33,7 +33,7 @@ export default [
     },
   },
   {
-    selectable: false,
+    selectable: true,
     priority: AREA.ZERO,
     layer: {
       id: 'area-light-green-casing',

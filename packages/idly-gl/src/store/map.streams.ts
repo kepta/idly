@@ -42,7 +42,7 @@ export function mapStreams(
       rxMap(({ layers }) => layers),
       distinctUntilChanged(),
       rxMap(layers => {
-        return visibleGlLayers(layers).map(l => l.id);
+        return visibleGlLayers(layers.filter(l => l.selectable)).map(l => l.id);
       })
     )
   ).subscribe(

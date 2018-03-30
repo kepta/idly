@@ -1,17 +1,15 @@
 import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
-import { repeat } from 'lit-html/lib/repeat';
 import { LayerOpacity } from '../helpers/layerOpacity';
 import { Layer } from '../layers/types';
 import { Actions } from '../store/Actions';
 import { MainTabs, Store } from '../store/index';
 import { workerOperations } from '../worker';
-import { EntityInfo, findPresetName, entityTreeString } from './EntityInfo';
+import { EntityInfo, entityTreeString, findPresetName } from './EntityInfo';
 import { EntityTree } from './EntityTree';
-import { Box, MiniWindow, TabChildren, TabRow } from './helpers';
+import { MiniWindow, TabRow } from './helpers';
 import { IconBar } from './icons';
 import { LayerManager } from './LayerManager';
-import { SelectedEntity } from './SelectedEntity';
 import { Style } from './Style';
 
 export const Ui = ({

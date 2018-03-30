@@ -8,7 +8,7 @@ export const Style: TemplateResult = html`
     --highlight-secondary: #ecf1fa;
      --highlight-primary: #1da1f2;
       --bg-dark-color: #f3f3f3;
-       --border-color: #cccccc; 
+       --border-color: #cccccc;
        --darkest-color: #777;
         background-color: white;
     border: 1px solid var(--border-color);

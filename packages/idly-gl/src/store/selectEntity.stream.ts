@@ -3,9 +3,7 @@ import { fromPromise } from 'rxjs/observable/fromPromise';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { MainTabs, Store } from '../store/index';
-import { entities, visibleGlLayers } from '../store/map.derived';
-import { makeClick$, makeNearestEntity$, moveEndBbox$ } from '../streams';
+import { Store } from '../store/index';
 import { workerOperations } from '../worker';
 import { Actions } from './Actions';
 

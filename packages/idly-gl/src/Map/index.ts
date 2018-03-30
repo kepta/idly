@@ -1,4 +1,4 @@
-import { EntityType, Relation } from 'idly-common/lib/osm/structures';
+import { EntityType } from 'idly-common/lib/osm/structures';
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
 import { Component } from '../helpers/Component';
 import { Store } from '../store/index';

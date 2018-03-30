@@ -1,7 +1,5 @@
 import { Entity } from 'idly-common/lib/osm/structures';
-import { WorkerType } from 'idly-worker/lib';
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
-import { GetDerived } from '../../../idly-worker/lib/operations/getDerived/type';
 import { LayerOpacity } from '../helpers/layerOpacity';
 import { Layer } from '../layers/types';
 
