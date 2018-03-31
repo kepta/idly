@@ -22,12 +22,12 @@
     "@types/lodash.unescape": "^4.0.3",
     "geojson": "^0.5.0",
     "jest": "^22.0.4",
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.1.2",
     "ts-jest": "^22.0.1",
     "tslint": "^5.8.0",
     "tslint-immutable": "^4.1.0",
     "typescript": "2.8",
-    "webpack": "^3.9.1"
+    "webpack": "^4.4.1"
   },
   "dependencies": {
     "@turf/area": "^5.1.5",
