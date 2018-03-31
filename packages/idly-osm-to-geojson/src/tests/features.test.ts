@@ -93,12 +93,6 @@ describe('way.test', () => {
     });
 
     it('should throw error if nodes not found', () => {
-      const node: Derived<Node> = {
-        entity: nodeFactory({ id: 'n1', loc: lngLatFactory([1, 2]) }),
-        parentRelations: new Set(),
-        parentWays: new Set(['w1']),
-      };
-
       const g: DerivedTable = new Map();
 
       expect(() => getCoordsFromTable(g, ['n2'])).toThrow();

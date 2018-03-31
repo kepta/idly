@@ -5,12 +5,12 @@ import {
   Polygon,
   polygon,
 } from '@turf/helpers';
-import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
 import { isArea } from 'idly-common/lib/osm/isArea';
 import { Node, OsmGeometry, Way } from 'idly-common/lib/osm/structures';
 import { tagClasses } from 'idly-common/lib/tagClasses/tagClasses';
 import { isOneway } from '../isOneway';
 import { Derived, DerivedTable } from '../types';
+import { wayPresetMatch } from './wayPresetMatch';
 
 export function wayFeatures(
   derived: Derived<Way>,
@@ -23,7 +23,7 @@ export function wayFeatures(
   const feat = wayToLineString(
     geometry,
     getCoordsFromTable(table, way.nodes),
-    wayPropertiesGen(derived.entity, geometry)
+    wayPropertiesGen(derived)
   );
 
   feat.id = way.id;
@@ -58,7 +58,10 @@ export function wayToLineString(
   }
 }
 
-const wayPropertiesGen = ({ tags, id }: Way, geometry: OsmGeometry) => {
+const wayPropertiesGen = (derived: Derived<Way>) => {
+  const { tags, id } = derived.entity;
+  const { geometry, match } = wayPresetMatch(derived);
+
   const allTagClasses = tagClasses(tags);
 
   const trimmed = Object.keys(allTagClasses).reduce(
@@ -69,7 +72,6 @@ const wayPropertiesGen = ({ tags, id }: Way, geometry: OsmGeometry) => {
     {} as Record<string, string>
   );
 
-  const match = presetMatch(tags, geometry);
   const result: Record<string, boolean | string | number> = {
     '@idly-geometry': geometry,
     '@idly-icon': match && match.icon,

@@ -1,27 +1,21 @@
-import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
-import { OsmGeometry, Relation } from 'idly-common/lib/osm/structures';
+import { Relation } from 'idly-common/lib/osm/structures';
 import { Derived, RelevantGeometry } from '../types';
 import { ensureMembers } from './helpers';
+import { relationPresetMatch } from './relationPresetMatch';
 import { turnRestriction } from './turnRestriction';
 
 export function relationFeatures(
-  relation: Relation,
+  derived: Derived<Relation>,
   table: Map<string, Derived>,
   geometryTable: WeakMap<Derived, RelevantGeometry>
 ): RelevantGeometry[] | undefined {
+  const relation = derived.entity;
+  const { match } = relationPresetMatch(derived);
+
   const ensured = ensureMembers(relation.members, table, geometryTable);
   if (!ensured) {
     return;
   }
 
-  const match = presetMatch(
-    relation.tags,
-    isMultiPolygon(relation) ? OsmGeometry.AREA : OsmGeometry.RELATION
-  );
-
   return turnRestriction(relation, ensured, match.name({}));
-}
-
-function isMultiPolygon(r: Relation) {
-  return false;
 }

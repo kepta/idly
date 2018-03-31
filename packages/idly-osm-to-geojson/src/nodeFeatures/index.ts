@@ -1,7 +1,7 @@
 import { Feature, Point } from '@turf/helpers';
-import { presetMatch } from 'idly-common/lib/geojson/presetMatch';
-import { Node, OsmGeometry } from 'idly-common/lib/osm/structures';
+import { Node } from 'idly-common/lib/osm/structures';
 import { Derived } from '../types';
+import { nodePresetMatch } from './nodePresetMatch';
 
 export const DEFAULT_NODE_ICON = 'circle';
 
@@ -18,16 +18,15 @@ export function nodeFeatures(derived: Derived<Node>): Feature<Point> {
   };
 }
 
-export const nodePropertiesGen = (element: Derived<Node>) => {
+export function nodePropertiesGen(element: Derived<Node>) {
   const size = element.parentWays.size;
-  const geometry = size === 0 ? OsmGeometry.POINT : OsmGeometry.VERTEX;
-  const match = presetMatch(element.entity.tags, geometry);
+  const { geometry, match } = nodePresetMatch(element);
   return {
-    '@idly-geometry': geometry,
+    '@idly-geometry': geometry as string,
     '@idly-icon': (match && match.icon) || DEFAULT_NODE_ICON,
     '@idly-intersection': size > 2,
     '@idly-name': element.entity.tags.name,
     '@idly-preset-name': match.name({}) || 'Node',
     id: element.entity.id,
   };
-};
+}

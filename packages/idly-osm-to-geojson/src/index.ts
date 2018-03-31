@@ -44,7 +44,7 @@ export const entityToGeoJson = (
   }
 
   for (const rD of relationGeometries) {
-    const r = relationFeatures(rD.entity as Relation, table, _internalCache);
+    const r = relationFeatures(rD as Derived<Relation>, table, _internalCache);
     if (r) {
       result.push(...r);
     }
