@@ -26,7 +26,6 @@ export async function EntityTree({
     return;
   }
 
-  console.count('relation');
   const parentRelations = entityTree.parentRelations;
   const parentWays = entityTree.parentWays;
   const children = entityTree.children;

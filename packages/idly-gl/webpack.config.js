@@ -31,6 +31,14 @@ module.exports = {
     fs: 'empty',
   },
 
+  externals: {
+    'mapbox-gl': {
+      commonjs: 'mapbox-gl',
+      commonjs2: 'mapbox-gl',
+      amd: 'mapbox-gl',
+      root: 'mapboxgl', // indicates global variable
+    },
+  },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
   },

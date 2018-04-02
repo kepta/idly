@@ -13,16 +13,8 @@ export function workerGetQuadkey(
   state: WorkerState
 ): WorkerOperation<GetQuadkey> {
   return async arr => {
-    console.log(arr.map(r => r.quadkey));
-    console.time('workerGetQuadkey');
-
     let qState = state.osmState;
     if (qState.virgin.elements.size >= MAX_SIZE) {
-      console.log(
-        'size reached high',
-        qState.virgin.elements.size,
-        'shredding'
-      );
       qState = stateShred(qState);
     }
 
@@ -32,7 +24,6 @@ export function workerGetQuadkey(
     const vis = stateGetVisibles(qState, arr.map(r => r.quadkey));
     const features = entityToGeoJson(vis);
 
-    console.timeEnd('workerGetQuadkey');
     return {
       response: featureCollection(features),
       state: {

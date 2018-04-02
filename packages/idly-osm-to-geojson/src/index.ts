@@ -50,6 +50,5 @@ export const entityToGeoJson = (
     }
   }
 
-  console.log('cache', count, 'size', table.size);
   return result;
 };

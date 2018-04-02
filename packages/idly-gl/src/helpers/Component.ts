@@ -45,7 +45,6 @@ export abstract class Component<Props, State, _ = any, Render = void> {
       Object.keys(children).forEach(key => {
         const child = children[key];
         if (child instanceof Subscription) {
-          console.log('unmounting', key);
           child.unsubscribe();
           return;
         }

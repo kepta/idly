@@ -50,14 +50,7 @@ export function tilesFilterSmall(
       },
       { sum: 0, tiles: [] as Tile[] }
     );
-  console.log(
-    'thresh',
-    minimumOverlap,
-    'orig',
-    tiles.length,
-    'removed',
-    tiles.length - final.tiles.length
-  );
+
   return final.tiles;
 }
 

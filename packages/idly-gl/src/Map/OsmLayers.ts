@@ -35,8 +35,6 @@ export class OsmLayers extends Component<Props, {}> {
       this.getGlLayer(this.props.layers).forEach(l => {
         if (this.gl.getLayer(l.id)) {
           this.gl.removeLayer(l.id);
-        } else {
-          console.log('no layer found', l.id);
         }
       });
     }
