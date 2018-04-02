@@ -1,19 +1,14 @@
-import { weakCache } from 'idly-common/lib/misc';
 import { html } from 'lit-html/lib/lit-extended';
-import { IDLY_NS } from '../constants';
-import { EntityExpanded, MainTabs, Store } from '../store';
+import { MainTabs } from '../store';
 import { Actions } from '../store/Actions';
-import { fcLookup } from '../store/map.derived';
 import { workerOperations } from '../worker';
 import { Button, ButtonLink } from './icons';
 
 export async function EntityInfo({
   id,
-  fc,
   actions,
 }: {
   id?: string;
-  fc: Store['map']['featureCollection'];
   actions: Actions;
   peak?: boolean;
 }): Promise<any> {
@@ -26,12 +21,15 @@ export async function EntityInfo({
     return;
   }
 
+  const { preset } = await workerOperations.getEntityMetadata({ id });
   const osmHref = `https://openstreetmap.org/${entity.type}/${id.substring(
     1
   )} `;
 
+  const presetName = preset ? preset.name : id;
+
   return html`<div class="entity-info layout vertical">
-        <span class="title">${findPresetName(id, fc)}</span>
+        <span class="title">${presetName}</span>
         <div class="p3x layout vertical">
          <span>ID: ${id.substring(1)}</span>
          <span>Type: ${entity.type}</span>
@@ -56,21 +54,3 @@ export async function EntityInfo({
     </div>
  `;
 }
-
-export function findPresetName(
-  id: string,
-  fc: Store['map']['featureCollection']
-) {
-  const features = fcLookup(fc).get(id);
-  if (!features) {
-    return id;
-  }
-  const name = features
-    .filter(f => f.properties && f.properties[`${IDLY_NS}preset-name`])
-    .map(f => f.properties && f.properties[`${IDLY_NS}preset-name`])[0];
-  return name || id;
-}
-
-export const entityTreeString = weakCache((entityTree: EntityExpanded) => {
-  return JSON.stringify(entityTree);
-});

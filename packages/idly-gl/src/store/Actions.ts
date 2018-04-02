@@ -1,6 +1,6 @@
 import { EntityType } from 'idly-common/lib/osm/structures';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { GetDerived } from '../../../idly-worker/lib/operations/getDerived/type';
+import { GetEntityMetadata } from '../../../idly-worker/lib/operations/getEntityMetadata/type';
 import { bindThis } from '../helpers/helpers';
 import { LayerOpacity, layerOpacity } from '../helpers/layerOpacity';
 import { MainTabs, RecursiveRecord, Store } from './index';
@@ -26,6 +26,7 @@ export class Actions {
       selectEntity: {
         ...this.store.selectEntity,
         selectedId: id,
+        popup: undefined,
       },
     });
   }
@@ -50,8 +51,8 @@ export class Actions {
   }
 
   @bindThis
-  public addEntityTree(derived?: GetDerived['response']['derived']) {
-    if (!derived) {
+  public addEntityTree(derived: GetEntityMetadata['response']) {
+    if (!derived || !derived.entity) {
       return;
     }
 
@@ -104,15 +105,15 @@ export class Actions {
 
   public addEntityTreeExpand(
     id?: string,
-    derived?: GetDerived['response']['derived'],
+    metadata?: GetEntityMetadata['response'],
     parent?: RecursiveRecord
   ) {
     const entityTree = this.store.entityTree;
 
-    if (!entityTree || !id || !parent || !parent[id]) {
+    if (!entityTree || !metadata || !id || !parent || !parent[id]) {
       return;
     }
-    if (!derived) {
+    if (!metadata.entity) {
       // signals not available
       parent[id] = undefined;
       this.subject.next({
@@ -124,7 +125,7 @@ export class Actions {
       return;
     }
 
-    const parentWays: RecursiveRecord = derived.parentWays.reduce(
+    const parentWays: RecursiveRecord = metadata.parentWays.reduce(
       (prev, cur) => {
         prev[cur] = cur;
         return prev;
@@ -132,7 +133,7 @@ export class Actions {
       {} as RecursiveRecord
     );
 
-    const parentRelations: RecursiveRecord = derived.parentRelations.reduce(
+    const parentRelations: RecursiveRecord = metadata.parentRelations.reduce(
       (prev, cur) => {
         prev[cur] = cur;
         return prev;
@@ -140,7 +141,7 @@ export class Actions {
       {} as RecursiveRecord
     );
 
-    const entity = derived.entity;
+    const entity = metadata.entity;
     let children: RecursiveRecord = {};
     if (entity.type === EntityType.RELATION) {
       children = entity.members.reduce(
@@ -164,7 +165,7 @@ export class Actions {
       children,
       parentRelations,
       parentWays,
-      entity: derived.entity,
+      entity: metadata.entity,
     };
 
     this.subject.next({
@@ -176,16 +177,21 @@ export class Actions {
   }
 
   public addEntityTreeCollapse(
-    derived: GetDerived['response']['derived'],
+    metadata: GetEntityMetadata['response'],
     parent: RecursiveRecord
   ) {
     const entityTree = this.store.entityTree;
 
-    if (!entityTree || !derived || !parent || !parent[derived.entity.id]) {
+    if (
+      !entityTree ||
+      !metadata.entity ||
+      !parent ||
+      !parent[metadata.entity.id]
+    ) {
       return;
     }
 
-    parent[derived.entity.id] = derived.entity.id;
+    parent[metadata.entity.id] = metadata.entity.id;
 
     this.subject.next({
       ...this.store,
@@ -193,6 +199,41 @@ export class Actions {
         ...entityTree,
       },
     });
+  }
+
+  @bindThis
+  public addEntitySelectorPopup({
+    lnglat,
+    ids,
+  }: {
+    lnglat: { lat: number; lng: number };
+    ids: string[];
+  }) {
+    if (ids && ids.length > 0 && lnglat.lat && lnglat.lng) {
+      this.subject.next({
+        ...this.store,
+        selectEntity: {
+          ...this.store.selectEntity,
+          popup: {
+            lnglat,
+            ids,
+          },
+        },
+      });
+    }
+  }
+
+  @bindThis
+  public removeEntitySelectorPopup() {
+    if (this.store.selectEntity.popup) {
+      this.subject.next({
+        ...this.store,
+        selectEntity: {
+          ...this.store.selectEntity,
+          popup: undefined,
+        },
+      });
+    }
   }
 
   @bindThis

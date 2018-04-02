@@ -16,11 +16,10 @@ export class Osm extends Component<Props, {}> {
   private gl: any;
   private prevFc: Store['map']['featureCollection'];
 
-  constructor(props: Props, gl: any) {
+  constructor(props: Props, gl: any, beforeLayer?: string) {
     super(props, {});
 
     this.gl = gl;
-
     if (!this.gl.getSource(BASE_SOURCE)) {
       this.gl.addSource(BASE_SOURCE, {
         type: 'geojson',
@@ -34,7 +33,12 @@ export class Osm extends Component<Props, {}> {
     this.prevFc = props.featureCollection;
 
     this.children = {
-      osmLayerComp: new OsmLayers({ layers: props.layers }, gl, BASE_SOURCE),
+      osmLayerComp: new OsmLayers(
+        { layers: props.layers },
+        gl,
+        BASE_SOURCE,
+        beforeLayer
+      ),
     };
 
     this.mount();

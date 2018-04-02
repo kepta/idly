@@ -8,13 +8,11 @@ export const IconBar = ({
   actions,
   layerOpacity,
   entityId,
-  presetName,
 }: {
   actions: Actions;
   loading: boolean;
   layerOpacity: LayerOpacity;
   entityId?: string;
-  presetName?: string;
 }) => {
   let icon = Icon(LowOpacity, actions.modifyLayerOpacity);
 
@@ -62,7 +60,7 @@ function osmLink(id?: string) {
 
   const href = `https://openstreetmap.org/${type}/${id.substring(1)} `;
 
-  return html`<span style="" class="icon layout link vertical">
+  return html`<span style="" class="idly-gl-icon layout link vertical">
         <a target="_blank"  class="layout vertical center-center" href=${href}>${id}</a>
   </span>`;
 }
@@ -95,7 +93,7 @@ export const Icon = (
   child: TemplateResult | string,
   onClick?: (s: void) => void
 ) => html`
-  <span class="icon layout vertical center-center" on-click=${onClick}>
+  <span class="idly-gl-icon layout vertical center-center" on-click=${onClick}>
     ${child}
   </span
 `;

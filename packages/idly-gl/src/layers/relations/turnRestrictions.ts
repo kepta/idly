@@ -21,7 +21,7 @@ export default [
       },
       filter: [
         'all',
-        ['has', `${IDLY_NS}turn-restriction`],
+        ['==', `${IDLY_NS}relation-type`, 'turn-restriction'],
         ['==', `${IDLY_NS}geometry`, 'line'],
       ],
     },
@@ -42,9 +42,11 @@ export default [
       },
       filter: [
         'all',
-        ['has', `${IDLY_NS}turn-restriction`],
+        ['==', `${IDLY_NS}relation-type`, 'turn-restriction'],
         ['==', `${IDLY_NS}geometry`, 'vertex'],
       ],
     },
   },
 ];
+
+// '@idly-relation-type': 'turn-restriction',

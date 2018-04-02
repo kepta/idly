@@ -46,13 +46,15 @@ export function mapStreams(
       })
     )
   ).subscribe(
-    ids => {
+    ({ data: ids, point }) => {
       // prevent when multiple trs are presents and
       // the user is made to believe only one is there
       if (ids.length > 1 && ids.every(e => e.charAt(0) === 'r')) {
+        actions.addEntitySelectorPopup({ ids, lnglat: point.lngLat });
         actions.modifyMainTab(MainTabs.Tree);
         return;
       }
+      actions.removeEntitySelectorPopup();
       actions.modifyHoverId(ids[0]);
     },
     e => console.error(e)

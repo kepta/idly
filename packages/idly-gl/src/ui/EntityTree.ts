@@ -1,9 +1,10 @@
+import { weakCache } from 'idly-common/lib/misc';
 import { EntityType } from 'idly-common/lib/osm/structures';
 import { HighlightColor } from 'idly-common/lib/styling/highlight';
 import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
 import { repeat } from 'lit-html/lib/repeat';
-import { RecursiveRecord, Store } from '../store';
+import { EntityExpanded, RecursiveRecord, Store } from '../store';
 import { Actions } from '../store/Actions';
 import { workerOperations } from '../worker';
 import { Icon, SelectIcon } from './icons';
@@ -120,6 +121,10 @@ function TreeBranch(
   `;
 }
 
+export const entityTreeString = weakCache((entityTree: EntityExpanded) => {
+  return JSON.stringify(entityTree);
+});
+
 function TreeLeaf({
   id,
   expanded,
@@ -149,17 +154,12 @@ function TreeLeaf({
       <span on-click=${async (e: Event) => {
         e.stopPropagation();
 
-        const d = await workerOperations
-          .getDerived({ id })
-          .then(r => r.derived);
+        const d = await workerOperations.getEntityMetadata({ id }).then(r => r);
 
         if (!expanded) {
           actions.addEntityTreeExpand(id, d, parent);
         } else {
-          actions.addEntityTreeCollapse(
-            await workerOperations.getDerived({ id }).then(r => r.derived),
-            parent
-          );
+          actions.addEntityTreeCollapse(d, parent);
         }
       }}>
           ${expanded ? html`&#9660;` : html`&#9658;`}
@@ -181,7 +181,7 @@ function TreeLeaf({
       <span class="layout flex-2">&nbsp;</span>
       ${
         !unavailable
-          ? Icon(SelectIcon, e => {
+          ? Icon(SelectIcon, () => {
               actions.selectId(id);
             })
           : ''

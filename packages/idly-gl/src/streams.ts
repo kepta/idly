@@ -178,7 +178,7 @@ export function makeNearestEntity$(
   glMap: any,
   layerObs: Observable<any>,
   radius = mapInteraction.RADIUS
-): Observable<string[]> {
+): Observable<{ data: string[]; point: MapMouseEvent }> {
   return makeMousemove$(glMap).pipe(
     throttleTime(50),
     withLatestFrom(layerObs),
@@ -197,9 +197,9 @@ export function makeNearestEntity$(
         })
         .map((a: any) => a.properties.id);
 
-      return [...new Set(ids)];
+      return { data: [...new Set(ids)], point: e };
     }),
-    distinctUntilChanged((p, q) => {
+    distinctUntilChanged(({ data: p }, { data: q }) => {
       if (p.length !== q.length) {
         return false;
       }

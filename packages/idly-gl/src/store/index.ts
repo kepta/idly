@@ -19,6 +19,10 @@ export interface Store {
     hoverId?: string;
     selectedId?: string;
     beforeLayers: { top: string; middle: string; last: string };
+    popup?: {
+      lnglat: { lat: number; lng: number };
+      ids: string[];
+    };
   };
   map: {
     loading: boolean;
@@ -28,6 +32,7 @@ export interface Store {
     beforeLayer?: string;
     layerOpacity: LayerOpacity;
   };
+
   entityTree?: EntityExpanded;
 }
 export interface EntityExpanded {

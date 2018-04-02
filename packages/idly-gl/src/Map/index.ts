@@ -1,8 +1,12 @@
 import { EntityType } from 'idly-common/lib/osm/structures';
 import { GetQuadkey } from 'idly-worker/lib/operations/getQuadkey/type';
+import { render } from 'lit-html/lib/lit-extended';
+import { Popup } from 'mapbox-gl';
 import { Component } from '../helpers/Component';
+import { Actions } from '../store/Actions';
 import { Store } from '../store/index';
 import { fcLookup } from '../store/map.derived';
+import { SelectorPopup } from '../ui/SelectorPopup';
 import { workerOperations } from '../worker';
 import { Highlight } from './Highlight';
 import { Hover } from './Hover';
@@ -12,10 +16,13 @@ import { UnloadedTiles } from './UnloadedTiles';
 
 export interface Props {
   quadkeys: Store['map']['quadkeys'];
+  popup: Store['selectEntity']['popup'];
+  mapBeforeLayer: Store['map']['beforeLayer'];
   fc: Store['map']['featureCollection'];
   layers: Store['map']['layers'];
   selectedEntityId?: string;
   hoverEntityId?: string;
+  actions: Actions;
 }
 
 export class MapComp extends Component<Props, {}> {
@@ -27,24 +34,50 @@ export class MapComp extends Component<Props, {}> {
     readonly osm: Osm;
     readonly unloadedTiles: UnloadedTiles;
   };
+  private gl: any;
+  private popup?: any;
 
   constructor(
     props: Props,
     gl: any,
-    beforeLayer: Store['selectEntity']['beforeLayers']
+    selectBeforeLayer: Store['selectEntity']['beforeLayers']
   ) {
     super(props, {});
-
+    this.gl = gl;
     this.children = {
-      highlightSelectComp: new Highlight({}, gl, beforeLayer.last, 'select'),
-      highlightHoverComp: new Highlight({}, gl, beforeLayer.last, 'hover'),
-      selectComp: new Select({}, gl, beforeLayer.top),
-      hoverComp: new Hover({}, gl, beforeLayer.middle),
+      highlightSelectComp: new Highlight(
+        {},
+        gl,
+        selectBeforeLayer.last,
+        'select'
+      ),
+      highlightHoverComp: new Highlight(
+        {},
+        gl,
+        selectBeforeLayer.last,
+        'hover'
+      ),
+      selectComp: new Select({}, gl, selectBeforeLayer.top),
+      hoverComp: new Hover({}, gl, selectBeforeLayer.middle),
       unloadedTiles: new UnloadedTiles({ quadkeys: props.quadkeys }, gl),
-      osm: new Osm({ layers: props.layers, featureCollection: props.fc }, gl),
+      osm: new Osm(
+        { layers: props.layers, featureCollection: props.fc },
+        gl,
+        props.mapBeforeLayer
+      ),
     };
 
     this.mount();
+
+    this.putPopup();
+  }
+
+  public componentWillUnMount() {
+    super.componentWillUnMount();
+    if (this.popup) {
+      this.popup.remove();
+      this.popup = undefined;
+    }
   }
 
   protected getFeature(
@@ -92,6 +125,25 @@ export class MapComp extends Component<Props, {}> {
     });
   }
 
+  protected putPopup() {
+    if (this.popup) {
+      this.popup.remove();
+      this.popup = undefined;
+    }
+
+    if (!this.props.popup) {
+      return;
+    }
+    const latlong = [this.props.popup.lnglat.lng, this.props.popup.lnglat.lat];
+    const el = document.createElement('div');
+    el.classList.add('idly-gl');
+    render(SelectorPopup(this.props.popup.ids, this.props.actions), el);
+    this.popup = new Popup()
+      .setLngLat(latlong)
+      .setDOMContent(el)
+      .addTo(this.gl);
+  }
+
   protected render(props: Props) {
     const hoverFeature =
       props.selectedEntityId === props.hoverEntityId
@@ -99,7 +151,7 @@ export class MapComp extends Component<Props, {}> {
         : this.getFeature(props.hoverEntityId);
 
     const selectedFeature = this.getFeature(props.selectedEntityId);
-
+    this.putPopup();
     this.children.hoverComp.setProps({
       features: hoverFeature,
     });

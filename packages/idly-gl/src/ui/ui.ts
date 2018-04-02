@@ -5,8 +5,8 @@ import { Layer } from '../layers/types';
 import { Actions } from '../store/Actions';
 import { MainTabs, Store } from '../store/index';
 import { workerOperations } from '../worker';
-import { EntityInfo, entityTreeString, findPresetName } from './EntityInfo';
-import { EntityTree } from './EntityTree';
+import { EntityInfo } from './EntityInfo';
+import { EntityTree, entityTreeString } from './EntityTree';
 import { MiniWindow, TabRow } from './helpers';
 import { IconBar } from './icons';
 import { LayerManager } from './LayerManager';
@@ -14,13 +14,12 @@ import { Style } from './Style';
 
 export const Ui = ({
   mainTab,
-  selectEntity: { selectedId, hoverId, beforeLayers },
+  selectEntity: { selectedId, hoverId },
   layerOpacity,
   loading,
   actions,
   layers,
   entityTree,
-  fc,
 }: {
   mainTab: Store['mainTab'];
   selectEntity: Store['selectEntity'];
@@ -29,7 +28,6 @@ export const Ui = ({
   actions: Actions;
   layers: Layer[];
   entityTree: Store['entityTree'];
-  fc: Store['map']['featureCollection'];
 }): TemplateResult => {
   let children;
   let miniWindow;
@@ -56,7 +54,7 @@ export const Ui = ({
         entityTreeString(entityTree).includes(hoverId)
           ? MiniWindow({
               active: 'Peak',
-              child: EntityInfo({ actions, fc, id: hoverId }),
+              child: EntityInfo({ actions, id: hoverId }),
             })
           : null;
       break;
@@ -64,7 +62,7 @@ export const Ui = ({
     case MainTabs.Info: {
       children = html`
       <div class="tab-content">
-        ${EntityInfo({ actions, fc, id: selectedId || hoverId })}
+        ${EntityInfo({ actions, id: selectedId || hoverId })}
       </div>
       `;
       break;
@@ -76,15 +74,14 @@ export const Ui = ({
   }
 
   return html`
-    <div class="mapboxgl-ctrl">
+    <div class="mapboxgl-ctrl idly-gl">
       ${Style}
-      <div class="container idly-gl layout vertical ">
+      <div class="container  layout vertical ">
           ${IconBar({
             loading,
             actions,
             layerOpacity,
             entityId: selectedId || hoverId,
-            presetName: selectedId && fc && findPresetName(selectedId, fc),
           })}
           ${TabRow({
             active: mainTab.active,

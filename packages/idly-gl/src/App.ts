@@ -22,10 +22,13 @@ export class App extends Component<Store, {}, any, void> {
       mapComp: new MapComp(
         {
           hoverEntityId: props.selectEntity.hoverId,
+          popup: props.selectEntity.popup,
           selectedEntityId: props.selectEntity.selectedId,
           quadkeys: props.map.quadkeys,
           fc: props.map.featureCollection,
           layers: props.map.layers,
+          mapBeforeLayer: props.map.beforeLayer,
+          actions: this.actions,
         },
         glInstance,
         props.selectEntity.beforeLayers
@@ -38,11 +41,14 @@ export class App extends Component<Store, {}, any, void> {
   protected render(props: Store) {
     (window as any).render = props;
     this.children.mapComp.setProps({
+      popup: props.selectEntity.popup,
       hoverEntityId: props.selectEntity.hoverId,
       selectedEntityId: props.selectEntity.selectedId,
       quadkeys: props.map.quadkeys,
       fc: props.map.featureCollection,
       layers: props.map.layers,
+      mapBeforeLayer: props.map.beforeLayer,
+      actions: this.actions,
     });
 
     render(
@@ -54,7 +60,6 @@ export class App extends Component<Store, {}, any, void> {
         layers: props.map.layers,
         actions: this.actions,
         entityTree: props.entityTree,
-        fc: props.map.featureCollection,
       }),
       this.dom
     );

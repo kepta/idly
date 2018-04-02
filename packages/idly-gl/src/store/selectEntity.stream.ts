@@ -16,10 +16,10 @@ export function selectEntityStream(
       rxMap(({ selectedId }) => selectedId),
       distinctUntilChanged(),
       switchMap((selectedId = '') =>
-        fromPromise(workerOperations.getDerived({ id: selectedId }))
+        fromPromise(workerOperations.getEntityMetadata({ id: selectedId }))
       )
     )
-    .subscribe(r => actions.addEntityTree(r.derived), e => console.error(e));
+    .subscribe(r => actions.addEntityTree(r), e => console.error(e));
 
   return () => {
     [fc].forEach(s => s.unsubscribe());

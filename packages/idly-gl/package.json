@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/jest": "^22.0.1",
     "@types/mapbox-gl": "^0.44.1",
-    "awesome-typescript-loader": "^4.0.1",
+    "awesome-typescript-loader": "^5.0.0-1",
     "circular-dependency-plugin": "^5.0.1",
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "fuse-box": "^3.0.2",

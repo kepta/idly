@@ -14,7 +14,6 @@ import { Actions } from './store/Actions';
 import { MainTabs, Store } from './store/index';
 import { mapStreams } from './store/map.streams';
 import { selectEntityStream } from './store/selectEntity.stream';
-import { debugMethods } from './helpers/debug';
 
 export class IdlyGlPlugin {
   public Plugin?: App;
@@ -28,7 +27,7 @@ export class IdlyGlPlugin {
   private actions!: Actions;
   private unMounted = false;
 
-  constructor(config: Partial<Store>) {
+  constructor(config: Partial<Store> = {}) {
     this.config = config;
 
     const placeHolderLayer1 = layers.find(l =>
@@ -44,10 +43,14 @@ export class IdlyGlPlugin {
     );
 
     const starter: Store = {
+      ...this.config,
       mainTab: {
         active: MainTabs.Info,
+        ...this.config.mainTab,
       },
-      tags: {},
+      tags: {
+        ...this.config.tags,
+      },
       selectEntity: {
         selectedId: '',
         beforeLayers: {
@@ -55,6 +58,7 @@ export class IdlyGlPlugin {
           middle: placeHolderLayer2 ? placeHolderLayer2.layer.id : '',
           top: placeHolderLayer1 ? placeHolderLayer1.layer.id : '',
         },
+        ...this.config.selectEntity,
       },
       map: {
         quadkeys: [],
@@ -65,8 +69,8 @@ export class IdlyGlPlugin {
           type: 'FeatureCollection',
           features: [],
         },
+        ...this.config.map,
       },
-      ...this.config,
     };
 
     this.store = new BehaviorSubject<Store>(starter);
@@ -107,7 +111,7 @@ export class IdlyGlPlugin {
   }
 
   private init(m: any) {
-    this.actions = debugMethods(new Actions(this.store));
+    this.actions = new Actions(this.store);
 
     const plugin = new App(
       this.store.getValue(),

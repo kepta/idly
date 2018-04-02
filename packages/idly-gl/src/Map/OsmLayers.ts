@@ -10,21 +10,22 @@ export class OsmLayers extends Component<Props, {}> {
   private gl: any;
   private sourceId: string;
   private prevLayers: Store['map']['layers'];
-
-  constructor(props: Props, gl: any, sourceId: string) {
+  private beforeLayer?: string;
+  constructor(props: Props, gl: any, sourceId: string, beforeLayer?: string) {
     super(props, {});
     this.sourceId = sourceId;
     this.gl = gl;
     this.prevLayers = [];
 
+    this.beforeLayer = this.checkBeforeLayer(beforeLayer);
+
     if (this.gl.getSource(this.sourceId)) {
       this.getGlLayer(props.layers).forEach(l => {
         if (!this.gl.getLayer(l.id)) {
-          this.gl.addLayer(l);
+          this.gl.addLayer(l, this.beforeLayer);
         }
       });
     }
-
     this.mount();
   }
 
@@ -56,9 +57,11 @@ export class OsmLayers extends Component<Props, {}> {
         }
       });
 
+      this.beforeLayer = this.checkBeforeLayer(this.beforeLayer);
+
       this.getGlLayer(props.layers).forEach(l => {
         if (!this.gl.getLayer(l.id)) {
-          this.gl.addLayer(l);
+          this.gl.addLayer(l, this.beforeLayer);
         }
       });
 
@@ -68,5 +71,15 @@ export class OsmLayers extends Component<Props, {}> {
 
   private getGlLayer = (layers: Props['layers']) => {
     return visibleGlLayers(layers);
+  };
+
+  private checkBeforeLayer = (layer?: string) => {
+    if (!layer) {
+      return undefined;
+    }
+    if (this.gl.getLayer(layer)) {
+      return layer;
+    }
+    return undefined;
   };
 }

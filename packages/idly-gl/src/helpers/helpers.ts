@@ -134,5 +134,3 @@ export function bindThis(_: any, key: any, { value: fn }: any) {
     },
   };
 }
-
-export function isRelation(id?: string) {}

@@ -3,7 +3,6 @@ import { Store } from '../store';
 
 export function SelectedEntity({
   id = '',
-  fc,
 }: {
   id?: string;
   fc: Store['map']['featureCollection'];
@@ -40,7 +39,7 @@ function osmLink(id?: string) {
 
   const href = `https://openstreetmap.org/${type}/${id.substring(1)} `;
 
-  return html`<span class="icon link layout vertical center-center"}>
+  return html`<span class="idly-gl-icons link layout vertical center-center"}>
           <a target="_blank"  href=${href}>${id}</a>
     </span>`;
 }

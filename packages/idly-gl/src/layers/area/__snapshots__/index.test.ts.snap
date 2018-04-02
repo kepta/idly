@@ -55,7 +55,7 @@ Object {
     "type": "line",
   },
   "priority": 1.75,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -87,7 +87,7 @@ Object {
     "type": "line",
   },
   "priority": 1.5,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -142,7 +142,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -246,7 +246,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -288,7 +288,7 @@ Object {
     "type": "line",
   },
   "priority": 2.25,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -324,7 +324,7 @@ Object {
     "type": "fill",
   },
   "priority": 2.25,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -359,7 +359,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -443,7 +443,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -508,7 +508,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -622,7 +622,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -715,7 +715,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -857,7 +857,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -895,7 +895,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -982,7 +982,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1026,7 +1026,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1119,7 +1119,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1161,7 +1161,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1252,7 +1252,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1286,7 +1286,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1369,7 +1369,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1422,7 +1422,7 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
 
@@ -1524,6 +1524,6 @@ Object {
     "type": "line",
   },
   "priority": 2,
-  "selectable": false,
+  "selectable": true,
 }
 `;
