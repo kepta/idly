@@ -6,17 +6,19 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
+
 const srcpath = path.resolve(__dirname, 'src/');
 
 module.exports = {
   entry: './src/index.ts',
   output: {
     filename: 'idly-gl.js',
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, 'dist/'),
     library: 'idlygl',
     libraryTarget: 'umd',
   },
 
+  mode: 'development',
   // Enable sourcemaps for debugging webpack's output.
   // devtool: 'hidden-source-map',
   devtool: 'eval',
@@ -30,29 +32,32 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(__dirname, 'dist'),
   },
   plugins: [
-    new DuplicatePackageCheckerPlugin({
-      // Also show module that is requiring each duplicate package
-      verbose: true,
-      // Emit errors instead of warnings
-      emitError: false,
-    }),
-
-    new CircularDependencyPlugin({
-      // exclude detection of files based on a RegExp
-      exclude: /a\.js|node_modules/,
-      // add errors to webpack instead of warnings
-      failOnError: true,
-    }),
+    // new DuplicatePackageCheckerPlugin({
+    //   // Also show module that is requiring each duplicate package
+    //   verbose: true,
+    //   // Emit errors instead of warnings
+    //   emitError: true,
+    // }),
+    // new CircularDependencyPlugin({
+    //   // exclude detection of files based on a RegExp
+    //   exclude: /a\.js|node_modules/,
+    //   // add errors to webpack instead of warnings
+    //   failOnError: true,
+    // }),
     // new DashboardPlugin(),
     // new BundleAnalyzerPlugin(),
   ],
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
+        options: { errorsAsWarnings: true },
+      },
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
