@@ -44,14 +44,15 @@ export function turnRestriction(
 
       result.push({
         ...geometry,
+        id: relation.id,
         properties: {
           '@idly-geometry':
             geometry.properties && geometry.properties['@idly-geometry'],
           '@idly-highlight': highlightColor,
           '@idly-member-id': member.id,
-          '@idly-name': role,
           '@idly-preset-name': displayName || 'Turn Restriction',
-          '@idly-turn-restriction': role,
+          '@idly-relation-role': `${role}/${displayName.slice(0, 14)}`,
+          '@idly-relation-type': 'turn-restriction',
           id: relation.id,
         },
       });

@@ -12,6 +12,6 @@ export function relationPresetMatch(derived: Derived<Relation>) {
   return { match, geometry };
 }
 
-function isMultiPolygon(r: Relation) {
+function isMultiPolygon(_: Relation) {
   return false;
 }
