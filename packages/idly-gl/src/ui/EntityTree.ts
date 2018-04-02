@@ -37,14 +37,14 @@ export async function EntityTree({
   return html`
         <div class="tree layout vertical"  style$=${`margin-left:${depth *
           8}px`}>
-          ${TreeBranch(
-            'Parent Ways',
-            parentWays,
-            actions,
-            depth,
-            selectedId,
-            hoverId
-          )}
+        ${TreeBranch(
+          'Parent Ways',
+          parentWays,
+          actions,
+          depth,
+          selectedId,
+          hoverId
+        )}
           ${TreeBranch(
             'Parent Relations',
             parentRelations,
