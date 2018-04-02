@@ -5,7 +5,7 @@ const ops = [
   ['Get', 'Quadkey'],
   ['Get', 'MoveNode'],
   ['Get', 'Entity'],
-  ['Get', 'Derived'],
+  ['Get', 'EntityMetadata'],
 ].sort((a, b) => (a[0] + a[1]).localeCompare(b[0] + b[1]));
 function createAllTypes(ops) {
   const createImports = ([f, l]) =>
