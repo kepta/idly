@@ -25,7 +25,7 @@ export class IdlyGlPlugin {
   private mapStreams!: () => void;
   private selectEntityStream!: () => void;
   private actions!: Actions;
-  private unMounted?: boolean;
+  private mounted?: boolean = undefined;
 
   constructor(config: Partial<Store> = {}) {
     this.config = config;
@@ -90,7 +90,7 @@ export class IdlyGlPlugin {
   }
 
   public onRemove() {
-    if (this.unMounted) {
+    if (this.mounted !== true) {
       return;
     }
     const div = this.container && this.container.parentNode;
@@ -107,11 +107,11 @@ export class IdlyGlPlugin {
       this.storeSubscription.unsubscribe();
     }
     this.Plugin = undefined;
-    this.unMounted = true;
+    this.mounted = false;
   }
 
   private init(m: any) {
-    if (this.unMounted === false || this.unMounted === true) {
+    if (this.mounted !== undefined) {
       return;
     }
 
@@ -144,6 +144,6 @@ export class IdlyGlPlugin {
 
     this.Plugin = plugin;
 
-    this.unMounted = false;
+    this.mounted = true;
   }
 }
