@@ -25,7 +25,7 @@ export class IdlyGlPlugin {
   private mapStreams!: () => void;
   private selectEntityStream!: () => void;
   private actions!: Actions;
-  private unMounted = false;
+  private unMounted?: boolean;
 
   constructor(config: Partial<Store> = {}) {
     this.config = config;
@@ -111,6 +111,10 @@ export class IdlyGlPlugin {
   }
 
   private init(m: any) {
+    if (this.unMounted === false || this.unMounted === true) {
+      return;
+    }
+
     this.actions = new Actions(this.store);
 
     const plugin = new App(
@@ -139,5 +143,7 @@ export class IdlyGlPlugin {
     );
 
     this.Plugin = plugin;
+
+    this.unMounted = false;
   }
 }
