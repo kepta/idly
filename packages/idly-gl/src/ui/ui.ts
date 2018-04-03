@@ -12,7 +12,7 @@ import { IconBar } from './icons';
 import { LayerManager } from './LayerManager';
 import { Style } from './Style';
 
-export const Ui: any = ({
+export const Ui = ({
   mainTab,
   selectEntity: { selectedId, hoverId },
   layerOpacity,
