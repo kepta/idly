@@ -1,25 +1,25 @@
 {
 	"folders": [
 		{
-			"path": "idly-faster-osm-parser"
+			"path": "packages/idly-faster-osm-parser"
 		},
 		{
-			"path": "idly-common"
+			"path": "packages/idly-common"
 		},
 		{
-			"path": "idly-worker"
+			"path": "packages/idly-worker"
 		},
 		{
-			"path": "idly-gl"
+			"path": "packages/idly-gl"
 		},
 		{
-			"path": "jalebi"
+			"path": "packages/jalebi"
 		},
 		{
-			"path": "idly-state"
+			"path": "packages/idly-state"
 		},
 		{
-			"path": "idly-osm-to-geojson"
+			"path": "packages/idly-osm-to-geojson"
 		}
 	],
 	"settings": {
