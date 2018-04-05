@@ -1,6 +1,6 @@
 {
   "name": "idly-osm-to-geojson",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "main": "lib/index.js",
   "types": "lib",
