@@ -1,6 +1,6 @@
 {
   "name": "idly-faster-osm-parser",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "An insanely fast osm xml parser",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
