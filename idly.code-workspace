@@ -56,6 +56,6 @@
 			"**/CVS": true,
 			"**/.DS_Store": true,
 			"**/lib": false,
-		}
-	}
+		},
+	},
 }
