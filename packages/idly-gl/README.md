@@ -14,7 +14,7 @@ npm i -S idly-gl
 
 ### CDN
 
-Make sure add mapbox-gl and mapbox-gl css before importing idly-gl
+Make sure to add mapbox-gl and mapbox-gl css before importing idly-gl
 
 ```HTML
  <script src='https://unpkg.com/idly-gl@latest/dist/idly-gl.js'></script>

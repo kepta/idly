@@ -3,7 +3,6 @@ import { fromPromise } from 'rxjs/observable/fromPromise';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { quadkey } from '../configuration';
 import { MainTabs, Store } from '../store/index';
 import { entities, visibleGlLayers } from '../store/map.derived';
 import {
