@@ -3,9 +3,15 @@ import { fromPromise } from 'rxjs/observable/fromPromise';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
+import { quadkey } from '../configuration';
 import { MainTabs, Store } from '../store/index';
 import { entities, visibleGlLayers } from '../store/map.derived';
-import { makeClick$, makeNearestEntity$, moveEndBbox$ } from '../streams';
+import {
+  makeBoundsAndZoom$,
+  makeClick$,
+  makeNearestEntity$,
+  makeQuadkeys$,
+} from '../streams';
 import { workerOperations } from '../worker';
 import { Actions } from './Actions';
 
@@ -31,7 +37,7 @@ export function mapStreams(
     )
     .subscribe(r => actions.modifyFC(r), e => console.error(e));
 
-  const moveEndBbox = moveEndBbox$(gl).subscribe(
+  const moveEndBbox = makeQuadkeys$(gl).subscribe(
     r => actions.modifyQuadkeys(r),
     e => console.error(e)
   );
@@ -47,8 +53,6 @@ export function mapStreams(
     )
   ).subscribe(
     ({ data: ids, point }) => {
-      // prevent when multiple trs are presents and
-      // the user is made to believe only one is there
       if (ids.length > 1 && ids.every(e => e.charAt(0) === 'r')) {
         actions.addEntitySelectorPopup({ ids, lnglat: point.lngLat });
         actions.modifyMainTab(MainTabs.Tree);
@@ -65,8 +69,12 @@ export function mapStreams(
     e => console.error(e)
   );
 
+  const zoom = makeBoundsAndZoom$(gl).subscribe(r => {
+    actions.modifyZoom(r);
+  });
+
   return () => {
-    [fc, moveEndBbox, makeNearestEntity, makeClick].forEach(s =>
+    [fc, moveEndBbox, makeNearestEntity, makeClick, zoom].forEach(s =>
       s.unsubscribe()
     );
     return;

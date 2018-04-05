@@ -1,5 +1,6 @@
 import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
+import { quadkey } from '../configuration';
 import { LayerOpacity } from '../helpers/layerOpacity';
 import { Layer } from '../layers/types';
 import { Actions } from '../store/Actions';
@@ -12,7 +13,7 @@ import { IconBar } from './icons';
 import { LayerManager } from './LayerManager';
 import { Style } from './Style';
 
-export const Ui = ({
+export const Ui: any = ({
   mainTab,
   selectEntity: { selectedId, hoverId },
   layerOpacity,
@@ -20,6 +21,7 @@ export const Ui = ({
   actions,
   layers,
   entityTree,
+  zoom,
 }: {
   mainTab: Store['mainTab'];
   selectEntity: Store['selectEntity'];
@@ -28,6 +30,7 @@ export const Ui = ({
   actions: Actions;
   layers: Layer[];
   entityTree: Store['entityTree'];
+  zoom: Store['map']['zoom'];
 }): TemplateResult => {
   let children;
   let miniWindow;
@@ -95,6 +98,14 @@ export const Ui = ({
           })}
          ${children}
         ${miniWindow}
+        ${
+          zoom <= quadkey.ZOOM_MIN
+            ? MiniWindow({
+                active: 'Zoom out of bound!',
+                child: html`<span class="p3x title">You need to zoom in to load OSM data</span>`,
+              })
+            : ''
+        }
       </div>
     </div>
   `;

@@ -17,7 +17,6 @@ export class App extends Component<Store, {}, any, void> {
     super(props, {});
     this.actions = actions;
     this.dom = dom;
-
     this.children = {
       mapComp: new MapComp(
         {
@@ -60,6 +59,7 @@ export class App extends Component<Store, {}, any, void> {
         layers: props.map.layers,
         actions: this.actions,
         entityTree: props.entityTree,
+        zoom: props.map.zoom,
       }),
       this.dom
     );

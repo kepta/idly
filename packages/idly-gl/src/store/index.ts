@@ -18,7 +18,11 @@ export interface Store {
   selectEntity: {
     hoverId?: string;
     selectedId?: string;
-    beforeLayers: { top: string; middle: string; last: string };
+    beforeLayers: {
+      top: string | undefined;
+      middle: string | undefined;
+      last: string | undefined;
+    };
     popup?: {
       lnglat: { lat: number; lng: number };
       ids: string[];
@@ -31,6 +35,7 @@ export interface Store {
     featureCollection: GetQuadkey['response'];
     beforeLayer?: string;
     layerOpacity: LayerOpacity;
+    zoom: number;
   };
 
   entityTree?: EntityExpanded;

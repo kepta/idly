@@ -61,7 +61,7 @@ export function MiniWindow<T extends string>({
   <div>
     <div class="tab-row mini layout horizontal start-justified">
       <span
-        class="layout layout tab-row-item p3x"
+        class="layout tab-row-item p6l"
       >
         ${active}
       </span>

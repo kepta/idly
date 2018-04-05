@@ -141,6 +141,9 @@ export const Style: TemplateResult = html`
 .idly-gl .p3x {
     padding-left: 3px;
 }
+.idly-gl .p6l {
+    padding-left: 6px;
+}
 
 .idly-gl .entity-info {
     margin-left: 3px;

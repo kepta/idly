@@ -99,17 +99,24 @@ export function makeMouseleave$(
   return glObservable(glMap, 'mouseleave', layer);
 }
 
-const CHILD = ['0', '1', '2', '3'];
-
-const quadkeyGetChildren = (q: string) => CHILD.map(c => q + c);
-
-export function moveEndBbox$(glMap: any) {
+export function makeBoundsAndZoom$(glMap: any) {
   return makeMoveend$(glMap).pipe(
     debounceTime(450),
     startWith('' as any),
-    rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
-    filter(([_, zoom]) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
-    rxMap(([bounds, zoom]) => {
+    rxMap(() => ({
+      bounds: glMap.getBounds(),
+      zoom: glMap.getZoom() as number,
+    }))
+  );
+}
+
+export function makeQuadkeys$(glMap: any) {
+  const CHILD = ['0', '1', '2', '3'];
+  const quadkeyGetChildren = (q: string) => CHILD.map(c => q + c);
+
+  return makeBoundsAndZoom$(glMap).pipe(
+    filter(({ zoom }) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
+    rxMap(({ bounds, zoom }) => {
       const quadkeys = getTiles(
         [
           bounds.getWest(),
@@ -168,17 +175,16 @@ export function makeHover$(
   return merge(mouseenter$, mouseleave$);
 }
 
-const sortOrder: any = {
-  n: 3,
-  w: 2,
-  r: 1,
-};
-
 export function makeNearestEntity$(
   glMap: any,
   layerObs: Observable<any>,
   radius = mapInteraction.RADIUS
 ): Observable<{ data: string[]; point: MapMouseEvent }> {
+  const sortOrder: any = {
+    n: 3,
+    w: 2,
+    r: 1,
+  };
   return makeMousemove$(glMap).pipe(
     throttleTime(50),
     withLatestFrom(layerObs),

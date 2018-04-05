@@ -3,11 +3,7 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
 import { Subscription } from 'rxjs/Subscription';
 import { App } from './App';
-import {
-  PlaceHolderLayer1,
-  PlaceHolderLayer2,
-  PlaceHolderLayer3,
-} from './constants';
+import { findPlaceholderLayers } from './helpers/helpers';
 import { LayerOpacity } from './helpers/layerOpacity';
 import layers from './layers';
 import { Actions } from './store/Actions';
@@ -30,18 +26,6 @@ export class IdlyGlPlugin {
   constructor(config: Partial<Store> = {}) {
     this.config = config;
 
-    const placeHolderLayer1 = layers.find(l =>
-      l.layer.id.includes(PlaceHolderLayer1)
-    );
-
-    const placeHolderLayer2 = layers.find(l =>
-      l.layer.id.includes(PlaceHolderLayer2)
-    );
-
-    const placeHolderLayer3 = layers.find(l =>
-      l.layer.id.includes(PlaceHolderLayer3)
-    );
-
     const starter: Store = {
       ...this.config,
       mainTab: {
@@ -53,11 +37,7 @@ export class IdlyGlPlugin {
       },
       selectEntity: {
         selectedId: '',
-        beforeLayers: {
-          last: placeHolderLayer3 ? placeHolderLayer3.layer.id : '',
-          middle: placeHolderLayer2 ? placeHolderLayer2.layer.id : '',
-          top: placeHolderLayer1 ? placeHolderLayer1.layer.id : '',
-        },
+        beforeLayers: findPlaceholderLayers(layers),
         ...this.config.selectEntity,
       },
       map: {

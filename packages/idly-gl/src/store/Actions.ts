@@ -103,6 +103,7 @@ export class Actions {
     });
   }
 
+  @bindThis
   public addEntityTreeExpand(
     id?: string,
     metadata?: GetEntityMetadata['response'],
@@ -176,6 +177,7 @@ export class Actions {
     });
   }
 
+  @bindThis
   public addEntityTreeCollapse(
     metadata: GetEntityMetadata['response'],
     parent: RecursiveRecord
@@ -312,6 +314,14 @@ export class Actions {
           this.store.map.layers
         ),
       },
+    });
+  }
+
+  @bindThis
+  public modifyZoom({ zoom }: { bounds: any; zoom: number }) {
+    this.subject.next({
+      ...this.store,
+      map: { ...this.store.map, zoom },
     });
   }
 }

@@ -4,7 +4,13 @@ import bboxPolygon from '@turf/bbox-polygon';
 import { FeatureCollection } from '@turf/helpers';
 import { BBox, mercator, Tile } from 'idly-common/lib/geo';
 import parser from 'idly-faster-osm-parser';
-import { IDLY_NS } from '../constants';
+import {
+  IDLY_NS,
+  PlaceHolderLayer1,
+  PlaceHolderLayer2,
+  PlaceHolderLayer3,
+} from '../constants';
+import { Layer } from '../layers/types';
 
 export function addSource(layer: any, source: string) {
   return {
@@ -68,20 +74,17 @@ export async function fetchTileXml(
   y: number,
   zoom: number
 ): Promise<any> {
-  // return parser(rsp);
   const bboxStr = mercator.bbox(x, y, zoom).join(',');
   if (cache.has(bboxStr)) {
     return cache.get(bboxStr);
   }
-  const response = await fetch(
-    `https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`
-  );
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  const entities = parser(await response.text());
-  cache.set(bboxStr, entities);
-  return entities;
+  return fetch(`https://www.openstreetmap.org/api/0.6/map?bbox=${bboxStr}`)
+    .then(r => (r.ok ? r.text() : Promise.reject(r.statusText)))
+    .then(text => parser(text))
+    .then(entities => {
+      cache.set(bboxStr, entities);
+      return entities;
+    });
 }
 
 export function bboxify(e: any, factor: number) {
@@ -127,3 +130,13 @@ export function bindThis(_: any, key: any, { value: fn }: any) {
     },
   };
 }
+
+export const findPlaceholderLayers = (layers: Layer[]) => {
+  const ids = layers.map(l => l.layer.id);
+
+  return {
+    top: ids.find(id => id.includes(PlaceHolderLayer1)),
+    middle: ids.find(id => id.includes(PlaceHolderLayer2)),
+    last: ids.find(id => id.includes(PlaceHolderLayer3)),
+  };
+};
