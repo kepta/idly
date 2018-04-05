@@ -49,6 +49,7 @@ export class IdlyGlPlugin {
           type: 'FeatureCollection',
           features: [],
         },
+        zoom: 17,
         ...this.config.map,
       },
     };
