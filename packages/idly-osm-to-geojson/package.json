@@ -1,6 +1,6 @@
 {
   "name": "idly-osm-to-geojson",
-  "version": "1.4.9",
+  "version": "1.5.0",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "main": "lib/index.js",
   "types": "lib",
@@ -12,8 +12,7 @@
   "scripts": {
     "clean": "rm -r lib/*",
     "test": "jest $npm_package_name --config ../../jest.config.js",
-    "test:watch":
-      "jest $npm_package_name --config ../../jest.config.js --watch",
+    "test:watch": "jest $npm_package_name --config ../../jest.config.js --watch",
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "lint": "tslint -p .",
@@ -22,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "@turf/helpers": "^5.1.5",
-    "idly-common": "^1.4.5"
+    "idly-common": "^1.5.0"
   },
   "devDependencies": {
     "@types/jest": "^22.0.1",
