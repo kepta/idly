@@ -1,26 +1,24 @@
 {
   "name": "idly-faster-osm-parser",
-  "version": "1.4.6",
+  "version": "1.4.9",
   "description": "An insanely fast osm xml parser",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
-    "url": "https://github.com/kepta/idly/tree/master/packages/idly-faster-osm-parser"
+    "url":
+      "https://github.com/kepta/idly/tree/master/packages/idly-faster-osm-parser"
   },
   "scripts": {
     "test": "jest $npm_package_name --config ../../jest.config.js",
-    "test:watch": "jest $npm_package_name --config ../../jest.config.js --watch",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "lint": "tslint -p .",
     "pretest": "npm run lint && npm run tsc",
     "doc": "typedoc  --out ./docs/ --mode modules  --theme minimal ./src/"
   },
-  "keywords": [
-    "osm",
-    "xml",
-    "parser"
-  ],
+  "keywords": ["osm", "xml", "parser"],
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "license": "ISC",
   "dependencies": {

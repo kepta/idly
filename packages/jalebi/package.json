@@ -1,12 +1,13 @@
 {
   "name": "jalebi",
-  "version": "1.4.7",
+  "version": "1.4.9",
   "description": "An xperiment editor",
   "main": "index.js",
   "scripts": {
     "op": "webpack-dev-server --port 5000",
     "test": "jest $npm_package_name --config ../../jest.config.js",
-    "test:watch": "jest $npm_package_name --config ../../jest.config.js --watch",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
     "tsc": "tsc",
     "lint": "tslint -p .",
     "pretest": "npm run lint && npm run tsc"
@@ -15,9 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/kepta/idly.git"
   },
-  "keywords": [
-    "Openstreetmap"
-  ],
+  "keywords": ["Openstreetmap"],
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "license": "ISC",
   "bugs": {

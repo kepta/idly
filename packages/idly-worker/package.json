@@ -1,13 +1,14 @@
 {
   "name": "idly-worker",
-  "version": "1.4.5",
+  "version": "1.4.9",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "description": "",
   "main": "index.js",
   "scripts": {
     "prestart": "rm -r lib/*",
     "test": "jest $npm_package_name --config ../../jest.config.js",
-    "test:watch": "jest $npm_package_name --config ../../jest.config.js --watch",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "lint": "tslint -p .",

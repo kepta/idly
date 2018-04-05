@@ -1,6 +1,6 @@
 {
   "name": "idly-gl",
-  "version": "1.4.7",
+  "version": "1.4.9",
   "description":
     "A mapbox-gl plugin to render Openstreetmap as a geojson layer.",
   "main": "dist/idly-gl.js",
