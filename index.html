@@ -76,7 +76,7 @@
         var waiter = (timer) => new Promise((res) => setTimeout(() => res(), timer));
         window.waiter = waiter
         function foo() {//
-            var t = new idlygl.IdlyGlPlugin();
+            var t = new IdlyGl.default();
             map.addControl(t);
             return async (timer = 300) => {
                 await waiter(timer)
