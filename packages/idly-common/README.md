@@ -13,9 +13,7 @@ npm install idly-common
 This package can be used with
 
 * Node v4 and above
-* Any major browser which supports ES5.
-
-(Note: this uses [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap), [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) & [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) internally.)
+* Any major browser which supports ES6.
 
 ### Example usage
 
