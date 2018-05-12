@@ -6,7 +6,6 @@ import {
   Relation,
   Way,
 } from 'idly-common/lib/osm/structures';
-
 import { nodeFeatures } from './nodeFeatures';
 import { relationFeatures } from './relationFeatures/index';
 import { Derived, DerivedTable } from './types';
@@ -21,13 +20,11 @@ export const _internalCache = new WeakMap<
 export const entityToGeoJson = (
   table: DerivedTable
 ): Array<Feature<Point | Polygon | LineString>> => {
-  let count = 0;
   const result: Array<Feature<Point | Polygon | LineString>> = [];
   const relationGeometries: Derived[] = [];
   for (const [, element] of table) {
     let r = _internalCache.get(element);
     if (r) {
-      count++;
       result.push(r);
       continue;
     }

@@ -1,8 +1,12 @@
 # IDLY-GL
 
-### [DEMO](https://kepta.github.io/idly-gl-example/)
+![screen](https://user-images.githubusercontent.com/6966254/38627360-d0e20dc8-3d7c-11e8-9398-31c2ca8c8d64.gif)
 
-A mapbox-gl plugin to render Openstreetmap as an interactive geojson layer using [iD](https://github.com/openstreetmap/iD)'s style.
+# What is Idly-gl
+
+Idly-gl is a [mapbox-gl](https://www.mapbox.com/mapbox-gl-js/plugins/) plugin which renders live Openstreetmap data as an interactive layer. It uses familiar visual language of [iD](https://github.com/openstreetmap/iD) editor to display various node, ways, relations.
+
+# Why does this exist?
 
 ## Usage
 

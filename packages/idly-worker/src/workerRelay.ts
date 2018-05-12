@@ -29,7 +29,9 @@ export function workerRelay(
   return async message => {
     return getStateController(state, message).then(r => {
       state = r.state;
-      self.state = r.state;
+      if (process.env.NODE_ENV !== 'production') {
+        (self as any).state = r.state;
+      }
       return JSON.stringify(r.response);
     });
   };
