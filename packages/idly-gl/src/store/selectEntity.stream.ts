@@ -11,7 +11,7 @@ export function selectEntityStream(
   map: Observable<Store['selectEntity']>,
   actions: Actions
 ) {
-  const fc = map
+  map
     .pipe(
       rxMap(({ selectedId }) => selectedId),
       distinctUntilChanged(),
@@ -20,9 +20,4 @@ export function selectEntityStream(
       )
     )
     .subscribe(r => actions.addEntityTree(r), e => console.error(e));
-
-  return () => {
-    [fc].forEach(s => s.unsubscribe());
-    return;
-  };
 }

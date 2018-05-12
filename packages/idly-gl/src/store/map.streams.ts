@@ -3,6 +3,7 @@ import { fromPromise } from 'rxjs/observable/fromPromise';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
 import { switchMap } from 'rxjs/operators/switchMap';
+import { Subject } from 'rxjs/Subject';
 import { MainTabs, Store } from '../store/index';
 import { entities, visibleGlLayers } from '../store/map.derived';
 import {
@@ -16,6 +17,7 @@ import { Actions } from './Actions';
 
 export function mapStreams(
   map: Observable<Store['map']>,
+  destroy: Subject<void>,
   actions: Actions,
   gl: any
 ) {
@@ -27,7 +29,7 @@ export function mapStreams(
   // is because if someone from outside changes the quadkeys
   // we might want to fetch fc for that. Putting it here
   // couples it to only fetch FC whenever map move ends.
-  const fc = map
+  map
     .pipe(
       rxMap(({ quadkeys }) => quadkeys),
       distinctUntilChanged(),
@@ -36,13 +38,14 @@ export function mapStreams(
     )
     .subscribe(r => actions.modifyFC(r), e => console.error(e));
 
-  const moveEndBbox = makeQuadkeys$(gl).subscribe(
+  makeQuadkeys$(gl, destroy).subscribe(
     r => actions.modifyQuadkeys(r),
     e => console.error(e)
   );
 
-  const makeNearestEntity = makeNearestEntity$(
+  makeNearestEntity$(
     gl,
+    destroy,
     map.pipe(
       rxMap(({ layers }) => layers),
       distinctUntilChanged(),
@@ -63,19 +66,12 @@ export function mapStreams(
     e => console.error(e)
   );
 
-  const makeClick = makeClick$(gl).subscribe(
+  makeClick$(gl, destroy).subscribe(
     () => actions.selectId(),
     e => console.error(e)
   );
 
-  const zoom = makeBoundsAndZoom$(gl).subscribe(r => {
+  makeBoundsAndZoom$(gl, destroy).subscribe(r => {
     actions.modifyZoom(r);
   });
-
-  return () => {
-    [fc, moveEndBbox, makeNearestEntity, makeClick, zoom].forEach(s =>
-      s.unsubscribe()
-    );
-    return;
-  };
 }

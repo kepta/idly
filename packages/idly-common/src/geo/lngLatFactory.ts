@@ -6,5 +6,5 @@ export function lngLatFactory(
   if (Array.isArray(obj)) {
     return { lon: obj[0], lat: obj[1] };
   }
-  return { ...obj };
+  return Object.assign({}, obj);
 }

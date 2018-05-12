@@ -3,7 +3,7 @@ import { tileToQuadkey } from 'idly-common/lib/misc';
 import { Map, MapMouseEvent, MapTouchEvent } from 'mapbox-gl/dist/mapbox-gl';
 import { Observable } from 'rxjs/Observable';
 import { fromEventPattern } from 'rxjs/observable/fromEventPattern';
-import { FromEventPatternObservable } from 'rxjs/observable/FromEventPatternObservable';
+import { merge } from 'rxjs/observable/merge';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
@@ -13,16 +13,17 @@ import { startWith } from 'rxjs/operators/startWith';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { throttleTime } from 'rxjs/operators/throttleTime';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
+import { Subject } from 'rxjs/Subject';
 
-import { merge } from 'rxjs/observable/merge';
 import { mapInteraction, quadkey } from './configuration';
 import { bboxify, tilesFilterSmall } from './helpers/helpers';
 
 export function glObservable<T>(
   glMap: Map,
   eventType: string,
+  destroy: Subject<void>,
   layer?: string
-): FromEventPatternObservable<T> {
+): Observable<T> {
   return fromEventPattern<T>(
     handler => {
       layer
@@ -34,73 +35,83 @@ export function glObservable<T>(
         ? glMap.off(eventType, layer, handler)
         : glMap.off(eventType, handler);
     }
-  );
+  ).pipe(takeUntil(destroy));
 }
 
 export function makeMouseup$(
-  glMap: any
-): FromEventPatternObservable<MapMouseEvent> {
-  return glObservable(glMap, 'mouseup');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapMouseEvent> {
+  return glObservable(glMap, 'mouseup', destroy);
 }
 
 export function makeMousedown$(
-  glMap: any
-): FromEventPatternObservable<MapMouseEvent> {
-  return glObservable(glMap, 'mousedown');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapMouseEvent> {
+  return glObservable(glMap, 'mousedown', destroy);
 }
 
 export function makeMousemove$(
-  glMap: any
-): FromEventPatternObservable<MapMouseEvent> {
-  return glObservable(glMap, 'mousemove');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapMouseEvent> {
+  return glObservable(glMap, 'mousemove', destroy);
 }
 
 export function makeClick$(
-  glMap: any
-): FromEventPatternObservable<MapMouseEvent> {
-  return glObservable(glMap, 'click');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapMouseEvent> {
+  return glObservable(glMap, 'click', destroy);
 }
 
 export function makeTouchstart$(
-  glMap: any
-): FromEventPatternObservable<MapTouchEvent> {
-  return glObservable(glMap, 'touchstart');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapTouchEvent> {
+  return glObservable(glMap, 'touchstart', destroy);
 }
 
 export function makeTouchend$(
-  glMap: any
-): FromEventPatternObservable<MapTouchEvent> {
-  return glObservable(glMap, 'touchend');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapTouchEvent> {
+  return glObservable(glMap, 'touchend', destroy);
 }
 
 export function makeTouchmove$(
-  glMap: any
-): FromEventPatternObservable<MapTouchEvent> {
-  return glObservable(glMap, 'touchmove');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapTouchEvent> {
+  return glObservable(glMap, 'touchmove', destroy);
 }
 
 export function makeMoveend$(
-  glMap: any
-): FromEventPatternObservable<MapMouseEvent | MapTouchEvent> {
-  return glObservable(glMap, 'moveend');
+  glMap: any,
+  destroy: Subject<void>
+): Observable<MapMouseEvent | MapTouchEvent> {
+  return glObservable(glMap, 'moveend', destroy);
 }
 
 export function makeMouseenter$(
   glMap: any,
-  layer: string
-): FromEventPatternObservable<MapMouseEvent | MapTouchEvent> {
-  return glObservable(glMap, 'mouseenter', layer);
+  layer: string,
+  destroy: Subject<void>
+): Observable<MapMouseEvent | MapTouchEvent> {
+  return glObservable(glMap, 'mouseenter', destroy, layer);
 }
 
 export function makeMouseleave$(
   glMap: any,
-  layer: string
-): FromEventPatternObservable<MapMouseEvent | MapTouchEvent> {
-  return glObservable(glMap, 'mouseleave', layer);
+  layer: string,
+  destroy: Subject<void>
+): Observable<MapMouseEvent | MapTouchEvent> {
+  return glObservable(glMap, 'mouseleave', destroy, layer);
 }
 
-export function makeBoundsAndZoom$(glMap: any) {
-  return makeMoveend$(glMap).pipe(
+export function makeBoundsAndZoom$(glMap: any, destroy: Subject<void>) {
+  return makeMoveend$(glMap, destroy).pipe(
     debounceTime(450),
     startWith('' as any),
     rxMap(() => ({
@@ -110,11 +121,11 @@ export function makeBoundsAndZoom$(glMap: any) {
   );
 }
 
-export function makeQuadkeys$(glMap: any) {
+export function makeQuadkeys$(glMap: any, destroy: Subject<void>) {
   const CHILD = ['0', '1', '2', '3'];
   const quadkeyGetChildren = (q: string) => CHILD.map(c => q + c);
 
-  return makeBoundsAndZoom$(glMap).pipe(
+  return makeBoundsAndZoom$(glMap, destroy).pipe(
     filter(({ zoom }) => zoom > quadkey.ZOOM_MIN && zoom <= quadkey.ZOOM_MAX),
     rxMap(({ bounds, zoom }) => {
       const quadkeys = getTiles(
@@ -142,8 +153,11 @@ export function makeQuadkeys$(glMap: any) {
   );
 }
 
-export function makeLoadingQuadkeys$(glMap: any): Observable<string[]> {
-  return makeMoveend$(glMap).pipe(
+export function makeLoadingQuadkeys$(
+  glMap: any,
+  destroy: Subject<void>
+): Observable<string[]> {
+  return makeMoveend$(glMap, destroy).pipe(
     debounceTime(600),
     startWith('' as any),
     rxMap(() => [glMap.getBounds(), glMap.getZoom()]),
@@ -169,14 +183,16 @@ export function makeLoadingQuadkeys$(glMap: any): Observable<string[]> {
 export function makeHover$(
   glMap: any,
   layer: string,
-  mouseenter$ = makeMouseenter$(glMap, layer),
-  mouseleave$ = makeMouseleave$(glMap, layer)
+  destroy: Subject<void>,
+  mouseenter$ = makeMouseenter$(glMap, layer, destroy),
+  mouseleave$ = makeMouseleave$(glMap, layer, destroy)
 ): Observable<MapMouseEvent | MapTouchEvent> {
   return merge(mouseenter$, mouseleave$);
 }
 
 export function makeNearestEntity$(
   glMap: any,
+  destroy: Subject<void>,
   layerObs: Observable<any>,
   radius = mapInteraction.RADIUS
 ): Observable<{ data: string[]; point: MapMouseEvent }> {
@@ -185,7 +201,7 @@ export function makeNearestEntity$(
     w: 2,
     r: 1,
   };
-  return makeMousemove$(glMap).pipe(
+  return makeMousemove$(glMap, destroy).pipe(
     throttleTime(50),
     withLatestFrom(layerObs),
     rxMap(([e, layers]) => {
@@ -222,10 +238,11 @@ export function makeNearestEntity$(
 export function makeDrag$(
   glMap: any,
   layer: string,
-  mousehover$ = makeHover$(glMap, layer),
-  mousedown$ = makeMousedown$(glMap),
-  mouseup$ = makeMouseup$(glMap),
-  mousemove$ = makeMousemove$(glMap)
+  destroy: Subject<void>,
+  mousehover$ = makeHover$(glMap, layer, destroy),
+  mousedown$ = makeMousedown$(glMap, destroy),
+  mouseup$ = makeMouseup$(glMap, destroy),
+  mousemove$ = makeMousemove$(glMap, destroy)
 ): Observable<Observable<MapMouseEvent | undefined>> {
   return mousedown$.pipe(
     withLatestFrom(mousehover$),

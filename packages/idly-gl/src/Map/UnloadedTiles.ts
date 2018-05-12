@@ -4,6 +4,7 @@ import { quadkeyToTile } from 'idly-common/lib/misc/quadkeyToTile';
 import { Subscription } from 'rxjs/Subscription';
 import { GlComp } from '../helpers/GlComp';
 import { makeLoadingQuadkeys$ } from '../streams';
+import { Subject } from 'rxjs/Subject';
 
 export interface Props {
   quadkeys: string[];
@@ -14,7 +15,7 @@ export interface State {
 
 export class UnloadedTiles extends GlComp<Props, State, any, any> {
   protected loadingQuadkeys: Subscription;
-
+  protected destroy: Subject<void> = new Subject();
   constructor(props: Props, gl: any) {
     super(
       props,
@@ -25,7 +26,7 @@ export class UnloadedTiles extends GlComp<Props, State, any, any> {
       'unloaded-layer'
     );
 
-    this.loadingQuadkeys = makeLoadingQuadkeys$(gl).subscribe(q =>
+    this.loadingQuadkeys = makeLoadingQuadkeys$(gl, this.destroy).subscribe(q =>
       this.setState({ loadingQuadkeys: q })
     );
 
@@ -35,6 +36,8 @@ export class UnloadedTiles extends GlComp<Props, State, any, any> {
   public componentWillUnMount() {
     this.loadingQuadkeys.unsubscribe();
     super.componentWillUnMount();
+    this.destroy.next();
+    this.destroy.complete();
   }
 
   protected render(props: Props, state: State) {

@@ -1,7 +1,8 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
+
 import { App } from './App';
 import { findPlaceholderLayers } from './helpers/helpers';
 import { LayerOpacity } from './helpers/layerOpacity';
@@ -11,17 +12,14 @@ import { MainTabs, Store } from './store/index';
 import { mapStreams } from './store/map.streams';
 import { selectEntityStream } from './store/selectEntity.stream';
 
-export class IdlyGlPlugin {
-  public Plugin?: App;
+// prevents running one or more of this plugin
+let runningInstance: IdlyGlPlugin | undefined;
 
+export class IdlyGlPlugin {
   private config: Partial<Store>;
   private container!: Element;
   private store!: BehaviorSubject<Store>;
-  private storeSubscription!: Subscription;
-  private mapStreams!: () => void;
-  private selectEntityStream!: () => void;
-  private actions!: Actions;
-  private mounted?: boolean = undefined;
+  private destroy: Subject<void> = new Subject<void>();
 
   constructor(config: Partial<Store> = {}) {
     this.config = config;
@@ -58,73 +56,72 @@ export class IdlyGlPlugin {
   }
 
   public onAdd(m: any) {
-    // @ts-ignore
-    this.container = document.createElement('div');
-
-    if (m.loaded()) {
-      this.init(m);
-    } else {
-      m.on('load', () => this.init(m));
+    if (runningInstance) {
+      throw new Error(
+        'Idly-gl is already added, please use map.removeControl.'
+      );
     }
 
+    this.container = document.createElement('div');
+
+    let inited = false;
+    const init = () => {
+      if (!inited) {
+        this.init(m);
+        inited = true;
+      }
+    };
+
+    if (m.loaded()) {
+      init();
+    } else {
+      m.on('load', init);
+    }
+    runningInstance = this;
     return this.container;
   }
 
   public onRemove() {
-    if (this.mounted !== true) {
+    if (this.destroy.closed) {
       return;
     }
     const div = this.container && this.container.parentNode;
     if (div) {
       div.removeChild(this.container);
     }
-    if (this.Plugin) {
-      this.Plugin.componentWillUnMount();
-    }
-    this.mapStreams();
-    this.selectEntityStream();
+    runningInstance = undefined;
     this.store.complete();
-    if (this.storeSubscription) {
-      this.storeSubscription.unsubscribe();
-    }
-    this.Plugin = undefined;
-    this.mounted = false;
+    this.destroy.next();
+    this.destroy.complete();
   }
 
   private init(m: any) {
-    if (this.mounted !== undefined) {
-      return;
-    }
+    const actions = new Actions(this.store);
+    const plugin = new App(this.store.getValue(), actions, this.container, m);
 
-    this.actions = new Actions(this.store);
-
-    const plugin = new App(
-      this.store.getValue(),
-      this.actions,
-      this.container,
-      m
+    this.store.subscribe(
+      val => {
+        plugin.setProps(val);
+      },
+      err => console.error(err),
+      () => {
+        plugin.componentWillUnMount();
+      }
     );
 
-    this.storeSubscription = this.store.subscribe(val => {
-      plugin.setProps(val);
-    });
-
-    this.mapStreams = mapStreams(
+    mapStreams(
       this.store.pipe(rxMap(({ map }) => map), distinctUntilChanged()),
-      this.actions,
+      this.destroy,
+      actions,
       m
     );
 
-    this.selectEntityStream = selectEntityStream(
+    selectEntityStream(
       this.store.pipe(
         rxMap(({ selectEntity }) => selectEntity),
         distinctUntilChanged()
       ),
-      this.actions
+      actions
     );
-
-    this.Plugin = plugin;
-
-    this.mounted = true;
   }
 }

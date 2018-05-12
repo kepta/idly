@@ -40,6 +40,7 @@ export interface Store {
 
   entityTree?: EntityExpanded;
 }
+
 export interface EntityExpanded {
   entity: Entity;
   parentWays: RecursiveRecord;

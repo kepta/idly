@@ -1,10 +1,10 @@
 export function replacer(_: string, value: any) {
   // Filtering out properties
   if (value instanceof Map) {
-    return { '@@idly@type': 'Map', value: [...value] };
+    return { '@@idly@type': 'Map', value: Array.from(value) };
   }
   if (value instanceof Set) {
-    return { '@@idly@type': 'Set', value: [...value] };
+    return { '@@idly@type': 'Set', value: Array.from(value) };
   }
 
   return value;
