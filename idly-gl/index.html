@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- <link href='index.css' rel='stylesheet' /> -->
+    <script src='idly-gl.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #map {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew'
+        var map = new mapboxgl.Map({
+            container: 'map', // container id 
+            // style: 'mapbox://styles/mapbox/satellite-v9',
+            style: {
+                version: 8,
+                sprite: 'mapbox://sprites/kushan2020/cjb9aalgp581d2rqu5m7h6byc',
+                glyphs:
+                    'https://api.mapbox.com/fonts/v1/mapbox/{fontstack}/{range}.pbf?access_token=pk.eyJ1Ijoia3VzaGFuMjAyMCIsImEiOiJjaWw5dG56enEwMGV6dWVsemxwMWw5NnM5In0.BbEUL1-qRFSHt7yHMorwew',
+                sources: {
+                    'raster-tiles': {
+                        type: 'raster',
+                        tiles: [
+                            'https://ecn.t0.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
+                            'https://ecn.t1.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
+                            'https://ecn.t2.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
+                            'https://ecn.t3.tiles.virtualearth.net/tiles/a{quadkey}.jpeg?g=587&mkt=en-gb&n=z',
+                        ],
+                    },
+                },
+                layers: [
+                    {
+                        id: 'simple-tiles',
+                        type: 'raster',
+                        source: 'raster-tiles',
+                        minzoom: 0,
+                        maxzoom: 22,
+                    },
+                ],
+            },
+            // style: 'mapbox://styles/mapbox/dark-v9',
+            // style: 'mapbox://styles/mapbox/light-v9',
+            doubleClickZoom: false,
+            hash: true,
+            // stylesheet location
+            center: [-73.97694, 40.76109],
+            zoom: 17, // starting zoom, hash: true, doubleClickZoom: false
+        });
+        var waiter = (timer) => new Promise((res) => setTimeout(() => res(), timer));
+        window.waiter = waiter
+        function foo() {//
+            var t = new IdlyGl.default();
+            map.addControl(t);
+            return async (timer = 300) => {
+                await waiter(timer)
+                console.log('removing')
+                map.removeControl(t)
+            }
+        }
+        window.foo = foo
+        t = foo()
+    </script>
+</body>
+
+</html>
