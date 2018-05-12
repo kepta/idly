@@ -21,7 +21,16 @@ npm i -S idly-gl
 Make sure to add mapbox-gl and mapbox-gl css before importing idly-gl
 
 ```HTML
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
  <script src='https://unpkg.com/idly-gl@latest/dist/idly-gl.js'></script>
+ </head>
+</html>
 ```
 
 ## Example
@@ -43,4 +52,36 @@ map.addControl(new idlygl.IdlyGlPlugin());
 
 ### Using directly in HTML
 
-For a full example visit: https://github.com/kepta/idly/packages/idly-gl/dist/index.html
+<detail>
+
+```html
+<html>
+<head>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://unpkg.com/idly-gl@latest/dist/idly-gl.js'></script>
+    <style>
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'your mapbox access token';
+        var map = new mapboxgl.Map({
+            style: 'mapbox://styles/mapbox/satellite-v9',
+            center: [-74.0066, 40.7135],
+            zoom: 18.5,
+            hash: true,
+            container: 'map'
+        });
+        var idly = new IdlyGl.default();
+        map.addControl(idly);
+    </script>
+</body>
+
+</html>
+```
+
+</detail>
