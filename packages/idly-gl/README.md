@@ -21,14 +21,14 @@ A Mapbox-gl plugin for rendering Openstreetmap data.<a href="https://kepta.githu
 
 * [What does it do?](#what-does-it-do)
 * [Show me!](#show-me)
+* [Usage](#usage)
   * [NPM](#npm)
   * [CDN](#cdn)
+* [API](#api)
+* [Examples](#examples)
+* [User Guide](#user-guide)
 
 <!-- tocstop -->
-
-* [API](https://github.com/kepta/idly/wiki/API)
-* [Examples](https://github.com/kepta/idly/wiki/examples)
-* [User Guide](https://github.com/kepta/idly/wiki/User_Guide)
 
 ## What does it do?
 
@@ -54,7 +54,7 @@ Idly-gl is an easy to use mapbox-gl plugin to help you instantly add live Openst
 
 [Click here to demo idly-gl](https://kepta.github.io/idly/idly-gl/)
 
-##Usage
+## Usage
 
 ### NPM
 
@@ -91,4 +91,14 @@ var idly = new IdlyGl.default();
 map.addControl(idly);
 ```
 
-Head over to the [wiki](https://github.com/kepta/idly/wiki/idly-gl/example.md) for more examples.
+## API
+
+Head over to [wiki/API](https://github.com/kepta/idly/wiki/API)
+
+## Examples
+
+Head over to the [wiki/examples](https://github.com/kepta/idly/wiki/idly-gl/example.md) for more examples.
+
+## User Guide
+
+Head over to the [wiki/User Guide](https://github.com/kepta/idly/wiki/User_Guide) to understand idly-gl's features.

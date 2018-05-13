@@ -23,8 +23,8 @@ export const Ui: any = ({
   entityTree,
   zoom,
 }: {
-  mainTab: Store['mainTab'];
-  selectEntity: Store['selectEntity'];
+  mainTab: Store['tab'];
+  selectEntity: Store['interaction'];
   layerOpacity: LayerOpacity;
   loading: boolean;
   actions: Actions;

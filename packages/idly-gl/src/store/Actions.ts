@@ -17,14 +17,14 @@ export class Actions {
   }
 
   @bindThis
-  public selectId(id = this.store.selectEntity.hoverId) {
-    if (id === this.store.selectEntity.selectedId) {
+  public selectId(id = this.store.interaction.hoverId) {
+    if (id === this.store.interaction.selectedId) {
       return;
     }
     this.subject.next({
       ...this.store,
-      selectEntity: {
-        ...this.store.selectEntity,
+      interaction: {
+        ...this.store.interaction,
         selectedId: id,
         popup: undefined,
       },
@@ -33,12 +33,12 @@ export class Actions {
 
   @bindThis
   public modifyHoverId(id?: string) {
-    if (id === this.store.selectEntity.hoverId) {
+    if (id === this.store.interaction.hoverId) {
       return;
     }
     this.subject.next({
       ...this.store,
-      selectEntity: { ...this.store.selectEntity, hoverId: id },
+      interaction: { ...this.store.interaction, hoverId: id },
     });
   }
 
@@ -46,7 +46,7 @@ export class Actions {
   public modifyMainTab(mainTab: MainTabs) {
     this.subject.next({
       ...this.store,
-      mainTab: { ...this.store.mainTab, active: mainTab },
+      tab: { ...this.store.tab, active: mainTab },
     });
   }
 
@@ -214,8 +214,8 @@ export class Actions {
     if (ids && ids.length > 0 && lnglat.lat && lnglat.lng) {
       this.subject.next({
         ...this.store,
-        selectEntity: {
-          ...this.store.selectEntity,
+        interaction: {
+          ...this.store.interaction,
           popup: {
             lnglat,
             ids,
@@ -227,11 +227,11 @@ export class Actions {
 
   @bindThis
   public removeEntitySelectorPopup() {
-    if (this.store.selectEntity.popup) {
+    if (this.store.interaction.popup) {
       this.subject.next({
         ...this.store,
-        selectEntity: {
-          ...this.store.selectEntity,
+        interaction: {
+          ...this.store.interaction,
           popup: undefined,
         },
       });
@@ -269,8 +269,8 @@ export class Actions {
 
     this.subject.next({
       ...this.store,
-      selectEntity: {
-        ...this.store.selectEntity,
+      interaction: {
+        ...this.store.interaction,
         hoverId: undefined,
         selectedId: undefined,
       },
@@ -300,8 +300,8 @@ export class Actions {
 
     this.subject.next({
       ...this.store,
-      selectEntity: {
-        ...this.store.selectEntity,
+      interaction: {
+        ...this.store.interaction,
         hoverId: undefined,
         selectedId: undefined,
       },

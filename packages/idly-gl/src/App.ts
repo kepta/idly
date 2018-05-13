@@ -20,9 +20,9 @@ export class App extends Component<Store, {}, any, void> {
     this.children = {
       mapComp: new MapComp(
         {
-          hoverEntityId: props.selectEntity.hoverId,
-          popup: props.selectEntity.popup,
-          selectedEntityId: props.selectEntity.selectedId,
+          hoverEntityId: props.interaction.hoverId,
+          popup: props.interaction.popup,
+          selectedEntityId: props.interaction.selectedId,
           quadkeys: props.map.quadkeys,
           fc: props.map.featureCollection,
           layers: props.map.layers,
@@ -30,7 +30,7 @@ export class App extends Component<Store, {}, any, void> {
           actions: this.actions,
         },
         glInstance,
-        props.selectEntity.beforeLayers
+        props.interaction.beforeLayers
       ),
     };
 
@@ -40,9 +40,9 @@ export class App extends Component<Store, {}, any, void> {
   protected render(props: Store) {
     (window as any).render = props;
     this.children.mapComp.setProps({
-      popup: props.selectEntity.popup,
-      hoverEntityId: props.selectEntity.hoverId,
-      selectedEntityId: props.selectEntity.selectedId,
+      popup: props.interaction.popup,
+      hoverEntityId: props.interaction.hoverId,
+      selectedEntityId: props.interaction.selectedId,
       quadkeys: props.map.quadkeys,
       fc: props.map.featureCollection,
       layers: props.map.layers,
@@ -53,8 +53,8 @@ export class App extends Component<Store, {}, any, void> {
     render(
       Ui({
         loading: props.map.loading,
-        selectEntity: props.selectEntity,
-        mainTab: props.mainTab,
+        selectEntity: props.interaction,
+        mainTab: props.tab,
         layerOpacity: props.map.layerOpacity,
         layers: props.map.layers,
         actions: this.actions,

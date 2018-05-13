@@ -14,7 +14,7 @@ module.exports = {
   output: {
     filename: 'idly-gl.js',
     path: path.resolve(__dirname, 'dist/'),
-    library: 'idlygl',
+    library: 'IdlyGl',
     libraryTarget: 'umd',
   },
 

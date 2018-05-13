@@ -3,20 +3,32 @@ import { tileToQuadkey } from 'idly-common/lib/misc';
 import { Map, MapMouseEvent, MapTouchEvent } from 'mapbox-gl/dist/mapbox-gl';
 import { Observable } from 'rxjs/Observable';
 import { fromEventPattern } from 'rxjs/observable/fromEventPattern';
+import { interval } from 'rxjs/observable/interval';
 import { merge } from 'rxjs/observable/merge';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { defaultIfEmpty } from 'rxjs/operators/defaultIfEmpty';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { filter } from 'rxjs/operators/filter';
+import { first } from 'rxjs/operators/first';
 import { map as rxMap } from 'rxjs/operators/map';
 import { startWith } from 'rxjs/operators/startWith';
 import { takeUntil } from 'rxjs/operators/takeUntil';
 import { throttleTime } from 'rxjs/operators/throttleTime';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 import { Subject } from 'rxjs/Subject';
-
 import { mapInteraction, quadkey } from './configuration';
 import { bboxify, tilesFilterSmall } from './helpers/helpers';
+
+export function pollGlReady(glMap: Map, destroy: Subject<void>) {
+  return merge(
+    interval(400).pipe(
+      rxMap(() => glMap.loaded()),
+      distinctUntilChanged(),
+      filter(r => r)
+    ),
+    glObservable(glMap, 'load', destroy).pipe(rxMap(() => true))
+  ).pipe(first(), takeUntil(destroy));
+}
 
 export function glObservable<T>(
   glMap: Map,

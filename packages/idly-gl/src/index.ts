@@ -3,6 +3,7 @@ import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { map as rxMap } from 'rxjs/operators/map';
 import { Subject } from 'rxjs/Subject';
 
+import { Entity } from 'idly-common/lib/osm/structures';
 import { App } from './App';
 import { findPlaceholderLayers } from './helpers/helpers';
 import { LayerOpacity } from './helpers/layerOpacity';
@@ -11,6 +12,8 @@ import { Actions } from './store/Actions';
 import { MainTabs, Store } from './store/index';
 import { mapStreams } from './store/map.streams';
 import { selectEntityStream } from './store/selectEntity.stream';
+import { pollGlReady } from './streams';
+import { workerOperations } from './worker';
 
 // prevents running one or more of this plugin
 let runningInstance: IdlyGlPlugin | undefined;
@@ -20,23 +23,21 @@ export class IdlyGlPlugin {
   private container!: Element;
   private store!: BehaviorSubject<Store>;
   private destroy: Subject<void> = new Subject<void>();
-
+  private onChangeCb?: (store: Store) => void;
   constructor(config: Partial<Store> = {}) {
     this.config = config;
 
     const starter: Store = {
       ...this.config,
-      mainTab: {
+      tab: {
         active: MainTabs.Info,
-        ...this.config.mainTab,
+        ...this.config.tab,
       },
-      tags: {
-        ...this.config.tags,
-      },
-      selectEntity: {
+
+      interaction: {
         selectedId: '',
         beforeLayers: findPlaceholderLayers(layers),
-        ...this.config.selectEntity,
+        ...this.config.interaction,
       },
       map: {
         quadkeys: [],
@@ -63,7 +64,6 @@ export class IdlyGlPlugin {
     }
 
     this.container = document.createElement('div');
-
     let inited = false;
     const init = () => {
       if (!inited) {
@@ -72,11 +72,15 @@ export class IdlyGlPlugin {
       }
     };
 
-    if (m.loaded()) {
+    /**
+     * There seems to be no reliable way of getting
+     * the map ready state after map.on('load') event
+     * has fired.
+     */
+    pollGlReady(m, this.destroy).subscribe(() => {
       init();
-    } else {
-      m.on('load', init);
-    }
+    });
+
     runningInstance = this;
     return this.container;
   }
@@ -95,6 +99,24 @@ export class IdlyGlPlugin {
     this.destroy.complete();
   }
 
+  public onChange = (cb: ((store: Store) => void) | undefined) => {
+    if (cb) {
+      this.onChangeCb = cb;
+    }
+  };
+
+  public getStore = (): Store => {
+    return Object.assign({}, this.store.getValue());
+  };
+
+  public updateStore = (inputStore: Partial<Store>) => {
+    this.store.next(mergeStore(this.store.getValue(), inputStore));
+  };
+
+  public getEntity(id: string): Promise<Entity | undefined> {
+    return workerOperations.getEntity({ id });
+  }
+
   private init(m: any) {
     const actions = new Actions(this.store);
     const plugin = new App(this.store.getValue(), actions, this.container, m);
@@ -102,6 +124,9 @@ export class IdlyGlPlugin {
     this.store.subscribe(
       val => {
         plugin.setProps(val);
+        if (this.onChangeCb) {
+          this.onChangeCb({ ...val });
+        }
       },
       err => console.error(err),
       () => {
@@ -118,10 +143,31 @@ export class IdlyGlPlugin {
 
     selectEntityStream(
       this.store.pipe(
-        rxMap(({ selectEntity }) => selectEntity),
+        rxMap(({ interaction }) => interaction),
         distinctUntilChanged()
       ),
       actions
     );
   }
+}
+
+export default IdlyGlPlugin;
+
+function mergeStore(previousStore: Store, store: Partial<Store> = {}): Store {
+  return {
+    ...previousStore,
+    ...store,
+    tab: {
+      ...previousStore.tab,
+      ...store.tab,
+    },
+    interaction: {
+      ...previousStore.interaction,
+      ...store.interaction,
+    },
+    map: {
+      ...previousStore.map,
+      ...store.map,
+    },
+  };
 }

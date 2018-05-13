@@ -9,14 +9,29 @@ export const enum MainTabs {
   Tree = 'Tree',
   Layers = 'Layers',
 }
-
+/**
+ * The main store for idly-gl.
+ */
 export interface Store {
-  mainTab: {
+  /**
+   * Houses all the tab properties.
+   */
+  tab: {
+    /**
+     * The active can be one of `Info` | `Tags` | `Tree` | `Layers`.
+     * The default is `Info`.
+     *
+     */
     active: MainTabs;
   };
-  tags: {};
-  selectEntity: {
+  interaction: {
+    /**
+     * The currently hovered id.
+     */
     hoverId?: string;
+    /**
+     * The currently selected entity id
+     */
     selectedId?: string;
     beforeLayers: {
       top: string | undefined;
@@ -37,7 +52,6 @@ export interface Store {
     layerOpacity: LayerOpacity;
     zoom: number;
   };
-
   entityTree?: EntityExpanded;
 }
 

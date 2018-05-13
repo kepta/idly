@@ -8,10 +8,10 @@ import { workerOperations } from '../worker';
 import { Actions } from './Actions';
 
 export function selectEntityStream(
-  map: Observable<Store['selectEntity']>,
+  store: Observable<Store['interaction']>,
   actions: Actions
 ) {
-  map
+  store
     .pipe(
       rxMap(({ selectedId }) => selectedId),
       distinctUntilChanged(),
@@ -19,5 +19,5 @@ export function selectEntityStream(
         fromPromise(workerOperations.getEntityMetadata({ id: selectedId }))
       )
     )
-    .subscribe(r => actions.addEntityTree(r), e => console.error(e));
+    .subscribe(r => actions.addEntityTree(r));
 }

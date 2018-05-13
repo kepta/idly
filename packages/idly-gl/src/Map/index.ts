@@ -16,7 +16,7 @@ import { UnloadedTiles } from './UnloadedTiles';
 
 export interface Props {
   quadkeys: Store['map']['quadkeys'];
-  popup: Store['selectEntity']['popup'];
+  popup: Store['interaction']['popup'];
   mapBeforeLayer: Store['map']['beforeLayer'];
   fc: Store['map']['featureCollection'];
   layers: Store['map']['layers'];
@@ -40,7 +40,7 @@ export class MapComp extends Component<Props, {}> {
   constructor(
     props: Props,
     gl: any,
-    selectBeforeLayer: Store['selectEntity']['beforeLayers']
+    selectBeforeLayer: Store['interaction']['beforeLayers']
   ) {
     super(props, {});
     this.gl = gl;
