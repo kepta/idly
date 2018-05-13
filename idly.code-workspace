@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "packages/idly-osm-to-geojson"
+		},
+		{
+			"path": "packages/idly.wiki"
 		}
 	],
 	"settings": {

@@ -5,3 +5,4 @@ lib/
 lerna-debug.log
 yarn-error.log
 coverage
+packages/idly.wiki

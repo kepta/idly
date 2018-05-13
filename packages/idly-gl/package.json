@@ -1,21 +1,21 @@
 {
   "name": "idly-gl",
   "version": "1.5.0",
-  "description":
-    "A mapbox-gl plugin to render Openstreetmap as a geojson layer.",
+  "description": "A mapbox-gl plugin to render Openstreetmap as a geojson layer.",
   "main": "dist/idly-gl.js",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "types": "lib/index.d.ts",
   "scripts": {
     "bundle": "webpack",
     "test": "jest $npm_package_name --config ../../jest.config.js",
-    "test:watch":
-      "jest $npm_package_name --config ../../jest.config.js --watch",
+    "test:watch": "jest $npm_package_name --config ../../jest.config.js --watch",
     "tsc:watch": "tsc -w",
     "tsc": "tsc",
     "lint": "tslint -p .",
     "pretest": "npm run lint && npm run tsc",
-    "prepublish": "webpack-cli --mode=production"
+    "copy:readme": "cp README.md ../idly.wiki/idly-gl/",
+    "prepublish": "webpack-cli --mode=production",
+    "pages": "gh-pages -d dist -b gh-pages -e idly-gl"
   },
   "license": "ISC",
   "dependencies": {
@@ -40,9 +40,12 @@
     "gh-pages": "^1.1.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.0.4",
+    "markdown-toc": "^1.2.0",
     "source-map-loader": "^0.2.3",
     "ts-jest": "^22.0.1",
     "tslint": "^5.9.1",
+    "typedoc": "^0.11.1",
+    "typedoc-plugin-markdown": "^1.1.8",
     "typescript": "^2.8.1",
     "webpack": "^4.4.1",
     "webpack-bundle-analyzer": "^2.9.1",
