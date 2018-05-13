@@ -97,7 +97,7 @@ Head over to [wiki/API](https://github.com/kepta/idly/wiki/API)
 
 ## Examples
 
-Head over to the [wiki/examples](https://github.com/kepta/idly/wiki/idly-gl/example.md) for more examples.
+Head over to the [wiki/examples](https://github.com/kepta/idly/wiki/examples) for more examples.
 
 ## User Guide
 
