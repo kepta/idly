@@ -1,21 +1,23 @@
 {
   "name": "idly-gl",
   "version": "1.5.0",
-  "description": "A mapbox-gl plugin to render Openstreetmap as a geojson layer.",
+  "description":
+    "A mapbox-gl plugin to render Openstreetmap as a geojson layer.",
   "main": "dist/idly-gl.js",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "types": "lib/index.d.ts",
   "scripts": {
-    "bundle": "webpack",
     "test": "jest $npm_package_name --config ../../jest.config.js",
-    "test:watch": "jest $npm_package_name --config ../../jest.config.js --watch",
+    "test:watch":
+      "jest $npm_package_name --config ../../jest.config.js --watch",
     "tsc:watch": "tsc -w",
     "tsc": "tsc",
     "lint": "tslint -p .",
     "pretest": "npm run lint && npm run tsc",
-    "copy:readme": "cp README.md ../idly.wiki/idly-gl/",
-    "prepublish": "webpack-cli --mode=production",
-    "pages": "gh-pages -d dist -b gh-pages -e idly-gl"
+    "build": "webpack-cli --mode=production",
+    "prepublish": "npm run build",
+    "pages": "gh-pages -d dist -b gh-pages -e idly-gl",
+    "start": "webpack-dev-server"
   },
   "license": "ISC",
   "dependencies": {
