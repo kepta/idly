@@ -5,4 +5,3 @@
 | [idly-state](https://github.com/kepta/idly/tree/master/packages/idly-state)                         | alpha(internal) | State management for osm editing                                |
 | [idly-worker](https://github.com/kepta/idly/tree/master/packages/idly-worker)                       | alpha(internal) | The web worker glue code to offload most of the computation     |
 | [idly-common](https://github.com/kepta/idly/tree/master/packages/idly-common)                       | alpha(internal) | Houses reusable code which is used across different packages    |
-| [jalebi](https://github.com/kepta/idly/tree/master/packages/jalebi)                                 | inactive        | An osm editor                                                   |
