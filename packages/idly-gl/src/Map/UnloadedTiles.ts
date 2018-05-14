@@ -1,10 +1,10 @@
 import bboxPolygon from '@turf/bbox-polygon';
 import { mercator } from 'idly-common/lib/geo';
 import { quadkeyToTile } from 'idly-common/lib/misc/quadkeyToTile';
+import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { GlComp } from '../helpers/GlComp';
 import { makeLoadingQuadkeys$ } from '../streams';
-import { Subject } from 'rxjs/Subject';
 
 export interface Props {
   quadkeys: string[];

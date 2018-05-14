@@ -43,6 +43,7 @@ export class Select extends GlComp<Props, {}, any, any> {
           paint: {
             'circle-radius': SELECT_WIDTH.point,
             'circle-color': '#00f9ff',
+            'circle-opacity': 0.8,
           },
           filter: ['==', '$type', 'Point'],
         },
@@ -58,16 +59,12 @@ export class Select extends GlComp<Props, {}, any, any> {
         area: {
           beforeLayer: undefined,
           type: 'line',
-          layout: {
-            'line-cap': 'round',
-            'line-join': 'round',
-            'line-round-limit': 0.5,
-          },
+          layout: {},
           paint: {
             'line-color': '#00f9ff',
-            'line-opacity': 0.9,
+            'line-opacity': 0.8,
             'line-width': SELECT_WIDTH.area,
-            'line-offset': -6,
+            'line-offset': -9,
           },
           filter: ['==', '$type', 'Polygon'],
         },
@@ -79,6 +76,7 @@ export class Select extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': '#00f9ff',
+            'line-opacity': 0.8,
             'line-width': SELECT_WIDTH.line,
           },
           filter: ['==', '$type', 'LineString'],

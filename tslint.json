@@ -13,7 +13,8 @@
     "object-literal-sort-keys": [true],
     "interface-name": [false],
     "semicolon": false,
-    "object-literal-key-quotes": false
+    "object-literal-key-quotes": false,
+    "max-line-length": false
   },
   "rulesDirectory": []
 }

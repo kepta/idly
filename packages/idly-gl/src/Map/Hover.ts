@@ -49,6 +49,7 @@ export class Hover extends GlComp<Props, {}, any, any> {
           paint: {
             'circle-radius': HOVER_WIDTH.point,
             'circle-color': color,
+            'circle-opacity': 0.8,
           },
           filter: ['==', '$type', 'Point'],
         },
@@ -64,16 +65,12 @@ export class Hover extends GlComp<Props, {}, any, any> {
         areaBorder: {
           beforeLayer: undefined,
           type: 'line',
-          layout: {
-            'line-cap': 'round',
-            'line-join': 'round',
-            'line-round-limit': 0.5,
-          },
+          layout: {},
           paint: {
             'line-color': color,
             'line-opacity': 0.8,
             'line-width': HOVER_WIDTH.area,
-            'line-offset': -6,
+            'line-offset': -9,
           },
           filter: ['==', '$type', 'Polygon'],
         },
@@ -85,6 +82,7 @@ export class Hover extends GlComp<Props, {}, any, any> {
           },
           paint: {
             'line-color': color,
+            'line-opacity': 0.8,
             'line-width': HOVER_WIDTH.line,
           },
           filter: ['==', '$type', 'LineString'],

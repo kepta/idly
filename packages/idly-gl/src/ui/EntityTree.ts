@@ -7,7 +7,7 @@ import { repeat } from 'lit-html/lib/repeat';
 import { EntityExpanded, RecursiveRecord, Store } from '../store';
 import { Actions } from '../store/Actions';
 import { workerOperations } from '../worker';
-import { Icon, SelectIcon } from './icons';
+import { Icon } from './icons';
 
 export async function EntityTree({
   entityTree,
@@ -154,7 +154,6 @@ function TreeLeaf({
         e.stopPropagation();
 
         const d = await workerOperations.getEntityMetadata({ id }).then(r => r);
-
         if (!expanded) {
           actions.addEntityTreeExpand(id, d, parent);
         } else {
@@ -180,7 +179,7 @@ function TreeLeaf({
       <span class="layout flex-2">&nbsp;</span>
       ${
         !unavailable
-          ? Icon(SelectIcon, () => {
+          ? Icon(`◎`, () => {
               actions.selectId(id);
             })
           : ''

@@ -1,7 +1,6 @@
 import { TemplateResult } from 'lit-html';
 import { html } from 'lit-html/lib/lit-extended';
 
-// export const Style = ``;
 export const Style: TemplateResult = html`
 <style>
 .idly-gl .container {

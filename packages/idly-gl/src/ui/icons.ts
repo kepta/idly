@@ -25,15 +25,18 @@ export const IconBar = ({
   return html`
       <div class="icon-row layout horizontal start-justified">
           ${icon}
-          ${entityId ? Icon('|') : ''}
+          <span style="font-size: 1.4em;" class="idly-gl-icon layout link vertical">
+            <a target="_blank"  class="layout vertical center-center" href="https://github.com/kepta/idly/wiki/User_Guide">?</a>
+          </span>
+          ${
+            loading
+              ? Icon(html`
+                  <div style="display:inline-block" class="loader" ></div>
+              `)
+              : Icon(``)
+          }
+          <span class="flex-6"></span>
           ${entityId ? osmLink(entityId) : osmLink('')}
-        ${
-          loading
-            ? Icon(html`
-                <div style="display:inline-block" class="loader" ></div>
-            `)
-            : undefined
-        }
       </div>
     `;
 };
@@ -60,7 +63,7 @@ function osmLink(id?: string) {
 
   const href = `https://openstreetmap.org/${type}/${id.substring(1)} `;
 
-  return html`<span style="" class="idly-gl-icon layout link vertical">
+  return html`<span style="font-size: 1.1em; padding-right: 6px;" class="idly-gl-icon layout link vertical">
         <a target="_blank"  class="layout vertical center-center" href=${href}>${id}</a>
   </span>`;
 }
