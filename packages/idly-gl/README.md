@@ -6,7 +6,7 @@
   <br>
 </h1>
 <p align="center">
-  <a href="https://badge.fury.io/js/electron-markdownify">
+  <a href="https://github.com/kepta/idly">
     <img src="https://user-images.githubusercontent.com/6966254/39964464-e91b3f56-56a2-11e8-80c8-27b915b9f41a.gif"
          alt="screeh">
   </a>
