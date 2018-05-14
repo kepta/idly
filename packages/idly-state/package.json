@@ -1,6 +1,6 @@
 {
   "name": "idly-state",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "author": "Kushan Joshi <0o3ko0@gmail.com>",
   "main": "lib/index.js",
   "types": "lib",
@@ -20,8 +20,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "idly-common": "^1.5.0",
-    "idly-faster-osm-parser": "^1.5.0",
+    "idly-common": "^1.6.0",
+    "idly-faster-osm-parser": "^1.6.0",
     "monet": "^0.8.10"
   },
   "devDependencies": {
