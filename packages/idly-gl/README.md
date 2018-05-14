@@ -32,7 +32,7 @@ A Mapbox-gl plugin for rendering Openstreetmap data.<a href="https://kepta.githu
 
 ## What does it do?
 
-Idly-gl is an easy to use mapbox-gl plugin to help you instantly add live Openstreetmap data. Mapbox GL JS is a JavaScript library that uses WebGL to render fast interactive maps. This plugin uses the Openstreetmap [API](https://wiki.openstreetmap.org/wiki/API_v0.6#Retrieving_map_data_by_bounding_box:_GET_.2Fapi.2F0.6.2Fmap) to render OSM data.
+Idly-gl is an easy to use mapbox-gl plugin to help you instantly add live Openstreetmap data. This plugin uses the Openstreetmap [API](https://wiki.openstreetmap.org/wiki/API_v0.6#Retrieving_map_data_by_bounding_box:_GET_.2Fapi.2F0.6.2Fmap) to render OSM data.
 
 * 😎 It renders live osm data on a mapbox-gl map, which makes it blazingly fast.
 
@@ -97,7 +97,7 @@ Head over to [wiki/API](https://github.com/kepta/idly/wiki/API)
 
 ## Examples
 
-Head over to the [wiki/examples](https://github.com/kepta/idly/wiki/idly-gl/example.md) for more examples.
+Head over to the [wiki/examples](https://github.com/kepta/idly/wiki/examples) for more examples.
 
 ## User Guide
 
