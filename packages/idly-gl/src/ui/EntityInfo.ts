@@ -33,7 +33,12 @@ export async function EntityInfo({
         <div class="p3x layout vertical">
          <span>ID: ${id.substring(1)}</span>
          <span>Type: ${entity.type}</span>
-         <span>Changeset: ${entity.attributes.changeset}</span>
+         <span>
+           Changeset:
+           <a href=`https://osmcha.mapbox.com/changesets/${entity.attributes.changeset}` target="_blank">
+            ${entity.attributes.changeset}
+           </a>
+         </span>
          <span class="layout horizontal">
            ${ButtonLink('OSM', osmHref)}
            <span class="flex-1"></span>
